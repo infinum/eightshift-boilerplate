@@ -1,0 +1,156 @@
+%button-reset {
+  padding: 0;
+  border: 0;
+  appearance: none;
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+%link-transition {
+  transition: color 0.2s ease-in;
+}
+
+%heading-reset {
+  margin: 0;
+  padding: 0;
+}
+
+%paragraph-reset {
+  padding: 0;
+  margin: 0;
+}
+
+%list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+%input-reset {
+  padding: 0;
+  border: none;
+  appearance: none;
+}
+
+%dl-reset {
+  margin: 0;
+  padding: 0;
+}
+
+%font-icon {
+  // use !important to prevent issues with browser extensions that change fonts
+  font-family: 'rasco' !important; /* stylelint-disable-line declaration-no-important */
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  @include font-smoothing();
+}
+
+%site-padding {
+  padding-left: $base-content-padding;
+  padding-right: $base-content-padding;
+}
+
+%bg-image {
+  background: {
+    size: cover;
+    position: center;
+    repeat: no-repeat;
+  }
+}
+
+%bg-img-position {
+  &[data-bg-h='left']{
+    &[data-bg-v='top'] {
+      background-position: left top;
+    }
+
+    &[data-bg-v='center'] {
+      background-position: left center;
+    }
+
+    &[data-bg-v='bottom'] {
+      background-position: left bottom;
+    }
+  }
+
+  &[data-bg-h='center']{
+    &[data-bg-v='top'] {
+      background-position: center top;
+    }
+
+    &[data-bg-v='center'] {
+      background-position: center center;
+    }
+
+    &[data-bg-v='bottom'] {
+      background-position: center bottom;
+    }
+  }
+
+  &[data-bg-h='right']{
+    &[data-bg-v='top'] {
+      background-position: right top;
+    }
+
+    &[data-bg-v='center'] {
+      background-position: right center;
+    }
+
+    &[data-bg-v='bottom'] {
+      background-position: right bottom;
+    }
+  }
+}
+
+//Generate static blocks caption positions
+%caption-content-position-vertical {
+  &[data-caption-v='top'] {
+    vertical-align: top;
+  }
+
+  &[data-caption-v='center'] {
+    vertical-align: middle;
+  }
+
+  &[data-caption-v='bottom'] {
+    vertical-align: bottom;
+  }
+}
+
+%caption-content-position-horizontal {
+  &[data-caption-h='left'] {
+    float: left;
+    text-align: left;
+  }
+
+  &[data-caption-h='center'] {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &[data-caption-h='right'] {
+    float: right;
+    text-align: right;
+  }
+}
+
+%vertical-align-content {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+%vertical-align-content-item {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+}

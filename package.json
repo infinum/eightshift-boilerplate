@@ -1,0 +1,53 @@
+{
+  "name": "Theme",
+  "version": "1.0.0",
+  "author": "Ivan Ružević",
+  "private": true,
+  "main": "",
+  "scripts": {
+    "__eslintTheme": "eslint wp-content/themes/theme_name/skin/assets/",
+    "__eslintPlugin": "eslint wp-content/plugins/plugin_name/skin/assets/",
+    "__stylelintTheme": "stylelint \"wp-content/themes/theme_name/**/*.scss\" --syntax scss",
+    "__stylelintPlugin": "stylelint \"wp-content/plugins/plugin_name/**/*.scss\" --syntax scss",
+    "precommit": "npm run __eslintTheme && npm run __eslintPlugin && npm run __stylelintTheme && npm run __stylelintPlugin",
+    "start": "webpack --progress --watch --display-error-details --display-modules --display-reasons",
+    "build": "NODE_ENV=production webpack --progress"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.2",
+    "babel-core": "^6.23.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-env": "^1.2.1",
+    "clean-webpack-plugin": "^0.1.15",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.1",
+    "css-mqpacker": "^5.0.1",
+    "cssnano": "^3.10.0",
+    "eslint": "^3.17.1",
+    "extract-text-webpack-plugin": "^2.0.0-rc.3",
+    "file-loader": "^0.9.0",
+    "node-sass": "^4.5.0",
+    "postcss-cssnext": "^2.9.0",
+    "postcss-font-magician": "^1.6.0",
+    "postcss-loader": "^1.2.2",
+    "precss": "^1.4.0",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "stylelint": "^7.9.0",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "media-blender": "^2.1.0",
+    "normalize.css": "^5.0.0",
+    "slick-carousel": "^1.6.0",
+    "susy": "^2.2.12",
+    "jquery-match-height": "^0.7.2"
+  },
+  "browserslist": [
+    "android >= 4.2",
+    "not ie < 11",
+    "last 2 versions"
+  ]
+}

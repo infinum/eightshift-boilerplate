@@ -1,0 +1,4 @@
+wp-content/plugins/plugin_name/skin/assets/scripts/public/vendors/*.js
+wp-content/plugins/plugin_name/skin/assets/scripts/admin/vendors/*.js
+
+wp-content/themes/theme_name/skin/assets/scripts/vendors/*.js

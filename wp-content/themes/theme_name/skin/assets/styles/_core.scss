@@ -1,0 +1,22 @@
+@include global-box-sizing(border-box);
+
+html { /* stylelint-disable-line selector-no-type */
+  font-size: $base-font-size;
+}
+
+body { /* stylelint-disable-line selector-no-type */
+  font-family: $base-font-family;
+  color: $base-text-color;
+  position: relative;
+  overflow-x: hidden;
+
+  @include font-smoothing;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+
+  // .main-content {
+  //   padding-top: $header-height;
+  // }
+}

@@ -1,0 +1,1 @@
+import './admin/test.svg';

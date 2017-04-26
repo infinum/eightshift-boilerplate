@@ -1,0 +1,22 @@
+$base-black-color:       #000000;
+$base-white-color:       #FFFFFF;
+
+$base-rouge-color:       #C3151B;
+$base-dark-color:        #2F2F2F;
+$base-abbey-color:       #424446;
+$base-battleship-color:  #71787C;
+$base-chateau-color:     #A9B0B5;
+$base-silver-sand-color: #BDC3C7;
+$base-silver-color:      #E5E7E9;
+$base-porcelain-color:   #EEF0F1;
+$base-whild-sand-color:  #F6F6F6;
+
+$base-malachite-color:   #15C343;
+
+$base-primary-color:       $base-rouge-color;
+
+$color-map: (
+  primary:          $base-primary-color,
+  white:          $base-white-color,
+  whild-sand:       $base-whild-sand-color
+);

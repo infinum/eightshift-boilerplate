@@ -1,0 +1,20 @@
+//Some stuff here is out of BEM because it is used inside WP as helpers or modifiers
+// Text sizes are refines via mixins as utility helpers
+
+$link-default-color: $base-primary-color;
+
+a { /* stylelint-disable-line selector-no-type */
+  text-decoration: none;
+  color: $link-default-color;
+
+  @extend %link-transition;
+
+  &:hover {
+    color: darken($link-default-color, 10%);
+  }
+}
+
+p { /* stylelint-disable-line selector-no-type */
+  font-size: map-get($typography-map, default);
+  line-height: 1.8;
+}

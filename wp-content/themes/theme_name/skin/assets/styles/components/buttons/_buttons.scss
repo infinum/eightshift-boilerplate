@@ -1,0 +1,78 @@
+//Some stuff here is out of BEM because it is used inside WP as helpers or modifiers
+
+$button-color-map: (
+  'color-default': (
+    bg: $base-primary-color,
+    txt: $base-white-color,
+    border: $base-primary-color,
+    bg-hover: $base-primary-color,
+    txt-hover: $base-white-color,
+    border-hover: $base-primary-color
+  ),
+  'color-default-bordered': (
+    bg: transparent,
+    txt: $base-primary-color,
+    border: $base-primary-color,
+    bg-hover: $base-primary-color,
+    txt-hover: $base-white-color,
+    border-hover: $base-primary-color
+  )
+);
+
+$button-size-map: (
+  'size-default': (
+    txt-size: map-get($typography-map, small),
+    line-height: 1,
+    padding: 20px,
+  ),
+  'size-large': (
+    txt-size: map-get($typography-map, small),
+    line-height: 1,
+    padding: 25px,
+  )
+);
+
+
+.btn {
+  @extend %button-reset;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  border: 2px solid;
+  cursor: pointer;
+
+  transition: {
+    property: background-color, color, border-color;
+    timing-function: ease-in;
+    duration: 0.3s;
+  }
+
+  @include button-size($button-size-map);
+  @include button-color-generate($button-color-map);
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  &--has-icon-right,
+  &--has-icon-left {
+    i { /* stylelint-disable-line selector-no-type */
+      vertical-align: top;
+      display: inline-block;
+    }
+  }
+
+  &--has-icon-left i { /* stylelint-disable-line selector-no-type */
+    margin-right: 25px;
+  }
+
+  &--has-icon-right i { /* stylelint-disable-line selector-no-type */
+    margin-left: 25px;
+  }
+}

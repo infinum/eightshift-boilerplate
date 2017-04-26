@@ -1,0 +1,89 @@
+//Some stuff here is out of BEM because it is used inside WP as helpers or modifiers
+// Text sizes are refines via mixins as utility helpers
+
+$content-style-quote-color: $base-battleship-color;
+
+/* stylelint-disable selector-no-type */
+.content-style {
+  p {
+    @extend %paragraph-reset;
+    padding-bottom: 35px;
+
+    &.spacing-half {
+      padding-bottom: 15px;
+    }
+
+    &.spacing-double {
+      padding-bottom: 45px;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &.clear-spacing {
+      padding-bottom: 0;
+    }
+  }
+
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    @extend %heading-reset;
+    font-weight: 800;
+    line-height: 1.67;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 20px 0 25px;
+  }
+
+  > h1 {
+    font-size: map-get($typography-map, huge);
+  }
+
+  > h2 {
+    font-size: map-get($typography-map, big);
+  }
+
+  > h3 {
+    font-size: map-get($typography-map, large);
+  }
+
+  > h4 {
+    font-size: map-get($typography-map, medium-larger);
+  }
+
+  > h5 {
+    font-size: map-get($typography-map, default);
+  }
+
+  ul,
+  ol {
+    @extend %list-reset;
+
+    li{
+      padding-bottom: 15px;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  .quote {
+    padding-left: 100px;
+    font-size: map-get($typography-map, medium);
+    font-style: italic;
+    line-height: 1.89;
+    letter-spacing: 0.4px;
+    color: $content-style-quote-color;
+    display: block;
+  }
+}

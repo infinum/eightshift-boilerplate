@@ -1,0 +1,39 @@
+//Base
+$base-font-size: 20px;
+$base-font-family: 'Open Sans';
+
+//Colors
+$base-text-color: $base-dark-color;
+$base-bg-color: $base-white-color;
+
+//Container
+$base-content-padding: 15px;
+$base-content-full-width: 1170px;
+$base-content-width: $base-content-full-width + ($base-content-padding*2);
+
+//Header Main
+$header-height: 70px;
+
+//Typography
+$typography-map: (
+  default:        $base-font-size,
+  huge:           44px,
+  big:            36px,
+  larger:         28px,
+  large:          24px,
+  medium:         18px,
+  small:          16px,
+  smaller:        14px,
+  smallest:       13px,
+  tiny:           10px
+);
+
+$weight-map: (
+  normal: 400,
+  semi-bold: 600,
+  bold: 700,
+  extra: 800
+);
+
+//WP admin bar
+$wpAdminBar-sm: 782px;
