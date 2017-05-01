@@ -1,5 +1,17 @@
 <?php
-// Template Name: Section Creator
+/**
+ * Template Name: Section Creator
+ *
+ * This template uses ACF fields to create page sections.
+ *
+ * @package {*theme_name*}
+ * @version {*version*}
+ * @author {*author*}
+ * @license http://www.gnu.org/licenses/gpl-2.0.txt
+ * @link https://github.com/infinum/wp-boilerplate
+ * @since  1.0.0
+ */
+
 get_header();
 
 $sections = get_field( 'sections' );
@@ -7,6 +19,7 @@ $sections = get_field( 'sections' );
 if ( ! empty( $sections ) ) {
 	foreach ( $sections as $section ) {
 		if ( ! empty( $section ) ) {
+			// TO DO: Check if this will work if we replace it with get_template_part().
 			include( locate_template( 'template-parts/sections/' . $section['acf_fc_layout'] . '.php' ) );
 		}
 	}

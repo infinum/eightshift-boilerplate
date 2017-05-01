@@ -1,5 +1,22 @@
 <?php
+/**
+ * Theme functions and definitions
+ *
+ * Set up the theme and provide helper functions, which are used in the
+ * theme as custom template tags. Others are attached to action and filter
+ * hooks in WordPress to change core functionality.
+ *
+ * @package {*theme_name*}
+ * @version {*version*}
+ * @author {*author*}
+ * @license http://www.gnu.org/licenses/gpl-2.0.txt
+ * @link https://github.com/infinum/wp-boilerplate
+ * @since  1.0.0
+ */
 
+/**
+ * Theme includes
+ */
 require get_parent_theme_file_path( '/inc/admin.php' );
 require get_parent_theme_file_path( '/inc/enqueue.php' );
 require get_parent_theme_file_path( '/inc/helpers.php' );

@@ -1,6 +1,17 @@
 <?php
-	get_header();
+/**
+ * 404 page
+ *
+ * @package {*Theme_name*}
+ * @version {*version*}
+ * @author {*author*}
+ * @license http://www.gnu.org/licenses/gpl-2.0.txt
+ * @link https://github.com/infinum/wp-boilerplate
+ * @since  1.0.0
+ */
 
-	echo 'ERROR 404';
+get_header();
 
-	get_footer();
+esc_html_e( 'ERROR 404', 'text_domain' ):
+
+get_footer();

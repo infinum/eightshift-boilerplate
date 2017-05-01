@@ -1,12 +1,22 @@
-<?php get_header(); ?>
-
 <?php
-while ( have_posts() ) { the_post();
-	get_template_part( 'template-parts/single/post' );
-};
+/**
+ * Single post
+ *
+ * @package {*theme_name*}
+ * @version {*version*}
+ * @author {*author*}
+ * @license http://www.gnu.org/licenses/gpl-2.0.txt
+ * @link https://github.com/infinum/wp-boilerplate
+ * @since  1.0.0
+ */
 
-	wp_reset_query();
+get_header();
 
-?>
+if ( have_posts() ) {
+	while ( have_posts() ) {
+		the_post();
+		get_template_part( 'template-parts/single/post' );
+	}
+}
 
-<?php get_footer();
+get_footer();
