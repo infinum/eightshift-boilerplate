@@ -7,12 +7,12 @@
  * @param [string] $modifier
  * @return string
  */
-function modifier($class, $modifier) {
-  if(!empty($modifier)) {
-    $output = $class . '--' . $modifier;
-  } else {
-    $output = '';
-  }
+function modifier( $class, $modifier ) {
+	if ( ! empty( $modifier ) ) {
+		$output = $class . '--' . $modifier;
+	} else {
+		$output = '';
+	}
 
-  return $output;
+	return $output;
 }

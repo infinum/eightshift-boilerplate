@@ -1,6 +1,6 @@
 <?php
-  get_header();
+	get_header();
 
- echo 'ERROR 404';
+	echo 'ERROR 404';
 
-  get_footer();
+	get_footer();
