@@ -1,3 +1,3 @@
 <article class="article-empty">
-  <?php echo __( 'Sorry no Items found', 'rasco' ); ?>
+  <?php esc_html_e( 'Sorry no items found', 'text_domain' ); ?>
 </article>
