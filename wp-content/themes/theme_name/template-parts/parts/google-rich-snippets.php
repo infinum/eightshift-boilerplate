@@ -1,4 +1,3 @@
-
 <!-- Google Rich Snippets -->
 <script type="application/ld+json">
   {
@@ -11,9 +10,9 @@
     "headline": "<?php the_title() ?>",
 	"image": {
 	  "@type": "ImageObject",
-	  "url": "<?php echo $image['image']; ?>",
-	  "height": <?php echo $image['height']; ?>,
-	  "width": <?php echo $image['width']; ?>
+	  "url": "<?php echo esc_url( $image['image'] ); ?>",
+	  "height": <?php echo esc_attr( $image['height'] ); ?>,
+	  "width": <?php echo esc_attr( $image['width'] ); ?>
 	},
 	"datePublished": "<?php echo get_the_time( 'c' ); ?>",
 	"dateModified": "<?php echo date( 'c', strtotime( $post->post_modified ) ); ?>",
