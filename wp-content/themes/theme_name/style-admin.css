@@ -1,5 +1,4 @@
 /* Full path due to wp-login.php is not in the theme folder */
-/* TO DO: Customize login logo via hooks */
 
 .login h1 a { /* stylelint-disable-line selector-no-type */
 	background-image: url('/wp-content/themes/theme_name/skin/public/images/logo-color.svg');
