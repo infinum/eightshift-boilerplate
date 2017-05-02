@@ -12,7 +12,6 @@ function register_menus() {
 	);
 }add_action( 'init', 'register_menus' );
 
-// -----------------------------------------------------------
 /**
  * Walker Texas Ranger
  * Inserts some BEM naming sensibility into Wordpress menus

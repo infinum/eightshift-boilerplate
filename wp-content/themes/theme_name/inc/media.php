@@ -12,7 +12,6 @@ if ( function_exists( 'add_theme_support' ) ) {
 	// add_image_size( 'mini_thumbnail', 80, 80, true );
 };
 
-// -----------------------------------------------------------
 /**
  * Enable SVG uplod in media
  */
@@ -22,7 +21,6 @@ function cc_mime_types( $mimes ) {
 }
 add_filter( 'upload_mimes', 'cc_mime_types' );
 
-// -----------------------------------------------------------
 /**
  * Wrap utility class arround iframe to enable responsive
  */
