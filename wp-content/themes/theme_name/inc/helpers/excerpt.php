@@ -3,14 +3,14 @@
 /**
  * Custom Excerpt to set word limit
  *
- * @param [integer] $limit
- * @param [void]    $source
- * @return void
+ * @param integer $limit  Number of characters to trim.
+ * @param string  $source From where to chose the source, excerpt or content.
+ * @return string 		  Trimmed excerpt.
  */
 function get_excerpt( $limit, $source = null ) {
-
-	if ( $source == 'content' ? ($excerpt = get_the_content()) : ($excerpt = get_the_excerpt()) ) {}
-	$excerpt = preg_replace( ' (\[.*?\])','',$excerpt );
+	// Can we use wp_trim_words() here?
+	$excerpt = ( $source == 'content' ) ? get_the_content() : get_the_excerpt();
+	$excerpt = preg_replace( ' (\[.*?\])', '', $excerpt );
 	$excerpt = strip_shortcodes( $excerpt );
 	$excerpt = strip_tags( $excerpt );
 	$excerpt = substr( $excerpt, 0, $limit );

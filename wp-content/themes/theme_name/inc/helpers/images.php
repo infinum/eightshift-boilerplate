@@ -1,8 +1,18 @@
 <?php
+/**
+ *
+ *
+ */
+
 
 /**
  * Get post image
- * If found return if not return no image placeholder
+ *
+ * If found return if not return no image placeholder.
+ *
+ * @param string|array $size Image size. Accepts any valid image size, or an array
+ * 							  of width and height values in pixels.
+ * @param integer $post_id   Post ID.
  */
 function get_post_image( $size, $post_id = null ) {
 	global $post;
@@ -26,8 +36,8 @@ function get_post_image( $size, $post_id = null ) {
 	}
 
 	return [
-	'image' => $image_src,
-	'width' => $image_width,
-	'height' => $image_height,
+		'image'  => esc_url( $image_src ),
+		'width'  => intval( $image_width ),
+		'height' => intval( $image_height ),
 	];
 }

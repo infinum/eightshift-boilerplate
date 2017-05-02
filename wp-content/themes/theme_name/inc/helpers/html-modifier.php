@@ -1,18 +1,11 @@
 <?php
-
 /**
  * HTML Modifier - Add modifier class
  *
- * @param [string] $class
- * @param [string] $modifier
- * @return string
+ * @param string $class 	Class to which the modifier will be added.
+ * @param string $modifier  The modifier added to the class.
+ * @return string			Full modified class.
  */
 function modifier( $class, $modifier ) {
-	if ( ! empty( $modifier ) ) {
-		$output = $class . '--' . $modifier;
-	} else {
-		$output = '';
-	}
-
-	return $output;
+	return ( ! empty( $modifier ) ) ? $class . '--' . $modifier : '';
 }
