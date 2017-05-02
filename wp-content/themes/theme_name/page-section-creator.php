@@ -1,15 +1,6 @@
 <?php
 /**
  * Template Name: Section Creator
- *
- * This template uses ACF fields to create page sections.
- *
- * @package {*theme_name*}
- * @version {*version*}
- * @author {*author*}
- * @license http://www.gnu.org/licenses/gpl-2.0.txt
- * @link https://github.com/infinum/wp-boilerplate
- * @since  1.0.0
  */
 
 get_header();
