@@ -1,14 +1,19 @@
 <?php
-/**
- * Register Menu positions
- */
-function register_menus() {
-	register_nav_menus(
-		array(
-			'header_main_nav' => esc_html__( 'Menu', 'text_domain' ),
-		)
-	);
-}add_action( 'init', 'register_menus' );
+
+add_action( 'init', 'register_menus' );
+
+if ( ! function_exists( 'register_menus' ) ) {
+	/**
+	 * Register Menu positions
+	 */
+	function register_menus() {
+		register_nav_menus(
+			array(
+				'header_main_nav' => esc_html__( 'Menu', 'text_domain' ),
+			)
+		);
+	}
+}
 
 /**
  * Walker Texas Ranger
@@ -133,38 +138,40 @@ class Infinum_Menu_Walker extends Walker_Nav_Menu {
 
 }
 
-/**
- * bem_menu returns an instance of the Infinum_Menu_Walker class with the following arguments
- *
- * @param  string     $location This must be the same as what is set in wp-admin/settings/menus for menu location.
- * @param  string     $css_class_prefix This string will prefix all of the menu's classes, BEM syntax friendly
- * @param  arr/string $css_class_modifiers Provide either a string or array of values to apply extra classes to the <ul> but not the <li's>
- * @return [type]
- */
-function bem_menu( $location = 'main_menu', $css_class_prefix = 'main-menu', $css_class_modifiers = null ) {
+if ( ! function_exists( 'bem_menu' ) ) {
+	/**
+	 * bem_menu returns an instance of the Infinum_Menu_Walker class with the following arguments
+	 *
+	 * @param  string     $location This must be the same as what is set in wp-admin/settings/menus for menu location.
+	 * @param  string     $css_class_prefix This string will prefix all of the menu's classes, BEM syntax friendly
+	 * @param  arr/string $css_class_modifiers Provide either a string or array of values to apply extra classes to the <ul> but not the <li's>
+	 * @return [type]
+	 */
+	function bem_menu( $location = 'main_menu', $css_class_prefix = 'main-menu', $css_class_modifiers = null ) {
 
-	// Check to see if any css modifiers were supplied.
-	if ( $css_class_modifiers ) {
+		// Check to see if any css modifiers were supplied.
+		if ( $css_class_modifiers ) {
 
-		if ( is_array( $css_class_modifiers ) ) {
-			$modifiers = implode( ' ', $css_class_modifiers );
-		} elseif ( is_string( $css_class_modifiers ) ) {
-			$modifiers = $css_class_modifiers;
+			if ( is_array( $css_class_modifiers ) ) {
+				$modifiers = implode( ' ', $css_class_modifiers );
+			} elseif ( is_string( $css_class_modifiers ) ) {
+				$modifiers = $css_class_modifiers;
+			}
+		} else {
+			$modifiers = '';
 		}
-	} else {
-		$modifiers = '';
-	}
 
-	$args = array(
-		'theme_location' => $location,
-		'container'      => false,
-		'items_wrap'     => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
-		'walker'         => new Infinum_Menu_Walker( $css_class_prefix, true ),
-	);
+		$args = array(
+			'theme_location' => $location,
+			'container'      => false,
+			'items_wrap'     => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
+			'walker'         => new Infinum_Menu_Walker( $css_class_prefix, true ),
+		);
 
-	if ( has_nav_menu( $location ) ) {
-		return wp_nav_menu( $args );
-	} else {
-		echo '<p>' . esc_html__( 'You need to define a menu in WP-admin first', 'text_domain' ) . '<p>';
+		if ( has_nav_menu( $location ) ) {
+			return wp_nav_menu( $args );
+		} else {
+			echo '<p>' . esc_html__( 'You need to define a menu in WP-admin first', 'text_domain' ) . '<p>';
+		}
 	}
 }
