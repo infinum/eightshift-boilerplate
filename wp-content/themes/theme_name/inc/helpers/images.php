@@ -1,11 +1,5 @@
 <?php
 /**
- *
- *
- */
-
-
-/**
  * Get post image
  *
  * If found return if not return no image placeholder.
