@@ -32,29 +32,3 @@ if ( ! function_exists( 'get_post_type_link' ) ) {
 		return '<a href="' . $slug . '" class="' . $class . '">' . $name . '</a>';
 	}
 }
-
-if ( ! function_exists( 'if_post_type_exists' ) ) {
-	/**
-	 * Check if custom post type exists
-	 *
-	 * @param  object $post_object Post object to check if exists.
-	 */
-	function if_post_type_exists( $post_object = null ) {
-
-		// If in loop add post type from global post
-		if ( ! $post_object ) {
-			global $post;
-			$post_type = $post->post_type;
-		} else {
-			$post_type = $post_object;
-		}
-
-		if ( $post_type == 'post' ) {
-			$output = false;
-		} else {
-			$output = true;
-		}
-
-		return $output;
-	}
-}

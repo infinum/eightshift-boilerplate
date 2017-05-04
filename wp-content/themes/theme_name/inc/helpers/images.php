@@ -5,9 +5,10 @@ if ( ! function_exists( 'get_post_image' ) ) {
 	 *
 	 * If found return if not return no image placeholder.
 	 *
-	 * @param string|array $size Image size. Accepts any valid image size, or an array
+	 * @param  string|array $size Image size. Accepts any valid image size, or an array
 	 * 							  of width and height values in pixels.
-	 * @param integer $post_id   Post ID.
+	 * @param  integer $post_id   Post ID.
+	 * @return array 			  Array with image settings.
 	 */
 	function get_post_image( $size, $post_id = null ) {
 		global $post;
