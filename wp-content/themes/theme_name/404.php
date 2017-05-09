@@ -1,6 +1,6 @@
 <?php
-  get_header();
+get_header();
 
- echo 'ERROR 404';
+esc_html_e( 'ERROR 404', 'text_domain' ):
 
-  get_footer();
+get_footer();

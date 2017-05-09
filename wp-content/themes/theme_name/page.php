@@ -1,11 +1,11 @@
 <?php
-
 get_header();
 
-while ( have_posts() ) { the_post();
-  get_template_part( 'template-parts/single/page' );
-};
-
-wp_reset_query();
+if ( have_posts() ) {
+  while ( have_posts() ) {
+    the_post();
+    get_template_part( 'template-parts/single/page' );
+  }
+}
 
 get_footer();

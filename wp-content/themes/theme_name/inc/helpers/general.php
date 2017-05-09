@@ -1,19 +1,13 @@
 <?php
-
-/**
- * Check if array has hey and return key if true
- *
- * @param [string] $key
- * @param [array] $array
- * @return void
- */
-function get_array_key($key, $array) {
- if(array_key_exists($key, $array)) {
-    $output = $array[$key];
-  } else {
-    $output = '';
+if ( ! function_exists( 'get_array_value' ) ) {
+  /**
+  * Check if array has key and return its value if true
+  *
+  * @param string $key   Array key to check.
+  * @param array  $array Array in which the key should be checked.
+  * @return string        Value of the key if it exists, empty string if not.
+  */
+  function get_array_value( $key, $array ) {
+    return ( array_key_exists( $key, $array ) ) ? $array[ $key ] : '';
   }
-
-  return $output;
 }
- 
