@@ -18,9 +18,9 @@
 add_filter( 'xmlrpc_enabled', '__return_false' );
 
 function exposition_disable_x_pingback( $headers ) {
-	unset( $headers['X-Pingback'] );
+  unset( $headers['X-Pingback'] );
 
-	return $headers;
+  return $headers;
 }
 
 add_filter( 'wp_headers', 'exposition_disable_x_pingback' );
