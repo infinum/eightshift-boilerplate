@@ -100,7 +100,7 @@ module.exports = [
       publicPath: publicPathTheme,
       filename: outputJs
     },
-    
+
     module: allModules,
 
     plugins: pluginsTheme
@@ -116,7 +116,7 @@ module.exports = [
       publicPath: publicPathPlugin,
       filename: outputJs
     },
-    
+
     module: allModules,
 
     plugins: pluginsPluginAdmin
@@ -132,7 +132,7 @@ module.exports = [
       publicPath: publicPathPlugin,
       filename: outputJs
     },
-    
+
     module: allModules,
 
     plugins: pluginsPluginPublic
