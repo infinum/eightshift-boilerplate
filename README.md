@@ -1,10 +1,10 @@
 # Wordpress Boilerplate
 
-This repo is used to start with your Wordpress project. 
+This repo is used to start with your Wordpress project.
 
 It contains:
 
-* Webpack2 config and build 
+* Webpack2 config and build
 * ES Linting
 * Style Linting
 * PHP Error Check
