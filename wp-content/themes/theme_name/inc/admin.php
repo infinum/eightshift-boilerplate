@@ -22,6 +22,6 @@ if ( ! function_exists( 'login_css' ) ) {
    */
   function login_css() {
     wp_register_style( 'login_css', get_template_directory_uri() . '/style-admin.css' );
-    wp_enqueue_style( 'login_css' )
+    wp_enqueue_style( 'login_css' );
   }
 }

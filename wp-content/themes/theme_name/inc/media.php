@@ -4,11 +4,9 @@
  * Set images sizes
  */
 add_theme_support( 'post-thumbnails' );
-
-// add_image_size( 'medium_thumbnails', 300, 300, true );
 add_image_size( 'full_width', 1440, 9999, true );
 add_image_size( 'listing', 570, 320, true );
-// add_image_size( 'mini_thumbnail', 80, 80, true );
+
 add_filter( 'upload_mimes', 'cc_mime_types' );
 if ( ! function_exists( 'cc_mime_types' ) ) {
   /**
