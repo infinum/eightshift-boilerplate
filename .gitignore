@@ -30,3 +30,5 @@ wp-content/plugins/plugin_name/skin/public
 /composer.json
 /composer.lock
 wp-content/ai1wm-backups/
+
+*.DS_Store
