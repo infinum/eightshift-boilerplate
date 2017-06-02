@@ -27,7 +27,6 @@ wp-content/themes/theme_name/skin/public
 wp-config.php
 wp-content/plugins/plugin_name/skin/public
 /vendor
-/composer.json
 /composer.lock
 wp-content/ai1wm-backups/
 
