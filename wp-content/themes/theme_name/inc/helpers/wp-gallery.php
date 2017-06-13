@@ -14,8 +14,9 @@ if ( ! function_exists( 'post_gallery_wrapper' ) ) {
    * @return  $html Modified gallery shortcode.
    */
   function post_gallery_wrapper( $html, $attr, $instance ) {
-    if ( isset( $attr['class'] ) && $class == $attr['class'] ) {
+    if ( isset( $attr['class'] ) ) {
       // Unset attribute to avoid infinite recursive loops.
+      $class = $attr['class'];
       unset( $attr['class'] );
 
       // Our custom HTML wrapper.

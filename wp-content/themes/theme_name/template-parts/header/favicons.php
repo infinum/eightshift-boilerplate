@@ -1,30 +1,26 @@
-<!-- Favicons -->
 <?php
-  $favicon    = get_field( 'favicon', 'option' );
-  $favicon144 = get_field( 'favicon_apple_144x144', 'option' );
-  $favicon114 = get_field( 'favicon_apple_114x114', 'option' );
-  $favicon72  = get_field( 'favicon_apple_72x72', 'option' );
-  $favicon52  = get_field( 'favicon_apple_52x52', 'option' );
+/**
+ * Use default or cusotm Favicons
+ */
+
+ $favicon_url = get_template_directory_uri() . '/skin/public/images/favicons/';
 ?>
 
-<?php if ( ! empty( $favicon ) ) : ?>
-  <link rel="shortcut icon" href="<?php echo esc_html( $favicon ); ?>" />
-<?php else : ?>
-  <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/skin/public/images/favicon.ico" />
-<?php endif; ?>
+<!-- General -->
+<link rel="shortcut icon" href="<?php echo $favicon_url . '192.png';  ?>" />
 
-<?php if ( ! empty( $favicon144 ) ) : ?>
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo esc_url( $favicon144 ); ?>">
-<?php endif; ?>
+<!-- Chrome -->
+<link rel="icon" sizes="192x192" href="<?php echo $favicon_url . '192.png';  ?>">
 
-<?php if ( ! empty( $favicon114 ) ) : ?>
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo esc_url( $favicon114 ); ?>">
-<?php endif; ?>
+<!-- IOS -->
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="<?php echo $favicon_url . '180.png';  ?>">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php echo $favicon_url . '152.png';  ?>">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo $favicon_url . '114.png';  ?>">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $favicon_url . '72.png';  ?>">
+<link rel="apple-touch-icon-precomposed" sizes="52x52" href="<?php echo $favicon_url . '52.png';  ?>">
 
-<?php if ( ! empty( $favicon72 ) ) : ?>
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo esc_url( $favicon72 ); ?>">
-<?php endif; ?>
-
-<?php if ( ! empty( $favicon52 ) ) : ?>
-  <link rel="apple-touch-icon-precomposed" sizes="52x52" href="<?php echo esc_url( $favicon52 ); ?>">
-<?php endif; ?>
+<!-- Win phone -->
+<meta name="msapplication-square70x70logo" content="<?php echo $favicon_url . '70.png';  ?>"/>
+<meta name="msapplication-square150x150logo" content="<?php echo $favicon_url . '150.png';  ?>"/>
+<meta name="msapplication-wide310x150logo" content="<?php echo $favicon_url . '310x150.png';  ?>"/>
+<meta name="msapplication-square310x310logo" content="<?php echo $favicon_url . '310.png';  ?>"/>

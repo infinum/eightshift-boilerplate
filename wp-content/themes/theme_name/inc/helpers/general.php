@@ -8,6 +8,6 @@ if ( ! function_exists( 'get_array_value' ) ) {
   * @return string        Value of the key if it exists, empty string if not.
   */
   function get_array_value( $key, $array ) {
-    return ( array_key_exists( $key, $array ) ) ? $array[ $key ] : '';
+    return ( gettype($array) == 'array' && array_key_exists( $key, $array ) ) ? $array[ $key ] : '';
   }
 }

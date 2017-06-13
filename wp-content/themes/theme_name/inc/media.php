@@ -14,6 +14,15 @@ if ( ! function_exists( 'cc_mime_types' ) ) {
    */
   function cc_mime_types( $mimes ) {
     $mimes['svg'] = 'image/svg+xml';
+    // unset($mimes['doc']);
+    // unset($mimes['docx']);
+    // unset($mimes['xls']);
+    // unset($mimes['xlsx']);
+    // unset($mimes['psd']);
+    // unset($mimes['ppt']);
+    // unset($mimes['pptx']);
+    // unset($mimes['pps']);
+    // unset($mimes['ppsx']);
     return $mimes;
   }
 }

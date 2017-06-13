@@ -1,9 +1,11 @@
-    </main>
-    <footer class="footer">
-      <div class="footer__container">
-        <!-- insert content here -->
-      </div>
-    </footer>
-    <?php wp_footer(); ?>
-  </body>
-</html>
+<?php
+/**
+ * Display footer
+ */
+?>
+
+</main>
+
+<?php include(locate_template('template-parts/footer/footer-content.php')); ?>
+
+<?php include(locate_template('template-parts/footer/foot.php')); ?>
