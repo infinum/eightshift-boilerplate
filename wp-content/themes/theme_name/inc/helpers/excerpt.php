@@ -8,16 +8,24 @@ if ( ! function_exists( 'get_excerpt' ) ) {
   * @return string         Trimmed excerpt.
   */
   function get_excerpt( $limit, $source = null ) {
-    // Can we use wp_trim_words() here?
-    $excerpt = ( $source == 'content' ) ? get_the_content() : get_the_excerpt();
-    $excerpt = preg_replace( ' (\[.*?\])', '', $excerpt );
-    $excerpt = strip_shortcodes( $excerpt );
-    $excerpt = strip_tags( $excerpt );
-    $excerpt = substr( $excerpt, 0, $limit );
-    $excerpt = substr( $excerpt, 0, strripos( $excerpt, ' ' ) );
-    $excerpt = trim( preg_replace( '/\s+/', ' ', $excerpt ) );
-    $excerpt = $excerpt . '...';
+    $excerpt = get_the_content();
 
-    return $excerpt;
+  if(empty($excerpt)) {
+    return false;
+  }
+
+  if(empty($limit)) {
+    $limit = 140;
+  }
+
+  $excerpt = preg_replace(" (\[.*?\])",'',$excerpt);
+  $excerpt = strip_shortcodes($excerpt);
+  $excerpt = strip_tags($excerpt);
+  $excerpt = substr($excerpt, 0, $limit);
+  $excerpt = substr($excerpt, 0, strripos($excerpt, " "));
+  $excerpt = trim(preg_replace( '/\s+/', ' ', $excerpt));
+  $excerpt = '<p>' . $excerpt . '...</p>';
+
+  return $excerpt;
   }
 }
