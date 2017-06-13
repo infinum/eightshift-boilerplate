@@ -1,4 +1,5 @@
 <?php
+
 if ( ! function_exists( 'get_post_type_link' ) ) {
   /**
    * Return post type link
@@ -8,28 +9,28 @@ if ( ! function_exists( 'get_post_type_link' ) ) {
    * @param   string $name Name of the link.
    * @return  string Html link to the post.
    */
-  function get_post_type_link( $class, $post_object = null, $name = null ) {
+  function get_post_type_link($class, $post_object = NULL, $name = NULL ) {
 
-    // If in loop add post type from global post.
-    if ( ! $post_object ) {
+    // If in loop add post type from global post
+    if(!$post_object) {
       global $post;
       $post_type = $post->post_type;
     } else {
       $post_type = $post_object;
     }
 
-    $post_type_object = get_post_type_object( $post_type );
+    $post_type_object = get_post_type_object($post_type);
 
-    if ( $post_type !== 'post' ) {
+    if($post_type !== 'post') {
       $slug = '/' . $post_type_object->rewrite['slug'];
     } else {
       $slug = get_permalink( get_option( 'page_for_posts' ) );
     }
 
-    if ( ! $name ) {
+    if(!$name) {
       $name = $post_type_object->labels->singular_name;
     }
 
-    return '<a href="' . $slug . '" class="' . $class . '">' . $name . '</a>';
+    return '<a href="' . $slug . '" class="' . $class . '"> ' . $name . ' </a>';
   }
 }
