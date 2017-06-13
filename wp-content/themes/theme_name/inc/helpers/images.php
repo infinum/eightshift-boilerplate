@@ -10,7 +10,7 @@ if ( ! function_exists( 'get_post_image' ) ) {
    * @param  integer      $post_id   Post ID.
    * @return array        Array with image settings.
    */
-  function get_post_image( $size, $post_id = null ) {
+  function get_post_image($size, $post_id = NULL) {
     global $post;
 
     if(!$post_id) {
@@ -30,45 +30,26 @@ if ( ! function_exists( 'get_post_image' ) ) {
     }
 
     return [
-      'image'  => esc_url( $image_src ),
-      'width'  => intval( $image_width ),
-      'height' => intval( $image_height ),
+      'image' => $image_src,
+      'width' => $image_width,
+      'height' => $image_height
     ];
   }
 }
 
-
-if ( ! function_exists( 'get_image_from_array' ) ) {
-  /**
-   * Get image from image array
-   * If found return if not return no image placeholder
-   *
-   * @param integer $size
-   * @param array $image_array
-   * @return array
-   */
-  function get_image_from_array($size, $image_array) {
-    if (!empty($image_array)) {
-      $img = $image_array['sizes'];
-      $src = $img[$size];
-      $width = $img[$size . '-width'];
-      $height = $img[$size . '-height'];
-    } else {
-      $src = get_template_directory_uri().'/skin/public/images/no-image-'.$size.'.jpg';
-      $width = 1440;
-      $height = 700;
-    }
-
-    return [
-      'image'  => esc_url( $src ),
-      'width'  => intval( $width ),
-      'height' => intval( $height ),
-    ];
-
-    return [
-      'image' => $src,
-      'width' => $width,
-      'height' => $height
-    ];
+/**
+ * Get image from image array
+ * If found return if not return no image placeholder
+ */
+function get_image_from_array($size, $image_array) {
+  if (!empty($image_array)) {
+    $img = $image_array['sizes'];
+    $src = $img[$size];
+  } else {
+    $src = get_template_directory_uri().'/skin/public/images/no-image-'.$size.'.jpg';
   }
+
+  return [
+    'image' => $src
+  ];
 }

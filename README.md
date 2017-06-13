@@ -53,3 +53,22 @@ Build creates public folder in theme and plugin with js, css, images and fonts
 * `sh _prebuild.sh` - Check for errors js, css, php
 * `sh _build.sh`
 
+## Recommended plugins
+
+* Advanced Custom Fields PRO
+* All-in-One WP Migration
+* Better Search Replace
+* Contact Form 7
+* EWWW Image Optimizer
+* Post Duplicator
+* Post Type Switcher
+* Redirection
+* Taxonomy Switcher
+* TinyMCE Advanced
+* WordPress Importer
+* WP Fastest Cache
+* WP-Optimize
+* WPML
+* Yoast SEO
+
+
