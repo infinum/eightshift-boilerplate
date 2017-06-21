@@ -5,16 +5,16 @@
  * @package theme_name
  */
 
-add_action( 'init', 'register_menus' );
+add_action( 'init', 'inf_register_menus' );
 
-if ( ! function_exists( 'register_menus' ) ) {
+if ( ! function_exists( 'inf_register_menus' ) ) {
 	/**
 	 * Register Menu positions
 	 */
-	function register_menus() {
+	function inf_register_menus() {
 		register_nav_menus(
 			array(
-			'header_main_nav' => esc_html__( 'Menu', 'text_domain' ),
+			'header_main_nav' => esc_html__( 'Menu', 'theme_name' ),
 			)
 		);
 	}
@@ -208,7 +208,7 @@ if ( ! function_exists( 'bem_menu' ) ) {
 		if ( has_nav_menu( $location ) ) {
 			  return wp_nav_menu( $args );
 		} else {
-			  echo '<p>' . esc_html__( 'You need to define a menu in WP-admin first', 'text_domain' ) . '<p>';
+			  echo '<p>' . esc_html__( 'You need to define a menu in WP-admin first', 'theme_name' ) . '<p>';
 		}
 	}
 }// End if().

@@ -8,7 +8,7 @@
 ?>
 
 <?php
-  $image = get_post_image( 'full_width' );
+  $image = inf_get_post_image( 'full_width' );
 ?>
 <!-- Single Content Section -->
 <section class="single" id="<?php echo esc_attr( $post->ID ); ?>">

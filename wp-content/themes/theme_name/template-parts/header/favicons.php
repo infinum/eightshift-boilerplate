@@ -5,7 +5,7 @@
  * @package theme_name
  */
 
- $favicon_url = get_template_directory_uri() . '/skin/public/images/';
+ $favicon_url = $public_images_path;
  $favicon_path = get_template_directory() . '/skin/public/images/';
 
  $favicon_192 = '192.png';

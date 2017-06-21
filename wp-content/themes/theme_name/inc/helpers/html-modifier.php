@@ -5,7 +5,7 @@
  * @package theme_name
  */
 
-if ( ! function_exists( 'modifier' ) ) {
+if ( ! function_exists( 'inf_modifier' ) ) {
 	/**
 	 * HTML Modifier - Add modifier class
 	 *
@@ -13,7 +13,7 @@ if ( ! function_exists( 'modifier' ) ) {
 	 * @param string $modifier  The modifier added to the class.
 	 * @return string     Full modified class.
 	 */
-	function modifier( $class, $modifier ) {
+	function inf_modifier( $class, $modifier ) {
 		return ( ! empty( $modifier ) ) ? $class . '--' . $modifier : '';
 	}
 }

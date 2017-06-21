@@ -5,9 +5,9 @@
  * @package theme_name
  */
 
-add_filter( 'post_gallery', 'post_gallery_wrapper', 10 ,3 );
+add_filter( 'post_gallery', 'inf_post_gallery_wrapper', 10 ,3 );
 
-if ( ! function_exists( 'post_gallery_wrapper' ) ) {
+if ( ! function_exists( 'inf_post_gallery_wrapper' ) ) {
 	/**
 	 * Wrapper for gallery shortcode
 	 *
@@ -16,7 +16,7 @@ if ( ! function_exists( 'post_gallery_wrapper' ) ) {
 	 * @param   int    $instance Unique numeric ID of this gallery shortcode instance.
 	 * @return  $html Modified gallery shortcode.
 	 */
-	function post_gallery_wrapper( $html, $attr, $instance ) {
+	function inf_post_gallery_wrapper( $html, $attr, $instance ) {
 		if ( isset( $attr['class'] ) ) {
 			// Unset attribute to avoid infinite recursive loops.
 			$class = $attr['class'];

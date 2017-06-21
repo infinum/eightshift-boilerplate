@@ -88,6 +88,9 @@ Build creates public folder in theme with js, css, images and fonts
 * `sh _build.sh`
   * Builds production ready assets
 
+## Note
+* ALWAYS prefix custom function. We used `inf_`.
+
 ## Recommended plugins
 
 * Advanced Custom Fields PRO

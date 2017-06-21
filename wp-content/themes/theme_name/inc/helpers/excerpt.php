@@ -5,7 +5,7 @@
  * @package theme_name
  */
 
-if ( ! function_exists( 'get_excerpt' ) ) {
+if ( ! function_exists( 'inf_get_excerpt' ) ) {
 	/**
 	 * Custom Excerpt to set word limit
 	 *
@@ -13,7 +13,7 @@ if ( ! function_exists( 'get_excerpt' ) ) {
 	 * @param string  $source From where to chose the source, excerpt or content.
 	 * @return string         Trimmed excerpt.
 	 */
-	function get_excerpt( $limit = null, $source = null ) {
+	function inf_get_excerpt( $limit = null, $source = null ) {
 
 		$excerpt = get_the_content();
 

@@ -5,7 +5,7 @@
  * @package theme_name
  */
 
-if ( ! function_exists( 'get_post_image' ) ) {
+if ( ! function_exists( 'inf_get_post_image' ) ) {
 	/**
 	 * Get post image
 	 *
@@ -15,7 +15,7 @@ if ( ! function_exists( 'get_post_image' ) ) {
 	 * @param  integer      $post_id   Post ID.
 	 * @return array        Array with image settings.
 	 */
-	function get_post_image( $size, $post_id = null ) {
+	function inf_get_post_image( $size, $post_id = null ) {
 		global $post;
 
 		if ( ! $post_id ) {
@@ -28,7 +28,7 @@ if ( ! function_exists( 'get_post_image' ) ) {
 			$image_width = $image[1];
 			$image_height = $image[2];
 		} else {
-			$image = get_template_directory_uri() . '/skin/public/images/no-image-' . $size . '.jpg';
+			$image = $public_images_path . 'no-image-' . $size . '.jpg';
 			$image_src = $image;
 			$image_width = 1440;
 			$image_height = 700;
@@ -42,7 +42,7 @@ if ( ! function_exists( 'get_post_image' ) ) {
 	}
 }// End if().
 
-if ( ! function_exists( 'get_image_from_array' ) ) {
+if ( ! function_exists( 'inf_get_image_from_array' ) ) {
 	/**
 	 * Get image from image array
 	 * If found return if not return no image placeholder
@@ -50,12 +50,12 @@ if ( ! function_exists( 'get_image_from_array' ) ) {
 	 * @param [type] $size Image size from Image object.
 	 * @param [type] $image_array WP image array.
 	 */
-	function get_image_from_array( $size, $image_array ) {
+	function inf_get_image_from_array( $size, $image_array ) {
 		if ( ! empty( $image_array ) ) {
 			$img = $image_array['sizes'];
 			$src = $img[ $size ];
 		} else {
-			$src = get_template_directory_uri() . '/skin/public/images/no-image-' . $size . '.jpg';
+			$src = $public_images_path . 'no-image-' . $size . '.jpg';
 		}
 
 		return [

@@ -5,7 +5,7 @@
  * @package theme_name
  */
 
-if ( ! function_exists( 'get_post_type_link' ) ) {
+if ( ! function_exists( 'inf_get_post_type_link' ) ) {
 	/**
 	 * Return post type link
 	 *
@@ -14,7 +14,7 @@ if ( ! function_exists( 'get_post_type_link' ) ) {
 	 * @param   string $name Name of the link.
 	 * @return  string Html link to the post.
 	 */
-	function get_post_type_link( $class, $post_object = null, $name = null ) {
+	function inf_get_post_type_link( $class, $post_object = null, $name = null ) {
 
 		// If in loop add post type from global post.
 		if ( ! $post_object ) {
@@ -40,14 +40,14 @@ if ( ! function_exists( 'get_post_type_link' ) ) {
 	}
 }
 
-if ( ! function_exists( 'if_post_type_exists' ) ) {
+if ( ! function_exists( 'inf_if_post_type_exists' ) ) {
 	/**
 	 * Check if custom post type exists
 	 *
 	 * @param object $post_object post object.
 	 * @return boolian|string|object
 	 */
-	function if_post_type_exists( $post_object = null ) {
+	function inf_if_post_type_exists( $post_object = null ) {
 
 		// If in loop add post type from global post.
 		if ( ! $post_object ) {

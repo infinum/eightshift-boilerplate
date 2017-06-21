@@ -5,14 +5,14 @@
  * @package theme_name
  */
 
-add_action( 'wp_enqueue_scripts', 'register_scripts', 1 );
+add_action( 'wp_enqueue_scripts', 'inf_register_scripts', 1 );
 
-if ( ! function_exists( 'register_scripts' ) ) {
+if ( ! function_exists( 'inf_register_scripts' ) ) {
 
 	/**
 	 * Register global theme scripts
 	 */
-	function register_scripts() {
+	function inf_register_scripts() {
 
 		// jQuery.
 		$jquery_cdn = 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js';
