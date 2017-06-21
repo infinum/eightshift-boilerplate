@@ -1,11 +1,14 @@
 <?php
 /**
  * Display footer
+ *
+ * @package theme_name
  */
+
 ?>
 
 </main>
 
-<?php include(locate_template('template-parts/footer/footer-content.php')); ?>
+<?php get_template_part( 'template-parts/footer/footer-content.php' ); ?>
 
-<?php include(locate_template('template-parts/footer/foot.php')); ?>
+<?php get_template_part( 'template-parts/footer/foot.php' ); ?>

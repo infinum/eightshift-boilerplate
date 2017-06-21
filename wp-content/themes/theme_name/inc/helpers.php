@@ -1,7 +1,11 @@
 <?php
+
 /**
- * Include Helpers
+ * Include Helpers from files
+ *
+ * @package theme_name
  */
+
 require_once( get_stylesheet_directory() . '/inc/helpers/excerpt.php' );
 require_once( get_stylesheet_directory() . '/inc/helpers/general.php' );
 require_once( get_stylesheet_directory() . '/inc/helpers/html-modifier.php' );

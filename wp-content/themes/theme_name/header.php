@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <?php 
-    wp_head();
-    get_template_part( 'template-parts/header/head');
-    get_template_part( 'template-parts/header/favicons');
-  ?>
+  <?php
+	/**
+	 * Main header file
+	 *
+	 * @package theme_name
+	 */
+
+	get_template_part( 'template-parts/header/head' );
+	get_template_part( 'template-parts/header/favicons' );
+	wp_head();
+	?>
 </head>
 <body <?php body_class(); ?>>
 

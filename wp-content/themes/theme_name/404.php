@@ -1,10 +1,12 @@
 <?php
 /**
- * GSS error page
- */ 
+ * 404 error page
+ *
+ * @package theme_name
+ */
 
 get_header();
 
-echo __( 'ERROR 404', 'text_domain' );
+esc_html_e( 'ERROR 404', 'text_domain' );
 
 get_footer();

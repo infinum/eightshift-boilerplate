@@ -24,6 +24,7 @@ const plugins = [
   require('css-mqpacker')
 ];
 
+// Use only for production build
 if (!DEV) {
   plugins.push(require('cssnano'));
 }

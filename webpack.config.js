@@ -16,6 +16,7 @@ const themePath = `/wp-content/themes/${themeName}/skin`;
 const pathTheme = `${appPath}${themePath}`;
 const publicPathTheme = `${themePath}/public/`;
 const entryTheme = `${pathTheme}/assets/application.js`;
+const entryThemeAdmin = `${pathTheme}/assets/application-admin.js`;
 const outputTheme = `${pathTheme}/public`;
 
 // Outputs
@@ -54,16 +55,23 @@ const allModules = {
   ]
 };
 
-const pluginsTheme = [
+const allPlugins = [
   new CleanWebpackPlugin([outputTheme]),
-  new ExtractTextPlugin(outputCss)
+  new ExtractTextPlugin(outputCss),
 
   // Analyse assets
   // new BundleAnalyzerPlugin()
+
+  // Is using vendor files, but prefered to use npm
+  // new CopyWebpackPlugin([{
+  //   from: `${pathTheme}/assets/scripts/vendors`,
+  //   to: `${pathTheme}/public/scripts/vendors`
+  // }])
 ];
 
+// Use only for production build
 if (!DEV) {
-  pluginsTheme.push(
+  allPlugins.push(
     new UglifyJSPlugin({
       comments: false,
       sourceMap: true
@@ -87,6 +95,21 @@ module.exports = [
 
     module: allModules,
 
-    plugins: pluginsTheme
+    plugins: allPlugins
+  },
+  {
+    context: path.join(__dirname),
+    entry: {
+      applicationAdmin: [entryThemeAdmin]
+    },
+    output: {
+      path: outputTheme,
+      publicPath: publicPathTheme,
+      filename: outputJs
+    },
+    
+    module: allModules,
+
+    plugins: allPlugins
   }
 ];

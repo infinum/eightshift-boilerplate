@@ -1,7 +1,10 @@
-<?php 
+<?php
 /**
  * Header Serch form
+ *
+ * @package theme_name
  */
+
 ?>
 
 <form role="search" method="get" class="header__search-form js-header-serach-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" >
