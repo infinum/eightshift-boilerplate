@@ -49,7 +49,7 @@ For development we are using docker
 
 * Install docker `https://docs.docker.com/docker-for-mac/install/`
 * `docker-compose.yml` - Config file
-  * Update database name 
+  * Update database name
 * Run `docker-compose up -d`
   * This will build docker container and image for you to work with
 * Run Optional `docker-compose up -d && docker-compose logs -f wordpress`
@@ -64,20 +64,36 @@ For development we are using docker
   * Lints JS and SASS using Webpack
 
 ## Linting PHP ##
-We are using WPCS coding standards to lint php files
-* https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
+We are using [WordPress coding standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards) to check php files.
+
+To install it, you need to install [Composer](https://getcomposer.org/) first.
+
+1. Open terminal
+2. curl -sS http://getcomposer.org/installer | php -- --filename=composer
+3. chmod a+x composer
+4. sudo mv composer /usr/local/bin/composer
+
+To test if the composer is added succesfully type
+
+`composer --version`
+
+Then install the coding standards in your home folder
+
+`composer create-project wp-coding-standards/wpcs --no-dev`
+
+and add the `wpcs/vendor/bin` to your `PATH` enviroment variable
+
+`export PATH=$PATH:~/wpcs/vendor/bin`
 
 Add this aliases to you bash config:
-* `alias phpcs='vendor/bin/phpcs';`
-* `alias phpcbf='vendor/bin/phpcbf';`
 * `alias wpcs='phpcs --standard=WordPress';`
 * `alias wpcbf='phpcbf --standard=WordPress';`
 * Reload terminal
 
-Checking theme for violations:
+Checking theme for possible violations:
 * `wpcs wp-content/themes/theme_name`
 
-AutoFix theme for violations:
+AutoFix theme for minor violations:
 * `wpcbf wp-content/themes/theme_name`
 
 ## Build
@@ -109,9 +125,8 @@ Build creates public folder in theme with js, css, images and fonts
 * WPML
 * Yoast SEO
 
-
 ## Plugin
-If you are creating custom plugin use of Wp Plugin Boilerplate is mandatory.
+If you are creating custom plugin, the use of Wp Plugin Boilerplate is mandatory.
 
 `https://wppb.me/`
 

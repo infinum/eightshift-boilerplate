@@ -28,6 +28,8 @@ robots.txt
 # Content
 wp-content/*
 !wp-content/plugins/
+wp-content/plugins/akismet/*
+wp-content/plugins/hello.php
 
 # Plugins
 /wp-content/plugins/index.php
