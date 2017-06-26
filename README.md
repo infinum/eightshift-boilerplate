@@ -68,10 +68,10 @@ We are using [WordPress coding standards](https://github.com/WordPress-Coding-St
 
 To install it, you need to install [Composer](https://getcomposer.org/) first.
 
-1. Open terminal
-2. curl -sS http://getcomposer.org/installer | php -- --filename=composer
-3. chmod a+x composer
-4. sudo mv composer /usr/local/bin/composer
+* Open terminal
+* `curl -sS http://getcomposer.org/installer | php -- --filename=composer`
+* `chmod a+x composer`
+* `sudo mv composer /usr/local/bin/composer`
 
 To test if the composer is added succesfully type
 
