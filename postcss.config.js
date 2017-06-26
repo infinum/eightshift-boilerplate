@@ -1,27 +1,16 @@
 const DEV = process.env.NODE_ENV !== 'production';
 
+const path = require('path');
+
 const themeName = 'theme_name';
-const appPath = `/wp-content/themes/${themeName}/skin`;
-const fontsPath = `${appPath}/public/fonts`;
+const fontsPath = path.join(__dirname, `wp-content/themes/${themeName}/skin/assets/fonts`);
 
 const plugins = [
   require('autoprefixer'),
   require('postcss-font-magician')({
-    // custom: {
-    //   rasco: {
-    //     variants: {
-    //       normal: {
-    //         400: {
-    //           url: {
-    //             woff: `${fontsPath}/rasco.woff`,
-    //             eot: `${fontsPath}/rasco.eot`,
-    //             ttf: `${fontsPath}/rasco.ttf`
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // },
+    hosted: [fontsPath],
+
+    // This method doesent support subsets so if you are using subsets this can't help you!
     variants: {
       'Open Sans': {
         400: [],
@@ -30,11 +19,12 @@ const plugins = [
         800: []
       }
     },
-    foundries: ['google', 'custom']
+    foundries: ['google']
   }),
   require('css-mqpacker')
 ];
 
+// Use only for production build
 if (!DEV) {
   plugins.push(require('cssnano'));
 }

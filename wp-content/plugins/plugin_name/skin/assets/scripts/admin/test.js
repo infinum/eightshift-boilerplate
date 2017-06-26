@@ -1,5 +1,0 @@
-import $ from 'jquery';
-
-$(function() {
-
-});

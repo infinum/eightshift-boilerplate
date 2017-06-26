@@ -1,32 +1,23 @@
+const DEV = process.env.NODE_ENV !== 'production';
+
 const path = require('path');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const appPath = `${path.resolve(__dirname)}`;
 const themeName = 'theme_name';
-const pluginName = 'plugin_name';
 
 // Theme
 const themePath = `/wp-content/themes/${themeName}/skin`;
 const pathTheme = `${appPath}${themePath}`;
 const publicPathTheme = `${themePath}/public/`;
 const entryTheme = `${pathTheme}/assets/application.js`;
+const entryThemeAdmin = `${pathTheme}/assets/application-admin.js`;
 const outputTheme = `${pathTheme}/public`;
-
-// Plugin
-const pluginPath = `/wp-content/plugins/${pluginName}/skin`;
-const pathPlugin = `${appPath}${pluginPath}`;
-const publicPathPlugin = `${pluginPath}/public/`;
-
-// Plugin Admin section
-const entryPluginAdmin = `${pathPlugin}/assets/admin.js`;
-const outputPluginAdmin = `${pathPlugin}/public/admin`;
-
-// Plugin Public section
-const entryPluginPublic = `${pathPlugin}/assets/public.js`;
-const outputPluginPublic = `${pathPlugin}/public/public`;
 
 // Outputs
 const outputJs = 'scripts/[name].js';
@@ -39,60 +30,60 @@ const allModules = {
   rules: [
     {
       test: /\.(js|jsx)$/,
-      loader: 'babel-loader',
+      use: 'babel-loader',
       exclude: /node_modules/
     },
     {
       test: /\.json$/,
-      loader: 'json-loader'
+      use: 'json-loader'
     },
     {
       test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-      loader: `file-loader?name=${outputImages}`
+      use: `file-loader?name=${outputImages}`
     },
     {
       test: /\.(eot|otf|ttf|woff|woff2)$/,
-      loader: `file-loader?name=${outputFonts}`
+      use: `file-loader?name=${outputFonts}`
     },
     {
       test: /\.scss$/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: [
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'postcss-loader'
-          },
-          {
-            loader: 'sass-loader'
-          }
-        ]
+        use: ['css-loader', 'postcss-loader', 'sass-loader']
       })
     }
   ]
 };
 
-const pluginsTheme = [
+const allPlugins = [
   new CleanWebpackPlugin([outputTheme]),
-  new ExtractTextPlugin(outputCss)
+  new ExtractTextPlugin(outputCss),
+
+  // Analyse assets
+  // new BundleAnalyzerPlugin()
+
+  // Is using vendor files, but prefered to use npm
+  // new CopyWebpackPlugin([{
+  //   from: `${pathTheme}/assets/scripts/vendors`,
+  //   to: `${pathTheme}/public/scripts/vendors`
+  // }])
 ];
 
-const pluginsPluginAdmin = [
-  new CleanWebpackPlugin([outputPluginAdmin]),
-  new ExtractTextPlugin(outputCss)
-];
-
-const pluginsPluginPublic = [
-  new CleanWebpackPlugin([outputPluginPublic]),
-  new ExtractTextPlugin(outputCss)
-];
+// Use only for production build
+if (!DEV) {
+  allPlugins.push(
+    new UglifyJSPlugin({
+      comments: false,
+      sourceMap: true
+    })
+  );
+}
 
 module.exports = [
 
   // Theme Skin
   {
+    context: path.join(__dirname),
     entry: {
       application: [entryTheme]
     },
@@ -104,38 +95,21 @@ module.exports = [
 
     module: allModules,
 
-    plugins: pluginsTheme
+    plugins: allPlugins
   },
-
-  // Plugin Admin section
   {
+    context: path.join(__dirname),
     entry: {
-      admin: [entryPluginAdmin]
+      applicationAdmin: [entryThemeAdmin]
     },
     output: {
-      path: outputPluginAdmin,
-      publicPath: publicPathPlugin,
+      path: outputTheme,
+      publicPath: publicPathTheme,
       filename: outputJs
     },
-
+    
     module: allModules,
 
-    plugins: pluginsPluginAdmin
-  },
-
-  // Plugin Public Section
-  {
-    entry: {
-      public: [entryPluginPublic]
-    },
-    output: {
-      path: outputPluginPublic,
-      publicPath: publicPathPlugin,
-      filename: outputJs
-    },
-
-    module: allModules,
-
-    plugins: pluginsPluginPublic
+    plugins: allPlugins
   }
 ];

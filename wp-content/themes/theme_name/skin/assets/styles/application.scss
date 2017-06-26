@@ -3,7 +3,7 @@
 @import '~normalize.css';
 @import '~media-blender';
 @import '~susy';
-@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick.scss';
 
 // Main files
 @import 'config';
@@ -11,6 +11,7 @@
 // Utils
 @import 'utils/colors';
 @import 'utils/shared-variables';
+@import 'utils/functions';
 @import 'utils/mixins';
 @import 'utils/keyframes';
 @import 'utils/helpers';

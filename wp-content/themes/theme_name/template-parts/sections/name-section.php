@@ -1,5 +1,10 @@
 <?php
+/**
+ * Section Example
+ *
+ * @package theme_name
+ */
 
-// echo '<pre>';
-// var_dump($section);
-// echo '</pre>';
+?>
+
+<!-- Section -->

@@ -1,15 +1,14 @@
 {
-  "name": "Theme",
+  "name": "ThemeName",
   "version": "1.0.0",
   "author": "Ivan Ružević",
   "private": true,
   "main": "",
   "scripts": {
+    "__sassUnusedTheme": "sass-unused \"wp-content/themes/theme_name/**/*.scss\"",
     "__eslintTheme": "eslint wp-content/themes/theme_name/skin/assets/",
-    "__eslintPlugin": "eslint wp-content/plugins/plugin_name/skin/assets/",
     "__stylelintTheme": "stylelint \"wp-content/themes/theme_name/**/*.scss\" --syntax scss",
-    "__stylelintPlugin": "stylelint \"wp-content/plugins/plugin_name/**/*.scss\" --syntax scss",
-    "precommit": "npm run __eslintTheme && npm run __eslintPlugin && npm run __stylelintTheme && npm run __stylelintPlugin",
+    "precommit": "npm run __eslintTheme && npm run __stylelintTheme && npm run __sassUnusedTheme",
     "start": "webpack --progress --watch --display-error-details --display-modules --display-reasons",
     "build": "NODE_ENV=production webpack --progress"
   },
@@ -34,8 +33,11 @@
     "precss": "^1.4.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
+    "sass-unused": "^0.2.2",
     "stylelint": "^7.9.0",
-    "webpack": "^2.2.1"
+    "uglifyjs-webpack-plugin": "^0.4.3",
+    "webpack": "^2.2.1",
+    "webpack-bundle-analyzer": "^2.8.2"
   },
   "dependencies": {
     "jquery": "^3.1.1",

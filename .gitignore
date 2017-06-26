@@ -1,8 +1,10 @@
+# Theme
+!wp-content/themes/theme_name
+wp-content/themes/theme_name/skin/public
+
+# Wordpress files
 wp-admin
 wp-includes
-wp-content/index.php
-wp-content/plugins/index.php
-wp-content/themes/index.php
 /license.txt
 /readme.html
 /wp-activate.php
@@ -10,6 +12,7 @@ wp-content/themes/index.php
 /wp-blog-header.php
 /wp-comments-post.php
 /wp-config-sample.php
+/wp-config.php
 /wp-cron.php
 /wp-links-opml.php
 /wp-load.php
@@ -21,13 +24,15 @@ wp-content/themes/index.php
 /xmlrpc.php
 .htaccess
 robots.txt
-wp-content/languages
-wp-content/uploads
-wp-content/themes/theme_name/skin/public
-wp-config.php
-wp-content/plugins/plugin_name/skin/public
+
+# Content
+wp-content/*
+!wp-content/plugins/
+
+# Plugins
+/wp-content/plugins/index.php
+
+# Project files
 /vendor
 /composer.lock
-wp-content/ai1wm-backups/
-
-.DS_Store
+/package-lock.json
