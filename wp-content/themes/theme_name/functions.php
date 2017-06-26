@@ -10,13 +10,13 @@
  */
 
 /**
- * Change every time you deply changes in assets to server
+ * Change every time you deploy changes in assets to server
  * to force browser to clear cache
  *
  * @package theme_name
  */
 
-const ASSETS_VARSION = '1';
+define( 'ASSETS_VERSION', '1' );
 
 /**
  * Global image path
