@@ -68,24 +68,9 @@ We are using [WordPress coding standards](https://github.com/WordPress-Coding-St
 
 To install it, you need to install [Composer](https://getcomposer.org/) first.
 
-* Open terminal
-* `curl -sS http://getcomposer.org/installer | php -- --filename=composer`
-* `chmod a+x composer`
-* `sudo mv composer /usr/local/bin/composer`
-
-To test if the composer is added succesfully type
-
-`composer --version`
-
-Then install the coding standards in your home folder
-
-`composer create-project wp-coding-standards/wpcs --no-dev`
-
-and add the `wpcs/vendor/bin` to your `PATH` enviroment variable
-
-`export PATH=$PATH:~/wpcs/vendor/bin`
-
 Add this aliases to you bash config:
+* `alias phpcs='vendor/bin/phpcs';`
+* `alias phpcbf='vendor/bin/phpcbf';`
 * `alias wpcs='phpcs --standard=WordPress';`
 * `alias wpcbf='phpcbf --standard=WordPress';`
 * Reload terminal
