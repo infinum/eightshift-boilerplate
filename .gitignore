@@ -1,5 +1,4 @@
-# Theme
-!wp-content/themes/theme_name
+# Project Specific
 wp-content/themes/theme_name/skin/public
 
 # Wordpress files
@@ -26,15 +25,23 @@ wp-includes
 robots.txt
 
 # Content
-wp-content/*
 !wp-content/plugins/
-wp-content/plugins/akismet/*
-wp-content/plugins/hello.php
 
-# Plugins
+# Theme
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
+/wp-content/themes/index.php
+
+# Ignore these plugins from the core
+wp-content/plugins/hello.php
+wp-content/plugins/akismet/
 /wp-content/plugins/index.php
 
-# Project files
+# Ignore specific themes
+wp-content/themes/twenty*/
+
+# Project dev files
 /vendor
-/composer.lock
-/package-lock.json
+node_modules/

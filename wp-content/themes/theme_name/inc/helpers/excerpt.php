@@ -15,7 +15,11 @@ if ( ! function_exists( 'inf_get_excerpt' ) ) {
 	 */
 	function inf_get_excerpt( $limit = null, $source = null ) {
 
-		$excerpt = get_the_content();
+		if ( empty( $source ) ) {
+			$excerpt = get_the_content();
+		} else {
+			$excerpt = $source;
+		}
 
 		if ( empty( $excerpt ) ) {
 			return false;
