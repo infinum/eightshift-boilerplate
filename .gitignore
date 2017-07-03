@@ -1,3 +1,4 @@
+# Project Specific
 wp-content/themes/theme_name/skin/public
 
 # Wordpress files
@@ -33,14 +34,14 @@ wp-content/*
 !wp-content/themes/
 /wp-content/themes/index.php
 
-# ignore these plugins from the core
+# Ignore these plugins from the core
 wp-content/plugins/hello.php
 wp-content/plugins/akismet/
 /wp-content/plugins/index.php
 
-# ignore specific themes
+# Ignore specific themes
 wp-content/themes/twenty*/
 
-# Project files
+# Project dev files
 /vendor
 node_modules/
