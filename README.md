@@ -1,6 +1,6 @@
-# Wordpress Boilerplate
+# WordPress Boilerplate
 
-This repo is used to start with your Wordpress project.
+This repo is used to start with your WordPress project.
 
 ## Who do I talk to? ##
 For questions talk to:
@@ -48,7 +48,7 @@ Change theme name in files:
   * Builds assets in watch mode using Webpack
 
 ## Browser sync
-We are using BrowserSync to sync assets cross-device to setup got to `webpack.config.js` and set `proxyUrl` variable to service you are using to show Wordpress.
+We are using BrowserSync to sync assets cross-device to setup got to `webpack.config.js` and set `proxyUrl` variable to service you are using to show WordPress.
 It is tested on MAMP and Vagrant.
 
 ## Linting Assets (JS,SASS)
