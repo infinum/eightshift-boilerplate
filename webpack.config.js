@@ -3,13 +3,17 @@ const DEV = process.env.NODE_ENV !== 'production';
 const path = require('path');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const appPath = `${path.resolve(__dirname)}`;
 const themeName = 'theme_name';
+
+// Dev Server
+const proxyUrl = 'localhost:8888';
 
 // Theme
 const themePath = `/wp-content/themes/${themeName}/skin`;
@@ -59,14 +63,21 @@ const allPlugins = [
   new CleanWebpackPlugin([outputTheme]),
   new ExtractTextPlugin(outputCss),
 
-  // Analyse assets
-  // new BundleAnalyzerPlugin()
+  // Use BrowserSync For assets
+  new BrowserSyncPlugin({
+    host: 'localhost',
+    port: 3000,
+    proxy: proxyUrl
+  }),
 
-  // Is using vendor files, but prefered to use npm
-  // new CopyWebpackPlugin([{
-  //   from: `${pathTheme}/assets/scripts/vendors`,
-  //   to: `${pathTheme}/public/scripts/vendors`
-  // }])
+  // Analyse assets
+  // new BundleAnalyzerPlugin(),
+
+    // Is using vendor files, but prefered to use npm
+  new CopyWebpackPlugin([{
+    from: `${pathTheme}/assets/scripts/vendors`,
+    to: `${pathTheme}/public/scripts/vendors`
+  }])
 ];
 
 // Use only for production build
