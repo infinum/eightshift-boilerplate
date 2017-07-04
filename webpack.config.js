@@ -13,7 +13,7 @@ const appPath = `${path.resolve(__dirname)}`;
 const themeName = 'theme_name';
 
 // Dev Server
-const proxyUrl = 'localhost:8888';
+const proxyUrl = ''; // local dev url example: dev.wordpress.com
 
 // Theme
 const themePath = `/wp-content/themes/${themeName}/skin`;
