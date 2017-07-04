@@ -43,21 +43,13 @@ Change theme name in files:
 * `sh _setup.sh` - run script
 * Setup docker or any other local environment
 
-## Development Using Docker
-
-For development we are using docker
-
-* Install docker `https://docs.docker.com/docker-for-mac/install/`
-* `docker-compose.yml` - Config file
-  * Update database name
-* Run `docker-compose up -d`
-  * This will build docker container and image for you to work with
-* Run Optional `docker-compose up -d && docker-compose logs -f wordpress`
-  * This will build docker container and image for you to work with with WP log output
-
 ## Development Start
 * `npm start`
   * Builds assets in watch mode using Webpack
+
+## Browser sync
+We are using BrowserSync to sync assets cross-device to setup got to `webpack.config.js` and set `proxyUrl` variable to service you are using to show Wordpress.
+It is tested on MAMP and Vagrant.
 
 ## Linting Assets (JS,SASS)
 * `npm run precommit`
@@ -114,13 +106,3 @@ Build creates public folder in theme with js, css, images and fonts
 If you are creating custom plugin, the use of Wp Plugin Boilerplate is mandatory.
 
 `https://wppb.me/`
-
-## Docker usefull commands ##
-* `docker ps -as`
-  * List all containers
-* `docker stop $(docker ps -aq)`
-  * Stop all running containers
-* `docker rm $(docker ps -aq)`
-  * Remove all containers
-* `docker rmi $(docker images -q)`
-  * Remove all images
