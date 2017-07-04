@@ -28,7 +28,7 @@ if ( ! function_exists( 'inf_get_post_image' ) ) {
 			$image_width = $image[1];
 			$image_height = $image[2];
 		} else {
-			$image = $public_images_path . 'no-image-' . $size . '.jpg';
+			$image = IMAGE_URL . 'no-image-' . $size . '.jpg';
 			$image_src = $image;
 			$image_width = 1440;
 			$image_height = 700;
@@ -55,7 +55,7 @@ if ( ! function_exists( 'inf_get_image_from_array' ) ) {
 			$img = $image_array['sizes'];
 			$src = $img[ $size ];
 		} else {
-			$src = $public_images_path . 'no-image-' . $size . '.jpg';
+			$src = IMAGE_URL . 'no-image-' . $size . '.jpg';
 		}
 
 		return [

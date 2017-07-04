@@ -22,4 +22,4 @@
 <meta name="apple-mobile-web-app-title" content="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#C3151B">
-<link rel="apple-touch-startup-image" href="<?php echo esc_url( $public_images_path . 'logo-color.svg' ); ?>">
+<link rel="apple-touch-startup-image" href="<?php echo esc_url( IMAGE_URL . 'logo-color.svg' ); ?>">

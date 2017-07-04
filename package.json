@@ -18,6 +18,8 @@
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.3.2",
     "babel-preset-env": "^1.2.1",
+    "browser-sync": "^2.18.12",
+    "browser-sync-webpack-plugin": "^1.2.0",
     "clean-webpack-plugin": "^0.1.15",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.26.1",
