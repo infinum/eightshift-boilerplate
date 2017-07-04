@@ -14,6 +14,7 @@ For questions talk to:
 * Style Linting
 * PHP Error Check
 * WPCS Style Guide
+* BrowserSync
 * PostCSS with:
   * Autoprefixer
   * Postcss-font-magician
