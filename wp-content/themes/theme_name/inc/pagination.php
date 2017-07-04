@@ -14,24 +14,24 @@ add_filter( 'previous_posts_link_attributes', 'inf_posts_link_prev_attributes' )
 
 if ( ! function_exists( 'inf_posts_link_next_attributes' ) ) {
 
-	/**
-	 * Posts next attibutes
-	 *
-	 * @return string
-	 */
-	function inf_posts_link_next_attributes() {
-		return 'class="page-numbers prev"';
-	}
+  /**
+   * Posts next attibutes
+   *
+   * @return string
+   */
+  function inf_posts_link_next_attributes() {
+    return 'class="page-numbers prev"';
+  }
 }
 
 if ( ! function_exists( 'inf_posts_link_prev_attributes' ) ) {
 
-	/**
-	 * Posts prev attibutes
-	 *
-	 * @return string
-	 */
-	function inf_posts_link_prev_attributes() {
-		return 'class="page-numbers next"';
-	}
+  /**
+   * Posts prev attibutes
+   *
+   * @return string
+   */
+  function inf_posts_link_prev_attributes() {
+    return 'class="page-numbers next"';
+  }
 }
