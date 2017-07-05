@@ -68,16 +68,16 @@ const allPlugins = [
     host: 'localhost',
     port: 3000,
     proxy: proxyUrl
-  }),
+  })
 
   // Analyse assets
   // new BundleAnalyzerPlugin(),
 
-    // Is using vendor files, but prefered to use npm
-  new CopyWebpackPlugin([{
-    from: `${pathTheme}/assets/scripts/vendors`,
-    to: `${pathTheme}/public/scripts/vendors`
-  }])
+  // Is using vendor files, but prefered to use npm
+  // new CopyWebpackPlugin([{
+  //   from: `${pathTheme}/assets/scripts/vendors`,
+  //   to: `${pathTheme}/public/scripts/vendors`
+  // }])
 ];
 
 // Use only for production build
