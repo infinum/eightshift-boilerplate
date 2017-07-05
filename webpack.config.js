@@ -10,18 +10,18 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const appPath = `${path.resolve(__dirname)}`;
-const themeName = 'theme_name';
 
 // Dev Server
 const proxyUrl = ''; // local dev url example: dev.wordpress.com
 
 // Theme
+const themeName = 'theme_name';
 const themePath = `/wp-content/themes/${themeName}/skin`;
-const pathTheme = `${appPath}${themePath}`;
-const publicPathTheme = `${themePath}/public/`;
-const entryTheme = `${pathTheme}/assets/application.js`;
-const entryThemeAdmin = `${pathTheme}/assets/application-admin.js`;
-const outputTheme = `${pathTheme}/public`;
+const themeFullPath = `${appPath}${themePath}`;
+const themePublicPath = `${themePath}/public/`;
+const themeEntry = `${themeFullPath}/assets/application.js`;
+const themeAdminEntry = `${themeFullPath}/assets/application-admin.js`;
+const themeOutput = `${themeFullPath}/public`;
 
 // Outputs
 const outputJs = 'scripts/[name].js';
@@ -60,7 +60,7 @@ const allModules = {
 };
 
 const allPlugins = [
-  new CleanWebpackPlugin([outputTheme]),
+  new CleanWebpackPlugin([themeOutput]),
   new ExtractTextPlugin(outputCss),
 
   // Use BrowserSync For assets
@@ -96,29 +96,15 @@ module.exports = [
   {
     context: path.join(__dirname),
     entry: {
-      application: [entryTheme]
+      application: [themeEntry],
+      applicationAdmin: [themeAdminEntry]
     },
     output: {
-      path: outputTheme,
-      publicPath: publicPathTheme,
+      path: themeOutput,
+      publicPath: themePublicPath,
       filename: outputJs
     },
 
-    module: allModules,
-
-    plugins: allPlugins
-  },
-  {
-    context: path.join(__dirname),
-    entry: {
-      applicationAdmin: [entryThemeAdmin]
-    },
-    output: {
-      path: outputTheme,
-      publicPath: publicPathTheme,
-      filename: outputJs
-    },
-    
     module: allModules,
 
     plugins: allPlugins
