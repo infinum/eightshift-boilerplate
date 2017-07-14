@@ -57,15 +57,15 @@ It is tested on MAMP and Vagrant.
   * Lints JS and SASS using Webpack
 
 ## Linting PHP ##
-We are using [WordPress coding standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards) to check php files.
+We are using [Infinum coding standards for WordPress](https://github.com/infinum/coding-standards-wp) to check php files.
 
 To install it, you need to install [Composer](https://getcomposer.org/) first.
 
 Add this aliases to you bash config:
 * `alias phpcs='vendor/bin/phpcs';`
 * `alias phpcbf='vendor/bin/phpcbf';`
-* `alias wpcs='phpcs --standard=WordPress';`
-* `alias wpcbf='phpcbf --standard=WordPress';`
+* `alias wpcs='phpcs --standard=vendor/infinum/coding-standards-wp/Infinum';`
+* `alias wpcbf='phpcbf --standard=vendor/infinum/coding-standards-wp/Infinum';`
 * Reload terminal
 
 Checking theme for possible violations:
