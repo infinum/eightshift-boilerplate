@@ -12,7 +12,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const appPath = `${path.resolve(__dirname)}`;
 
 // Dev Server
-const proxyUrl = ''; // local dev url example: dev.wordpress.com
+const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.com
 
 // Theme
 const themeName = 'theme_name';
