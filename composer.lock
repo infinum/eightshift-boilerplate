@@ -4,9 +4,46 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "beda1fd223dc159741ece369707d1118",
+    "content-hash": "58345a962a4644e5e441d1f2c5a722ea",
     "packages": [],
     "packages-dev": [
+        {
+            "name": "infinum/coding-standards-wp",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/infinum/coding-standards-wp.git",
+                "reference": "76da4f45693c565a1e04f463f8858bb89d3d0b3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/infinum/coding-standards-wp/zipball/76da4f45693c565a1e04f463f8858bb89d3d0b3a",
+                "reference": "76da4f45693c565a1e04f463f8858bb89d3d0b3a",
+                "shasum": ""
+            },
+            "require": {
+                "wp-coding-standards/wpcs": "0.11.0"
+            },
+            "type": "phpcodesniffer-standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/infinum/coding-standards-wp/graphs/contributors"
+                }
+            ],
+            "description": "Infinum WordPress Coding Standards",
+            "homepage": "https://github.com/infinum/coding-standards-wp",
+            "keywords": [
+                "phpcs",
+                "standards",
+                "wordpress"
+            ],
+            "time": "2017-07-14T09:41:39+00:00"
+        },
         {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
