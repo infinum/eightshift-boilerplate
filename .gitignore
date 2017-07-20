@@ -44,4 +44,4 @@ wp-content/themes/twenty*/
 
 # Project dev files
 /vendor
-node_modules/
+/node_modules/
