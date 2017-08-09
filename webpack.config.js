@@ -67,7 +67,12 @@ const allPlugins = [
   new BrowserSyncPlugin({
     host: 'localhost',
     port: 3000,
-    proxy: proxyUrl
+    proxy: proxyUrl,
+    files: [
+      {
+        match: ['wp-content/themes/**/*.php', 'wp-content/plugins/**/*.php']
+      }
+    ]
   })
 
   // Analyse assets
