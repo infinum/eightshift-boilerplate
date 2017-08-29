@@ -2,6 +2,7 @@ const DEV = process.env.NODE_ENV !== 'production';
 
 const path = require('path');
 
+const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -73,7 +74,8 @@ const allPlugins = [
         match: ['wp-content/themes/**/*.php', 'wp-content/plugins/**/*.php']
       }
     ]
-  })
+  }),
+  new webpack.optimize.ModuleConcatenationPlugin()
 
   // Analyse assets
   // new BundleAnalyzerPlugin(),

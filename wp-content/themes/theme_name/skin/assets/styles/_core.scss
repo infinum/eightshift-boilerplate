@@ -1,4 +1,8 @@
-@include global-box-sizing(border-box);
+*,
+*::after,
+*::before {
+  @include box-sizing(border-box);
+}
 
 html { /* stylelint-disable-line selector-no-type */
   font-size: $base-font-size;
@@ -15,8 +19,4 @@ body { /* stylelint-disable-line selector-no-type */
   &.no-scroll {
     overflow: hidden;
   }
-
-  // .main-content {
-  //   padding-top: $header-height;
-  // }
 }

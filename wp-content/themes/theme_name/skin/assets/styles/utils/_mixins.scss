@@ -1,3 +1,7 @@
+@mixin box-sizing($box-model) {
+  box-sizing: $box-model;
+}
+
 @mixin site-container($max-width: $base-content-width) {
   @include container($max-width);
   @extend %site-padding;
