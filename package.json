@@ -20,6 +20,7 @@
     "babel-preset-env": "^1.6.0",
     "browser-sync": "^2.18.13",
     "browser-sync-webpack-plugin": "^1.2.0",
+    "bugsnag-js": "^3.2.1",
     "clean-webpack-plugin": "^0.1.16",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.5",
