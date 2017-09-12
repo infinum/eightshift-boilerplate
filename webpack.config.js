@@ -44,10 +44,12 @@ const allModules = {
     },
     {
       test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+      exclude: [/fonts/],
       use: `file-loader?name=${outputImages}`
     },
     {
-      test: /\.(eot|otf|ttf|woff|woff2)$/,
+      test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
+      exclude: [/images/],
       use: `file-loader?name=${outputFonts}`
     },
     {
