@@ -9,20 +9,20 @@
     "packages-dev": [
         {
             "name": "infinum/coding-standards-wp",
-            "version": "0.2.0",
+            "version": "0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/coding-standards-wp.git",
-                "reference": "76da4f45693c565a1e04f463f8858bb89d3d0b3a"
+                "reference": "8aa16a0720ebc1406494f03c481c464cb4d399db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/coding-standards-wp/zipball/76da4f45693c565a1e04f463f8858bb89d3d0b3a",
-                "reference": "76da4f45693c565a1e04f463f8858bb89d3d0b3a",
+                "url": "https://api.github.com/repos/infinum/coding-standards-wp/zipball/8aa16a0720ebc1406494f03c481c464cb4d399db",
+                "reference": "8aa16a0720ebc1406494f03c481c464cb4d399db",
                 "shasum": ""
             },
             "require": {
-                "wp-coding-standards/wpcs": "0.11.0"
+                "wp-coding-standards/wpcs": "0.12.0"
             },
             "type": "phpcodesniffer-standard",
             "notification-url": "https://packagist.org/downloads/",
@@ -42,7 +42,7 @@
                 "standards",
                 "wordpress"
             ],
-            "time": "2017-07-14T09:41:39+00:00"
+            "time": "2017-07-25T13:42:56+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -258,22 +258,25 @@
         },
         {
             "name": "wp-coding-standards/wpcs",
-            "version": "0.11.0",
+            "version": "0.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
-                "reference": "407e4b85f547a5251185f89ceae6599917343388"
+                "reference": "300c15796584d6b63f31841daf674886303af573"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/407e4b85f547a5251185f89ceae6599917343388",
-                "reference": "407e4b85f547a5251185f89ceae6599917343388",
+                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/300c15796584d6b63f31841daf674886303af573",
+                "reference": "300c15796584d6b63f31841daf674886303af573",
                 "shasum": ""
             },
             "require": {
-                "squizlabs/php_codesniffer": "^2.8.1"
+                "squizlabs/php_codesniffer": "^2.9.0"
             },
-            "type": "library",
+            "suggest": {
+                "dealerdirect/phpcodesniffer-composer-installer": "*"
+            },
+            "type": "phpcodesniffer-standard",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -290,7 +293,7 @@
                 "standards",
                 "wordpress"
             ],
-            "time": "2017-03-20T23:17:58+00:00"
+            "time": "2017-07-20T20:11:03+00:00"
         }
     ],
     "aliases": [],

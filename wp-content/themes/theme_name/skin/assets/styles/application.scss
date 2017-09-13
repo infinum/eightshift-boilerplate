@@ -21,6 +21,9 @@
 // Config
 @import 'core';
 
+//Icons
+@import 'components/icons/icons';
+
 // Typography
 @import 'components/typography/typography';
 @import 'components/typography/content-media-style';
@@ -34,29 +37,26 @@
 @import 'components/forms/input';
 @import 'components/forms/cf7';
 
-//Icons
-@import 'components/icons/icons';
-
 // Header
 @import 'components/header/header';
 
 //Article
-@import 'components/article/article-list';
-@import 'components/article/article-grid';
-@import 'components/article/article-empty';
+// @import 'components/article/article-list';
+// @import 'components/article/article-grid';
+// @import 'components/article/article-empty';
 
 //Listing
-@import 'components/listing/listing-list';
-@import 'components/listing/listing-grid';
+// @import 'components/listing/listing-list';
+// @import 'components/listing/listing-grid';
 
 //Sections
-// @import 'components/sections/section';
+// @import 'components/sections/';
 
-// Template parts
-// @import 'components/parts/social-media-links';
+// Parts
+// @import 'components/parts/';
 
-//Single
+// Single
 @import 'components/single';
 
-//Pages
-// @import 'components/pages/blog-listing';
+// Pages
+// @import 'components/pages/';

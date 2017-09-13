@@ -5,16 +5,15 @@
 }
 
 html { /* stylelint-disable-line selector-no-type */
-  font-size: $base-font-size;
+  @include map-text-size(default);
 }
 
 body { /* stylelint-disable-line selector-no-type */
+  @include font-smoothing;
   font-family: $base-font-family;
   color: $base-text-color;
   position: relative;
   overflow-x: hidden;
-
-  @include font-smoothing;
 
   &.no-scroll {
     overflow: hidden;

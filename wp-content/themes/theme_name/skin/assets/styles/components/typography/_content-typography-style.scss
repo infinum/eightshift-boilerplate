@@ -1,11 +1,11 @@
 //Some stuff here is out of BEM because it is used inside WP as helpers or modifiers
 // Text sizes are refines via mixins as utility helpers
 
-$content-style-quote-color: $base-battleship-color;
-
 /* stylelint-disable selector-no-type */
 .content-style {
-  p {
+  p,
+  ul,
+  ol {
     @extend %paragraph-reset;
     padding-bottom: 35px;
 
@@ -75,15 +75,5 @@ $content-style-quote-color: $base-battleship-color;
 
   strong {
     font-weight: bold;
-  }
-
-  .quote {
-    padding-left: 100px;
-    font-size: map-get($typography-map, medium);
-    font-style: italic;
-    line-height: 1.89;
-    letter-spacing: 0.4px;
-    color: $content-style-quote-color;
-    display: block;
   }
 }

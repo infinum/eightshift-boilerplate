@@ -1,0 +1,23 @@
+@function map-font-size($size-name) {
+  @return map-get($typography-map, $size-name);
+}
+
+@function map-font-size-mobile($size-name) {
+  @return map-get($typography-mobile-map, $size-name);
+}
+
+@function map-sections-spacing-size-tablet($size) {
+  @return map-get($section-spacing-tablet-map, $size);
+}
+
+// Navigate nesetd maps like
+// map-deep-get($hero-size-map, default, mobile);
+@function map-deep-get($map, $keys...) {
+  $value: $map;
+
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+
+  @return $value;
+}

@@ -18,7 +18,7 @@
 	<?php esc_html( the_title() ); ?>
 	</h1>
   </header>
-  <div class="single__content content-style content-media-style content-container-media-style">
+  <div class="single__content content-style content-media-style">
 	<?php the_content(); ?>
   </div>
 	<?php include( locate_template( 'template-parts/parts/google-rich-snippets.php' ) ); ?>

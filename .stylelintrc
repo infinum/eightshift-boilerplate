@@ -58,9 +58,9 @@
     "selector-combinator-space-after": "always",
     "selector-combinator-space-before": "always",
     "selector-max-specificity": "0,4,0",
-    "selector-no-id": true,
-    "selector-no-type": true,
-    "selector-no-universal": true,
+    "selector-max-id": 0,
+    "selector-max-type": 4,
+    "selector-max-universal": 0,
     "selector-no-vendor-prefix": true,
     "selector-pseudo-element-colon-notation": "double",
 
@@ -107,8 +107,8 @@
     "comment-whitespace-inside": "always",
 
     "indentation": 2,
-    "max-line-length": 150,
-    "max-nesting-depth": 4,
+    "max-line-length": 250,
+    "max-nesting-depth": 5,
     "no-duplicate-selectors": true,
     "no-eol-whitespace": true,
     "no-unknown-animations": true
