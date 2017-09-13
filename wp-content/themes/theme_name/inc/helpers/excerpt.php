@@ -2,7 +2,7 @@
 /**
  * Except functions
  *
- * @package hola
+ * @package theme_name
  */
 
 if ( ! function_exists( 'inf_get_excerpt' ) ) {
