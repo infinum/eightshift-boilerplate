@@ -37,6 +37,18 @@
   }
 }
 
+@mixin link-color($map: $links-map) {
+  @each $key, $value in $map {
+    &--color-#{$key} {
+      color: map-get($value, color);
+
+      &:hover {
+        color: map-get($value, hover);
+      }
+    }
+  }
+}
+
 @mixin bg-color($map: $color-map) {
   @each $key, $value in $map {
     &--#{$key} {
@@ -59,8 +71,9 @@
 }
 
 // Generate buttons sizes depending on schema
-@mixin button-size($map: false) {
+@mixin button-size($map: $button-size-map) {
   @each $key, $values in $map {
+
     $txt-size: map_get($values, txt-size);
     $line-height: map_get($values, line-height);
     $padding: map_get($values, padding);
@@ -131,7 +144,7 @@
 }
 
 //Button generate colors based on scheme
-@mixin button-color-generate($map: false){
+@mixin button-color-generate($map: $button-color-map){
   @each $key, $values in $map {
     $bg: map_get($values, bg);
     $txt: map_get($values, txt);
@@ -169,6 +182,47 @@
 
   :-ms-input-placeholder {
     @content
+  }
+}
+
+@mixin table-min-height($min-height: false) {
+  min-height: $min-height;
+  height: 1px; // Due to firefox bug
+}
+
+@mixin map-text-size($size-name) {
+  font-size: map-font-size($size-name);
+}
+
+
+@mixin section-spacing-item($position: false, $size: default) {
+  @if ($size == 'no-spacing') {
+    padding-#{$position}: map-sections-spacing-size-tablet($size);
+  } @else {
+    padding-#{$position}: $section-spacing;
+
+    @include media(tablet up) {
+      padding-#{$position}: map-sections-spacing-size-tablet($size);
+    }
+  }
+}
+
+
+@mixin section-spacing($map: $section-spacing-tablet-map) {
+  &__spacing-top {
+    @each $key, $value in $map {
+      &--#{$key} {
+        @include section-spacing-item(top, $key);
+      }
+    }
+  }
+
+  &__spacing-bottom {
+    @each $key, $value in $map {
+      &--#{$key} {
+        @include section-spacing-item(bottom, $key);
+      }
+    }
   }
 }
 

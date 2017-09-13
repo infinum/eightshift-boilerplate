@@ -40,7 +40,7 @@
   transform: rotate(-90deg);
 }
 
-//Vertical align content in block
+// Vertical align content in block
 .u- {
   &vertical-align-content {
     &__wrapper {
@@ -63,7 +63,7 @@
     padding-bottom: 56.25%;
 
     &__video,
-    iframe { /* stylelint-disable-line selector-no-type */
+    iframe { // stylelint-disable-line selector-no-type
       position: absolute;
       top: 0;
       bottom: 0;
@@ -73,4 +73,8 @@
       border: 0;
     }
   }
+}
+
+.table-responsive {
+  overflow-y: hidden;
 }

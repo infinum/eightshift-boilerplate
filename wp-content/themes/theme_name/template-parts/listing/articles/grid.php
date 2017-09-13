@@ -18,12 +18,12 @@
 	  <header>
 		<h2 class="article-grid__heading">
 		  <a class="article-grid__heading-link" href="<?php the_permalink(); ?>">
-			<?php esc_html( the_title() ); ?>
+				<?php esc_html( the_title() ); ?>
 		  </a>
 		</h2>
 	  </header>
 	  <div class="article-grid__excerpt">
-		<?php the_excerpt(); ?>
+			<?php the_excerpt(); ?>
 	  </div>
 	</div>
   </div>

@@ -2,42 +2,15 @@
 
 $content-media-style-img-spacing: 30px;
 
-%content-media-full {
-  width: 126%;
-  margin: 0 -13%;
-  height: auto;
-}
-
 /* stylelint-disable selector-no-type */
-//If container has padding and media has to go out side of container
-.content-container-media-style {
-  .iframe {
-    padding-bottom: 71%;
-  }
 
-  img {
-    &.alignnone,
-    &.aligncenter {
-      &.size-large,
-      &.size-full {
-        @extend %content-media-full;
-        max-width: inherit;
-        display: block;
-      }
-    }
-  }
-
-  .gallery--bg-color {
-    @extend %content-media-full;
-    padding-left: 13%;
-    padding-right: 13%;
-  }
-}
-
-//Default media style
+// Default media style
 .content-media-style {
   .iframe {
-    @extend %content-media-full;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    padding-bottom: 50%;
   }
 
   img {

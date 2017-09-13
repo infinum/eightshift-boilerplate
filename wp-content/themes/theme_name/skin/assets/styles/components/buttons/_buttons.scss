@@ -52,27 +52,11 @@ $button-size-map: (
     duration: 0.3s;
   }
 
-  @include button-size($button-size-map);
-  @include button-color-generate($button-color-map);
+  @include button-size;
+  @include button-color-generate;
 
   &--block {
     display: block;
     width: 100%;
-  }
-
-  &--has-icon-right,
-  &--has-icon-left {
-    i { /* stylelint-disable-line selector-no-type */
-      vertical-align: top;
-      display: inline-block;
-    }
-  }
-
-  &--has-icon-left i { /* stylelint-disable-line selector-no-type */
-    margin-right: 25px;
-  }
-
-  &--has-icon-right i { /* stylelint-disable-line selector-no-type */
-    margin-left: 25px;
   }
 }

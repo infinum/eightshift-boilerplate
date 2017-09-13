@@ -1,5 +1,4 @@
 //Base
-$base-font-size: 20px;
 $base-font-family: 'Open Sans';
 
 //Colors
@@ -16,11 +15,11 @@ $header-height: 70px;
 
 //Typography
 $typography-map: (
-  default:        $base-font-size,
   huge:           44px,
   big:            36px,
   larger:         28px,
   large:          24px,
+  default:        20px,
   medium:         18px,
   small:          16px,
   smaller:        14px,
@@ -33,6 +32,15 @@ $weight-map: (
   semi-bold: 600,
   bold: 700,
   extra: 800
+);
+
+//Section
+$section-spacing: 50px;
+$section-spacing-tablet-map: (
+  default:    105px,
+  medium:     80px,
+  small:      40px,
+  no-spacing: 0
 );
 
 //WP admin bar
