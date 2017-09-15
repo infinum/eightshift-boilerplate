@@ -40,19 +40,6 @@
   transform: rotate(-90deg);
 }
 
-// Vertical align content in block
-.u- {
-  &vertical-align-content {
-    &__wrapper {
-      @extend %vertical-align-content;
-    }
-
-    &__item {
-      @extend %vertical-align-content-item;
-    }
-  }
-}
-
 // Utility for responive videos
 .u {
   &__embed-video-responsive {
