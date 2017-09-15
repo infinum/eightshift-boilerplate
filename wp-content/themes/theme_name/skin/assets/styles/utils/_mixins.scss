@@ -143,7 +143,7 @@
   }
 }
 
-//Button generate colors based on scheme
+// Button generate colors based on scheme
 @mixin button-color-generate($map: $button-color-map){
   @each $key, $values in $map {
     $bg: map_get($values, bg);
@@ -222,6 +222,20 @@
       &--#{$key} {
         @include section-spacing-item(bottom, $key);
       }
+    }
+  }
+}
+
+@mixin checkbox-radio-size($trigger-size: false, $icon-size: false) {
+  padding-left: $trigger-size + 15;
+
+  // icon
+  &__icon {
+    width: $trigger-size;
+    height: $trigger-size;
+
+    &::before{
+      font-size: $icon-size;
     }
   }
 }
