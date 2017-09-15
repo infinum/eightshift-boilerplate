@@ -3,10 +3,16 @@
 
 /* stylelint-disable selector-no-type */
 .content-style {
+  a {
+    @extend .link--color-default;
+  }
+
   p,
   ul,
   ol {
     @extend %paragraph-reset;
+    @include map-text-size(default);
+    line-height: 1.8;
     padding-bottom: 35px;
 
     &.spacing-half {
@@ -62,7 +68,7 @@
 
   ul,
   ol {
-    @extend %list-reset;
+    margin-left: 22px;
 
     li{
       padding-bottom: 15px;

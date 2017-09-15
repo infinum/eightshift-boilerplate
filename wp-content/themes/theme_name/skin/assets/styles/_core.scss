@@ -12,6 +12,7 @@ body { /* stylelint-disable-line selector-no-type */
   @include font-smoothing;
   font-family: $base-font-family;
   color: $base-text-color;
+  background-color: $base-bg-color;
   position: relative;
   overflow-x: hidden;
 
