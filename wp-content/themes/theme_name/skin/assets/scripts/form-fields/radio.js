@@ -20,21 +20,24 @@ export default class Radio {
   getInputNameById(id) {
     return $(`input[type="radio"]#${id}`).attr('name');
   }
+  getContainerByInput(id) {
+    return this.getInputById(id).closest(this.containerSelector);
+  }
   check(id) {
-    this.getInputById(id).closest(this.containerSelector).addClass(this.checkedClass);
+    this.getContainerByInput(id).addClass(this.checkedClass);
   }
   uncheck(id) {
     const inputName = this.getInputNameById(id);
     this.$container.find(`input[name="${inputName}"]`).closest(this.containerSelector).removeClass(this.checkedClass);
   }
   setDisabled(id) {
-    this.getInputById(id).closest(this.containerSelector).addClass(this.disabledClass);
+    this.getContainerByInput(id).addClass(this.disabledClass);
   }
   setFocus(id) {
-    this.getInputById(id).closest(this.containerSelector).addClass(this.focusClass);
+    this.getContainerByInput(id).addClass(this.focusClass);
   }
   unsetFocus(id) {
-    this.getInputById(id).closest(this.containerSelector).removeClass(this.focusClass);
+    this.getContainerByInput(id).removeClass(this.focusClass);
   }
   resetAll(formID) {
     formID.find(this.containerSelector).removeClass(this.checkedClass);

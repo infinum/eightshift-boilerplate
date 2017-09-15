@@ -17,23 +17,26 @@ export default class Checkbox {
   getInputById(id) {
     return $(`input[type="checkbox"]#${id}`);
   }
+  getContainerByInput(id) {
+    return this.getInputById(id).closest(this.containerSelector);
+  }
   check(id) {
-    this.getInputById(id).closest(this.containerSelector).addClass(this.checkedClass);
+    this.getContainerByInput(id).addClass(this.checkedClass);
   }
   uncheck(id) {
-    this.getInputById(id).closest(this.containerSelector).removeClass(this.checkedClass);
+    this.getContainerByInput(id).removeClass(this.checkedClass);
   }
   setDisabled(id) {
-    this.getInputById(id).closest(this.containerSelector).addClass(this.disabledClass);
+    this.getContainerByInput(id).addClass(this.disabledClass);
   }
   unsetDisabled(id) {
-    this.getInputById(id).closest(this.containerSelector).removeClass(this.disabledClass);
+    this.getContainerByInput(id).removeClass(this.disabledClass);
   }
   setFocus(id) {
-    this.getInputById(id).closest(this.containerSelector).addClass(this.focusClass);
+    this.getContainerByInput(id).addClass(this.focusClass);
   }
   unsetFocus(id) {
-    this.getInputById(id).closest(this.containerSelector).removeClass(this.focusClass);
+    this.getContainerByInput(id).removeClass(this.focusClass);
   }
   resetAll(formID) {
     formID.find(this.containerSelector).removeClass(this.checkedClass);
