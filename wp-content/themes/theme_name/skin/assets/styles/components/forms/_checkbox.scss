@@ -44,7 +44,7 @@ $checkbox-disabled-trigger-bg-color: $base-silver-color;
   // move real input out from viewpoint, don't use display:none because of IE7-8
   &__input{
     position: absolute;
-    left: -999999;
+    left: -999999px;
     z-index: -1;
     margin: 0;
     padding: 0;
