@@ -77,7 +77,12 @@ const allPlugins = [
       }
     ]
   }),
-  new webpack.optimize.ModuleConcatenationPlugin()
+  new webpack.optimize.ModuleConcatenationPlugin(),
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
+    }
+  })
 
   // Analyse assets
   // new BundleAnalyzerPlugin(),
