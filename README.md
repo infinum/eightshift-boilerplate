@@ -1,8 +1,8 @@
-# Wordpress Boilerplate
+# WordPress Boilerplate
 
-This repo is used to start with your Wordpress project.
+This repository contains all the tools you need to start building a modern WordPress theme, using all the latest front end development tools.
 
-## Who do I talk to? ##
+## Who do I talk to?
 For questions talk to:
 * ivan.ruzevic@infinum.hr
 * denis.zoljom@infinum.hr
@@ -24,14 +24,16 @@ For questions talk to:
 * GitIgnore
 * Sass files based on Infinum Handbook
 * Precreated template files nad helpers
-* Bem menues
+* BEM menues
 * Google rich snippets
 * ...
 
 ## Getting started
 
-We recommend search and replace `theme_name` with your theme name.
-Change theme name in files:
+First you need to install WordPress locally, using any of the local development environment you prefer. You can use XAMPP, MAMP, WAMP, VVV, Docker or Laravel Valet.
+
+We recommend that you search and replace `theme_name` with your desired theme name.
+Change the theme name in these files:
 
 * `theme_name` - theme folder
 * `webpack.config.js` - in `themeName` variable
@@ -49,8 +51,8 @@ Change theme name in files:
   * Builds assets in watch mode using Webpack
 
 ## Browser sync
-We are using BrowserSync to sync assets cross-device to setup got to `webpack.config.js` and set `proxyUrl` variable to service you are using to show Wordpress.
-It is tested on MAMP and Vagrant.
+We are using BrowserSync to sync assets cross-device to setup got to `webpack.config.js` and set `proxyUrl` variable to service you are using to show WordPress.
+It is tested on MAMP and Vagrant (VVV).
 
 ## Linting Assets (JS,SASS)
 * `npm run precommit`
@@ -85,7 +87,7 @@ Build creates public folder in theme with js, css, images and fonts
   * Builds production ready assets
 
 ## Note
-* ALWAYS prefix custom function. We used `inf_`.
+* ALWAYS prefix everything in the global namespace. We are using `inf_` for our prefix.
 
 ## Recommended plugins
 
@@ -106,6 +108,6 @@ Build creates public folder in theme with js, css, images and fonts
 * Yoast SEO
 
 ## Plugin
-If you are creating custom plugin, the use of Wp Plugin Boilerplate is mandatory.
+If you are creating a custom plugin, the use of Wp Plugin Boilerplate is mandatory.
 
 `https://wppb.me/`
