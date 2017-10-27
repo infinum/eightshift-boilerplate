@@ -14,8 +14,18 @@ if ( ! function_exists( 'inf_register_scripts' ) ) {
    */
   function inf_register_scripts() {
 
-    // Remove jQuery because it is bundled in with webpack.
-    wp_deregister_script( 'jquery' );
+    // jQuery.
+    $jquery_cdn = 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js';
+    $jquery_cdn_response = wp_remote_get( $jquery_cdn );
+
+    if ( is_array( $jquery_cdn_response ) && ! is_wp_error( $jquery_cdn_response ) ) {
+      wp_deregister_script( 'jquery-migrate' );
+      wp_deregister_script( 'jquery' );
+      wp_register_script( 'jquery', $jquery_cdn, array(), '3.1.1' );
+      wp_enqueue_script( 'jquery' );
+    } else {
+      wp_enqueue_script( 'jquery' );
+    }
 
     // JS.
     wp_register_script( 'scripts', get_template_directory_uri() . '/skin/public/scripts/application.js', array( 'jquery' ), ASSETS_VERSION );
