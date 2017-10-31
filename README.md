@@ -1,4 +1,4 @@
-# WordPress Boilerplate
+# Infinum WordPress Boilerplate
 
 This repository contains all the tools you need to start building a modern WordPress theme, using all the latest front end development tools.
 
@@ -111,3 +111,15 @@ Build creates public folder in theme with js, css, images and fonts
 If you are creating a custom plugin, the use of Wp Plugin Boilerplate is mandatory.
 
 `https://wppb.me/`
+
+## Credits
+
+Infinum WordPress Boilerplate is maintained and sponsored by
+[Infinum](https://www.infinum.co).
+
+<img src="https://infinum.co/infinum.png" width="264">
+
+## License
+
+Infinum WordPress Boilerplate is Copyright © 2017 Infinum. It is free software, and may be redistributed under the terms specified in the LICENSE file.
+
