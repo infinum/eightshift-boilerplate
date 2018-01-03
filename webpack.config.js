@@ -1,11 +1,10 @@
 const DEV = process.env.NODE_ENV !== 'production';
 
 const path = require('path');
-
 const webpack = require('webpack');
+
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -40,20 +39,22 @@ const allModules = {
     },
     {
       test: /\.json$/,
-      use: 'json-loader'
+      exclude: /node_modules/,
+      use: 'file-loader'
     },
     {
       test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-      exclude: [/fonts/],
+      exclude: [/fonts/, /node_modules/],
       use: `file-loader?name=${outputImages}`
     },
     {
-      test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
-      exclude: [/images/],
+      test: /\.(eot|otf|ttf|woff|woff2|svg)$/,
+      exclude: [/images/, /node_modules/],
       use: `file-loader?name=${outputFonts}`
     },
     {
       test: /\.scss$/,
+      exclude: /node_modules/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: ['css-loader', 'postcss-loader', 'sass-loader']
@@ -63,8 +64,12 @@ const allModules = {
 };
 
 const allPlugins = [
-  new CleanWebpackPlugin([themeOutput]),
   new ExtractTextPlugin(outputCss),
+
+  new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery'
+  }),
 
   // Use BrowserSync For assets
   new BrowserSyncPlugin({
@@ -77,28 +82,37 @@ const allPlugins = [
       }
     ]
   }),
-  new webpack.optimize.ModuleConcatenationPlugin(),
+
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
     }
-  })
+  }),
+
+  new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
   // Analyse assets
   // new BundleAnalyzerPlugin(),
 
   // Is using vendor files, but prefered to use npm
-  // new CopyWebpackPlugin([{
-  //   from: `${pathTheme}/assets/scripts/vendors`,
-  //   to: `${pathTheme}/public/scripts/vendors`
-  // }])
+  new CopyWebpackPlugin([{
+    from: `${themeFullPath}/assets/scripts/vendors`,
+    to: `${themeFullPath}/public/scripts/vendors`
+  }])
 ];
 
 // Use only for production build
 if (!DEV) {
   allPlugins.push(
-    new UglifyJSPlugin({
-      comments: false,
+    new CleanWebpackPlugin([themeOutput]),
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: false
+      },
+      compress: {
+        warnings: false,
+        drop_console: true
+      },
       sourceMap: true
     })
   );
@@ -121,6 +135,8 @@ module.exports = [
 
     module: allModules,
 
-    plugins: allPlugins
+    plugins: allPlugins,
+
+    devtool: DEV ? '#inline-source-map' : ''
   }
 ];

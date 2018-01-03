@@ -34,7 +34,7 @@
 		"name": "<?php echo esc_html( get_bloginfo( 'name' ) ); ?>",
 		"logo": {
 		"@type": "ImageObject",
-		"url": "<?php echo esc_url( IMAGE_URL . 'meta-google.png' ); ?>",
+		"url": "<?php echo esc_url( INF_IMAGE_URL . 'meta-google.png' ); ?>",
 		"width": 220,
 		"height": 60
 		}

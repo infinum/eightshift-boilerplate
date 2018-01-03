@@ -8,7 +8,8 @@
 ?>
 
 <?php
-  $image = inf_get_post_image( 'listing' );
+  // $image = inf_get_post_image( 'listing' );
+  $image = '';
   // TO DO: Remove inline styling, and add it to dynamic-css.php file.
 ?>
 <article class="article-grid">
