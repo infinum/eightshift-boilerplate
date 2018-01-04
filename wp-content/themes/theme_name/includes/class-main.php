@@ -13,6 +13,7 @@ namespace Inf_Theme\Includes;
 
 use Inf_Theme\Admin as Admin;
 use Inf_Theme\Theme as Theme;
+use Inf_Theme\Theme\Theme_Options as Theme_Options;
 
 /**
  * The main start class.
@@ -96,6 +97,7 @@ class Main {
     $this->editor = new Admin\Editor( $this->get_theme_info() );
     $this->sidebar = new Admin\Sidebar( $this->get_theme_info() );
     $this->users = new Admin\Users( $this->get_theme_info() );
+    $this->acf = new Admin\Acf( $this->get_theme_info() );
 
     // Admin
     $this->loader->add_action( 'login_enqueue_scripts', $this->admin, 'enqueue_styles' );
@@ -114,6 +116,11 @@ class Main {
     // Users
     $this->loader->add_action( 'set_user_role', $this->users, 'send_main_when_user_role_changes', 10, 2 );
     $this->loader->add_action( 'admin_init', $this->users, 'edit_editors_compatibilities' );
+    
+    // ACF
+    $this->loader->add_action( 'acf/fields/google_map/api', $this->acf, 'set_google_map_api_key' );
+    $this->loader->add_action( 'acf/fields/wysiwyg/toolbars', $this->acf, 'add_wysiwyg_toolbars' );
+
   }
 
   /**
@@ -124,14 +131,38 @@ class Main {
    */
   private function define_theme_hooks() {
     $this->theme = new Theme\Theme( $this->get_theme_info() );
+    $this->legacy_browsers = new Theme\Legacy_Browsers( $this->get_theme_info() );
+    $this->theme_options_general = new Theme_Options\Theme_Options_General( $this->get_theme_info() );
 
     // Enque styles and scripts
     $this->loader->add_action( 'wp_enqueue_scripts', $this->theme, 'enqueue_styles' );
     $this->loader->add_action( 'wp_enqueue_scripts', $this->theme, 'enqueue_scripts' );
-
+    
     // Remove inline gallery css
     $this->loader->add_filter( 'use_default_gallery_style', $this->theme, '__return_false' );
 
+    // Legacy Browsers
+    $this->loader->add_action( 'template_redirect', $this->legacy_browsers, 'redirect_to_legacy_browsers_page' );
+    
+    // Optimizations
+    // This is removing the functionality but it is removing meta tags from head
+    $this->loader->remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    $this->loader->remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+    $this->loader->remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    $this->loader->remove_action( 'admin_print_styles', 'print_emoji_styles' );
+    $this->loader->remove_action( 'wp_head', 'wp_generator' );
+    $this->loader->remove_action( 'wp_head', 'wlwmanifest_link' );
+    $this->loader->remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+    $this->loader->remove_action( 'wp_head', 'rsd_link' );
+    $this->loader->remove_action( 'wp_head', 'feed_links', 2 );
+    $this->loader->remove_action( 'wp_head', 'feed_links_extra', 3 );
+    $this->loader->remove_action( 'wp_head', 'rest_output_link_wp_head' );
+
+    // Theme Options
+    $this->loader->add_action( 'acf/init', $this->theme_options_general, 'create_theme_options_page' );
+    $this->loader->add_action( 'acf/init', $this->theme_options_general, 'register_theme_options' );
+    $this->loader->add_action( 'acf/init', $this->theme_options_general, 'register_global_theme_options_variable' );
+    $this->loader->add_action( 'acf/save_post', $this->theme_options_general, 'delete_theme_options_transient' );
   }
 
   /**

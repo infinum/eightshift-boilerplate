@@ -29,7 +29,7 @@ class Theme {
   /**
    * Init call
    */
-  public function __construct( $theme_info ) {
+  public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
     $this->theme_version = $theme_info['theme_version'];
     $this->assets_version = $theme_info['assets_version'];
@@ -55,15 +55,15 @@ class Theme {
   public function enqueue_scripts() {
     wp_deregister_script( 'jquery-migrate' );
     wp_deregister_script( 'jquery' );
-    wp_register_script( $this->theme_name . '-jquery', get_template_directory_uri() . '/skin/public/scripts/vendors/jquery.3.1.1.min.js', array(), '3.1.1' );
-    wp_enqueue_script( $this->theme_name . '-jquery' );
+    wp_register_script( 'jquery', get_template_directory_uri() . '/skin/public/scripts/vendors/jquery.3.1.1.min.js', array(), '3.1.1' );
+    wp_enqueue_script( 'jquery' );
 
     // JS.
     if ( ! is_page_template( 'page-templates/page-old-browser.php' ) ) {
-      wp_register_script( $this->theme_name . '-webfont', get_template_directory_uri() . '/skin/public/scripts/vendors/webfont.1.6.26.min.js', array( $this->theme_name . '-jquery' ), '1.6.26' );
+      wp_register_script( $this->theme_name . '-webfont', get_template_directory_uri() . '/skin/public/scripts/vendors/webfont.1.6.26.min.js', array( 'jquery' ), '1.6.26' );
       wp_enqueue_script( $this->theme_name . '-webfont' ); // Fonts loaded via JS fonts.js.
 
-      wp_register_script( $this->theme_name . '-scripts', get_template_directory_uri() . '/skin/public/scripts/application.js', array( $this->theme_name . '-jquery' ), $this->assets_version );
+      wp_register_script( $this->theme_name . '-scripts', get_template_directory_uri() . '/skin/public/scripts/application.js', array( 'jquery' ), $this->assets_version );
       wp_enqueue_script( $this->theme_name . '-scripts' );
 
       // Glbal variables for ajax and translations.

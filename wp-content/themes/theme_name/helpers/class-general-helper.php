@@ -16,9 +16,9 @@
  *
  * @package    Aaa
  */
-namespace Inf_Theme\Admin;
+namespace Inf_Theme\Helpers;
 
-class Login {
+class General_Helper {
 
   protected $theme_name;
 
@@ -36,12 +36,14 @@ class Login {
   }
 
   /**
-   * Custom WordPress Login link
+   * Check if array has key and return its value if true
    *
-   * @since    1.0.0
+   * @param string $key   Array key to check.
+   * @param array  $array Array in which the key should be checked.
+   * @return string        Value of the key if it exists, empty string if not.
    */
-  public function custom_login_url() {
-    return home_url( '/' );
+  public function get_array_value( $key, $array ) {
+    return ( gettype( $array ) === 'array' && array_key_exists( $key, $array ) ) ? $array[ $key ] : '';
   }
 
 }

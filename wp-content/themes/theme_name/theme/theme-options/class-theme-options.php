@@ -18,7 +18,7 @@
  */
 namespace Inf_Theme\Theme;
 
-class Optimizations {
+class Acf {
 
   protected $theme_name;
 
@@ -29,20 +29,12 @@ class Optimizations {
     /**
    * Init call
    */
-  public function __construct( $theme_info ) {
+  public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
     $this->theme_version = $theme_info['theme_version'];
     $this->assets_version = $theme_info['assets_version'];
   }
 
-  /**
-   * Remove emojies.
-   *
-   * @since    1.0.0
-   */
-  public function remove_emojies() {
-    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-    remove_action( 'wp_print_styles', 'print_emoji_styles' );
-  }
+  
 
 }

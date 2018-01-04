@@ -14,9 +14,9 @@
  * @package    Json_WP_Post_Parser\Lib
  */
 
-namespace Json_WP_Post_Parser\Lib;
+namespace Inf_Theme\Lib;
 
-spl_autoload_register( __NAMESPACE__ . '\\json_wp_post_parser_autoloader' );
+spl_autoload_register( __NAMESPACE__ . '\\inf_theme_autoloader' );
 
 /**
  * Dynamically loads the class attempting to be instantiated elsewhere in the
@@ -24,7 +24,7 @@ spl_autoload_register( __NAMESPACE__ . '\\json_wp_post_parser_autoloader' );
  *
  * @param string $filename The fully-qualified name of the file that contains the class.
  */
-function json_wp_post_parser_autoloader( $filename ) {
+function inf_theme_autoloader( $filename ) {
   $file_path = explode( '\\', $filename );
 
   if ( isset( $file_path[ count( $file_path ) - 1 ] ) ) {
@@ -44,7 +44,7 @@ function json_wp_post_parser_autoloader( $filename ) {
 
   $file_count = count( $file_path );
   for ( $i = 1; $i < $file_count - 1; $i++ ) {
-    $dir = strtolower( $file_path[ $i ] );
+    $dir = str_ireplace( '_', '-', strtolower( $file_path[ $i ] ) );
     $fully_qualified_path .= trailingslashit( $dir );
   }
 

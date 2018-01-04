@@ -57,6 +57,18 @@ class Loader {
   }
 
   /**
+   * Remove action from collection.
+   *
+   * @since    1.0.0
+   * @param    string $hook                The name of the WordPress action that is being registered.
+   * @param    string $function_to_remove  The name of the function definition on the $component.
+   * @param    int    $priority            Optional. The priority at which the function should be fired. Default is 10.
+   */
+  public function remove_action( $hook, $function_to_remove, $priority = 10 ) {
+    remove_action( $hook, $function_to_remove, $priority );
+  }
+
+  /**
    * Add a new filter to the collection to be registered with WordPress.
    *
    * @since    1.0.0
@@ -68,6 +80,18 @@ class Loader {
    */
   public function add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
     $this->filters = $this->add( $this->filters, $hook, $component, $callback, $priority, $accepted_args );
+  }
+
+  /**
+   * Remove filter from collection.
+   *
+   * @since    1.0.0
+   * @param    string $hook                 The name of the WordPress filter that is being registered.
+   * @param    string $function_to_remove   The name of the function definition on the $component.
+   * @param    int    $priority             Optional. The priority at which the function should be fired. Default is 10.
+   */
+  public function remove_filter( $hook, $function_to_remove, $priority = 10 ) {
+    remove_filter( $hook, $function_to_remove, $priority );
   }
 
   /**
