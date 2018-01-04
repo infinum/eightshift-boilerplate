@@ -8,7 +8,9 @@
 ?>
 
 <?php
-  $image = inf_get_post_image( 'listing' );
+	use Inf_Theme\Theme\Utils as Utils;
+  $images = new Utils\Images();
+	$image = $images->get_post_image( 'listing' );
   // TO DO: Remove inline styling, and add it to dynamic-css.php file.
 ?>
 <article class="article-list">

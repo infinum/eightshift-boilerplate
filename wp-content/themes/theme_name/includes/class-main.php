@@ -133,6 +133,7 @@ class Main {
     $this->theme = new Theme\Theme( $this->get_theme_info() );
     $this->legacy_browsers = new Theme\Legacy_Browsers( $this->get_theme_info() );
     $this->theme_options_general = new Theme_Options\Theme_Options_General( $this->get_theme_info() );
+    $this->media = new Theme\Media( $this->get_theme_info() );
 
     // Enque styles and scripts
     $this->loader->add_action( 'wp_enqueue_scripts', $this->theme, 'enqueue_styles' );
@@ -163,6 +164,14 @@ class Main {
     $this->loader->add_action( 'acf/init', $this->theme_options_general, 'register_theme_options' );
     $this->loader->add_action( 'acf/init', $this->theme_options_general, 'register_global_theme_options_variable' );
     $this->loader->add_action( 'acf/save_post', $this->theme_options_general, 'delete_theme_options_transient' );
+
+    // Media
+    $this->loader->add_action( 'upload_mimes', $this->media, 'enable_mime_types' );
+    $this->loader->add_action( 'wp_prepare_attachment_for_js', $this->media, 'enable_svg_library_preview', 10, 3 );
+    $this->loader->add_action( 'embed_oembed_html', $this->media, 'wrap_responsive_oembed_filter', 10, 4 );
+    $this->loader->add_action( 'after_setup_theme', $this->media, 'add_theme_support' );
+    $this->loader->add_action( 'after_setup_theme', $this->media, 'add_custom_image_sizes' );
+    
   }
 
   /**

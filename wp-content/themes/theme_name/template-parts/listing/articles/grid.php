@@ -8,9 +8,9 @@
 ?>
 
 <?php
-  // $image = inf_get_post_image( 'listing' );
-  $image = '';
-  // TO DO: Remove inline styling, and add it to dynamic-css.php file.
+	use Inf_Theme\Theme\Utils as Utils;
+  $images = new Utils\Images();
+	$image = $images->get_post_image( 'full_width' );
 ?>
 <article class="article-grid">
   <div class="article-grid__container">
