@@ -1,0 +1,85 @@
+<?php
+
+/**
+ * The login-specific functionality.
+ * 
+ * @since      1.0.0
+ *
+ * @package    Aaa
+ */
+
+/**
+ * The login-specific functionality of the plugin.
+ *
+ * Defines the plugin name, version, and two examples hooks for how to
+ * enqueue the admin-specific stylesheet and JavaScript.
+ *
+ * @package    Aaa
+ */
+namespace Inf_Theme\Theme\Menu;
+
+class Menu {
+
+  protected $theme_name;
+
+  protected $theme_version;
+
+  protected $assets_version;
+  
+    /**
+   * Init call
+   */
+  public function __construct( $theme_info = null ) {
+    $this->theme_name = $theme_info['theme_name'];
+    $this->theme_version = $theme_info['theme_version'];
+    $this->assets_version = $theme_info['assets_version'];
+  }
+
+  /**
+   * Register Menu positions
+   */
+  public function register_menu_positions() {
+    register_nav_menus(
+      array(
+      'header_main_nav' => esc_html__( 'Menu', 'theme_name' ),
+      )
+    );
+  }
+
+  /**
+   * Bem_menu returns an instance of the Walker_Texas_Ranger class with the following arguments
+   *
+   * @param  string     $location            This must be the same as what is set in wp-admin/settings/menus for menu location.
+   * @param  string     $css_class_prefix    This string will prefix all of the menu's classes, BEM syntax friendly.
+   * @param  arr|string $css_class_modifiers Provide either a string or array of values to apply extra classes to the <ul> but not the <li's>.
+   * @param  bool       $use_mega_menu       Show megamenu.
+   * @param  bool       $echo                Echo the menu.
+   * @return [type]
+   */
+  public function bem_menu( $location = 'main_menu', $css_class_prefix = 'main-menu', $css_class_modifiers = null, $echo = true ) {
+
+      // Check to see if any css modifiers were supplied.
+    if ( $css_class_modifiers ) {
+
+      if ( is_array( $css_class_modifiers ) ) {
+        $modifiers = implode( ' ', $css_class_modifiers );
+      } elseif ( is_string( $css_class_modifiers ) ) {
+        $modifiers = $css_class_modifiers;
+      }
+    } else {
+      $modifiers = '';
+    }
+
+      $args = array(
+          'theme_location'    => $location,
+          'container'         => false,
+          'items_wrap'        => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
+          'echo'              => $echo,
+          'walker'            => new Bem_Menu_Walker( $css_class_prefix ),
+      );
+
+    if ( has_nav_menu( $location ) ) {
+      return wp_nav_menu( $args );
+    }
+  }
+}

@@ -13,7 +13,9 @@ namespace Inf_Theme\Includes;
 
 use Inf_Theme\Admin as Admin;
 use Inf_Theme\Theme as Theme;
+use Inf_Theme\Theme\Menu as Menu;
 use Inf_Theme\Theme\Theme_Options as Theme_Options;
+use Inf_Theme\Theme\Utils as Utils;
 
 /**
  * The main start class.
@@ -132,8 +134,13 @@ class Main {
   private function define_theme_hooks() {
     $this->theme = new Theme\Theme( $this->get_theme_info() );
     $this->legacy_browsers = new Theme\Legacy_Browsers( $this->get_theme_info() );
+    $this->widgets = new Theme\Widgets( $this->get_theme_info() );
+    $this->menu = new Menu\Menu( $this->get_theme_info() );
     $this->theme_options_general = new Theme_Options\Theme_Options_General( $this->get_theme_info() );
     $this->media = new Theme\Media( $this->get_theme_info() );
+    $this->gallery = new Utils\Gallery( $this->get_theme_info() );
+    $this->general = new Theme\General( $this->get_theme_info() );
+    $this->pagination = new Theme\Pagination( $this->get_theme_info() );
 
     // Enque styles and scripts
     $this->loader->add_action( 'wp_enqueue_scripts', $this->theme, 'enqueue_styles' );
@@ -144,6 +151,12 @@ class Main {
 
     // Legacy Browsers
     $this->loader->add_action( 'template_redirect', $this->legacy_browsers, 'redirect_to_legacy_browsers_page' );
+
+    // Widgets
+    $this->loader->add_action( 'widgets_init', $this->widgets, 'register_widget_position' );
+
+    // Menu
+    $this->loader->add_action( 'after_setup_theme', $this->menu, 'register_menu_positions' );
     
     // Optimizations
     // This is removing the functionality but it is removing meta tags from head
@@ -171,6 +184,16 @@ class Main {
     $this->loader->add_action( 'embed_oembed_html', $this->media, 'wrap_responsive_oembed_filter', 10, 4 );
     $this->loader->add_action( 'after_setup_theme', $this->media, 'add_theme_support' );
     $this->loader->add_action( 'after_setup_theme', $this->media, 'add_custom_image_sizes' );
+
+    //Gallery
+    $this->loader->add_filter( 'post_gallery', $this->gallery, 'wrap_post_gallery', 10 ,3 );
+
+    // General
+    $this->loader->add_action( 'after_setup_theme', $this->general, 'add_theme_support' );
+
+    // Pagination
+    $this->loader->add_filter( 'next_posts_link_attributes', $this->pagination, 'pagination_link_next_class' );
+    $this->loader->add_filter( 'previous_posts_link_attributes', $this->pagination, 'pagination_link_prev_class' );
     
   }
 

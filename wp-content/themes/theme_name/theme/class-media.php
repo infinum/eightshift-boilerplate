@@ -92,7 +92,7 @@ class Media {
             );
         }
       } catch ( Exception $e ) {
-        new \WP_Error( esc_html__( 'Error: ', 'hpb' ) . $e );
+        new \WP_Error( esc_html__( 'Error: ', 'theme_name' ) . $e );
       }
     }
 

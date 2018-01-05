@@ -63,7 +63,7 @@ class Images {
       ];
     } else {
       $image_array = [
-          'image' => esc_url( IMAGE_URL . 'no-image-' . $size . '.jpg' ),
+          'image' => esc_url( INF_IMAGE_URL . 'no-image-' . $size . '.jpg' ),
           'width' => '',
           'height' => '',
       ];
@@ -88,7 +88,7 @@ class Images {
       $img = $image_array['sizes'];
       $src = $img[ $size ];
     } else {
-      $src = IMAGE_URL . 'no-image-' . $size . '.jpg';
+      $src = INF_IMAGE_URL . 'no-image-' . $size . '.jpg';
     }
 
     return [

@@ -18,7 +18,7 @@
  */
 namespace Inf_Theme\Theme\Theme_Options;
 
-use Inf_Theme\Helpers as Helpers;
+use Inf_Theme\Helpers as General_Helpers;
 
 class Theme_Options_General {
 
@@ -302,7 +302,7 @@ class Theme_Options_General {
    */
   public function get_theme_option( $key ) {
     global $inf_theme_options;
-    $this->general_helper = new Helpers\General_Helper();
+    $this->general_helper = new General_Helpers\General_Helper();
 
     return $this->general_helper->get_array_value( $key, $inf_theme_options );
   }

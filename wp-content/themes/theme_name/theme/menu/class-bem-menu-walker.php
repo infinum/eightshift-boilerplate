@@ -5,24 +5,24 @@
  * @package theme_name
  */
 
+namespace Inf_Theme\Theme\Menu;
+
 /**
  * Bem Menu Walker
  * Inserts some BEM naming sensibility into WordPress menus
  *
  * @package theme_name
  */
-class Bem_Menu_Walker extends Walker_Nav_Menu {
+class Bem_Menu_Walker extends \Walker_Nav_Menu {
 
     /**
      * Constructor function
      *
      * @param array   $css_class_prefix load menu prefixes for class.
-     * @param boolian $use_mega_menu Show mega menu.
      */
-  function __construct( $css_class_prefix, $use_mega_menu ) {
+  function __construct( $css_class_prefix ) {
 
     $this->css_class_prefix = $css_class_prefix;
-    $this->use_mega_menu = $use_mega_menu;
 
     // Define menu item names appropriately.
     $this->item_css_class_suffixes = array(
@@ -101,6 +101,8 @@ class Bem_Menu_Walker extends Walker_Nav_Menu {
      */
   function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 
+    global $wp_query;
+
     $indent = ( $depth > 0 ? str_repeat( '    ', $depth ) : '' ); // code indent.
 
     $prefix = $this->css_class_prefix;
@@ -132,7 +134,7 @@ class Bem_Menu_Walker extends Walker_Nav_Menu {
 
     $link_class_string = implode( '  ', array_filter( $link_classes ) );
 
-    $link_class_output = 'class="' . $link_class_string . ' ' . $link_as_button . '"';
+    $link_class_output = 'class="' . $link_class_string . ' "';
 
     $link_text_classes = array(
         'item_link'             => 0 === $depth ? $prefix . $suffix['link'] . '-text' : '',

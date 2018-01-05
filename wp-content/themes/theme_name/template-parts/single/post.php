@@ -14,6 +14,13 @@ use Inf_Theme\Theme\Utils as Utils;
 $images = new Utils\Images();
 $image = $images->get_post_image( 'full_width' );
 
+$type = new Utils\Post_Type();
+$link = $type->get_post_type_link();
+
+echo $link;
+
+
+
 ?>
 <!-- Single Content Section -->
 <section class="single" id="<?php echo esc_attr( $post->ID ); ?>">
