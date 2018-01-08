@@ -14,7 +14,7 @@ namespace Inf_Theme\Includes;
 use Inf_Theme\Admin as Admin;
 use Inf_Theme\Theme as Theme;
 use Inf_Theme\Theme\Menu as Menu;
-use Inf_Theme\Theme\Theme_Options as Theme_Options;
+use Inf_Theme\Theme\Acf as Acf;
 use Inf_Theme\Theme\Utils as Utils;
 
 /**
@@ -136,7 +136,7 @@ class Main {
     $this->legacy_browsers = new Theme\Legacy_Browsers( $this->get_theme_info() );
     $this->widgets = new Theme\Widgets( $this->get_theme_info() );
     $this->menu = new Menu\Menu( $this->get_theme_info() );
-    $this->theme_options_general = new Theme_Options\Theme_Options_General( $this->get_theme_info() );
+    $this->theme_options_general = new Acf\Theme_Options_General( $this->get_theme_info() );
     $this->media = new Theme\Media( $this->get_theme_info() );
     $this->gallery = new Utils\Gallery( $this->get_theme_info() );
     $this->general = new Theme\General( $this->get_theme_info() );

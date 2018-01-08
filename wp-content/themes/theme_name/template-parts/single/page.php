@@ -18,7 +18,7 @@
   <div class="single__image" style="background-image: url('<?php echo esc_url( $image['image'] ); ?>');"></div>
   <header>
     <h1 class="single__title">
-      <?php esc_html( the_title() ); ?>
+      <?php the_title(); ?>
     </h1>
   </header>
   <div class="single__content content-style content-media-style">

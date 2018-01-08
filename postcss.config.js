@@ -9,17 +9,7 @@ const plugins = [
   require('autoprefixer'),
   require('postcss-font-magician')({
     hosted: [fontsPath],
-
-    // This method doesent support subsets so if you are using subsets this can't help you!
-    variants: {
-      'Open Sans': {
-        400: [],
-        600: [],
-        700: [],
-        800: []
-      }
-    },
-    foundries: ['google']
+    foundries: ['hosted']
   }),
   require('css-mqpacker')
 ];

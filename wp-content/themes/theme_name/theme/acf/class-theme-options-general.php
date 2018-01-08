@@ -16,7 +16,7 @@
  *
  * @package    Aaa
  */
-namespace Inf_Theme\Theme\Theme_Options;
+namespace Inf_Theme\Theme\Acf;
 
 use Inf_Theme\Helpers as General_Helpers;
 

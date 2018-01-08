@@ -9,6 +9,7 @@ $checkbox-disabled-trigger-bg-color: $base-silver-color;
   $this: &;
   position: relative;
   cursor: pointer;
+  display: block;
 
   // Icon
   &__icon {
@@ -25,9 +26,8 @@ $checkbox-disabled-trigger-bg-color: $base-silver-color;
     }
 
     &::before{
-      @extend %font-icon;
-      // content: $icon--arrow;
-      color: $checkbox-trigger-icon-color;
+      content: '';
+      background-color: $checkbox-trigger-icon-color;
       transform: translate(-50%, -50%);
       position: absolute;
       left: 50%;

@@ -7,3 +7,6 @@
 
 ?>
 
+<!-- Google Tag Manager -->
+
+<!-- END Google Tag Manager -->

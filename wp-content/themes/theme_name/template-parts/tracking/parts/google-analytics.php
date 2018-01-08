@@ -7,3 +7,6 @@
 
 ?>
 
+<!-- Google Analytics -->
+
+<!--END Google Analytics -->

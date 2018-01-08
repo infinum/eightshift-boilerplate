@@ -1,24 +1,25 @@
 $radio-trigger-icon-color: $base-primary-color;
 $radio-trigger-bg-color: $base-white-color;
-$radio-trigger-border-color: $base-battleship-color;
+$radio-trigger-border-color: $base-silver-color;
 
 $radio-disabled-trigger-bg-color: $base-silver-color;
 
 .radio {
-  @include checkbox-radio-size(24px, 12px);
+  @include checkbox-radio-size(12px, 6px);
   $this: &;
   position: relative;
   cursor: pointer;
+  display: block;
 
   // Icon
   &__icon {
     background-color: $radio-trigger-bg-color;
     border: 1px solid $radio-trigger-border-color;
-    border-radius: 50%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     left: 0;
+    border-radius: 50%;
     transition: {
       property: border-color, background-color;
       timing-function: ease;
@@ -26,9 +27,9 @@ $radio-disabled-trigger-bg-color: $base-silver-color;
     }
 
     &::before{
-      @extend %font-icon;
-      // content: $icon--arrow;
-      color: $radio-trigger-icon-color;
+      content: '';
+      border-radius: 50%;
+      background-color: $radio-trigger-icon-color;
       transform: translate(-50%, -50%);
       position: absolute;
       left: 50%;
