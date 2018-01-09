@@ -26,7 +26,7 @@ $radio-disabled-trigger-bg-color: $base-silver-color;
       duration: 0.2s;
     }
 
-    &::before{
+    &::before {
       content: '';
       border-radius: 50%;
       background-color: $radio-trigger-icon-color;
@@ -44,7 +44,7 @@ $radio-disabled-trigger-bg-color: $base-silver-color;
   }
 
   // move real input out from viewpoint, don't use display:none because of IE7-8
-  &__input{
+  &__input {
     position: absolute;
     left: -999999px;
     z-index: -1;
@@ -54,7 +54,7 @@ $radio-disabled-trigger-bg-color: $base-silver-color;
   }
 
   //disabled state
-  &--disabled{
+  &--disabled {
     #{$this}__icon {
       background-color: $radio-disabled-trigger-bg-color;
     }
@@ -65,7 +65,7 @@ $radio-disabled-trigger-bg-color: $base-silver-color;
   }
 
   // checked state
-  &--checked{
+  &--checked {
     #{$this}__icon::before {
       opacity: 1;
     }

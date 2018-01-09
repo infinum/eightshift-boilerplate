@@ -3,11 +3,12 @@ const DEV = process.env.NODE_ENV !== 'production';
 const path = require('path');
 const webpack = require('webpack');
 
+const jQuery = require.resolve('jquery');
+
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const appPath = `${path.resolve(__dirname)}`;
 
@@ -35,32 +36,45 @@ const allModules = {
     {
       test: /\.(js|jsx)$/,
       use: 'babel-loader',
-      exclude: /node_modules/
+      exclude: /node_modules/,
     },
     {
       test: /\.json$/,
       exclude: /node_modules/,
-      use: 'file-loader'
+      use: 'file-loader',
     },
     {
       test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
       exclude: [/fonts/, /node_modules/],
-      use: `file-loader?name=${outputImages}`
+      use: `file-loader?name=${outputImages}`,
     },
     {
       test: /\.(eot|otf|ttf|woff|woff2|svg)$/,
       exclude: [/images/, /node_modules/],
-      use: `file-loader?name=${outputFonts}`
+      use: `file-loader?name=${outputFonts}`,
     },
     {
       test: /\.scss$/,
       exclude: /node_modules/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: ['css-loader', 'postcss-loader', 'sass-loader']
-      })
-    }
-  ]
+        use: ['css-loader', 'postcss-loader', 'sass-loader'],
+      }),
+    },
+    {
+
+      // Exposes jQuery for use outside Webpack build.
+      test: jQuery,
+      use: [{
+        loader: 'expose-loader',
+        options: 'jQuery',
+      },
+      {
+        loader: 'expose-loader',
+        options: '$',
+      }],
+    },
+  ],
 };
 
 const allPlugins = [
@@ -68,7 +82,7 @@ const allPlugins = [
 
   new webpack.ProvidePlugin({
     $: 'jquery',
-    jQuery: 'jquery'
+    jQuery: 'jquery',
   }),
 
   // Use BrowserSync For assets
@@ -78,27 +92,24 @@ const allPlugins = [
     proxy: proxyUrl,
     files: [
       {
-        match: ['wp-content/themes/**/*.php', 'wp-content/plugins/**/*.php']
-      }
-    ]
+        match: ['wp-content/themes/**/*.php', 'wp-content/plugins/**/*.php'],
+      },
+    ],
   }),
 
   new webpack.DefinePlugin({
     'process.env': {
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
-    }
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+    },
   }),
 
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
-  // Analyse assets
-  // new BundleAnalyzerPlugin(),
-
   // Is using vendor files, but prefered to use npm
   new CopyWebpackPlugin([{
     from: `${themeFullPath}/assets/scripts/vendors`,
-    to: `${themeFullPath}/public/scripts/vendors`
-  }])
+    to: `${themeOutput}/scripts/vendors`,
+  }]),
 ];
 
 // Use only for production build
@@ -107,13 +118,13 @@ if (!DEV) {
     new CleanWebpackPlugin([themeOutput]),
     new webpack.optimize.UglifyJsPlugin({
       output: {
-        comments: false
+        comments: false,
       },
       compress: {
         warnings: false,
-        drop_console: true
+        drop_console: true, // eslint-disable-line camelcase
       },
-      sourceMap: true
+      sourceMap: true,
     })
   );
 }
@@ -125,18 +136,18 @@ module.exports = [
     context: path.join(__dirname),
     entry: {
       application: [themeEntry],
-      applicationAdmin: [themeAdminEntry]
+      applicationAdmin: [themeAdminEntry],
     },
     output: {
       path: themeOutput,
       publicPath: themePublicPath,
-      filename: outputJs
+      filename: outputJs,
     },
 
     module: allModules,
 
     plugins: allPlugins,
 
-    devtool: DEV ? '#inline-source-map' : ''
-  }
+    devtool: DEV ? '#inline-source-map' : '',
+  },
 ];

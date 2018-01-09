@@ -18,7 +18,7 @@
  */
 namespace Inf_Theme\Admin;
 
-use Inf_Theme\Theme\Theme_Options as Theme_Options;
+use Inf_Theme\Theme\Acf as Acf_Theme;
 
 class Acf {
 
@@ -66,7 +66,7 @@ class Acf {
    */
   public function set_google_map_api_key( $api ) {
 
-    $theme_options_general = new Theme_Options\Theme_Options_General();
+    $theme_options_general = new Acf_Theme\Theme_Options_General();
 
     $api['key'] = $theme_options_general->get_theme_option( 'google_maps_api_key' );
 

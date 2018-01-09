@@ -19,7 +19,7 @@ $cs-table-border-color: $base-silver-color;
     padding-bottom: $cs-default-padding;
 
     &.clear-spacing,
-    &:last-child  {
+    &:last-child {
       padding-bottom: 0;
     }
   }
@@ -97,7 +97,7 @@ $cs-table-border-color: $base-silver-color;
   ol {
     margin-left: 22px;
 
-    li{
+    li {
       padding-bottom: 15px;
 
       &:last-child {
@@ -132,7 +132,7 @@ $cs-table-border-color: $base-silver-color;
     margin-bottom: $cs-default-padding;
     border-collapse: collapse;
 
-    &:last-child  {
+    &:last-child {
       margin-bottom: 0;
     }
 

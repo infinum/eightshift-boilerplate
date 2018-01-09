@@ -71,7 +71,7 @@
 }
 
 //Buttons color items from map
-@mixin button-colors($map: $button-color-map){
+@mixin button-colors($map: $button-color-map) {
   @each $key, $value in $map {
     @if $key == default {
       @include button-color($value);

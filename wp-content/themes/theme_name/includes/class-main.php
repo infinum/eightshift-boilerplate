@@ -66,7 +66,7 @@ class Main {
     if ( defined( 'INF_THEME_NAME' ) ) {
       $this->theme_name = INF_THEME_NAME;
     } else {
-      $this->theme_name = 'inf_theme';
+      $this->theme_name = 'theme_name';
     }
 
     $this->load_dependencies();

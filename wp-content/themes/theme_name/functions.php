@@ -30,7 +30,7 @@ define( 'INF_THEME_VERSION', '1.0.0' );
  * @package theme_name
  */
 
-define( 'INF_THEME_NAME', 'inf_theme' );
+define( 'INF_THEME_NAME', 'theme_name' );
 
 /**
  * Change every time you deploy changes in assets to server

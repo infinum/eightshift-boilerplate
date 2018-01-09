@@ -35,14 +35,14 @@ export default class ScrollToElement {
 
     if ($selector.length) {
       $('html, body').animate({
-        scrollTop: $selector.offset().top
+        scrollTop: $selector.offset().top,
       }, 500);
     }
   }
 
   scrollToTop() {
     $('html, body').animate({
-      scrollTop: 0
+      scrollTop: 0,
     }, 500);
   }
 }

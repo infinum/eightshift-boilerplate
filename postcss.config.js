@@ -5,18 +5,23 @@ const path = require('path');
 const themeName = 'theme_name';
 const fontsPath = path.join(__dirname, `wp-content/themes/${themeName}/skin/assets/fonts`);
 
+const autoPrefixer = require('autoprefixer');
+const cssMqpacker = require('css-mqpacker');
+const postcssFontMagician = require('postcss-font-magician');
+const cssNano = require('cssnano');
+
 const plugins = [
-  require('autoprefixer'),
-  require('postcss-font-magician')({
+  autoPrefixer,
+  postcssFontMagician({
     hosted: [fontsPath],
-    foundries: ['hosted']
+    foundries: ['hosted'],
   }),
-  require('css-mqpacker')
+  cssMqpacker,
 ];
 
 // Use only for production build
 if (!DEV) {
-  plugins.push(require('cssnano'));
+  plugins.push(cssNano);
 }
 
 module.exports = {plugins};

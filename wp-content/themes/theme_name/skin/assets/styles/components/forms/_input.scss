@@ -6,6 +6,7 @@ $input-tap-highlight-color: rgba($base-black-color, 0);
 .select,
 .textarea {
   @extend %input-reset;
+
   @include text-size(biggest);
   font-family: $base-font-family;
   border: 1px solid $input-border-color;

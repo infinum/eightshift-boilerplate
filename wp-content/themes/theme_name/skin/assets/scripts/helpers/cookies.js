@@ -28,7 +28,7 @@ const cookies = {
   },
   setOneMonth() {
     return 2628000000;
-  }
+  },
 };
 
 export default cookies;

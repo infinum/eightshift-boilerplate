@@ -18,7 +18,6 @@ $cookies-notification-bg-color: rgba($base-primary-color, 0.1);
       text-align: center;
       flex-flow: column;
     }
-
     @include media(tablet up) {
       height: 40px;
       padding-right: 180px;
@@ -30,7 +29,6 @@ $cookies-notification-bg-color: rgba($base-primary-color, 0.1);
     @include media(mobile down) {
       margin-top: 10px;
     }
-
     @include media(tablet up) {
       position: absolute;
       right: 0;
