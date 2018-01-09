@@ -53,9 +53,9 @@ define( 'INF_IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' )
  *
  * @package theme_name
  */
-if( get_site_url() === 'https://boilerplate.com' ) {
+if ( get_site_url() === 'https://boilerplate.com' ) {
   define( 'INF_ENV', 'production' );
-} else if( get_site_url() === 'https://staging.boilerplate.com' ) {
+} elseif ( get_site_url() === 'https://staging.boilerplate.com' ) {
   define( 'INF_ENV', 'staging' );
 } else {
   define( 'INF_ENV', 'develop' );

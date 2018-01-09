@@ -1,15 +1,18 @@
+<?php
+/**
+ * Main header file
+ *
+ * @package theme_name
+ */
+
+?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
   <?php
-  /**
-   * Main header file
-   *
-   * @package theme_name
-   */
-
-  get_template_part( 'template-parts/header/head/head' );
-  wp_head();
+    get_template_part( 'template-parts/header/head/head' );
+    wp_head();
   ?>
 </head>
 <body <?php body_class(); ?>>
