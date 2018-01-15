@@ -18,6 +18,9 @@
  */
 namespace Inf_Theme\Helpers;
 
+/**
+ * Class General Helper
+ */
 class General_Helper {
 
   /**
@@ -40,9 +43,11 @@ class General_Helper {
    * @var string
    */
   protected $assets_version;
-  
-    /**
-   * Init call
+
+  /**
+   * Initialize class
+   *
+   * @param array $theme_info Load global theme info.
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];

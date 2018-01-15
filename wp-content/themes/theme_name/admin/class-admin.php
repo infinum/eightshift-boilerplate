@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -22,6 +21,9 @@
  */
 namespace Inf_Theme\Admin;
 
+/**
+ * Class Admin
+ */
 class Admin {
 
   /**
@@ -45,8 +47,10 @@ class Admin {
    */
   protected $assets_version;
 
-    /**
-   * Init call
+  /**
+   * Initialize class
+   *
+   * @param array $theme_info Load global theme info.
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
@@ -80,8 +84,8 @@ class Admin {
   /**
    * Add admin bar class for different env
    *
-   * @param [type] $classes
-   * @return void
+   * @param string $classes Get preset body classes.
+   * @return string         Return body classes with env class.
    */
   function set_enviroment_body_class( $classes ) {
     $this->env = '';

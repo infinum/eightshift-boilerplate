@@ -1,8 +1,7 @@
 <?php
-
 /**
  * The login-specific functionality.
- * 
+ *
  * @since      1.0.0
  *
  * @package    Aaa
@@ -18,6 +17,9 @@
  */
 namespace Inf_Theme\Admin;
 
+/**
+ * Class Login
+ */
 class Login {
 
   /**
@@ -40,9 +42,11 @@ class Login {
    * @var string
    */
   protected $assets_version;
-  
-    /**
-   * Init call
+
+  /**
+   * Initialize class
+   *
+   * @param array $theme_info Load global theme info.
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];

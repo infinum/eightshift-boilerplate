@@ -46,9 +46,9 @@ class Acf {
   protected $assets_version;
 
   /**
-   * Undocumented function
+   * Initialize class
    *
-   * @param [type] $theme_info .
+   * @param array $theme_info Load global theme info.
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];

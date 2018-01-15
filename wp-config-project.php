@@ -31,7 +31,7 @@ define( 'AUTOSAVE_INTERVAL', 240 );
 // Disable automatic updating of plugins.
 define( 'AUTOMATIC_UPDATER_DISABLED', true );
 
-if (INF_ENV === 'develop' ) {
+if ( INF_ENV === 'develop' ) {
   // Enable direct upload from admin.
   define( 'FS_METHOD', 'direct' );
 

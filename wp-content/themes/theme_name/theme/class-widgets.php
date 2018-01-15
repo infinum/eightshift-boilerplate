@@ -18,6 +18,9 @@
  */
 namespace Inf_Theme\Theme;
 
+/**
+ * Class Widgets
+ */
 class Widgets {
 
   /**
@@ -42,7 +45,9 @@ class Widgets {
   protected $assets_version;
 
   /**
-   * Init call
+   * Initialize class
+   *
+   * @param array $theme_info Load global theme info.
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];

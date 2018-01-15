@@ -1,8 +1,7 @@
 <?php
-
 /**
  * The login-specific functionality.
- * 
+ *
  * @since      1.0.0
  *
  * @package    Aaa
@@ -18,6 +17,9 @@
  */
 namespace Inf_Theme\Admin;
 
+/**
+ * Class Users
+ */
 class Users {
 
   /**
@@ -40,9 +42,11 @@ class Users {
    * @var string
    */
   protected $assets_version;
-  
-    /**
-   * Init call
+
+  /**
+   * Initialize class
+   *
+   * @param array $theme_info Load global theme info.
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
@@ -56,7 +60,7 @@ class Users {
    * @param number $user_id User ID.
    * @param string $new_role User new role.
    */
-  public function send_main_when_user_role_changes( $user_id, $new_role  ) {
+  public function send_main_when_user_role_changes( $user_id, $new_role ) {
     $site_url = get_bloginfo( 'wpurl' );
     $user_info = get_userdata( $user_id );
     $to = $user_info->user_email;
@@ -65,6 +69,11 @@ class Users {
     wp_mail( $to, $subject, $message );
   }
 
+  /**
+   * Change editors permissions
+   *
+   * @return void
+   */
   public function edit_editors_compatibilities() {
     $role_object_editor = get_role( 'editor' );
     if ( ! $role_object_editor->has_cap( 'edit_theme_options' ) ) {

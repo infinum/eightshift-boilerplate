@@ -20,6 +20,9 @@ namespace Inf_Theme\Theme\Acf;
 
 use Inf_Theme\Helpers as General_Helpers;
 
+/**
+ * Class Theme Options General
+ */
 class Theme_Options_General {
 
   /**
@@ -57,8 +60,10 @@ class Theme_Options_General {
    */
   public $options_transient_cache_name = 'theme-options-general';
 
-    /**
-   * Init call
+  /**
+   * Initialize class
+   *
+   * @param array $theme_info Load global theme info.
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
