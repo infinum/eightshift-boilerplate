@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The theme-specific functionality of the plugin.
  *
@@ -55,7 +54,7 @@ class General {
     $this->assets_version = $theme_info['assets_version'];
   }
 
-    /**
+  /**
    * Enable theme support
    *
    * @return void

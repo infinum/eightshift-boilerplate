@@ -1,8 +1,7 @@
 <?php
-
 /**
  * The login-specific functionality.
- * 
+ *
  * @since      1.0.0
  *
  * @package    Aaa
@@ -44,7 +43,7 @@ class Legacy_Browsers {
    */
   protected $assets_version;
 
-   /**
+  /**
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
@@ -59,7 +58,7 @@ class Legacy_Browsers {
    * Get browser object from browser cap
    * this will not work if you don't have browsecap setup in phpini
    * reference the location of browsecap.ini to phpini on your server.
-   * 
+   *
    * Here is a link for download. For this you can download the smallest version.
    * https://browscap.org/
    *
@@ -78,7 +77,7 @@ class Legacy_Browsers {
   /**
    * Get browser version number
    *
-   * @return void
+   * @return string Return browser version name.
    */
   public function get_browser_version() {
     $browser_verion = $this->get_browser_info();
