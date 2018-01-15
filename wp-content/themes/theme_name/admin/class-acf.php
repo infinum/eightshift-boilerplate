@@ -1,8 +1,7 @@
 <?php
-
 /**
  * The login-specific functionality.
- * 
+ *
  * @since      1.0.0
  *
  * @package    Aaa
@@ -20,16 +19,36 @@ namespace Inf_Theme\Admin;
 
 use Inf_Theme\Theme\Acf as Acf_Theme;
 
+/**
+ * Class Advance Custom Fields
+ */
 class Acf {
 
+  /**
+   * Global theme name
+   *
+   * @var string
+   */
   protected $theme_name;
 
+  /**
+   * Global theme version
+   *
+   * @var string
+   */
   protected $theme_version;
 
+  /**
+   * Global assets version
+   *
+   * @var string
+   */
   protected $assets_version;
-  
-    /**
-   * Init call
+
+  /**
+   * Undocumented function
+   *
+   * @param [type] $theme_info .
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
@@ -37,7 +56,7 @@ class Acf {
     $this->assets_version = $theme_info['assets_version'];
   }
 
- /**
+  /**
    * Add new toolbar to the ACF WYSIWYG editor
    *
    * @param  array $toolbars Existing toolbars.

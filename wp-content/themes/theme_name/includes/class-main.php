@@ -31,12 +31,33 @@ use Inf_Theme\Theme\Utils as Utils;
  */
 class Main {
 
+
+  /**
+   * Loader variable for hooks
+   *
+   * @var Loader    $loader    Maintains and registers all hooks for the plugin.
+   */
   protected $loader;
 
+  /**
+   * Global theme name
+   *
+   * @var string
+   */
   protected $theme_name;
 
+  /**
+   * Global theme version
+   *
+   * @var string
+   */
   protected $theme_version;
 
+  /**
+   * Global assets version
+   *
+   * @var string
+   */
   protected $assets_version;
 
   /**

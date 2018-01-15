@@ -22,12 +22,32 @@ use Inf_Theme\Helpers as General_Helpers;
 
 class Helpers {
 
+  /**
+   * Global theme name
+   *
+   * @var string
+   */
   protected $theme_name;
 
+  /**
+   * Global theme version
+   *
+   * @var string
+   */
   protected $theme_version;
 
+  /**
+   * Global assets version
+   *
+   * @var string
+   */
   protected $assets_version;
 
+  /**
+   * General Helper class
+   *
+   * @var object General_Helper
+   */
   public $general_helper;
 
   /**

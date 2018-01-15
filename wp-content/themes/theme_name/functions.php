@@ -49,18 +49,6 @@ define( 'INF_ASSETS_VERSION', '1.0.0' );
 define( 'INF_IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' );
 
 /**
- * Global Enviroment variable
- *
- * @package theme_name
- */
-if ( get_site_url() === 'https://boilerplate.com' ) {
-  define( 'INF_ENV', 'production' );
-} elseif ( get_site_url() === 'https://staging.boilerplate.com' ) {
-  define( 'INF_ENV', 'staging' );
-} else {
-  define( 'INF_ENV', 'develop' );
-}
-/**
  * Include the autoloader so we can dynamically include the rest of the classes.
  *
  * @package theme_name

@@ -20,10 +20,25 @@ namespace Inf_Theme\Theme\Utils;
 
 class Post_Type {
 
+  /**
+   * Global theme name
+   *
+   * @var string
+   */
   protected $theme_name;
 
+  /**
+   * Global theme version
+   *
+   * @var string
+   */
   protected $theme_version;
 
+  /**
+   * Global assets version
+   *
+   * @var string
+   */
   protected $assets_version;
   
     /**

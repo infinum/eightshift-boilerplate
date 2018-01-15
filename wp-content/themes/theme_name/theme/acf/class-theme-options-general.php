@@ -22,16 +22,41 @@ use Inf_Theme\Helpers as General_Helpers;
 
 class Theme_Options_General {
 
+  /**
+   * Global theme name
+   *
+   * @var string
+   */
   protected $theme_name;
 
+  /**
+   * Global theme version
+   *
+   * @var string
+   */
   protected $theme_version;
 
+  /**
+   * Global assets version
+   *
+   * @var string
+   */
   protected $assets_version;
 
+  /**
+   * Theme options page slug
+   *
+   * @var string
+   */
   protected $options_page_slug = 'theme-options-general';
 
+  /**
+   * Theme options transient name
+   *
+   * @var string
+   */
   public $options_transient_cache_name = 'theme-options-general';
-  
+
     /**
    * Init call
    */
