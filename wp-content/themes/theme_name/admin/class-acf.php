@@ -19,6 +19,8 @@ class Acf {
    * Global theme name
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $theme_name;
 
@@ -26,6 +28,8 @@ class Acf {
    * Global theme version
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $theme_version;
 
@@ -33,6 +37,8 @@ class Acf {
    * Global assets version
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $assets_version;
 

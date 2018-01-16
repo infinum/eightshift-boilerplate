@@ -20,6 +20,8 @@ class Theme_Options_General {
    * Global theme name
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $theme_name;
 
@@ -27,6 +29,8 @@ class Theme_Options_General {
    * Global theme version
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $theme_version;
 
@@ -34,6 +38,8 @@ class Theme_Options_General {
    * Global assets version
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $assets_version;
 
@@ -41,6 +47,8 @@ class Theme_Options_General {
    * Theme options page slug
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $options_page_slug = 'theme-options-general';
 
@@ -48,6 +56,8 @@ class Theme_Options_General {
    * Theme options transient name
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   public $options_transient_cache_name = 'theme-options-general';
 

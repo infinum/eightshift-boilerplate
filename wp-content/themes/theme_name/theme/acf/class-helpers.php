@@ -20,6 +20,8 @@ class Helpers {
    * Global theme name
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $theme_name;
 
@@ -27,6 +29,8 @@ class Helpers {
    * Global theme version
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $theme_version;
 
@@ -34,6 +38,8 @@ class Helpers {
    * Global assets version
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $assets_version;
 
@@ -41,6 +47,8 @@ class Helpers {
    * General Helper class
    *
    * @var object General_Helper
+
+   * @since 1.0.0
    */
   public $general_helper;
 

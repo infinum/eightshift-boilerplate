@@ -17,6 +17,8 @@ class Editor {
    * Global theme name
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $theme_name;
 
@@ -24,6 +26,8 @@ class Editor {
    * Global theme version
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $theme_version;
 
@@ -31,6 +35,8 @@ class Editor {
    * Global assets version
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $assets_version;
 

@@ -18,6 +18,8 @@ class Legacy_Browsers {
    * Global theme name
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $theme_name;
 
@@ -25,6 +27,8 @@ class Legacy_Browsers {
    * Global theme version
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $theme_version;
 
@@ -32,6 +36,8 @@ class Legacy_Browsers {
    * Global assets version
    *
    * @var string
+   *
+   * @since 1.0.0
    */
   protected $assets_version;
 
