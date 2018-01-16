@@ -2,19 +2,10 @@
 /**
  * The theme-specific functionality of the plugin.
  *
- * @since      1.0.0
- *
+ * @since   1.0.0
  * @package theme_name
  */
 
-/**
- * The theme-specific functionality of the plugin.
- *
- * Defines the theme name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    theme_name
- */
 namespace Inf_Theme\Theme\Acf;
 
 use Inf_Theme\Helpers as General_Helpers;

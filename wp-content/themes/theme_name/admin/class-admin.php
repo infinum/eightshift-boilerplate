@@ -2,23 +2,10 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       asf
- * @since      1.0.0
- *
- * @package    Aaa
- * @subpackage Aaa/admin
+ * @since   1.0.0
+ * @package theme_name
  */
 
-/**
- * The admin-specific functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    Aaa
- * @subpackage Aaa/admin
- * @author     asf <asf>
- */
 namespace Inf_Theme\Admin;
 
 /**
@@ -77,7 +64,7 @@ class Admin {
    */
   public function enqueue_scripts() {
 
-    wp_enqueue_script( $this->theme_name, plugin_dir_url( __FILE__ ) . 'js/aaa-admin.js', array( 'jquery' ), $this->theme_version, false );
+    wp_enqueue_script( $this->theme_name, plugin_dir_url( __FILE__ ) . 'js/theme_name-admin.js', array( 'jquery' ), $this->theme_version, false );
 
   }
 

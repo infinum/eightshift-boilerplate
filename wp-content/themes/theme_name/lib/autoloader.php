@@ -9,9 +9,8 @@
  * Props to tommcfarlin <tom@tommcfarlin.com>
  *
  * @link       https://infinum.co/careers
- * @since      1.0.0
- *
- * @package    Json_WP_Post_Parser\Lib
+ * @since   1.0.0
+ * @package theme_name
  */
 
 namespace Inf_Theme\Lib;

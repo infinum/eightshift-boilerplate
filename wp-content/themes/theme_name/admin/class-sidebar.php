@@ -2,19 +2,10 @@
 /**
  * The login-specific functionality.
  *
- * @since      1.0.0
- *
- * @package    Aaa
+ * @since   1.0.0
+ * @package theme_name
  */
 
-/**
- * The login-specific functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    Aaa
- */
 namespace Inf_Theme\Admin;
 
 /**

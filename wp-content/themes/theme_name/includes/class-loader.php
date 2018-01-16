@@ -2,9 +2,8 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @since      1.0.0
- *
- * @package    Aaa
+ * @since   1.0.0
+ * @package theme_name
  */
 
 namespace Inf_Theme\Includes;

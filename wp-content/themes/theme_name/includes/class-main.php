@@ -5,8 +5,8 @@
  * A class definition that includes attributes and functions used across both the
  * theme-facing side of the site and the admin area.
  *
- * @package    theme_name
- * @since      1.0.0
+ * @since   1.0.0
+ * @package theme_name
  */
 
 namespace Inf_Theme\Includes;
@@ -26,8 +26,8 @@ use Inf_Theme\Theme\Utils as Utils;
  * Also maintains the unique identifier of this theme as well as the current
  * version of the theme.
  *
- * @package    theme_name
- * @since      1.0.0
+ * @since   1.0.0
+ * @package theme_name
  */
 class Main {
 

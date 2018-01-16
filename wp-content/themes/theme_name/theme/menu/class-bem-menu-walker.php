@@ -2,6 +2,7 @@
 /**
  * Menu Walker Class
  *
+ * @since   1.0.0
  * @package theme_name
  */
 
