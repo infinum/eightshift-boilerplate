@@ -48,7 +48,7 @@ class Sidebar {
   /**
    * Remove some menu links
    *
-   * @since    1.0.0
+   * @since 1.0.0
    */
   public function remove_sub_menus() {
     remove_menu_page( 'edit-comments.php' );

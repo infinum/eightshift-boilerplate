@@ -20,17 +20,13 @@ use Inf_Theme\Theme\Utils as Utils;
 /**
  * The main start class.
  *
- * This is used to define internationalization, admin-specific hooks, and
+ * This is used to define admin-specific hooks, and
  * theme-facing site hooks.
  *
  * Also maintains the unique identifier of this theme as well as the current
  * version of the theme.
- *
- * @since   1.0.0
- * @package theme_name
  */
 class Main {
-
 
   /**
    * Loader variable for hooks
@@ -61,14 +57,8 @@ class Main {
   protected $assets_version;
 
   /**
-   * Define the main functionality.
-   *
-   * Set the name and the version that can be used.
-   * Load the dependencies, define the locale, and set the hooks for the admin area and
-   * the public-facing side of the site.
-   *
-   * @package    theme_name
-   * @since      1.0.0
+   * Initialize class
+   * Load hooks and define some global variables.
    */
   public function __construct() {
 
@@ -101,8 +91,7 @@ class Main {
    * Create an instance of the loader which will be used to register the hooks
    * with WordPress.
    *
-   * @package    theme_name
-   * @since      1.0.0
+   * @since 1.0.0
    */
   private function load_dependencies() {
     $this->loader = new Loader();
@@ -111,8 +100,7 @@ class Main {
   /**
    * Register all of the hooks related to the admin area functionality.
    *
-   * @package    theme_name
-   * @since      1.0.0
+   * @since 1.0.0
    */
   private function define_admin_hooks() {
     $this->admin = new Admin\Admin( $this->get_theme_info() );
@@ -147,10 +135,9 @@ class Main {
   }
 
   /**
-   * Register all of the hooks related to the admin area functionality.
+   * Register all of the hooks related to the theme area functionality.
    *
-   * @package    theme_name
-   * @since      1.0.0
+   * @since 1.0.0
    */
   private function define_theme_hooks() {
     $this->theme = new Theme\Theme( $this->get_theme_info() );
@@ -179,7 +166,7 @@ class Main {
     // Menu.
     $this->loader->add_action( 'after_setup_theme', $this->menu, 'register_menu_positions' );
 
-    // Optimizations
+    // Optimizations.
     // This is removing the functionality but it is removing meta tags from head.
     $this->loader->remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
     $this->loader->remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -221,8 +208,7 @@ class Main {
   /**
    * Run the loader to execute all of the hooks with WordPress.
    *
-   * @package    theme_name
-   * @since      1.0.0
+   * @since 1.0.0
    */
   public function run() {
     $this->loader->run();
@@ -231,9 +217,8 @@ class Main {
   /**
    * The reference to the class that orchestrates the hooks.
    *
-   * @package    theme_name
-   * @since      1.0.0
-   * @return    Loader    Orchestrates the hooks.
+   * @since 1.0.0
+   * @return Loader Orchestrates the hooks.
    */
   public function get_loader() {
     return $this->loader;
@@ -243,9 +228,8 @@ class Main {
    * The name used to uniquely identify it within the context of
    * WordPress and to define internationalization functionality.
    *
-   * @package   theme_name
-   * @since     1.0.0
-   * @return    string    The name.
+   * @since 1.0.0
+   * @return string Theme name.
    */
   public function get_theme_name() {
     return $this->theme_name;
@@ -254,9 +238,8 @@ class Main {
   /**
    * Retrieve the version number.
    *
-   * @package   theme_name
-   * @since     1.0.0
-   * @return    string    The version number.
+   * @since 1.0.0
+   * @return string Theme version number.
    */
   public function get_theme_version() {
     return $this->theme_version;
@@ -265,18 +248,18 @@ class Main {
   /**
    * Retrieve the assets version number.
    *
-   * @since     1.0.0
-   * @return    string    The assets version number.
+   * @since 1.0.0
+   * @return string Theme assets version number.
    */
   public function get_assets_version() {
     return $this->assets_version;
   }
 
   /**
-   * Retrieve the theme info.
+   * Retrieve the theme info array.
    *
-   * @since     1.0.0
-   * @return    array    The theme info.
+   * @since 1.0.0
+   * @return array    Theme info array.
    */
   public function get_theme_info() {
     return array(

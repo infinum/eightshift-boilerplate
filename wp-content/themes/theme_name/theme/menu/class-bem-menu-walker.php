@@ -21,6 +21,8 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    * Constructor function
    *
    * @param array $css_class_prefix load menu prefixes for class.
+   *
+   * @since 1.0.0
    */
   function __construct( $css_class_prefix ) {
 
@@ -40,17 +42,19 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
 
   }
 
-    /**
-     * Dispaly element for wlaker
-     *
-     * @param array   $element element.
-     * @param array   $children_elements children_elements.
-     * @param array   $max_depth max_depth.
-     * @param integer $depth depth.
-     * @param array   $args args.
-     * @param array   $output output.
-     * @return element
-     */
+  /**
+   * Dispaly element for wlaker
+   *
+   * @param array   $element element.
+   * @param array   $children_elements children_elements.
+   * @param array   $max_depth max_depth.
+   * @param integer $depth depth.
+   * @param array   $args args.
+   * @param array   $output output.
+   * @return element
+   *
+   * @since 1.0.0
+   */
   function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 
     $id_field = $this->db_fields['id'];
@@ -63,14 +67,16 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
 
   }
 
-    /**
-     * Start level
-     *
-     * @param array   $output output.
-     * @param integer $depth depth.
-     * @param array   $args args.
-     * @return void
-     */
+  /**
+   * Start level
+   *
+   * @param array   $output output.
+   * @param integer $depth depth.
+   * @param array   $args args.
+   * @return void
+   *
+   * @since 1.0.0
+   */
   function start_lvl( &$output, $depth = 1, $args = array() ) {
 
     $real_depth = $depth + 1;
@@ -91,16 +97,18 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
     $output .= "\n" . $indent . '<ul class="' . $class_names . '">' . "\n";
   }
 
-    /**
-     * Add main/sub classes to li's and links.
-     *
-     * @param array   $output output.
-     * @param array   $item item.
-     * @param integer $depth depth.
-     * @param array   $args args.
-     * @param integer $id id.
-     * @return void
-     */
+  /**
+   * Add main/sub classes to li's and links.
+   *
+   * @param array   $output output.
+   * @param array   $item item.
+   * @param integer $depth depth.
+   * @param array   $args args.
+   * @param integer $id id.
+   * @return void
+   *
+   * @since 1.0.0
+   */
   function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 
     global $wp_query;

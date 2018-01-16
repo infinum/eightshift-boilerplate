@@ -38,6 +38,8 @@ class Menu {
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
+   *
+   * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
@@ -47,6 +49,8 @@ class Menu {
 
   /**
    * Register All Menu positions
+   *
+   * @since 1.0.0
    */
   public function register_menu_positions() {
     register_nav_menus(
@@ -64,6 +68,8 @@ class Menu {
    * @param  arr|string $css_class_modifiers Provide either a string or array of values to apply extra classes to the <ul> but not the <li's>.
    * @param  bool       $echo                Echo the menu.
    * @return string                          Outputs html version of menu.
+   *
+   * @since 1.0.0
    */
   public function bem_menu( $location = 'main_menu', $css_class_prefix = 'main-menu', $css_class_modifiers = null, $echo = true ) {
 

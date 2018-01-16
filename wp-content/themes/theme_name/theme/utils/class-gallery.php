@@ -38,6 +38,8 @@ class Gallery {
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
+   *
+   * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
@@ -52,6 +54,8 @@ class Gallery {
    * @param   array  $attr Attributes of the gallery shortcode.
    * @param   int    $instance Unique numeric ID of this gallery shortcode instance.
    * @return  string           Modified gallery shortcode.
+   *
+   * @since 1.0.0
    */
   function wrap_post_gallery( $html, $attr, $instance ) {
     if ( isset( $attr['class'] ) ) {

@@ -52,6 +52,8 @@ class Acf {
    *
    * @param  array $toolbars Existing toolbars.
    * @return array           Modified toolbars.
+   *
+   * @since 1.0.0
    */
   public function add_wysiwyg_toolbars( $toolbars ) {
 
@@ -72,6 +74,8 @@ class Acf {
    *
    * @param  array $api Existing maps object.
    * @return array      Return modiried object.
+   *
+   * @since 1.0.0
    */
   public function set_google_map_api_key( $api ) {
 

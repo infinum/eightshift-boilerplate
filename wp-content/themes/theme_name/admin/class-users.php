@@ -50,6 +50,8 @@ class Users {
    *
    * @param number $user_id User ID.
    * @param string $new_role User new role.
+   *
+   * @since 1.0.0
    */
   public function send_main_when_user_role_changes( $user_id, $new_role ) {
     $site_url = get_bloginfo( 'wpurl' );
@@ -62,6 +64,8 @@ class Users {
 
   /**
    * Change editors permissions
+   *
+   * @since 1.0.0
    */
   public function edit_editors_compatibilities() {
     $role_object_editor = get_role( 'editor' );

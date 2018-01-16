@@ -38,6 +38,8 @@ class Theme {
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
+   *
+   * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
@@ -48,7 +50,7 @@ class Theme {
   /**
    * Register the Stylesheets for the theme area.
    *
-   * @since    1.0.0
+   * @since 1.0.0
    */
   public function enqueue_styles() {
 
@@ -60,7 +62,7 @@ class Theme {
   /**
    * Register the JavaScript for the theme area.
    *
-   * @since    1.0.0
+   * @since 1.0.0
    */
   public function enqueue_scripts() {
     wp_deregister_script( 'jquery-migrate' );

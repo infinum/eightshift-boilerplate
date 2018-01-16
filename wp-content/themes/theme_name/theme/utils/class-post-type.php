@@ -38,6 +38,8 @@ class Post_Type {
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
+   *
+   * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
@@ -52,6 +54,8 @@ class Post_Type {
    * @param  object $post_object Post object.
    * @param  string $name        Name of the link.
    * @return string              Html link to the post.
+   *
+   * @since 1.0.0
    */
   function get_post_type_link( $class = null, $post_object = null, $name = null ) {
 
@@ -78,12 +82,14 @@ class Post_Type {
     return '<a href="' . $slug . '" class="' . $class . '"> ' . $name . ' </a>';
   }
 
-   /**
-    * Check if custom post type exists
-    *
-    * @param object $post_object Post object.
-    * @return boolian            True/False if exists.
-    */
+  /**
+   * Check if custom post type exists
+   *
+   * @param object $post_object Post object.
+   * @return boolian            True/False if exists.
+   *
+   * @since 1.0.0
+   */
   function does_post_type_exist( $post_object = null ) {
 
     // If in loop add post type from global post.

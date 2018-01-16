@@ -38,6 +38,8 @@ class Images {
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
+   *
+   * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
@@ -54,6 +56,8 @@ class Images {
    * @param  integer $post_id  Post ID.
    * @param  integer $no_image Link to no image thumbnail.
    * @return array             Array with image settings.
+   *
+   * @since 1.0.0
    */
   function get_post_image( $size, $post_id = null, $no_image = null ) {
     global $post;
@@ -92,6 +96,8 @@ class Images {
    *
    * @param string $size Image size from Image object.
    * @param array  $image_array WP image array.
+   *
+   * @since 1.0.0
    */
   function get_image_from_array( $size, $image_array ) {
     if ( ! empty( $image_array ) ) {

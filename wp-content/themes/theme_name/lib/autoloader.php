@@ -6,9 +6,7 @@
  * plugin.
  *
  * Used code from https://github.com/tommcfarlin/namespaces-and-autoloading-in-wordpress
- * Props to tommcfarlin <tom@tommcfarlin.com>
  *
- * @link       https://infinum.co/careers
  * @since   1.0.0
  * @package theme_name
  */
@@ -22,6 +20,8 @@ spl_autoload_register( __NAMESPACE__ . '\\inf_theme_autoloader' );
  * plugin by looking at the $filename parameter being passed as an argument.
  *
  * @param string $filename The fully-qualified name of the file that contains the class.
+ *
+ * @since 1.0.0
  */
 function inf_theme_autoloader( $filename ) {
   $file_path = explode( '\\', $filename );

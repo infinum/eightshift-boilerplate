@@ -126,7 +126,7 @@ class Loader {
   /**
    * Register the filters and actions with WordPress.
    *
-   * @since    1.0.0
+   * @since 1.0.0
    */
   public function run() {
     foreach ( $this->filters as $hook ) {

@@ -63,6 +63,8 @@ class Helpers {
    * @param string $key   Button key in array.
    * @param array  $array Array to look in.
    * @return array        Get full button array.
+   *
+   * @since 1.0.0
    */
   public function get_button( $key, $array ) {
     $view_type = '';
@@ -125,6 +127,8 @@ class Helpers {
    * @param string $link Full link or page ID depending on the type.
    * @param string $type Link type.
    * @return array       Get full link array.
+   *
+   * @since 1.0.0
    */
   public function get_link( $link, $type ) {
     $url = '';
@@ -157,6 +161,8 @@ class Helpers {
    * @param string $image_size     Specify image size.
    * @param bool   $return_default Return placeholder if image doesn't exist.
    * @return array                 Get full image array.
+   *
+   * @since 1.0.0
    */
   function get_image_simple( $key, $array, $image_size, $return_default = true ) {
     $image = '';
@@ -182,6 +188,8 @@ class Helpers {
    * @param string $key   Title key in array.
    * @param array  $array Array to look in.
    * @return array        Get full title array.
+   *
+   * @since 1.0.0
    */
   function get_title( $key, $array ) {
     $title = '';
@@ -207,6 +215,8 @@ class Helpers {
    * @param string $key   Utilities key in array.
    * @param array  $array Array to look in.
    * @return array        Get full utilities array.
+   *
+   * @since 1.0.0
    */
   function get_utilities( $key, $array ) {
     $class = '';

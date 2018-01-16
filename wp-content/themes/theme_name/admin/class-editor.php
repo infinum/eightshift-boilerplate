@@ -48,7 +48,7 @@ class Editor {
   /**
    * Add theme specific styles to editor
    *
-   * @since    1.0.0
+   * @since 1.0.0
    */
   public function add_editor_styles() {
     add_editor_style( '/skin/public/styles/applicationAdmin.css' );

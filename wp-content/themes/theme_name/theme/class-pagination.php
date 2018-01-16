@@ -38,6 +38,8 @@ class Pagination {
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
+   *
+   * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
@@ -49,6 +51,8 @@ class Pagination {
    * Posts next attibutes
    *
    * @return string Return class for link
+   *
+   * @since 1.0.0
    */
   function pagination_link_next_class() {
     return 'class="page-numbers next"';
@@ -58,6 +62,8 @@ class Pagination {
    * Posts prev attibutes
    *
    * @return string Return class for link
+   *
+   * @since 1.0.0
    */
   function pagination_link_prev_class() {
     return 'class="page-numbers prev"';

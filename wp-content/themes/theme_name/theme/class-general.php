@@ -38,6 +38,8 @@ class General {
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
+   *
+   * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
@@ -47,6 +49,8 @@ class General {
 
   /**
    * Enable theme support
+   *
+   * @since 1.0.0
    */
   public function add_theme_support() {
     add_theme_support( 'title-tag', 'html5' );

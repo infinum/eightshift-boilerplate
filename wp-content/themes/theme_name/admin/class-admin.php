@@ -49,7 +49,7 @@ class Admin {
   /**
    * Register the Stylesheets for the admin area.
    *
-   * @since    1.0.0
+   * @since 1.0.0
    */
   public function enqueue_styles() {
 
@@ -61,7 +61,7 @@ class Admin {
   /**
    * Register the JavaScript for the admin area.
    *
-   * @since    1.0.0
+   * @since 1.0.0
    */
   public function enqueue_scripts() {
 
@@ -75,6 +75,8 @@ class Admin {
    *
    * @param string $classes Get preset body classes.
    * @return string         Body classes with env class.
+   *
+   * @since 1.0.0
    */
   function set_enviroment_body_class( $classes ) {
     $this->env = '';
