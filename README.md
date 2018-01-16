@@ -28,7 +28,11 @@ Use `_db-*` scripts to export latest database and uploads folder.
   ```
 
 ## wp-config.php
-add this to your `wp-config.php`
-// TODO
+on the bottom of the `wp-config.php` befor wp-settings require add this part:
+```
+// Include wp config for your project.
+require_once(ABSPATH . 'wp-config-project.php');
+```
+This is project specific configuration that you can tailor to your projects needs.
 
 ------------------------------------

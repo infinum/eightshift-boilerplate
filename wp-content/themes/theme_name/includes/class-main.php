@@ -65,6 +65,8 @@ class Main {
   /**
    * Initialize class
    * Load hooks and define some global variables.
+   *
+   * @since 1.0.0
    */
   public function __construct() {
 
@@ -223,8 +225,9 @@ class Main {
   /**
    * The reference to the class that orchestrates the hooks.
    *
-   * @since 1.0.0
    * @return Loader Orchestrates the hooks.
+   *
+   * @since 1.0.0
    */
   public function get_loader() {
     return $this->loader;
@@ -234,8 +237,9 @@ class Main {
    * The name used to uniquely identify it within the context of
    * WordPress and to define internationalization functionality.
    *
-   * @since 1.0.0
    * @return string Theme name.
+   *
+   * @since 1.0.0
    */
   public function get_theme_name() {
     return $this->theme_name;
@@ -244,8 +248,9 @@ class Main {
   /**
    * Retrieve the version number.
    *
-   * @since 1.0.0
    * @return string Theme version number.
+   *
+   * @since 1.0.0
    */
   public function get_theme_version() {
     return $this->theme_version;
@@ -254,8 +259,9 @@ class Main {
   /**
    * Retrieve the assets version number.
    *
-   * @since 1.0.0
    * @return string Theme assets version number.
+   *
+   * @since 1.0.0
    */
   public function get_assets_version() {
     return $this->assets_version;
@@ -264,8 +270,9 @@ class Main {
   /**
    * Retrieve the theme info array.
    *
+   * @return array Theme info array.
+   *
    * @since 1.0.0
-   * @return array    Theme info array.
    */
   public function get_theme_info() {
     return array(

@@ -3,6 +3,8 @@
  * Global Enviroment variable
  *
  * @package theme_name
+ *
+ * @since 1.0.0
  */
 
 // Must be set.

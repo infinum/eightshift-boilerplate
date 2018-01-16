@@ -47,7 +47,7 @@ class Helpers {
    * General Helper class
    *
    * @var object General_Helper
-
+   *
    * @since 1.0.0
    */
   public $general_helper;
@@ -56,6 +56,8 @@ class Helpers {
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
+   *
+   * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name = $theme_info['theme_name'];
