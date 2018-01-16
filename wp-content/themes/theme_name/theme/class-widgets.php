@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The theme-specific functionality of the plugin.
  *
@@ -63,13 +62,13 @@ class Widgets {
   public function register_widget_position() {
     register_sidebar(
       array(
-      'name'          => esc_html__( 'Blog', 'theme_name' ),
-      'id'            => 'blog',
-      'description'   => esc_html__( 'Description', 'theme_name' ),
-      'before_widget' => '',
-      'after_widget'  => '',
-      'before_title'  => '',
-      'after_title'   => '',
+          'name'          => esc_html__( 'Blog', 'theme_name' ),
+          'id'            => 'blog',
+          'description'   => esc_html__( 'Description', 'theme_name' ),
+          'before_widget' => '',
+          'after_widget'  => '',
+          'before_title'  => '',
+          'after_title'   => '',
       )
     );
   }

@@ -10,6 +10,6 @@
 
 <footer class="footer">
   <div class="footer__container">
-	<!-- insert content here -->
+  <!-- insert content here -->
   </div>
 </footer>

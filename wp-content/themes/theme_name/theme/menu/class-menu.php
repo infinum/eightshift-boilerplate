@@ -1,8 +1,7 @@
 <?php
-
 /**
  * The login-specific functionality.
- * 
+ *
  * @since      1.0.0
  *
  * @package    Aaa
@@ -61,7 +60,7 @@ class Menu {
   public function register_menu_positions() {
     register_nav_menus(
       array(
-      'header_main_nav' => esc_html__( 'Menu', 'theme_name' ),
+          'header_main_nav' => esc_html__( 'Menu', 'theme_name' ),
       )
     );
   }
@@ -72,7 +71,6 @@ class Menu {
    * @param  string     $location            This must be the same as what is set in wp-admin/settings/menus for menu location.
    * @param  string     $css_class_prefix    This string will prefix all of the menu's classes, BEM syntax friendly.
    * @param  arr|string $css_class_modifiers Provide either a string or array of values to apply extra classes to the <ul> but not the <li's>.
-   * @param  bool       $use_mega_menu       Show megamenu.
    * @param  bool       $echo                Echo the menu.
    * @return [type]
    */

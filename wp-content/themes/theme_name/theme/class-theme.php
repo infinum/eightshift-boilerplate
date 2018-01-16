@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The theme-specific functionality of the plugin.
  *
@@ -79,16 +78,16 @@ class Theme {
 
     // JS.
     if ( ! is_page_template( 'page-templates/page-old-browser.php' ) ) {
-      wp_register_script( $this->theme_name . '-webfont', get_template_directory_uri() . '/skin/public/scripts/vendors/webfont.1.6.26.min.js', array(  ), '1.6.26' );
+      wp_register_script( $this->theme_name . '-webfont', get_template_directory_uri() . '/skin/public/scripts/vendors/webfont.1.6.26.min.js', array(), '1.6.26' );
       wp_enqueue_script( $this->theme_name . '-webfont' ); // Fonts loaded via JS fonts.js.
 
-      wp_register_script( $this->theme_name . '-scripts', get_template_directory_uri() . '/skin/public/scripts/application.js', array(  ), $this->assets_version );
+      wp_register_script( $this->theme_name . '-scripts', get_template_directory_uri() . '/skin/public/scripts/application.js', array(), $this->assets_version );
       wp_enqueue_script( $this->theme_name . '-scripts' );
 
       // Glbal variables for ajax and translations.
       wp_localize_script(
         $this->theme_name . '-scripts', 'themeLocalization', array(
-          'ajaxurl' => admin_url( 'admin-ajax.php' )
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
         )
       );
     }

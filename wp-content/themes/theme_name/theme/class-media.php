@@ -1,8 +1,7 @@
 <?php
-
 /**
  * The login-specific functionality.
- * 
+ *
  * @since      1.0.0
  *
  * @package    Aaa
@@ -64,6 +63,9 @@ class Media {
     add_theme_support( 'post-thumbnails' );
   }
 
+  /**
+   * Create new image sizes
+   */
   public function add_custom_image_sizes() {
     add_image_size( 'full_width', 1440, 9999, true );
     add_image_size( 'listing', 570, 320, true );
@@ -82,12 +84,12 @@ class Media {
   }
 
   /**
-  * Enable SVG preview in Media Library
-  *
-  * @param array      $response   Array of prepared attachment data.
-  * @param int|object $attachment Attachment ID or object.
-  * @param array      $meta       Array of attachment meta data.
-  */
+   * Enable SVG preview in Media Library
+   *
+   * @param array      $response   Array of prepared attachment data.
+   * @param int|object $attachment Attachment ID or object.
+   * @param array      $meta       Array of attachment meta data.
+   */
   public function enable_svg_library_preview( $response, $attachment, $meta ) {
     if ( $response['type'] === 'image' && $response['subtype'] === 'svg+xml' && class_exists( 'SimpleXMLElement' ) ) {
       try {

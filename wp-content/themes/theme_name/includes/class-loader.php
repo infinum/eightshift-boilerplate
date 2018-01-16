@@ -1,6 +1,10 @@
 <?php
 /**
  * Register all actions and filters for the plugin
+ *
+ * @since      1.0.0
+ *
+ * @package    Aaa
  */
 
 namespace Inf_Theme\Includes;

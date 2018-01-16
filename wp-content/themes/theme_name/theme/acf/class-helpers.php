@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The theme-specific functionality of the plugin.
  *
@@ -110,7 +109,7 @@ class Helpers {
         $new_tab = true;
       }
 
-      // Create unique ID for GTM
+      // Create unique ID for GTM.
       $id = $post->ID . md5( $title . '-' . $url );
 
       $url = $this->get_link( $url, $type );
@@ -124,7 +123,7 @@ class Helpers {
         'url' => $url,
         'color_value' => $color,
         'new_tab' => $new_tab,
-        'id' => $id
+        'id' => $id,
     );
   }
 
@@ -181,11 +180,11 @@ class Helpers {
     }
 
     return array(
-        'image' => $image
+        'image' => $image,
     );
   }
 
-   /**
+  /**
    * Section Title
    *
    * @param string $key set section object.
@@ -206,11 +205,11 @@ class Helpers {
     return array(
         'title' => $title,
         'size' => $title_size,
-        'seo_tag' => $title_seo_tag
+        'seo_tag' => $title_seo_tag,
     );
   }
 
-   /**
+  /**
    * Section Utilities
    *
    * @param string $key set section object.
@@ -257,13 +256,13 @@ class Helpers {
     }
 
     return array(
-      'class' => $class,
-      'id' => $id,
-      'id_tag' => $id_tag,
-      'spacing_top' => $spacing_top,
-      'spacing_bottom' => $spacing_bottom,
-      'combined' => $combined,
-      'container_size' => $container_size,
+        'class' => $class,
+        'id' => $id,
+        'id_tag' => $id_tag,
+        'spacing_top' => $spacing_top,
+        'spacing_bottom' => $spacing_bottom,
+        'combined' => $combined,
+        'container_size' => $container_size,
     );
   }
 }

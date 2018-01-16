@@ -122,25 +122,25 @@ class Main {
     $this->users = new Admin\Users( $this->get_theme_info() );
     $this->acf = new Admin\Acf( $this->get_theme_info() );
 
-    // Admin
+    // Admin.
     $this->loader->add_action( 'login_enqueue_scripts', $this->admin, 'enqueue_styles' );
     $this->loader->add_action( 'admin_enqueue_scripts', $this->admin, 'enqueue_styles', 50 );
     $this->loader->add_action( 'admin_body_class', $this->admin, 'set_enviroment_body_class' );
-    
-    // Login page
+
+    // Login page.
     $this->loader->add_filter( 'login_headerurl', $this->login, 'custom_login_url' );
 
-    // Editor
+    // Editor.
     $this->loader->add_action( 'admin_init', $this->editor, 'add_editor_styles' );
 
-    // Sidebar
+    // Sidebar.
     $this->loader->add_action( 'admin_menu', $this->sidebar, 'remove_sub_menus' );
 
-    // Users
+    // Users.
     $this->loader->add_action( 'set_user_role', $this->users, 'send_main_when_user_role_changes', 10, 2 );
     $this->loader->add_action( 'admin_init', $this->users, 'edit_editors_compatibilities' );
-    
-    // ACF
+
+    // ACF.
     $this->loader->add_action( 'acf/fields/google_map/api', $this->acf, 'set_google_map_api_key' );
     $this->loader->add_action( 'acf/fields/wysiwyg/toolbars', $this->acf, 'add_wysiwyg_toolbars' );
 
@@ -163,24 +163,24 @@ class Main {
     $this->general = new Theme\General( $this->get_theme_info() );
     $this->pagination = new Theme\Pagination( $this->get_theme_info() );
 
-    // Enque styles and scripts
+    // Enque styles and scripts.
     $this->loader->add_action( 'wp_enqueue_scripts', $this->theme, 'enqueue_styles' );
     $this->loader->add_action( 'wp_enqueue_scripts', $this->theme, 'enqueue_scripts' );
-    
-    // Remove inline gallery css
+
+    // Remove inline gallery css.
     $this->loader->add_filter( 'use_default_gallery_style', $this->theme, '__return_false' );
 
-    // Legacy Browsers
+    // Legacy Browsers.
     $this->loader->add_action( 'template_redirect', $this->legacy_browsers, 'redirect_to_legacy_browsers_page' );
 
-    // Widgets
+    // Widgets.
     $this->loader->add_action( 'widgets_init', $this->widgets, 'register_widget_position' );
 
-    // Menu
+    // Menu.
     $this->loader->add_action( 'after_setup_theme', $this->menu, 'register_menu_positions' );
-    
+
     // Optimizations
-    // This is removing the functionality but it is removing meta tags from head
+    // This is removing the functionality but it is removing meta tags from head.
     $this->loader->remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
     $this->loader->remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
     $this->loader->remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -193,29 +193,29 @@ class Main {
     $this->loader->remove_action( 'wp_head', 'feed_links_extra', 3 );
     $this->loader->remove_action( 'wp_head', 'rest_output_link_wp_head' );
 
-    // Theme Options
+    // Theme Options.
     $this->loader->add_action( 'acf/init', $this->theme_options_general, 'create_theme_options_page' );
     $this->loader->add_action( 'acf/init', $this->theme_options_general, 'register_theme_options' );
     $this->loader->add_action( 'acf/init', $this->theme_options_general, 'register_global_theme_options_variable' );
     $this->loader->add_action( 'acf/save_post', $this->theme_options_general, 'delete_theme_options_transient' );
 
-    // Media
+    // Media.
     $this->loader->add_action( 'upload_mimes', $this->media, 'enable_mime_types' );
     $this->loader->add_action( 'wp_prepare_attachment_for_js', $this->media, 'enable_svg_library_preview', 10, 3 );
     $this->loader->add_action( 'embed_oembed_html', $this->media, 'wrap_responsive_oembed_filter', 10, 4 );
     $this->loader->add_action( 'after_setup_theme', $this->media, 'add_theme_support' );
     $this->loader->add_action( 'after_setup_theme', $this->media, 'add_custom_image_sizes' );
 
-    //Gallery
+    // Gallery.
     $this->loader->add_filter( 'post_gallery', $this->gallery, 'wrap_post_gallery', 10 ,3 );
 
-    // General
+    // General.
     $this->loader->add_action( 'after_setup_theme', $this->general, 'add_theme_support' );
 
-    // Pagination
+    // Pagination.
     $this->loader->add_filter( 'next_posts_link_attributes', $this->pagination, 'pagination_link_next_class' );
     $this->loader->add_filter( 'previous_posts_link_attributes', $this->pagination, 'pagination_link_prev_class' );
-    
+
   }
 
   /**
@@ -280,10 +280,9 @@ class Main {
    */
   public function get_theme_info() {
     return array(
-      'theme_name' => $this->theme_name,
-      'theme_version' => $this->theme_version,
-      'assets_version' => $this->assets_version,
+        'theme_name' => $this->theme_name,
+        'theme_version' => $this->theme_version,
+        'assets_version' => $this->assets_version,
     );
   }
-
 }

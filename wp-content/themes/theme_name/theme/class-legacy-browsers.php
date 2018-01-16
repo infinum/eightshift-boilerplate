@@ -62,7 +62,7 @@ class Legacy_Browsers {
    * Here is a link for download. For this you can download the smallest version.
    * https://browscap.org/
    *
-   * @return void
+   * @return array Full browsers info.
    */
   public function get_browser_info() {
     $browser_info = get_browser();
@@ -77,7 +77,7 @@ class Legacy_Browsers {
   /**
    * Get browser version number
    *
-   * @return string Return browser version name.
+   * @return string Return browser version.
    */
   public function get_browser_version() {
     $browser_verion = $this->get_browser_info();
@@ -88,7 +88,7 @@ class Legacy_Browsers {
   /**
    * Get Browser name
    *
-   * @return void
+   * @return string Get full browser name.
    */
   public function get_browser_name() {
     $browser_name = $this->get_browser_info();
@@ -120,7 +120,7 @@ class Legacy_Browsers {
    */
   public function redirect_to_legacy_browsers_page() {
 
-    if( $this->check_is_browser_valid() === true ) {
+    if ( $this->check_is_browser_valid() === true ) {
       global $wp_query, $inf_theme_options;
       $redirect_page = $inf_theme_options['old_browsers_page'];
 

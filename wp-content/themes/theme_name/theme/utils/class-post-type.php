@@ -1,8 +1,7 @@
 <?php
-
 /**
  * The login-specific functionality.
- * 
+ *
  * @since      1.0.0
  *
  * @package    Aaa
@@ -89,11 +88,11 @@ class Post_Type {
   }
 
    /**
-   * Check if custom post type exists
-   *
-   * @param object $post_object post object.
-   * @return boolian|string|object
-   */
+    * Check if custom post type exists
+    *
+    * @param object $post_object post object.
+    * @return boolian|string|object
+    */
   function does_post_type_exist( $post_object = null ) {
 
     // If in loop add post type from global post.

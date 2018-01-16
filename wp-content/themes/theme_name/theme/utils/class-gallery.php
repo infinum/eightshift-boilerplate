@@ -1,8 +1,7 @@
 <?php
-
 /**
  * The login-specific functionality.
- * 
+ *
  * @since      1.0.0
  *
  * @package    Aaa

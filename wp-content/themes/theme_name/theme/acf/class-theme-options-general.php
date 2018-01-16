@@ -363,8 +363,6 @@ class Theme_Options_General {
 
   /**
    * Delete transient for theme options
-   *
-   * @return void
    */
   public function delete_theme_options_transient() {
     if ( $this->is_theme_options_page() === true ) {

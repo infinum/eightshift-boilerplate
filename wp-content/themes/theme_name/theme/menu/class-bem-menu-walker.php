@@ -15,11 +15,11 @@ namespace Inf_Theme\Theme\Menu;
  */
 class Bem_Menu_Walker extends \Walker_Nav_Menu {
 
-    /**
-     * Constructor function
-     *
-     * @param array   $css_class_prefix load menu prefixes for class.
-     */
+  /**
+   * Constructor function
+   *
+   * @param array $css_class_prefix load menu prefixes for class.
+   */
   function __construct( $css_class_prefix ) {
 
     $this->css_class_prefix = $css_class_prefix;

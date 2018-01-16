@@ -56,8 +56,6 @@ class General {
 
   /**
    * Enable theme support
-   *
-   * @return void
    */
   public function add_theme_support() {
     add_theme_support( 'title-tag', 'html5' );

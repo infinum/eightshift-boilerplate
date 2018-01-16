@@ -1,8 +1,7 @@
 <?php
-
 /**
  * The login-specific functionality.
- * 
+ *
  * @since      1.0.0
  *
  * @package    Aaa
@@ -58,11 +57,11 @@ class Excerpt {
   /**
    * Custom Excerpt to set word limit
    *
-   * @param integer $limit   Number of characters to trim.
    * @param string  $source Excerpt text.
+   * @param integer $limit  Number of characters to trim.
    * @return string Trimmed excerpt.
    */
-  public function get_excerpt( $source = null,  $limit = null ) {
+  public function get_excerpt( $source = null, $limit = null ) {
 
     if ( empty( $source ) ) {
       return false;

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The theme-specific functionality of the plugin.
  *

@@ -10,7 +10,7 @@
 <?php
 
 global $inf_theme_options;
-$cookies_notification = $inf_theme_options[ 'cookies_notification_description' ];
+$cookies_notification = $inf_theme_options['cookies_notification_description'];
 
 if ( ! empty( $cookies_notification ) && ! isset( $_COOKIE['cookie-law'] ) ) { // Input var okay.
 ?>

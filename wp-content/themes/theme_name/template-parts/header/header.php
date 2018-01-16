@@ -18,7 +18,8 @@
     <img class="header__logo-img" src="<?php echo esc_url( INF_IMAGE_URL . 'logo.svg' ); ?>" title="<?php echo esc_attr( $blog_name ); ?> - <?php echo esc_attr( $blog_description ); ?>" alt="<?php echo esc_attr( $blog_name ); ?> - <?php echo esc_attr( $blog_description ); ?>" />
   </a>
   <?php
-  echo esc_html( $menu->bem_menu( 'header_main_nav', 'main-navigation' ) );
+    echo esc_html( $menu->bem_menu( 'header_main_nav', 'main-navigation' ) );
 
-  get_template_part( 'template-parts/header/search', 'form' ); ?>
+    get_template_part( 'template-parts/header/search', 'form' );
+  ?>
 </div>

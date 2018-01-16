@@ -13,6 +13,6 @@
   <?php echo esc_html__( 'To top', 'theme_name' ); ?>
 </a>
 
-<?php wp_footer();?>
+<?php wp_footer(); ?>
 </body>
 </html>
