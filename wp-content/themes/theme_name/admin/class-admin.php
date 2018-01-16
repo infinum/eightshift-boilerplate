@@ -81,8 +81,11 @@ class Admin {
   /**
    * Add admin bar class for different environment
    *
-   * @param string $classes Get preset body classes.
-   * @return string         Body classes with env class.
+   * You can style admin bar of each environment differently for better
+   * differentiation, and smaller chance of error.
+   *
+   * @param  string $classes Get preset body classes.
+   * @return string $classes Body classes with env class.
    *
    * @since 1.0.0
    */

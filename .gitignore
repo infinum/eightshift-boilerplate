@@ -50,6 +50,11 @@ wp-content/themes/twenty*/
 *.DS_Store
 ._*
 
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
 # Error logs
 error_log.txt
 wordfence-waf.php

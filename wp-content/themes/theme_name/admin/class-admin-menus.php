@@ -1,6 +1,6 @@
 <?php
 /**
- * The sidebar menu specific functionality.
+ * The admin sidebar menu specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -9,9 +9,9 @@
 namespace Inf_Theme\Admin;
 
 /**
- * Class Sidebar
+ * Class Admin_Menus
  */
-class Sidebar {
+class Admin_Menus {
 
   /**
    * Global theme name
@@ -55,6 +55,9 @@ class Sidebar {
 
   /**
    * Remove some menu links
+   *
+   * This methdd removes Comments menu from the admin side.
+   * You can remove or modify this if necessary.
    *
    * @since 1.0.0
    */

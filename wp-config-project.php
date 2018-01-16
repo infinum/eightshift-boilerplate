@@ -1,6 +1,9 @@
 <?php
 /**
- * Global Enviroment variable
+ * Global Environment variable
+ *
+ * Define global environment variable, and define certain
+ * settings based on it.
  *
  * @package theme_name
  *

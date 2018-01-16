@@ -12,6 +12,8 @@ use Inf_Theme\Theme\Acf as Acf_Theme;
 
 /**
  * Class Advance Custom Fields
+ *
+ * Main class for any ACF functionality.
  */
 class Acf {
 
