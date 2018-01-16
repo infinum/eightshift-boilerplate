@@ -1,6 +1,7 @@
 <?php
 /**
- * The admin-specific functionality of the plugin.
+ * The Admin specific functionality.
+ * General stuff that is not specific to any class.
  *
  * @since   1.0.0
  * @package theme_name
@@ -46,7 +47,7 @@ class Admin {
   }
 
   /**
-   * Register the stylesheets for the admin area.
+   * Register the Stylesheets for the admin area.
    *
    * @since    1.0.0
    */
@@ -64,15 +65,16 @@ class Admin {
    */
   public function enqueue_scripts() {
 
-    wp_enqueue_script( $this->theme_name, plugin_dir_url( __FILE__ ) . 'js/theme_name-admin.js', array( 'jquery' ), $this->theme_version, false );
+    wp_register_script( $this->theme_name . '-scripts', get_template_directory_uri() . '/skin/public/scripts/applicationAdmin.js', array(), $this->assets_version );
+    wp_enqueue_script( $this->theme_name . '-scripts' );
 
   }
 
   /**
-   * Add admin bar class for different env
+   * Add admin bar class for different environment
    *
    * @param string $classes Get preset body classes.
-   * @return string         Return body classes with env class.
+   * @return string         Body classes with env class.
    */
   function set_enviroment_body_class( $classes ) {
     $this->env = '';

@@ -1,6 +1,6 @@
 <?php
 /**
- * The login-specific functionality.
+ * The Utils-Post Type specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -48,10 +48,10 @@ class Post_Type {
   /**
    * Return post type link
    *
-   * @param   string $class Class to add to the link.
-   * @param   object $post_object Post object.
-   * @param   string $name Name of the link.
-   * @return  string Html link to the post.
+   * @param  string $class       Class to add to the link.
+   * @param  object $post_object Post object.
+   * @param  string $name        Name of the link.
+   * @return string              Html link to the post.
    */
   function get_post_type_link( $class = null, $post_object = null, $name = null ) {
 
@@ -81,8 +81,8 @@ class Post_Type {
    /**
     * Check if custom post type exists
     *
-    * @param object $post_object post object.
-    * @return boolian|string|object
+    * @param object $post_object Post object.
+    * @return boolian            True/False if exists.
     */
   function does_post_type_exist( $post_object = null ) {
 

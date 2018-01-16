@@ -1,6 +1,6 @@
 <?php
 /**
- * The login-specific functionality.
+ * The Media specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -47,8 +47,7 @@ class Media {
 
   /**
    * Enable theme support
-   *
-   * @return void
+   * for full list check: https://developer.wordpress.org/reference/functions/add_theme_support/
    */
   public function add_theme_support() {
     add_theme_support( 'post-thumbnails' );
@@ -65,8 +64,8 @@ class Media {
   /**
    * Enable SVG uplod in media
    *
-   * @param array $mimes Load all mimes.
-   * @return array
+   * @param array $mimes Load all mimes types.
+   * @return array       Return original and updated.
    */
   public function enable_mime_types( $mimes ) {
     $mimes['svg'] = 'image/svg+xml';
@@ -115,8 +114,8 @@ class Media {
   /**
    * Wrap utility class arround iframe to enable responsive
    *
-   * @param  string $html Iframe html to wrap around.
-   * @return  string Wrapped iframe with a utility class.
+   * @param  string $html   Iframe html to wrap around.
+   * @return string Wrapped Iframe with a utility class.
    */
   public function wrap_responsive_oembed_filter( $html ) {
     $return = '<span class="iframe u__embed-video-responsive">' . $html . '</span>';

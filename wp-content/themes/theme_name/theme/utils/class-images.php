@@ -1,6 +1,6 @@
 <?php
 /**
- * The login-specific functionality.
+ * The Utils-Images specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -46,14 +46,14 @@ class Images {
   }
 
   /**
-   * Get post image
+   * Ger featured image for specific post/page ID.
    *
-   * If found return if not return no image placeholder.
+   * If found return it, if not return no image placeholder.
    *
-   * @param  string|array $size  Image size. Accepts any valid image size, or an array of width and height values in pixels.
-   * @param  integer      $post_id   Post ID.
-   * @param  integer      $no_image  Link to no image thumbnail.
-   * @return array        Array with image settings.
+   * @param  string  $size     Image size. Accepts any valid image size.
+   * @param  integer $post_id  Post ID.
+   * @param  integer $no_image Link to no image thumbnail.
+   * @return array             Array with image settings.
    */
   function get_post_image( $size, $post_id = null, $no_image = null ) {
     global $post;
@@ -88,10 +88,10 @@ class Images {
 
   /**
    * Get image from image array
-   * If found return if not return no image placeholder
+   * If found return it, if not return no image placeholder.
    *
-   * @param [type] $size Image size from Image object.
-   * @param [type] $image_array WP image array.
+   * @param string $size Image size from Image object.
+   * @param array  $image_array WP image array.
    */
   function get_image_from_array( $size, $image_array ) {
     if ( ! empty( $image_array ) ) {
@@ -102,7 +102,7 @@ class Images {
     }
 
     return [
-        'image' => esc_url( $src ),
+        'image' => $src,
     ];
   }
 

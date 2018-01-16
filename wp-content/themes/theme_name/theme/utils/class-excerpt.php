@@ -1,6 +1,6 @@
 <?php
 /**
- * The login-specific functionality.
+ * The Utils-Excerpt specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -50,7 +50,7 @@ class Excerpt {
    *
    * @param string  $source Excerpt text.
    * @param integer $limit  Number of characters to trim.
-   * @return string Trimmed excerpt.
+   * @return string         Trimmed excerpt.
    */
   public function get_excerpt( $source = null, $limit = null ) {
 

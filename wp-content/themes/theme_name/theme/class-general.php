@@ -1,6 +1,6 @@
 <?php
 /**
- * The theme-specific functionality of the plugin.
+ * The General specific functionality.
  *
  * @since   1.0.0
  * @package theme_name

@@ -1,6 +1,7 @@
 <?php
 /**
- * The login-specific functionality.
+ * The Legacy Browsers specific functionality.
+ * Requires php browser cap
  *
  * @since   1.0.0
  * @package theme_name
@@ -66,9 +67,9 @@ class Legacy_Browsers {
   }
 
   /**
-   * Get browser version number
+   * Get browser version number.
    *
-   * @return string Return browser version.
+   * @return string Return browser version as int number.
    */
   public function get_browser_version() {
     $browser_verion = $this->get_browser_info();
@@ -106,8 +107,6 @@ class Legacy_Browsers {
 
   /**
    * If old browser is detected go to redirect
-   *
-   * @return void
    */
   public function redirect_to_legacy_browsers_page() {
 

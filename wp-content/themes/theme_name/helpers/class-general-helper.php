@@ -1,6 +1,7 @@
 <?php
 /**
- * The login-specific functionality.
+ * The general helper specific functionality.
+ * Used in admin or theme side.
  *
  * @since   1.0.0
  * @package theme_name
@@ -46,11 +47,12 @@ class General_Helper {
   }
 
   /**
-   * Check if array has key and return its value if true
+   * Check if array has key and return its value if true.
+   * Useful if you want to be sure that key exists and return empty if it doesn't.
    *
    * @param string $key   Array key to check.
    * @param array  $array Array in which the key should be checked.
-   * @return string        Value of the key if it exists, empty string if not.
+   * @return string       Value of the key if it exists, empty string if not.
    */
   public function get_array_value( $key, $array ) {
     return ( gettype( $array ) === 'array' && array_key_exists( $key, $array ) ) ? $array[ $key ] : '';

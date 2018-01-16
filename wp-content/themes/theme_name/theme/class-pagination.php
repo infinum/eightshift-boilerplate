@@ -1,6 +1,6 @@
 <?php
 /**
- * The theme-specific functionality of the plugin.
+ * The Pagination specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -48,7 +48,7 @@ class Pagination {
   /**
    * Posts next attibutes
    *
-   * @return string
+   * @return string Return class for link
    */
   function pagination_link_next_class() {
     return 'class="page-numbers next"';
@@ -57,7 +57,7 @@ class Pagination {
   /**
    * Posts prev attibutes
    *
-   * @return string
+   * @return string Return class for link
    */
   function pagination_link_prev_class() {
     return 'class="page-numbers prev"';

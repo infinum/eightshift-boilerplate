@@ -1,6 +1,6 @@
 <?php
 /**
- * The login-specific functionality.
+ * The users specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -62,8 +62,6 @@ class Users {
 
   /**
    * Change editors permissions
-   *
-   * @return void
    */
   public function edit_editors_compatibilities() {
     $role_object_editor = get_role( 'editor' );

@@ -1,6 +1,7 @@
 <?php
 /**
- * The theme-specific functionality of the plugin.
+ * The Advance Custom Fields general helper specific functionality.
+ * Used on fields created via ACF.
  *
  * @since   1.0.0
  * @package theme_name
@@ -57,11 +58,11 @@ class Helpers {
   }
 
   /**
-   * Section Buttons
+   * Return button array with all fields
    *
-   * @param object $key section object.
-   * @param object $array section object.
-   * @return array
+   * @param string $key   Button key in array.
+   * @param array  $array Array to look in.
+   * @return array        Get full button array.
    */
   public function get_button( $key, $array ) {
     $view_type = '';
@@ -119,11 +120,11 @@ class Helpers {
   }
 
   /**
-   * Section Link
+   * Return link array with all fields
    *
-   * @param object $link section object.
-   * @param object $type section object.
-   * @return array
+   * @param string $link Full link or page ID depending on the type.
+   * @param string $type Link type.
+   * @return array       Get full link array.
    */
   public function get_link( $link, $type ) {
     $url = '';
@@ -149,13 +150,13 @@ class Helpers {
   }
 
   /**
-   * Section Image Simple
+   * Return image or placeholder if the image doesn't exist
    *
-   * @param string $key set section object.
-   * @param object $array section object.
-   * @param string $image_size set image size to return.
-   * @param bool   $return_default set image size to return.
-   * @return array $array
+   * @param string $key            Image key in array.
+   * @param array  $array          Array to look in.
+   * @param string $image_size     Specify image size.
+   * @param bool   $return_default Return placeholder if image doesn't exist.
+   * @return array                 Get full image array.
    */
   function get_image_simple( $key, $array, $image_size, $return_default = true ) {
     $image = '';
@@ -176,11 +177,11 @@ class Helpers {
   }
 
   /**
-   * Section Title
+   * Return title array with all fields
    *
-   * @param string $key set section object.
-   * @param object $array section object.
-   * @return array $array
+   * @param string $key   Title key in array.
+   * @param array  $array Array to look in.
+   * @return array        Get full title array.
    */
   function get_title( $key, $array ) {
     $title = '';
@@ -201,11 +202,11 @@ class Helpers {
   }
 
   /**
-   * Section Utilities
+   * Return utilities
    *
-   * @param string $key set section object.
-   * @param object $array section object.
-   * @return array $array
+   * @param string $key   Utilities key in array.
+   * @param array  $array Array to look in.
+   * @return array        Get full utilities array.
    */
   function get_utilities( $key, $array ) {
     $class = '';

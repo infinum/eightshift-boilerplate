@@ -1,6 +1,6 @@
 <?php
 /**
- * The login-specific functionality.
+ * The Advance Custom Field specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -55,7 +55,6 @@ class Acf {
    */
   public function add_wysiwyg_toolbars( $toolbars ) {
 
-    // Add a new toolbar called "Very Simple".
     $toolbars['Very Simple'] = array();
     $toolbars['Very Simple'][1] = array( 'bold', 'italic', 'underline', 'formatselect' );
 
@@ -71,8 +70,8 @@ class Acf {
   /**
    * Add Google Maps API key from admin
    *
-   * @param array $api ACF map api.
-   * @return string
+   * @param  array $api Existing maps object.
+   * @return array      Return modiried object.
    */
   public function set_google_map_api_key( $api ) {
 

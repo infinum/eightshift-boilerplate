@@ -1,6 +1,6 @@
 <?php
 /**
- * The login-specific functionality.
+ * The Wysiwyg editor specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -46,7 +46,7 @@ class Editor {
   }
 
   /**
-   * Custom WordPress Login link
+   * Add theme specific styles to editor
    *
    * @since    1.0.0
    */

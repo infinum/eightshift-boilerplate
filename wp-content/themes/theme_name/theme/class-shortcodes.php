@@ -1,6 +1,6 @@
 <?php
 /**
- * The theme-specific functionality of the plugin.
+ * The Shortcodes specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -46,10 +46,7 @@ class Shortcodes {
   }
 
   /**
-   *
    * Call a shortcode function by tag name.
-   *
-   * @package theme_name
    *
    * @author J.D. Grimes
    * @link https://codesymphony.co/dont-do_shortcode/

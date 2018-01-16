@@ -1,6 +1,7 @@
 <?php
 /**
- * Menu Walker Class
+ * Custom Menu Walker specific functionality.
+ * It provides BEM classes to menues.
  *
  * @since   1.0.0
  * @package theme_name

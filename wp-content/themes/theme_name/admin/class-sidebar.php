@@ -1,6 +1,6 @@
 <?php
 /**
- * The login-specific functionality.
+ * The sidebar menu specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -46,7 +46,7 @@ class Sidebar {
   }
 
   /**
-   * Custom WordPress Login link
+   * Remove some menu links
    *
    * @since    1.0.0
    */

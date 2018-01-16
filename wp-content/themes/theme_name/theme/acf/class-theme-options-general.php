@@ -1,6 +1,7 @@
 <?php
 /**
- * The login-specific functionality.
+ * The Advance Custom Fields general helper specific functionality.
+ * Used on fields created via ACF for theme options
  *
  * @since   1.0.0
  * @package theme_name
@@ -62,7 +63,7 @@ class Theme_Options_General {
   }
 
   /**
-   * Create Options page
+   * Create Options page in sidebar
    */
   public function create_theme_options_page() {
     if ( function_exists( 'acf_add_options_page' ) ) {
@@ -81,8 +82,6 @@ class Theme_Options_General {
 
   /**
    * Populate Options page
-   *
-   * @return void
    */
   public function register_theme_options() {
     if ( function_exists( 'acf_add_options_page' ) ) {
@@ -298,7 +297,7 @@ class Theme_Options_General {
    * store them in a transient, so that only one call to the DB will be made when
    * fetching theme options.
    *
-   * @return array Array containing theme options.
+   * @return array Array containing theme options from transient.
    */
   private function get_theme_options() {
     $cache_name = $this->options_transient_cache_name;
@@ -328,8 +327,7 @@ class Theme_Options_General {
 
   /**
    * Register global variable for theme options
-   *
-   * @return void
+   * When getting options from admin you should always get it from global variable
    */
   public function register_global_theme_options_variable() {
     global $inf_theme_options;

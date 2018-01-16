@@ -1,6 +1,6 @@
 <?php
 /**
- * The login-specific functionality.
+ * The login page specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -46,7 +46,7 @@ class Login {
   }
 
   /**
-   * Custom WordPress Login link
+   * Change default logo link with home url
    *
    * @since    1.0.0
    */

@@ -1,6 +1,6 @@
 <?php
 /**
- * The theme-specific functionality of the plugin.
+ * The Widgets specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -47,8 +47,6 @@ class Widgets {
 
   /**
    * Set up widget areas
-   *
-   * @package theme_name
    */
   public function register_widget_position() {
     register_sidebar(

@@ -1,6 +1,6 @@
 <?php
 /**
- * The login-specific functionality.
+ * The Utils-Gallery specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -49,9 +49,9 @@ class Gallery {
    * Wrapper for gallery shortcode
    *
    * @param   string $html The gallery output. Default empty.
-   * @param   arraz  $attr Attributes of the gallery shortcode.
+   * @param   array  $attr Attributes of the gallery shortcode.
    * @param   int    $instance Unique numeric ID of this gallery shortcode instance.
-   * @return  $html Modified gallery shortcode.
+   * @return  string           Modified gallery shortcode.
    */
   function wrap_post_gallery( $html, $attr, $instance ) {
     if ( isset( $attr['class'] ) ) {

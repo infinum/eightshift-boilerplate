@@ -1,6 +1,6 @@
 <?php
 /**
- * The theme-specific functionality of the plugin.
+ * The Theme specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -46,7 +46,7 @@ class Theme {
   }
 
   /**
-   * Register the stylesheets for the theme area.
+   * Register the Stylesheets for the theme area.
    *
    * @since    1.0.0
    */

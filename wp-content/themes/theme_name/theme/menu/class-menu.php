@@ -1,6 +1,6 @@
 <?php
 /**
- * The login-specific functionality.
+ * The Menu specific functionality.
  *
  * @since   1.0.0
  * @package theme_name
@@ -46,7 +46,7 @@ class Menu {
   }
 
   /**
-   * Register Menu positions
+   * Register All Menu positions
    */
   public function register_menu_positions() {
     register_nav_menus(
@@ -57,13 +57,13 @@ class Menu {
   }
 
   /**
-   * Bem_menu returns an instance of the Walker_Texas_Ranger class with the following arguments
+   * Bem_menu returns an instance of the Bem_Menu_Walker class with the following arguments
    *
-   * @param  string     $location            This must be the same as what is set in wp-admin/settings/menus for menu location.
+   * @param  string     $location            This must be the same as what is set in wp-admin/settings/menus for menu location and registrated in register_menu_positions function.
    * @param  string     $css_class_prefix    This string will prefix all of the menu's classes, BEM syntax friendly.
    * @param  arr|string $css_class_modifiers Provide either a string or array of values to apply extra classes to the <ul> but not the <li's>.
    * @param  bool       $echo                Echo the menu.
-   * @return [type]
+   * @return string                          Outputs html version of menu.
    */
   public function bem_menu( $location = 'main_menu', $css_class_prefix = 'main-menu', $css_class_modifiers = null, $echo = true ) {
 
