@@ -9,6 +9,7 @@ $checkbox-disabled-trigger-bg-color: $base-silver-color;
   $this: &;
   position: relative;
   cursor: pointer;
+  display: block;
 
   // Icon
   &__icon {
@@ -24,10 +25,9 @@ $checkbox-disabled-trigger-bg-color: $base-silver-color;
       duration: 0.2s;
     }
 
-    &::before{
-      @extend %font-icon;
-      // content: $icon--arrow;
-      color: $checkbox-trigger-icon-color;
+    &::before {
+      content: '';
+      background-color: $checkbox-trigger-icon-color;
       transform: translate(-50%, -50%);
       position: absolute;
       left: 50%;
@@ -42,7 +42,7 @@ $checkbox-disabled-trigger-bg-color: $base-silver-color;
   }
 
   // move real input out from viewpoint, don't use display:none because of IE7-8
-  &__input{
+  &__input {
     position: absolute;
     left: -999999px;
     z-index: -1;
@@ -52,7 +52,7 @@ $checkbox-disabled-trigger-bg-color: $base-silver-color;
   }
 
   //disabled state
-  &--disabled{
+  &--disabled {
     #{$this}__icon {
       background-color: $checkbox-disabled-trigger-bg-color;
     }
@@ -63,7 +63,7 @@ $checkbox-disabled-trigger-bg-color: $base-silver-color;
   }
 
   // checked state
-  &--checked{
+  &--checked {
     #{$this}__icon::before {
       opacity: 1;
     }

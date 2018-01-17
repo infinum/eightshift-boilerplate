@@ -9,39 +9,64 @@
  * @package theme_name
  */
 
+namespace Inf_Theme;
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+  die;
+}
+
 /**
- * Change every time you deploy changes in assets to server
+ * Theme version global
+ *
+ * @package theme_name
+ */
+
+define( 'INF_THEME_VERSION', '1.0.0' );
+
+/**
+ * Theme name global
+ *
+ * @package theme_name
+ */
+
+define( 'INF_THEME_NAME', 'theme_name' );
+
+/**
+ * Change every time you deploy changes in assets to the server
  * to force browser to clear cache
  *
  * @package theme_name
  */
 
-define( 'ASSETS_VERSION', '1' );
+define( 'INF_ASSETS_VERSION', '1.0.0' );
 
 /**
  * Global image path
  *
  * @package theme_name
  */
-define( 'IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' );
-
-add_action( 'after_setup_theme', 'inf_after_setup_theme_init' );
+define( 'INF_IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' );
 
 /**
- * Require functions partials
+ * Include the autoloader so we can dynamically include the rest of the classes.
  *
- * @return void
+ * @package theme_name
  */
-function inf_after_setup_theme_init() {
+include_once( 'lib/autoloader.php' );
 
-	require get_parent_theme_file_path( '/inc/admin.php' );
-	require get_parent_theme_file_path( '/inc/enqueue.php' );
-	require get_parent_theme_file_path( '/inc/general.php' );
-	require get_parent_theme_file_path( '/inc/helpers.php' );
-	require get_parent_theme_file_path( '/inc/media.php' );
-	require get_parent_theme_file_path( '/inc/menu.php' );
-	require get_parent_theme_file_path( '/inc/pagination.php' );
-	require get_parent_theme_file_path( '/inc/theme-options.php' );
-	require get_parent_theme_file_path( '/inc/widgets.php' );
+/**
+ * Begins execution of the theme.
+ *
+ * Since everything within the theme is registered via hooks,
+ * then kicking off the theme from this point in the file does
+ * not affect the page life cycle.
+ *
+ * @since    1.0.0
+ */
+function init_theme() {
+  $plugin = new Includes\Main();
+  $plugin->run();
 }
 
+init_theme();

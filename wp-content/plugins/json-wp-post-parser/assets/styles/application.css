@@ -1,0 +1,11 @@
+.processed-posts {
+  margin-bottom: 30px; }
+  .processed-posts__process-info {
+    margin-bottom: 20px; }
+  .processed-posts__process-data {
+    padding: 5px 0; }
+  .processed-posts__process-error {
+    color: #bd0505; }
+  .processed-posts__process-finish {
+    color: #19a500;
+    margin-bottom: 20px; }

@@ -4,8 +4,8 @@
   @include box-sizing(border-box);
 }
 
-html { /* stylelint-disable-line selector-no-type */
-  @include map-text-size(default);
+html { // stylelint-disable-line selector-no-type
+  @include text-size(default);
 }
 
 body { /* stylelint-disable-line selector-no-type */
@@ -16,7 +16,7 @@ body { /* stylelint-disable-line selector-no-type */
   position: relative;
   overflow-x: hidden;
 
-  &.no-scroll {
+  &.overflow-hidden {
     overflow: hidden;
   }
 }

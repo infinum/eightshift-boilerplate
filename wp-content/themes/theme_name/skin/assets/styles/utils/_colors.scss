@@ -22,3 +22,41 @@ $color-map: (
 );
 
 $global-input-focus-color: rgba($base-black-color, 0.2);
+
+// Defaults
+$base-text-color: $base-dark-color;
+$base-bg-color: $base-white-color;
+
+// Text color helper
+$color-map: (
+  primary:    $base-primary-color,
+  white:      $base-white-color,
+  whild-sand: $base-whild-sand-color
+);
+
+// Buttons
+$button-color-map: (
+  default: (
+    bg: $base-primary-color,
+    text: $base-white-color,
+    border: $base-primary-color,
+    bg-hover: $base-primary-color,
+    text-hover: $base-white-color,
+    border-hover: $base-primary-color
+  ),
+  default-bordered: (
+    bg: transparent,
+    text: $base-primary-color,
+    border: $base-primary-color,
+    bg-hover: $base-primary-color,
+    text-hover: $base-white-color,
+    border-hover: $base-primary-color
+  )
+);
+
+$links-map: (
+  default: (
+    color: $base-primary-color,
+    hover: $base-dark-color
+  )
+);

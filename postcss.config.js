@@ -5,28 +5,23 @@ const path = require('path');
 const themeName = 'theme_name';
 const fontsPath = path.join(__dirname, `wp-content/themes/${themeName}/skin/assets/fonts`);
 
-const plugins = [
-  require('autoprefixer'),
-  require('postcss-font-magician')({
-    hosted: [fontsPath],
+const autoPrefixer = require('autoprefixer');
+const cssMqpacker = require('css-mqpacker');
+const postcssFontMagician = require('postcss-font-magician');
+const cssNano = require('cssnano');
 
-    // This method doesent support subsets so if you are using subsets this can't help you!
-    variants: {
-      'Open Sans': {
-        400: [],
-        600: [],
-        700: [],
-        800: []
-      }
-    },
-    foundries: ['google']
+const plugins = [
+  autoPrefixer,
+  postcssFontMagician({
+    hosted: [fontsPath],
+    foundries: ['hosted'],
   }),
-  require('css-mqpacker')
+  cssMqpacker,
 ];
 
 // Use only for production build
 if (!DEV) {
-  plugins.push(require('cssnano'));
+  plugins.push(cssNano);
 }
 
 module.exports = {plugins};

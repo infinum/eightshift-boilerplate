@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import generalHelpers from './../helpers/general';
 
 export default class Radio {
@@ -11,8 +10,13 @@ export default class Radio {
     this.$link = this.$container.find('a');
     this.$input = this.$container.find('input[type=radio]');
   }
-  escapeString(string) {
-    return generalHelpers.escapeString(string);
+  escapeString(stringValue) {
+
+    if (typeof stringValue === 'undefined') {
+      return false;
+    }
+
+    return generalHelpers.escapeString(stringValue);
   }
   getInputById(id) {
     return $(`input[type="radio"]#${id}`);

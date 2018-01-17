@@ -1,0 +1,76 @@
+//Input single size item from map
+@mixin input-size($key) {
+  font-size: map_get($key, text-size);
+  height: map_get($key, height);
+}
+
+// Input sizes items from map
+@mixin input-sizes($map: $input-height-map) {
+
+  // Partial for input size item
+  @mixin _partial($map) {
+    @each $key, $value in $map {
+      @if $key == 'default' {
+        @include input-size($value);
+      }
+
+      @else {
+        &--size-#{$key} {
+          @include input-size($value);
+        }
+      }
+    }
+  }
+
+  $i: 0;
+
+  @each $breakpoint, $breakpointMap in $map {
+    @if $i == 0 {
+      @include _partial($breakpointMap);
+    }
+
+    @else {
+      @include media(#{$breakpoint} up) {
+        @include _partial($breakpointMap);
+      }
+    }
+    $i: $i + 1;
+  }
+}
+
+//Checkbox/radi single size item from map
+@mixin checkbox-radio-size($trigger-size: false, $icon-size: false) {
+  padding-left: $trigger-size + 10;
+
+  // icon
+  &__icon {
+    width: $trigger-size;
+    height: $trigger-size;
+
+    &::before {
+      width: $icon-size;
+      height: $icon-size;
+    }
+  }
+}
+
+// Target input placeholders
+/* stylelint-disable */
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content
+  }
+
+  &:-moz-placeholder {
+    @content
+  }
+
+  &::-moz-placeholder {
+    @content
+  }
+
+  &:-ms-input-placeholder {
+    @content
+  }
+}
+/* stylelint-enable */

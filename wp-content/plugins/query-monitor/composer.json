@@ -1,0 +1,26 @@
+{
+	"name"       : "johnbillion/query-monitor",
+	"description": "WordPress plugin for monitoring database queries, hooks, conditionals, HTTP requests, query vars, environment, redirects, and more.",
+	"homepage"   : "https://github.com/johnbillion/query-monitor/",
+	"type"       : "wordpress-plugin",
+	"license"    : "GPL-2.0+",
+	"authors"    : [
+		{
+			"name"    : "John Blackbourn",
+			"homepage": "https://johnblackbourn.com/"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/johnbillion/query-monitor/issues",
+		"forum": "https://wordpress.org/support/plugin/query-monitor",
+		"source": "https://github.com/johnbillion/query-monitor"
+	},
+	"require": {
+		"composer/installers": "~1.0"
+	},
+	"require-dev" : {
+		"wimg/php-compatibility": "^8",
+        "wp-coding-standards/wpcs": "^0.13",
+		"phpunit/phpunit": "~5.7"
+  }
+}

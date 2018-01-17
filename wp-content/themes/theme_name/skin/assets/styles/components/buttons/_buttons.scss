@@ -1,42 +1,11 @@
 //Some stuff here is out of BEM because it is used inside WP as helpers or modifiers
 
-$button-color-map: (
-  'color-default': (
-    bg: $base-primary-color,
-    txt: $base-white-color,
-    border: $base-primary-color,
-    bg-hover: $base-primary-color,
-    txt-hover: $base-white-color,
-    border-hover: $base-primary-color
-  ),
-  'color-default-bordered': (
-    bg: transparent,
-    txt: $base-primary-color,
-    border: $base-primary-color,
-    bg-hover: $base-primary-color,
-    txt-hover: $base-white-color,
-    border-hover: $base-primary-color
-  )
-);
-
-$button-size-map: (
-  'size-default': (
-    txt-size: map-get($typography-map, small),
-    line-height: 1,
-    padding: 20px,
-  ),
-  'size-large': (
-    txt-size: map-get($typography-map, small),
-    line-height: 1,
-    padding: 25px,
-  )
-);
-
-
 .btn {
   @extend %button-reset;
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   padding-left: 30px;
   padding-right: 30px;
@@ -45,6 +14,7 @@ $button-size-map: (
   text-transform: uppercase;
   border: 2px solid;
   cursor: pointer;
+  border-radius: 0;
 
   transition: {
     property: background-color, color, border-color;
@@ -52,11 +22,10 @@ $button-size-map: (
     duration: 0.3s;
   }
 
-  @include button-size;
-  @include button-color-generate;
+  @include button-sizes;
+  @include button-colors;
 
   &--block {
-    display: block;
-    width: 100%;
+    display: flex;
   }
 }

@@ -7,7 +7,7 @@ const device = {
     }
 
     return checkIphone;
-  }
+  },
 };
 
 export default device;
