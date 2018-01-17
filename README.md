@@ -87,7 +87,7 @@ Build creates public folder in theme with js, css, images and fonts
   * Builds production ready assets
 
 ## Import & Export
-Details are located in README-project.md file. Be sure to change URL according to your project.
+Details are located in the `README-project.md` file. Be sure to change the URL according to your project.
 
 ## Note
 * This theme uses OOP with namespaces and autoloader. Also we have included `ci-exclude.txt` file, to point what files to exclude when deploying using continuous integration.
