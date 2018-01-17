@@ -111,12 +111,12 @@ class Main {
    * @since 1.0.0
    */
   private function define_admin_hooks() {
-    $this->admin = new Admin\Admin( $this->get_theme_info() );
-    $this->login = new Admin\Login( $this->get_theme_info() );
-    $this->editor = new Admin\Editor( $this->get_theme_info() );
+    $this->admin   = new Admin\Admin( $this->get_theme_info() );
+    $this->login   = new Admin\Login( $this->get_theme_info() );
+    $this->editor  = new Admin\Editor( $this->get_theme_info() );
     $this->sidebar = new Admin\Sidebar( $this->get_theme_info() );
-    $this->users = new Admin\Users( $this->get_theme_info() );
-    $this->acf = new Admin\Acf( $this->get_theme_info() );
+    $this->users   = new Admin\Users( $this->get_theme_info() );
+    $this->acf     = new Admin\Acf( $this->get_theme_info() );
 
     // Admin.
     $this->loader->add_action( 'login_enqueue_scripts', $this->admin, 'enqueue_styles' );
@@ -134,7 +134,7 @@ class Main {
 
     // Users.
     $this->loader->add_action( 'set_user_role', $this->users, 'send_main_when_user_role_changes', 10, 2 );
-    $this->loader->add_action( 'admin_init', $this->users, 'edit_editors_compatibilities' );
+    $this->loader->add_action( 'admin_init', $this->users, 'edit_editors_capabilities' );
 
     // ACF.
     $this->loader->add_action( 'acf/fields/google_map/api', $this->acf, 'set_google_map_api_key' );
@@ -148,15 +148,15 @@ class Main {
    * @since 1.0.0
    */
   private function define_theme_hooks() {
-    $this->theme = new Theme\Theme( $this->get_theme_info() );
+    $this->theme           = new Theme\Theme( $this->get_theme_info() );
     $this->legacy_browsers = new Theme\Legacy_Browsers( $this->get_theme_info() );
-    $this->widgets = new Theme\Widgets( $this->get_theme_info() );
-    $this->menu = new Menu\Menu( $this->get_theme_info() );
-    $this->theme_options_general = new Acf\Theme_Options_General( $this->get_theme_info() );
-    $this->media = new Theme\Media( $this->get_theme_info() );
-    $this->gallery = new Utils\Gallery( $this->get_theme_info() );
-    $this->general = new Theme\General( $this->get_theme_info() );
-    $this->pagination = new Theme\Pagination( $this->get_theme_info() );
+    $this->widgets         = new Theme\Widgets( $this->get_theme_info() );
+    $this->menu            = new Menu\Menu( $this->get_theme_info() );
+    $this->theme_options   = new Acf\Theme_Options_General( $this->get_theme_info() );
+    $this->media           = new Theme\Media( $this->get_theme_info() );
+    $this->gallery         = new Utils\Gallery( $this->get_theme_info() );
+    $this->general         = new Theme\General( $this->get_theme_info() );
+    $this->pagination      = new Theme\Pagination( $this->get_theme_info() );
 
     // Enque styles and scripts.
     $this->loader->add_action( 'wp_enqueue_scripts', $this->theme, 'enqueue_styles' );
@@ -174,8 +174,12 @@ class Main {
     // Menu.
     $this->loader->add_action( 'after_setup_theme', $this->menu, 'register_menu_positions' );
 
-    // Optimizations.
-    // This is removing the functionality but it is removing meta tags from head.
+    /**
+     * Optimizations
+     *
+     * This will remove some default functionality, but it mostly removes unnecessary
+     * meta tags from the head section.
+     */
     $this->loader->remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
     $this->loader->remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
     $this->loader->remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -189,10 +193,10 @@ class Main {
     $this->loader->remove_action( 'wp_head', 'rest_output_link_wp_head' );
 
     // Theme Options.
-    $this->loader->add_action( 'acf/init', $this->theme_options_general, 'create_theme_options_page' );
-    $this->loader->add_action( 'acf/init', $this->theme_options_general, 'register_theme_options' );
-    $this->loader->add_action( 'acf/init', $this->theme_options_general, 'register_global_theme_options_variable' );
-    $this->loader->add_action( 'acf/save_post', $this->theme_options_general, 'delete_theme_options_transient' );
+    $this->loader->add_action( 'acf/init', $this->theme_options, 'create_theme_options_page' );
+    $this->loader->add_action( 'acf/init', $this->theme_options, 'register_theme_options' );
+    $this->loader->add_action( 'acf/init', $this->theme_options, 'register_global_theme_options_variable' );
+    $this->loader->add_action( 'acf/save_post', $this->theme_options, 'delete_theme_options_transient' );
 
     // Media.
     $this->loader->add_action( 'upload_mimes', $this->media, 'enable_mime_types' );

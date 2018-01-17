@@ -48,8 +48,8 @@ class Media {
    * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
+    $this->theme_name     = $theme_info['theme_name'];
+    $this->theme_version  = $theme_info['theme_version'];
     $this->assets_version = $theme_info['assets_version'];
   }
 
@@ -102,8 +102,8 @@ class Media {
         $path = get_attached_file( $attachment->ID );
 
         if ( file_exists( $path ) ) {
-            $svg = new \SimpleXMLElement( file_get_contents( $path ) );
-            $src = $response['url'];
+            $svg    = new \SimpleXMLElement( file_get_contents( $path ) );
+            $src    = $response['url'];
             $width  = (int) $svg['width'];
             $height = (int) $svg['height'];
 
@@ -120,7 +120,7 @@ class Media {
             );
         }
       } catch ( Exception $e ) {
-        new \WP_Error( esc_html__( 'Error: ', 'theme_name' ) . $e );
+        new \WP_Error( sprintf( esc_html__( 'Error: %s', 'theme_name' ), $e ) );
       }
     }
 

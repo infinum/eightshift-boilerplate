@@ -48,8 +48,8 @@ class Images {
    * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
+    $this->theme_name     = $theme_info['theme_name'];
+    $this->theme_version  = $theme_info['theme_version'];
     $this->assets_version = $theme_info['assets_version'];
   }
 
@@ -74,17 +74,17 @@ class Images {
 
     if ( has_post_thumbnail( $post_id ) ) {
       $attachemnt_id = get_post_thumbnail_id( $post_id );
-      $image = wp_get_attachment_image_src( $attachemnt_id, $size );
+      $image         = wp_get_attachment_image_src( $attachemnt_id, $size );
 
       $image_array = [
-          'image' => esc_url( $image[0] ),
-          'width' => esc_html( $image[1] ),
+          'image'  => esc_url( $image[0] ),
+          'width'  => esc_html( $image[1] ),
           'height' => esc_html( $image[2] ),
       ];
     } else {
       $image_array = [
-          'image' => esc_url( INF_IMAGE_URL . 'no-image-' . $size . '.jpg' ),
-          'width' => '',
+          'image'  => esc_url( INF_IMAGE_URL . 'no-image-' . $size . '.jpg' ),
+          'width'  => '',
           'height' => '',
       ];
 

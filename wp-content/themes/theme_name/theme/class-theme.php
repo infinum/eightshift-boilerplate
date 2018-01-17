@@ -48,8 +48,8 @@ class Theme {
    * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
+    $this->theme_name     = $theme_info['theme_name'];
+    $this->theme_version  = $theme_info['theme_version'];
     $this->assets_version = $theme_info['assets_version'];
   }
 
@@ -68,6 +68,10 @@ class Theme {
   /**
    * Register the JavaScript for the theme area.
    *
+   * First jQuery that is loaded by default by WordPress will be deregistered and then
+   * 'enqueued' with empty string. This is done to avoid multiple jQuery loading, since
+   * one is bundled with webpack and exposed to the global window.
+   *
    * @since 1.0.0
    */
   public function enqueue_scripts() {
@@ -83,10 +87,17 @@ class Theme {
       wp_register_script( $this->theme_name . '-scripts', get_template_directory_uri() . '/skin/public/scripts/application.js', array(), $this->assets_version );
       wp_enqueue_script( $this->theme_name . '-scripts' );
 
+      $ajax_url = '';
+      if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+        $ajax_url .= admin_url( 'admin-ajax.php?lang=' . ICL_LANGUAGE_CODE );
+      } else {
+        $ajax_url .= admin_url( 'admin-ajax.php' );
+      }
+
       // Glbal variables for ajax and translations.
       wp_localize_script(
         $this->theme_name . '-scripts', 'themeLocalization', array(
-            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'ajaxurl' => $ajax_url,
         )
       );
     }

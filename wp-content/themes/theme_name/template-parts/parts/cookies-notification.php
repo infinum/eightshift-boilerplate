@@ -5,10 +5,6 @@
  * @package theme_name
  */
 
-?>
-
-<?php
-
 global $inf_theme_options;
 $cookies_notification = $inf_theme_options['cookies_notification_description'];
 

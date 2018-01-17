@@ -91,6 +91,8 @@ Build creates public folder in theme with js, css, images and fonts
 
 ## Recommended plugins
 
+Some functionality will work with ACF plugin, they are usually easily noticed in the files, so you can remove them and the boilerplate will work. Also the boilerplate contains few browsecap specific pages that will work only if you include [browsecap](https://browscap.org/) on your server, or use [browsecap utility for VVV](https://github.com/dingo-d/browscap-vvv-utility) locally. These are also optional, and can be removed.
+
 * Content:
   * Advanced Custom Fields PRO
   * Category Order and Taxonomy Terms Order

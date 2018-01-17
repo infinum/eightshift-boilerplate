@@ -48,8 +48,8 @@ class Gallery {
    * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
+    $this->theme_name     = $theme_info['theme_name'];
+    $this->theme_version  = $theme_info['theme_version'];
     $this->assets_version = $theme_info['assets_version'];
   }
 

@@ -49,8 +49,8 @@ class Legacy_Browsers {
    * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
+    $this->theme_name     = $theme_info['theme_name'];
+    $this->theme_version  = $theme_info['theme_version'];
     $this->assets_version = $theme_info['assets_version'];
   }
 
@@ -109,7 +109,7 @@ class Legacy_Browsers {
    */
   public function check_is_browser_valid() {
 
-    $browser_name = $this->get_browser_name();
+    $browser_name    = $this->get_browser_name();
     $browser_version = $this->get_browser_version();
 
     if ( ($browser_name === 'IE' && $browser_version <= 10) || ( $browser_name === 'Safari' && $browser_version <= 8 ) ) {

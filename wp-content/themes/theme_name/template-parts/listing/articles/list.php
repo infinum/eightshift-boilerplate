@@ -5,13 +5,9 @@
  * @package theme_name
  */
 
-?>
-
-<?php
-  use Inf_Theme\Theme\Utils as Utils;
-  $images = new Utils\Images();
-  $image = $images->get_post_image( 'listing' );
-  // TO DO: Remove inline styling, and add it to dynamic-css.php file.
+use Inf_Theme\Theme\Utils as Utils;
+$images = new Utils\Images();
+$image  = $images->get_post_image( 'listing' );
 ?>
 <article class="article-list">
   <div class="article-list__container">

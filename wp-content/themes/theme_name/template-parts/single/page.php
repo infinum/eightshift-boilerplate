@@ -5,12 +5,9 @@
  * @package theme_name
  */
 
-?>
-
-<?php
-  use Inf_Theme\Theme\Utils as Utils;
-  $images = new Utils\Images();
-  $image = $images->get_post_image( 'full_width' );
+use Inf_Theme\Theme\Utils as Utils;
+$images = new Utils\Images();
+$image  = $images->get_post_image( 'full_width' );
 ?>
 
 <!-- Single Content Section -->

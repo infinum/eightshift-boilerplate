@@ -21,8 +21,8 @@ if ( have_posts() ) { ?>
   </header>
 <?php } ?>
 
-
 <!-- Listing Section -->
+
 <?php
 if ( have_posts() ) {
   while ( have_posts() ) {

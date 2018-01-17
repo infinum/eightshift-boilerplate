@@ -30,14 +30,14 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
 
     // Define menu item names appropriately.
     $this->item_css_class_suffixes = array(
-        'item'                      => '__item',
-        'parent_item'               => '__item--parent',
-        'active_item'               => '__item--active',
-        'parent_of_active_item'     => '__item--parent--active',
-        'ancestor_of_active_item'   => '__item--ancestor--active',
-        'sub_menu'                  => '__sub-menu',
-        'sub_menu_item'             => '__sub-menu__item',
-        'link'                      => '__link',
+        'item'                    => '__item',
+        'parent_item'             => '__item--parent',
+        'active_item'             => '__item--active',
+        'parent_of_active_item'   => '__item--parent--active',
+        'ancestor_of_active_item' => '__item--ancestor--active',
+        'sub_menu'                => '__sub-menu',
+        'sub_menu_item'           => '__sub-menu__item',
+        'link'                    => '__link',
     );
 
   }
@@ -138,8 +138,8 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
 
     // Link classes.
     $link_classes = array(
-        'item_link'             => 0 === $depth ? $prefix . $suffix['link'] : '',
-        'depth_class'           => $depth >= 1 ? $prefix . $suffix['sub_menu'] . $suffix['link'] . '  ' . $prefix . $suffix['sub_menu'] . '--' . $depth . $suffix['link'] : '',
+        'item_link'   => 0 === $depth ? $prefix . $suffix['link'] : '',
+        'depth_class' => $depth >= 1 ? $prefix . $suffix['sub_menu'] . $suffix['link'] . '  ' . $prefix . $suffix['sub_menu'] . '--' . $depth . $suffix['link'] : '',
     );
 
     $link_class_string = implode( '  ', array_filter( $link_classes ) );
@@ -147,8 +147,8 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
     $link_class_output = 'class="' . $link_class_string . ' "';
 
     $link_text_classes = array(
-        'item_link'             => 0 === $depth ? $prefix . $suffix['link'] . '-text' : '',
-        'depth_class'           => $depth >= 1 ? $prefix . $suffix['sub_menu'] . $suffix['link'] . '-text ' . $prefix . $suffix['sub_menu'] . '--' . $depth . $suffix['link'] . '-text' : '',
+        'item_link'   => 0 === $depth ? $prefix . $suffix['link'] . '-text' : '',
+        'depth_class' => $depth >= 1 ? $prefix . $suffix['sub_menu'] . $suffix['link'] . '-text ' . $prefix . $suffix['sub_menu'] . '--' . $depth . $suffix['link'] . '-text' : '',
     );
 
     $link_text_class_string = implode( '  ', array_filter( $link_text_classes ) );

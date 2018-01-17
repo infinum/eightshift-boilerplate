@@ -60,7 +60,7 @@ class Loader {
   }
 
   /**
-   * Remove action from collection.
+   * Remove action from the registered collection of hooks.
    *
    * @since    1.0.0
    * @param    string $hook                The name of the WordPress action that is being registered.
@@ -86,7 +86,7 @@ class Loader {
   }
 
   /**
-   * Remove filter from collection.
+   * Remove filter from the registered collection of hooks.
    *
    * @since    1.0.0
    * @param    string $hook                 The name of the WordPress filter that is being registered.

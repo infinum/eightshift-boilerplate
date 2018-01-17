@@ -48,8 +48,8 @@ class Menu {
    * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
+    $this->theme_name     = $theme_info['theme_name'];
+    $this->theme_version  = $theme_info['theme_version'];
     $this->assets_version = $theme_info['assets_version'];
   }
 
@@ -92,11 +92,11 @@ class Menu {
     }
 
       $args = array(
-          'theme_location'    => $location,
-          'container'         => false,
-          'items_wrap'        => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
-          'echo'              => $echo,
-          'walker'            => new Bem_Menu_Walker( $css_class_prefix ),
+          'theme_location' => $location,
+          'container'      => false,
+          'items_wrap'     => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
+          'echo'           => $echo,
+          'walker'         => new Bem_Menu_Walker( $css_class_prefix ),
       );
 
     if ( has_nav_menu( $location ) ) {

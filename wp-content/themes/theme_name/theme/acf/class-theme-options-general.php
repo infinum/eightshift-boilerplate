@@ -69,8 +69,8 @@ class Theme_Options_General {
    * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
+    $this->theme_name     = $theme_info['theme_name'];
+    $this->theme_version  = $theme_info['theme_version'];
     $this->assets_version = $theme_info['assets_version'];
   }
 
@@ -84,11 +84,11 @@ class Theme_Options_General {
 
       acf_add_options_page(
         array(
-            'page_title'    => 'General Settings',
-            'menu_title'    => 'Theme Options',
-            'menu_slug'     => $this->options_page_slug,
-            'capability'    => 'edit_theme_options',
-            'redirect'      => false,
+            'page_title' => 'General Settings',
+            'menu_title' => 'Theme Options',
+            'menu_slug'  => $this->options_page_slug,
+            'capability' => 'edit_theme_options',
+            'redirect'   => false,
         )
       );
     }
@@ -301,10 +301,10 @@ class Theme_Options_General {
    */
   private function get_theme_options_data() {
     return array(
-        'old_browsers_page'                   => get_field( 'old_browsers_page', 'options' ),
-        'footer_copyright_content'            => get_field( 'footer_copyright_content', 'options' ),
-        'google_maps_api_key'                 => get_field( 'google_maps_api_key', 'options' ),
-        'cookies_notification_description'    => get_field( 'cookies_notification_description', 'options' ),
+        'old_browsers_page'                => get_field( 'old_browsers_page', 'options' ),
+        'footer_copyright_content'         => get_field( 'footer_copyright_content', 'options' ),
+        'google_maps_api_key'              => get_field( 'google_maps_api_key', 'options' ),
+        'cookies_notification_description' => get_field( 'cookies_notification_description', 'options' ),
     );
   }
 
@@ -321,7 +321,7 @@ class Theme_Options_General {
    */
   private function get_theme_options() {
     $cache_name = $this->options_transient_cache_name;
-    $cache = get_transient( $cache_name );
+    $cache      = get_transient( $cache_name );
 
     if ( $cache === false ) {
       $cache = $this->get_theme_options_data();

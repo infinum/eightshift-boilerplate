@@ -60,8 +60,8 @@ class Helpers {
    * @since 1.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
+    $this->theme_name     = $theme_info['theme_name'];
+    $this->theme_version  = $theme_info['theme_version'];
     $this->assets_version = $theme_info['assets_version'];
 
     $this->general_helper = new General_Helpers\General_Helper();
@@ -78,34 +78,32 @@ class Helpers {
    */
   public function get_button( $key, $array ) {
     $view_type = '';
-    $title = '';
-    $color = '';
-    $type = '';
-    $url = '';
-    $new_tab = '';
-    $class = '';
-    $id = '';
+    $title     = '';
+    $color     = '';
+    $type      = '';
+    $url       = '';
+    $new_tab   = '';
+    $class     = '';
+    $id        = '';
 
     if ( ! empty( $this->general_helper->get_array_value( $key, $array ) ) ) {
       global $post;
 
       $type = $this->general_helper->get_array_value( 'type', $array[ $key ] );
-      $url = $this->general_helper->get_array_value( 'url', $array[ $key ] );
+      $url  = $this->general_helper->get_array_value( 'url', $array[ $key ] );
 
       if ( $type === 'none' || empty( $url ) ) {
         return;
       }
 
       $view_type = $this->general_helper->get_array_value( 'view_type', $array[ $key ] );
-      $title = $this->general_helper->get_array_value( 'title', $array[ $key ] );
-      $color = $this->general_helper->get_array_value( 'color', $array[ $key ] );
-      $new_tab = $this->general_helper->get_array_value( 'new_tab', $array[ $key ] );
+      $title     = $this->general_helper->get_array_value( 'title', $array[ $key ] );
+      $color     = $this->general_helper->get_array_value( 'color', $array[ $key ] );
+      $new_tab   = $this->general_helper->get_array_value( 'new_tab', $array[ $key ] );
 
       if ( $view_type === 'btn' ) {
         $class = 'btn btn--color-' . $color;
-
       } elseif ( $view_type === 'link' ) {
-
         $class = 'link link--color-' . $color;
       }
 
@@ -114,20 +112,19 @@ class Helpers {
       }
 
       // Create unique ID for GTM.
-      $id = $post->ID . md5( $title . '-' . $url );
-
+      $id  = $post->ID . md5( $title . '-' . $url );
       $url = $this->get_link( $url, $type );
     }
 
     return array(
-        'view_type' => $view_type,
-        'title' => $title,
-        'color' => $class,
-        'type' => $type,
-        'url' => $url,
+        'view_type'   => $view_type,
+        'title'       => $title,
+        'color'       => $class,
+        'type'        => $type,
+        'url'         => $url,
         'color_value' => $color,
-        'new_tab' => $new_tab,
-        'id' => $id,
+        'new_tab'     => $new_tab,
+        'id'          => $id,
     );
   }
 
@@ -141,7 +138,7 @@ class Helpers {
    * @since 1.0.0
    */
   public function get_link( $link, $type ) {
-    $url = '';
+    $url      = '';
     $url_type = '';
 
     if ( empty( $link ) || empty( $type ) ) {
@@ -175,7 +172,7 @@ class Helpers {
    * @since 1.0.0
    */
   function get_image_simple( $key, $array, $image_size, $return_default = true ) {
-    $image = '';
+    $image       = '';
     $image_title = '';
 
     if ( $return_default !== false ) {
@@ -202,19 +199,19 @@ class Helpers {
    * @since 1.0.0
    */
   function get_title( $key, $array ) {
-    $title = '';
-    $title_size = '';
+    $title         = '';
+    $title_size    = '';
     $title_seo_tag = 'h2';
 
     if ( ! empty( $this->general_helper->get_array_value( $key, $array ) ) ) {
-      $title = $this->general_helper->get_array_value( 'title', $array[ $key ] );
-      $title_size = 'u-text-size--' . $this->general_helper->get_array_value( 'title_size', $array[ $key ] );
+      $title         = $this->general_helper->get_array_value( 'title', $array[ $key ] );
+      $title_size    = 'u-text-size--' . $this->general_helper->get_array_value( 'title_size', $array[ $key ] );
       $title_seo_tag = $this->general_helper->get_array_value( 'title_seo_tag', $array[ $key ] );
     }
 
     return array(
-        'title' => $title,
-        'size' => $title_size,
+        'title'   => $title,
+        'size'    => $title_size,
         'seo_tag' => $title_seo_tag,
     );
   }
@@ -229,18 +226,18 @@ class Helpers {
    * @since 1.0.0
    */
   function get_utilities( $key, $array ) {
-    $class = '';
-    $id = '';
-    $spacing_top = '';
+    $class          = '';
+    $id             = '';
+    $spacing_top    = '';
     $spacing_bottom = '';
-    $combined = '';
-    $id_tag = '';
+    $combined       = '';
+    $id_tag         = '';
     $container_size = '';
 
     if ( ! empty( $this->general_helper->get_array_value( $key, $array ) ) ) {
-      $class = $this->general_helper->get_array_value( 'class', $array[ $key ] );
-      $id = $this->general_helper->get_array_value( 'id', $array[ $key ] );
-      $spacing_top = $this->general_helper->get_array_value( 'spacing_top', $array[ $key ] );
+      $class          = $this->general_helper->get_array_value( 'class', $array[ $key ] );
+      $id             = $this->general_helper->get_array_value( 'id', $array[ $key ] );
+      $spacing_top    = $this->general_helper->get_array_value( 'spacing_top', $array[ $key ] );
       $spacing_bottom = $this->general_helper->get_array_value( 'spacing_bottom', $array[ $key ] );
       $container_size = $this->general_helper->get_array_value( 'container_size', $array[ $key ] );
 
@@ -268,12 +265,12 @@ class Helpers {
     }
 
     return array(
-        'class' => $class,
-        'id' => $id,
-        'id_tag' => $id_tag,
-        'spacing_top' => $spacing_top,
+        'class'          => $class,
+        'id'             => $id,
+        'id_tag'         => $id_tag,
+        'spacing_top'    => $spacing_top,
         'spacing_bottom' => $spacing_bottom,
-        'combined' => $combined,
+        'combined'       => $combined,
         'container_size' => $container_size,
     );
   }

@@ -33,7 +33,7 @@ define( 'INF_THEME_VERSION', '1.0.0' );
 define( 'INF_THEME_NAME', 'theme_name' );
 
 /**
- * Change every time you deploy changes in assets to server
+ * Change every time you deploy changes in assets to the server
  * to force browser to clear cache
  *
  * @package theme_name
@@ -64,8 +64,9 @@ include_once( 'lib/autoloader.php' );
  *
  * @since    1.0.0
  */
-function run_inf_theme() {
+function init_theme() {
   $plugin = new Includes\Main();
   $plugin->run();
 }
-run_inf_theme();
+
+init_theme();
