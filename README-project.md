@@ -25,6 +25,25 @@ Before you start developing ask a lead developer to export you the latest versio
   https://boilerplate.com
   ```
 
+## Import & Export
+To be able to sync production server with staging and development you have 3 shell scripts.
+It used WPCLI so be sure your server has this module installed.
+
+  #### Export:
+  Once run it exports your database and uploads folder. Everything is compressed and exported in `latest_dump.tar.gz` file on the root of your project.
+  ```
+  _db-export.sh
+  ```
+
+  #### Import
+  Once run it **deletes current database** and imports new one from `latest_dump.tar.gz` file that must be located in the root of the project.
+  Uploads folder must be manually moved to the wp-content folder.
+
+  ```
+  _db-import-production-to-dev.sh
+  _db-import-production-to-staging.sh
+  ```
+
 ## wp-config.php
 At the bottom of the `wp-config.php` file before `require_once ABSPATH . 'wp-settings.php';` add this part:
 
