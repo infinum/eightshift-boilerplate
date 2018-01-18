@@ -52,7 +52,8 @@ npm start
 ```
 
 ## Browser sync
-We are using BrowserSync to sync assets and enable easy cross-device testing. To set it up go to `webpack.config.js` and set `proxyUrl` variable to link of your local development.
+We are using BrowserSync to sync assets and enable easy cross-device testing. 
+To set it up go to `webpack.config.js` and set `proxyUrl` variable to link of your local development.
 It is tested on MAMP and Vagrant (VVV).
 
 ## Linting Assets (JS,SASS)
