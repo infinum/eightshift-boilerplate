@@ -77,12 +77,12 @@ alias wpcbf='phpcbf --standard=vendor/infinum/coding-standards-wp/Infinum';
 
 Checking theme for possible violations:
 ```
-wpcs wp-content/themes/theme_name
+wpcs wp-content/themes/init_theme_name
 ```
 
 Autofix theme for minor violations:
 ```
-wpcbf wp-content/themes/theme_name
+wpcbf wp-content/themes/init_theme_name
 ```
 
 ## Build

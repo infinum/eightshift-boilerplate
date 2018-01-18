@@ -1,4 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env sh
+
+# Prettyfiers
+# Prettyfiers
+BLUE='\033[0;36m'
+RED='\033[0;31m'
+BBLUE="\033[1;36m"
+NC='\033[0m' # No Color
 
 if [ -n "${BASH_VERSINFO[0]}" ] && [ ${BASH_VERSINFO[0]} -gt 3 ]; then
   # Updated: 20-Aug-2009 - for bash version 4
@@ -65,85 +72,97 @@ ucwords() {
   return 1;
 }
 
-echo "This script will rename your plugin and its contents. It will update some basic fields in your README and init file."
+echo "This script will rename your theme and its contents. It whill setup you project. \n"
 
-echo "Please enter your plugin name:"
-read plugin_name
+echo "${BBLUE}Please enter your theme name:${NC}"
+echo "(This is the name that will be showned in the WP admin as theme name.)"
+read theme_name_real_name
 
-plugin_suggested="${plugin_name// /-}"
-plugin_suggested=$(strtolower $plugin_suggested)
-
-echo "Please enter your desired rename (all lowercase). This will replace all instances of plugin-name."
-echo "Suggestion: $plugin_suggested (Hit enter to accept)"
-read plugin_desired
-
-if [ -z "$plugin_desired" ]; then
-  plugin_desired=$plugin_suggested
+if [[ -z "$theme_name_real_name" ]]; then
+  echo "${RED}Theme name field is required ${NC}"
+  exit 1
 fi
 
-echo "Please enter your plugin description:"
-read plugin_description
+echo "\n${BBLUE}Please enter your package name:${NC}"
+echo "(This is the name thet will be used for translations in all @package fields and the name of your theme folder.)"
+echo "(Must be lowercase with no special characters and no spaces. You can use '_' or '-' for spaces)"
+read theme_package_name
 
-echo "Please enter your name:"
-read plugin_author
+if [[ -z "$theme_package_name" ]]; then
+  echo "${RED}Package name field is required ${NC}"
+  exit 1
+fi
 
-echo "Please enter your email:"
-read plugin_email
+theme_package_name="${theme_package_name// /-}"
+theme_package_name=$(strtolower $theme_package_name)
 
-plugin_functions="${plugin_desired// /_}"
-plugin_functions="${plugin_desired//-/_}"
-plugin_css="${plugin_desired// /-}"
 
-echo ""
-echo "Your details will be:"
-echo ""
-echo "Plugin Name: $plugin_name"
-echo "Plugin Description: $plugin_description"
-echo "Plugin Author: $plugin_author"
-echo "Plugin Author Email: $plugin_email"
-echo "Functions: $plugin_functions"
-echo "Files: $plugin_css"
+echo "\n${BBLUE}Please enter your theme description:${NC}"
+read theme_description
 
-echo "Confirm? (y/n)"
+echo "\n${BBLUE}Please enter author name:${NC}"
+read theme_author_name
+
+echo "\n${BBLUE}Please enter author email:${NC}"
+read theme_author_email
+
+echo "\n${BBLUE}Please enter author url:${NC}"
+read theme_author_url
+
+echo "\n----------------------------------------------------\n"
+
+echo "${BBLUE}Your details will be:${NC}\n"
+echo "Theme Name: ${BBLUE}$theme_name_real_name${NC}"
+echo "Description: ${BBLUE}$theme_description${NC}"
+echo "Author: ${BBLUE}$theme_author_name${NC} <${BBLUE}$theme_author_email${NC}>"
+echo "Author Url: ${BBLUE}$theme_author_url${NC}"
+echo "Text Domain: ${BBLUE}$theme_package_name${NC}"
+echo "Package: ${BBLUE}$theme_package_name${NC}"
+
+echo "\n${RED}Confirm? (y/n)${NC}"
 read confirmation
 
 if [ "$confirmation" == "y" ]; then
 
-  # Replace "plugin-name"
-  replacestring="s/plugin-name/$plugin_css/g"
-  find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
+#   # Replace "plugin-name"
+#   replacestring="s/plugin-name/$plugin_css/g"
+#   find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
 
-  # Replace "plugin_name"
-  replacestring="s/plugin_name/$plugin_functions/g"
-  find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
+#   # Replace "plugin_name"
+#   replacestring="s/plugin_name/$plugin_functions/g"
+#   find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
 
-  # Replace "Plugin_Name"
-  replacestring="s/Plugin_Name/$plugin_classes/g"
-  find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
+#   # Replace "Plugin_Name"
+#   replacestring="s/Plugin_Name/$plugin_classes/g"
+#   find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
 
   # Replace author
-  replacestring="s/Your Name or Your Company/$plugin_author <$plugin_email>/g"
-  find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
+  find . -type f -not -name '_rename.sh' -not -path '*/.git*' -exec sed -i -e "s/init_author_name/$theme_author_name <$theme_author_email>/g" '{}' \;
 
-  replacestring="s/Your Name <email@example.com>/$plugin_author <$plugin_email>/g"
-  find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
+#   replacestring="s/Your Name <email@example.com>/$plugin_author <$plugin_email>/g"
+#   find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
 
-  # Cleanup core file
-  replacestring="s/WordPress Plugin Boilerplate/$plugin_name/g"
-  sed -i '' -e "$replacestring" ./plugin-name/plugin-name.php
+#   # Cleanup core file
+#   replacestring="s/WordPress Plugin Boilerplate/$plugin_name/g"
+#   sed -i '' -e "$replacestring" ./plugin-name/plugin-name.php
 
-  replacestring="s/This is a short description of what the plugin does. It's displayed in the WordPress admin area./$plugin_description/g"
-  sed -i '' -e "$replacestring" ./plugin-name/plugin-name.php
+#   replacestring="s/This is a short description of what the plugin does. It's displayed in the WordPress admin area./$plugin_description/g"
+#   sed -i '' -e "$replacestring" ./plugin-name/plugin-name.php
 
-  #Rename top level directory
-  mv "plugin-name" "$plugin_css"
 
-  for file in `find . -name "*plugin-name*" -type f`; do
-    DIR=$(dirname "${VAR}")
-    mkdir -p $DIR
-    mv "$file" "${file/plugin-name/$plugin_css}"
-  done
+
+  # for file in `find . -name "*theme_name*"`; do
+  #   DIR=$(dirname "${VAR}")
+  #   mkdir -p $DIR
+  #   mv "$file" "${file/plugin-name/$theme_package_name}"
+  # done
+
+
+  # DONE --------------------------
+  # Rename top level directory
+  # find . -depth -type d -name 'theme_name*' -exec mv {} "wp-content/themes/$theme_package_name" \;
 
 else
   echo "Cancelled."
+  echo "\n${RED}Cancelled?${NC}"
 fi

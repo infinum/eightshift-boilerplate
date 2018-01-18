@@ -1,8 +1,8 @@
 <?php
 /**
- * Theme Name: init_theme_name_full
+ * Theme Name: init_theme_real_name
  * Description: init_description
- * Author: init_author
+ * Author: init_author_name
  * Author URI: init_author_uri
  * Version: 1.0
  * Text Domain: init_theme_name
