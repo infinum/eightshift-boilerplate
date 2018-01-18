@@ -41,4 +41,3 @@ wp transient delete --all
 wp rewrite flush
 
 echo "${BLUE}Finished! Success!${NC}"
-

@@ -158,4 +158,3 @@ Infinum WordPress Boilerplate is maintained and sponsored by
 ## License
 
 Infinum WordPress Boilerplate is Copyright © 2017 Infinum. It is free software, and may be redistributed under the terms specified in the LICENSE file.
-
