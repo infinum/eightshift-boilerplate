@@ -32,31 +32,34 @@ For questions talk to:
 
 First you need to install WordPress locally, using any of the local development environment you prefer. You can use XAMPP, MAMP, WAMP, VVV, Docker or Laravel Valet.
 
-We recommend that you search and replace `theme_name` with your desired theme name.
-Change the theme name in these files:
-
-* `theme_name` - theme folder, in documentation and localization
-* `webpack.config.js` - in `themeName` variable
-* `postcss.config.js` - in `themeName` variable
-* `.gitignore`
-* `.eslintignore`
-* `package.json` - project name
-* `_setup.sh`
+Run bash script to setup your project and rename all files via wizard.
+`You run this first and only once`
+```
+sh _rename.sh
+```
 
 ## Development Pre Start
-* `sh _setup.sh` - run script
+Run this to start with development or to setup WP on the server.
+It will install npm and composer dependencies, install the latest version of WP and set the current theme as active.
+```
+sh _setup.sh
+```
 
 ## Development Start
-* `npm start`
-  * Builds assets in watch mode using Webpack
+Builds assets in watch mode using Webpack.
+```
+npm start
+```
 
 ## Browser sync
 We are using BrowserSync to sync assets and enable easy cross-device testing. To set it up go to `webpack.config.js` and set `proxyUrl` variable to link of your local development.
 It is tested on MAMP and Vagrant (VVV).
 
 ## Linting Assets (JS,SASS)
-* `npm run precommit`
-  * Lints JS and SASS using Webpack
+Lints JS and SASS using Webpack
+```
+npm run precommit
+```
 
 ## Linting PHP ##
 We are using [Infinum coding standards for WordPress](https://github.com/infinum/coding-standards-wp) to check php files.
@@ -73,18 +76,27 @@ alias wpcbf='phpcbf --standard=vendor/infinum/coding-standards-wp/Infinum';
 * Reload terminal
 
 Checking theme for possible violations:
-* `wpcs wp-content/themes/theme_name`
+```
+wpcs wp-content/themes/theme_name
+```
 
 Autofix theme for minor violations:
-* `wpcbf wp-content/themes/theme_name`
+```
+wpcbf wp-content/themes/theme_name
+```
 
 ## Build
-Build creates public folder in theme with js, css, images and fonts
+Build creates public folder in theme all the assets.
 
-* `sh _prebuild.sh`
-  * Check for errors js, css, php but not WP standards
-* `sh _build.sh`
-  * Builds production ready assets
+Check for errors js, css, php but not WP standards
+```
+sh _prebuild.sh
+```
+
+Builds production ready assets
+```
+sh _build.sh
+```
 
 ## Import & Export
 Details are located in the `README-project.md` file. Be sure to change the URL according to your project.
@@ -93,7 +105,6 @@ Details are located in the `README-project.md` file. Be sure to change the URL a
 * This theme uses OOP with namespaces and autoloader. Also we have included `ci-exclude.txt` file, to point what files to exclude when deploying using continuous integration.
 
 ## Recommended plugins
-
 Some functionality will work with ACF plugin, they are usually easily noticed in the files, so you can remove them and the boilerplate will work. Also the boilerplate contains few browsecap specific pages that will work only if you include [browsecap](https://browscap.org/) on your server, or use [browsecap utility for VVV](https://github.com/dingo-d/browscap-vvv-utility) locally. These are also optional, and can be removed.
 
 * Content:

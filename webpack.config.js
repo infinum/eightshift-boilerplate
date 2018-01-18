@@ -18,7 +18,7 @@ const appPath = `${path.resolve(__dirname)}`;
 const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.com
 
 // Theme
-const themeName = 'theme_name';
+const themeName = 'init_theme_name';
 const themePath = `/wp-content/themes/${themeName}/skin`;
 const themeFullPath = `${appPath}${themePath}`;
 const themePublicPath = `${themePath}/public/`;
