@@ -2,6 +2,8 @@
 
 # Prettyfiers
 BLUE='\033[0;36m'
+RED='\033[0;31m'
+BBLUE="\033[1;36m"
 NC='\033[0m' # No Color
 
 # Create temp folder
@@ -22,7 +24,7 @@ fi
 
 # Exit if folders are not existing
 if [ ! -d "db_dump" ] || [ ! -d "wp-content/uploads/" ]; then
-  echo -e "${BLUE}Fail! Folders are missing!${NC}"
+  echo -e "${RED}Fail! Folders are missing!${NC}"
   exit 1
 fi
 
@@ -36,4 +38,4 @@ if [ -d "db_dump" ]; then
   echo -e "${BLUE}Removing temp db_dump folder!${NC}"
 fi
 
-echo -e "${BLUE}Export complete! File is located in root folder latest_dump.tar.gz${NC}"
+echo -e "${BBLUE}Export complete! File is located in root folder latest_dump.tar.gz${NC}"

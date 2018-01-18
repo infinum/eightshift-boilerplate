@@ -2,11 +2,13 @@
 
 # Prettyfiers
 BLUE='\033[0;36m'
+RED='\033[0;31m'
+BBLUE="\033[1;36m"
 NC='\033[0m' # No Color
 
 # Check if dump exists
 if [ ! -f "latest_dump.tar.gz" ]; then
-  echo "${BLUE}Fail! File latest_dump.tar.gz doesn't exist!${NC}"
+  echo "${RED}Fail! File latest_dump.tar.gz doesn't exist!${NC}"
   exit 1
 fi
 
@@ -40,4 +42,4 @@ wp cache flush
 wp transient delete --all
 wp rewrite flush
 
-echo "${BLUE}Finished! Success!${NC}"
+echo "${BBLUE}Finished! Success!${NC}"

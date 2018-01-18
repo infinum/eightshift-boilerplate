@@ -6,6 +6,7 @@ RED='\033[0;31m'
 BBLUE="\033[1;36m"
 NC='\033[0m' # No Color
 
+# Convert string to lowercase
 function strtolower() {
   [ $# -eq 1 ] || return 1;
   local _str _cu _cl _x;
@@ -19,11 +20,12 @@ function strtolower() {
   return 0;
 }
 
+# Find and replace strings in files
 function findReplace() {
   local var=$1
   local val=$2
 
-  find . -type f -not -name '_rename.sh' -not -path '*/.git*' | xargs -n1 sed -i.sedbak "s/$var/$val/g"
+  find . -type f -not -name '_rename.sh' -not -path '*/.git/*' | xargs -n1 sed -i.sedbak "s/$var/$val/g"
   find . -type f -name '*.sedbak' | xargs -n1 rm
 }
 
@@ -61,16 +63,12 @@ read theme_author_name
 echo "\n${BBLUE}Please enter author email:${NC}"
 read theme_author_email
 
-echo "\n${BBLUE}Please enter author url:${NC}"
-read theme_author_url
-
 echo "\n----------------------------------------------------\n"
 
 echo "${BBLUE}Your details will be:${NC}\n"
 echo "Theme Name: ${BBLUE}$theme_name_real_name${NC}"
 echo "Description: ${BBLUE}$theme_description${NC}"
 echo "Author: ${BBLUE}$theme_author_name${NC} <${BBLUE}$theme_author_email${NC}>"
-echo "Author Url: ${BBLUE}$theme_author_url${NC}"
 echo "Text Domain: ${BBLUE}$theme_package_name${NC}"
 echo "Package: ${BBLUE}$theme_package_name${NC}"
 
@@ -79,12 +77,13 @@ read confirmation
 
 if [ "$confirmation" == "y" ]; then
 
+# Replace strings
 findReplace "init_theme_real_name" "$theme_name_real_name"
 findReplace "init_description" "$theme_description"
 findReplace "init_author_name" "$theme_author_name <$theme_author_email>"
-findReplace "init_author_url" "$theme_author_url"
 findReplace "init_theme_name" "$theme_package_name"
 
+# Change folder name
 mv "./wp-content/themes/theme_name" "./wp-content/themes/$theme_package_name"
 
 else

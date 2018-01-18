@@ -3,7 +3,7 @@
  * Theme Name: init_theme_real_name
  * Description: init_description
  * Author: init_author_name
- * Author URI: init_author_url
+ * Author URI:
  * Version: 1.0
  * Text Domain: init_theme_name
  *
