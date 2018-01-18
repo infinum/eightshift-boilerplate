@@ -1,75 +1,30 @@
 #!/usr/bin/env sh
 
 # Prettyfiers
-# Prettyfiers
 BLUE='\033[0;36m'
 RED='\033[0;31m'
 BBLUE="\033[1;36m"
 NC='\033[0m' # No Color
 
-if [ -n "${BASH_VERSINFO[0]}" ] && [ ${BASH_VERSINFO[0]} -gt 3 ]; then
-  # Updated: 20-Aug-2009 - for bash version 4
-  strtolower() {
-    [ $# -eq 1 ] || return 1;
-    echo ${1,,};
-    return 0;
-  }
-else
-  strtolower() {
-    [ $# -eq 1 ] || return 1;
-    local _str _cu _cl _x;
-    _cu=(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z);
-    _cl=(a b c d e f g h i j k l m n o p q r s t u v w x y z);
-    _str=$1;
-    for ((_x=0;_x<${#_cl[*]};_x++)); do
-      _str=${_str//${_cu[$_x]}/${_cl[$_x]}};
-    done;
-    echo $_str;
-    return 0;
-  }
-fi
-
-if [ -n "${BASH_VERSINFO[0]}" ] && [ ${BASH_VERSINFO[0]} -gt 3 ]; then
-  # Updated: 20-Aug-2009 - for bash version 4
-  strtoupper() {
-    [ $# -eq 1 ] || return 1;
-    echo ${1^^};
-    return 0;
-  }
-else
-  strtoupper() {
-    [ $# -eq 1 ] || return 1;
-    local _str _cu _cl _x;
-    _cu=(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z);
-    _cl=(a b c d e f g h i j k l m n o p q r s t u v w x y z);
-    _str=$1;
-    for ((_x=0;_x<${#_cl[*]};_x++)); do
-      _str=${_str//${_cl[$_x]}/${_cu[$_x]}};
-    done;
-    echo $_str;
-    return 0;
-  }
-fi
-
-ucwords() {
+function strtolower() {
   [ $# -eq 1 ] || return 1;
-  ! type -t strtoupper &>/dev/null && return 1;
-  local _x _c _p _ret="" _str="$1";
-  _p=0;
-  for ((_x=0;_x<${#_str};_x++)); do
-    _c=${_str:$_x:1};
-    if [ "$_c" != " " ] && [ "$_p" = "0" ]; then
-      _ret+="$(strtoupper "$_c")";
-      _p=1;continue;
-    fi;
-    [ "$_c" = " " ] && _p=0;
-    _ret+="$_c";
+  local _str _cu _cl _x;
+  _cu=(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z);
+  _cl=(a b c d e f g h i j k l m n o p q r s t u v w x y z);
+  _str=$1;
+  for ((_x=0;_x<${#_cl[*]};_x++)); do
+    _str=${_str//${_cu[$_x]}/${_cl[$_x]}};
   done;
-  if [ -n "${_ret:-}" ]; then
-    echo "${_ret}";
-    return 0;
-  fi;
-  return 1;
+  echo $_str;
+  return 0;
+}
+
+function findReplace() {
+  local var=$1
+  local val=$2
+
+  find . -type f -not -name '_rename.sh' -not -path '*/.git*' | xargs -n1 sed -i.sedbak "s/$var/$val/g"
+  find . -type f -name '*.sedbak' | xargs -n1 rm
 }
 
 echo "This script will rename your theme and its contents. It whill setup you project. \n"
@@ -124,43 +79,13 @@ read confirmation
 
 if [ "$confirmation" == "y" ]; then
 
-#   # Replace "plugin-name"
-#   replacestring="s/plugin-name/$plugin_css/g"
-#   find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
+findReplace "init_theme_real_name" "$theme_name_real_name"
+findReplace "init_description" "$theme_description"
+findReplace "init_author_name" "$theme_author_name <$theme_author_email>"
+findReplace "init_author_url" "$theme_author_url"
+findReplace "init_theme_name" "$theme_package_name"
 
-#   # Replace "plugin_name"
-#   replacestring="s/plugin_name/$plugin_functions/g"
-#   find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
-
-#   # Replace "Plugin_Name"
-#   replacestring="s/Plugin_Name/$plugin_classes/g"
-#   find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
-
-  # Replace author
-  find . -type f -not -name '_rename.sh' -not -path '*/.git*' -exec sed -i -e "s/init_author_name/$theme_author_name <$theme_author_email>/g" '{}' \;
-
-#   replacestring="s/Your Name <email@example.com>/$plugin_author <$plugin_email>/g"
-#   find ./plugin-name -type f -exec sed -i '' -e "$replacestring" '{}' \;
-
-#   # Cleanup core file
-#   replacestring="s/WordPress Plugin Boilerplate/$plugin_name/g"
-#   sed -i '' -e "$replacestring" ./plugin-name/plugin-name.php
-
-#   replacestring="s/This is a short description of what the plugin does. It's displayed in the WordPress admin area./$plugin_description/g"
-#   sed -i '' -e "$replacestring" ./plugin-name/plugin-name.php
-
-
-
-  # for file in `find . -name "*theme_name*"`; do
-  #   DIR=$(dirname "${VAR}")
-  #   mkdir -p $DIR
-  #   mv "$file" "${file/plugin-name/$theme_package_name}"
-  # done
-
-
-  # DONE --------------------------
-  # Rename top level directory
-  # find . -depth -type d -name 'theme_name*' -exec mv {} "wp-content/themes/$theme_package_name" \;
+mv "./wp-content/themes/theme_name" "./wp-content/themes/$theme_package_name"
 
 else
   echo "Cancelled."
