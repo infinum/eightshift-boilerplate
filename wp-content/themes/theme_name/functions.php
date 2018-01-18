@@ -1,10 +1,11 @@
 <?php
 /**
- * Theme Name: theme_name
- * Description: description
- * Author: author
- * Author URI: author_uri
- * Version: version
+ * Theme Name: init_theme_name_full
+ * Description: init_description
+ * Author: init_author
+ * Author URI: init_author_uri
+ * Version: 1.0
+ * Text Domain: init_theme_name
  *
  * @package init_theme_name
  */
