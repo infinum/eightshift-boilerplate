@@ -1,3 +1,4 @@
+/* global process */
 import bugsnag from 'bugsnag-js';
 
 bugsnag.apiKey = '';
