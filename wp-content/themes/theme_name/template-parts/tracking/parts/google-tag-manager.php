@@ -2,7 +2,7 @@
 /**
  * Google Tag Manager tracking code
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 ?>

@@ -6,7 +6,7 @@
  * theme-facing side of the site and the admin area.
  *
  * @since   1.0.0
- * @package theme_name
+ * @package init_theme_name
  */
 
 namespace Inf_Theme\Includes;
@@ -85,7 +85,7 @@ class Main {
     if ( defined( 'INF_THEME_NAME' ) ) {
       $this->theme_name = INF_THEME_NAME;
     } else {
-      $this->theme_name = 'theme_name';
+      $this->theme_name = 'init_theme_name';
     }
 
     $this->load_dependencies();

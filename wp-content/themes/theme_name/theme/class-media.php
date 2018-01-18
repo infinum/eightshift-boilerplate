@@ -3,7 +3,7 @@
  * The Media specific functionality.
  *
  * @since   1.0.0
- * @package theme_name
+ * @package init_theme_name
  */
 
 namespace Inf_Theme\Theme;
@@ -120,7 +120,7 @@ class Media {
             );
         }
       } catch ( Exception $e ) {
-        new \WP_Error( sprintf( esc_html__( 'Error: %s', 'theme_name' ), $e ) );
+        new \WP_Error( sprintf( esc_html__( 'Error: %s', 'init_theme_name' ), $e ) );
       }
     }
 

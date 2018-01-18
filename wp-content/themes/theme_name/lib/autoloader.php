@@ -8,7 +8,7 @@
  * Used and modified code from https://github.com/tommcfarlin/namespaces-and-autoloading-in-wordpress
  *
  * @since   1.0.0
- * @package theme_name
+ * @package init_theme_name
  */
 
 namespace Inf_Theme\Lib;

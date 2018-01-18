@@ -3,7 +3,7 @@
  * The Menu specific functionality.
  *
  * @since   1.0.0
- * @package theme_name
+ * @package init_theme_name
  */
 
 namespace Inf_Theme\Theme\Menu;
@@ -61,7 +61,7 @@ class Menu {
   public function register_menu_positions() {
     register_nav_menus(
       array(
-          'header_main_nav' => esc_html__( 'Menu', 'theme_name' ),
+          'header_main_nav' => esc_html__( 'Menu', 'init_theme_name' ),
       )
     );
   }

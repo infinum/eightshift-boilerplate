@@ -4,7 +4,7 @@
  * It provides BEM classes to menues.
  *
  * @since   1.0.0
- * @package theme_name
+ * @package init_theme_name
  */
 
 namespace Inf_Theme\Theme\Menu;
@@ -13,7 +13,7 @@ namespace Inf_Theme\Theme\Menu;
  * Bem Menu Walker
  * Inserts some BEM naming sensibility into WordPress menus
  *
- * @package theme_name
+ * @package init_theme_name
  */
 class Bem_Menu_Walker extends \Walker_Nav_Menu {
 

@@ -2,7 +2,7 @@
 /**
  * List Simple Article
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 use Inf_Theme\Theme\Utils as Utils;

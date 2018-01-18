@@ -2,7 +2,7 @@
 /**
  * Display footer content
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 ?>

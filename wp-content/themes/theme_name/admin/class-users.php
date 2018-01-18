@@ -3,7 +3,7 @@
  * The users specific functionality.
  *
  * @since   1.0.0
- * @package theme_name
+ * @package init_theme_name
  */
 
 namespace Inf_Theme\Admin;
@@ -65,8 +65,8 @@ class Users {
     $site_url  = get_bloginfo( 'wpurl' );
     $user_info = get_userdata( $user_id );
     $to = $user_info->user_email;
-    $subject = sprintf( esc_html__( 'Role changed: %s', 'theme_name' ), $site_url );
-    $message = sprintf( esc_html__( 'Hello %1$s, your role has changed on %2$s. Congratulations, you are now an %3$s.', 'theme_name' ), $user_info->display_name, $site_url, $new_role );
+    $subject = sprintf( esc_html__( 'Role changed: %s', 'init_theme_name' ), $site_url );
+    $message = sprintf( esc_html__( 'Hello %1$s, your role has changed on %2$s. Congratulations, you are now an %3$s.', 'init_theme_name' ), $user_info->display_name, $site_url, $new_role );
     wp_mail( $to, $subject, $message );
   }
 

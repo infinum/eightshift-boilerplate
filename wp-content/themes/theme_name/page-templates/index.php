@@ -1,8 +1,8 @@
 <?php
 /**
- * Theme_name
+ * Index file for security
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 ?>

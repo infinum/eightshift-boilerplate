@@ -3,7 +3,7 @@
  * The Widgets specific functionality.
  *
  * @since   1.0.0
- * @package theme_name
+ * @package init_theme_name
  */
 
 namespace Inf_Theme\Theme;
@@ -61,9 +61,9 @@ class Widgets {
   public function register_widget_position() {
     register_sidebar(
       array(
-          'name'          => esc_html__( 'Blog', 'theme_name' ),
+          'name'          => esc_html__( 'Blog', 'init_theme_name' ),
           'id'            => 'blog',
-          'description'   => esc_html__( 'Description', 'theme_name' ),
+          'description'   => esc_html__( 'Description', 'init_theme_name' ),
           'before_widget' => '',
           'after_widget'  => '',
           'before_title'  => '',
