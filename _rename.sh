@@ -77,16 +77,17 @@ read confirmation
 
 if [ "$confirmation" == "y" ]; then
 
-# Replace strings
-findReplace "init_theme_real_name" "$theme_name_real_name"
-findReplace "init_description" "$theme_description"
-findReplace "init_author_name" "$theme_author_name <$theme_author_email>"
-findReplace "init_theme_name" "$theme_package_name"
+  # Replace strings
+  findReplace "init_theme_real_name" "$theme_name_real_name"
+  findReplace "init_description" "$theme_description"
+  findReplace "init_author_name" "$theme_author_name <$theme_author_email>"
+  findReplace "init_theme_name" "$theme_package_name"
 
-# Change folder name
-mv "./wp-content/themes/theme_name" "./wp-content/themes/$theme_package_name"
+  # Change folder name
+  if [ "$theme_package_name" != "theme_name" ]; then
+    mv "./wp-content/themes/theme_name" "./wp-content/themes/$theme_package_name"
+  fi
 
 else
-  echo "Cancelled."
-  echo "\n${RED}Cancelled?${NC}"
+  echo "\n${RED}Cancelled.${NC}"
 fi
