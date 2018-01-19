@@ -29,10 +29,10 @@ function findReplace() {
   find . -type f -name '*.sedbak' | xargs -n1 rm
 }
 
-echo "This script will rename your theme and its contents. It whill setup you project. \n"
+echo "This script will rename your theme and its contents. It will setup you project. \n"
 
 echo "${BBLUE}Please enter your theme name:${NC}"
-echo "(This is the name that will be showned in the WP admin as theme name.)"
+echo "(This is the name that will be showed in the WordPress admin as the theme name.)"
 read theme_name_real_name
 
 if [[ -z "$theme_name_real_name" ]]; then
@@ -41,7 +41,7 @@ if [[ -z "$theme_name_real_name" ]]; then
 fi
 
 echo "\n${BBLUE}Please enter your package name:${NC}"
-echo "(This is the name thet will be used for translations in all @package fields and the name of your theme folder.)"
+echo "(This is the name that will be used for translations in all @package fields and the name of your theme folder.)"
 echo "(Must be lowercase with no special characters and no spaces. You can use '_' or '-' for spaces)"
 read theme_package_name
 

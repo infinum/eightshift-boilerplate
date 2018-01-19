@@ -33,31 +33,35 @@ For questions talk to:
 First you need to install WordPress locally, using any of the local development environment you prefer. You can use XAMPP, MAMP, WAMP, VVV, Docker or Laravel Valet.
 
 Run bash script to setup your project and rename all files via wizard.
-`You run this first and only once`
+**You run this first and only once**
+
 ```
 sh _rename.sh
 ```
 
 ## Development Pre Start
-Run this to start with development or to setup WP on the server.
-It will install npm and composer dependencies, install the latest version of WP and set the current theme as active.
+Run this to setup WordPress on the server.
+The script will install npm and composer dependencies, install the latest version of WordPress and set the current theme as active.
+
 ```
 sh _setup.sh
 ```
 
 ## Development Start
 Builds assets in watch mode using Webpack.
+
 ```
 npm start
 ```
 
 ## Browser sync
-We are using BrowserSync to sync assets and enable easy cross-device testing. 
+We are using BrowserSync to sync assets and enable easy cross-device testing.
 To set it up go to `webpack.config.js` and set `proxyUrl` variable to link of your local development.
 It is tested on MAMP and Vagrant (VVV).
 
 ## Linting Assets (JS,SASS)
 Lints JS and SASS using Webpack
+
 ```
 npm run precommit
 ```
@@ -68,6 +72,7 @@ We are using [Infinum coding standards for WordPress](https://github.com/infinum
 To install it, you need to install [Composer](https://getcomposer.org/) first.
 
 * Add this aliases to you bash config:
+
 ```
 alias phpcs='vendor/bin/phpcs';
 alias phpcbf='vendor/bin/phpcbf';
@@ -90,11 +95,13 @@ wpcbf wp-content/themes/init_theme_name
 Build creates public folder in theme all the assets.
 
 Check for errors js, css, php but not WP standards
+
 ```
 sh _prebuild.sh
 ```
 
 Builds production ready assets
+
 ```
 sh _build.sh
 ```
