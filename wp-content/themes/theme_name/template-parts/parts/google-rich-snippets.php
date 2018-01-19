@@ -2,7 +2,7 @@
 /**
  * Google Rich Snippets
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 ?>

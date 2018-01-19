@@ -2,7 +2,7 @@
 /**
  * Main header file
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 ?>

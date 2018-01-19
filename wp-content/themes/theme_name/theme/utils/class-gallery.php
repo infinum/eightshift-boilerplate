@@ -3,7 +3,7 @@
  * The Utils-Gallery specific functionality.
  *
  * @since   1.0.0
- * @package theme_name
+ * @package init_theme_name
  */
 
 namespace Inf_Theme\Theme\Utils;

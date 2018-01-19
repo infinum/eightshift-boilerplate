@@ -2,11 +2,11 @@
 /**
  * 404 error page
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 get_header();
 
-esc_html_e( 'ERROR 404', 'theme_name' );
+esc_html_e( 'ERROR 404', 'init_theme_name' );
 
 get_footer();

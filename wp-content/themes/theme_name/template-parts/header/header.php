@@ -2,7 +2,7 @@
 /**
  * Main header bar
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 use Inf_Theme\Theme\Menu as Menu;

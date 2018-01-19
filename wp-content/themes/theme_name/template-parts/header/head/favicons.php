@@ -2,7 +2,7 @@
 /**
  * Use default or cusotm Favicons
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 $favicon_url = INF_IMAGE_URL;

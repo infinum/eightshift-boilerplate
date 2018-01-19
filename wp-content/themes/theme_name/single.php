@@ -2,7 +2,7 @@
 /**
  * Single page for Posts
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 get_header();

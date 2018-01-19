@@ -1,17 +1,16 @@
 {
-    "require-dev": {
-      "dealerdirect/phpcodesniffer-composer-installer": "*",
-      "jakub-onderka/php-console-highlighter": "*",
-      "jakub-onderka/php-parallel-lint": "*",
-      "infinum/coding-standards-wp": "*"
-    },
-    "scripts": {
-      "post-install-cmd": [
-        "\"vendor/bin/phpcs\" --config-set installed_paths vendor/infinum/coding-standards-wp"
-      ],
-      "post-update-cmd": [
-        "\"vendor/bin/phpcs\" --config-set installed_paths vendor/infinum/coding-standards-wp"
-      ]
-    }
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "*",
+    "jakub-onderka/php-console-highlighter": "*",
+    "jakub-onderka/php-parallel-lint": "*",
+    "infinum/coding-standards-wp": "*"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "\"vendor/bin/phpcs\" --config-set installed_paths vendor/infinum/coding-standards-wp"
+    ],
+    "post-update-cmd": [
+      "\"vendor/bin/phpcs\" --config-set installed_paths vendor/infinum/coding-standards-wp"
+    ]
   }
-  
+}

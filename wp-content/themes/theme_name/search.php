@@ -3,7 +3,7 @@
  * Display regular search page with
  * title and regular listing sorted by date
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 get_header();
@@ -15,7 +15,7 @@ if ( have_posts() ) { ?>
     <h1>
       <?php
       // translators: 1: Search Query.
-      printf( esc_html__( 'Search Results for: %s', 'theme_name' ), '<span>' . get_search_query() . '</span>' );
+      printf( esc_html__( 'Search Results for: %s', 'init_theme_name' ), '<span>' . get_search_query() . '</span>' );
       ?>
     </h1>
   </header>

@@ -2,7 +2,7 @@
 /**
  * Head section for meta data
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 ?>
