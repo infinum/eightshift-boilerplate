@@ -2,23 +2,21 @@
 /**
  * Main header bar
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
-?>
-
-<?php
-  $blog_name = get_bloginfo( 'name' );
-  $blog_description = get_bloginfo( 'description' );
+use Inf_Theme\Theme\Menu as Menu;
+$menu = new Menu\Menu();
+$blog_name = get_bloginfo( 'name' );
+$blog_description = get_bloginfo( 'description' );
 ?>
 <div class="header">
   <a class="header__logo-link" href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( $blog_name ); ?>">
-  <img class="header__logo-img" src="<?php echo esc_url( IMAGE_URL . 'logo.svg' ); ?>" title="<?php echo esc_attr( $blog_name ); ?> - <?php echo esc_attr( $blog_description ); ?>" alt="<?php echo esc_attr( $blog_name ); ?> - <?php echo esc_attr( $blog_description ); ?>" />
+    <img class="header__logo-img" src="<?php echo esc_url( INF_IMAGE_URL . 'logo.svg' ); ?>" title="<?php echo esc_attr( $blog_name ); ?> - <?php echo esc_attr( $blog_description ); ?>" alt="<?php echo esc_attr( $blog_name ); ?> - <?php echo esc_attr( $blog_description ); ?>" />
   </a>
-	<?php
-	bem_menu(
-		'header_main_nav',
-		'main-navigation'
-	);
-	get_template_part( 'template-parts/header/search', 'form' ); ?>
+  <?php
+    echo esc_html( $menu->bem_menu( 'header_main_nav', 'main-navigation' ) );
+
+    get_template_part( 'template-parts/header/search', 'form' );
+  ?>
 </div>

@@ -1,21 +1,16 @@
 // Background Colors
 .u-bg-color {
-  @include bg-color;
+  @include bg-colors;
 }
 
 // Text Colors
 .u-text-color {
-  @include text-color;
+  @include text-colors;
 }
 
 // Text Sizes
 .u-text-size {
-  @include typography-size;
-}
-
-// Font Weights
-.u-text-weight {
-  @include typography-weight;
+  @include text-sizes;
 }
 
 // Spin animation
@@ -28,7 +23,7 @@
   transform: rotate(0);
 }
 
-.u-orientation--90{
+.u-orientation--90 {
   transform: rotate(90deg);
 }
 
@@ -64,4 +59,26 @@
 
 .table-responsive {
   overflow-y: hidden;
+}
+
+.hide {
+  display: none;
+}
+
+.u-no-scroll {
+  overflow: hidden;
+
+  &-ios,
+  &-mobile-navigation {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+.clear {
+  clear: both;
 }

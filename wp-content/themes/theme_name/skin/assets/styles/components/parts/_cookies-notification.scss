@@ -1,0 +1,39 @@
+$cookies-notification-bg-color: rgba($base-primary-color, 0.1);
+
+.cookies-notification {
+  background-color: $cookies-notification-bg-color;
+  padding: 10px $base-content-padding;
+  position: fixed;
+  z-index: $cookies-notification-index;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  &__wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    @include media(mobile down) {
+      text-align: center;
+      flex-flow: column;
+    }
+    @include media(tablet up) {
+      height: 40px;
+      padding-right: 180px;
+      width: 100%;
+    }
+  }
+
+  &__btn {
+    @include media(mobile down) {
+      margin-top: 10px;
+    }
+    @include media(tablet up) {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

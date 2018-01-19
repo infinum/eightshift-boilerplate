@@ -1,0 +1,53 @@
+//Section spacing single size item from map
+@mixin section-spacing($position: false, $size: default, $map: $section-spacing-map) {
+
+  // Partial for section spacing item
+  @mixin _partial($map, $size, $position) {
+    padding-#{$position}: map-get($map, $size);
+  }
+
+  $i: 0;
+
+  @each $breakpoint, $breakpointMap in $map {
+    @if $i == 0 {
+      @include _partial($breakpointMap, $size, $position);
+    }
+
+    @else {
+      @include media(#{$breakpoint} up) {
+        @include _partial($breakpointMap, $size, $position);
+      }
+    }
+    $i: $i + 1;
+  }
+}
+
+//Section spacing sizes items from map
+@mixin section-spacings($position: false, $map: $section-spacing-map) {
+
+  // Partial for section spacing helper
+  @mixin _partial($map, $position) {
+    @each $key, $value in $map {
+      &--#{$key} {
+        padding-#{$position}: $value;
+      }
+    }
+  }
+
+  &__spacing-#{$position} {
+    $i: 0;
+
+    @each $breakpoint, $breakpointMap in $map {
+      @if $i == 0 {
+        @include _partial($breakpointMap, $position);
+      }
+
+      @else {
+        @include media(#{$breakpoint} up) {
+          @include _partial($breakpointMap, $position);
+        }
+      }
+      $i: $i + 1;
+    }
+  }
+}

@@ -14,6 +14,12 @@ const cookies = {
     const keyValue = document.cookie.match(`(^|;) ?${key}=([^;]*)(;|$)`);
     return keyValue ? keyValue[2] : null;
   },
+  setHalfDay() {
+    return 43200000;
+  },
+  setOneDay() {
+    return 86400000;
+  },
   setOneYear() {
     return 31540000000;
   },
@@ -22,7 +28,7 @@ const cookies = {
   },
   setOneMonth() {
     return 2628000000;
-  }
+  },
 };
 
 export default cookies;

@@ -1,14 +1,16 @@
+/* global process __dirname */
+
 const DEV = process.env.NODE_ENV !== 'production';
 
 const path = require('path');
-
 const webpack = require('webpack');
+
+const jQuery = require.resolve('jquery');
+
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const appPath = `${path.resolve(__dirname)}`;
 
@@ -16,7 +18,7 @@ const appPath = `${path.resolve(__dirname)}`;
 const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.com
 
 // Theme
-const themeName = 'theme_name';
+const themeName = 'init_theme_name';
 const themePath = `/wp-content/themes/${themeName}/skin`;
 const themeFullPath = `${appPath}${themePath}`;
 const themePublicPath = `${themePath}/public/`;
@@ -36,35 +38,54 @@ const allModules = {
     {
       test: /\.(js|jsx)$/,
       use: 'babel-loader',
-      exclude: /node_modules/
+      exclude: /node_modules/,
     },
     {
       test: /\.json$/,
-      use: 'json-loader'
+      exclude: /node_modules/,
+      use: 'file-loader',
     },
     {
       test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-      exclude: [/fonts/],
-      use: `file-loader?name=${outputImages}`
+      exclude: [/fonts/, /node_modules/],
+      use: `file-loader?name=${outputImages}`,
     },
     {
-      test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
-      exclude: [/images/],
-      use: `file-loader?name=${outputFonts}`
+      test: /\.(eot|otf|ttf|woff|woff2|svg)$/,
+      exclude: [/images/, /node_modules/],
+      use: `file-loader?name=${outputFonts}`,
     },
     {
       test: /\.scss$/,
+      exclude: /node_modules/,
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: ['css-loader', 'postcss-loader', 'sass-loader']
-      })
-    }
-  ]
+        use: ['css-loader', 'postcss-loader', 'sass-loader'],
+      }),
+    },
+    {
+
+      // Exposes jQuery for use outside Webpack build.
+      test: jQuery,
+      use: [{
+        loader: 'expose-loader',
+        options: 'jQuery',
+      },
+      {
+        loader: 'expose-loader',
+        options: '$',
+      }],
+    },
+  ],
 };
 
 const allPlugins = [
-  new CleanWebpackPlugin([themeOutput]),
   new ExtractTextPlugin(outputCss),
+
+  new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery',
+  }),
 
   // Use BrowserSync For assets
   new BrowserSyncPlugin({
@@ -73,33 +94,39 @@ const allPlugins = [
     proxy: proxyUrl,
     files: [
       {
-        match: ['wp-content/themes/**/*.php', 'wp-content/plugins/**/*.php']
-      }
-    ]
+        match: ['wp-content/themes/**/*.php', 'wp-content/plugins/**/*.php'],
+      },
+    ],
   }),
-  new webpack.optimize.ModuleConcatenationPlugin(),
+
   new webpack.DefinePlugin({
     'process.env': {
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
-    }
-  })
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+    },
+  }),
 
-  // Analyse assets
-  // new BundleAnalyzerPlugin(),
+  new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
   // Is using vendor files, but prefered to use npm
-  // new CopyWebpackPlugin([{
-  //   from: `${pathTheme}/assets/scripts/vendors`,
-  //   to: `${pathTheme}/public/scripts/vendors`
-  // }])
+  new CopyWebpackPlugin([{
+    from: `${themeFullPath}/assets/scripts/vendors`,
+    to: `${themeOutput}/scripts/vendors`,
+  }]),
 ];
 
 // Use only for production build
 if (!DEV) {
   allPlugins.push(
-    new UglifyJSPlugin({
-      comments: false,
-      sourceMap: true
+    new CleanWebpackPlugin([themeOutput]),
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: false,
+      },
+      compress: {
+        warnings: false,
+        drop_console: true, // eslint-disable-line camelcase
+      },
+      sourceMap: true,
     })
   );
 }
@@ -111,16 +138,18 @@ module.exports = [
     context: path.join(__dirname),
     entry: {
       application: [themeEntry],
-      applicationAdmin: [themeAdminEntry]
+      applicationAdmin: [themeAdminEntry],
     },
     output: {
       path: themeOutput,
       publicPath: themePublicPath,
-      filename: outputJs
+      filename: outputJs,
     },
 
     module: allModules,
 
-    plugins: allPlugins
-  }
+    plugins: allPlugins,
+
+    devtool: DEV ? '#inline-source-map' : '',
+  },
 ];

@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import generalHelpers from './../helpers/general';
 
 export default class Checkbox {
@@ -11,8 +10,12 @@ export default class Checkbox {
     this.$link = this.$container.find('a');
     this.$input = this.$container.find('input[type=checkbox]');
   }
-  escapeString(string) {
-    return generalHelpers.escapeString(string);
+  escapeString(stringValue) {
+    if (typeof stringValue === 'undefined') {
+      return false;
+    }
+
+    return generalHelpers.escapeString(stringValue);
   }
   getInputById(id) {
     return $(`input[type="checkbox"]#${id}`);
@@ -55,6 +58,18 @@ export default class Checkbox {
     } else {
       this.setDisabled(escapedID);
     }
+  }
+  setChecked(id) {
+    const escapedID = this.escapeString(id);
+    const $input = this.getInputById(escapedID);
+    $input.prop('checked', true);
+    this.check(escapedID);
+  }
+  setUnchecked(id) {
+    const escapedID = this.escapeString(id);
+    const $input = this.getInputById(escapedID);
+    $input.prop('checked', false);
+    this.uncheck(escapedID);
   }
   init(id) {
     const escapedID = this.escapeString(id);

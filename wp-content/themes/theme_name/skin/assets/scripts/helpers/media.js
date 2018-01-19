@@ -3,7 +3,7 @@ const media = {
   mobile: 767,
   tablet: 991,
   desktop: 1199,
-  large: 1200
+  large: 1200,
 };
 
 export default media;

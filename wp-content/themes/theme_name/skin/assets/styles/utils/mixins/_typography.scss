@@ -1,0 +1,106 @@
+//Text single size item from map
+@mixin text-size($size, $map: $typography-map) {
+
+  // Partial for button size item
+  @mixin _partial($map, $size) {
+    font-size: map-get($map, $size);
+  }
+
+  $i: 0;
+
+  @each $breakpoint, $breakpointMap in $map {
+    @if $i == 0 {
+      @include _partial($breakpointMap, $size);
+    }
+
+    @else {
+      @include media(#{$breakpoint} up) {
+        @include _partial($breakpointMap, $size);
+      }
+    }
+
+    $i: $i + 1;
+  }
+}
+
+//Text sizes items from map
+@mixin text-sizes($map: $typography-map) {
+
+  // Partial for button size item
+  @mixin _partial($map) {
+    @each $key, $values in $map {
+      &--#{$key} {
+        font-size: map-get($map, $key);
+      }
+    }
+  }
+
+  $i: 0;
+
+  @each $breakpoint, $breakpointMap in $map {
+    @if $i == 0 {
+      @include _partial($breakpointMap);
+    }
+
+    @else {
+      @include media(#{$breakpoint} up) {
+        @include _partial($breakpointMap);
+      }
+    }
+    $i: $i + 1;
+  }
+}
+
+//Text color items from map
+@mixin text-colors($map: $color-map) {
+  @each $key, $value in $map {
+    &--#{$key} {
+      color: $value;
+    }
+  }
+}
+
+//Link single color item from map
+@mixin link-color($key) {
+  color: map-get($key, color);
+
+  .icon-animated-arrow__item {
+    background-color: map-get($key, color);
+  }
+
+  &:hover {
+    color: map-get($key, hover);
+
+    .icon-animated-arrow__item {
+      background-color: map-get($key, hover);
+    }
+  }
+}
+
+//Link color items from map
+@mixin link-colors($map: $links-map) {
+  @each $key, $value in $map {
+    @if $key == 'default' {
+      @include link-color($value);
+    }
+
+    @else {
+      &--color-#{$key} {
+        @include link-color($value);
+      }
+    }
+  }
+}
+
+//For better font smoothing and fix button weight problem on mac
+@mixin font-smoothing($value: antialiased) {
+  @if $value == antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}

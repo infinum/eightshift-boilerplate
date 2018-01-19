@@ -1,47 +1,70 @@
 //Base
-$base-font-family: 'Open Sans';
+$base-font-family: 'Open Sans', Arial, sans-serif;
+$base-icons-font-family: 'init_theme_name';
 
-//Colors
-$base-text-color: $base-dark-color;
-$base-bg-color: $base-white-color;
-
-//Container
+// Container
 $base-content-padding: 15px;
-$base-content-full-width: 1170px;
+$base-content-full-width: 1200px;
 $base-content-width: $base-content-full-width + ($base-content-padding*2);
-
-//Header Main
-$header-height: 70px;
 
 //Typography
 $typography-map: (
-  huge:           44px,
-  big:            36px,
-  larger:         28px,
-  large:          24px,
-  default:        20px,
-  medium:         18px,
-  small:          16px,
-  smaller:        14px,
-  smallest:       13px,
-  tiny:           10px
+  desktop: (
+    giant:          72px,
+    huge:           42px,
+    biggest:        30px,
+    bigger:         28px,
+    big:            26px,
+    largest:        24px,
+    larger:         22px,
+    large:          20px,
+    default:        18px,
+    medium:         16px,
+    small:          14px,
+    smaller:        12px,
+    tiny:           11px
+  )
 );
 
-$weight-map: (
-  normal: 400,
-  semi-bold: 600,
-  bold: 700,
-  extra: 800
+// Buttons
+$button-size-map: (
+  desktop: (
+    default: (
+      text-size: 14px,
+      line-height: 1.4,
+      height: 64px,
+    )
+  )
 );
 
 //Section
-$section-spacing: 50px;
-$section-spacing-tablet-map: (
-  default:    105px,
-  medium:     80px,
-  small:      40px,
-  no-spacing: 0
+$section-spacing-map: (
+  desktop: (
+    default:    40px,
+    medium:     80px,
+    small:      20px,
+    no-spacing: 0
+  )
 );
 
 //WP admin bar
 $wpAdminBar-sm: 782px;
+
+// Forms
+$form-field-spacing: 30px;
+
+// Input
+$input-height-map: (
+  small: (
+    default: (
+      text-size: 18px,
+      height: 57px,
+    )
+  ),
+  desktop: (
+    default: (
+      text-size: 24px,
+      height: 64px,
+    )
+  )
+);

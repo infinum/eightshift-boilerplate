@@ -2,13 +2,14 @@
 /**
  * Display footer
  *
- * @package theme_name
+ * @package init_theme_name
  */
 
 ?>
 
 </main>
 
-<?php get_template_part( 'template-parts/footer/footer', 'content' ); ?>
+<?php
 
-<?php get_template_part( 'template-parts/footer/foot' ); ?>
+get_template_part( 'template-parts/footer/content' );
+get_template_part( 'template-parts/footer/foot' );

@@ -37,9 +37,9 @@
 @import 'components/forms/checkbox';
 @import 'components/forms/radio';
 @import 'components/forms/input';
-@import 'components/forms/cf7';
 
 // Header
+@import 'components/header/wp-admin-bar';
 @import 'components/header/header';
 
 //Article
@@ -54,8 +54,8 @@
 //Sections
 // @import 'components/sections/';
 
-// Parts
-// @import 'components/parts/';
+// Template parts
+@import 'components/parts/cookies-notification';
 
 // Single
 @import 'components/single';

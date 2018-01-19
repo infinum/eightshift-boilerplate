@@ -1,5 +1,5 @@
 # Project Specific
-wp-content/themes/theme_name/skin/public
+wp-content/themes/init_theme_name/skin/public
 
 # Wordpress files
 wp-admin
@@ -45,3 +45,20 @@ wp-content/themes/twenty*/
 # Project dev files
 /vendor
 /node_modules/
+
+# Mac OS custom attribute store and thumbnails
+*.DS_Store
+._*
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Error logs
+error_log.txt
+wordfence-waf.php
+
+# Databases and exports
+latest_dump.tar.gz
+latest_dump

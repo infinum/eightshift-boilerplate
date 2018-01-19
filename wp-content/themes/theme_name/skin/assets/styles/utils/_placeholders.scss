@@ -46,7 +46,7 @@
 
 %font-icon {
   // use !important to prevent issues with browser extensions that change fonts
-  font-family: 'theme_font' !important; // stylelint-disable-line declaration-no-important
+  font-family: $base-icons-font-family !important; /* stylelint-disable-line declaration-no-important */
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
