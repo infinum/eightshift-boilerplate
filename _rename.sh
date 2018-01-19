@@ -88,6 +88,8 @@ if [ "$confirmation" == "y" ]; then
     mv "./wp-content/themes/theme_name" "./wp-content/themes/$theme_package_name"
   fi
 
+  echo "${BBLUE}Finished! Success! Now start _setup.sh script to begin installations.${NC}"
+
 else
   echo "\n${RED}Cancelled.${NC}"
 fi
