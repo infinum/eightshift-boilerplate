@@ -54,15 +54,27 @@ class Menu {
   }
 
   /**
+   * Return all menu poistions
+   *
+   * @return array Of menu positions with name and slug.
+   *
+   * @since 1.0.1
+   */
+  public function get_menu_positions() {
+    return array(
+        'header_main_nav' => esc_html__( 'Main Menu', 'init_theme_name' ),
+        'footer_main_nav' => esc_html__( 'Footer Menu', 'init_theme_name' ),
+    );
+  }
+
+  /**
    * Register All Menu positions
    *
    * @since 1.0.0
    */
   public function register_menu_positions() {
     register_nav_menus(
-      array(
-          'header_main_nav' => esc_html__( 'Menu', 'init_theme_name' ),
-      )
+      $this->get_menu_positions()
     );
   }
 

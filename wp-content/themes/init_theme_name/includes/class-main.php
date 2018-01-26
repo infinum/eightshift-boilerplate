@@ -70,8 +70,8 @@ class Main {
    */
   public function __construct() {
 
-    if ( defined( 'INF_ASSETS_VERSION' ) ) {
-      $this->theme_version = INF_ASSETS_VERSION;
+    if ( defined( 'INF_THEME_VERSION' ) ) {
+      $this->theme_version = INF_THEME_VERSION;
     } else {
       $this->theme_version = '1.0.0';
     }
@@ -111,34 +111,34 @@ class Main {
    * @since 1.0.0
    */
   private function define_admin_hooks() {
-    $this->admin       = new Admin\Admin( $this->get_theme_info() );
-    $this->login       = new Admin\Login( $this->get_theme_info() );
-    $this->editor      = new Admin\Editor( $this->get_theme_info() );
-    $this->admin_menus = new Admin\Admin_Menus( $this->get_theme_info() );
-    $this->users       = new Admin\Users( $this->get_theme_info() );
-    $this->acf         = new Admin\Acf( $this->get_theme_info() );
+    $admin       = new Admin\Admin( $this->get_theme_info() );
+    $login       = new Admin\Login( $this->get_theme_info() );
+    $editor      = new Admin\Editor( $this->get_theme_info() );
+    $admin_menus = new Admin\Admin_Menus( $this->get_theme_info() );
+    $users       = new Admin\Users( $this->get_theme_info() );
+    $acf         = new Admin\Acf( $this->get_theme_info() );
 
     // Admin.
-    $this->loader->add_action( 'login_enqueue_scripts', $this->admin, 'enqueue_styles' );
-    $this->loader->add_action( 'admin_enqueue_scripts', $this->admin, 'enqueue_styles', 50 );
-    $this->loader->add_action( 'admin_body_class', $this->admin, 'set_enviroment_body_class' );
+    $this->loader->add_action( 'login_enqueue_scripts', $admin, 'enqueue_styles' );
+    $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_styles', 50 );
+    $this->loader->add_action( 'admin_body_class', $admin, 'set_enviroment_body_class' );
 
     // Login page.
-    $this->loader->add_filter( 'login_headerurl', $this->login, 'custom_login_url' );
+    $this->loader->add_filter( 'login_headerurl', $login, 'custom_login_url' );
 
     // Editor.
-    $this->loader->add_action( 'admin_init', $this->editor, 'add_editor_styles' );
+    $this->loader->add_action( 'admin_init', $editor, 'add_editor_styles' );
 
     // Sidebar.
-    $this->loader->add_action( 'admin_menu', $this->admin_menus, 'remove_sub_menus' );
+    $this->loader->add_action( 'admin_menu', $admin_menus, 'remove_sub_menus' );
 
     // Users.
-    $this->loader->add_action( 'set_user_role', $this->users, 'send_main_when_user_role_changes', 10, 2 );
-    $this->loader->add_action( 'admin_init', $this->users, 'edit_editors_capabilities' );
+    $this->loader->add_action( 'set_user_role', $users, 'send_main_when_user_role_changes', 10, 2 );
+    $this->loader->add_action( 'admin_init', $users, 'edit_editors_capabilities' );
 
     // ACF.
-    $this->loader->add_action( 'acf/fields/google_map/api', $this->acf, 'set_google_map_api_key' );
-    $this->loader->add_action( 'acf/fields/wysiwyg/toolbars', $this->acf, 'add_wysiwyg_toolbars' );
+    $this->loader->add_action( 'acf/fields/google_map/api', $acf, 'set_google_map_api_key' );
+    $this->loader->add_action( 'acf/fields/wysiwyg/toolbars', $acf, 'add_wysiwyg_toolbars' );
 
   }
 
@@ -148,31 +148,31 @@ class Main {
    * @since 1.0.0
    */
   private function define_theme_hooks() {
-    $this->theme                 = new Theme\Theme( $this->get_theme_info() );
-    $this->legacy_browsers       = new Theme\Legacy_Browsers( $this->get_theme_info() );
-    $this->widgets               = new Theme\Widgets( $this->get_theme_info() );
-    $this->menu                  = new Menu\Menu( $this->get_theme_info() );
-    $this->theme_options_general = new Acf\Theme_Options_General( $this->get_theme_info() );
-    $this->media                 = new Theme\Media( $this->get_theme_info() );
-    $this->gallery               = new Utils\Gallery( $this->get_theme_info() );
-    $this->general               = new Theme\General( $this->get_theme_info() );
-    $this->pagination            = new Theme\Pagination( $this->get_theme_info() );
+    $theme                 = new Theme\Theme( $this->get_theme_info() );
+    $legacy_browsers       = new Theme\Legacy_Browsers( $this->get_theme_info() );
+    $widgets               = new Theme\Widgets( $this->get_theme_info() );
+    $menu                  = new Menu\Menu( $this->get_theme_info() );
+    $theme_options_general = new Acf\Theme_Options_General( $this->get_theme_info() );
+    $media                 = new Theme\Media( $this->get_theme_info() );
+    $gallery               = new Utils\Gallery( $this->get_theme_info() );
+    $general               = new Theme\General( $this->get_theme_info() );
+    $pagination            = new Theme\Pagination( $this->get_theme_info() );
 
     // Enque styles and scripts.
-    $this->loader->add_action( 'wp_enqueue_scripts', $this->theme, 'enqueue_styles' );
-    $this->loader->add_action( 'wp_enqueue_scripts', $this->theme, 'enqueue_scripts' );
+    $this->loader->add_action( 'wp_enqueue_scripts', $theme, 'enqueue_styles' );
+    $this->loader->add_action( 'wp_enqueue_scripts', $theme, 'enqueue_scripts' );
 
     // Remove inline gallery css.
-    $this->loader->add_filter( 'use_default_gallery_style', $this->theme, '__return_false' );
+    $this->loader->add_filter( 'use_default_gallery_style', $theme, '__return_false' );
 
     // Legacy Browsers.
-    $this->loader->add_action( 'template_redirect', $this->legacy_browsers, 'redirect_to_legacy_browsers_page' );
+    $this->loader->add_action( 'template_redirect', $legacy_browsers, 'redirect_to_legacy_browsers_page' );
 
     // Widgets.
-    $this->loader->add_action( 'widgets_init', $this->widgets, 'register_widget_position' );
+    $this->loader->add_action( 'widgets_init', $widgets, 'register_widget_position' );
 
     // Menu.
-    $this->loader->add_action( 'after_setup_theme', $this->menu, 'register_menu_positions' );
+    $this->loader->add_action( 'after_setup_theme', $menu, 'register_menu_positions' );
 
     /**
      * Optimizations
@@ -193,27 +193,27 @@ class Main {
     $this->loader->remove_action( 'wp_head', 'rest_output_link_wp_head' );
 
     // Theme Options.
-    $this->loader->add_action( 'acf/init', $this->theme_options_general, 'create_theme_options_page' );
-    $this->loader->add_action( 'acf/init', $this->theme_options_general, 'register_theme_options' );
-    $this->loader->add_action( 'acf/init', $this->theme_options_general, 'register_global_theme_options_variable' );
-    $this->loader->add_action( 'acf/save_post', $this->theme_options_general, 'delete_theme_options_transient' );
+    $this->loader->add_action( 'acf/init', $theme_options_general, 'create_theme_options_page' );
+    $this->loader->add_action( 'acf/init', $theme_options_general, 'register_theme_options' );
+    $this->loader->add_action( 'acf/init', $theme_options_general, 'register_global_theme_options_variable' );
+    $this->loader->add_action( 'acf/save_post', $theme_options_general, 'delete_theme_options_transient' );
 
     // Media.
-    $this->loader->add_action( 'upload_mimes', $this->media, 'enable_mime_types' );
-    $this->loader->add_action( 'wp_prepare_attachment_for_js', $this->media, 'enable_svg_library_preview', 10, 3 );
-    $this->loader->add_action( 'embed_oembed_html', $this->media, 'wrap_responsive_oembed_filter', 10, 4 );
-    $this->loader->add_action( 'after_setup_theme', $this->media, 'add_theme_support' );
-    $this->loader->add_action( 'after_setup_theme', $this->media, 'add_custom_image_sizes' );
+    $this->loader->add_action( 'upload_mimes', $media, 'enable_mime_types' );
+    $this->loader->add_action( 'wp_prepare_attachment_for_js', $media, 'enable_svg_library_preview', 10, 3 );
+    $this->loader->add_action( 'embed_oembed_html', $media, 'wrap_responsive_oembed_filter', 10, 4 );
+    $this->loader->add_action( 'after_setup_theme', $media, 'add_theme_support' );
+    $this->loader->add_action( 'after_setup_theme', $media, 'add_custom_image_sizes' );
 
     // Gallery.
-    $this->loader->add_filter( 'post_gallery', $this->gallery, 'wrap_post_gallery', 10 ,3 );
+    $this->loader->add_filter( 'post_gallery', $gallery, 'wrap_post_gallery', 10 ,3 );
 
     // General.
-    $this->loader->add_action( 'after_setup_theme', $this->general, 'add_theme_support' );
+    $this->loader->add_action( 'after_setup_theme', $general, 'add_theme_support' );
 
     // Pagination.
-    $this->loader->add_filter( 'next_posts_link_attributes', $this->pagination, 'pagination_link_next_class' );
-    $this->loader->add_filter( 'previous_posts_link_attributes', $this->pagination, 'pagination_link_prev_class' );
+    $this->loader->add_filter( 'next_posts_link_attributes', $pagination, 'pagination_link_next_class' );
+    $this->loader->add_filter( 'previous_posts_link_attributes', $pagination, 'pagination_link_prev_class' );
 
   }
 
