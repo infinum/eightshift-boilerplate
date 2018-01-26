@@ -12,7 +12,7 @@ For questions talk to:
 
 ## It contains:
 
-* Webpack3 config and build
+* Webpack3+ config and build
 * ES Linting
 * Style Linting
 * PHP Error Check
@@ -26,6 +26,11 @@ For questions talk to:
 * BEM menues
 * Google rich snippets
 * Object oriented codebase
+* Namespacing
+* Autoloader
+* Project-specific wp-config
+* Import / export scripts
+* Project setup wizard
 * ...
 
 ## Getting started
