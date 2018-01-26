@@ -84,8 +84,8 @@ if [ "$confirmation" == "y" ]; then
   findReplace "init_theme_name" "$theme_package_name"
 
   # Change folder name
-  if [ "$theme_package_name" != "theme_name" ]; then
-    mv "./wp-content/themes/theme_name" "./wp-content/themes/$theme_package_name"
+  if [ "$theme_package_name" != "init_theme_name" ]; then
+    mv "./wp-content/themes/init_theme_name" "./wp-content/themes/$theme_package_name"
   fi
 
   echo "${BBLUE}Finished! Success! Now start _setup.sh script to begin installations.${NC}"
