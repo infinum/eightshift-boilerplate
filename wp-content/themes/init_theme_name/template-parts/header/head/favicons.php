@@ -5,21 +5,18 @@
  * @package init_theme_name
  */
 
-$favicon_url = INF_IMAGE_URL;
-$favicon_path = get_template_directory() . '/skin/public/images/';
-
 $favicon = array(
-    '310x150' => $favicon_url . '310x150.png',
-    '310'     => $favicon_url . '310.png',
-    '192'     => $favicon_url . '192.png',
-    '180'     => $favicon_url . '180.png',
-    '152'     => $favicon_url . '152.png',
-    '150'     => $favicon_url . '150.png',
-    '144'     => $favicon_url . '144.png',
-    '114'     => $favicon_url . '114.png',
-    '72'      => $favicon_url . '72.png',
-    '70'      => $favicon_url . '70.png',
-    '52'      => $favicon_url . '52.png',
+    '310x150' => INF_IMAGE_URL . '310x150.png',
+    '310'     => INF_IMAGE_URL . '310.png',
+    '192'     => INF_IMAGE_URL . '192.png',
+    '180'     => INF_IMAGE_URL . '180.png',
+    '152'     => INF_IMAGE_URL . '152.png',
+    '150'     => INF_IMAGE_URL . '150.png',
+    '144'     => INF_IMAGE_URL . '144.png',
+    '114'     => INF_IMAGE_URL . '114.png',
+    '72'      => INF_IMAGE_URL . '72.png',
+    '70'      => INF_IMAGE_URL . '70.png',
+    '52'      => INF_IMAGE_URL . '52.png',
 );
 
 ?>
