@@ -2,7 +2,7 @@
 /**
  * The Theme specific functionality.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -20,7 +20,7 @@ class Theme {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -29,7 +29,7 @@ class Theme {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
 
@@ -38,7 +38,7 @@ class Theme {
    *
    * @var object General_Helper
    *
-   * @since 1.0.0
+   * @since 2.0.1
    */
   public $general_helper;
 
@@ -47,7 +47,7 @@ class Theme {
    *
    * @param array $theme_info Load global theme info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
@@ -59,7 +59,7 @@ class Theme {
   /**
    * Register the Stylesheets for the theme area.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function enqueue_styles() {
 
@@ -76,7 +76,7 @@ class Theme {
    * 'enqueued' with empty string. This is done to avoid multiple jQuery loading, since
    * one is bundled with webpack and exposed to the global window.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function enqueue_scripts() {
     wp_deregister_script( 'jquery-migrate' );

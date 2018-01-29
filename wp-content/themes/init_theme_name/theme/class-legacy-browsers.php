@@ -3,7 +3,7 @@
  * The Legacy Browsers specific functionality.
  * Requires php browser cap
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -19,7 +19,7 @@ class Legacy_Browsers {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -28,7 +28,7 @@ class Legacy_Browsers {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
 
@@ -37,7 +37,7 @@ class Legacy_Browsers {
    *
    * @param array $theme_info Load global theme info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
@@ -54,7 +54,7 @@ class Legacy_Browsers {
    *
    * @return array Full browsers info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function get_browser_info() {
     $browser_info = get_browser();
@@ -71,7 +71,7 @@ class Legacy_Browsers {
    *
    * @return string Return browser version as int number.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function get_browser_version() {
     $browser_verion = $this->get_browser_info();
@@ -84,7 +84,7 @@ class Legacy_Browsers {
    *
    * @return string Get full browser name.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function get_browser_name() {
     $browser_name = $this->get_browser_info();
@@ -95,7 +95,7 @@ class Legacy_Browsers {
   /**
    * Check if browser is valid.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function check_is_browser_valid() {
 
@@ -112,7 +112,7 @@ class Legacy_Browsers {
   /**
    * If old browser is detected go to redirect
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function redirect_to_legacy_browsers_page() {
 

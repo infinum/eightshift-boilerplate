@@ -3,11 +3,13 @@
  * The Admin specific functionality.
  * General stuff that is not specific to any class.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
 namespace Inf_Theme\Admin;
+
+use Inf_Theme\Helpers as General_Helpers;
 
 /**
  * Class Admin
@@ -19,7 +21,7 @@ class Admin {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -28,26 +30,37 @@ class Admin {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
+
+  /**
+   * General Helper class
+   *
+   * @var object General_Helper
+   *
+   * @since 2.0.1
+   */
+  public $general_helper;
 
   /**
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
     $this->theme_version  = $theme_info['theme_version'];
+
+    $this->general_helper = new General_Helpers\General_Helper();
   }
 
   /**
    * Register the Stylesheets for the admin area.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function enqueue_styles() {
 
@@ -60,7 +73,7 @@ class Admin {
   /**
    * Register the JavaScript for the admin area.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function enqueue_scripts() {
 
@@ -79,7 +92,7 @@ class Admin {
    * @param  string $classes Get preset body classes.
    * @return string $classes Body classes with env class.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   function set_enviroment_body_class( $classes ) {
     $this->env = '';

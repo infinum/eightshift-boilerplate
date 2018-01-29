@@ -2,7 +2,7 @@
 /**
  * The admin sidebar menu specific functionality.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -18,7 +18,7 @@ class Admin_Menus {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -27,7 +27,7 @@ class Admin_Menus {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
 
@@ -36,7 +36,7 @@ class Admin_Menus {
    *
    * @param array $theme_info Load global theme info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
@@ -49,7 +49,7 @@ class Admin_Menus {
    * This methdd removes Comments menu from the admin side.
    * You can remove or modify this if necessary.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function remove_sub_menus() {
     remove_menu_page( 'edit-comments.php' );

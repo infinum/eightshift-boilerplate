@@ -7,7 +7,7 @@
  *
  * Used and modified code from https://github.com/tommcfarlin/namespaces-and-autoloading-in-wordpress
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -21,7 +21,7 @@ spl_autoload_register( __NAMESPACE__ . '\\inf_theme_autoloader' );
  *
  * @param string $class_name The fully-qualified name of the file that contains the class.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 function inf_theme_autoloader( $class_name ) {
   $file_path = explode( '\\', $class_name );

@@ -3,7 +3,7 @@
  * The Advance Custom Fields general helper specific functionality.
  * Used on fields created via ACF.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -21,7 +21,7 @@ class Helpers {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -30,7 +30,7 @@ class Helpers {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
 
@@ -39,7 +39,7 @@ class Helpers {
    *
    * @var object General_Helper
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public $general_helper;
 
@@ -48,7 +48,7 @@ class Helpers {
    *
    * @param array $theme_info Load global theme info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
@@ -64,7 +64,7 @@ class Helpers {
    * @param array  $array Array to look in.
    * @return array        Get full button array.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function get_button( $key, $array ) {
     $view_type = '';
@@ -125,7 +125,7 @@ class Helpers {
    * @param string $type Link type.
    * @return array       Get full link array.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function get_link( $link, $type ) {
     $url      = '';
@@ -159,7 +159,7 @@ class Helpers {
    * @param bool   $return_default Return placeholder if image doesn't exist.
    * @return array                 Get full image array.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   function get_image_simple( $key, $array, $image_size, $return_default = true ) {
     $image       = '';
@@ -186,7 +186,7 @@ class Helpers {
    * @param array  $array Array to look in.
    * @return array        Get full title array.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   function get_title( $key, $array ) {
     $title         = '';
@@ -213,7 +213,7 @@ class Helpers {
    * @param array  $array Array to look in.
    * @return array        Get full utilities array.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   function get_utilities( $key, $array ) {
     $class          = '';

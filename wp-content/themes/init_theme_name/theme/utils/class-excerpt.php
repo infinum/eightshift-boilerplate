@@ -2,7 +2,7 @@
 /**
  * The Utils-Excerpt specific functionality.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -18,7 +18,7 @@ class Excerpt {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -27,7 +27,7 @@ class Excerpt {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
 
@@ -36,7 +36,7 @@ class Excerpt {
    *
    * @param array $theme_info Load global theme info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
@@ -50,7 +50,7 @@ class Excerpt {
    * @param integer $limit  Number of characters to trim.
    * @return string         Trimmed excerpt.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function get_excerpt( $source = null, $limit = null ) {
 

@@ -2,7 +2,7 @@
 /**
  * The Shortcodes specific functionality.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -18,7 +18,7 @@ class Shortcodes {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -27,7 +27,7 @@ class Shortcodes {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
 
@@ -36,7 +36,7 @@ class Shortcodes {
    *
    * @param array $theme_info Load global theme info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
@@ -55,7 +55,7 @@ class Shortcodes {
    *
    * @return string|bool False on failure, the result of the shortcode on success.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   function inf_do_shortcode( $tag, array $atts = array(), $content = null ) {
 

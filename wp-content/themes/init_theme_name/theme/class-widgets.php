@@ -2,7 +2,7 @@
 /**
  * The Widgets specific functionality.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -18,7 +18,7 @@ class Widgets {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -27,7 +27,7 @@ class Widgets {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
 
@@ -36,7 +36,7 @@ class Widgets {
    *
    * @param array $theme_info Load global theme info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
@@ -46,7 +46,7 @@ class Widgets {
   /**
    * Set up widget areas
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function register_widget_position() {
     register_sidebar(

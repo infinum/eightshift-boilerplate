@@ -2,7 +2,7 @@
 /**
  * The users specific functionality.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -18,7 +18,7 @@ class Users {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -27,7 +27,7 @@ class Users {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
 
@@ -36,7 +36,7 @@ class Users {
    *
    * @param array $theme_info Load global theme info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
@@ -49,7 +49,7 @@ class Users {
    * @param number $user_id User ID.
    * @param string $new_role User new role.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function send_main_when_user_role_changes( $user_id, $new_role ) {
     $site_url  = get_bloginfo( 'wpurl' );
@@ -67,7 +67,7 @@ class Users {
    * so we included it in. It will check if the editor role has the capabilities
    * to edit theme options, and if it doesn't have it, it will add it.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function edit_editors_capabilities() {
     $role_object_editor = get_role( 'editor' );

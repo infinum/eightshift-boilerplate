@@ -2,7 +2,7 @@
 /**
  * The Media specific functionality.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -18,7 +18,7 @@ class Media {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -27,7 +27,7 @@ class Media {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
 
@@ -36,7 +36,7 @@ class Media {
    *
    * @param array $theme_info Load global theme info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
@@ -47,7 +47,7 @@ class Media {
    * Enable theme support
    * for full list check: https://developer.wordpress.org/reference/functions/add_theme_support/
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function add_theme_support() {
     add_theme_support( 'post-thumbnails' );
@@ -56,7 +56,7 @@ class Media {
   /**
    * Create new image sizes
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function add_custom_image_sizes() {
     add_image_size( 'full_width', 1440, 9999, true );
@@ -69,7 +69,7 @@ class Media {
    * @param array $mimes Load all mimes types.
    * @return array       Return original and updated.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function enable_mime_types( $mimes ) {
     $mimes['svg'] = 'image/svg+xml';
@@ -84,7 +84,7 @@ class Media {
    * @param int|object $attachment Attachment ID or object.
    * @param array      $meta       Array of attachment meta data.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function enable_svg_library_preview( $response, $attachment, $meta ) {
     if ( $response['type'] === 'image' && $response['subtype'] === 'svg+xml' && class_exists( 'SimpleXMLElement' ) ) {
@@ -123,7 +123,7 @@ class Media {
    * @param  string $html   Iframe html to wrap around.
    * @return string Wrapped Iframe with a utility class.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function wrap_responsive_oembed_filter( $html ) {
     $return = '<span class="iframe u__embed-video-responsive">' . $html . '</span>';
