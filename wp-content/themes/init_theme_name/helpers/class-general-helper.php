@@ -75,7 +75,7 @@ class General_Helper {
     $file_location = get_template_directory() . $filename;
 
     if ( ! file_exists( $file_location ) ) {
-      return '';
+      return;
     }
 
     return filemtime( $file_location );
