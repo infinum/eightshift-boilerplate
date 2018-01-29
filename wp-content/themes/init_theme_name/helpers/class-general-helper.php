@@ -59,7 +59,7 @@ class General_Helper {
   }
 
   /**
-   * Return timestamp when file wase changed.
+   * Return timestamp when file is changes.
    * This is used for cache busting assets.
    *
    * @param string $filename File name you want to get timestamp from.
