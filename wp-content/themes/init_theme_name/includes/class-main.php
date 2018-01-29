@@ -54,15 +54,6 @@ class Main {
   protected $theme_version;
 
   /**
-   * Global assets version
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  protected $assets_version;
-
-  /**
    * Initialize class
    * Load hooks and define some global variables.
    *
@@ -74,12 +65,6 @@ class Main {
       $this->theme_version = INF_THEME_VERSION;
     } else {
       $this->theme_version = '1.0.0';
-    }
-
-    if ( defined( 'INF_ASSETS_VERSION' ) ) {
-      $this->assets_version = INF_ASSETS_VERSION;
-    } else {
-      $this->assets_version = '1.0.0';
     }
 
     if ( defined( 'INF_THEME_NAME' ) ) {
@@ -261,17 +246,6 @@ class Main {
   }
 
   /**
-   * Retrieve the assets version number.
-   *
-   * @return string Theme assets version number.
-   *
-   * @since 1.0.0
-   */
-  public function get_assets_version() {
-    return $this->assets_version;
-  }
-
-  /**
    * Retrieve the theme info array.
    *
    * @return array Theme info array.
@@ -282,7 +256,6 @@ class Main {
     return array(
         'theme_name' => $this->theme_name,
         'theme_version' => $this->theme_version,
-        'assets_version' => $this->assets_version,
     );
   }
 }

@@ -33,15 +33,6 @@ class Admin {
   protected $theme_version;
 
   /**
-   * Global assets version
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  protected $assets_version;
-
-  /**
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
@@ -51,7 +42,6 @@ class Admin {
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
     $this->theme_version  = $theme_info['theme_version'];
-    $this->assets_version = $theme_info['assets_version'];
   }
 
   /**
@@ -61,7 +51,8 @@ class Admin {
    */
   public function enqueue_styles() {
 
-    wp_register_style( $this->theme_name . '-style', get_template_directory_uri() . '/skin/public/styles/applicationAdmin.css', array(), $this->assets_version );
+    $main_style = '/skin/public/styles/applicationAdmin.css';
+    wp_register_style( $this->theme_name . '-style', get_template_directory_uri() . $main_style, array(), $this->general_helper->get_assets_version( $main_style ) );
     wp_enqueue_style( $this->theme_name . '-style' );
 
   }
@@ -73,7 +64,8 @@ class Admin {
    */
   public function enqueue_scripts() {
 
-    wp_register_script( $this->theme_name . '-scripts', get_template_directory_uri() . '/skin/public/scripts/applicationAdmin.js', array(), $this->assets_version );
+    $main_script = '/skin/public/scripts/applicationAdmin.js';
+    wp_register_script( $this->theme_name . '-scripts', get_template_directory_uri() . $main_script, array(), $this->general_helper->get_assets_version( $main_script ) );
     wp_enqueue_script( $this->theme_name . '-scripts' );
 
   }

@@ -36,15 +36,6 @@ class Acf {
   protected $theme_version;
 
   /**
-   * Global assets version
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  protected $assets_version;
-
-  /**
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
@@ -54,7 +45,6 @@ class Acf {
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
     $this->theme_version  = $theme_info['theme_version'];
-    $this->assets_version = $theme_info['assets_version'];
   }
 
   /**

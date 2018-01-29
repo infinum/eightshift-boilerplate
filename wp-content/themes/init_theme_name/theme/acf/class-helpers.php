@@ -35,15 +35,6 @@ class Helpers {
   protected $theme_version;
 
   /**
-   * Global assets version
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  protected $assets_version;
-
-  /**
    * General Helper class
    *
    * @var object General_Helper
@@ -62,7 +53,6 @@ class Helpers {
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
     $this->theme_version  = $theme_info['theme_version'];
-    $this->assets_version = $theme_info['assets_version'];
 
     $this->general_helper = new General_Helpers\General_Helper();
   }

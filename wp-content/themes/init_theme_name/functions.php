@@ -34,15 +34,6 @@ define( 'INF_THEME_VERSION', '1.0.0' );
 define( 'INF_THEME_NAME', 'init_theme_name' );
 
 /**
- * Change every time you deploy changes in assets to the server
- * to force browser to clear cache
- *
- * @since 1.0.0
- * @package init_theme_name
- */
-define( 'INF_ASSETS_VERSION', '1.0.0' );
-
-/**
  * Global image path
  *
  * @since 1.0.0

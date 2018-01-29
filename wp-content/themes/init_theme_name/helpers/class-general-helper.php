@@ -33,15 +33,6 @@ class General_Helper {
   protected $theme_version;
 
   /**
-   * Global assets version
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  protected $assets_version;
-
-  /**
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
@@ -51,7 +42,6 @@ class General_Helper {
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
     $this->theme_version  = $theme_info['theme_version'];
-    $this->assets_version = $theme_info['assets_version'];
   }
 
   /**
@@ -66,6 +56,21 @@ class General_Helper {
    */
   public function get_array_value( $key, $array ) {
     return ( gettype( $array ) === 'array' && array_key_exists( $key, $array ) ) ? $array[ $key ] : '';
+  }
+
+  /**
+   * Return timestamp when file wase changed.
+   * This is used for cache busting assets.
+   *
+   * @param string $filename File name you want to get timestamp from.
+   * @return init Timestamp.
+   */
+  public function get_assets_version( $filename = null ) {
+    if ( ! $filename ) {
+      return false;
+    }
+
+    return filemtime( get_template_directory() . $filename );
   }
 
 }
