@@ -72,7 +72,13 @@ class General_Helper {
       return false;
     }
 
-    return filemtime( get_template_directory() . $filename );
+    $file_location = get_template_directory() . $filename;
+
+    if ( ! file_exists( $file_location ) ) {
+      return '';
+    }
+
+    return filemtime( $file_location );
   }
 
 }
