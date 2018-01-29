@@ -5,7 +5,7 @@
  * A class definition that includes attributes and functions used across both the
  * theme-facing side of the site and the admin area.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -40,7 +40,7 @@ class Main {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -49,24 +49,15 @@ class Main {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
-
-  /**
-   * Global assets version
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  protected $assets_version;
 
   /**
    * Initialize class
    * Load hooks and define some global variables.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct() {
 
@@ -74,12 +65,6 @@ class Main {
       $this->theme_version = INF_THEME_VERSION;
     } else {
       $this->theme_version = '1.0.0';
-    }
-
-    if ( defined( 'INF_ASSETS_VERSION' ) ) {
-      $this->assets_version = INF_ASSETS_VERSION;
-    } else {
-      $this->assets_version = '1.0.0';
     }
 
     if ( defined( 'INF_THEME_NAME' ) ) {
@@ -99,7 +84,7 @@ class Main {
    * Create an instance of the loader which will be used to register the hooks
    * with WordPress.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   private function load_dependencies() {
     $this->loader = new Loader();
@@ -108,7 +93,7 @@ class Main {
   /**
    * Register all of the hooks related to the admin area functionality.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   private function define_admin_hooks() {
     $admin       = new Admin\Admin( $this->get_theme_info() );
@@ -145,7 +130,7 @@ class Main {
   /**
    * Register all of the hooks related to the theme area functionality.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   private function define_theme_hooks() {
     $theme                 = new Theme\Theme( $this->get_theme_info() );
@@ -220,7 +205,7 @@ class Main {
   /**
    * Run the loader to execute all of the hooks with WordPress.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function run() {
     $this->loader->run();
@@ -231,7 +216,7 @@ class Main {
    *
    * @return Loader Orchestrates the hooks.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function get_loader() {
     return $this->loader;
@@ -243,7 +228,7 @@ class Main {
    *
    * @return string Theme name.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function get_theme_name() {
     return $this->theme_name;
@@ -254,21 +239,10 @@ class Main {
    *
    * @return string Theme version number.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function get_theme_version() {
     return $this->theme_version;
-  }
-
-  /**
-   * Retrieve the assets version number.
-   *
-   * @return string Theme assets version number.
-   *
-   * @since 1.0.0
-   */
-  public function get_assets_version() {
-    return $this->assets_version;
   }
 
   /**
@@ -276,13 +250,12 @@ class Main {
    *
    * @return array Theme info array.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function get_theme_info() {
     return array(
         'theme_name' => $this->theme_name,
         'theme_version' => $this->theme_version,
-        'assets_version' => $this->assets_version,
     );
   }
 }

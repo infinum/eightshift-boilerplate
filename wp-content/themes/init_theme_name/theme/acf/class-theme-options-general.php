@@ -3,7 +3,7 @@
  * The Advance Custom Fields general helper specific functionality.
  * Used on fields created via ACF for theme options
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -21,7 +21,7 @@ class Theme_Options_General {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -30,25 +30,16 @@ class Theme_Options_General {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
-
-  /**
-   * Global assets version
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  protected $assets_version;
 
   /**
    * Theme options page slug
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $options_page_slug = 'theme-options-general';
 
@@ -57,7 +48,7 @@ class Theme_Options_General {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public $options_transient_cache_name = 'theme-options-general';
 
@@ -66,18 +57,17 @@ class Theme_Options_General {
    *
    * @param array $theme_info Load global theme info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
     $this->theme_version  = $theme_info['theme_version'];
-    $this->assets_version = $theme_info['assets_version'];
   }
 
   /**
    * Create Options page in sidebar
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function create_theme_options_page() {
     if ( function_exists( 'acf_add_options_page' ) ) {
@@ -97,7 +87,7 @@ class Theme_Options_General {
   /**
    * Populate Options page
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function register_theme_options() {
     if ( function_exists( 'acf_add_options_page' ) ) {
@@ -297,7 +287,7 @@ class Theme_Options_General {
    *
    * @return array Array containing theme options.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   private function get_theme_options_data() {
     return array(
@@ -317,7 +307,7 @@ class Theme_Options_General {
    *
    * @return array Array containing theme options from transient.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   private function get_theme_options() {
     $cache_name = $this->options_transient_cache_name;
@@ -338,7 +328,7 @@ class Theme_Options_General {
    * @param string $key Theme option name.
    * @return mixed      Function that will return the array of the key.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function get_theme_option( $key ) {
     global $inf_theme_options;
@@ -351,7 +341,7 @@ class Theme_Options_General {
    * Register global variable for theme options
    * When getting options from admin you should always get it from global variable
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function register_global_theme_options_variable() {
     global $inf_theme_options;
@@ -364,7 +354,7 @@ class Theme_Options_General {
    *
    * @return boolian True/False if is theme options page.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function is_theme_options_page() {
     $screen = get_current_screen();
@@ -379,7 +369,7 @@ class Theme_Options_General {
   /**
    * Delete transient for theme options
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function delete_theme_options_transient() {
     if ( $this->is_theme_options_page() === true ) {

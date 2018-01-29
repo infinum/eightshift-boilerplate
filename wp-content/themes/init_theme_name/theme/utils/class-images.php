@@ -2,7 +2,7 @@
 /**
  * The Utils-Images specific functionality.
  *
- * @since   1.0.0
+ * @since   2.0.0
  * @package init_theme_name
  */
 
@@ -18,7 +18,7 @@ class Images {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_name;
 
@@ -27,30 +27,20 @@ class Images {
    *
    * @var string
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   protected $theme_version;
-
-  /**
-   * Global assets version
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  protected $assets_version;
 
   /**
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name     = $theme_info['theme_name'];
     $this->theme_version  = $theme_info['theme_version'];
-    $this->assets_version = $theme_info['assets_version'];
   }
 
   /**
@@ -63,7 +53,7 @@ class Images {
    * @param  integer $no_image Link to no image thumbnail.
    * @return array             Array with image settings.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   function get_post_image( $size, $post_id = null, $no_image = null ) {
     global $post;
@@ -103,7 +93,7 @@ class Images {
    * @param string $size Image size from Image object.
    * @param array  $image_array WP image array.
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
   function get_image_from_array( $size, $image_array ) {
     if ( ! empty( $image_array ) ) {
