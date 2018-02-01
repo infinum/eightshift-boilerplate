@@ -10,9 +10,6 @@ namespace Inf_Theme\Admin;
 
 /**
  * Class Login
- *
- * Provides method for replacing default wordpress.org link with
- * the home page of the clients site.
  */
 class Login {
 

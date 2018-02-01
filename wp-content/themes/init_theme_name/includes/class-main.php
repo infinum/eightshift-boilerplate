@@ -32,6 +32,8 @@ class Main {
    * Loader variable for hooks
    *
    * @var Loader    $loader    Maintains and registers all hooks for the plugin.
+   *
+   * @since 2.0.0
    */
   protected $loader;
 
@@ -107,6 +109,7 @@ class Main {
     $this->loader->add_action( 'login_enqueue_scripts', $admin, 'enqueue_styles' );
     $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_styles', 50 );
     $this->loader->add_action( 'admin_body_class', $admin, 'set_enviroment_body_class' );
+    $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_scripts' );
 
     // Login page.
     $this->loader->add_filter( 'login_headerurl', $login, 'custom_login_url' );
