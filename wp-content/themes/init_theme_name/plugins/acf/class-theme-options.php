@@ -380,18 +380,6 @@ class Theme_Options {
   }
 
   /**
-   * Register global variable for theme options
-   * When getting options from admin you should always get it from global variable
-   *
-   * @since 2.0.0
-   */
-  public function register_global_theme_options_variable() {
-    global $inf_theme_options;
-
-    $inf_theme_options = $this->get_theme_options();
-  }
-
-  /**
    * Delete transient for theme options
    *
    * @since 2.0.0
