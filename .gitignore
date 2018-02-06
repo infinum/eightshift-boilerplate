@@ -62,5 +62,3 @@ wordfence-waf.php
 # Databases and exports
 latest_dump.tar.gz
 latest_dump
-
-wp-content/plugins
