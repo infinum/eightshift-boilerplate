@@ -1,14 +1,12 @@
 <?php
 /**
- * The Advance Custom Field specific functionality.
+ * The Advance Custom Field plugin specific functionality.
  *
  * @since   2.0.0
  * @package init_theme_name
  */
 
-namespace Inf_Theme\Admin;
-
-use Inf_Theme\Theme\Acf as Acf_Theme;
+namespace Inf_Theme\Plugins\Acf;
 
 /**
  * Class Advance Custom Fields
@@ -79,7 +77,7 @@ class Acf {
    */
   public function set_google_map_api_key( $api ) {
 
-    $theme_options_general = new Acf_Theme\Theme_Options_General();
+    $theme_options_general = new Theme_Options();
 
     $api['key'] = $theme_options_general->get_theme_option( 'google_maps_api_key' );
 

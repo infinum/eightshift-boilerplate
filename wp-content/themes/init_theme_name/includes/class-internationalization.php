@@ -1,17 +1,20 @@
 <?php
 /**
- * The login page specific functionality.
+ * Define the internationalization functionality
+ *
+ * Loads and defines the internationalization files for this plugin
+ * so that it is ready for translation.
  *
  * @since   2.0.0
  * @package init_theme_name
  */
 
-namespace Inf_Theme\Admin;
+namespace Inf_Theme\Includes;
 
 /**
- * Class Login
+ * Class Internationalization
  */
-class Login {
+class Internationalization {
 
   /**
    * Global theme name
@@ -44,12 +47,11 @@ class Login {
   }
 
   /**
-   * Change default logo link with home url
+   * Load the plugin text domain for translation.
    *
    * @since 2.0.0
    */
-  public function custom_login_url() {
-    return home_url( '/' );
+  public function load_theme_textdomain() {
+    load_theme_textdomain( $this->theme_name, get_template_directory() . '/languages' );
   }
-
 }

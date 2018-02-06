@@ -49,12 +49,19 @@ _db-import-production-to-staging.sh
 ```
 
 ## wp-config.php
+This is project specific configuration that you can tailor according to your project needs.
 At the bottom of the `wp-config.php` file before `require_once ABSPATH . 'wp-settings.php';` add this part:
 
 ```php
 // Include wp config for your project.
 require_once( ABSPATH . 'wp-config-project.php' );
 ```
-This is project specific configuration that you can tailor according to your project needs.
+
+And this global variable somewhere before wp-settings and wp-config-project.php. Set what instance you are using.
+```php
+// Must be set.
+// Possible options are develop, staging and production.
+define( 'INF_ENV', 'develop' );
+```
 
 ------------------------------------

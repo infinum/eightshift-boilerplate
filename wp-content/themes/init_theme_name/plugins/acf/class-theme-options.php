@@ -1,20 +1,20 @@
 <?php
 /**
- * The Advance Custom Fields general helper specific functionality.
+ * The Advance Custom Fields helper specific functionality.
  * Used on fields created via ACF for theme options
  *
  * @since   2.0.0
  * @package init_theme_name
  */
 
-namespace Inf_Theme\Theme\Acf;
+namespace Inf_Theme\Plugins\Acf;
 
 use Inf_Theme\Helpers as General_Helpers;
 
 /**
- * Class Theme Options General
+ * Class Theme Options
  */
-class Theme_Options_General {
+class Theme_Options {
 
   /**
    * Global theme name
@@ -41,16 +41,7 @@ class Theme_Options_General {
    *
    * @since 2.0.0
    */
-  protected $options_page_slug = 'theme-options-general';
-
-  /**
-   * Theme options transient name
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  public $options_transient_cache_name = 'theme-options-general';
+  protected $theme_options_general_slug = 'theme_options';
 
   /**
    * Initialize class
@@ -74,11 +65,12 @@ class Theme_Options_General {
 
       acf_add_options_page(
         array(
-            'page_title' => 'General Settings',
-            'menu_title' => 'Theme Options',
-            'menu_slug'  => $this->options_page_slug,
+            'page_title' => esc_html__( 'General Settings', 'init_theme_name' ),
+            'menu_title' => esc_html__( 'Theme Options' , 'init_theme_name' ),
+            'menu_slug'  => $this->theme_options_general_slug,
             'capability' => 'edit_theme_options',
             'redirect'   => false,
+            'icon_url'   => 'dashicons-welcome-view-site',
         )
       );
     }
@@ -205,24 +197,6 @@ class Theme_Options_General {
                     'maxlength' => '',
                 ),
                 array(
-                    'key' => 'field_5a37b9f677ba4',
-                    'label' => 'REST API Endpoints',
-                    'name' => '',
-                    'type' => 'message',
-                    'instructions' => '',
-                    'required' => 0,
-                    'conditional_logic' => 0,
-                    'wrapper' => array(
-                        'width' => '',
-                        'class' => '',
-                        'id' => '',
-                    ),
-                    'glossary_support' => 0,
-                    'message' => 'Check Endpoints if they are successfuly saved in transient! If there is an error open the page on correct language and it will be updated.',
-                    'new_lines' => 'br',
-                    'esc_html' => 0,
-                ),
-                array(
                     'key' => 'field_59b676a3281d1',
                     'label' => 'Cookies Notification',
                     'name' => '',
@@ -264,7 +238,7 @@ class Theme_Options_General {
                     array(
                         'param' => 'options_page',
                         'operator' => '==',
-                        'value' => $this->options_page_slug,
+                        'value' => $this->theme_options_general_slug,
                     ),
                 ),
             ),
@@ -299,6 +273,27 @@ class Theme_Options_General {
   }
 
   /**
+   * Return theme options transient cache name depending on the language
+   *
+   * @param string $manual_language Set manual language to override.
+   * @return string Name of the transient.
+   *
+   * @since 2.0.0
+   */
+  function get_options_transient_cache_name( $manual_language = null ) {
+    $language = '';
+    if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+      $language = '_' . ICL_LANGUAGE_CODE;
+    }
+
+    if ( ! empty( $manual_language ) ) {
+      $language = '_' . $manual_language;
+    }
+
+    return $this->theme_options_general_slug . $language;
+  }
+
+  /**
    * Get Theme options
    *
    * This is a helper function that will get all the options from the ACF and
@@ -310,7 +305,7 @@ class Theme_Options_General {
    * @since 2.0.0
    */
   private function get_theme_options() {
-    $cache_name = $this->options_transient_cache_name;
+    $cache_name = $this->get_options_transient_cache_name();
     $cache      = get_transient( $cache_name );
 
     if ( $cache === false ) {
@@ -331,22 +326,40 @@ class Theme_Options_General {
    * @since 2.0.0
    */
   public function get_theme_option( $key ) {
-    global $inf_theme_options;
     $this->general_helper = new General_Helpers\General_Helper();
 
-    return $this->general_helper->get_array_value( $key, $inf_theme_options );
+    return $this->general_helper->get_array_value( $key, $this->get_theme_options() );
   }
 
   /**
-   * Register global variable for theme options
-   * When getting options from admin you should always get it from global variable
+   * Set default allowed pages
+   *
+   * @return array
    *
    * @since 2.0.0
    */
-  public function register_global_theme_options_variable() {
-    global $inf_theme_options;
+  public function get_allowed_post_types() {
+    return array(
+        'toplevel_page_' . $this->theme_options_general_slug, // This is top level item.
+    );
+  }
 
-    $inf_theme_options = $this->get_theme_options();
+  /**
+   * Check if page is allowed to be save in transient.
+   *
+   * @param string $page Get current page.
+   * @return boolean
+   *
+   * @since 2.0.0
+   */
+  public function is_post_allowed_to_save( $page = null ) {
+    if ( ! $page ) {
+      return false;
+    }
+
+    $allowed_types = $this->get_allowed_post_types();
+
+    return in_array( $page, $allowed_types, true );
   }
 
   /**
@@ -359,7 +372,7 @@ class Theme_Options_General {
   public function is_theme_options_page() {
     $screen = get_current_screen();
 
-    if ( is_admin() && ( $screen->id === 'toplevel_page_' . $this->options_page_slug ) ) {
+    if ( $this->is_post_allowed_to_save( $screen->id ) ) {
       return true;
     }
 
@@ -371,9 +384,10 @@ class Theme_Options_General {
    *
    * @since 2.0.0
    */
-  public function delete_theme_options_transient() {
-    if ( $this->is_theme_options_page() === true ) {
-      $cache_name = $this->options_transient_cache_name;
+  public function remove_transient() {
+    if ( $this->is_theme_options_page() ) {
+      $cache_name = $this->get_options_transient_cache_name();
+
       delete_transient( $cache_name );
     }
   }

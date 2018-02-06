@@ -78,37 +78,3 @@ export default class Radio {
 //   Radio title 2
 //   <input type="radio" id="radio2" name="test_radio" class="radio__input" disabled checked />
 // </label>
-
-$(function() {
-
-  const radio = new Radio();
-
-  // On page load set
-  radio.$input.each(function() {
-    const id = $(this).attr('id');
-    radio.init(id);
-  });
-
-  // // On click action
-  radio.$container.on('change', function() {
-    const id = $(this).attr('for');
-    radio.toggle(id);
-  });
-
-  // Stop radio from activating if there is a link in label
-  radio.$link.on('click', function(e) {
-    e.stopPropagation();
-  });
-
-  // On focus
-  radio.$input.bind('focus', function() {
-    const id = $(this).attr('id');
-    radio.setFocus(id);
-  });
-
-  // On blur
-  radio.$input.bind('blur', function() {
-    const id = $(this).attr('id');
-    radio.unsetFocus(id);
-  });
-});

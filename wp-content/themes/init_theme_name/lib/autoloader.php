@@ -13,7 +13,7 @@
 
 namespace Inf_Theme\Lib;
 
-spl_autoload_register( __NAMESPACE__ . '\\inf_theme_autoloader' );
+spl_autoload_register( __NAMESPACE__ . '\\autoloader' );
 
 /**
  * Dynamically loads the class attempting to be instantiated elsewhere in the
@@ -23,7 +23,7 @@ spl_autoload_register( __NAMESPACE__ . '\\inf_theme_autoloader' );
  *
  * @since 2.0.0
  */
-function inf_theme_autoloader( $class_name ) {
+function autoloader( $class_name ) {
   $file_path = explode( '\\', $class_name );
 
   if ( isset( $file_path[ count( $file_path ) - 1 ] ) ) {

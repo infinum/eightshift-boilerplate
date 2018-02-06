@@ -7,11 +7,6 @@ export default class ScrollToElement {
     this.topElement = topElement;
   }
 
-  init() {
-    this.scrolltoGlobalElement();
-    this.scrolltoTopElement();
-  }
-
   scrolltoGlobalElement() {
     $(this.globalElement).click((event) => {
       event.preventDefault();
@@ -46,9 +41,3 @@ export default class ScrollToElement {
     }, 500);
   }
 }
-
-$(function() {
-  const scrollTo = new ScrollToElement();
-
-  scrollTo.init();
-});

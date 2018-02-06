@@ -10,10 +10,6 @@
  * @since 1.0.0
  */
 
-// Must be set.
-// Possible options are develop, staging and production.
-define( 'INF_ENV', 'develop' );
-
 if ( ! defined( 'INF_ENV' ) ) {
   return false;
 }
