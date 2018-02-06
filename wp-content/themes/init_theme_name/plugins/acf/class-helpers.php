@@ -7,7 +7,7 @@
  * @package init_theme_name
  */
 
-namespace Inf_Theme\Theme\Acf;
+namespace Inf_Theme\Plugins\Acf;
 
 use Inf_Theme\Helpers as General_Helpers;
 

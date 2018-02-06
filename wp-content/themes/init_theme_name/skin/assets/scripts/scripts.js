@@ -4,8 +4,7 @@ import './bugsnag-js';
 
 import './fonts';
 
-import './form-fields/checkbox';
-import './form-fields/radio';
+import './form-fields/init';
+import './components/init';
 
 import './cookies-notification';
-import './scroll-to';

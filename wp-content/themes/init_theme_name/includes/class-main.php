@@ -12,9 +12,10 @@
 namespace Inf_Theme\Includes;
 
 use Inf_Theme\Admin as Admin;
+use Inf_Theme\Plugins as Plugins;
+use Inf_Theme\Plugins\Acf as Acf;
 use Inf_Theme\Theme as Theme;
 use Inf_Theme\Theme\Menu as Menu;
-use Inf_Theme\Theme\Acf as Acf;
 use Inf_Theme\Theme\Utils as Utils;
 
 /**
@@ -77,6 +78,7 @@ class Main {
 
     $this->load_dependencies();
     $this->define_admin_hooks();
+    $this->define_plugins_hooks();
     $this->define_theme_hooks();
   }
 
@@ -93,6 +95,17 @@ class Main {
   }
 
   /**
+   * Define the locale for this theme for internationalization.
+   *
+   * @since 2.0.0
+   */
+  private function set_locale() {
+    $plugin_i18n = new Internationalization( $this->get_theme_info() );
+
+    $this->loader->add_action( 'after_setup_theme', $plugin_i18n, 'load_theme_textdomain' );
+  }
+
+  /**
    * Register all of the hooks related to the admin area functionality.
    *
    * @since 2.0.0
@@ -103,7 +116,6 @@ class Main {
     $editor      = new Admin\Editor( $this->get_theme_info() );
     $admin_menus = new Admin\Admin_Menus( $this->get_theme_info() );
     $users       = new Admin\Users( $this->get_theme_info() );
-    $acf         = new Admin\Acf( $this->get_theme_info() );
 
     // Admin.
     $this->loader->add_action( 'login_enqueue_scripts', $admin, 'enqueue_styles' );
@@ -124,9 +136,25 @@ class Main {
     $this->loader->add_action( 'set_user_role', $users, 'send_main_when_user_role_changes', 10, 2 );
     $this->loader->add_action( 'admin_init', $users, 'edit_editors_capabilities' );
 
-    // ACF.
+  }
+
+  /**
+   * Register all of the hooks related to the plugins functionality.
+   *
+   * @since 2.0.0
+   */
+  private function define_plugins_hooks() {
+    $acf                 = new Acf\Acf( $this->get_theme_info() );
+    $acf_theme_options   = new Acf\Theme_Options( $this->get_theme_info() );
+
+    // Plugin ACF.
     $this->loader->add_action( 'acf/fields/google_map/api', $acf, 'set_google_map_api_key' );
     $this->loader->add_action( 'acf/fields/wysiwyg/toolbars', $acf, 'add_wysiwyg_toolbars' );
+
+    // Plugin ACF - Theme Options.
+    $this->loader->add_action( 'acf/init', $acf_theme_options, 'create_theme_options_page' );
+    $this->loader->add_action( 'acf/init', $acf_theme_options, 'register_theme_options' );
+    $this->loader->add_action( 'acf/save_post', $acf_theme_options, 'remove_transient' );
 
   }
 
@@ -140,7 +168,6 @@ class Main {
     $legacy_browsers       = new Theme\Legacy_Browsers( $this->get_theme_info() );
     $widgets               = new Theme\Widgets( $this->get_theme_info() );
     $menu                  = new Menu\Menu( $this->get_theme_info() );
-    $theme_options_general = new Acf\Theme_Options_General( $this->get_theme_info() );
     $media                 = new Theme\Media( $this->get_theme_info() );
     $gallery               = new Utils\Gallery( $this->get_theme_info() );
     $general               = new Theme\General( $this->get_theme_info() );
@@ -179,12 +206,6 @@ class Main {
     $this->loader->remove_action( 'wp_head', 'feed_links', 2 );
     $this->loader->remove_action( 'wp_head', 'feed_links_extra', 3 );
     $this->loader->remove_action( 'wp_head', 'rest_output_link_wp_head' );
-
-    // Theme Options.
-    $this->loader->add_action( 'acf/init', $theme_options_general, 'create_theme_options_page' );
-    $this->loader->add_action( 'acf/init', $theme_options_general, 'register_theme_options' );
-    $this->loader->add_action( 'acf/init', $theme_options_general, 'register_global_theme_options_variable' );
-    $this->loader->add_action( 'acf/save_post', $theme_options_general, 'delete_theme_options_transient' );
 
     // Media.
     $this->loader->add_action( 'upload_mimes', $media, 'enable_mime_types' );
