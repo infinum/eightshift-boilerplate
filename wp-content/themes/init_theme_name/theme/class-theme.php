@@ -79,9 +79,11 @@ class Theme {
    * @since 2.0.0
    */
   public function enqueue_scripts() {
+    // jQuery.
     wp_deregister_script( 'jquery-migrate' );
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', '' );
+    wp_register_script( 'jquery', get_template_directory_uri() . '/skin/public/scripts/vendors/jquery.3.1.1.min.js', array(), '3.1.1' );
+    wp_enqueue_script( 'jquery' );
 
     // JS.
     if ( ! is_page_template( 'page-templates/page-old-browser.php' ) ) {
