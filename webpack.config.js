@@ -5,8 +5,6 @@ const DEV = process.env.NODE_ENV !== 'production';
 const path = require('path');
 const webpack = require('webpack');
 
-const jQuery = require.resolve('jquery');
-
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
@@ -62,19 +60,6 @@ const allModules = {
         fallback: 'style-loader',
         use: ['css-loader', 'postcss-loader', 'sass-loader'],
       }),
-    },
-    {
-
-      // Exposes jQuery for use outside Webpack build.
-      test: jQuery,
-      use: [{
-        loader: 'expose-loader',
-        options: 'jQuery',
-      },
-      {
-        loader: 'expose-loader',
-        options: '$',
-      }],
     },
   ],
 };
