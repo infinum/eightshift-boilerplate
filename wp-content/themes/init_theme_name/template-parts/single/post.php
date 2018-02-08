@@ -13,7 +13,7 @@ $image = $images->get_post_image( 'full_width' );
 
 <!-- Single Content Section -->
 <section class="single" id="<?php echo esc_attr( $post->ID ); ?>">
-  <div class="single__image" style="background-image: url('<?php echo esc_url( $image['image'] ); ?>');"></div>
+  <div class="single__image" data-normal="<?php echo esc_url( $image['image'] ); ?>"></div>
   <header>
     <h1 class="single__title">
       <?php the_title(); ?>
