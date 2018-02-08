@@ -44,16 +44,17 @@
     "webpack": "^3.10.0"
   },
   "dependencies": {
+    "autoprefixer": "^7.2.5",
     "babel-polyfill": "^6.26.0",
     "bugsnag-js": "^4.1.3",
-    "cssnano": "^3.10.0",
-    "postcss-font-magician": "^2.1.0",
-    "autoprefixer": "^7.2.5",
     "css-mqpacker": "^6.0.1",
+    "cssnano": "^3.10.0",
     "jquery": "^3.2.1",
     "jquery-match-height": "^0.7.2",
+    "layzr.js": "^2.2.2",
     "media-blender": "^2.1.0",
     "normalize.css": "^7.0.0",
+    "postcss-font-magician": "^2.1.0",
     "slick-carousel": "^1.8.1",
     "susy": "^3.0.1",
     "whatwg-fetch": "^2.0.3"
