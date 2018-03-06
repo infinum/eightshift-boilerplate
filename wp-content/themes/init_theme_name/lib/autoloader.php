@@ -7,6 +7,7 @@
  *
  * Used and modified code from https://github.com/tommcfarlin/namespaces-and-autoloading-in-wordpress
  *
+ * @since   2.0.1 Fixed the path when using dependency injections
  * @since   2.0.0
  * @package init_theme_name
  */
@@ -35,22 +36,26 @@ function autoloader( $class_name ) {
     $class_file = "class-$class_file.php";
   }
 
-  $fully_qualified_path = trailingslashit(
+  // Path to the plugins folder.
+  $full_path = trailingslashit(
     dirname(
-      dirname( __FILE__ )
+      dirname(
+        dirname( __FILE__ )
+      )
     )
   );
 
   $file_count = count( $file_path );
-  for ( $i = 1; $i < $file_count - 1; $i++ ) {
-    $dir = str_ireplace( '_', '-', strtolower( $file_path[ $i ] ) );
-    $fully_qualified_path .= trailingslashit( $dir );
+
+  for ( $i = 0; $i < $file_count - 1; $i++ ) {
+    $dir        = str_ireplace( '_', '-', strtolower( $file_path[ $i ] ) );
+    $full_path .= trailingslashit( $dir );
   }
 
-  $fully_qualified_path .= $class_file;
+  $full_path .= $class_file;
 
   // Now we include the file.
-  if ( file_exists( $fully_qualified_path ) ) {
-    include_once( $fully_qualified_path );
+  if ( file_exists( $full_path ) ) {
+    require_once $full_path;
   }
 }
