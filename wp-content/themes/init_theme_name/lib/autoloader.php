@@ -7,7 +7,7 @@
  *
  * Used and modified code from https://github.com/tommcfarlin/namespaces-and-autoloading-in-wordpress
  *
- * @since   2.0.1 Fixed the path when using dependency injections
+ * @since   2.0.2 Fixed the path when using dependency injections
  * @since   2.0.0
  * @package init_theme_name
  */

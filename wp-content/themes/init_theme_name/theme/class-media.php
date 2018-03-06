@@ -131,7 +131,7 @@ class Media {
    * @param array $response Response array.
    * @return array
    *
-   * @since 2.0.1
+   * @since 2.0.2
    */
   public function check_svg_on_media_upload( $response ) {
     if ( $response['type'] === 'image/svg+xml' && class_exists( 'SimpleXMLElement' ) ) {
