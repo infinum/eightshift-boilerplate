@@ -213,6 +213,7 @@ class Main {
     $this->loader->add_action( 'embed_oembed_html', $media, 'wrap_responsive_oembed_filter', 10, 4 );
     $this->loader->add_action( 'after_setup_theme', $media, 'add_theme_support' );
     $this->loader->add_action( 'after_setup_theme', $media, 'add_custom_image_sizes' );
+    $this->loader->add_filter( 'wp_handle_upload_prefilter', $media, 'check_svg_on_media_upload' );
 
     // Gallery.
     $this->loader->add_filter( 'post_gallery', $gallery, 'wrap_post_gallery', 10 ,3 );
