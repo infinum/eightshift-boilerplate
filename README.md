@@ -35,8 +35,7 @@ For questions talk to:
 
 ## Getting started
 
-
-First you need to install WordPress locally, using any of the local development environment you prefer. You can use XAMPP, MAMP, WAMP, VVV, Docker or Laravel Valet. You'll also need to have [Node.js](https://nodejs.org/en/) and [Composer](https://getcomposer.org/) installed.
+First you need to install WordPress locally, using any of the local development environment you prefer. You can use XAMPP, MAMP, WAMP, VVV, Docker or Laravel Valet. You'll also need to have [Node.js](https://nodejs.org/en/), [Composer](https://getcomposer.org/) and [WP-CLI](https://wp-cli.org/) installed.
 
 To start, fork this repository to your own, and then clone it
 

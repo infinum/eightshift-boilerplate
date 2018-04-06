@@ -62,6 +62,10 @@ echo "\n${BBLUE}Please enter theme prefix:${NC}"
 echo "Theme prefix (a short prefix that will be used when defining constants. For example: INF, ABRR)"
 read theme_prefix
 
+echo "\n${BBLUE}Please enter theme development url:${NC}"
+echo "Theme development url is used for local development with browsersync"
+read theme_proxy_url
+
 theme_package_name="${theme_package_name// /-}"
 theme_package_name=$(strtolower $theme_package_name)
 theme_namespace=$(cap_case $theme_package_name)
@@ -92,6 +96,7 @@ echo "Text Domain: ${BBLUE}$theme_package_name${NC}"
 echo "Package: ${BBLUE}$theme_package_name${NC}"
 echo "Namespace: ${BBLUE}$theme_namespace${NC}"
 echo "Prefix: ${BBLUE}$prefix${NC}"
+echo "Theme development url: ${BBLUE}$theme_proxy_url${NC}"
 
 echo "\n${RED}Confirm? (y/n)${NC}"
 read confirmation
@@ -108,6 +113,7 @@ if [ "$confirmation" == "y" ]; then
   findReplace "INF_THEME_NAME" "$theme_name"
   findReplace "INF_IMAGE_URL" "$theme_image_url"
   findReplace "INF_ENV" "$theme_env"
+  findReplace "dev.boilerplate.com" "$theme_proxy_url"
 
   # Change folder name
   if [ "$theme_package_name" != "init_theme_name" ]; then
