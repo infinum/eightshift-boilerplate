@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 function lintPHP() {
   composer require --dev jakub-onderka/php-parallel-lint
   composer require --dev jakub-onderka/php-console-highlighter
