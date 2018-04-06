@@ -94,7 +94,7 @@ class Admin {
    *
    * @since 2.0.0
    */
-  function set_enviroment_body_class( $classes ) {
+  public function set_enviroment_body_class( $classes ) {
     $this->env = '';
 
     if ( defined( 'INF_ENV' ) ) {

@@ -55,7 +55,7 @@ class Acf {
    */
   public function add_wysiwyg_toolbars( $toolbars ) {
 
-    $toolbars['Very Simple'] = array();
+    $toolbars['Very Simple']    = array();
     $toolbars['Very Simple'][1] = array( 'bold', 'italic', 'underline', 'formatselect' );
 
     $key = array_search( 'code', $toolbars['Full'][2], true );

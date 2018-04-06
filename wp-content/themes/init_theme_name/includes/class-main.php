@@ -144,8 +144,8 @@ class Main {
    * @since 2.0.0
    */
   private function define_plugins_hooks() {
-    $acf                 = new Acf\Acf( $this->get_theme_info() );
-    $acf_theme_options   = new Acf\Theme_Options( $this->get_theme_info() );
+    $acf               = new Acf\Acf( $this->get_theme_info() );
+    $acf_theme_options = new Acf\Theme_Options( $this->get_theme_info() );
 
     // Plugin ACF.
     $this->loader->add_action( 'acf/fields/google_map/api', $acf, 'set_google_map_api_key' );
@@ -164,14 +164,14 @@ class Main {
    * @since 2.0.0
    */
   private function define_theme_hooks() {
-    $theme                 = new Theme\Theme( $this->get_theme_info() );
-    $legacy_browsers       = new Theme\Legacy_Browsers( $this->get_theme_info() );
-    $widgets               = new Theme\Widgets( $this->get_theme_info() );
-    $menu                  = new Menu\Menu( $this->get_theme_info() );
-    $media                 = new Theme\Media( $this->get_theme_info() );
-    $gallery               = new Utils\Gallery( $this->get_theme_info() );
-    $general               = new Theme\General( $this->get_theme_info() );
-    $pagination            = new Theme\Pagination( $this->get_theme_info() );
+    $theme           = new Theme\Theme( $this->get_theme_info() );
+    $legacy_browsers = new Theme\Legacy_Browsers( $this->get_theme_info() );
+    $widgets         = new Theme\Widgets( $this->get_theme_info() );
+    $menu            = new Menu\Menu( $this->get_theme_info() );
+    $media           = new Theme\Media( $this->get_theme_info() );
+    $gallery         = new Utils\Gallery( $this->get_theme_info() );
+    $general         = new Theme\General( $this->get_theme_info() );
+    $pagination      = new Theme\Pagination( $this->get_theme_info() );
 
     // Enque styles and scripts.
     $this->loader->add_action( 'wp_enqueue_scripts', $theme, 'enqueue_styles' );
@@ -216,7 +216,7 @@ class Main {
     $this->loader->add_filter( 'wp_handle_upload_prefilter', $media, 'check_svg_on_media_upload' );
 
     // Gallery.
-    $this->loader->add_filter( 'post_gallery', $gallery, 'wrap_post_gallery', 10 ,3 );
+    $this->loader->add_filter( 'post_gallery', $gallery, 'wrap_post_gallery', 10, 3 );
 
     // General.
     $this->loader->add_action( 'after_setup_theme', $general, 'add_theme_support' );
@@ -279,7 +279,7 @@ class Main {
    */
   public function get_theme_info() {
     return array(
-        'theme_name' => $this->theme_name,
+        'theme_name'    => $this->theme_name,
         'theme_version' => $this->theme_version,
     );
   }

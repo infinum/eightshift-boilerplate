@@ -161,7 +161,7 @@ class Helpers {
    *
    * @since 2.0.0
    */
-  function get_image_simple( $key, $array, $image_size, $return_default = true ) {
+  public function get_image_simple( $key, $array, $image_size, $return_default = true ) {
     $image       = '';
     $image_title = '';
 
@@ -188,7 +188,7 @@ class Helpers {
    *
    * @since 2.0.0
    */
-  function get_title( $key, $array ) {
+  public function get_title( $key, $array ) {
     $title         = '';
     $title_size    = '';
     $title_seo_tag = 'h2';
@@ -215,7 +215,7 @@ class Helpers {
    *
    * @since 2.0.0
    */
-  function get_utilities( $key, $array ) {
+  public function get_utilities( $key, $array ) {
     $class          = '';
     $id             = '';
     $spacing_top    = '';

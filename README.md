@@ -59,6 +59,8 @@ sh _rename.sh
 
 **Note:** If you get `sed: RE error: illegal byte sequence`, this is just a shell quirk, and should not worry you, the replace will work fine.
 
+This will make changes to theme name, description, author, text domain, package, namespace, and constants (this is important when specifying environment variable).
+
 ## Development Pre Start
 
 Run this to setup WordPress on the server.

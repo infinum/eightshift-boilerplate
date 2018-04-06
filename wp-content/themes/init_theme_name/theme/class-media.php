@@ -93,7 +93,9 @@ class Media {
         $path = get_attached_file( $attachment->ID );
 
         if ( file_exists( $path ) ) {
+          // phpcs:disable
           $svg_content = file_get_contents( $path );
+          // phpcs:enable
 
           if ( ! $this->general_helper->is_valid_xml( $svg_content ) ) {
             new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'init_theme_name' ), $path ) );
@@ -136,7 +138,9 @@ class Media {
   public function check_svg_on_media_upload( $response ) {
     if ( $response['type'] === 'image/svg+xml' && class_exists( 'SimpleXMLElement' ) ) {
       $path = $response['tmp_name'];
+      // phpcs:disable
       $svg_content = file_get_contents( $path );
+      // phpcs:enable
 
       if ( file_exists( $path ) ) {
         if ( ! $this->general_helper->is_valid_xml( $svg_content ) ) {

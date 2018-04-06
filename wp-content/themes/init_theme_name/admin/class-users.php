@@ -54,9 +54,9 @@ class Users {
   public function send_main_when_user_role_changes( $user_id, $new_role ) {
     $site_url  = get_bloginfo( 'wpurl' );
     $user_info = get_userdata( $user_id );
-    $to = $user_info->user_email;
-    $subject = sprintf( esc_html__( 'Role changed: %s', 'init_theme_name' ), $site_url );
-    $message = sprintf( esc_html__( 'Hello %1$s, your role has changed on %2$s. Congratulations, you are now an %3$s.', 'init_theme_name' ), $user_info->display_name, $site_url, $new_role );
+    $to        = $user_info->user_email;
+    $subject   = sprintf( esc_html__( 'Role changed: %s', 'init_theme_name' ), $site_url );
+    $message   = sprintf( esc_html__( 'Hello %1$s, your role has changed on %2$s. Congratulations, you are now an %3$s.', 'init_theme_name' ), $user_info->display_name, $site_url, $new_role );
     wp_mail( $to, $subject, $message );
   }
 

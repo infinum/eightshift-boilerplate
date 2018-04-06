@@ -70,6 +70,7 @@ prefix=$(awk '{ print toupper($0) }' <<< $theme_prefix)
 theme_version=$prefix"_THEME_VERSION"
 theme_name=$prefix"_THEME_NAME"
 theme_image_url=$prefix"_IMAGE_URL"
+theme_env=$prefix"_ENV"
 
 echo "\n${BBLUE}Please enter your theme description:${NC}"
 read theme_description
@@ -105,6 +106,7 @@ if [ "$confirmation" == "y" ]; then
   findReplace "INF_THEME_VERSION" "$theme_version"
   findReplace "INF_THEME_NAME" "$theme_name"
   findReplace "INF_IMAGE_URL" "$theme_image_url"
+  findReplace "INF_ENV" "$theme_env"
 
   # Change folder name
   if [ "$theme_package_name" != "init_theme_name" ]; then
