@@ -3,7 +3,7 @@
  * The Utils-Post Type specific functionality.
  *
  * @since   2.0.0
- * @package init_theme_name
+ * @package Inf_Theme\Theme\Utils
  */
 
 namespace Inf_Theme\Theme\Utils;
@@ -39,8 +39,8 @@ class Post_Type {
    * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name     = $theme_info['theme_name'];
-    $this->theme_version  = $theme_info['theme_version'];
+    $this->theme_name    = $theme_info['theme_name'];
+    $this->theme_version = $theme_info['theme_version'];
   }
 
   /**
@@ -53,7 +53,7 @@ class Post_Type {
    *
    * @since 2.0.0
    */
-  function get_post_type_link( $class = null, $post_object = null, $name = null ) {
+  public function get_post_type_link( $class = null, $post_object = null, $name = null ) {
 
     // If in loop add post type from global post.
     if ( ! $post_object ) {
@@ -86,7 +86,7 @@ class Post_Type {
    *
    * @since 2.0.0
    */
-  function does_post_type_exist( $post_object = null ) {
+  public function does_post_type_exist( $post_object = null ) {
 
     // If in loop add post type from global post.
     if ( ! $post_object ) {

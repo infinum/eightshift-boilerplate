@@ -3,7 +3,7 @@
  * The Shortcodes specific functionality.
  *
  * @since   2.0.0
- * @package init_theme_name
+ * @package Inf_Theme\Theme
  */
 
 namespace Inf_Theme\Theme;
@@ -39,8 +39,8 @@ class Shortcodes {
    * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name     = $theme_info['theme_name'];
-    $this->theme_version  = $theme_info['theme_version'];
+    $this->theme_name    = $theme_info['theme_name'];
+    $this->theme_version = $theme_info['theme_version'];
   }
 
   /**
@@ -57,7 +57,7 @@ class Shortcodes {
    *
    * @since 2.0.0
    */
-  function inf_do_shortcode( $tag, array $atts = array(), $content = null ) {
+  public function inf_do_shortcode( $tag, array $atts = array(), $content = null ) {
 
     global $shortcode_tags;
 

@@ -6,7 +6,7 @@
  * theme-facing side of the site and the admin area.
  *
  * @since   2.0.0
- * @package init_theme_name
+ * @package Inf_Theme\Includes
  */
 
 namespace Inf_Theme\Includes;

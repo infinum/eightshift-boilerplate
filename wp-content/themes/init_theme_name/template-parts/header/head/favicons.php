@@ -2,7 +2,7 @@
 /**
  * Use default or cusotm Favicons
  *
- * @package init_theme_name
+ * @package Inf_Theme\Template_Parts\Header\Head
  */
 
 $favicon = array(

@@ -2,7 +2,7 @@
 /**
  * List Simple Article
  *
- * @package init_theme_name
+ * @package Inf_Theme\Template_Parts\Listing\Articles
  */
 
 use Inf_Theme\Theme\Utils as Utils;
@@ -27,5 +27,5 @@ $image  = $images->get_post_image( 'listing' );
       </div>
     </div>
   </div>
-  <?php include( locate_template( 'template-parts/parts/google-rich-snippets.php' ) ); ?>
+  <?php require locate_template( 'template-parts/parts/google-rich-snippets.php' ); ?>
 </article>

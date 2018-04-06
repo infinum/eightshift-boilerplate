@@ -4,7 +4,7 @@
  * Used in admin or theme side.
  *
  * @since   2.0.0
- * @package init_theme_name
+ * @package Inf_Theme\Helpers
  */
 
 namespace Inf_Theme\Helpers;
@@ -40,8 +40,8 @@ class General_Helper {
    * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name     = $theme_info['theme_name'];
-    $this->theme_version  = $theme_info['theme_version'];
+    $this->theme_name    = $theme_info['theme_name'];
+    $this->theme_version = $theme_info['theme_version'];
   }
 
   /**

@@ -2,7 +2,7 @@
 /**
  * Single Page
  *
- * @package init_theme_name
+ * @package Inf_Theme\Template_Parts\Single
  */
 
 use Inf_Theme\Theme\Utils as Utils;
@@ -21,5 +21,5 @@ $image  = $images->get_post_image( 'full_width' );
   <div class="single__content content-style content-media-style">
     <?php the_content(); ?>
   </div>
-  <?php include( locate_template( 'template-parts/parts/google-rich-snippets.php' ) ); ?>
+  <?php require locate_template( 'template-parts/parts/google-rich-snippets.php' ); ?>
 </section>

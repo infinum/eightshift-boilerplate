@@ -3,7 +3,7 @@
  * Template Name: Section Creator
  * Display page as Section Creator
  *
- * @package init_theme_name
+ * @package Inf_Theme\Page_Templates
  */
 
 get_header();

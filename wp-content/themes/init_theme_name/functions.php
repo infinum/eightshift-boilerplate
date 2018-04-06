@@ -7,7 +7,7 @@
  * Version: 1.0
  * Text Domain: init_theme_name
  *
- * @package init_theme_name
+ * @package Inf_Theme
  */
 
 namespace Inf_Theme;
@@ -44,10 +44,11 @@ define( 'INF_IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' )
 /**
  * Include the autoloader so we can dynamically include the rest of the classes.
  *
+ * @since 2.1.0 Using Composer based autloader.
  * @since 2.0.0
  * @package init_theme_name
  */
-include_once( 'lib/autoloader.php' );
+require WP_CONTENT_DIR . '/vendor/autoloader.php';
 
 /**
  * Begins execution of the theme.
