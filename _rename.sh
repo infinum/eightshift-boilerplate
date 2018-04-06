@@ -58,6 +58,7 @@ if [[ -z "$theme_package_name" ]]; then
   exit 1
 fi
 
+echo "\n${BBLUE}Please enter theme prefix:${NC}"
 echo "Theme prefix (a short prefix that will be used when defining constants. For example: INF, ABRR)"
 read theme_prefix
 
