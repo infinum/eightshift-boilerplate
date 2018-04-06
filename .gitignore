@@ -1,5 +1,5 @@
 # Project Specific
-wp-content/themes/theme_name/skin/public
+wp-content/themes/init_theme_name/skin/public
 
 # Wordpress files
 wp-admin
@@ -24,7 +24,7 @@ wp-includes
 .htaccess
 robots.txt
 
-# Content
+# Exclude Plugins
 wp-content/plugins/
 
 # Theme
@@ -55,6 +55,7 @@ ehthumbs_vista.db
 
 # Error logs
 error_log.txt
+debug.log
 wordfence-waf.php
 
 # Databases and exports
