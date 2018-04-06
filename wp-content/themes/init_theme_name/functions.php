@@ -48,7 +48,7 @@ define( 'INF_IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' )
  * @since 2.0.0
  * @package Inf_Theme
  */
-require WP_CONTENT_DIR . '/vendor/autoloader.php';
+require 'vendor/autoload.php';
 
 /**
  * Begins execution of the theme.

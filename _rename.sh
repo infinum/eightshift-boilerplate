@@ -58,9 +58,18 @@ if [[ -z "$theme_package_name" ]]; then
   exit 1
 fi
 
+echo "Theme prefix (a short prefix that will be used when defining constants. For example: INF, ABRR)"
+read theme_prefix
+
 theme_package_name="${theme_package_name// /-}"
 theme_package_name=$(strtolower $theme_package_name)
 theme_namespace=$(cap_case $theme_package_name)
+
+prefix=$(awk '{ print toupper($0) }' <<< $theme_prefix)
+
+theme_version=$prefix"_THEME_VERSION"
+theme_name=$prefix"_THEME_NAME"
+theme_image_url=$prefix"_IMAGE_URL"
 
 echo "\n${BBLUE}Please enter your theme description:${NC}"
 read theme_description
@@ -80,6 +89,7 @@ echo "Author: ${BBLUE}$theme_author_name${NC} <${BBLUE}$theme_author_email${NC}>
 echo "Text Domain: ${BBLUE}$theme_package_name${NC}"
 echo "Package: ${BBLUE}$theme_package_name${NC}"
 echo "Namespace: ${BBLUE}$theme_namespace${NC}"
+echo "Prefix: ${BBLUE}$prefix${NC}"
 
 echo "\n${RED}Confirm? (y/n)${NC}"
 read confirmation
@@ -92,6 +102,9 @@ if [ "$confirmation" == "y" ]; then
   findReplace "init_author_name" "$theme_author_name <$theme_author_email>"
   findReplace "init_theme_name" "$theme_package_name"
   findReplace "Inf_Theme" "$theme_namespace"
+  findReplace "INF_THEME_VERSION" "$theme_version"
+  findReplace "INF_THEME_NAME" "$theme_name"
+  findReplace "INF_IMAGE_URL" "$theme_image_url"
 
   # Change folder name
   if [ "$theme_package_name" != "init_theme_name" ]; then

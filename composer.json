@@ -15,15 +15,7 @@
   },
   "autoload": {
     "classmap": [
-      "wp-content/themes/init_theme_name/",
-      "wp-content/themes/init_theme_name/admin/",
-      "wp-content/themes/init_theme_name/helpers/",
-      "wp-content/themes/init_theme_name/includes/",
-      "wp-content/themes/init_theme_name/plugins/",
-      "wp-content/themes/init_theme_name/plugins/acf/",
-      "wp-content/themes/init_theme_name/theme/",
-      "wp-content/themes/init_theme_name/theme/menu/",
-      "wp-content/themes/init_theme_name/theme/utils/"
+      "wp-content/themes/init_theme_name/"
     ]
   }
 }
