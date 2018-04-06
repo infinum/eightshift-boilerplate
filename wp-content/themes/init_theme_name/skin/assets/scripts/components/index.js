@@ -1,4 +1,4 @@
-import ScrollToElement from './scroll-to';
+import {ScrollToElement} from './scroll-to';
 
 $(function() {
   const scrollTo = new ScrollToElement();

@@ -1,4 +1,4 @@
-const device = {
+export const device = {
   iPhone() {
     let checkIphone = false;
 
@@ -9,5 +9,3 @@ const device = {
     return checkIphone;
   },
 };
-
-export default device;

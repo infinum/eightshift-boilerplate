@@ -9,7 +9,7 @@ $base-content-width: $base-content-full-width + ($base-content-padding*2);
 
 //Typography
 $typography-map: (
-  desktop: (
+  mobile: (
     giant:          72px,
     huge:           42px,
     biggest:        30px,
@@ -28,7 +28,7 @@ $typography-map: (
 
 // Buttons
 $button-size-map: (
-  desktop: (
+  mobile: (
     default: (
       text-size: 14px,
       line-height: 1.4,
@@ -39,7 +39,7 @@ $button-size-map: (
 
 //Section
 $section-spacing-map: (
-  desktop: (
+  mobile: (
     default:    40px,
     medium:     80px,
     small:      20px,
@@ -55,16 +55,10 @@ $form-field-spacing: 30px;
 
 // Input
 $input-height-map: (
-  small: (
+  mobile: (
     default: (
       text-size: 18px,
       height: 57px,
-    )
-  ),
-  desktop: (
-    default: (
-      text-size: 24px,
-      height: 64px,
     )
   )
 );
