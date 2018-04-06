@@ -1,5 +1,5 @@
 # Project Specific
-wp-content/themes/init_theme_name/skin/public
+wp-content/themes/theme_name/skin/public
 
 # Wordpress files
 wp-admin
@@ -35,7 +35,7 @@ wp-content/*
 # Ignore these plugins from the core
 wp-content/plugins/hello.php
 wp-content/plugins/akismet/
-wp-content/plugins/index.php
+/wp-content/plugins/index.php
 
 # Ignore specific themes
 wp-content/themes/twenty*/
