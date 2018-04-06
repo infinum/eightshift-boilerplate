@@ -1,0 +1,84 @@
+// Background Colors
+.u-bg-color {
+  @include bg-colors;
+}
+
+// Text Colors
+.u-text-color {
+  @include text-colors;
+}
+
+// Text Sizes
+.u-text-size {
+  @include text-sizes;
+}
+
+// Spin animation
+.u-spin {
+  animation: spin 2s infinite linear;  // stylelint-disable-line no-unknown-animations
+}
+
+// Rotate helpers
+.u-orientation--0 {
+  transform: rotate(0);
+}
+
+.u-orientation--90 {
+  transform: rotate(90deg);
+}
+
+.u-orientation--180 {
+  transform: rotate(180deg);
+}
+
+.u-orientation--270 {
+  transform: rotate(-90deg);
+}
+
+// Utility for responive videos
+.u {
+  &__embed-video-responsive {
+    position: relative;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+
+    &__video,
+    iframe { // stylelint-disable-line selector-no-type
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+}
+
+.table-responsive {
+  overflow-y: hidden;
+}
+
+.hide {
+  display: none;
+}
+
+.u-no-scroll {
+  overflow: hidden;
+
+  &-ios,
+  &-mobile-navigation {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+.clear {
+  clear: both;
+}

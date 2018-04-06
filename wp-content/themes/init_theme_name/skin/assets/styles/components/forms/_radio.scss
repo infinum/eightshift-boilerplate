@@ -1,0 +1,89 @@
+$radio-trigger-icon-color: $base-primary-color;
+$radio-trigger-bg-color: $base-white-color;
+$radio-trigger-border-color: $base-silver-color;
+
+$radio-disabled-trigger-bg-color: $base-silver-color;
+
+.radio {
+  @include checkbox-radio-size(12px, 6px);
+  $this: &;
+  position: relative;
+  cursor: pointer;
+  display: block;
+
+  // Icon
+  &__icon {
+    background-color: $radio-trigger-bg-color;
+    border: 1px solid $radio-trigger-border-color;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    border-radius: 50%;
+    transition: {
+      property: border-color, background-color;
+      timing-function: ease;
+      duration: 0.2s;
+    }
+
+    &::before {
+      content: '';
+      border-radius: 50%;
+      background-color: $radio-trigger-icon-color;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      opacity: 0;
+      transition: {
+        property: opacity;
+        timing-function: ease;
+        duration: 0.2s;
+      }
+    }
+  }
+
+  // move real input out from viewpoint, don't use display:none because of IE7-8
+  &__input {
+    position: absolute;
+    left: -999999px;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+
+  //disabled state
+  &--disabled {
+    #{$this}__icon {
+      background-color: $radio-disabled-trigger-bg-color;
+    }
+
+    #{$this}--checked #{$this}__icon::before {
+      opacity: 1;
+    }
+  }
+
+  // checked state
+  &--checked {
+    #{$this}__icon::before {
+      opacity: 1;
+    }
+  }
+
+  //Focus state
+  &--focus {
+    #{$this}__icon {
+      @extend %input-focus-shadow;
+    }
+  }
+}
+
+//Show for debug
+.show-input {
+  .radio__input {
+    left: -20px;
+    opacity: 1;
+    z-index: auto;
+  }
+}

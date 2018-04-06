@@ -1,0 +1,28 @@
+$label-color: $base-dark-color;
+$label-req-color: $base-primary-color;
+
+// .form {
+// }
+
+.label {
+  @include text-size(small);
+  line-height: 1.36;
+  letter-spacing: 0.3px;
+  color: $label-color;
+  margin-bottom: 10px;
+  display: block;
+
+  &--req {
+    position: relative;
+
+    &::after {
+      content: '*';
+      color: $label-req-color;
+      margin-left: 5px;
+    }
+  }
+}
+
+.field {
+  padding-bottom: $form-field-spacing;
+}

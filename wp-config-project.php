@@ -5,14 +5,10 @@
  * Define global environment variable, and define certain
  * settings based on it.
  *
- * @package theme_name
+ * @package init_theme_name
  *
  * @since 1.0.0
  */
-
-// Must be set.
-// Possible options are develop, staging and production.
-define( 'INF_ENV', 'develop' );
 
 if ( ! defined( 'INF_ENV' ) ) {
   return false;
@@ -36,14 +32,16 @@ define( 'AUTOSAVE_INTERVAL', 240 );
 // Disable automatic updating of plugins.
 define( 'AUTOMATIC_UPDATER_DISABLED', true );
 
+// Enable debug and error loging.
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+
 if ( INF_ENV === 'develop' ) {
   // Enable direct upload from admin.
   define( 'FS_METHOD', 'direct' );
 
   // Enable debug and error loging.
-  define( 'WP_DEBUG', true );
-  define( 'WP_DEBUG_LOG', true );
-  define( 'WP_DEBUG_DISPLAY', false );
+  define( 'WP_DEBUG_DISPLAY', true );
 } else {
 
   // Disable plugins / themes updates from admin.
@@ -51,4 +49,7 @@ if ( INF_ENV === 'develop' ) {
 
   // Force login to admin with ssl.
   define( 'FORCE_SSL_LOGIN', true );
+
+  // Enable debug and error loging.
+  define( 'WP_DEBUG_DISPLAY', false );
 }

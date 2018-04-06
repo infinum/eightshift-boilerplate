@@ -5,7 +5,7 @@ function build() {
   vendor/bin/phpcs --config-set installed_paths ../../wp-coding-standards/wpcs 
 
   wp core download
-  wp theme activate theme_name
+  wp theme activate init_theme_name
 }
 
 build

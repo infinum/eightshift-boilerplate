@@ -1,0 +1,24 @@
+//Some stuff here is out of BEM because it is used inside WP as helpers or modifiers
+// Text sizes are refines via mixins as utility helpers
+
+.link {
+  @include link-colors;
+  display: flex;
+  align-items: center;
+  $this: &;
+}
+
+
+a { // stylelint-disable-line selector-no-type
+  @extend %link-transition;
+  color: map-deep-get($links-map, default, color);
+  text-decoration: none;
+
+  &:hover {
+    color: map-deep-get($links-map, default, hover);
+  }
+}
+
+strong { // stylelint-disable-line selector-no-type
+  font-weight: bold;
+}

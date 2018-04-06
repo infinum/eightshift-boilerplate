@@ -5,8 +5,6 @@ const DEV = process.env.NODE_ENV !== 'production';
 const path = require('path');
 const webpack = require('webpack');
 
-const jQuery = require.resolve('jquery');
-
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
@@ -18,7 +16,7 @@ const appPath = `${path.resolve(__dirname)}`;
 const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.com
 
 // Theme
-const themeName = 'theme_name';
+const themeName = 'init_theme_name';
 const themePath = `/wp-content/themes/${themeName}/skin`;
 const themeFullPath = `${appPath}${themePath}`;
 const themePublicPath = `${themePath}/public/`;
@@ -62,19 +60,6 @@ const allModules = {
         fallback: 'style-loader',
         use: ['css-loader', 'postcss-loader', 'sass-loader'],
       }),
-    },
-    {
-
-      // Exposes jQuery for use outside Webpack build.
-      test: jQuery,
-      use: [{
-        loader: 'expose-loader',
-        options: 'jQuery',
-      },
-      {
-        loader: 'expose-loader',
-        options: '$',
-      }],
     },
   ],
 };
