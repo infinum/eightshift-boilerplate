@@ -59,7 +59,7 @@ class Media {
    * @since 2.0.0
    */
   public function add_custom_image_sizes() {
-    add_image_size( 'full_width', 1440, 9999, true );
+    add_image_size( 'full_width', 9999, 9999, false );
     add_image_size( 'listing', 570, 320, true );
   }
 
@@ -96,7 +96,7 @@ class Media {
           $svg_content = file_get_contents( $path );
 
           if ( ! $this->general_helper->is_valid_xml( $svg_content ) ) {
-            new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'hpb' ), $path ) );
+            new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'init_theme_name' ), $path ) );
             return false;
           }
 
@@ -118,7 +118,7 @@ class Media {
           );
         }
       } catch ( Exception $e ) {
-        new \WP_Error( sprintf( esc_html__( 'Error: %s', 'hpb' ), $e ) );
+        new \WP_Error( sprintf( esc_html__( 'Error: %s', 'init_theme_name' ), $e ) );
       }
     }
 
