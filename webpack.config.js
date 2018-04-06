@@ -1,16 +1,16 @@
 /* global process __dirname */
-
 const DEV = process.env.NODE_ENV !== 'production';
 
 const path = require('path');
 const webpack = require('webpack');
-
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const appPath = `${path.resolve(__dirname)}`;
+let allOptimizations = {};
 
 // Dev Server
 const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.com
@@ -56,16 +56,18 @@ const allModules = {
     {
       test: /\.scss$/,
       exclude: /node_modules/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: ['css-loader', 'postcss-loader', 'sass-loader'],
-      }),
+      use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader', 'postcss-loader', 'sass-loader',
+      ],
     },
   ],
 };
 
 const allPlugins = [
-  new ExtractTextPlugin(outputCss),
+  new MiniCssExtractPlugin({
+    filename: outputCss,
+  }),
 
   new webpack.ProvidePlugin({
     $: 'jquery',
@@ -84,12 +86,6 @@ const allPlugins = [
     ],
   }),
 
-  new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-    },
-  }),
-
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
   // Is using vendor files, but prefered to use npm
@@ -101,19 +97,36 @@ const allPlugins = [
 
 // Use only for production build
 if (!DEV) {
-  allPlugins.push(
-    new CleanWebpackPlugin([themeOutput]),
-    new webpack.optimize.UglifyJsPlugin({
-      output: {
-        comments: false,
+  allOptimizations = {
+    runtimeChunk: false,
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
       },
-      compress: {
-        warnings: false,
-        drop_console: true, // eslint-disable-line camelcase
-      },
-      sourceMap: true,
-    })
-  );
+    },
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true,
+        uglifyOptions: {
+          output: {
+            comments: false,
+          },
+          compress: {
+            warnings: false,
+            drop_console: true, // eslint-disable-line camelcase
+          },
+        },
+      }),
+    ],
+  };
+
+  allPlugins.push(new CleanWebpackPlugin([themeOutput]));
 }
 
 module.exports = [
@@ -130,6 +143,10 @@ module.exports = [
       publicPath: themePublicPath,
       filename: outputJs,
     },
+
+    optimization: allOptimizations,
+
+    mode: 'production',
 
     module: allModules,
 

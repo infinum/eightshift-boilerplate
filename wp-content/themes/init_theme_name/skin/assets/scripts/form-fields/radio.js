@@ -1,6 +1,6 @@
-import generalHelpers from './../helpers/general';
+import {generalHelpers} from './../helpers/general';
 
-export default class Radio {
+export class Radio {
   constructor(containerSelector = '.js-radio') {
     this.containerSelector = containerSelector;
     this.checkedClass = 'radio--checked';

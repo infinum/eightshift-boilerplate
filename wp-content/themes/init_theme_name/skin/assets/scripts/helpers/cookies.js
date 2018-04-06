@@ -1,4 +1,4 @@
-const cookies = {
+export const cookies = {
   setCookie(key, value, time, path) {
     const expires = new Date();
     expires.setTime(expires.getTime() + (time));
@@ -30,5 +30,3 @@ const cookies = {
     return 2628000000;
   },
 };
-
-export default cookies;

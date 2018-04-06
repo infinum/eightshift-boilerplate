@@ -1,21 +1,15 @@
 //Text single size item from map
 @mixin text-size($size, $map: $typography-map) {
-
-  // Partial for button size item
-  @mixin _partial($map, $size) {
-    font-size: map-get($map, $size);
-  }
-
   $i: 0;
 
   @each $breakpoint, $breakpointMap in $map {
     @if $i == 0 {
-      @include _partial($breakpointMap, $size);
+      font-size: map_get($breakpointMap, $size);
     }
 
     @else {
       @include media(#{$breakpoint} up) {
-        @include _partial($breakpointMap, $size);
+        font-size: map_get($breakpointMap, $size);
       }
     }
 
@@ -23,28 +17,27 @@
   }
 }
 
-//Text sizes items from map
-@mixin text-sizes($map: $typography-map) {
-
-  // Partial for button size item
-  @mixin _partial($map) {
-    @each $key, $values in $map {
-      &--#{$key} {
-        font-size: map-get($map, $key);
-      }
+//Text sizes items from map without breakpoints
+@mixin text-sizes-simple($map) {
+  @each $key, $values in $map {
+    &--#{$key} {
+      font-size: map_get($map, $key);
     }
   }
+}
 
+//Text sizes items from map
+@mixin text-sizes($map: $typography-map) {
   $i: 0;
 
   @each $breakpoint, $breakpointMap in $map {
     @if $i == 0 {
-      @include _partial($breakpointMap);
+      @include text-sizes-simple($breakpointMap);
     }
 
     @else {
       @include media(#{$breakpoint} up) {
-        @include _partial($breakpointMap);
+        @include text-sizes-simple($breakpointMap);
       }
     }
     $i: $i + 1;

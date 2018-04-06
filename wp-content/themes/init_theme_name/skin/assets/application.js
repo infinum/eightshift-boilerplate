@@ -2,7 +2,7 @@
 import './styles/application.scss';
 
 // Load Scripts
-import './scripts/scripts';
+import './scripts';
 
 // Load images
 import './images/images';

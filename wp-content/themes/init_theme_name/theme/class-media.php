@@ -96,7 +96,7 @@ class Media {
           $svg_content = file_get_contents( $path );
 
           if ( ! $this->general_helper->is_valid_xml( $svg_content ) ) {
-            new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'hpb' ), $path ) );
+            new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'init_theme_name' ), $path ) );
             return false;
           }
 
@@ -118,7 +118,7 @@ class Media {
           );
         }
       } catch ( Exception $e ) {
-        new \WP_Error( sprintf( esc_html__( 'Error: %s', 'hpb' ), $e ) );
+        new \WP_Error( sprintf( esc_html__( 'Error: %s', 'init_theme_name' ), $e ) );
       }
     }
 

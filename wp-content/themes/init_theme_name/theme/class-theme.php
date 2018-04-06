@@ -82,7 +82,7 @@ class Theme {
     // jQuery.
     wp_deregister_script( 'jquery-migrate' );
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', get_template_directory_uri() . '/skin/public/scripts/vendors/jquery.3.1.1.min.js', array(), '3.1.1' );
+    wp_register_script( 'jquery', get_template_directory_uri() . '/skin/public/scripts/vendors/jquery.3.3.1.min.js', array(), '3.3.1' );
     wp_enqueue_script( 'jquery' );
 
     // JS.

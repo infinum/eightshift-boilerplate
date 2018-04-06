@@ -4,34 +4,33 @@
   height: map_get($key, height);
 }
 
-// Input sizes items from map
-@mixin input-sizes($map: $input-height-map) {
+// Input sizes items from map without breakpoints
+@mixin input-sizes-simple($map: $input-height-map) {
+  @each $key, $value in $map {
+    @if $key == 'default' {
+      @include input-size($value);
+    }
 
-  // Partial for input size item
-  @mixin _partial($map) {
-    @each $key, $value in $map {
-      @if $key == 'default' {
+    @else {
+      &--size-#{$key} {
         @include input-size($value);
-      }
-
-      @else {
-        &--size-#{$key} {
-          @include input-size($value);
-        }
       }
     }
   }
+}
 
+// Input sizes items from map
+@mixin input-sizes($map: $input-height-map) {
   $i: 0;
 
   @each $breakpoint, $breakpointMap in $map {
     @if $i == 0 {
-      @include _partial($breakpointMap);
+      @include input-sizes-simple($breakpointMap);
     }
 
     @else {
       @include media(#{$breakpoint} up) {
-        @include _partial($breakpointMap);
+        @include input-sizes-simple($breakpointMap);
       }
     }
     $i: $i + 1;

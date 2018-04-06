@@ -1,4 +1,4 @@
-import cookies from './helpers/cookies';
+import {cookies} from './helpers/cookies';
 
 $(function() {
   $('.js-cookies-notification-btn').on('click', function(e) {
