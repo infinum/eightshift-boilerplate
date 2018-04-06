@@ -86,7 +86,7 @@ It is tested on MAMP and Vagrant (VVV).
 
 Lints JS and SASS using Webpack
 
-```
+```sh
 npm run precommit
 ```
 
@@ -98,7 +98,7 @@ To install it, you need to install [Composer](https://getcomposer.org/) first.
 
 * Add this aliases to you bash config:
 
-```
+```sh
 alias phpcs='vendor/bin/phpcs';
 alias phpcbf='vendor/bin/phpcbf';
 alias wpcs='phpcs --standard=vendor/infinum/coding-standards-wp/Infinum';
@@ -107,12 +107,14 @@ alias wpcbf='phpcbf --standard=vendor/infinum/coding-standards-wp/Infinum';
 * Reload terminal
 
 Checking theme for possible violations:
-```
+
+```sh
 wpcs wp-content/themes/init_theme_name
 ```
 
 Autofix theme for minor violations:
-```
+
+```sh
 wpcbf wp-content/themes/init_theme_name
 ```
 
@@ -122,13 +124,13 @@ Build creates public folder in theme all the assets.
 
 Check for errors js, css, php but not WP standards
 
-```
+```sh
 sh _prebuild.sh
 ```
 
 Builds production ready assets
 
-```
+```sh
 sh _build.sh
 ```
 
@@ -196,13 +198,11 @@ Plugins should be created using plugin boilerplate, with addition of namespaces 
 
 ## Credits
 
-
 Infinum WordPress Boilerplate is maintained and sponsored by
 [Infinum](https://www.infinum.co).
 
 <img src="https://infinum.co/infinum.png" width="264">
 
 ## License
-
 
 Infinum WordPress Boilerplate is Copyright © 2017 Infinum. It is free software, and may be redistributed under the terms specified in the LICENSE file.
