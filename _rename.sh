@@ -20,6 +20,14 @@ function strtolower() {
   return 0;
 }
 
+function cap_case() {
+  [ $# -eq 1 ] || return 1;
+  _str=$1;
+  _replaced=${_str//[-_]/_}
+  echo $_replaced | awk -F"_" '{for(i=1;i<=NF;i++){$i=toupper(substr($i,1,1)) substr($i,2)}} 1' OFS="_"
+  return 0;
+}
+
 # Find and replace strings in files
 function findReplace() {
   local var=$1
@@ -52,7 +60,7 @@ fi
 
 theme_package_name="${theme_package_name// /-}"
 theme_package_name=$(strtolower $theme_package_name)
-
+theme_namespace=$(cap_case $theme_package_name)
 
 echo "\n${BBLUE}Please enter your theme description:${NC}"
 read theme_description
@@ -71,6 +79,7 @@ echo "Description: ${BBLUE}$theme_description${NC}"
 echo "Author: ${BBLUE}$theme_author_name${NC} <${BBLUE}$theme_author_email${NC}>"
 echo "Text Domain: ${BBLUE}$theme_package_name${NC}"
 echo "Package: ${BBLUE}$theme_package_name${NC}"
+echo "Namespace: ${BBLUE}$theme_namespace${NC}"
 
 echo "\n${RED}Confirm? (y/n)${NC}"
 read confirmation
@@ -82,6 +91,7 @@ if [ "$confirmation" == "y" ]; then
   findReplace "init_description" "$theme_description"
   findReplace "init_author_name" "$theme_author_name <$theme_author_email>"
   findReplace "init_theme_name" "$theme_package_name"
+  findReplace "Inf_Theme" "$theme_namespace"
 
   # Change folder name
   if [ "$theme_package_name" != "init_theme_name" ]; then

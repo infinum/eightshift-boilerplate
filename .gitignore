@@ -24,13 +24,11 @@ wp-includes
 .htaccess
 robots.txt
 
-# Content
-!wp-content/plugins/
+# Exclude Plugins
+wp-content/plugins/
 
 # Theme
 wp-content/*
-!wp-content/mu-plugins/
-!wp-content/plugins/
 !wp-content/themes/
 /wp-content/themes/index.php
 
@@ -57,6 +55,7 @@ ehthumbs_vista.db
 
 # Error logs
 error_log.txt
+debug.log
 wordfence-waf.php
 
 # Databases and exports
