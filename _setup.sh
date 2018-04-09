@@ -5,7 +5,6 @@ function build() {
   composer install
 
   wp core download
-  wp theme activate init_theme_name
 }
 
 build
