@@ -4,7 +4,7 @@
  * It provides BEM classes to menues.
  *
  * @since   2.0.0
- * @package init_theme_name
+ * @package Inf_Theme\Theme\Menu
  */
 
 namespace Inf_Theme\Theme\Menu;
@@ -24,7 +24,7 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    *
    * @since 2.0.0
    */
-  function __construct( $css_class_prefix ) {
+  public function __construct( $css_class_prefix ) {
 
     $this->css_class_prefix = $css_class_prefix;
 
@@ -39,7 +39,6 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
         'sub_menu_item'           => '__sub-menu__item',
         'link'                    => '__link',
     );
-
   }
 
   /**
@@ -55,7 +54,7 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    *
    * @since 2.0.0
    */
-  function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
+  public function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 
     $id_field = $this->db_fields['id'];
 
@@ -77,7 +76,7 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    *
    * @since 2.0.0
    */
-  function start_lvl( &$output, $depth = 1, $args = array() ) {
+  public function start_lvl( &$output, $depth = 1, $args = array() ) {
 
     $real_depth = $depth + 1;
 
@@ -109,7 +108,7 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    *
    * @since 2.0.0
    */
-  function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+  public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 
     global $wp_query;
 
@@ -118,19 +117,32 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
     $prefix = $this->css_class_prefix;
     $suffix = $this->item_css_class_suffixes;
 
+    $parent_class = $prefix . $suffix['parent_item'];
+
+    if ( ! empty( $item->classes ) ) {
+      $user_classes = array();
+      foreach ( $item->classes as $class => $class_name ) {
+        if ( strpos( $class_name, 'js-' ) !== false ) {
+          $user_classes[] = $class_name;
+        } else {
+          $user_classes[] = $prefix . '__item--' . $class_name;
+        }
+      }
+    }
+
     // Item classes.
     $item_classes = array(
         'item_class'            => 0 === $depth ? $prefix . $suffix['item'] : '',
-        'parent_class'          => $args->has_children ? $parent_class = $prefix . $suffix['parent_item'] : '',
+        'parent_class'          => $args->has_children ? $parent_class : '',
         'active_page_class'     => in_array( 'current-menu-item', $item->classes, true ) ? $prefix . $suffix['active_item'] : '',
         'active_parent_class'   => in_array( 'current-menu-parent', $item->classes, true ) ? $prefix . $suffix['parent_of_active_item'] : '',
         'active_ancestor_class' => in_array( 'current-page-ancestor', $item->classes, true ) ? $prefix . $suffix['ancestor_of_active_item'] : '',
         'depth_class'           => $depth >= 1 ? $prefix . $suffix['sub_menu_item'] . ' ' . $prefix . $suffix['sub_menu'] . '--' . $depth . '__item' : '',
         'item_id_class'         => $prefix . '__item--' . $item->object_id,
-        'user_class'            => '' !== $item->classes[0] ? $prefix . '__item--' . $item->classes[0] : '',
+        'user_class'            => ! empty( $user_classes ) ? implode( ' ', $user_classes ) : '',
     );
 
-    // convert array to string excluding any empty values.
+    // Convert array to string excluding any empty values.
     $class_string = implode( '  ', array_filter( $item_classes ) );
 
     // Add the classes to the wrapping <li>.
@@ -161,7 +173,7 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
     $attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
 
     // Creatre link markup.
-    $item_output = $args->before;
+    $item_output  = $args->before;
     $item_output .= '<a' . $attributes . ' ' . $link_class_output . '><span ' . $link_text_class_output . '>';
     $item_output .= $args->link_before;
     $item_output .= apply_filters( 'the_title', $item->title, $item->ID );

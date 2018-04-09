@@ -2,7 +2,7 @@
 /**
  * Display regular index/home page
  *
- * @package init_theme_name
+ * @package Inf_Theme
  */
 
 get_header();

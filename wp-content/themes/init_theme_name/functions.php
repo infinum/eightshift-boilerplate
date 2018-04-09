@@ -7,7 +7,7 @@
  * Version: 1.0
  * Text Domain: init_theme_name
  *
- * @package init_theme_name
+ * @package Inf_Theme
  */
 
 namespace Inf_Theme;
@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Theme version global
  *
  * @since 2.0.0
- * @package init_theme_name
+ * @package Inf_Theme
  */
 define( 'INF_THEME_VERSION', '1.0.0' );
 
@@ -29,7 +29,7 @@ define( 'INF_THEME_VERSION', '1.0.0' );
  * Theme name global
  *
  * @since 2.0.0
- * @package init_theme_name
+ * @package Inf_Theme
  */
 define( 'INF_THEME_NAME', 'init_theme_name' );
 
@@ -37,17 +37,18 @@ define( 'INF_THEME_NAME', 'init_theme_name' );
  * Global image path
  *
  * @since 2.0.0
- * @package init_theme_name
+ * @package Inf_Theme
  */
 define( 'INF_IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' );
 
 /**
  * Include the autoloader so we can dynamically include the rest of the classes.
  *
+ * @since 2.1.0 Using Composer based autloader.
  * @since 2.0.0
- * @package init_theme_name
+ * @package Inf_Theme
  */
-include_once( 'lib/autoloader.php' );
+require WP_CONTENT_DIR . '/../vendor/autoload.php';
 
 /**
  * Begins execution of the theme.

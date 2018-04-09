@@ -3,7 +3,7 @@
  * Template Name: Section Creator
  * Display page as Section Creator
  *
- * @package init_theme_name
+ * @package Inf_Theme\Page_Templates
  */
 
 get_header();
@@ -16,7 +16,7 @@ if ( ! empty( $sections ) ) {
       $template = locate_template( 'template-parts/sections/section-creator/' . str_replace( '_', '-', $section['acf_fc_layout'] ) . '.php' );
 
       if ( ! empty( $template ) ) {
-        include( $template );
+        include $template;
       }
     }
   }

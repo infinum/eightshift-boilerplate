@@ -4,7 +4,7 @@
  * Used in admin or theme side.
  *
  * @since   2.0.0
- * @package init_theme_name
+ * @package Inf_Theme\Helpers
  */
 
 namespace Inf_Theme\Helpers;
@@ -40,8 +40,8 @@ class General_Helper {
    * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name     = $theme_info['theme_name'];
-    $this->theme_version  = $theme_info['theme_version'];
+    $this->theme_name    = $theme_info['theme_name'];
+    $this->theme_version = $theme_info['theme_version'];
   }
 
   /**
@@ -81,4 +81,19 @@ class General_Helper {
     return filemtime( $file_location );
   }
 
+  /**
+   * Check if XML is valid file used for svg.
+   *
+   * @param xml $xml Full xml document.
+   * @return boolean
+   *
+   * @since 2.0.2
+   */
+  public function is_valid_xml( $xml ) {
+    libxml_use_internal_errors( true );
+    $doc = new \DOMDocument( '1.0', 'utf-8' );
+    $doc->loadXML( $xml );
+    $errors = libxml_get_errors();
+    return empty( $errors );
+  }
 }

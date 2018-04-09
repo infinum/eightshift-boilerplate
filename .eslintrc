@@ -9,5 +9,9 @@
     "commonjs": true,
     "es6": true,
     "jquery": true
+  },
+
+  "rules": {
+    "import/prefer-default-export": 0
   }
 }

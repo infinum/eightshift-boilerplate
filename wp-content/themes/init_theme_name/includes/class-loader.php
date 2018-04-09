@@ -3,7 +3,7 @@
  * Register all actions and filters for the plugin
  *
  * @since   2.0.0
- * @package init_theme_name
+ * @package Inf_Theme\Includes
  */
 
 namespace Inf_Theme\Includes;

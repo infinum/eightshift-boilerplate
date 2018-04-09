@@ -2,11 +2,10 @@
 /**
  * Display footer content
  *
- * @package init_theme_name
+ * @package Inf_Theme\Template_Parts\Footer
  */
 
 ?>
-
 
 <footer class="footer">
   <div class="footer__container">

@@ -2,7 +2,7 @@
 /**
  * Display footer
  *
- * @package init_theme_name
+ * @package Inf_Theme
  */
 
 ?>

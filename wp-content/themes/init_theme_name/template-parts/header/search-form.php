@@ -2,7 +2,7 @@
 /**
  * Header Serch form
  *
- * @package init_theme_name
+ * @package Inf_Theme\Template_Parts\Header
  */
 
 ?>

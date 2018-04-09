@@ -2,7 +2,7 @@
 /**
  * Facebook tracking code
  *
- * @package init_theme_name
+ * @package Inf_Theme\Template_Parts\Tracking\Parts
  */
 
 ?>

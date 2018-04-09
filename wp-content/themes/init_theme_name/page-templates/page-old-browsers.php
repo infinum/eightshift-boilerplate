@@ -3,7 +3,7 @@
  * Template Name: Old Browser
  * Display page when you have old browser
  *
- * @package init_theme_name
+ * @package Inf_Theme\Page_Templates
  */
 
 ?>

@@ -3,7 +3,7 @@
  * The Media specific functionality.
  *
  * @since   2.0.0
- * @package init_theme_name
+ * @package Inf_Theme\Theme
  */
 
 namespace Inf_Theme\Theme;
@@ -39,8 +39,8 @@ class Media {
    * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name     = $theme_info['theme_name'];
-    $this->theme_version  = $theme_info['theme_version'];
+    $this->theme_name    = $theme_info['theme_name'];
+    $this->theme_version = $theme_info['theme_version'];
   }
 
   /**
@@ -59,7 +59,7 @@ class Media {
    * @since 2.0.0
    */
   public function add_custom_image_sizes() {
-    add_image_size( 'full_width', 1440, 9999, true );
+    add_image_size( 'full_width', 9999, 9999, false );
     add_image_size( 'listing', 570, 320, true );
   }
 
@@ -84,6 +84,7 @@ class Media {
    * @param int|object $attachment Attachment ID or object.
    * @param array      $meta       Array of attachment meta data.
    *
+   * @since 2.0.2 Added checks if xml file is valid.
    * @since 2.0.0
    */
   public function enable_svg_library_preview( $response, $attachment, $meta ) {
@@ -92,28 +93,64 @@ class Media {
         $path = get_attached_file( $attachment->ID );
 
         if ( file_exists( $path ) ) {
-            $svg    = new \SimpleXMLElement( file_get_contents( $path ) );
-            $src    = $response['url'];
-            $width  = (int) $svg['width'];
-            $height = (int) $svg['height'];
+          // phpcs:disable
+          $svg_content = file_get_contents( $path );
+          // phpcs:enable
 
-            // media gallery.
-            $response['image'] = compact( 'src', 'width', 'height' );
-            $response['thumb'] = compact( 'src', 'width', 'height' );
+          if ( ! $this->general_helper->is_valid_xml( $svg_content ) ) {
+            new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'init_theme_name' ), $path ) );
+            return false;
+          }
 
-            // media single.
-            $response['sizes']['full'] = array(
-                'height'      => $height,
-                'width'       => $width,
-                'url'         => $src,
-                'orientation' => $height > $width ? 'portrait' : 'landscape',
-            );
+          $svg    = new \SimpleXMLElement( $svg_content );
+          $src    = $response['url'];
+          $width  = (int) $svg['width'];
+          $height = (int) $svg['height'];
+
+          // media gallery.
+          $response['image'] = compact( 'src', 'width', 'height' );
+          $response['thumb'] = compact( 'src', 'width', 'height' );
+
+          // media single.
+          $response['sizes']['full'] = array(
+              'height'      => $height,
+              'width'       => $width,
+              'url'         => $src,
+              'orientation' => $height > $width ? 'portrait' : 'landscape',
+          );
         }
       } catch ( Exception $e ) {
         new \WP_Error( sprintf( esc_html__( 'Error: %s', 'init_theme_name' ), $e ) );
       }
     }
 
+    return $response;
+  }
+
+  /**
+   * Check if svg is valid on Add New Media Page.
+   *
+   * @param array $response Response array.
+   * @return array
+   *
+   * @since 2.0.2
+   */
+  public function check_svg_on_media_upload( $response ) {
+    if ( $response['type'] === 'image/svg+xml' && class_exists( 'SimpleXMLElement' ) ) {
+      $path = $response['tmp_name'];
+      // phpcs:disable
+      $svg_content = file_get_contents( $path );
+      // phpcs:enable
+
+      if ( file_exists( $path ) ) {
+        if ( ! $this->general_helper->is_valid_xml( $svg_content ) ) {
+          return array(
+              'size' => $response,
+              'name' => $response['name'],
+          );
+        }
+      }
+    }
     return $response;
   }
 

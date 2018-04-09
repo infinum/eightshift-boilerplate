@@ -2,7 +2,7 @@
 /**
  * 404 error page
  *
- * @package init_theme_name
+ * @package Inf_Theme
  */
 
 get_header();

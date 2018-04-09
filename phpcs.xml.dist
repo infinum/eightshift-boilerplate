@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="Infinum">
+  <description>Loader for the Infinum coding standards for WordPress.</description>
+
+  <config name="installed_paths" value="vendor/wp-coding-standards/wpcs" />
+  <rule ref="vendor/infinum/coding-standards-wp/Infinum/ruleset.xml" />
+</ruleset>

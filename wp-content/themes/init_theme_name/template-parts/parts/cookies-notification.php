@@ -2,7 +2,7 @@
 /**
  * Cookies Law notification
  *
- * @package init_theme_name
+ * @package Inf_Theme\Template_Parts\Parts
  */
 
 global $inf_theme_options;

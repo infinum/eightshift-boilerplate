@@ -3,7 +3,7 @@
  * Display regular search page with
  * title and regular listing sorted by date
  *
- * @package init_theme_name
+ * @package Inf_Theme
  */
 
 get_header();

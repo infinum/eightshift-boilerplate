@@ -3,7 +3,7 @@
  * The Utils-Images specific functionality.
  *
  * @since   2.0.0
- * @package init_theme_name
+ * @package Inf_Theme\Theme\Utils
  */
 
 namespace Inf_Theme\Theme\Utils;
@@ -39,8 +39,8 @@ class Images {
    * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name     = $theme_info['theme_name'];
-    $this->theme_version  = $theme_info['theme_version'];
+    $this->theme_name    = $theme_info['theme_name'];
+    $this->theme_version = $theme_info['theme_version'];
   }
 
   /**
@@ -55,7 +55,7 @@ class Images {
    *
    * @since 2.0.0
    */
-  function get_post_image( $size, $post_id = null, $no_image = null ) {
+  public function get_post_image( $size, $post_id = null, $no_image = null ) {
     global $post;
 
     if ( ! $post_id ) {
@@ -95,7 +95,7 @@ class Images {
    *
    * @since 2.0.0
    */
-  function get_image_from_array( $size, $image_array ) {
+  public function get_image_from_array( $size, $image_array ) {
     if ( ! empty( $image_array ) ) {
       $img = $image_array['sizes'];
       $src = $img[ $size ];

@@ -4,7 +4,7 @@
  * General stuff that is not specific to any class.
  *
  * @since   2.0.0
- * @package init_theme_name
+ * @package Inf_Theme\Admin
  */
 
 namespace Inf_Theme\Admin;
@@ -51,8 +51,8 @@ class Admin {
    * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name     = $theme_info['theme_name'];
-    $this->theme_version  = $theme_info['theme_version'];
+    $this->theme_name    = $theme_info['theme_name'];
+    $this->theme_version = $theme_info['theme_version'];
 
     $this->general_helper = new General_Helpers\General_Helper();
   }
@@ -84,26 +84,27 @@ class Admin {
   }
 
   /**
-   * Add admin bar class for different environment
+   * Method that changes admin colors based on environment variable
    *
-   * You can style admin bar of each environment differently for better
-   * differentiation, and smaller chance of error.
+   * @param string $color_scheme Color scheme string.
+   * @return string              Modified color scheme.
    *
-   * @param  string $classes Get preset body classes.
-   * @return string $classes Body classes with env class.
-   *
-   * @since 2.0.0
+   * @since 2.1.0
    */
-  function set_enviroment_body_class( $classes ) {
-    $this->env = '';
-
-    if ( defined( 'INF_ENV' ) ) {
-      $this->env = INF_ENV;
+  public function set_admin_color_based_on_env( $color_scheme ) {
+    if ( ! defined( 'INF_ENV' ) ) {
+      return false;
     }
 
-    $classes .= ' env--' . $this->env;
+    if ( INF_ENV === 'production' ) {
+      $color_scheme = 'sunrise';
+    } elseif ( INF_ENV === 'staging' ) {
+      $color_scheme = 'blue';
+    } else {
+      $color_scheme = 'fresh';
+    }
 
-    return $classes;
+    return $color_scheme;
   }
 
 }

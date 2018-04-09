@@ -1,13 +1,14 @@
 <?php
-  /**
-   * Footer
-   *
-   * @package init_theme_name
-   */
+/**
+ * Footer
+ *
+ * @package Inf_Theme\Template_Parts\Footer
+ */
 
-?>
-
-<?php include( locate_template( 'template-parts/parts/cookies-notification.php' ) ); ?>
+/**
+ * Include cookies template
+ */
+require locate_template( 'template-parts/parts/cookies-notification.php' ); ?>
 
 <a href="#html, body" class="scroll-to-top js-scroll-to-top">
   <?php esc_html_e( 'To top', 'init_theme_name' ); ?>

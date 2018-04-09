@@ -4,7 +4,7 @@
  * Used on fields created via ACF.
  *
  * @since   2.0.0
- * @package init_theme_name
+ * @package Inf_Theme\Plugins\Acf
  */
 
 namespace Inf_Theme\Plugins\Acf;
@@ -51,8 +51,8 @@ class Helpers {
    * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name     = $theme_info['theme_name'];
-    $this->theme_version  = $theme_info['theme_version'];
+    $this->theme_name    = $theme_info['theme_name'];
+    $this->theme_version = $theme_info['theme_version'];
 
     $this->general_helper = new General_Helpers\General_Helper();
   }
@@ -161,7 +161,7 @@ class Helpers {
    *
    * @since 2.0.0
    */
-  function get_image_simple( $key, $array, $image_size, $return_default = true ) {
+  public function get_image_simple( $key, $array, $image_size, $return_default = true ) {
     $image       = '';
     $image_title = '';
 
@@ -188,7 +188,7 @@ class Helpers {
    *
    * @since 2.0.0
    */
-  function get_title( $key, $array ) {
+  public function get_title( $key, $array ) {
     $title         = '';
     $title_size    = '';
     $title_seo_tag = 'h2';
@@ -215,7 +215,7 @@ class Helpers {
    *
    * @since 2.0.0
    */
-  function get_utilities( $key, $array ) {
+  public function get_utilities( $key, $array ) {
     $class          = '';
     $id             = '';
     $spacing_top    = '';

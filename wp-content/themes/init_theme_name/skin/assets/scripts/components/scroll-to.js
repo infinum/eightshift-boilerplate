@@ -1,4 +1,4 @@
-export default class ScrollToElement {
+export class ScrollToElement {
   constructor(
     globalElement = '.js-scroll-to-anchor',
     topElement = '.js-scroll-to-top'

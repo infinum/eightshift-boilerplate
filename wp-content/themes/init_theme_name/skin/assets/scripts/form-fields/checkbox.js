@@ -1,6 +1,6 @@
-import generalHelpers from './../helpers/general';
+import {generalHelpers} from './../helpers/general';
 
-export default class Checkbox {
+export class Checkbox {
   constructor(containerSelector = '.js-checkbox') {
     this.containerSelector = containerSelector;
     this.checkedClass = 'checkbox--checked';

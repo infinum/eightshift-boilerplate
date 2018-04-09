@@ -3,7 +3,7 @@
  * The Theme specific functionality.
  *
  * @since   2.0.0
- * @package init_theme_name
+ * @package Inf_Theme\Theme
  */
 
 namespace Inf_Theme\Theme;
@@ -50,8 +50,8 @@ class Theme {
    * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
-    $this->theme_name     = $theme_info['theme_name'];
-    $this->theme_version  = $theme_info['theme_version'];
+    $this->theme_name    = $theme_info['theme_name'];
+    $this->theme_version = $theme_info['theme_version'];
 
     $this->general_helper = new General_Helpers\General_Helper();
   }
@@ -82,7 +82,7 @@ class Theme {
     // jQuery.
     wp_deregister_script( 'jquery-migrate' );
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', get_template_directory_uri() . '/skin/public/scripts/vendors/jquery.3.1.1.min.js', array(), '3.1.1' );
+    wp_register_script( 'jquery', get_template_directory_uri() . '/skin/public/scripts/vendors/jquery.3.3.1.min.js', array(), '3.3.1' );
     wp_enqueue_script( 'jquery' );
 
     // JS.

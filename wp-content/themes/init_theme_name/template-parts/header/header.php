@@ -2,12 +2,12 @@
 /**
  * Main header bar
  *
- * @package init_theme_name
+ * @package Inf_Theme\Template_Parts\Header
  */
 
 use Inf_Theme\Theme\Menu as Menu;
-$menu = new Menu\Menu();
-$blog_name = get_bloginfo( 'name' );
+$menu             = new Menu\Menu();
+$blog_name        = get_bloginfo( 'name' );
 $blog_description = get_bloginfo( 'description' );
 ?>
 <div class="header">

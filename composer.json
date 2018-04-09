@@ -12,5 +12,10 @@
     "post-update-cmd": [
       "\"vendor/bin/phpcs\" --config-set installed_paths vendor/infinum/coding-standards-wp"
     ]
+  },
+  "autoload": {
+    "classmap": [
+      "wp-content/themes/init_theme_name/"
+    ]
   }
 }
