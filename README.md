@@ -63,10 +63,18 @@ This will make changes to theme name, description, author, text domain, package,
 ## Development Pre Start
 
 Run this to setup WordPress on the server.
-The script will install `npm` and `composer` dependencies, install the latest version of WordPress and set the current theme as active.
+The script will install `npm` and `composer` dependencies, install the latest version of WordPress.
 
 ```sh
 sh _setup.sh
+```
+
+After running setup script, you'll need to create `wp-config.php`. You can do that manually, or use WP-CLI
+
+```sh
+wp config create --dbname={DBNAME} --dbuser={DBUSER} --dbpass={DBPASS}
+wp core install --url={dev.boilerplate.com} --title={THEMENAME} --admin_user={ADMINUSER} --admin_email={ADMINMAIL}
+wp theme activate {THEMENAME}
 ```
 
 ## Development Start
