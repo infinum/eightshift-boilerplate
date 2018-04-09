@@ -120,7 +120,7 @@ class Main {
     // Admin.
     $this->loader->add_action( 'login_enqueue_scripts', $admin, 'enqueue_styles' );
     $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_styles', 50 );
-    $this->loader->add_action( 'admin_body_class', $admin, 'set_enviroment_body_class' );
+    $this->loader->add_filter( 'get_user_option_admin_color', $admin, 'set_admin_color_based_on_env' );
     $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_scripts' );
 
     // Login page.

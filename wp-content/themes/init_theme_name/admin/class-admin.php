@@ -84,26 +84,25 @@ class Admin {
   }
 
   /**
-   * Add admin bar class for different environment
+   * Method that changes admin colors based on environment variable
    *
-   * You can style admin bar of each environment differently for better
-   * differentiation, and smaller chance of error.
+   * @param string $color_scheme Color scheme string.
+   * @return string              Modified color scheme.
    *
-   * @param  string $classes Get preset body classes.
-   * @return string $classes Body classes with env class.
-   *
-   * @since 2.0.0
+   * @since 2.1.0
    */
-  public function set_enviroment_body_class( $classes ) {
-    $this->env = '';
-
-    if ( defined( 'INF_ENV' ) ) {
-      $this->env = INF_ENV;
+  public function set_admin_color_based_on_env( $color_scheme ) {
+    if ( ! defined( 'INF_ENV' ) ) {
+      return false;
     }
-
-    $classes .= ' env--' . $this->env;
-
-    return $classes;
+    if ( INF_ENV === 'production' ) {
+      $color_scheme = 'sunrise';
+    } elseif ( INF_ENV === 'staging' ) {
+      $color_scheme = 'blue';
+    } else {
+      $color_scheme = 'fresh';
+    }
+    return $color_scheme;
   }
 
 }
