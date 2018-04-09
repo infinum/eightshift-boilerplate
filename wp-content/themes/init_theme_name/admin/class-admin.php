@@ -95,6 +95,7 @@ class Admin {
     if ( ! defined( 'INF_ENV' ) ) {
       return false;
     }
+
     if ( INF_ENV === 'production' ) {
       $color_scheme = 'sunrise';
     } elseif ( INF_ENV === 'staging' ) {
@@ -102,6 +103,7 @@ class Admin {
     } else {
       $color_scheme = 'fresh';
     }
+
     return $color_scheme;
   }
 
