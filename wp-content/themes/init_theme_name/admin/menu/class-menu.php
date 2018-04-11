@@ -3,10 +3,10 @@
  * The Menu specific functionality.
  *
  * @since   2.0.0
- * @package Inf_Theme\Theme\Menu
+ * @package Inf_Theme\Admin\Menu
  */
 
-namespace Inf_Theme\Theme\Menu;
+namespace Inf_Theme\Admin\Menu;
 
 /**
  * Class Menu
