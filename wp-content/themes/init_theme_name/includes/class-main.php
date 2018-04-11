@@ -12,10 +12,9 @@
 namespace Inf_Theme\Includes;
 
 use Inf_Theme\Admin as Admin;
-use Inf_Theme\Plugins as Plugins;
+use Inf_Theme\Admin\Menu as Menu;
 use Inf_Theme\Plugins\Acf as Acf;
 use Inf_Theme\Theme as Theme;
-use Inf_Theme\Theme\Menu as Menu;
 use Inf_Theme\Theme\Utils as Utils;
 
 /**
@@ -78,7 +77,6 @@ class Main {
 
     $this->load_dependencies();
     $this->define_admin_hooks();
-    $this->define_plugins_hooks();
     $this->define_theme_hooks();
   }
 
@@ -116,6 +114,9 @@ class Main {
     $editor      = new Admin\Editor( $this->get_theme_info() );
     $admin_menus = new Admin\Admin_Menus( $this->get_theme_info() );
     $users       = new Admin\Users( $this->get_theme_info() );
+    $widgets     = new Admin\Widgets( $this->get_theme_info() );
+    $menu        = new Menu\Menu( $this->get_theme_info() );
+    $media       = new Admin\Media( $this->get_theme_info() );
 
     // Admin.
     $this->loader->add_action( 'login_enqueue_scripts', $admin, 'enqueue_styles' );
@@ -136,25 +137,20 @@ class Main {
     $this->loader->add_action( 'set_user_role', $users, 'send_main_when_user_role_changes', 10, 2 );
     $this->loader->add_action( 'admin_init', $users, 'edit_editors_capabilities' );
 
-  }
+    // Widgets.
+    $this->loader->add_action( 'widgets_init', $widgets, 'register_widget_position' );
 
-  /**
-   * Register all of the hooks related to the plugins functionality.
-   *
-   * @since 2.0.0
-   */
-  private function define_plugins_hooks() {
-    $acf               = new Acf\Acf( $this->get_theme_info() );
-    $acf_theme_options = new Acf\Theme_Options( $this->get_theme_info() );
+    // Menu.
+    $this->loader->add_action( 'after_setup_theme', $menu, 'register_menu_positions' );
 
-    // Plugin ACF.
-    $this->loader->add_action( 'acf/fields/google_map/api', $acf, 'set_google_map_api_key' );
-    $this->loader->add_action( 'acf/fields/wysiwyg/toolbars', $acf, 'add_wysiwyg_toolbars' );
+    // Media.
+    $this->loader->add_action( 'upload_mimes', $media, 'enable_mime_types' );
+    $this->loader->add_action( 'wp_prepare_attachment_for_js', $media, 'enable_svg_library_preview', 10, 3 );
+    $this->loader->add_action( 'embed_oembed_html', $media, 'wrap_responsive_oembed_filter', 10, 4 );
+    $this->loader->add_action( 'after_setup_theme', $media, 'add_theme_support' );
+    $this->loader->add_action( 'after_setup_theme', $media, 'add_custom_image_sizes' );
+    $this->loader->add_filter( 'wp_handle_upload_prefilter', $media, 'check_svg_on_media_upload' );
 
-    // Plugin ACF - Theme Options.
-    $this->loader->add_action( 'acf/init', $acf_theme_options, 'create_theme_options_page' );
-    $this->loader->add_action( 'acf/init', $acf_theme_options, 'register_theme_options' );
-    $this->loader->add_action( 'acf/save_post', $acf_theme_options, 'remove_transient' );
 
   }
 
@@ -166,9 +162,6 @@ class Main {
   private function define_theme_hooks() {
     $theme           = new Theme\Theme( $this->get_theme_info() );
     $legacy_browsers = new Theme\Legacy_Browsers( $this->get_theme_info() );
-    $widgets         = new Theme\Widgets( $this->get_theme_info() );
-    $menu            = new Menu\Menu( $this->get_theme_info() );
-    $media           = new Theme\Media( $this->get_theme_info() );
     $gallery         = new Utils\Gallery( $this->get_theme_info() );
     $general         = new Theme\General( $this->get_theme_info() );
     $pagination      = new Theme\Pagination( $this->get_theme_info() );
@@ -182,12 +175,6 @@ class Main {
 
     // Legacy Browsers.
     $this->loader->add_action( 'template_redirect', $legacy_browsers, 'redirect_to_legacy_browsers_page' );
-
-    // Widgets.
-    $this->loader->add_action( 'widgets_init', $widgets, 'register_widget_position' );
-
-    // Menu.
-    $this->loader->add_action( 'after_setup_theme', $menu, 'register_menu_positions' );
 
     /**
      * Optimizations
@@ -206,14 +193,6 @@ class Main {
     $this->loader->remove_action( 'wp_head', 'feed_links', 2 );
     $this->loader->remove_action( 'wp_head', 'feed_links_extra', 3 );
     $this->loader->remove_action( 'wp_head', 'rest_output_link_wp_head' );
-
-    // Media.
-    $this->loader->add_action( 'upload_mimes', $media, 'enable_mime_types' );
-    $this->loader->add_action( 'wp_prepare_attachment_for_js', $media, 'enable_svg_library_preview', 10, 3 );
-    $this->loader->add_action( 'embed_oembed_html', $media, 'wrap_responsive_oembed_filter', 10, 4 );
-    $this->loader->add_action( 'after_setup_theme', $media, 'add_theme_support' );
-    $this->loader->add_action( 'after_setup_theme', $media, 'add_custom_image_sizes' );
-    $this->loader->add_filter( 'wp_handle_upload_prefilter', $media, 'check_svg_on_media_upload' );
 
     // Gallery.
     $this->loader->add_filter( 'post_gallery', $gallery, 'wrap_post_gallery', 10, 3 );

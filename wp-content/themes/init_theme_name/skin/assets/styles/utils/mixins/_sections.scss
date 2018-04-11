@@ -1,6 +1,6 @@
 //Section spacing single size item from map without breakpoints
 @mixin section-spacing-simple($position: false, $size: default, $map: $section-spacing-map) {
-  padding-#{$position}: map-get($map, $size);
+  padding-#{$position}: map_get($map, $size);
 }
 
 //Section spacing single size item from map
@@ -9,12 +9,12 @@
 
   @each $breakpoint, $breakpointMap in $map {
     @if $i == 0 {
-      @include section-spacing-simple($breakpointMap, $size, $position);
+      @include section-spacing-simple($position, $size, $breakpointMap);
     }
 
     @else {
       @include media(#{$breakpoint} up) {
-        @include section-spacing-simple($breakpointMap, $size, $position);
+        @include section-spacing-simple($position, $size, $breakpointMap);
       }
     }
     $i: $i + 1;
@@ -37,12 +37,12 @@
 
     @each $breakpoint, $breakpointMap in $map {
       @if $i == 0 {
-        @include section-spacings-simple($breakpointMap, $position);
+        @include section-spacings-simple($position, $breakpointMap);
       }
 
       @else {
         @include media(#{$breakpoint} up) {
-          @include section-spacings-simple($breakpointMap, $position);
+          @include section-spacings-simple($position, $breakpointMap);
         }
       }
       $i: $i + 1;

@@ -3,10 +3,10 @@
  * The Widgets specific functionality.
  *
  * @since   2.0.0
- * @package Inf_Theme\Theme
+ * @package Inf_Theme\Admin
  */
 
-namespace Inf_Theme\Theme;
+namespace Inf_Theme\Admin;
 
 /**
  * Class Widgets
