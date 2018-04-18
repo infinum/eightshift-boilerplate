@@ -10,7 +10,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const appPath = `${path.resolve(__dirname)}`;
-let allOptimizations = {};
 
 // Dev Server
 const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.com
@@ -95,37 +94,37 @@ const allPlugins = [
   }]),
 ];
 
-// Use only for production build
-if (!DEV) {
-  allOptimizations = {
-    runtimeChunk: false,
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
+const allOptimizations = {
+  runtimeChunk: false,
+  splitChunks: {
+    cacheGroups: {
+      commons: {
+        test: /[\\/]node_modules[\\/]/,
+        name: 'vendors',
+        chunks: 'all',
       },
     },
-    minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true,
-        uglifyOptions: {
-          output: {
-            comments: false,
-          },
-          compress: {
-            warnings: false,
-            drop_console: true, // eslint-disable-line camelcase
-          },
-        },
-      }),
-    ],
-  };
+  },
+};
 
+// Use only for production build
+if (!DEV) {
+  allOptimizations.minimizer = [
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true,
+      uglifyOptions: {
+        output: {
+          comments: false,
+        },
+        compress: {
+          warnings: false,
+          drop_console: true, // eslint-disable-line camelcase
+        },
+      },
+    }),
+  ];
   allPlugins.push(new CleanWebpackPlugin([themeOutput]));
 }
 
