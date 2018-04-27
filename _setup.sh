@@ -3,7 +3,7 @@
 function build() {
   npm install
   composer install
-
+  composer -o dump-autoload
   wp core download
 }
 

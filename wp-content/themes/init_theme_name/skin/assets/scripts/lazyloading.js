@@ -10,7 +10,7 @@ $(function() {
 
   instance.on('src:after', (element) => {
     if (element.localName !== 'img') {
-      element.style.backgroundImage = `url("${ element.getAttribute('data-normal') }")`;
+      element.style.backgroundImage = `url("${element.getAttribute('data-normal')}")`;
       element.removeAttribute('src');
     }
   });
