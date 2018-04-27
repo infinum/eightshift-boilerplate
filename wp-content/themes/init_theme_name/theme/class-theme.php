@@ -63,6 +63,10 @@ class Theme {
    */
   public function enqueue_styles() {
 
+    $main_style_vendors = '/skin/public/styles/vendors.css';
+    wp_register_style( $this->theme_name . '-style-vendors', get_template_directory_uri() . $main_style_vendors, array(), $this->general_helper->get_assets_version( $main_style_vendors ) );
+    wp_enqueue_style( $this->theme_name . '-style-vendors' );
+
     $main_style = '/skin/public/styles/application.css';
     wp_register_style( $this->theme_name . '-style', get_template_directory_uri() . $main_style, array(), $this->general_helper->get_assets_version( $main_style ) );
     wp_enqueue_style( $this->theme_name . '-style' );
@@ -89,6 +93,10 @@ class Theme {
     if ( ! is_page_template( 'page-templates/page-old-browser.php' ) ) {
       wp_register_script( $this->theme_name . '-webfont', get_template_directory_uri() . '/skin/public/scripts/vendors/webfont.1.6.26.min.js', array(), '1.6.26' );
       wp_enqueue_script( $this->theme_name . '-webfont' ); // Fonts loaded via JS fonts.js.
+
+      $main_script_vandors = '/skin/public/scripts/vendors.js';
+      wp_register_script( $this->theme_name . '-scripts-vendors', get_template_directory_uri() . $main_script_vandors, array(), $this->general_helper->get_assets_version( $main_script_vandors ) );
+      wp_enqueue_script( $this->theme_name . '-scripts-vendors' );
 
       $main_script = '/skin/public/scripts/application.js';
       wp_register_script( $this->theme_name . '-scripts', get_template_directory_uri() . $main_script, array(), $this->general_helper->get_assets_version( $main_script ) );
