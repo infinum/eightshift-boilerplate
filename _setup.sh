@@ -3,7 +3,6 @@
 function build() {
   npm install
   composer install
-
   wp core download
 }
 
