@@ -8,6 +8,8 @@
 
 namespace Inf_Theme\Admin;
 
+use Inf_Theme\Helpers as General_Helpers;
+
 /**
  * Class Media
  */
@@ -32,15 +34,27 @@ class Media {
   protected $theme_version;
 
   /**
+   * General_Helper class
+   *
+   * @var object General_Helper
+   *
+   * @since 2.1.1
+   */
+  public $general_helper;
+
+  /**
    * Initialize class
    *
    * @param array $theme_info Load global theme info.
    *
+   * @since 2.1.1 Adding General Helpers class.
    * @since 2.0.0
    */
   public function __construct( $theme_info = null ) {
     $this->theme_name    = $theme_info['theme_name'];
     $this->theme_version = $theme_info['theme_version'];
+
+    $this->general_helper = new General_Helpers\General_Helper();
   }
 
   /**
