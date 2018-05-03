@@ -107,7 +107,7 @@ if [ "$confirmation" == "y" ]; then
   findReplace "init_theme_real_name" "$theme_name_real_name"
   findReplace "init_description" "$theme_description"
   findReplace "init_author_name" "$theme_author_name <$theme_author_email>"
-  findReplace "init_theme_name" "$theme_package_name"
+  findReplace "inf_theme" "$theme_package_name"
   findReplace "Inf_Theme" "$theme_namespace"
   findReplace "INF_THEME_VERSION" "$theme_version"
   findReplace "INF_THEME_NAME" "$theme_name"
@@ -116,8 +116,8 @@ if [ "$confirmation" == "y" ]; then
   findReplace "dev.boilerplate.com" "$theme_proxy_url"
 
   # Change folder name
-  if [ "$theme_package_name" != "init_theme_name" ]; then
-    mv "./wp-content/themes/init_theme_name" "./wp-content/themes/$theme_package_name"
+  if [ "$theme_package_name" != "inf_theme" ]; then
+    mv "./wp-content/themes/inf_theme" "./wp-content/themes/$theme_package_name"
   fi
 
   echo "${BBLUE}Finished! Success! Now start _setup.sh script to begin installations.${NC}"

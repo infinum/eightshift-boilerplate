@@ -5,7 +5,7 @@
  * Define global environment variable, and define certain
  * settings based on it.
  *
- * @package init_theme_name
+ * @package inf_theme
  *
  * @since 1.0.0
  */
