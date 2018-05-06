@@ -39,7 +39,7 @@ const findReplace = (findString, replaceString) => {
 
   try {
     const changes = replace.sync(options);
-    consoleOutput(fgGreen, `Modified files: ${changes.join(', ')}`);
+    consoleOutput(fgGreen, `${findString}-> ${replaceString}. Modified files: ${changes.join(', ')}`);
   } catch (error) {
     console.error('Error occurred:', error);
   }
