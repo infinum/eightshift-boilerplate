@@ -3,13 +3,13 @@
 const fs = require('fs');
 const path = require('path');
 const prompt = require('prompt-sync')();
+const replace = require('replace-in-file');
 
 const rootDir = path.join(__dirname, '..');
 
 // Helpers
 const fgRed = '\x1b[31m';
 const fgGreen = '\x1b[32m';
-const fgYellow = '\x1b[33m';
 const fgBlue = '\x1b[34m';
 const fgMagenta = '\x1b[35m';
 const fgCyan = '\x1b[36m';
@@ -20,6 +20,29 @@ const consoleOutput = (color, text) => {
 };
 
 const capCase = (string) => string.replace(/\W+/g, '_').split('_').map((item) => item[0].toUpperCase() + item.slice(1)).join('_');
+
+const findReplace = (findString, replaceString) => {
+  const options = {
+    files: '**/*',
+    from: /findString/g,
+    to: replaceString,
+    ignore: [
+      'node_modules/**/*',
+      '.git/**/*',
+      '.github/**/*',
+      'vendor/**/*',
+      '_rename.sh',
+      'bin/rename.sh',
+    ],
+  };
+
+  try {
+    const changes = replace.sync(options);
+    consoleOutput(fgGreen, `Modified files: ${changes.join(', ')}`);
+  } catch (error) {
+    console.error('Error occurred:', error);
+  }
+};
 
 
 // Main script
@@ -122,7 +145,34 @@ consoleOutput(fgMagenta, `Dev url: ${themeProxyUrl}`);
 const confirm = prompt('Confirm? (y/n) ').trim();
 
 if (confirm === 'y') {
-  consoleOutput(fgYellow, 'REPLACE!');
+  findReplace('init_theme_real_name', themeName);
+  findReplace('init_description', themeDescription);
+  findReplace('init_author_name', themeAuthor);
+  findReplace('inf_theme', themePackageName);
+  findReplace('Inf_Theme', themeNamespace);
+  findReplace('INF_THEME_VERSION', themeVersionConst);
+  findReplace('INF_THEME_NAME', themeNameConst);
+  findReplace('INF_IMAGE_URL', themeImageUrlConst);
+  findReplace('INF_ENV', themeEnvConst);
+  findReplace('dev.boilerplate.com', themeProxyUrl);
+
+  if (themePackageName !== 'inf_theme') {
+    fs.renameSync(`${rootDir}/wp-content/inf_theme`, `${rootDir}/wp-content/${themePackageName}`, (err) => {
+      if (err) {
+        throw err;
+      }
+      fs.statSync(`${rootDir}/wp-content/${themePackageName}`, (error, stats) => {
+        if (error) {
+          throw error;
+        }
+        consoleOutput(fgBlue, `stats: ${JSON.stringify(stats)}`);
+      });
+    });
+  }
+
+  consoleOutput(fgGreen, 'Finished! Success! Now start _setup.sh script ' +
+    'to begin installations.');
+
 } else {
   consoleOutput(fgRed, 'Cancelled.');
 }

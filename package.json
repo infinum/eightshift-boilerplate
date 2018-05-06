@@ -60,6 +60,7 @@
     "normalize.css": "^8.0.0",
     "postcss-font-magician": "^2.1.1",
     "prompt-sync": "^4.1.6",
+    "replace-in-file": "^3.4.0",
     "slick-carousel": "^1.8.1",
     "whatwg-fetch": "^2.0.4"
   },
