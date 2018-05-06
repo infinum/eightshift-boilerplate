@@ -22,23 +22,24 @@ const consoleOutput = (color, text) => {
 const capCase = (string) => string.replace(/\W+/g, '_').split('_').map((item) => item[0].toUpperCase() + item.slice(1)).join('_');
 
 const findReplace = (findString, replaceString) => {
+  const regex = new RegExp(findString, 'g');
   const options = {
-    files: '**/*',
-    from: /findString/g,
+    files: `${rootDir}/**/*`,
+    from: regex,
     to: replaceString,
     ignore: [
-      'node_modules/**/*',
-      '.git/**/*',
-      '.github/**/*',
-      'vendor/**/*',
-      '_rename.sh',
-      'bin/rename.sh',
+      `${rootDir}/node_modules/**/*`,
+      `${rootDir}/.git/**/*`,
+      `${rootDir}/.github/**/*`,
+      `${rootDir}/vendor/**/*`,
+      `${rootDir}/_rename.sh`,
+      `${rootDir}/bin/rename.js`,
     ],
   };
 
   try {
     const changes = replace.sync(options);
-    consoleOutput(fgGreen, `Modified files: ${changes.join(', ')}`);
+    consoleOutput(fgGreen, `Modified files: ${changes}`);
   } catch (error) {
     console.error('Error occurred:', error);
   }
@@ -145,6 +146,8 @@ consoleOutput(fgMagenta, `Dev url: ${themeProxyUrl}`);
 const confirm = prompt('Confirm? (y/n) ').trim();
 
 if (confirm === 'y') {
+  consoleOutput(fgGreen, 'This might take some time...');
+
   findReplace('init_theme_real_name', themeName);
   findReplace('init_description', themeDescription);
   findReplace('init_author_name', themeAuthor);
