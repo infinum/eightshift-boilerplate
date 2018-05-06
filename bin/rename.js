@@ -160,17 +160,19 @@ if (confirm === 'y') {
   findReplace('dev.boilerplate.com', themeProxyUrl);
 
   if (themePackageName !== 'inf_theme') {
-    fs.renameSync(`${rootDir}/wp-content/inf_theme/`, `${rootDir}/wp-content/${themePackageName}/`, (err) => {
-      if (err) {
-        throw err;
-      }
-      fs.statSync(`${rootDir}/wp-content/${themePackageName}/`, (error, stats) => {
-        if (error) {
-          throw error;
+    if (fs.existsSync(`${rootDir}/wp-content/themes/inf_theme/`)) {
+      fs.renameSync(`${rootDir}/wp-content/themes/inf_theme/`, `${rootDir}/wp-content/themes/${themePackageName}/`, (err) => {
+        if (err) {
+          throw err;
         }
-        consoleOutput(fgBlue, `stats: ${JSON.stringify(stats)}`);
+        fs.statSync(`${rootDir}/wp-content/${themePackageName}/`, (error, stats) => {
+          if (error) {
+            throw error;
+          }
+          consoleOutput(fgBlue, `stats: ${JSON.stringify(stats)}`);
+        });
       });
-    });
+    }
   }
 
   consoleOutput(fgGreen, 'Finished! Success! Now start _setup.sh script ' +
