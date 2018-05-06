@@ -39,7 +39,7 @@ const findReplace = (findString, replaceString) => {
 
   try {
     const changes = replace.sync(options);
-    consoleOutput(fgGreen, `Modified files: ${changes}`);
+    consoleOutput(fgGreen, `Modified files: ${changes.join(', ')}`);
   } catch (error) {
     console.error('Error occurred:', error);
   }
@@ -160,11 +160,11 @@ if (confirm === 'y') {
   findReplace('dev.boilerplate.com', themeProxyUrl);
 
   if (themePackageName !== 'inf_theme') {
-    fs.renameSync(`${rootDir}/wp-content/inf_theme`, `${rootDir}/wp-content/${themePackageName}`, (err) => {
+    fs.renameSync(`${rootDir}/wp-content/inf_theme/`, `${rootDir}/wp-content/${themePackageName}/`, (err) => {
       if (err) {
         throw err;
       }
-      fs.statSync(`${rootDir}/wp-content/${themePackageName}`, (error, stats) => {
+      fs.statSync(`${rootDir}/wp-content/${themePackageName}/`, (error, stats) => {
         if (error) {
           throw error;
         }
