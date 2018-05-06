@@ -59,7 +59,7 @@
     "media-blender": "^2.1.0",
     "normalize.css": "^8.0.0",
     "postcss-font-magician": "^2.1.1",
-    "prompt": "^1.0.0",
+    "prompt-sync": "^4.1.6",
     "slick-carousel": "^1.8.1",
     "whatwg-fetch": "^2.0.4"
   },
