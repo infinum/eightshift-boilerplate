@@ -176,7 +176,3 @@ if (confirm === 'y') {
 } else {
   consoleOutput(fgRed, 'Cancelled.');
 }
-
-
-
-
