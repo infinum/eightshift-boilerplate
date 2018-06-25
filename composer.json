@@ -15,5 +15,7 @@
     "classmap": [
       "wp-content/themes/init_theme_name/"
     ]
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
