@@ -150,8 +150,6 @@ class Main {
     $this->loader->add_action( 'after_setup_theme', $media, 'add_theme_support' );
     $this->loader->add_action( 'after_setup_theme', $media, 'add_custom_image_sizes' );
     $this->loader->add_filter( 'wp_handle_upload_prefilter', $media, 'check_svg_on_media_upload' );
-
-
   }
 
   /**
@@ -203,7 +201,6 @@ class Main {
     // Pagination.
     $this->loader->add_filter( 'next_posts_link_attributes', $pagination, 'pagination_link_next_class' );
     $this->loader->add_filter( 'previous_posts_link_attributes', $pagination, 'pagination_link_prev_class' );
-
   }
 
   /**
