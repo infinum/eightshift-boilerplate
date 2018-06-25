@@ -52,9 +52,9 @@ before_install:
   - phpenv config-rm xdebug.ini || echo 'No xdebug config.'
   # Install PHP CodeSniffer.
   - if [[ "$SNIFF" == "1" ]]; then composer self-update; fi
-  - if [[ "$SNIFF" == "1" ]]; then composer require wp-coding-standards/wpcs; fi
-  - if [[ "$SNIFF" == "1" ]]; then composer require wimg/php-compatibility; fi
-  - if [[ "$SNIFF" == "1" ]]; then composer require dealerdirect/phpcodesniffer-composer-installer; fi
+  # - if [[ "$SNIFF" == "1" ]]; then composer require wp-coding-standards/wpcs; fi
+  # - if [[ "$SNIFF" == "1" ]]; then composer require wimg/php-compatibility; fi
+  # - if [[ "$SNIFF" == "1" ]]; then composer require dealerdirect/phpcodesniffer-composer-installer; fi
   - if [[ "$SNIFF" == "1" ]]; then composer install; fi
   - phpenv rehash
 
