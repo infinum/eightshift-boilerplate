@@ -13,7 +13,7 @@
   },
   "autoload": {
     "classmap": [
-      "wp-content/themes/init_theme_name/"
+      "wp-content/themes/inf_theme/"
     ]
   },
   "minimum-stability": "dev",

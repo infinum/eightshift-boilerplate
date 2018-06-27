@@ -5,13 +5,9 @@
 
     # You can change environment depending on the project you are working on
     "browser": true,
-    "node": false,
+    "node": true,
     "commonjs": true,
     "es6": true,
     "jquery": true
-  },
-
-  "rules": {
-    "import/prefer-default-export": 0
   }
 }

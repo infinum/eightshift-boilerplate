@@ -1,17 +1,18 @@
 {
-  "name": "init_theme_name",
+  "name": "inf_theme",
   "version": "1.0.0",
   "author": "Infinum",
   "private": true,
   "main": "",
   "scripts": {
-    "__sassUnusedTheme": "sass-unused \"wp-content/themes/init_theme_name/**/*.scss\"",
-    "__eslintTheme": "eslint wp-content/themes/init_theme_name/skin/assets/",
-    "__stylelintTheme": "stylelint \"wp-content/themes/init_theme_name/**/*.scss\" --syntax scss",
+    "__sassUnusedTheme": "sass-unused \"wp-content/themes/inf_theme/**/*.scss\"",
+    "__eslintTheme": "eslint wp-content/themes/inf_theme/skin/assets/",
+    "__stylelintTheme": "stylelint \"wp-content/themes/inf_theme/**/*.scss\" --syntax scss",
     "precommitCss": "npm run __stylelintTheme",
     "precommitCssUnused": "npm run __sassUnusedTheme",
     "precommitJs": "npm run __eslintTheme",
     "precommit": "npm run precommitJs && npm run precommitCss && npm run precommitCssUnused",
+    "rename": "./bin/rename.js",
     "start": "webpack --progress --watch --display-error-details --display-reasons",
     "build": "NODE_ENV=production webpack --progress"
   },
@@ -58,6 +59,8 @@
     "media-blender": "^2.1.0",
     "normalize.css": "^8.0.0",
     "postcss-font-magician": "^2.1.1",
+    "prompt-sync": "^4.1.6",
+    "replace-in-file": "^3.4.0",
     "slick-carousel": "^1.8.1",
     "whatwg-fetch": "^2.0.4"
   },
