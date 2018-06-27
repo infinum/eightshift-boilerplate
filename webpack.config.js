@@ -85,11 +85,9 @@ const allPlugins = [
     ],
   }),
 
-  new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-
   // Is using vendor files, but prefered to use npm
   new CopyWebpackPlugin([{
-    from: `${themeFullPath}/assets/scripts/vendors`,
+    from: `${appPath}/node_modules/jquery/dist/jquery.min.js`,
     to: `${themeOutput}/scripts/vendors`,
   }]),
 ];
@@ -143,9 +141,13 @@ module.exports = [
       filename: outputJs,
     },
 
+    externals: {
+      jquery: 'jQuery',
+    },
+
     optimization: allOptimizations,
 
-    mode: 'production',
+    mode: 'development',
 
     module: allModules,
 

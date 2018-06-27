@@ -1,12 +1,5 @@
 import './logo.svg';
 
-// Browser icons.
-import './browsers/chrome.png';
-import './browsers/edge.png';
-import './browsers/firefox.png';
-import './browsers/opera.png';
-import './browsers/safari.png';
-
 // Favicons.
 // import './favicons/52.png';
 // import './favicons/70.png';
