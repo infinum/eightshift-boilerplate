@@ -8,6 +8,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 const appPath = `${path.resolve(__dirname)}`;
 
@@ -90,6 +91,8 @@ const allPlugins = [
     from: `${appPath}/node_modules/jquery/dist/jquery.min.js`,
     to: `${themeOutput}/scripts/vendors`,
   }]),
+
+  new ManifestPlugin(),
 ];
 
 const allOptimizations = {
