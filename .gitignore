@@ -1,5 +1,5 @@
 # Project Specific
-wp-content/themes/init_theme_name/skin/public
+wp-content/themes/inf_theme/skin/public
 
 # Wordpress files
 wp-admin
@@ -21,14 +21,13 @@ wp-includes
 /wp-signup.php
 /wp-trackback.php
 /xmlrpc.php
-.htaccess
-robots.txt
-
-# Exclude Plugins
-wp-content/plugins/
+/.htaccess
+/robots.txt
 
 # Theme
 wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
 !wp-content/themes/
 /wp-content/themes/index.php
 

@@ -1,5 +1,12 @@
 # Infinum WordPress Boilerplate
 
+[![Travis](https://img.shields.io/travis/infinum/wp-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/wp-boilerplate)
+[![GitHub tag](https://img.shields.io/github/tag/infinum/wp-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/wp-boilerplate)
+[![GitHub stars](https://img.shields.io/github/stars/infinum/wp-boilerplate.svg?style=for-the-badge&label=Stars)](https://github.com/infinum/wp-boilerplate/)
+[![license](https://img.shields.io/github/license/infinum/wp-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/wp-boilerplate)
+
+
+
 This repository contains all the tools you need to start building a modern WordPress theme, using all the latest front end development tools.
 
 ## Who do I talk to?
@@ -49,21 +56,19 @@ If you are using VVV clone it in the `public_html` folder
 git clone git@github.com:your-name/wp-boilerplate.git public_html
 ```
 
-Run bash script to setup your project and rename all files via wizard.
+Run node script to setup your project and rename all files via wizard.
 **Run this first and only once**
 
 ```sh
-sh _rename.sh
+npm run rename
 ```
-
-**Note:** If you get `sed: RE error: illegal byte sequence`, this is just a shell quirk, and should not worry you, the replace will work fine.
 
 This will make changes to theme name, description, author, text domain, package, namespace, and constants (this is important when specifying environment variable).
 
 ## Development Pre Start
 
-Run this to setup WordPress on the server.
-The script will install `npm` and `composer` dependencies, install the latest version of WordPress.
+After renaming your theme, run this to setup WordPress on the server.
+The script will install `npm` and `composer` dependencies and install the latest version of WordPress.
 
 ```sh
 sh _setup.sh
@@ -88,7 +93,6 @@ npm start
 ## Browser sync
 
 We are using BrowserSync to sync assets and enable easy cross-device testing.
-To set it up go to `webpack.config.js` and set `proxyUrl` variable to link of your local development.
 It is tested on MAMP and Vagrant (VVV).
 
 ## Linting Assets (JS,SASS)
@@ -118,13 +122,13 @@ alias wpcbf='phpcbf --standard=vendor/infinum/coding-standards-wp/Infinum';
 Checking theme for possible violations:
 
 ```sh
-wpcs wp-content/themes/init_theme_name
+wpcs wp-content/themes/inf_theme
 ```
 
 Autofix theme for minor violations:
 
 ```sh
-wpcbf wp-content/themes/init_theme_name
+wpcbf wp-content/themes/inf_theme
 ```
 
 ## Build
@@ -161,7 +165,7 @@ to rebuild the composer's autoload class map. The reason why this isn't automati
 
 ## Recommended plugins
 
-Some functionality will work with ACF plugin, they are usually easily noticed in the files, so you can remove them and the boilerplate will work. Also the boilerplate contains few browsecap specific pages that will work only if you include [browsecap](https://browscap.org/) on your server, or use [browsecap utility for VVV](https://github.com/dingo-d/browscap-vvv-utility) locally. These are also optional, and can be removed.
+Below is the list of plugins that we've used when working with this boilerplate, so we can confirm that they are working
 
 * Content:
   * Advanced Custom Fields PRO
@@ -199,7 +203,8 @@ Some functionality will work with ACF plugin, they are usually easily noticed in
 
 ## Plugin
 
-Since the core theme is built with OOP principles, and it is assumed that you'll be using it for one client, every custom functionality should be contained within the theme. If you need to expose certain functionality across the multisite you can create a plugin.
+When working for a client it may be easier to add every additional functionality to the theme. Since you are using namespaces, this contains all the necessary logic in the theme. You can use plugins of course, but be careful how you are adding extra functionality, so that you don't run in the dependency hell.
+If you need to expose certain functionality across the multisite we recommend that you create a plugin.
 
 Plugins should be created using plugin boilerplate, with addition of namespaces and autoloader.
 
@@ -214,4 +219,4 @@ Infinum WordPress Boilerplate is maintained and sponsored by
 
 ## License
 
-Infinum WordPress Boilerplate is Copyright © 2017 Infinum. It is free software, and may be redistributed under the terms specified in the LICENSE file.
+Infinum WordPress Boilerplate is Copyright ©2018 Infinum. It is free software, and may be redistributed under the terms specified in the LICENSE file.
