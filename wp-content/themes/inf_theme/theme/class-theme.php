@@ -2,36 +2,20 @@
 /**
  * The Theme specific functionality.
  *
+ * @since   3.0.0 Removing global variables.
  * @since   2.0.0
  * @package Inf_Theme\Theme
  */
 
 namespace Inf_Theme\Theme;
 
-use Inf_Theme\Helpers as General_Helpers;
+use Inf_Theme\Helpers\General_Helper;
+use Inf_Theme\Includes\Config;
 
 /**
  * Class Theme
  */
-class Theme {
-
-  /**
-   * Global theme name
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  protected $theme_name;
-
-  /**
-   * Global theme version
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  protected $theme_version;
+class Theme extends Config {
 
   /**
    * General Helper class
@@ -45,15 +29,12 @@ class Theme {
   /**
    * Initialize class
    *
-   * @param array $theme_info Load global theme info.
-   *
+   * @since 3.0.0 Removing constructor and global variables.
    * @since 2.0.0
    */
-  public function __construct( $theme_info = null ) {
-    $this->theme_name    = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
+  public function __construct() {
 
-    $this->general_helper = new General_Helpers\General_Helper();
+    $this->general_helper = new General_Helper();
   }
 
   /**
@@ -64,12 +45,12 @@ class Theme {
   public function enqueue_styles() {
 
     $main_style_vendors = '/skin/public/styles/vendors.css';
-    wp_register_style( $this->theme_name . '-style-vendors', get_template_directory_uri() . $main_style_vendors, array(), $this->general_helper->get_assets_version( $main_style_vendors ) );
-    wp_enqueue_style( $this->theme_name . '-style-vendors' );
+    wp_register_style( static::THEME_NAME . '-style-vendors', get_template_directory_uri() . $main_style_vendors, array(), $this->general_helper->get_assets_version( $main_style_vendors ) );
+    wp_enqueue_style( static::THEME_NAME . '-style-vendors' );
 
     $main_style = '/skin/public/styles/application.css';
-    wp_register_style( $this->theme_name . '-style', get_template_directory_uri() . $main_style, array(), $this->general_helper->get_assets_version( $main_style ) );
-    wp_enqueue_style( $this->theme_name . '-style' );
+    wp_register_style( static::THEME_NAME . '-style', get_template_directory_uri() . $main_style, array(), $this->general_helper->get_assets_version( $main_style ) );
+    wp_enqueue_style( static::THEME_NAME . '-style' );
 
   }
 
@@ -91,16 +72,16 @@ class Theme {
 
     // JS.
     if ( ! is_page_template( 'page-templates/page-old-browser.php' ) ) {
-      wp_register_script( $this->theme_name . '-webfont', get_template_directory_uri() . '/skin/public/scripts/vendors/webfont.1.6.26.min.js', array(), '1.6.26' );
-      wp_enqueue_script( $this->theme_name . '-webfont' ); // Fonts loaded via JS fonts.js.
+      wp_register_script( static::THEME_NAME . '-webfont', get_template_directory_uri() . '/skin/public/scripts/vendors/webfont.1.6.26.min.js', array(), '1.6.26' );
+      wp_enqueue_script( static::THEME_NAME . '-webfont' ); // Fonts loaded via JS fonts.js.
 
       $main_script_vandors = '/skin/public/scripts/vendors.js';
-      wp_register_script( $this->theme_name . '-scripts-vendors', get_template_directory_uri() . $main_script_vandors, array(), $this->general_helper->get_assets_version( $main_script_vandors ) );
-      wp_enqueue_script( $this->theme_name . '-scripts-vendors' );
+      wp_register_script( static::THEME_NAME . '-scripts-vendors', get_template_directory_uri() . $main_script_vandors, array(), $this->general_helper->get_assets_version( $main_script_vandors ) );
+      wp_enqueue_script( static::THEME_NAME . '-scripts-vendors' );
 
       $main_script = '/skin/public/scripts/application.js';
-      wp_register_script( $this->theme_name . '-scripts', get_template_directory_uri() . $main_script, array(), $this->general_helper->get_assets_version( $main_script ) );
-      wp_enqueue_script( $this->theme_name . '-scripts' );
+      wp_register_script( static::THEME_NAME . '-scripts', get_template_directory_uri() . $main_script, array(), $this->general_helper->get_assets_version( $main_script ) );
+      wp_enqueue_script( static::THEME_NAME . '-scripts' );
 
       // If using WPML.
       $ajax_url = '';
@@ -112,7 +93,7 @@ class Theme {
 
       // Glbal variables for ajax and translations.
       wp_localize_script(
-        $this->theme_name . '-scripts', 'themeLocalization', array(
+        static::THEME_NAME . '-scripts', 'themeLocalization', array(
             'ajaxurl' => $ajax_url,
         )
       );

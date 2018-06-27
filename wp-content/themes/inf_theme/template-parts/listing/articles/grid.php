@@ -5,8 +5,8 @@
  * @package Inf_Theme\Template_Parts\Listing\Articles
  */
 
-use Inf_Theme\Theme\Utils as Utils;
-$images = new Utils\Images();
+use Inf_Theme\Theme\Utils\Utils;
+$images = new Images();
 $image  = $images->get_post_image( 'full_width' );
 ?>
 <article class="article-grid">

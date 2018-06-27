@@ -2,36 +2,19 @@
 /**
  * The Media specific functionality.
  *
+ * @since   3.0.0 Removing global variables.
  * @since   2.0.0
  * @package Inf_Theme\Admin
  */
 
 namespace Inf_Theme\Admin;
 
-use Inf_Theme\Helpers as General_Helpers;
+use Inf_Theme\Helpers\General_Helper;
 
 /**
  * Class Media
  */
 class Media {
-
-  /**
-   * Global theme name
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  protected $theme_name;
-
-  /**
-   * Global theme version
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  protected $theme_version;
 
   /**
    * General_Helper class
@@ -45,16 +28,12 @@ class Media {
   /**
    * Initialize class
    *
-   * @param array $theme_info Load global theme info.
-   *
+   * @since 3.0.0 Removing theme name and version.
    * @since 2.1.1 Adding General Helpers class.
    * @since 2.0.0
    */
-  public function __construct( $theme_info = null ) {
-    $this->theme_name    = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
-
-    $this->general_helper = new General_Helpers\General_Helper();
+  public function __construct() {
+    $this->general_helper = new General_Helper();
   }
 
   /**

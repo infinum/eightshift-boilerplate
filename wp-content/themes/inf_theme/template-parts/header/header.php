@@ -5,8 +5,8 @@
  * @package Inf_Theme\Template_Parts\Header
  */
 
-use Inf_Theme\Admin\Menu as Menu;
-$menu             = new Menu\Menu();
+use Inf_Theme\Admin\Menu\Menu;
+$menu             = new Menu();
 $blog_name        = get_bloginfo( 'name' );
 $blog_description = get_bloginfo( 'description' );
 $header_logo_info = $blog_name . ' - ' . $blog_description;

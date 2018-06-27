@@ -18,22 +18,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Theme version global
- *
- * @since 2.0.0
- * @package Inf_Theme
- */
-define( 'INF_THEME_VERSION', '1.0.0' );
-
-/**
- * Theme name global
- *
- * @since 2.0.0
- * @package Inf_Theme
- */
-define( 'INF_THEME_NAME', 'inf_theme' );
-
-/**
  * Global image path
  *
  * @since 2.0.0
