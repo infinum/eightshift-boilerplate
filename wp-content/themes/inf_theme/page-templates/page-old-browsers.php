@@ -15,7 +15,7 @@
   get_template_part( 'template-parts/header/favicons' );
   get_template_part( 'template-parts/tracking/head' );
   wp_head();
-  ?>
+?>
 </head>
 <body <?php body_class(); ?>>
 
