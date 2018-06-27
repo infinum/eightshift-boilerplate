@@ -5,7 +5,7 @@
  * @package Inf_Theme\Template_Parts\Single
  */
 
-use Inf_Theme\Theme\Utils\Utils;
+use Inf_Theme\Theme\Utils\Images;
 
 $images = new Images();
 $image  = $images->get_post_image( 'full_width' );
