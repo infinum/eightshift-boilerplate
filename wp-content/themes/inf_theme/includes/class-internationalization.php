@@ -5,6 +5,7 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
+ * @since   3.0.0 Removing constructor and global variables.
  * @since   2.0.0
  * @package Inf_Theme\Includes
  */

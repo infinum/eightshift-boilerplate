@@ -44,10 +44,6 @@ class Theme extends Config {
    */
   public function enqueue_styles() {
 
-    $main_style_vendors = '/skin/public/styles/vendors.css';
-    wp_register_style( static::THEME_NAME . '-style-vendors', get_template_directory_uri() . $main_style_vendors, array(), $this->general_helper->get_assets_version( $main_style_vendors ) );
-    wp_enqueue_style( static::THEME_NAME . '-style-vendors' );
-
     $main_style = '/skin/public/styles/application.css';
     wp_register_style( static::THEME_NAME . '-style', get_template_directory_uri() . $main_style, array(), $this->general_helper->get_assets_version( $main_style ) );
     wp_enqueue_style( static::THEME_NAME . '-style' );
@@ -71,33 +67,28 @@ class Theme extends Config {
     wp_enqueue_script( 'jquery' );
 
     // JS.
-    if ( ! is_page_template( 'page-templates/page-old-browser.php' ) ) {
-      wp_register_script( static::THEME_NAME . '-webfont', get_template_directory_uri() . '/skin/public/scripts/vendors/webfont.1.6.26.min.js', array(), '1.6.26' );
-      wp_enqueue_script( static::THEME_NAME . '-webfont' ); // Fonts loaded via JS fonts.js.
+    $main_script_vandors = '/skin/public/scripts/vendors.js';
+    wp_register_script( static::THEME_NAME . '-scripts-vendors', get_template_directory_uri() . $main_script_vandors, array(), $this->general_helper->get_assets_version( $main_script_vandors ) );
+    wp_enqueue_script( static::THEME_NAME . '-scripts-vendors' );
 
-      $main_script_vandors = '/skin/public/scripts/vendors.js';
-      wp_register_script( static::THEME_NAME . '-scripts-vendors', get_template_directory_uri() . $main_script_vandors, array(), $this->general_helper->get_assets_version( $main_script_vandors ) );
-      wp_enqueue_script( static::THEME_NAME . '-scripts-vendors' );
+    $main_script = '/skin/public/scripts/application.js';
+    wp_register_script( static::THEME_NAME . '-scripts', get_template_directory_uri() . $main_script, array(), $this->general_helper->get_assets_version( $main_script ) );
+    wp_enqueue_script( static::THEME_NAME . '-scripts' );
 
-      $main_script = '/skin/public/scripts/application.js';
-      wp_register_script( static::THEME_NAME . '-scripts', get_template_directory_uri() . $main_script, array(), $this->general_helper->get_assets_version( $main_script ) );
-      wp_enqueue_script( static::THEME_NAME . '-scripts' );
-
-      // If using WPML.
-      $ajax_url = '';
-      if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
-        $ajax_url .= admin_url( 'admin-ajax.php?lang=' . ICL_LANGUAGE_CODE );
-      } else {
-        $ajax_url .= admin_url( 'admin-ajax.php' );
-      }
-
-      // Glbal variables for ajax and translations.
-      wp_localize_script(
-        static::THEME_NAME . '-scripts', 'themeLocalization', array(
-            'ajaxurl' => $ajax_url,
-        )
-      );
+    // If using WPML.
+    $ajax_url = '';
+    if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+      $ajax_url .= admin_url( 'admin-ajax.php?lang=' . ICL_LANGUAGE_CODE );
+    } else {
+      $ajax_url .= admin_url( 'admin-ajax.php' );
     }
+
+    // Glbal variables for ajax and translations.
+    wp_localize_script(
+      static::THEME_NAME . '-scripts', 'themeLocalization', array(
+          'ajaxurl' => $ajax_url,
+      )
+    );
   }
 
 }

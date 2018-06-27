@@ -3,8 +3,11 @@ import {Radio} from './radio';
 
 $(function() {
 
-  // Checkbox
   const checkbox = new Checkbox();
+  const radio = new Radio();
+  
+  // -------------------------------------------------------------
+  // Checkbox
 
   // On page load set
   checkbox.$input.each(function() {
@@ -45,7 +48,6 @@ $(function() {
 
   // -------------------------------------------------------------
   // Radio
-  const radio = new Radio();
 
   // On page load set
   radio.$input.each(function() {
