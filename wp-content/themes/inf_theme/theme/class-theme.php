@@ -29,12 +29,13 @@ class Theme extends Config {
   /**
    * Initialize class
    *
+   * @param Helpers\General_Helper $general_helper Helper class instance.
+   *
    * @since 3.0.0 Removing constructor and global variables.
    * @since 2.0.0
    */
-  public function __construct() {
-
-    $this->general_helper = new General_Helper();
+  public function __construct( General_Helper $general_helper ) {
+    $this->general_helper = $general_helper;
   }
 
   /**

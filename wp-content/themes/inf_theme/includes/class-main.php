@@ -16,6 +16,7 @@ use Inf_Theme\Admin\Menu as Menu;
 use Inf_Theme\Plugins\Acf as Acf;
 use Inf_Theme\Theme as Theme;
 use Inf_Theme\Theme\Utils as Utils;
+use Inf_Theme\Helpers\General_Helper;
 
 /**
  * The main start class.
@@ -51,6 +52,17 @@ class Main {
   }
 
   /**
+   * General Helper class instance
+   *
+   * @since 3.0.0
+   *
+   * @return class
+   */
+  public function general_helper() {
+    return new General_Helper();
+  }
+
+  /**
    * Load the required dependencies.
    *
    * Create an instance of the loader which will be used to register the hooks
@@ -79,13 +91,13 @@ class Main {
    * @since 2.0.0
    */
   private function define_admin_hooks() {
-    $admin       = new Admin\Admin();
+    $admin       = new Admin\Admin( $this->general_helper() );
     $login       = new Admin\Login();
     $editor      = new Admin\Editor();
     $admin_menus = new Admin\Admin_Menus();
     $users       = new Admin\Users();
     $widgets     = new Admin\Widgets();
-    $media       = new Admin\Media();
+    $media       = new Admin\Media( $this->general_helper() );
     $menu        = new Menu\Menu();
 
     // Admin.
@@ -128,7 +140,7 @@ class Main {
    * @since 2.0.0
    */
   private function define_theme_hooks() {
-    $theme      = new Theme\Theme();
+    $theme      = new Theme\Theme( $this->general_helper() );
     $gallery    = new Utils\Gallery();
     $general    = new Theme\General();
     $pagination = new Theme\Pagination();

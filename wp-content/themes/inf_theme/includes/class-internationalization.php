@@ -12,17 +12,20 @@
 
 namespace Inf_Theme\Includes;
 
+use Inf_Theme\Includes\Config;
+
 /**
  * Class Internationalization
  */
-class Internationalization {
+class Internationalization extends Config {
 
   /**
    * Load the plugin text domain for translation.
    *
+   * @since 3.0.0 Loading theme name from config class.
    * @since 2.0.0
    */
   public function load_theme_textdomain() {
-    load_theme_textdomain( $this->theme_name, get_template_directory() . '/languages' );
+    load_theme_textdomain( static::THEME_NAME, get_template_directory() . '/languages' );
   }
 }
