@@ -46,20 +46,20 @@ First you need to install WordPress locally, using any of the local development 
 
 To start, fork this repository to your own, and then clone it
 
-```sh
+```bash
 git clone git@github.com:your-name/wp-boilerplate.git
 ```
 
 If you are using VVV clone it in the `public_html` folder
 
-```sh
+```bash
 git clone git@github.com:your-name/wp-boilerplate.git public_html
 ```
 
 Run node script to setup your project and rename all files via wizard.
 **Run this first and only once**
 
-```sh
+```bash
 npm run rename
 ```
 
@@ -70,13 +70,13 @@ This will make changes to theme name, description, author, text domain, package,
 After renaming your theme, run this to setup WordPress on the server.
 The script will install `npm` and `composer` dependencies and install the latest version of WordPress.
 
-```sh
-sh _setup.sh
+```bash
+bash bin/_setup.sh
 ```
 
 After running setup script, you'll need to create `wp-config.php`. You can do that manually, or use WP-CLI
 
-```sh
+```bash
 wp config create --dbname={DBNAME} --dbuser={DBUSER} --dbpass={DBPASS}
 wp core install --url={dev.boilerplate.com} --title={THEMENAME} --admin_user={ADMINUSER} --admin_email={ADMINMAIL}
 wp theme activate {THEMENAME}
@@ -86,7 +86,7 @@ wp theme activate {THEMENAME}
 
 Builds assets in watch mode using Webpack.
 
-```sh
+```bash
 npm start
 ```
 
@@ -99,7 +99,7 @@ It is tested on MAMP and Vagrant (VVV).
 
 Lints JS and SASS using Webpack
 
-```sh
+```bash
 npm run precommit
 ```
 
@@ -111,7 +111,7 @@ To install it, you need to install [Composer](https://getcomposer.org/) first.
 
 * Add this aliases to you bash config:
 
-```sh
+```bash
 alias phpcs='vendor/bin/phpcs';
 alias phpcbf='vendor/bin/phpcbf';
 alias wpcs='phpcs --standard=vendor/infinum/coding-standards-wp/Infinum';
@@ -121,13 +121,13 @@ alias wpcbf='phpcbf --standard=vendor/infinum/coding-standards-wp/Infinum';
 
 Checking theme for possible violations:
 
-```sh
+```bash
 wpcs wp-content/themes/inf_theme
 ```
 
 Autofix theme for minor violations:
 
-```sh
+```bash
 wpcbf wp-content/themes/inf_theme
 ```
 
@@ -137,14 +137,14 @@ Build creates public folder in theme all the assets.
 
 Check for errors js, css, php but not WP standards
 
-```sh
-sh _prebuild.sh
+```bash
+bash bin/_prebuild.sh
 ```
 
 Builds production ready assets
 
-```sh
-sh _build.sh
+```bash
+bash bin/_build.sh
 ```
 
 ## Import & Export
@@ -157,7 +157,7 @@ This theme uses OOP with namespaces and autoloader. We have also included `ci-ex
 
 When you add new class in your theme, be sure to run
 
-```sh
+```bash
 composer -o dump-autoload
 ```
 
