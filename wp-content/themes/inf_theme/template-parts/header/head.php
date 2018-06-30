@@ -40,5 +40,4 @@
 <link rel="apple-touch-startup-image" href="<?php echo esc_url( INF_IMAGE_URL . 'logo-color.svg' ); ?>">
 
 <?php
-get_template_part( 'template-parts/header/head/favicons' );
 get_template_part( 'template-parts/tracking/head' );
