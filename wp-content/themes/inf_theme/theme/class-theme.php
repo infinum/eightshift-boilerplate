@@ -45,8 +45,8 @@ class Theme extends Config {
    */
   public function enqueue_styles() {
 
-    $main_style = '/skin/public/styles/application.css';
-    wp_register_style( static::THEME_NAME . '-style', get_template_directory_uri() . $main_style, array(), $this->general_helper->get_assets_version( $main_style ) );
+    $main_style = $this->general_helper->get_manifest_assets_data( 'application.css' );
+    wp_register_style( static::THEME_NAME . '-style', $main_style );
     wp_enqueue_style( static::THEME_NAME . '-style' );
 
   }
@@ -68,26 +68,18 @@ class Theme extends Config {
     wp_enqueue_script( 'jquery' );
 
     // JS.
-    $main_script_vandors = '/skin/public/scripts/vendors.js';
-    wp_register_script( static::THEME_NAME . '-scripts-vendors', get_template_directory_uri() . $main_script_vandors, array(), $this->general_helper->get_assets_version( $main_script_vandors ) );
+    $main_script_vandors = $this->general_helper->get_manifest_assets_data( 'vendors.js' );
+    wp_register_script( static::THEME_NAME . '-scripts-vendors', $main_script_vandors );
     wp_enqueue_script( static::THEME_NAME . '-scripts-vendors' );
 
-    $main_script = '/skin/public/scripts/application.js';
-    wp_register_script( static::THEME_NAME . '-scripts', get_template_directory_uri() . $main_script, array(), $this->general_helper->get_assets_version( $main_script ) );
+    $main_script = $this->general_helper->get_manifest_assets_data( 'application.js' );
+    wp_register_script( static::THEME_NAME . '-scripts', $main_script );
     wp_enqueue_script( static::THEME_NAME . '-scripts' );
-
-    // If using WPML.
-    $ajax_url = '';
-    if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
-      $ajax_url .= admin_url( 'admin-ajax.php?lang=' . ICL_LANGUAGE_CODE );
-    } else {
-      $ajax_url .= admin_url( 'admin-ajax.php' );
-    }
 
     // Glbal variables for ajax and translations.
     wp_localize_script(
       static::THEME_NAME . '-scripts', 'themeLocalization', array(
-          'ajaxurl' => $ajax_url,
+          'ajaxurl' => admin_url( 'admin-ajax.php' ),
       )
     );
   }

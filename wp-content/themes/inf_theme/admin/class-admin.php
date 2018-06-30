@@ -46,8 +46,8 @@ class Admin extends Config {
    */
   public function enqueue_styles() {
 
-    $main_style = '/skin/public/styles/applicationAdmin.css';
-    wp_register_style( static::THEME_NAME . '-style', get_template_directory_uri() . $main_style, array(), $this->general_helper->get_assets_version( $main_style ) );
+    $main_style = $this->general_helper->get_manifest_assets_data( 'applicationAdmin.css' );
+    wp_register_style( static::THEME_NAME . '-style', $main_style );
     wp_enqueue_style( static::THEME_NAME . '-style' );
 
   }
@@ -59,8 +59,8 @@ class Admin extends Config {
    */
   public function enqueue_scripts() {
 
-    $main_script = '/skin/public/scripts/applicationAdmin.js';
-    wp_register_script( static::THEME_NAME . '-scripts', get_template_directory_uri() . $main_script, array(), $this->general_helper->get_assets_version( $main_script ) );
+    $main_script = $this->general_helper->get_manifest_assets_data( 'applicationAdmin.js' );
+    wp_register_script( static::THEME_NAME . '-scripts', $main_script );
     wp_enqueue_script( static::THEME_NAME . '-scripts' );
 
   }

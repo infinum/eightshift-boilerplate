@@ -25,9 +25,9 @@ const themeAdminEntry = `${themeFullPath}/assets/application-admin.js`;
 const themeOutput = `${themeFullPath}/public`;
 
 // Outputs
-const outputJs = 'scripts/[name].js';
-const outputCss = 'styles/[name].css';
-const outputFile = '[name].[ext]';
+const outputJs = 'scripts/[name]-[hash].js';
+const outputCss = 'styles/[name]-[hash].css';
+const outputFile = '[name]-[hash].[ext]';
 const outputImages = `images/${outputFile}`;
 const outputFonts = `fonts/${outputFile}`;
 

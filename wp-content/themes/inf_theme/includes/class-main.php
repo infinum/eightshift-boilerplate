@@ -47,6 +47,8 @@ class Main {
    */
   public function __construct() {
     $this->load_dependencies();
+    $this->set_locale();
+    $this->set_assets_manifest_data();
     $this->define_admin_hooks();
     $this->define_theme_hooks();
   }
@@ -188,5 +190,26 @@ class Main {
    */
   public function run() {
     $this->loader->run();
+  }
+
+  /**
+   * Define global variable to save memory when parsing manifest on every load.
+   *
+   * @since 3.0.0
+   */
+  public function set_assets_manifest_data() {
+    $response = wp_remote_get( INF_ASSETS_PUBLIC_URL . 'manifest.json' );
+
+    if ( ! is_array( $response ) && is_wp_error( $response ) ) {
+      return;
+    }
+
+    $parsed_data = json_decode( $response['body'] );
+
+    if ( ! $parsed_data ) {
+      return;
+    }
+
+    define( 'INF_ASSETS_MANIFEST', (array) $parsed_data );
   }
 }
