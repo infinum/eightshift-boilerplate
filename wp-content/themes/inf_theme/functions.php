@@ -18,28 +18,20 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Theme version global
- *
- * @since 2.0.0
- * @package Inf_Theme
- */
-define( 'INF_THEME_VERSION', '1.0.0' );
-
-/**
- * Theme name global
- *
- * @since 2.0.0
- * @package Inf_Theme
- */
-define( 'INF_THEME_NAME', 'inf_theme' );
-
-/**
  * Global image path
  *
  * @since 2.0.0
  * @package Inf_Theme
  */
 define( 'INF_IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' );
+
+/**
+ * Global assets public path
+ *
+ * @since 3.0.0
+ * @package Inf_Theme
+ */
+define( 'INF_ASSETS_PUBLIC_URL', get_template_directory_uri() . '/skin/public/' );
 
 /**
  * Include the autoloader so we can dynamically include the rest of the classes.

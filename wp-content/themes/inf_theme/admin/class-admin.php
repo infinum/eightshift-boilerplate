@@ -3,36 +3,20 @@
  * The Admin specific functionality.
  * General stuff that is not specific to any class.
  *
+ * @since   3.0.0 Removing global variables.
  * @since   2.0.0
  * @package Inf_Theme\Admin
  */
 
 namespace Inf_Theme\Admin;
 
-use Inf_Theme\Helpers as General_Helpers;
+use Inf_Theme\Helpers\General_Helper;
+use Inf_Theme\Includes\Config;
 
 /**
  * Class Admin
  */
-class Admin {
-
-  /**
-   * Global theme name
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  protected $theme_name;
-
-  /**
-   * Global theme version
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  protected $theme_version;
+class Admin extends Config {
 
   /**
    * General Helper class
@@ -46,15 +30,13 @@ class Admin {
   /**
    * Initialize class
    *
-   * @param array $theme_info Load global theme info.
+   * @param Helpers\General_Helper $general_helper Helper class instance.
    *
+   * @since 3.0.0 Removing theme name and version.
    * @since 2.0.0
    */
-  public function __construct( $theme_info = null ) {
-    $this->theme_name    = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
-
-    $this->general_helper = new General_Helpers\General_Helper();
+  public function __construct( General_Helper $general_helper ) {
+    $this->general_helper = $general_helper;
   }
 
   /**
@@ -64,9 +46,9 @@ class Admin {
    */
   public function enqueue_styles() {
 
-    $main_style = '/skin/public/styles/applicationAdmin.css';
-    wp_register_style( $this->theme_name . '-style', get_template_directory_uri() . $main_style, array(), $this->general_helper->get_assets_version( $main_style ) );
-    wp_enqueue_style( $this->theme_name . '-style' );
+    $main_style = $this->general_helper->get_manifest_assets_data( 'applicationAdmin.css' );
+    wp_register_style( static::THEME_NAME . '-style', $main_style );
+    wp_enqueue_style( static::THEME_NAME . '-style' );
 
   }
 
@@ -77,9 +59,9 @@ class Admin {
    */
   public function enqueue_scripts() {
 
-    $main_script = '/skin/public/scripts/applicationAdmin.js';
-    wp_register_script( $this->theme_name . '-scripts', get_template_directory_uri() . $main_script, array(), $this->general_helper->get_assets_version( $main_script ) );
-    wp_enqueue_script( $this->theme_name . '-scripts' );
+    $main_script = $this->general_helper->get_manifest_assets_data( 'applicationAdmin.js' );
+    wp_register_script( static::THEME_NAME . '-scripts', $main_script );
+    wp_enqueue_script( static::THEME_NAME . '-scripts' );
 
   }
 

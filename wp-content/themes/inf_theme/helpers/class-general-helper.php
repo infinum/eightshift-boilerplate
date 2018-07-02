@@ -3,6 +3,7 @@
  * The general helper specific functionality.
  * Used in admin or theme side.
  *
+ * @since   3.0.0 Removing constructor and global variables.
  * @since   2.0.0
  * @package Inf_Theme\Helpers
  */
@@ -13,36 +14,6 @@ namespace Inf_Theme\Helpers;
  * Class General Helper
  */
 class General_Helper {
-
-  /**
-   * Global theme name
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  protected $theme_name;
-
-  /**
-   * Global theme version
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  protected $theme_version;
-
-  /**
-   * Initialize class
-   *
-   * @param array $theme_info Load global theme info.
-   *
-   * @since 2.0.0
-   */
-  public function __construct( $theme_info = null ) {
-    $this->theme_name    = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
-  }
 
   /**
    * Check if array has key and return its value if true.
@@ -59,26 +30,26 @@ class General_Helper {
   }
 
   /**
-   * Return timestamp when file is changes.
+   * Return full path for specific asset from manifest.json
    * This is used for cache busting assets.
    *
-   * @param string $filename File name you want to get timestamp from.
-   * @return init Timestamp.
+   * @param string $key File name key you want to get from manifest.
+   * @return string Full path to asset.
    *
-   * @since 2.0.1
+   * @since 3.0.0
    */
-  public function get_assets_version( $filename = null ) {
-    if ( ! $filename ) {
-      return false;
-    }
+  public function get_manifest_assets_data( $key = null ) {
+    $data = INF_ASSETS_MANIFEST;
 
-    $file_location = get_template_directory() . $filename;
-
-    if ( ! file_exists( $file_location ) ) {
+    if ( ! ( $key || $data ) ) {
       return;
     }
 
-    return filemtime( $file_location );
+    $asset = $this->get_array_value( $key, $data );
+
+    if ( ! empty( $asset ) ) {
+      return home_url( $asset );
+    }
   }
 
   /**
@@ -96,7 +67,6 @@ class General_Helper {
     $errors = libxml_get_errors();
     return empty( $errors );
   }
-
 
   /**
    * Call a shortcode function by tag name.

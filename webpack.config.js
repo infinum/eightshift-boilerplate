@@ -8,6 +8,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 const appPath = `${path.resolve(__dirname)}`;
 
@@ -24,9 +25,9 @@ const themeAdminEntry = `${themeFullPath}/assets/application-admin.js`;
 const themeOutput = `${themeFullPath}/public`;
 
 // Outputs
-const outputJs = 'scripts/[name].js';
-const outputCss = 'styles/[name].css';
-const outputFile = '[name].[ext]';
+const outputJs = 'scripts/[name]-[hash].js';
+const outputCss = 'styles/[name]-[hash].css';
+const outputFile = '[name]-[hash].[ext]';
 const outputImages = `images/${outputFile}`;
 const outputFonts = `fonts/${outputFile}`;
 
@@ -85,13 +86,13 @@ const allPlugins = [
     ],
   }),
 
-  new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-
   // Is using vendor files, but prefered to use npm
   new CopyWebpackPlugin([{
-    from: `${themeFullPath}/assets/scripts/vendors`,
+    from: `${appPath}/node_modules/jquery/dist/jquery.min.js`,
     to: `${themeOutput}/scripts/vendors`,
   }]),
+
+  new ManifestPlugin(),
 ];
 
 const allOptimizations = {
@@ -143,9 +144,13 @@ module.exports = [
       filename: outputJs,
     },
 
+    externals: {
+      jquery: 'jQuery',
+    },
+
     optimization: allOptimizations,
 
-    mode: 'production',
+    mode: 'development',
 
     module: allModules,
 

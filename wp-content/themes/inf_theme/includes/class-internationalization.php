@@ -5,53 +5,27 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
+ * @since   3.0.0 Removing constructor and global variables.
  * @since   2.0.0
  * @package Inf_Theme\Includes
  */
 
 namespace Inf_Theme\Includes;
 
+use Inf_Theme\Includes\Config;
+
 /**
  * Class Internationalization
  */
-class Internationalization {
-
-  /**
-   * Global theme name
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  protected $theme_name;
-
-  /**
-   * Global theme version
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  protected $theme_version;
-
-  /**
-   * Initialize class
-   *
-   * @param array $theme_info Load global theme info.
-   *
-   * @since 2.0.0
-   */
-  public function __construct( $theme_info = null ) {
-    $this->theme_name    = $theme_info['theme_name'];
-    $this->theme_version = $theme_info['theme_version'];
-  }
+class Internationalization extends Config {
 
   /**
    * Load the plugin text domain for translation.
    *
+   * @since 3.0.0 Loading theme name from config class.
    * @since 2.0.0
    */
   public function load_theme_textdomain() {
-    load_theme_textdomain( $this->theme_name, get_template_directory() . '/languages' );
+    load_theme_textdomain( static::THEME_NAME, get_template_directory() . '/languages' );
   }
 }

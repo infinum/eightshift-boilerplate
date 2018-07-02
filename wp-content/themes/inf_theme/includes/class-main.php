@@ -16,6 +16,7 @@ use Inf_Theme\Admin\Menu as Menu;
 use Inf_Theme\Plugins\Acf as Acf;
 use Inf_Theme\Theme as Theme;
 use Inf_Theme\Theme\Utils as Utils;
+use Inf_Theme\Helpers\General_Helper;
 
 /**
  * The main start class.
@@ -38,46 +39,29 @@ class Main {
   protected $loader;
 
   /**
-   * Global theme name
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  protected $theme_name;
-
-  /**
-   * Global theme version
-   *
-   * @var string
-   *
-   * @since 2.0.0
-   */
-  protected $theme_version;
-
-  /**
    * Initialize class
    * Load hooks and define some global variables.
    *
+   * @since 3.0.0 Removing constants.
    * @since 2.0.0
    */
   public function __construct() {
-
-    if ( defined( 'INF_THEME_VERSION' ) ) {
-      $this->theme_version = INF_THEME_VERSION;
-    } else {
-      $this->theme_version = '1.0.0';
-    }
-
-    if ( defined( 'INF_THEME_NAME' ) ) {
-      $this->theme_name = INF_THEME_NAME;
-    } else {
-      $this->theme_name = 'inf_theme';
-    }
-
     $this->load_dependencies();
+    $this->set_locale();
+    $this->set_assets_manifest_data();
     $this->define_admin_hooks();
     $this->define_theme_hooks();
+  }
+
+  /**
+   * General Helper class instance
+   *
+   * @since 3.0.0
+   *
+   * @return class
+   */
+  public function general_helper() {
+    return new General_Helper();
   }
 
   /**
@@ -98,7 +82,7 @@ class Main {
    * @since 2.0.0
    */
   private function set_locale() {
-    $plugin_i18n = new Internationalization( $this->get_theme_info() );
+    $plugin_i18n = new Internationalization();
 
     $this->loader->add_action( 'after_setup_theme', $plugin_i18n, 'load_theme_textdomain' );
   }
@@ -109,14 +93,14 @@ class Main {
    * @since 2.0.0
    */
   private function define_admin_hooks() {
-    $admin       = new Admin\Admin( $this->get_theme_info() );
-    $login       = new Admin\Login( $this->get_theme_info() );
-    $editor      = new Admin\Editor( $this->get_theme_info() );
-    $admin_menus = new Admin\Admin_Menus( $this->get_theme_info() );
-    $users       = new Admin\Users( $this->get_theme_info() );
-    $widgets     = new Admin\Widgets( $this->get_theme_info() );
-    $menu        = new Menu\Menu( $this->get_theme_info() );
-    $media       = new Admin\Media( $this->get_theme_info() );
+    $admin       = new Admin\Admin( $this->general_helper() );
+    $login       = new Admin\Login();
+    $editor      = new Admin\Editor();
+    $admin_menus = new Admin\Admin_Menus();
+    $users       = new Admin\Users();
+    $widgets     = new Admin\Widgets();
+    $media       = new Admin\Media( $this->general_helper() );
+    $menu        = new Menu\Menu();
 
     // Admin.
     $this->loader->add_action( 'login_enqueue_scripts', $admin, 'enqueue_styles' );
@@ -158,11 +142,10 @@ class Main {
    * @since 2.0.0
    */
   private function define_theme_hooks() {
-    $theme           = new Theme\Theme( $this->get_theme_info() );
-    $legacy_browsers = new Theme\Legacy_Browsers( $this->get_theme_info() );
-    $gallery         = new Utils\Gallery( $this->get_theme_info() );
-    $general         = new Theme\General( $this->get_theme_info() );
-    $pagination      = new Theme\Pagination( $this->get_theme_info() );
+    $theme      = new Theme\Theme( $this->general_helper() );
+    $gallery    = new Utils\Gallery();
+    $general    = new Theme\General();
+    $pagination = new Theme\Pagination();
 
     // Enque styles and scripts.
     $this->loader->add_action( 'wp_enqueue_scripts', $theme, 'enqueue_styles' );
@@ -170,9 +153,6 @@ class Main {
 
     // Remove inline gallery css.
     $this->loader->add_filter( 'use_default_gallery_style', $theme, '__return_false' );
-
-    // Legacy Browsers.
-    $this->loader->add_action( 'template_redirect', $legacy_browsers, 'redirect_to_legacy_browsers_page' );
 
     /**
      * Optimizations
@@ -213,50 +193,23 @@ class Main {
   }
 
   /**
-   * The reference to the class that orchestrates the hooks.
+   * Define global variable to save memory when parsing manifest on every load.
    *
-   * @return Loader Orchestrates the hooks.
-   *
-   * @since 2.0.0
+   * @since 3.0.0
    */
-  public function get_loader() {
-    return $this->loader;
-  }
+  public function set_assets_manifest_data() {
+    $response = wp_remote_get( INF_ASSETS_PUBLIC_URL . 'manifest.json' );
 
-  /**
-   * The name used to uniquely identify it within the context of
-   * WordPress and to define internationalization functionality.
-   *
-   * @return string Theme name.
-   *
-   * @since 2.0.0
-   */
-  public function get_theme_name() {
-    return $this->theme_name;
-  }
+    if ( ! is_array( $response ) && is_wp_error( $response ) ) {
+      return;
+    }
 
-  /**
-   * Retrieve the version number.
-   *
-   * @return string Theme version number.
-   *
-   * @since 2.0.0
-   */
-  public function get_theme_version() {
-    return $this->theme_version;
-  }
+    $parsed_data = json_decode( $response['body'] );
 
-  /**
-   * Retrieve the theme info array.
-   *
-   * @return array Theme info array.
-   *
-   * @since 2.0.0
-   */
-  public function get_theme_info() {
-    return array(
-        'theme_name'    => $this->theme_name,
-        'theme_version' => $this->theme_version,
-    );
+    if ( ! $parsed_data ) {
+      return;
+    }
+
+    define( 'INF_ASSETS_MANIFEST', (array) $parsed_data );
   }
 }

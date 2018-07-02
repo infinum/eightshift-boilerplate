@@ -29,13 +29,13 @@ Before you start developing ask a lead developer to export you the latest versio
 
 ## Import & Export
 For syncing the production server with staging and development you have 3 shell scripts.
-The use WP-CLI so be sure that your server has this module installed.
+The use [`WP-CLI`](https://wp-cli.org/) so be sure that your server has this module installed.
 
 #### Export:
 Once you run this script it will export your database and uploads folder. Everything is compressed and exported in `latest_dump.tar.gz` file in the root of your project.
 
-```sh
-_db-export.sh
+```bash
+bash bin/db-export.sh
 ```
 
 #### Import
@@ -43,9 +43,9 @@ Once you run this script it will  **delete the current database** and import the
 
 Uploads folder must be manually moved to the `wp-content` folder.
 
-```sh
-_db-import-production-to-dev.sh
-_db-import-production-to-staging.sh
+```bash
+bash bin/db-import-production-to-dev.sh
+bash bin/db-import-production-to-staging.sh
 ```
 
 ## wp-config.php
@@ -63,5 +63,3 @@ And this global variable somewhere before wp-settings and wp-config-project.php.
 // Possible options are develop, staging and production.
 define( 'INF_ENV', 'develop' );
 ```
-
-------------------------------------
