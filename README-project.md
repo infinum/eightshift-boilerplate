@@ -35,7 +35,7 @@ The use [`WP-CLI`](https://wp-cli.org/) so be sure that your server has this mod
 Once you run this script it will export your database and uploads folder. Everything is compressed and exported in `latest_dump.tar.gz` file in the root of your project.
 
 ```bash
-bash bin/_db-export.sh
+bash bin/db-export.sh
 ```
 
 #### Import
@@ -44,8 +44,8 @@ Once you run this script it will  **delete the current database** and import the
 Uploads folder must be manually moved to the `wp-content` folder.
 
 ```bash
-bash bin/_db-import-production-to-dev.sh
-bash bin/_db-import-production-to-staging.sh
+bash bin/db-import-production-to-dev.sh
+bash bin/db-import-production-to-staging.sh
 ```
 
 ## wp-config.php

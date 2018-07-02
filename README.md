@@ -71,7 +71,7 @@ After renaming your theme, run this to setup WordPress on the server.
 The script will install `npm` and `composer` dependencies and install the latest version of WordPress.
 
 ```bash
-bash bin/_setup.sh
+bash bin/setup.sh
 ```
 
 After running setup script, you'll need to create `wp-config.php`. You can do that manually, or use WP-CLI
@@ -138,13 +138,13 @@ Build creates public folder in theme all the assets.
 Check for errors js, css, php but not WP standards
 
 ```bash
-bash bin/_prebuild.sh
+bash bin/prebuild.sh
 ```
 
 Builds production ready assets
 
 ```bash
-bash bin/_build.sh
+bash bin/build.sh
 ```
 
 ## Import & Export
