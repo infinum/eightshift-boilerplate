@@ -198,13 +198,13 @@ class Main {
    * @since 3.0.0
    */
   public function set_assets_manifest_data() {
-    $response = wp_remote_get( INF_ASSETS_PUBLIC_URL . 'manifest.json', array( 'sslverify' => false ) );
+    $response = file_get_contents( INF_ASSETS_PUBLIC_PATH . 'manifest.json' );
 
-    if ( ! is_array( $response ) && is_wp_error( $response ) ) {
+    if ( ! $response ) {
       return;
     }
 
-    $parsed_data = json_decode( $response['body'] );
+    $parsed_data = json_decode( $response );
 
     if ( ! $parsed_data ) {
       return;
