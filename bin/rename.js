@@ -97,6 +97,8 @@ while (themePrefix.length <= 0);
 const themeVersionConst = `${themePrefix}_THEME_VERSION`;
 const themeNameConst = `${themePrefix}_THEME_NAME`;
 const themeImageUrlConst = `${themePrefix}_IMAGE_URL`;
+const themeAssetsConst = `${themePrefix}_ASSETS_PUBLIC_PATH`;
+const themeManifestConst = `${themePrefix}_ASSETS_MANIFEST`;
 const themeEnvConst = `${themePrefix}_ENV`;
 
 // Namespace
@@ -156,6 +158,8 @@ if (confirm === 'y') {
   findReplace('INF_THEME_VERSION', themeVersionConst);
   findReplace('INF_THEME_NAME', themeNameConst);
   findReplace('INF_IMAGE_URL', themeImageUrlConst);
+  findReplace('INF_ASSETS_PUBLIC_PATH', themeAssetsConst);
+  findReplace('INF_ASSETS_MANIFEST', themeManifestConst);
   findReplace('INF_ENV', themeEnvConst);
   findReplace('dev.boilerplate.com', themeProxyUrl);
 
