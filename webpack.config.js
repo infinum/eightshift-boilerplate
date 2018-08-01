@@ -150,7 +150,7 @@ module.exports = [
 
     optimization: allOptimizations,
 
-    mode: 'development',
+    // mode: 'development',
 
     module: allModules,
 

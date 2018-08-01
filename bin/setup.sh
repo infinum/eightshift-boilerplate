@@ -3,7 +3,7 @@
 function build() {
   npm install
   composer install
-  wp core download
+  wp core download --skip-content
 }
 
 build
