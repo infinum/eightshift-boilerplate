@@ -204,12 +204,6 @@ class Main {
       return;
     }
 
-    $parsed_data = json_decode( $response );
-
-    if ( ! $parsed_data ) {
-      return;
-    }
-
-    define( 'INF_ASSETS_MANIFEST', (array) $parsed_data );
+    define( 'INF_ASSETS_MANIFEST', $response );
   }
 }

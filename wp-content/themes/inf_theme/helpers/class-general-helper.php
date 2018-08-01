@@ -39,13 +39,17 @@ class General_Helper {
    * @since 3.0.0
    */
   public function get_manifest_assets_data( $key = null ) {
-    $data = INF_ASSETS_MANIFEST;
-
-    if ( ! ( $key || $data ) ) {
+    if ( ! $key ) {
       return;
     }
 
-    $asset = $this->get_array_value( $key, $data );
+    $data = json_decode( INF_ASSETS_MANIFEST );
+
+    if ( ! $data ) {
+      return;
+    }
+
+    $asset = $this->get_array_value( $key, (array) $data );
 
     if ( ! empty( $asset ) ) {
       return home_url( $asset );
