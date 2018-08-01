@@ -31,7 +31,7 @@ define( 'INF_IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' )
  * @since 3.0.0
  * @package Inf_Theme
  */
-define( 'INF_ASSETS_PUBLIC_URL', get_template_directory_uri() . '/skin/public/' );
+define( 'INF_ASSETS_PUBLIC_PATH', get_template_directory() . '/skin/public/' );
 
 /**
  * Include the autoloader so we can dynamically include the rest of the classes.
