@@ -1,11 +1,10 @@
 {
   "name": "inf_theme",
   "version": "1.0.0",
-  "author": "Infinum",
+  "author": "Team Eightshift",
   "private": true,
   "main": "",
   "scripts": {
-    "__sassUnusedTheme": "sass-unused \"wp-content/themes/inf_theme/**/*.scss\"",
     "__eslintTheme": "eslint wp-content/themes/inf_theme/skin/assets/",
     "__stylelintTheme": "stylelint \"wp-content/themes/inf_theme/**/*.scss\" --syntax scss",
     "precommitCss": "npm run __stylelintTheme",

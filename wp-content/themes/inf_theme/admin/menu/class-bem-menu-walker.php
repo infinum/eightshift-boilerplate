@@ -3,7 +3,7 @@
  * Custom Menu Walker specific functionality.
  * It provides BEM classes to menues.
  *
- * @since   2.0.0
+ * @since   1.0.0
  * @package Inf_Theme\Admin\Menu
  */
 
@@ -22,7 +22,7 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    *
    * @param array $css_class_prefix load menu prefixes for class.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function __construct( $css_class_prefix ) {
 
@@ -52,7 +52,7 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    * @param array   $output output.
    * @return element
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
 
@@ -74,7 +74,7 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    * @param array   $args args.
    * @return void
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function start_lvl( &$output, $depth = 1, $args = array() ) {
 
@@ -106,7 +106,7 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    * @param integer $id id.
    * @return void
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 

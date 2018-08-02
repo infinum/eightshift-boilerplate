@@ -2,8 +2,7 @@
 /**
  * The Menu specific functionality.
  *
- * @since   3.0.0 Removing global variables.
- * @since   2.0.0
+ * @since   1.0.0
  * @package Inf_Theme\Admin\Menu
  */
 
@@ -19,7 +18,7 @@ class Menu {
    *
    * @return array Of menu positions with name and slug.
    *
-   * @since 1.0.1
+   * @since 1.0.0
    */
   public function get_menu_positions() {
     return array(
@@ -31,7 +30,7 @@ class Menu {
   /**
    * Register All Menu positions
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function register_menu_positions() {
     register_nav_menus(
@@ -48,7 +47,7 @@ class Menu {
    * @param  bool       $echo                Echo the menu.
    * @return string                          Outputs html version of menu.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function bem_menu( $location = 'main_menu', $css_class_prefix = 'main-menu', $css_class_modifiers = null, $echo = true ) {
 

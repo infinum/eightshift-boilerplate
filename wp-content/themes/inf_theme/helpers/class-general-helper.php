@@ -3,8 +3,7 @@
  * The general helper specific functionality.
  * Used in admin or theme side.
  *
- * @since   3.0.0 Removing constructor and global variables.
- * @since   2.0.0
+ * @since   1.0.0
  * @package Inf_Theme\Helpers
  */
 
@@ -23,9 +22,9 @@ class General_Helper {
    * @param array  $array Array in which the key should be checked.
    * @return string       Value of the key if it exists, empty string if not.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
-  public function get_array_value( $key, $array ) {
+  public static function get_array_value( $key, $array ) {
     return ( gettype( $array ) === 'array' && array_key_exists( $key, $array ) ) ? $array[ $key ] : '';
   }
 
@@ -36,9 +35,9 @@ class General_Helper {
    * @param string $key File name key you want to get from manifest.
    * @return string Full path to asset.
    *
-   * @since 3.0.0
+   * @since 1.0.0
    */
-  public function get_manifest_assets_data( $key = null ) {
+  public static function get_manifest_assets_data( $key = null ) {
     if ( ! $key ) {
       return;
     }
@@ -49,7 +48,7 @@ class General_Helper {
       return;
     }
 
-    $asset = $this->get_array_value( $key, (array) $data );
+    $asset = self::get_array_value( $key, (array) $data );
 
     if ( ! empty( $asset ) ) {
       return home_url( $asset );
@@ -62,9 +61,9 @@ class General_Helper {
    * @param xml $xml Full xml document.
    * @return boolean
    *
-   * @since 2.0.2
+   * @since 1.0.0
    */
-  public function is_valid_xml( $xml ) {
+  public static function is_valid_xml( $xml ) {
     libxml_use_internal_errors( true );
     $doc = new \DOMDocument( '1.0', 'utf-8' );
     $doc->loadXML( $xml );
@@ -84,9 +83,9 @@ class General_Helper {
    *
    * @return string|bool False on failure, the result of the shortcode on success.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
-  public function inf_do_shortcode( $tag, array $atts = array(), $content = null ) {
+  public static function inf_do_shortcode( $tag, array $atts = array(), $content = null ) {
 
     global $shortcode_tags;
 

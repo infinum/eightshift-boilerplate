@@ -5,7 +5,7 @@
  * A class definition that includes attributes and functions used across both the
  * theme-facing side of the site and the admin area.
  *
- * @since   2.0.0
+ * @since   1.0.0
  * @package Inf_Theme\Includes
  */
 
@@ -16,7 +16,6 @@ use Inf_Theme\Admin\Menu as Menu;
 use Inf_Theme\Plugins\Acf as Acf;
 use Inf_Theme\Theme as Theme;
 use Inf_Theme\Theme\Utils as Utils;
-use Inf_Theme\Helpers\General_Helper;
 
 /**
  * The main start class.
@@ -34,7 +33,7 @@ class Main {
    *
    * @var Loader    $loader    Maintains and registers all hooks for the plugin.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   protected $loader;
 
@@ -42,8 +41,7 @@ class Main {
    * Initialize class
    * Load hooks and define some global variables.
    *
-   * @since 3.0.0 Removing constants.
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function __construct() {
     $this->load_dependencies();
@@ -54,23 +52,12 @@ class Main {
   }
 
   /**
-   * General Helper class instance
-   *
-   * @since 3.0.0
-   *
-   * @return class
-   */
-  public function general_helper() {
-    return new General_Helper();
-  }
-
-  /**
    * Load the required dependencies.
    *
    * Create an instance of the loader which will be used to register the hooks
    * with WordPress.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   private function load_dependencies() {
     $this->loader = new Loader();
@@ -79,7 +66,7 @@ class Main {
   /**
    * Define the locale for this theme for internationalization.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   private function set_locale() {
     $plugin_i18n = new Internationalization();
@@ -90,17 +77,16 @@ class Main {
   /**
    * Register all of the hooks related to the admin area functionality.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   private function define_admin_hooks() {
-    $admin       = new Admin\Admin( $this->general_helper() );
-    $login       = new Admin\Login();
-    $editor      = new Admin\Editor();
-    $admin_menus = new Admin\Admin_Menus();
-    $users       = new Admin\Users();
-    $widgets     = new Admin\Widgets();
-    $media       = new Admin\Media( $this->general_helper() );
-    $menu        = new Menu\Menu();
+    $admin   = new Admin\Admin();
+    $login   = new Admin\Login();
+    $editor  = new Admin\Editor();
+    $users   = new Admin\Users();
+    $widgets = new Admin\Widgets();
+    $media   = new Admin\Media();
+    $menu    = new Menu\Menu();
 
     // Admin.
     $this->loader->add_action( 'login_enqueue_scripts', $admin, 'enqueue_styles' );
@@ -114,12 +100,8 @@ class Main {
     // Editor.
     $this->loader->add_action( 'admin_init', $editor, 'add_editor_styles' );
 
-    // Sidebar.
-    $this->loader->add_action( 'admin_menu', $admin_menus, 'remove_sub_menus' );
-
     // Users.
     $this->loader->add_action( 'set_user_role', $users, 'send_main_when_user_role_changes', 10, 2 );
-    $this->loader->add_action( 'admin_init', $users, 'edit_editors_capabilities' );
 
     // Widgets.
     $this->loader->add_action( 'widgets_init', $widgets, 'register_widget_position' );
@@ -130,8 +112,6 @@ class Main {
     // Media.
     $this->loader->add_action( 'upload_mimes', $media, 'enable_mime_types' );
     $this->loader->add_action( 'wp_prepare_attachment_for_js', $media, 'enable_svg_library_preview', 10, 3 );
-    $this->loader->add_action( 'embed_oembed_html', $media, 'wrap_responsive_oembed_filter', 10, 4 );
-    $this->loader->add_action( 'after_setup_theme', $media, 'add_theme_support' );
     $this->loader->add_action( 'after_setup_theme', $media, 'add_custom_image_sizes' );
     $this->loader->add_filter( 'wp_handle_upload_prefilter', $media, 'check_svg_on_media_upload' );
   }
@@ -139,11 +119,10 @@ class Main {
   /**
    * Register all of the hooks related to the theme area functionality.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   private function define_theme_hooks() {
-    $theme      = new Theme\Theme( $this->general_helper() );
-    $gallery    = new Utils\Gallery();
+    $theme      = new Theme\Theme();
     $general    = new Theme\General();
     $pagination = new Theme\Pagination();
 
@@ -172,9 +151,6 @@ class Main {
     $this->loader->remove_action( 'wp_head', 'feed_links_extra', 3 );
     $this->loader->remove_action( 'wp_head', 'rest_output_link_wp_head' );
 
-    // Gallery.
-    $this->loader->add_filter( 'post_gallery', $gallery, 'wrap_post_gallery', 10, 3 );
-
     // General.
     $this->loader->add_action( 'after_setup_theme', $general, 'add_theme_support' );
 
@@ -186,7 +162,7 @@ class Main {
   /**
    * Run the loader to execute all of the hooks with WordPress.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function run() {
     $this->loader->run();
@@ -195,10 +171,10 @@ class Main {
   /**
    * Define global variable to save memory when parsing manifest on every load.
    *
-   * @since 3.0.0
+   * @since 1.0.0
    */
   public function set_assets_manifest_data() {
-    $response = file_get_contents( INF_ASSETS_PUBLIC_PATH . 'manifest.json' );
+    $response = file_get_contents( get_template_directory() . '/skin/public/manifest.json' );
 
     if ( ! $response ) {
       return;

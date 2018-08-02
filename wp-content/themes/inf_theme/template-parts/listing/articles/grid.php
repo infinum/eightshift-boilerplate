@@ -6,8 +6,8 @@
  */
 
 use Inf_Theme\Theme\Utils\Images;
-$images = new Images();
-$image  = $images->get_post_image( 'full_width' );
+
+$image = Images::get_post_image( 'full_width' );
 ?>
 <article class="article-grid">
   <div class="article-grid__container">

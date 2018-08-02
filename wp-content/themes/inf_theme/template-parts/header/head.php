@@ -5,6 +5,9 @@
  * @package Inf_Theme\Template_Parts\Header\Head
  */
 
+use Inf_Theme\Helpers\General_Helper;
+
+$logo_img = General_Helper::get_manifest_assets_data( 'images/logo.svg' );
 ?>
 
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -37,7 +40,7 @@
 <meta name="apple-mobile-web-app-title" content="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#C3151B">
-<link rel="apple-touch-startup-image" href="<?php echo esc_url( INF_IMAGE_URL . 'logo-color.svg' ); ?>">
+<link rel="apple-touch-startup-image" href="<?php echo esc_url( $logo_img ); ?>">
 
 <?php
 get_template_part( 'template-parts/tracking/head' );

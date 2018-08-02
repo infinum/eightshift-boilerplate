@@ -5,7 +5,7 @@ import './styles/application.scss';
 import './scripts';
 
 // Load images
-import './images/images';
+import './images';
 
 // Load fonts
-import './fonts/fonts';
+import './fonts';

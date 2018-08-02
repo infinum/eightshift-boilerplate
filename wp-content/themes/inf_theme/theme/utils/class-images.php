@@ -2,8 +2,7 @@
 /**
  * The Utils-Images specific functionality.
  *
- * @since   3.0.0 Removing constructor and global variables.
- * @since   2.0.0
+ * @since   1.0.0
  * @package Inf_Theme\Theme\Utils
  */
 
@@ -24,9 +23,9 @@ class Images {
    * @param  integer $no_image Link to no image thumbnail.
    * @return array             Array with image settings.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
-  public function get_post_image( $size, $post_id = null, $no_image = null ) {
+  public static function get_post_image( $size, $post_id = null, $no_image = null ) {
     global $post;
 
     if ( ! $post_id ) {
@@ -38,19 +37,20 @@ class Images {
       $image         = wp_get_attachment_image_src( $attachemnt_id, $size );
 
       $image_array = [
-          'image'  => esc_url( $image[0] ),
-          'width'  => esc_html( $image[1] ),
-          'height' => esc_html( $image[2] ),
+          'image'  => $image[0],
+          'width'  => $image[1],
+          'height' => $image[2],
       ];
     } else {
+      $no_img      = General_Helper::get_manifest_assets_data( 'images/no-image-' . $size . '.jpg' );
       $image_array = [
-          'image'  => esc_url( INF_IMAGE_URL . 'no-image-' . $size . '.jpg' ),
+          'image'  => $no_img,
           'width'  => '',
           'height' => '',
       ];
 
       if ( ! empty( $no_image ) ) {
-        $image_array['image'] = esc_url( $no_image );
+        $image_array['image'] = $no_image;
       }
     }
 
@@ -64,14 +64,14 @@ class Images {
    * @param string $size Image size from Image object.
    * @param array  $image_array WP image array.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
-  public function get_image_from_array( $size, $image_array ) {
+  public static function get_image_from_array( $size, $image_array ) {
     if ( ! empty( $image_array ) ) {
       $img = $image_array['sizes'];
       $src = $img[ $size ];
     } else {
-      $src = INF_IMAGE_URL . 'no-image-' . $size . '.jpg';
+      $src = General_Helper::get_manifest_assets_data( 'images/no-image-' . $size . '.jpg' );
     }
 
     return [

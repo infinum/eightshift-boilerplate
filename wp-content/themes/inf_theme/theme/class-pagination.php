@@ -2,8 +2,7 @@
 /**
  * The Pagination specific functionality.
  *
- * @since   3.0.0 Removing constructor and global variables.
- * @since   2.0.0
+ * @since   1.0.0
  * @package Inf_Theme\Theme
  */
 
@@ -19,7 +18,7 @@ class Pagination {
    *
    * @return string Return class for link
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function pagination_link_next_class() {
     return 'class="page-numbers next"';
@@ -30,7 +29,7 @@ class Pagination {
    *
    * @return string Return class for link
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function pagination_link_prev_class() {
     return 'class="page-numbers prev"';
