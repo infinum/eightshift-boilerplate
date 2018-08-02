@@ -11,13 +11,13 @@ $content-style: (
 .content-style {
   @include text-size(default);
   line-height: 1.5;
-  color: map-get($cs, 'text-color');
+  color: map-get($content-style, 'text-color');
 
   p,
   ul,
   ol {
     @extend %paragraph-reset;
-    padding-bottom: map-get($cs, 'default-padding');
+    padding-bottom: map-get($content-style, 'default-padding');
 
     &.clear-spacing,
     &:last-child {
@@ -128,9 +128,9 @@ $content-style: (
   table {
     width: 100% !important; //stylelint-disable-line declaration-no-important
     height: auto !important; //stylelint-disable-line declaration-no-important
-    border-top: 1px solid map-get($cs, 'table-border-color');
-    border-left: 1px solid map-get($cs, 'table-border-color');
-    margin-bottom: map-get($cs, 'default-padding');
+    border-top: 1px solid map-get($content-style, 'table-border-color');
+    border-left: 1px solid map-get($content-style, 'table-border-color');
+    margin-bottom: map-get($content-style, 'default-padding');
     border-collapse: collapse;
 
     &:last-child {
@@ -142,8 +142,8 @@ $content-style: (
       th {
         @include text-size(medium);
         border: none;
-        border-right: 1px solid map-get($cs, 'table-border-color');
-        border-bottom: 1px solid map-get($cs, 'table-border-color');
+        border-right: 1px solid map-get($content-style, 'table-border-color');
+        border-bottom: 1px solid map-get($content-style, 'table-border-color');
         height: auto !important; //stylelint-disable-line declaration-no-important
         padding: 15px 10px;
       }
