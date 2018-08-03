@@ -112,6 +112,7 @@ class Main {
     // Media.
     $this->loader->add_action( 'upload_mimes', $media, 'enable_mime_types' );
     $this->loader->add_action( 'wp_prepare_attachment_for_js', $media, 'enable_svg_library_preview', 10, 3 );
+    $this->loader->add_action( 'after_setup_theme', $media, 'add_theme_support' );
     $this->loader->add_action( 'after_setup_theme', $media, 'add_custom_image_sizes' );
     $this->loader->add_filter( 'wp_handle_upload_prefilter', $media, 'check_svg_on_media_upload' );
   }

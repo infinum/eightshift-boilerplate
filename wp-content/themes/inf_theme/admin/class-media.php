@@ -16,6 +16,16 @@ use Inf_Theme\Helpers\General_Helper;
 class Media {
 
   /**
+   * Enable theme support
+   * for full list check: https://developer.wordpress.org/reference/functions/add_theme_support/
+   *
+   * @since 1.0.0
+   */
+  public function add_theme_support() {
+    add_theme_support( 'post-thumbnails' );
+  }
+
+  /**
    * Create new image sizes
    *
    * @since 1.0.0
