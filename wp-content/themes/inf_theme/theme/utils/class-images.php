@@ -8,6 +8,8 @@
 
 namespace Inf_Theme\Theme\Utils;
 
+use Inf_Theme\Helpers\General_Helper;
+
 /**
  * Class Images
  */
