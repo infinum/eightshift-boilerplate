@@ -177,6 +177,6 @@ module.exports = [
 
     plugins: allPlugins,
 
-    devtool: DEV ? '#inline-source-map' : '',
+    devtool: DEV ? '' : 'source-map',
   },
 ];

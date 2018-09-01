@@ -85,7 +85,7 @@ First you need to install WordPress locally, using any of the local development 
 
 2. **Linting PHP** - We are using [Infinum coding standards for WordPress](https://github.com/infinum/coding-standards-wp) to check php files. To install it, you need to install [Composer](https://getcomposer.org/) from initial setup step. 
 
-3. **Linting PHP** - If you have composer installed add this aliases to you bash config and reload terminal:
+3. **Linting PHP** - If you have composer installed you can add these aliases to your bash/zsh config for easier usage:
 
     ```bash
     alias phpcs='vendor/bin/phpcs';
@@ -125,7 +125,7 @@ Builds production ready assets
     bash bin/build.sh
     ```
 
-3. When rsyncing to server use `ci-exclude.txt` to exclude unnecesery folders and files on server.
+3. For deployment, we are using [rsync](https://rsync.samba.org/) and [semaphoreci](https://semaphoreci.com/) in our continuous deployment setup. Whatever deployment system you are using you should never copy unnecessary data to the server. We added file `ci-exclude.txt` to exclude unnecessary folders and files on deployment.
 
 ## Import & Export
 

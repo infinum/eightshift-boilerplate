@@ -1,6 +1,7 @@
 /* stylelint-disable */
 // Vendors - node modules
-@import '~normalize.css';
+@import 'normalize-scss';
+@include normalize();
 @import '~media-blender';
 
 // Utils
