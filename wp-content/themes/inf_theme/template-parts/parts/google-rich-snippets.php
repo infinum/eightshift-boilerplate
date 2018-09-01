@@ -42,6 +42,6 @@ $logo_img = General_Helper::get_manifest_assets_data( 'images/logo.svg' );
     "height": 60
     }
   },
-  "description": "<?php echo esc_html( strip_tags( get_the_excerpt() ) ); ?>"
+  "description": "<?php echo esc_html( wp_strip_all_tags( get_the_excerpt() ) ); ?>"
   }
 </script>

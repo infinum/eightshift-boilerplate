@@ -24,7 +24,7 @@ class Theme extends Config {
   public function enqueue_styles() {
 
     $main_style = General_Helper::get_manifest_assets_data( 'application.css' );
-    wp_register_style( static::THEME_NAME . '-style', $main_style );
+    wp_register_style( static::THEME_NAME . '-style', $main_style, array(), static::THEME_VERSION );
     wp_enqueue_style( static::THEME_NAME . '-style' );
 
   }
@@ -42,16 +42,16 @@ class Theme extends Config {
     // jQuery.
     wp_deregister_script( 'jquery-migrate' );
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', get_template_directory_uri() . '/skin/public/scripts/vendors/jquery.min.js', array(), '3.3.1' );
+    wp_register_script( 'jquery', get_template_directory_uri() . '/skin/public/scripts/vendors/jquery.min.js', array(), '3.3.1' ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter
     wp_enqueue_script( 'jquery' );
 
     // JS.
     $main_script_vandors = General_Helper::get_manifest_assets_data( 'vendors.js' );
-    wp_register_script( static::THEME_NAME . '-scripts-vendors', $main_script_vandors );
+    wp_register_script( static::THEME_NAME . '-scripts-vendors', $main_script_vandors, array(), static::THEME_VERSION ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter
     wp_enqueue_script( static::THEME_NAME . '-scripts-vendors' );
 
     $main_script = General_Helper::get_manifest_assets_data( 'application.js' );
-    wp_register_script( static::THEME_NAME . '-scripts', $main_script );
+    wp_register_script( static::THEME_NAME . '-scripts', $main_script, array(), static::THEME_VERSION ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter
     wp_enqueue_script( static::THEME_NAME . '-scripts' );
 
     // Glbal variables for ajax and translations.

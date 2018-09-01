@@ -37,7 +37,7 @@ class Excerpt {
     $output = strip_shortcodes( $output );
 
     // Remove html tags.
-    $output = strip_tags( $output );
+    $output = wp_strip_all_tags( $output );
 
     // Reduce string to limit.
     $output = substr( $output, 0, $limit );

@@ -25,7 +25,7 @@ class Admin extends Config {
   public function enqueue_styles() {
 
     $main_style = General_Helper::get_manifest_assets_data( 'applicationAdmin.css' );
-    wp_register_style( static::THEME_NAME . '-style', $main_style );
+    wp_register_style( static::THEME_NAME . '-style', $main_style, array(), static::THEME_VERSION );
     wp_enqueue_style( static::THEME_NAME . '-style' );
 
   }
@@ -38,7 +38,7 @@ class Admin extends Config {
   public function enqueue_scripts() {
 
     $main_script = General_Helper::get_manifest_assets_data( 'applicationAdmin.js' );
-    wp_register_script( static::THEME_NAME . '-scripts', $main_script );
+    wp_register_script( static::THEME_NAME . '-scripts', $main_script, array(), static::THEME_VERSION ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter
     wp_enqueue_script( static::THEME_NAME . '-scripts' );
 
   }

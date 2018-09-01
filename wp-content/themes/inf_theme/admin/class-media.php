@@ -54,12 +54,11 @@ class Media {
    *
    * @param array      $response   Array of prepared attachment data.
    * @param int|object $attachment Attachment ID or object.
-   * @param array      $meta       Array of attachment meta data.
    *
    * @since 2.0.2 Added checks if xml file is valid.
    * @since 1.0.0
    */
-  public function enable_svg_library_preview( $response, $attachment, $meta ) {
+  public function enable_svg_library_preview( $response, $attachment ) {
     if ( $response['type'] === 'image' && $response['subtype'] === 'svg+xml' && class_exists( 'SimpleXMLElement' ) ) {
       try {
         $path = get_attached_file( $attachment->ID );
