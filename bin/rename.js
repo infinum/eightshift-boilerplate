@@ -53,7 +53,7 @@ const findReplace = (findString, replaceString) => {
 
 
 // Main script
-consoleOutput(fgGreen, 'Welcome to Boilerplate readme script. The script will uniquely set up your theme.');
+consoleOutput(fgGreen, 'Welcome to Boilerplate rename script. The script will uniquely set up your theme.');
 consoleOutput(fgGreen, '* - required');
 consoleOutput(fgCyan, '');
 consoleOutput(fgCyan, '------------');
