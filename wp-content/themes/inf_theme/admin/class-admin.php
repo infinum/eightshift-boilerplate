@@ -38,7 +38,7 @@ class Admin extends Config {
   public function enqueue_scripts() {
 
     $main_script = General_Helper::get_manifest_assets_data( 'applicationAdmin.js' );
-    wp_register_script( static::THEME_NAME . '-scripts', $main_script, array(), static::THEME_VERSION ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter
+    wp_register_script( static::THEME_NAME . '-scripts', $main_script, array(), static::THEME_VERSION, true );
     wp_enqueue_script( static::THEME_NAME . '-scripts' );
 
   }

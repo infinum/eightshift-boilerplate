@@ -47,11 +47,11 @@ class Theme extends Config {
 
     // JS.
     $main_script_vandors = General_Helper::get_manifest_assets_data( 'vendors.js' );
-    wp_register_script( static::THEME_NAME . '-scripts-vendors', $main_script_vandors, array(), static::THEME_VERSION ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter
+    wp_register_script( static::THEME_NAME . '-scripts-vendors', $main_script_vandors, array(), static::THEME_VERSION, true );
     wp_enqueue_script( static::THEME_NAME . '-scripts-vendors' );
 
     $main_script = General_Helper::get_manifest_assets_data( 'application.js' );
-    wp_register_script( static::THEME_NAME . '-scripts', $main_script, array(), static::THEME_VERSION ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter
+    wp_register_script( static::THEME_NAME . '-scripts', $main_script, array( static::THEME_NAME . '-scripts-vendors' ), static::THEME_VERSION, true );
     wp_enqueue_script( static::THEME_NAME . '-scripts' );
 
     // Glbal variables for ajax and translations.
