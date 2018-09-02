@@ -90,8 +90,6 @@ First you need to install WordPress locally, using any of the local development 
     ```bash
     alias phpcs='vendor/bin/phpcs';
     alias phpcbf='vendor/bin/phpcbf';
-    alias wpcs='phpcs --standard=vendor/infinum/coding-standards-wp/Infinum';
-    alias wpcbf='phpcbf --standard=vendor/infinum/coding-standards-wp/Infinum';
     ```
 
 4. **Linting PHP** - Here are available scripts to run in your terminal to lint your PHP files:
