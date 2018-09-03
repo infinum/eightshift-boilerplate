@@ -3,10 +3,10 @@
  * Dequeuer is used for dequeuing plugin scripts & styles where they aren't needed
  *
  * @since 1.0.0
- * @package Infboilerplate\Admin
+ * @package Inf_Theme\Admin
  */
 
-namespace Infboilerplate\Admin;
+namespace Inf_Theme\Admin;
 
 /**
  * Class Dequeuer
