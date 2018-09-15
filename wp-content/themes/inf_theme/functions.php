@@ -49,11 +49,7 @@ require WP_CONTENT_DIR . '/../vendor/autoload.php';
  * then kicking off the theme from this point in the file does
  * not affect the page life cycle.
  *
+ * @since 3.0.0 Shorten the theme initialization.
  * @since 2.0.0
  */
-function init_theme() {
-  $plugin = new Includes\Main();
-  $plugin->run();
-}
-
-init_theme();
+( new Includes\Main() )->run();
