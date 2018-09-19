@@ -175,12 +175,12 @@ class Main {
    * @since 1.0.0
    */
   public function set_assets_manifest_data() {
-    $response = file_get_contents( get_template_directory() . '/skin/public/manifest.json' );
+    $response = file( get_template_directory() . '/skin/public/manifest.json' );
 
     if ( ! $response ) {
       return;
     }
 
-    define( 'INF_ASSETS_MANIFEST', $response );
+    define( 'INF_ASSETS_MANIFEST', implode( ' ', $response ) );
   }
 }
