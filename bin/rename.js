@@ -212,9 +212,9 @@ if (confirm === 'y') {
   findReplace(oldManifest.proxyUrl, themeProxyUrl);
 
   consoleOutput(fgGreen, '');
-  if (themePackageName !== 'inf_theme') {
-    if (fs.existsSync(`${rootDir}/wp-content/themes/inf_theme/`)) {
-      fs.renameSync(`${rootDir}/wp-content/themes/inf_theme/`, `${rootDir}/wp-content/themes/${themePackageName}/`, (err) => {
+  if (themePackageName !== oldManifest.package) {
+    if (fs.existsSync(`${rootDir}/wp-content/themes/${oldManifest.package}/`)) {
+      fs.renameSync(`${rootDir}/wp-content/themes/${oldManifest.package}/`, `${rootDir}/wp-content/themes/${themePackageName}/`, (err) => {
         if (err) {
           throw err;
         }
