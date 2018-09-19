@@ -162,34 +162,54 @@ consoleOutput(fgMagenta, `Dev url: ${themeProxyUrl}`);
 consoleOutput(fgMagenta, '');
 const confirm = prompt(' Confirm and rename? (y/n) ').trim();
 
+// Save to manifest
+let oldManifest;
+let newManifest;
+if (fs.existsSync(`${rootDir}/manifest.json`)) {
+  oldManifest = JSON.parse(fs.readFileSync(`${rootDir}/manifest.json`, 'utf8'));
+
+  newManifest = JSON.stringify({
+    name: themeName,
+    description: themeDescription,
+    author: themeAuthor,
+    package: themePackageName,
+    namespace: themeNamespace,
+    env: themeEnvConst,
+    assetManifest: themeAssetsManifestConst,
+    proxyUrl: themeProxyUrl,
+  }, null, 2);
+
+  fs.writeFile(`${rootDir}/manifest.json`, newManifest, 'utf8', () => {});
+}
+
 if (confirm === 'y') {
   consoleOutput(fgCyan, '');
   consoleOutput(fgCyan, '------------');
   consoleOutput(fgGreen, 'This might take some time...');
 
   consoleOutput(fgGreen, '');
-  findReplace('init_theme_real_name', themeName);
+  findReplace(oldManifest.name, themeName);
 
   consoleOutput(fgGreen, '');
-  findReplace('init_description', themeDescription);
+  findReplace(oldManifest.description, themeDescription);
 
   consoleOutput(fgGreen, '');
-  findReplace('init_author_name', themeAuthor);
+  findReplace(oldManifest.author, themeAuthor);
 
   consoleOutput(fgGreen, '');
-  findReplace('inf_theme', themePackageName);
+  findReplace(oldManifest.package, themePackageName);
 
   consoleOutput(fgGreen, '');
-  findReplace('Inf_Theme', themeNamespace);
+  findReplace(oldManifest.namespace, themeNamespace);
 
   consoleOutput(fgGreen, '');
-  findReplace('INF_ENV', themeEnvConst);
+  findReplace(oldManifest.env, themeEnvConst);
 
   consoleOutput(fgGreen, '');
-  findReplace('INF_ASSETS_MANIFEST', themeAssetsManifestConst);
+  findReplace(oldManifest.assetManifest, themeAssetsManifestConst);
 
   consoleOutput(fgGreen, '');
-  findReplace('dev.boilerplate.com', themeProxyUrl);
+  findReplace(oldManifest.proxyUrl, themeProxyUrl);
 
   consoleOutput(fgGreen, '');
   if (themePackageName !== 'inf_theme') {
