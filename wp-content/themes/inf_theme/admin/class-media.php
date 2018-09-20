@@ -73,7 +73,7 @@ class Media {
           $svg_content = file( $path );
           $svg_content = implode( ' ', $svg_content );
 
-          if ( ! static::is_valid_xml( $svg_content ) ) {
+          if ( ! $this->is_valid_xml( $svg_content ) ) {
             new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'inf_theme' ), $path ) );
             return false;
           }
@@ -120,7 +120,7 @@ class Media {
       $svg_content = implode( ' ', $svg_content );
 
       if ( file_exists( $path ) ) {
-        if ( ! static::is_valid_xml( $svg_content ) ) {
+        if ( ! $this->is_valid_xml( $svg_content ) ) {
           return array(
               'size' => $response,
               'name' => $response['name'],
