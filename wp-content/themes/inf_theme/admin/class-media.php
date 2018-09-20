@@ -2,14 +2,14 @@
 /**
  * The Media specific functionality.
  *
- * @since   3.0.0 Removing global variables.
- * @since   2.0.0
+ * @since   1.0.0
  * @package Inf_Theme\Admin
  */
 
 namespace Inf_Theme\Admin;
 
 use Inf_Theme\Helpers\General_Helper;
+use Inf_Theme\Helpers\Object_Helper;
 
 /**
  * Class Media
@@ -17,32 +17,15 @@ use Inf_Theme\Helpers\General_Helper;
 class Media {
 
   /**
-   * General_Helper class
-   *
-   * @var object General_Helper
-   *
-   * @since 2.1.1
+   * Use trait inside class.
    */
-  public $general_helper;
-
-  /**
-   * Initialize class
-   *
-   * @param Helpers\General_Helper $general_helper Helper class instance.
-   *
-   * @since 3.0.0 Removing theme name and version.
-   * @since 2.1.1 Adding General Helpers class.
-   * @since 2.0.0
-   */
-  public function __construct( General_Helper $general_helper ) {
-    $this->general_helper = $general_helper;
-  }
+  use Object_Helper;
 
   /**
    * Enable theme support
    * for full list check: https://developer.wordpress.org/reference/functions/add_theme_support/
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function add_theme_support() {
     add_theme_support( 'post-thumbnails' );
@@ -51,10 +34,9 @@ class Media {
   /**
    * Create new image sizes
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function add_custom_image_sizes() {
-    add_image_size( 'full_width', 9999, 9999, false );
     add_image_size( 'listing', 570, 320, true );
   }
 
@@ -64,7 +46,7 @@ class Media {
    * @param array $mimes Load all mimes types.
    * @return array       Return original and updated.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function enable_mime_types( $mimes ) {
     $mimes['svg'] = 'image/svg+xml';
@@ -77,22 +59,21 @@ class Media {
    *
    * @param array      $response   Array of prepared attachment data.
    * @param int|object $attachment Attachment ID or object.
-   * @param array      $meta       Array of attachment meta data.
    *
+   * @since 3.0.0 Replacing file_get_content with file.
    * @since 2.0.2 Added checks if xml file is valid.
-   * @since 2.0.0
+   * @since 1.0.0
    */
-  public function enable_svg_library_preview( $response, $attachment, $meta ) {
+  public function enable_svg_library_preview( $response, $attachment ) {
     if ( $response['type'] === 'image' && $response['subtype'] === 'svg+xml' && class_exists( 'SimpleXMLElement' ) ) {
       try {
         $path = get_attached_file( $attachment->ID );
 
         if ( file_exists( $path ) ) {
-          // phpcs:disable
-          $svg_content = file_get_contents( $path );
-          // phpcs:enable
+          $svg_content = file( $path );
+          $svg_content = implode( ' ', $svg_content );
 
-          if ( ! $this->general_helper->is_valid_xml( $svg_content ) ) {
+          if ( ! $this->is_valid_xml( $svg_content ) ) {
             new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'inf_theme' ), $path ) );
             return false;
           }
@@ -114,7 +95,7 @@ class Media {
               'orientation' => $height > $width ? 'portrait' : 'landscape',
           );
         }
-      } catch ( Exception $e ) {
+      } catch ( \Exception $e ) {
         new \WP_Error( sprintf( esc_html__( 'Error: %s', 'inf_theme' ), $e ) );
       }
     }
@@ -128,17 +109,18 @@ class Media {
    * @param array $response Response array.
    * @return array
    *
-   * @since 2.0.2
+   * @since 3.0.0 Replacing file_get_content with file.
+   * @since 1.0.0
    */
   public function check_svg_on_media_upload( $response ) {
     if ( $response['type'] === 'image/svg+xml' && class_exists( 'SimpleXMLElement' ) ) {
       $path = $response['tmp_name'];
-      // phpcs:disable
-      $svg_content = file_get_contents( $path );
-      // phpcs:enable
+
+      $svg_content = file( $path );
+      $svg_content = implode( ' ', $svg_content );
 
       if ( file_exists( $path ) ) {
-        if ( ! $this->general_helper->is_valid_xml( $svg_content ) ) {
+        if ( ! $this->is_valid_xml( $svg_content ) ) {
           return array(
               'size' => $response,
               'name' => $response['name'],
@@ -147,18 +129,5 @@ class Media {
       }
     }
     return $response;
-  }
-
-  /**
-   * Wrap utility class arround iframe to enable responsive
-   *
-   * @param  string $html   Iframe html to wrap around.
-   * @return string Wrapped Iframe with a utility class.
-   *
-   * @since 2.0.0
-   */
-  public function wrap_responsive_oembed_filter( $html ) {
-    $return = '<span class="iframe u__embed-video-responsive">' . $html . '</span>';
-    return $return;
   }
 }

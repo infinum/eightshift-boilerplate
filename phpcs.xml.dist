@@ -4,4 +4,12 @@
 
   <config name="installed_paths" value="vendor/wp-coding-standards/wpcs" />
   <rule ref="vendor/infinum/coding-standards-wp/Infinum/ruleset.xml" />
+
+  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.Found">
+    <severity>0</severity>
+  </rule>
+
+  <rule ref="WordPress.WP.EnqueuedResourceParameters.NotInFooter">
+    <severity>0</severity>
+  </rule>
 </ruleset>

@@ -39,25 +39,32 @@ const findReplace = (findString, replaceString) => {
 
   try {
     const changes = replace.sync(options);
+
+    consoleOutput(fgGreen, '');
+    consoleOutput(fgGreen, '------------');
     consoleOutput(fgGreen, `${findString}-> ${replaceString}. Modified files: ${changes.join(', ')}`);
   } catch (error) {
+
+    consoleOutput(fgMagenta, '');
+    consoleOutput(fgMagenta, '------------');
     console.error('Error occurred:', error);
   }
 };
 
 
 // Main script
-consoleOutput(fgGreen, 'The script will uniquely set up your theme.');
+consoleOutput(fgGreen, 'Welcome to Boilerplate rename script. The script will uniquely set up your theme.');
 consoleOutput(fgGreen, '* - required');
+consoleOutput(fgCyan, '');
+consoleOutput(fgCyan, '------------');
 
 // Theme name
-consoleOutput(fgBlue, 'Please enter your theme name (shown in WordPress admin)*:');
+consoleOutput(fgBlue, '1. Please enter your theme name (shown in WordPress admin)*:');
 
 let themeName;
 
 do {
-  consoleOutput(fgBlue, '');
-  themeName = prompt('Theme name: ').trim();
+  themeName = prompt(' Theme name: ').trim();
 
   if (themeName.length <= 0) {
     consoleOutput(fgRed, 'Theme name field is required and cannot be empty.');
@@ -66,13 +73,14 @@ do {
 while (themeName.length <= 0);
 
 // Package name
-consoleOutput(fgBlue, 'Please enter your package name (used in translations - ' +
-  'lowercase with no special characters, \'_\' or \'-\' allowed for spaces)*:');
+consoleOutput(fgCyan, '');
+consoleOutput(fgCyan, '------------');
+consoleOutput(fgBlue, '2. Please enter your package name (used in translations - ' +
+  'lowercase, no special characters, \'_\' or \'-\' allowed for spaces)*:');
 
 let themePackageName;
 do {
-  consoleOutput(fgBlue, '');
-  themePackageName = prompt('Package name: ').replace(/\W+/g, '-').toLowerCase().trim();
+  themePackageName = prompt(' Package name: ').replace(/\W+/g, '-').toLowerCase().trim();
 
   if (themePackageName.length <= 0) {
     consoleOutput(fgRed, 'Package name field is required and cannot be empty.');
@@ -81,12 +89,14 @@ do {
 while (themePackageName.length <= 0);
 
 // Theme prefix
-consoleOutput(fgBlue, 'Please enter a theme prefix (used when defining constants)*:');
+consoleOutput(fgCyan, '');
+consoleOutput(fgCyan, '------------');
+consoleOutput(fgBlue, '3. Please enter a theme prefix (used when defining constants - ' +
+'uppercase, no spaces, no special characters)*:');
 
 let themePrefix;
 do {
-  consoleOutput(fgBlue, '');
-  themePrefix = prompt('Prefix (e.g. INF, ABRR): ').toUpperCase().trim();
+  themePrefix = prompt(' Prefix (e.g. INF, ABRR): ').toUpperCase().trim();
 
   if (themePrefix.length <= 0) {
     consoleOutput(fgRed, 'Prefix is required and cannot be empty.');
@@ -94,26 +104,21 @@ do {
 }
 while (themePrefix.length <= 0);
 
-const themeVersionConst = `${themePrefix}_THEME_VERSION`;
-const themeNameConst = `${themePrefix}_THEME_NAME`;
-const themeImageUrlConst = `${themePrefix}_IMAGE_URL`;
-const themeAssetsConst = `${themePrefix}_ASSETS_PUBLIC_PATH`;
-const themeManifestConst = `${themePrefix}_ASSETS_MANIFEST`;
 const themeEnvConst = `${themePrefix}_ENV`;
-const themeAssetsPublicPathConst = `${themePrefix}_ASSETS_PUBLIC_PATH`;
 const themeAssetsManifestConst = `${themePrefix}_ASSETS_MANIFEST`;
 
 // Namespace
 const themeNamespace = capCase(themePackageName);
 
 // Dev url
-consoleOutput(fgBlue, 'Please enter a theme development url ' +
-  '(for local development with browsersync e.g. dev.wordpress.com)*:');
+consoleOutput(fgCyan, '');
+consoleOutput(fgCyan, '------------');
+consoleOutput(fgBlue, '4. Please enter a theme development url (for local development with browsersync -  ' +
+  'no protocol)*:');
 
 let themeProxyUrl;
 do {
-  consoleOutput(fgBlue, '');
-  themeProxyUrl = prompt('Dev url: ').trim();
+  themeProxyUrl = prompt(' Dev url (e.g. dev.wordpress.com): ').trim();
 
   if (themeProxyUrl.length <= 0) {
     consoleOutput(fgRed, 'Dev url is required and cannot be empty.');
@@ -122,21 +127,28 @@ do {
 while (themeProxyUrl.length <= 0);
 
 // Theme description
-consoleOutput(fgBlue, 'Please enter your theme description:');
+consoleOutput(fgCyan, '');
+consoleOutput(fgCyan, '------------');
+consoleOutput(fgBlue, '5. Please enter your theme description:');
 
-const themeDescription = prompt('Theme description: ').trim();
+const themeDescription = prompt(' Theme description: ').trim();
 
 // Author name
-consoleOutput(fgBlue, 'Please enter author name:');
+consoleOutput(fgCyan, '');
+consoleOutput(fgCyan, '------------');
+consoleOutput(fgBlue, '6. Please enter author name:');
 
-const themeAuthor = prompt('Author name: ').trim();
+const themeAuthor = prompt(' Author name: ').trim();
 
 // Author email
-consoleOutput(fgBlue, 'Please enter author email:');
+consoleOutput(fgCyan, '');
+consoleOutput(fgCyan, '------------');
+consoleOutput(fgBlue, '7. Please enter author email:');
 
-const themeAuthorEmail = prompt('Author email: ').trim();
+const themeAuthorEmail = prompt(' Author email: ').trim();
 
-consoleOutput(fgCyan, '----------------------------------------------------');
+consoleOutput(fgCyan, '');
+consoleOutput(fgCyan, '------------');
 consoleOutput(fgGreen, 'Your details will be:');
 consoleOutput(fgMagenta, `Theme name: ${themeName}`);
 consoleOutput(fgMagenta, `Theme description: ${themeDescription}`);
@@ -147,26 +159,39 @@ consoleOutput(fgMagenta, `Namespace: ${themeNamespace}`);
 consoleOutput(fgMagenta, `Theme prefix: ${themePrefix}`);
 consoleOutput(fgMagenta, `Dev url: ${themeProxyUrl}`);
 
-const confirm = prompt('Confirm? (y/n) ').trim();
+consoleOutput(fgMagenta, '');
+const confirm = prompt(' Confirm and rename? (y/n) ').trim();
 
 if (confirm === 'y') {
+  consoleOutput(fgCyan, '');
+  consoleOutput(fgCyan, '------------');
   consoleOutput(fgGreen, 'This might take some time...');
 
+  consoleOutput(fgGreen, '');
   findReplace('init_theme_real_name', themeName);
+
+  consoleOutput(fgGreen, '');
   findReplace('init_description', themeDescription);
+
+  consoleOutput(fgGreen, '');
   findReplace('init_author_name', themeAuthor);
+
+  consoleOutput(fgGreen, '');
   findReplace('inf_theme', themePackageName);
+
+  consoleOutput(fgGreen, '');
   findReplace('Inf_Theme', themeNamespace);
-  findReplace('INF_THEME_VERSION', themeVersionConst);
-  findReplace('INF_THEME_NAME', themeNameConst);
-  findReplace('INF_IMAGE_URL', themeImageUrlConst);
-  findReplace('INF_ASSETS_PUBLIC_PATH', themeAssetsConst);
-  findReplace('INF_ASSETS_MANIFEST', themeManifestConst);
+
+  consoleOutput(fgGreen, '');
   findReplace('INF_ENV', themeEnvConst);
-  findReplace('INF_ASSETS_PUBLIC_PATH', themeAssetsPublicPathConst);
+
+  consoleOutput(fgGreen, '');
   findReplace('INF_ASSETS_MANIFEST', themeAssetsManifestConst);
+
+  consoleOutput(fgGreen, '');
   findReplace('dev.boilerplate.com', themeProxyUrl);
 
+  consoleOutput(fgGreen, '');
   if (themePackageName !== 'inf_theme') {
     if (fs.existsSync(`${rootDir}/wp-content/themes/inf_theme/`)) {
       fs.renameSync(`${rootDir}/wp-content/themes/inf_theme/`, `${rootDir}/wp-content/themes/${themePackageName}/`, (err) => {
@@ -183,9 +208,12 @@ if (confirm === 'y') {
     }
   }
 
-  consoleOutput(fgGreen, 'Finished! Success! Now start _setup.sh script ' +
-    'to begin installations.');
+  consoleOutput(fgGreen, '');
+  consoleOutput(fgGreen, '------------');
+  consoleOutput(fgGreen, 'Finished! Success! Now start _setup.sh script to begin installations.');
 
 } else {
+  consoleOutput(fgRed, '');
+  consoleOutput(fgRed, '------------');
   consoleOutput(fgRed, 'Cancelled.');
 }

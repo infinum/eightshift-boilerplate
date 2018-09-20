@@ -17,9 +17,9 @@ const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.
 
 // Theme
 const themeName = 'inf_theme';
-const themePath = `/wp-content/themes/${themeName}/skin`;
-const themeFullPath = `${appPath}${themePath}`;
-const themePublicPath = `${themePath}/public/`;
+const themePath = `wp-content/themes/${themeName}/skin`;
+const themeFullPath = `${appPath}/${themePath}`;
+const themePublicPath = `/${themePath}/public/`;
 const themeEntry = `${themeFullPath}/assets/application.js`;
 const themeAdminEntry = `${themeFullPath}/assets/application-admin.js`;
 const themeOutput = `${themeFullPath}/public`;
@@ -31,6 +31,8 @@ const outputFile = '[name]-[hash].[ext]';
 const outputImages = `images/${outputFile}`;
 const outputFonts = `fonts/${outputFile}`;
 
+
+// All loaders to use on assets.
 const allModules = {
   rules: [
     {
@@ -64,17 +66,21 @@ const allModules = {
   ],
 };
 
+// All plugins to use.
 const allPlugins = [
+
+  // Convert JS to CSS.
   new MiniCssExtractPlugin({
     filename: outputCss,
   }),
 
+  // Gives you jQuery with in the webpack so no need for impoting it.
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
   }),
 
-  // Use BrowserSync For assets
+  // Use BrowserSync.
   new BrowserSyncPlugin({
     host: 'localhost',
     port: 3000,
@@ -86,15 +92,27 @@ const allPlugins = [
     ],
   }),
 
-  // Is using vendor files, but prefered to use npm
-  new CopyWebpackPlugin([{
-    from: `${appPath}/node_modules/jquery/dist/jquery.min.js`,
-    to: `${themeOutput}/scripts/vendors`,
-  }]),
+  // Copy from one target to new destination.
+  new CopyWebpackPlugin([
 
+    // Find jQuery in node_modules and copy it to public folder
+    {
+      from: `${appPath}/node_modules/jquery/dist/jquery.min.js`,
+      to: `${themeOutput}/scripts/vendors`,
+    },
+
+    // If using images in css to reference directly put them in this folder. That will override the cache-busting.
+    {
+      from: `${themePath}/assets/static`,
+      to: `${themeOutput}/static`,
+    },
+  ]),
+
+  // Create manifest.json file.
   new ManifestPlugin(),
 ];
 
+// General optimisations.
 const allOptimizations = {
   runtimeChunk: false,
   splitChunks: {
@@ -111,6 +129,8 @@ const allOptimizations = {
 // Use only for production build
 if (!DEV) {
   allOptimizations.minimizer = [
+
+    // Optimise for production.
     new UglifyJsPlugin({
       cache: true,
       parallel: true,
@@ -126,6 +146,8 @@ if (!DEV) {
       },
     }),
   ];
+
+  // Delete public folder.
   allPlugins.push(new CleanWebpackPlugin([themeOutput]));
 }
 
@@ -144,18 +166,17 @@ module.exports = [
       filename: outputJs,
     },
 
+    // Don't bundle jQuery but expect it from a different source.
     externals: {
       jquery: 'jQuery',
     },
 
     optimization: allOptimizations,
 
-    mode: 'development',
-
     module: allModules,
 
     plugins: allPlugins,
 
-    devtool: DEV ? '#inline-source-map' : '',
+    devtool: DEV ? '' : 'source-map',
   },
 ];

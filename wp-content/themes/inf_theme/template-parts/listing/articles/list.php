@@ -6,8 +6,8 @@
  */
 
 use Inf_Theme\Theme\Utils\Images;
-$images = new Images();
-$image  = $images->get_post_image( 'listing' );
+
+$image = Images::get_post_image( 'full_width' );
 ?>
 <article class="article-list">
   <div class="article-list__container">

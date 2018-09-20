@@ -1,6 +1,7 @@
 /* stylelint-disable */
 // Vendors - node modules
-@import '~normalize.css';
+@import 'normalize-scss';
+@include normalize();
 @import '~media-blender';
 
 // Utils
@@ -16,7 +17,7 @@
 // Config
 @import 'core';
 
-//Icons
+// Icons
 @import 'components/icons/icons';
 
 // Typography
@@ -27,30 +28,31 @@
 // Buttons
 @import 'components/buttons/buttons';
 
-//Forms
+// Forms
 @import 'components/forms/form';
 @import 'components/forms/checkbox';
 @import 'components/forms/radio';
+@import 'components/forms/label';
 @import 'components/forms/input';
 
 // Header
 @import 'components/header/wp-admin-bar';
 @import 'components/header/header';
 
-//Article
+// Article
 // @import 'components/article/article-list';
 // @import 'components/article/article-grid';
 // @import 'components/article/article-empty';
 
-//Listing
-// @import 'components/listing/listing-list';
-// @import 'components/listing/listing-grid';
+// Layout
+// @import 'components/layout/layout-list';
+// @import 'components/layout/layout-grid';
 
-//Sections
+// Sections
 // @import 'components/sections/';
 
 // Template parts
-@import 'components/parts/cookies-notification';
+// @import 'components/parts';
 
 // Single
 @import 'components/single';

@@ -2,7 +2,7 @@
 /**
  * The abstract class that will be used to extend for all config files.
  *
- * @since   3.0.0
+ * @since   1.0.0
  * @package Inf_Theme\Includes
  */
 
@@ -20,7 +20,7 @@ abstract class Config {
    *
    * @var string
    *
-   * @since 3.0.0
+   * @since 1.0.0
    */
   const THEME_NAME = 'inf_theme';
 
@@ -29,7 +29,7 @@ abstract class Config {
    *
    * @var string
    *
-   * @since 3.0.0
+   * @since 1.0.0
    */
   const THEME_VERSION = '1.0.0';
 

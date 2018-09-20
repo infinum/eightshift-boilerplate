@@ -6,8 +6,8 @@
  */
 
 use Inf_Theme\Theme\Utils\Images;
-$images = new Images();
-$image  = $images->get_post_image( 'full_width' );
+
+$image = Images::get_post_image( 'full_width' );
 ?>
 
 <!-- Single Content Section -->

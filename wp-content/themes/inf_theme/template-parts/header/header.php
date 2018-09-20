@@ -9,11 +9,10 @@ use Inf_Theme\Admin\Menu\Menu;
 use Inf_Theme\Helpers\General_Helper;
 
 $menu             = new Menu();
-$general_helper   = new General_Helper();
 $blog_name        = get_bloginfo( 'name' );
 $blog_description = get_bloginfo( 'description' );
 $header_logo_info = $blog_name . ' - ' . $blog_description;
-$logo_img         = $general_helper->get_manifest_assets_data( 'images/logo.svg' );
+$logo_img         = General_Helper::get_manifest_assets_data( 'images/logo.svg' );
 
 ?>
 <div class="header">

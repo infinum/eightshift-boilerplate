@@ -1,8 +1,11 @@
-$checkbox-trigger-icon-color: $base-primary-color;
-$checkbox-trigger-bg-color: $base-white-color;
-$checkbox-trigger-border-color: $base-battleship-color;
+$checkbox:(
+  'trigger-icon-color': $base-primary-color,
+  'trigger-bg-color': $base-white-color,
+  'trigger-border-color': $base-battleship-color,
+  'trigger-disabled-bg-color': $base-silver-color,
+);
 
-$checkbox-disabled-trigger-bg-color: $base-silver-color;
+
 
 .checkbox {
   @include checkbox-radio-size(24px, 12px);
@@ -13,8 +16,8 @@ $checkbox-disabled-trigger-bg-color: $base-silver-color;
 
   // Icon
   &__icon {
-    background-color: $checkbox-trigger-bg-color;
-    border: 1px solid $checkbox-trigger-border-color;
+    background-color: map-get($checkbox, 'trigger-bg-color');
+    border: 1px solid map-get($checkbox, 'trigger-border-color');
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -27,7 +30,7 @@ $checkbox-disabled-trigger-bg-color: $base-silver-color;
 
     &::before {
       content: '';
-      background-color: $checkbox-trigger-icon-color;
+      background-color: map-get($checkbox, 'trigger-icon-color');
       transform: translate(-50%, -50%);
       position: absolute;
       left: 50%;
@@ -54,7 +57,7 @@ $checkbox-disabled-trigger-bg-color: $base-silver-color;
   //disabled state
   &--disabled {
     #{$this}__icon {
-      background-color: $checkbox-disabled-trigger-bg-color;
+      background-color: map-get($checkbox, 'trigger-disabled-bg-color');
     }
 
     #{$this}--checked #{$this}__icon::before {

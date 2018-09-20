@@ -2,8 +2,7 @@
 /**
  * The Utils-Excerpt specific functionality.
  *
- * @since   3.0.0 Removing constructor and global variables.
- * @since   2.0.0
+ * @since   1.0.0
  * @package Inf_Theme\Theme\Utils
  */
 
@@ -21,9 +20,9 @@ class Excerpt {
    * @param integer $limit  Number of characters to trim.
    * @return string         Trimmed excerpt.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
-  public function get_excerpt( $source = null, $limit = null ) {
+  public static function get_excerpt( $source = null, $limit = null ) {
 
     if ( empty( $source ) ) {
       return false;
@@ -38,7 +37,7 @@ class Excerpt {
     $output = strip_shortcodes( $output );
 
     // Remove html tags.
-    $output = strip_tags( $output );
+    $output = wp_strip_all_tags( $output );
 
     // Reduce string to limit.
     $output = substr( $output, 0, $limit );

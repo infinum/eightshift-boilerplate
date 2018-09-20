@@ -2,8 +2,7 @@
 /**
  * The Widgets specific functionality.
  *
- * @since   3.0.0 Removing constructor and global variables.
- * @since   2.0.0
+ * @since   1.0.0
  * @package Inf_Theme\Admin
  */
 
@@ -17,7 +16,7 @@ class Widgets {
   /**
    * Set up widget areas
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function register_widget_position() {
     register_sidebar(

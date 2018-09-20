@@ -3,8 +3,7 @@
  * The Admin specific functionality.
  * General stuff that is not specific to any class.
  *
- * @since   3.0.0 Removing global variables.
- * @since   2.0.0
+ * @since   1.0.0
  * @package Inf_Theme\Admin
  */
 
@@ -19,35 +18,14 @@ use Inf_Theme\Includes\Config;
 class Admin extends Config {
 
   /**
-   * General Helper class
-   *
-   * @var object General_Helper
-   *
-   * @since 2.0.1
-   */
-  public $general_helper;
-
-  /**
-   * Initialize class
-   *
-   * @param Helpers\General_Helper $general_helper Helper class instance.
-   *
-   * @since 3.0.0 Removing theme name and version.
-   * @since 2.0.0
-   */
-  public function __construct( General_Helper $general_helper ) {
-    $this->general_helper = $general_helper;
-  }
-
-  /**
    * Register the Stylesheets for the admin area.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function enqueue_styles() {
 
-    $main_style = $this->general_helper->get_manifest_assets_data( 'applicationAdmin.css' );
-    wp_register_style( static::THEME_NAME . '-style', $main_style );
+    $main_style = General_Helper::get_manifest_assets_data( 'applicationAdmin.css' );
+    wp_register_style( static::THEME_NAME . '-style', $main_style, array(), static::THEME_VERSION );
     wp_enqueue_style( static::THEME_NAME . '-style' );
 
   }
@@ -55,12 +33,12 @@ class Admin extends Config {
   /**
    * Register the JavaScript for the admin area.
    *
-   * @since 2.0.0
+   * @since 1.0.0
    */
   public function enqueue_scripts() {
 
-    $main_script = $this->general_helper->get_manifest_assets_data( 'applicationAdmin.js' );
-    wp_register_script( static::THEME_NAME . '-scripts', $main_script );
+    $main_script = General_Helper::get_manifest_assets_data( 'applicationAdmin.js' );
+    wp_register_script( static::THEME_NAME . '-scripts', $main_script, array(), static::THEME_VERSION, true );
     wp_enqueue_script( static::THEME_NAME . '-scripts' );
 
   }
@@ -71,7 +49,7 @@ class Admin extends Config {
    * @param string $color_scheme Color scheme string.
    * @return string              Modified color scheme.
    *
-   * @since 2.1.0
+   * @since 1.0.0
    */
   public function set_admin_color_based_on_env( $color_scheme ) {
     if ( ! defined( 'INF_ENV' ) ) {

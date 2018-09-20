@@ -18,26 +18,9 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Global image path
- *
- * @since 2.0.0
- * @package Inf_Theme
- */
-define( 'INF_IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' );
-
-/**
- * Global assets public path
- *
- * @since 3.0.0
- * @package Inf_Theme
- */
-define( 'INF_ASSETS_PUBLIC_PATH', get_template_directory() . '/skin/public/' );
-
-/**
  * Include the autoloader so we can dynamically include the rest of the classes.
  *
- * @since 2.1.0 Using Composer based autloader.
- * @since 2.0.0
+ * @since 1.0.0
  * @package Inf_Theme
  */
 require WP_CONTENT_DIR . '/../vendor/autoload.php';
