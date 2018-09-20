@@ -8,4 +8,8 @@
   <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.Found">
     <severity>0</severity>
   </rule>
+
+  <rule ref="WordPress.WP.EnqueuedResourceParameters.NotInFooter">
+    <severity>0</severity>
+  </rule>
 </ruleset>

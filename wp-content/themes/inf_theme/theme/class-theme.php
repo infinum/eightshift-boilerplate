@@ -42,7 +42,7 @@ class Theme extends Config {
     // jQuery.
     wp_deregister_script( 'jquery-migrate' );
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', get_template_directory_uri() . '/skin/public/scripts/vendors/jquery.min.js', array(), '3.3.1' ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter
+    wp_register_script( 'jquery', get_template_directory_uri() . '/skin/public/scripts/vendors/jquery.min.js', array(), '3.3.1' );
     wp_enqueue_script( 'jquery' );
 
     // JS.
@@ -56,7 +56,9 @@ class Theme extends Config {
 
     // Glbal variables for ajax and translations.
     wp_localize_script(
-      static::THEME_NAME . '-scripts', 'themeLocalization', array(
+      static::THEME_NAME . '-scripts',
+      'themeLocalization',
+      array(
           'ajaxurl' => admin_url( 'admin-ajax.php' ),
       )
     );
