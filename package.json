@@ -10,11 +10,11 @@
     "precommitCss": "npm run __stylelintTheme",
     "precommitJs": "npm run __eslintTheme",
     "precommit": "npm run precommitJs && npm run precommitCss && bash bin/precommit.sh",
-    "rename": "./bin/rename.js",
+    "rename": "bin/rename.js",
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "NODE_ENV=production webpack --progress --mode production",
     "setup": "npm install && npm run rename && npx composer install && wp core download --skip-content",
-    "setup-wp": "./bin/setup-wp.js"
+    "setup-wp": "bin/setup-wp.js"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
