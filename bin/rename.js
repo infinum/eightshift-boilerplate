@@ -3,7 +3,6 @@
 const fs = require('fs');
 const path = require('path');
 const prompt = require('prompt-sync')();
-const replace = require('replace-in-file');
 
 const rootDir = path.join(__dirname, '..');
 
@@ -20,37 +19,6 @@ const consoleOutput = (color, text) => {
 };
 
 const capCase = (string) => string.replace(/\W+/g, '_').split('_').map((item) => item[0].toUpperCase() + item.slice(1)).join('_');
-
-const findReplace = (findString, replaceString) => {
-  const regex = new RegExp(findString, 'g');
-  const options = {
-    files: `${rootDir}/**/*`,
-    from: regex,
-    to: replaceString,
-    ignore: [
-      `${rootDir}/node_modules/**/*`,
-      `${rootDir}/.git/**/*`,
-      `${rootDir}/.github/**/*`,
-      `${rootDir}/vendor/**/*`,
-      `${rootDir}/_rename.sh`,
-      `${rootDir}/bin/rename.js`,
-    ],
-  };
-
-  try {
-    const changes = replace.sync(options);
-
-    consoleOutput(fgGreen, '');
-    consoleOutput(fgGreen, '------------');
-    consoleOutput(fgGreen, `${findString}-> ${replaceString}. Modified files: ${changes.join(', ')}`);
-  } catch (error) {
-
-    consoleOutput(fgMagenta, '');
-    consoleOutput(fgMagenta, '------------');
-    console.error('Error occurred:', error);
-  }
-};
-
 
 // Main script
 consoleOutput(fgGreen, 'Welcome to Boilerplate rename script. The script will uniquely set up your theme.');
@@ -165,21 +133,20 @@ const confirm = prompt(' Confirm and rename? (y/n) ').trim();
 // Save to manifest
 let oldManifest;
 let newManifest;
-if (fs.existsSync(`${rootDir}/manifest.json`)) {
-  oldManifest = JSON.parse(fs.readFileSync(`${rootDir}/manifest.json`, 'utf8'));
+if (fs.existsSync(files.manifest)) {
+  oldManifest = JSON.parse(fs.readFileSync(files.manifest, 'utf8'));
 
   newManifest = JSON.stringify({
     name: themeName,
     description: themeDescription,
     author: themeAuthor,
+    email: themeAuthorEmail,
     package: themePackageName,
     namespace: themeNamespace,
     env: themeEnvConst,
     assetManifest: themeAssetsManifestConst,
     proxyUrl: themeProxyUrl,
   }, null, 2);
-
-  fs.writeFile(`${rootDir}/manifest.json`, newManifest, 'utf8', () => {});
 }
 
 if (confirm === 'y') {
@@ -212,13 +179,14 @@ if (confirm === 'y') {
   findReplace(oldManifest.proxyUrl, themeProxyUrl);
 
   consoleOutput(fgGreen, '');
+  
   if (themePackageName !== oldManifest.package) {
-    if (fs.existsSync(`${rootDir}/wp-content/themes/${oldManifest.package}/`)) {
-      fs.renameSync(`${rootDir}/wp-content/themes/${oldManifest.package}/`, `${rootDir}/wp-content/themes/${themePackageName}/`, (err) => {
+    if (fs.existsSync(path.join(`${files.themeFolder}/${oldManifest.package}/`))) {
+      fs.renameSync(path.join(`${files.themeFolder}/${oldManifest.package}/`), path.join(`${files.themeFolder}/${themePackageName}/`), (err) => {
         if (err) {
           throw err;
         }
-        fs.statSync(`${rootDir}/wp-content/${themePackageName}/`, (error, stats) => {
+        fs.statSync(`${files.wpContentFolder}/${themePackageName}/`, (error, stats) => {
           if (error) {
             throw error;
           }
@@ -227,6 +195,9 @@ if (confirm === 'y') {
       });
     }
   }
+
+  // Write the new manifest only after we've replaced everything.
+  fs.writeFile(files.manifest, newManifest, 'utf8', () => {});
 
   consoleOutput(fgGreen, '');
   consoleOutput(fgGreen, '------------');
