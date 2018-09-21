@@ -36,7 +36,7 @@ First you need to install WordPress locally, using any of the local development 
 
 After running the theme setup scripts, you have a few options for setting up `wp-config.php` and connecting your installation to the database, depending on your local development setup.
 
-1. Manual install
+1. Manual
 
     Visit the url of your website and you should see the WordPress's installation wizard. Follow the steps and you will have a working default WP install.
 
@@ -44,9 +44,9 @@ After running the theme setup scripts, you have a few options for setting up `wp
 
     Once the theme is activated, make sure to run `npm start` in your `public_html` folder to initially build the assets. 
 
-2. WP-CLI install
+2. Automatic
 
-    Depending on your local dev environment setup, this might work out of the box or it might require some tweaking. (For example if you're using `MAMP`)
+    Depending on your local dev environment setup, this might work out of the box or it might require some tweaking.
 
     ```
     npm run setup-wp
@@ -54,13 +54,13 @@ After running the theme setup scripts, you have a few options for setting up `wp
 
 2. [Varying Vagrant Vagrants](https://varyingvagrantvagrants.org)
 
-  SSH into vagrant, go to the project's `vm_dir` and run the `npm run setup-wp` script.
+    SSH into vagrant, go to the project's `vm_dir` and run the `npm run setup-wp` script.
 
-    ```
-    vagrant ssh
-    cd /srv/YOURPROJECT/public_html
-    npm run setup-wp
-    ```
+      ```
+      vagrant ssh
+      cd /srv/YOUR_PROJECT_PATH/public_html
+      npm run setup-wp
+      ```
 
 Once you're done with the above setup (no matter which method you used), run `npm start` in order to initially build assets.
 
