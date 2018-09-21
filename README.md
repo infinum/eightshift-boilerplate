@@ -12,6 +12,8 @@ This repository contains all the tools you need to start building a modern WordP
 
 First you need to install WordPress locally, using any of the local development environment you prefer. You can use XAMPP, MAMP, WAMP, VVV, Docker or Laravel Valet. You'll also need to have [Node.js](https://nodejs.org/en/), [Composer](https://getcomposer.org/) and [WP-CLI](https://wp-cli.org/) installed.
 
+**Note regarding `Windows` - If you're installing this on `Windows` and you're using `XAMPP`, use `XAMPP` shell (Control Panel -> Shell) rather than `cmd` **
+
 ## Initial Setup
 1. To start, fork this repository to your own, and then clone it. If you are using VVV clone it in the `public_html` folder:
 
@@ -66,18 +68,18 @@ Once you're done with the above setup (no matter which method you used), run `np
 
 ## Development Start
 
-1. Builds assets in watch/development mode using Webpack (you need to do this after setting the :
+1. Builds assets in watch/development mode using Webpack (you need to do this after installing WordPress) :
 
     ```bash
     npm start
     ```
 
-2. Update your wp-config.php file with project specific configuration that you can tailor according to your project needs. Compare your `wp-config.php` file with this example and update accordingly:
+2. Update your `wp-config.php` file with project specific configuration that you can tailor according to your project needs. Compare your `wp-config.php` file with this example and update accordingly:
 
     ```php
     // Must be set.
     // Possible options are develop, staging and production.
-    define( 'INF_ENV', 'develop' );
+    define( 'SF_ENV', 'develop' );
 
     /* That's all, stop editing! Happy blogging. */
 
@@ -94,7 +96,7 @@ Once you're done with the above setup (no matter which method you used), run `np
 
     * Remove `define( 'WP_DEBUG', false );`. This is defined in the `wp-config-project.php` file.
 
-    * Set `INF_ENV` variable to correspond with your environment. That will add global setup for logging errors, disabling auto-update, some optimizations and it will change the color of admin so it is easier for you to know on what environment you are editing.
+    * Set `SF_ENV` variable to correspond with your environment. That will add global setup for logging errors, disabling auto-update, some optimizations and it will change the color of admin so it is easier for you to know on what environment you are editing.
 
 
 3. You have BrowserSync to sync assets and enable easy cross-device testing. Once BrowserSync is active you will get url in the terminal. Usualy it is `localhost:3000`.
@@ -121,13 +123,13 @@ Once you're done with the above setup (no matter which method you used), run `np
     Checking theme for possible violations:
 
     ```bash
-    wpcs wp-content/themes/inf_theme
+    wpcs wp-content/themes/f
     ```
 
     Autofix theme for minor violations:
 
     ```bash
-    wpcbf wp-content/themes/inf_theme
+    wpcbf wp-content/themes/f
     ```
 
 ## Goint to Production

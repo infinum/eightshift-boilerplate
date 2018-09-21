@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const replace = require('replace-in-file');
+const output = require('./output');
 
 // Helpers
 const fgRed = '\x1b[31m';
@@ -19,7 +20,6 @@ exports.rootDir = path.join(__dirname, '..');
 exports.manifest = path.join(`${exports.rootDir}/theme-manifest.json`);
 exports.wpContentFolder = path.join(`${exports.rootDir}/wp-content`);
 exports.themeFolder = path.join(`${exports.wpContentFolder}/themes`);
-
 
 exports.readManifest = (key) => {
   if (!fs.existsSync(exports.manifest)) {
@@ -55,14 +55,8 @@ exports.findReplace = (findString, replaceString) => {
 
   try {
     const changes = replace.sync(options);
-
-    consoleOutput(fgGreen, '');
-    consoleOutput(fgGreen, '------------');
     consoleOutput(fgGreen, `${findString}-> ${replaceString}. Modified files: ${changes.length}`);
   } catch (error) {
-
-    consoleOutput(fgMagenta, '');
-    consoleOutput(fgMagenta, '------------');
     console.error('Error occurred:', error);
   }
 };

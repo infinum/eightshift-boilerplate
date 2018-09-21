@@ -4,6 +4,9 @@ const fs = require('fs');
 const path = require('path');
 const prompt = require('prompt-sync')();
 const files = require('./files');
+const {execSync} = require('child_process');
+const output = require('./output');
+const emoji = require('node-emoji')
 
 const rootDir = path.join(__dirname, '..');
 
@@ -22,172 +25,120 @@ const consoleOutput = (color, text) => {
 const capCase = (string) => string.replace(/\W+/g, '_').split('_').map((item) => item[0].toUpperCase() + item.slice(1)).join('_');
 
 // Main script
-consoleOutput(fgGreen, 'Welcome to Boilerplate rename script. The script will uniquely set up your theme.');
-consoleOutput(fgGreen, '* - required');
-consoleOutput(fgCyan, '');
-consoleOutput(fgCyan, '------------');
+output.writeIntro();
 
-// Theme name
-consoleOutput(fgBlue, '1. Please enter your theme name (shown in WordPress admin)*:');
-
-let themeName;
-
+let confirmed = 'n';
+let newManifest = {};
 do {
-  themeName = prompt(' Theme name: ').trim();
+  newManifest.themeName = output.prompt({
+    label: '1. Please enter your theme name (shown in WordPress admin)*:',
+    prompt: `  ${emoji.get('green_book')} Theme name: `,
+    error: 'Theme name field is required and cannot be empty.',
+    required: true,
+  }).trim();
 
-  if (themeName.length <= 0) {
-    consoleOutput(fgRed, 'Theme name field is required and cannot be empty.');
-  }
-}
-while (themeName.length <= 0);
+  newManifest.themePackageName = output.prompt({
+    label: '2. Please enter your package name (used in translations - ' +
+    'lowercase, no special characters, \'_\' or \'-\' allowed for spaces)*:',
+    prompt: `  ${emoji.get('package')} Package name: `,
+    error: 'Package name field is required and cannot be empty.',
+    required: true,
+  }).replace(/\W+/g, '-').toLowerCase().trim();
 
-// Package name
-consoleOutput(fgCyan, '');
-consoleOutput(fgCyan, '------------');
-consoleOutput(fgBlue, '2. Please enter your package name (used in translations - ' +
-  'lowercase, no special characters, \'_\' or \'-\' allowed for spaces)*:');
+  newManifest.themePrefix = output.prompt({
+    label: '3. Please enter a theme prefix (used when defining constants - ' +
+    'uppercase, no spaces, no special characters)*:',
+    prompt: `  ${emoji.get('bullettrain_front')} Prefix (e.g. INF, ABRR): `,
+    error: 'Prefix is required and cannot be empty.',
+    required: true,
+  }).toUpperCase().trim();
 
-let themePackageName;
-do {
-  themePackageName = prompt(' Package name: ').replace(/\W+/g, '-').toLowerCase().trim();
+  newManifest.themeEnvConst = `${newManifest.themePrefix}_ENV`;
+  newManifest.themeAssetsManifestConst = `${newManifest.themePrefix}_ASSETS_MANIFEST`;
 
-  if (themePackageName.length <= 0) {
-    consoleOutput(fgRed, 'Package name field is required and cannot be empty.');
-  }
-}
-while (themePackageName.length <= 0);
+  // Namespace
+  newManifest.themeNamespace = capCase(newManifest.themePackageName);
 
-// Theme prefix
-consoleOutput(fgCyan, '');
-consoleOutput(fgCyan, '------------');
-consoleOutput(fgBlue, '3. Please enter a theme prefix (used when defining constants - ' +
-'uppercase, no spaces, no special characters)*:');
+  // Dev url
+  newManifest.themeProxyUrl = output.prompt({
+    label: '4. Please enter a theme development url (for local development with browsersync -  ' +
+    'no protocol)*:',
+    prompt: `  ${emoji.get('earth_africa')} Dev url (e.g. dev.wordpress.com): `,
+    error: 'Dev url is required and cannot be empty.',
+    required: true,
+  }).trim();
 
-let themePrefix;
-do {
-  themePrefix = prompt(' Prefix (e.g. INF, ABRR): ').toUpperCase().trim();
+  // Theme description
+  newManifest.themeDescription = output.prompt({
+    label: '5. Please enter your theme description:',
+    prompt: `  ${emoji.get('spiral_note_pad')}  Theme description: `,
+    required: false,
+  }).trim();
 
-  if (themePrefix.length <= 0) {
-    consoleOutput(fgRed, 'Prefix is required and cannot be empty.');
-  }
-}
-while (themePrefix.length <= 0);
+  // Author name
+  newManifest.themeAuthor = output.prompt({
+    label: '6. Please enter author name:',
+    prompt: `  ${emoji.get('crab')} Author name: `,
+    required: false,
+  }).trim();
 
-const themeEnvConst = `${themePrefix}_ENV`;
-const themeAssetsManifestConst = `${themePrefix}_ASSETS_MANIFEST`;
+  // Author email
+  newManifest.themeAuthorEmail = output.prompt({
+    label: '7. Please enter author email:',
+    prompt: `  ${emoji.get('email')}  Author email: `,
+    required: false,
+  }).trim();
 
-// Namespace
-const themeNamespace = capCase(themePackageName);
+  confirmed = output.summary([
+    {label: `${emoji.get('green_book')} Theme name`, variable: newManifest.themeName},
+    {label: `${emoji.get('spiral_note_pad')}  Theme description`, variable: newManifest.themeDescription},
+    {label: `${emoji.get('crab')} Author`,  variable: `${newManifest.themeAuthor} <${newManifest.themeAuthorEmail}>`},
+    {label: `${emoji.get('package')} Package`,  variable: newManifest.themePackageName},
+    {label: `${emoji.get('sun_behind_cloud')}  Namespace`,  variable: newManifest.themeNamespace},
+    {label: `${emoji.get('bullettrain_front')} Theme prefix`,  variable: newManifest.themePrefix},
+    {label: `${emoji.get('earth_africa')} Dev url`, variable: newManifest.themeProxyUrl}
+  ]);
+} while (confirmed !== 'y')
 
-// Dev url
-consoleOutput(fgCyan, '');
-consoleOutput(fgCyan, '------------');
-consoleOutput(fgBlue, '4. Please enter a theme development url (for local development with browsersync -  ' +
-  'no protocol)*:');
-
-let themeProxyUrl;
-do {
-  themeProxyUrl = prompt(' Dev url (e.g. dev.wordpress.com): ').trim();
-
-  if (themeProxyUrl.length <= 0) {
-    consoleOutput(fgRed, 'Dev url is required and cannot be empty.');
-  }
-}
-while (themeProxyUrl.length <= 0);
-
-// Theme description
-consoleOutput(fgCyan, '');
-consoleOutput(fgCyan, '------------');
-consoleOutput(fgBlue, '5. Please enter your theme description:');
-
-const themeDescription = prompt(' Theme description: ').trim();
-
-// Author name
-consoleOutput(fgCyan, '');
-consoleOutput(fgCyan, '------------');
-consoleOutput(fgBlue, '6. Please enter author name:');
-
-const themeAuthor = prompt(' Author name: ').trim();
-
-// Author email
-consoleOutput(fgCyan, '');
-consoleOutput(fgCyan, '------------');
-consoleOutput(fgBlue, '7. Please enter author email:');
-
-const themeAuthorEmail = prompt(' Author email: ').trim();
-
-consoleOutput(fgCyan, '');
-consoleOutput(fgCyan, '------------');
-consoleOutput(fgGreen, 'Your details will be:');
-consoleOutput(fgMagenta, `Theme name: ${themeName}`);
-consoleOutput(fgMagenta, `Theme description: ${themeDescription}`);
-consoleOutput(fgMagenta, `Author: ${themeAuthor} <${themeAuthorEmail}>`);
-consoleOutput(fgMagenta, `Text domain: ${themePackageName}`);
-consoleOutput(fgMagenta, `Package: ${themePackageName}`);
-consoleOutput(fgMagenta, `Namespace: ${themeNamespace}`);
-consoleOutput(fgMagenta, `Theme prefix: ${themePrefix}`);
-consoleOutput(fgMagenta, `Dev url: ${themeProxyUrl}`);
-
-consoleOutput(fgMagenta, '');
-const confirm = prompt(' Confirm and rename? (y/n) ').trim();
-
-// Save to manifest
 let oldManifest;
-let newManifest;
 if (fs.existsSync(files.manifest)) {
   oldManifest = JSON.parse(fs.readFileSync(files.manifest, 'utf8'));
-
-  newManifest = JSON.stringify({
-    name: themeName,
-    description: themeDescription,
-    author: themeAuthor,
-    email: themeAuthorEmail,
-    package: themePackageName,
-    namespace: themeNamespace,
-    env: themeEnvConst,
-    assetManifest: themeAssetsManifestConst,
-    proxyUrl: themeProxyUrl,
-  }, null, 2);
 }
 
-if (confirm === 'y') {
-  consoleOutput(fgCyan, '');
-  consoleOutput(fgCyan, '------------');
-  consoleOutput(fgGreen, 'This might take some time...');
+output.normal('');
+output.normal('1. Replacing files, this might take some time...')
+files.findReplace(oldManifest.name, newManifest.themeName);
 
   consoleOutput(fgGreen, '');
-  files.findReplace(oldManifest.name, themeName);
+  files.findReplace(oldManifest.description, newManifest.themeDescription);
 
   consoleOutput(fgGreen, '');
-  files.findReplace(oldManifest.description, themeDescription);
+  files.findReplace(oldManifest.author, newManifest.themeAuthor);
 
   consoleOutput(fgGreen, '');
-  files.findReplace(oldManifest.author, themeAuthor);
+  files.findReplace(oldManifest.package, newManifest.themePackageName);
 
   consoleOutput(fgGreen, '');
-  files.findReplace(oldManifest.package, themePackageName);
+  files.findReplace(oldManifest.namespace, newManifest.themeNamespace);
 
   consoleOutput(fgGreen, '');
-  files.findReplace(oldManifest.namespace, themeNamespace);
+  files.findReplace(oldManifest.env, newManifest.themeEnvConst);
 
   consoleOutput(fgGreen, '');
-  files.findReplace(oldManifest.env, themeEnvConst);
+  files.findReplace(oldManifest.assetManifest, newManifest.themeAssetsManifestConst);
 
   consoleOutput(fgGreen, '');
-  files.findReplace(oldManifest.assetManifest, themeAssetsManifestConst);
-
-  consoleOutput(fgGreen, '');
-  files.findReplace(oldManifest.proxyUrl, themeProxyUrl);
+  files.findReplace(oldManifest.proxyUrl, newManifest.themeProxyUrl);
 
   consoleOutput(fgGreen, '');
   
-  if (themePackageName !== oldManifest.package) {
+  if (newManifest.themePackageName !== oldManifest.package) {
     if (fs.existsSync(path.join(`${files.themeFolder}/${oldManifest.package}/`))) {
-      fs.renameSync(path.join(`${files.themeFolder}/${oldManifest.package}/`), path.join(`${files.themeFolder}/${themePackageName}/`), (err) => {
+      fs.renameSync(path.join(`${files.themeFolder}/${oldManifest.package}/`), path.join(`${files.themeFolder}/${newManifest.themePackageName}/`), (err) => {
         if (err) {
           throw err;
         }
-        fs.statSync(`${files.wpContentFolder}/${themePackageName}/`, (error, stats) => {
+        fs.statSync(`${files.wpContentFolder}/${newManifest.themePackageName}/`, (error, stats) => {
           if (error) {
             throw error;
           }
@@ -202,10 +153,4 @@ if (confirm === 'y') {
 
   consoleOutput(fgGreen, '');
   consoleOutput(fgGreen, '------------');
-  consoleOutput(fgGreen, 'Finished! Success! Now start _setup.sh script to begin installations.');
-
-} else {
-  consoleOutput(fgRed, '');
-  consoleOutput(fgRed, '------------');
-  consoleOutput(fgRed, 'Cancelled.');
-}
+  consoleOutput(fgGreen, 'Finished renaming! Success!');
