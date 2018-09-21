@@ -156,28 +156,28 @@ if (confirm === 'y') {
   consoleOutput(fgGreen, 'This might take some time...');
 
   consoleOutput(fgGreen, '');
-  findReplace(oldManifest.name, themeName);
+  files.findReplace(oldManifest.name, themeName);
 
   consoleOutput(fgGreen, '');
-  findReplace(oldManifest.description, themeDescription);
+  files.findReplace(oldManifest.description, themeDescription);
 
   consoleOutput(fgGreen, '');
-  findReplace(oldManifest.author, themeAuthor);
+  files.findReplace(oldManifest.author, themeAuthor);
 
   consoleOutput(fgGreen, '');
-  findReplace(oldManifest.package, themePackageName);
+  files.findReplace(oldManifest.package, themePackageName);
 
   consoleOutput(fgGreen, '');
-  findReplace(oldManifest.namespace, themeNamespace);
+  files.findReplace(oldManifest.namespace, themeNamespace);
 
   consoleOutput(fgGreen, '');
-  findReplace(oldManifest.env, themeEnvConst);
+  files.findReplace(oldManifest.env, themeEnvConst);
 
   consoleOutput(fgGreen, '');
-  findReplace(oldManifest.assetManifest, themeAssetsManifestConst);
+  files.findReplace(oldManifest.assetManifest, themeAssetsManifestConst);
 
   consoleOutput(fgGreen, '');
-  findReplace(oldManifest.proxyUrl, themeProxyUrl);
+  files.findReplace(oldManifest.proxyUrl, themeProxyUrl);
 
   consoleOutput(fgGreen, '');
   

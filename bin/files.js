@@ -8,6 +8,7 @@ const fgGreen = '\x1b[32m';
 const fgBlue = '\x1b[34m';
 const fgMagenta = '\x1b[35m';
 const fgCyan = '\x1b[36m';
+const has = Object.prototype.hasOwnProperty;
 
 // Functions
 const consoleOutput = (color, text) => {
@@ -27,7 +28,7 @@ exports.readManifest = (key) => {
 
   const manifest = JSON.parse(fs.readFileSync(exports.manifest, 'utf8'));
 
-  if (!manifest.hasOwnProperty(key)) {
+  if (!has.call(manifest, key)) {
     throw new Error(`Unable to find value for: ${key}`);
   }
 
@@ -47,6 +48,8 @@ exports.findReplace = (findString, replaceString) => {
       `${exports.rootDir}/vendor/**/*`,
       `${exports.rootDir}/_rename.sh`,
       `${exports.rootDir}/bin/rename.js`,
+      `${exports.rootDir}/bin/setup-wp.js`,
+      `${exports.rootDir}/theme-manifest.js`,
     ],
   };
 
@@ -55,7 +58,7 @@ exports.findReplace = (findString, replaceString) => {
 
     consoleOutput(fgGreen, '');
     consoleOutput(fgGreen, '------------');
-    consoleOutput(fgGreen, `${findString}-> ${replaceString}. Modified files: ${changes.join(', ')}`);
+    consoleOutput(fgGreen, `${findString}-> ${replaceString}. Modified files: ${changes.length}`);
   } catch (error) {
 
     consoleOutput(fgMagenta, '');
