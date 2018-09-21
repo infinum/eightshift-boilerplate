@@ -25,24 +25,48 @@ First you need to install WordPress locally, using any of the local development 
 
 4. Install latest version of [WP-CLI](https://wp-cli.org).
 
-5. Run script to setup your project and rename all files via wizard. This will make changes to theme name, description, author, text domain, package, namespace, and constants (this is important when specifying environment variable):
-**Run this only once!**
-
-    ```bash
-    bash bin/rename.sh
+5. Setup the project
+    ```
+    npm run setup
     ```
 
-## Development Pre Start
+     This script will install `npm` and `composer` dependencies,install WordPress core files and rename all files via wizard. Renaming will make changes to theme name, description, author, text domain, package, namespace, and constants (this is important when specifying environment variable)
 
-1. After renaming your theme, run this script to setup WordPress and all necessary stuff for happy development. The script will install `npm` and `composer` dependencies and install the latest version of WordPress, and input the data for wp-config.php:
+## Development Pre Start (Installing WordPress)
 
-    ```bash
-    bash bin/setup.sh
+After running the theme setup scripts, you have a few options for setting up `wp-config.php` and connecting your installation to the database, depending on your local development setup.
+
+1. Manual install
+
+    Visit the url of your website and you should see the WordPress's installation wizard. Follow the steps and you will have a working default WP install.
+
+    Once you're finished, log-in to WordPress Dashboard, go to `Themes` and activate your new theme.
+
+    Once the theme is activated, make sure to run `npm start` in your `public_html` folder to initially build the assets. 
+
+2. WP-CLI install
+
+    Depending on your local dev environment setup, this might work out of the box or it might require some tweaking. (For example if you're using `MAMP`)
+
     ```
+    npm run setup-wp
+    ````
+
+2. [Varying Vagrant Vagrants](https://varyingvagrantvagrants.org)
+
+  SSH into vagrant, go to the project's `vm_dir` and run the `npm run setup-wp` script.
+
+    ```
+    vagrant ssh
+    cd /srv/YOURPROJECT/public_html
+    npm run setup-wp
+    ```
+
+Once you're done with the above setup (no matter which method you used), run `npm start` in order to initially build assets.
 
 ## Development Start
 
-1. Builds assets in watch/development mode using Webpack:
+1. Builds assets in watch/development mode using Webpack (you need to do this after setting the :
 
     ```bash
     npm start
