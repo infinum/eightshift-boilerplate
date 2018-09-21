@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const prompt = require('prompt-sync')();
+const files = require('./files');
 
 const rootDir = path.join(__dirname, '..');
 
