@@ -10,10 +10,10 @@
     "precommitCss": "npm run __stylelintTheme",
     "precommitJs": "npm run __eslintTheme",
     "precommit": "npm run precommitJs && npm run precommitCss && bash bin/precommit.sh",
-    "rename": "node bin/rename.js",
+    "rename": "node bin/setup.js",
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "NODE_ENV=production webpack --progress --mode production",
-    "setup": "npm install && npm run rename",
+    "setup": "npm install && node bin/setup.js",
     "setup-wp": "node bin/setup-wp.js"
   },
   "devDependencies": {
@@ -59,7 +59,9 @@
     "media-blender": "^2.1.0",
     "node-emoji": "^1.8.1",
     "normalize-scss": "^7.0.1",
+    "ora": "^3.0.0",
     "postcss-font-magician": "^2.2.1",
+    "promisify-child-process": "^2.0.0",
     "prompt-sync": "^4.1.6",
     "replace-in-file": "^3.4.2",
     "webfontloader": "^1.6.28",

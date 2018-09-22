@@ -5,6 +5,7 @@ const emoji = require('node-emoji');
 
 exports.write = (color, msg) => console.log(chalk[color](msg));
 exports.normal = (msg) => console.log(msg);
+exports.dim = (msg) => console.log(chalk.dim(msg));
 exports.error = (msg) => console.log(`${chalk.bgRed('Error')}${chalk.red(' - ')}${chalk.red(msg)}`);
 exports.success = (msg) => console.log(chalk.bgGreen.black(msg));
 exports.variable = (msg) => console.log(chalk.green(msg));

@@ -110,9 +110,12 @@ const run = async() => {
   }
 
   output.dim('--------------------------------------------------');
+  output.dim('');
   output.dim('    Great! We have everything we need for now,    ');
   output.dim('    we\'ll start setting up your project...       ');
+  output.dim('');
   output.dim('--------------------------------------------------');
+  output.dim('');
 
   // -----------------------------
   //  1. Rename files

@@ -59,7 +59,7 @@ exports.findReplace = async(findString, replaceString) => {
 
   return new Promise((resolve) => {
     replace(options)
-      .then((changes) => {
+      .then(() => {
         resolve(true);
       })
       .catch((error) => {
