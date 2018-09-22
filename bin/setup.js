@@ -8,6 +8,8 @@ const {exec} = require('promisify-child-process');
 const output = require('./output');
 const emoji = require('node-emoji');
 const ora = require('ora');
+const chalk = require('chalk');
+const wpInstaller = require('./wp-installer');
 
 const rootDir = path.join(__dirname, '..');
 
@@ -32,15 +34,20 @@ const run = async() => {
 
   let confirmed = 'n';
   const newManifest = {};
+  
+  // -----------------------------
+  //  Prompt for project info
+  // -----------------------------
+  
   do {
-    newManifest.themeName = output.prompt({
+    newManifest.name = output.prompt({
       label: '1. Please enter your theme name (shown in WordPress admin)*:',
       prompt: `${emoji.get('green_book')} Theme name: `,
       error: 'Theme name field is required and cannot be empty.',
       required: true,
     }).trim();
 
-    newManifest.themePackageName = output.prompt({
+    newManifest.package = output.prompt({
       label: '2. Please enter your package name (used in translations - ' +
       'lowercase, no special characters, \'_\' or \'-\' allowed for spaces)*:',
       prompt: `${emoji.get('package')} Package name: `,
@@ -48,7 +55,7 @@ const run = async() => {
       required: true,
     }).replace(/\W+/g, '-').toLowerCase().trim();
 
-    newManifest.themePrefix = output.prompt({
+    newManifest.prefix = output.prompt({
       label: '3. Please enter a theme prefix (used when defining constants - ' +
       'uppercase, no spaces, no special characters)*:',
       prompt: `${emoji.get('bullettrain_front')} Prefix (e.g. INF, ABRR): `,
@@ -56,14 +63,14 @@ const run = async() => {
       required: true,
     }).toUpperCase().trim();
 
-    newManifest.themeEnvConst = `${newManifest.themePrefix}_ENV`;
-    newManifest.themeAssetsManifestConst = `${newManifest.themePrefix}_ASSETS_MANIFEST`;
+    newManifest.env = `${newManifest.prefix}_ENV`;
+    newManifest.assetManifest = `${newManifest.prefix}_ASSETS_MANIFEST`;
 
     // Namespace
-    newManifest.themeNamespace = capCase(newManifest.themePackageName);
+    newManifest.namespace = capCase(newManifest.package);
 
     // Dev url
-    newManifest.themeProxyUrl = output.prompt({
+    newManifest.url = output.prompt({
       label: '4. Please enter a theme development url (for local development with browsersync -  ' +
       'no protocol)*:',
       prompt: `${emoji.get('earth_africa')} Dev url (e.g. dev.wordpress.com): `,
@@ -72,34 +79,34 @@ const run = async() => {
     }).trim();
 
     // Theme description
-    newManifest.themeDescription = output.prompt({
+    newManifest.description = output.prompt({
       label: '5. Please enter your theme description:',
       prompt: `${emoji.get('spiral_note_pad')}  Theme description: `,
       required: false,
     }).trim();
 
     // Author name
-    newManifest.themeAuthor = output.prompt({
+    newManifest.author = output.prompt({
       label: '6. Please enter author name:',
       prompt: `${emoji.get('crab')} Author name: `,
       required: false,
     }).trim();
 
     // Author email
-    newManifest.themeAuthorEmail = output.prompt({
+    newManifest.email = output.prompt({
       label: '7. Please enter author email:',
       prompt: `${emoji.get('email')}  Author email: `,
       required: false,
     }).trim();
 
     confirmed = output.summary([
-      {label: `${emoji.get('green_book')} Theme name`, variable: newManifest.themeName},
-      {label: `${emoji.get('spiral_note_pad')}  Theme description`, variable: newManifest.themeDescription},
-      {label: `${emoji.get('crab')} Author`, variable: `${newManifest.themeAuthor} <${newManifest.themeAuthorEmail}>`},
-      {label: `${emoji.get('package')} Package`, variable: newManifest.themePackageName},
-      {label: `${emoji.get('sun_behind_cloud')}  Namespace`, variable: newManifest.themeNamespace},
-      {label: `${emoji.get('bullettrain_front')} Theme prefix`, variable: newManifest.themePrefix},
-      {label: `${emoji.get('earth_africa')} Dev url`, variable: newManifest.themeProxyUrl},
+      {label: `${emoji.get('green_book')} Theme name`, variable: newManifest.name},
+      {label: `${emoji.get('spiral_note_pad')}  Theme description`, variable: newManifest.description},
+      {label: `${emoji.get('crab')} Author`, variable: `${newManifest.author} <${newManifest.email}>`},
+      {label: `${emoji.get('package')} Package`, variable: newManifest.package},
+      {label: `${emoji.get('sun_behind_cloud')}  Namespace`, variable: newManifest.namespace},
+      {label: `${emoji.get('bullettrain_front')} Theme prefix`, variable: newManifest.prefix},
+      {label: `${emoji.get('earth_africa')} Dev url`, variable: newManifest.url},
     ]);
   } while (confirmed !== 'y');
 
@@ -118,7 +125,7 @@ const run = async() => {
   output.dim('');
 
   // -----------------------------
-  //  1. Rename files
+  //  Rename files
   // -----------------------------
 
   const spinnerRename = ora('1. Replacing files (this might take some time)').start();
@@ -126,13 +133,14 @@ const run = async() => {
     spinnerRename.succeed();
   }).catch((error) => {
     spinnerRename.fail(`${spinnerRename.text}\n${error}`);
+    process.exit();
   });
 
   // Write the new manifest only after we've replaced everything.
   fs.writeFile(files.manifest, JSON.stringify(newManifest, null, 2), 'utf8', () => {});
 
   // -----------------------------
-  //  2. Update Composer dependencies
+  //  Update Composer dependencies
   // -----------------------------
 
   const spinnerComposer = ora('2. Updating composer').start();
@@ -140,10 +148,11 @@ const run = async() => {
     spinnerComposer.succeed();
   }).catch((error) => {
     spinnerComposer.fail(`${spinnerComposer.text}\n${error}`);
+    process.exit();
   });
   
   // -----------------------------
-  //  3. Install WP Core
+  //  Install WP Core
   // -----------------------------
 
   const spinnerWpCore = ora('3. Installing WP Core').start();
@@ -151,6 +160,60 @@ const run = async() => {
     spinnerWpCore.succeed();
   }).catch((error) => {
     spinnerWpCore.fail(`${spinnerWpCore.text}\n${error}`);
+    process.exit();
   });
+  
+  // -----------------------------
+  //  Prompt for local dev env.
+  // -----------------------------
+
+  console.log(chalk.red('-----------------------------------------------------------------'));
+  console.log('');
+  console.log(chalk.dim('    Congratulations!'));
+  console.log('');
+  console.log(chalk.dim('    Your project is setup and ALMOST ready to use,'));
+  console.log(chalk.dim(`    all we need to do now is ${chalk.bgGreen.black('setup WordPress')}.`));
+  console.log('');
+  console.log(chalk.dim('    You can set it up manually with the usual WP'));
+  console.log(chalk.dim('    setup configuration wizard by going to your local'));
+  console.log(`    ${chalk.dim('dev url:')} ${chalk.green(newManifest.url)}`);
+  console.log('');
+  console.log(chalk.dim('    However, we might be able to do it for you'));
+  console.log(chalk.dim('    depending on your local dev environment...'));
+  console.log('');
+  console.log(chalk.cyan('    Options:'));
+  console.log('    1) Varying Vagrant Vagrants');
+  console.log('    2) Anything else');
+  console.log('    3) Thx but no thx, I\'ll setup WP manually');
+  console.log('');
+
+  // Verify option
+  let isValid = true;
+  do {
+    const selectedDevEnv = prompt('    Select option: ');
+    console.log('');
+    switch (selectedDevEnv) {
+      case '1':
+        isValid = true;
+        wpInstaller.vvv();
+        break;
+      case '2':
+        isValid = true;
+        wpInstaller.manual();
+        break;
+      case '3':
+        isValid = true;
+        wpInstaller.manual();
+        break;
+      case 'exit':
+        process.exit();
+        break;
+      default:
+        isValid = false;
+        output.error('Please input the number corresponding to your desired choice.');
+    }
+  } while (!isValid);
+
+
 }
 run();

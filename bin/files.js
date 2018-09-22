@@ -58,6 +58,12 @@ exports.findReplace = async(findString, replaceString) => {
   };
 
   return new Promise((resolve) => {
+
+    // No need to search if the values are the same.
+    if (findString === replaceString) {
+      resolve(true);
+    }
+
     replace(options)
       .then(() => {
         resolve(true);
@@ -70,28 +76,39 @@ exports.findReplace = async(findString, replaceString) => {
 };
 
 exports.renameAllFiles = async(oldManifest, newManifest) => {
+  await exports.findReplace(oldManifest.name, newManifest.name);
+  await exports.findReplace(oldManifest.description, newManifest.description);
+  await exports.findReplace(oldManifest.author, newManifest.author);
+  await exports.findReplace(oldManifest.package, newManifest.package);
+  await exports.findReplace(oldManifest.namespace, newManifest.namespace);
+  await exports.findReplace(oldManifest.env, newManifest.env);
+  await exports.findReplace(oldManifest.assetManifest, newManifest.assetManifest);
+  await exports.findReplace(oldManifest.url, newManifest.url);
+
   return new Promise((resolve) => {
 
     // Do all search / replaces in paralel
-    Promise.all([
-      exports.findReplace(oldManifest.name, newManifest.themeName),
-      exports.findReplace(oldManifest.description, newManifest.themeDescription),
-      exports.findReplace(oldManifest.author, newManifest.themeAuthor),
-      exports.findReplace(oldManifest.package, newManifest.themePackageName),
-      exports.findReplace(oldManifest.namespace, newManifest.themeNamespace),
-      exports.findReplace(oldManifest.env, newManifest.themeEnvConst),
-      exports.findReplace(oldManifest.assetManifest, newManifest.themeAssetsManifestConst),
-      exports.findReplace(oldManifest.proxyUrl, newManifest.themeProxyUrl),
-    ]).then(() => {
+
+
+    // Promise.all([
+    //   exports.findReplace(oldManifest.name, newManifest.name),
+    //   exports.findReplace(oldManifest.description, newManifest.description),
+    //   exports.findReplace(oldManifest.author, newManifest.author),
+    //   exports.findReplace(oldManifest.package, newManifest.package),
+    //   exports.findReplace(oldManifest.namespace, newManifest.namespace),
+    //   exports.findReplace(oldManifest.env, newManifest.env),
+    //   exports.findReplace(oldManifest.assetManifest, newManifest.assetManifest),
+    //   exports.findReplace(oldManifest.url, newManifest.url),
+    // ]).then(() => {
 
       // Rename theme folder
-      if (newManifest.themePackageName !== oldManifest.package) {
+      if (newManifest.package !== oldManifest.package) {
         if (fs.existsSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`))) {
-          fs.renameSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`), path.join(`${exports.themeFolder}/${newManifest.themePackageName}/`), (err) => {
+          fs.renameSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`), path.join(`${exports.themeFolder}/${newManifest.package}/`), (err) => {
             if (err) {
               throw err;
             }
-            fs.statSync(`${exports.wpContentFolder}/${newManifest.themePackageName}/`, (error) => {
+            fs.statSync(`${exports.wpContentFolder}/${newManifest.package}/`, (error) => {
               if (error) {
                 throw error;
               }
@@ -101,7 +118,7 @@ exports.renameAllFiles = async(oldManifest, newManifest) => {
       }
 
       resolve(true);
-    });
+    // });
   });
 };
 

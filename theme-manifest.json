@@ -6,5 +6,5 @@
   "namespace": "Inf_Theme",
   "env": "INF_ENV",
   "assetManifest": "INF_ASSETS_MANIFEST",
-  "proxyUrl": "dev.boilerplate.com"
+  "url": "dev.boilerplate.com"
 }

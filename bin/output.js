@@ -80,19 +80,19 @@ exports.stopLoader = (loaderObject) => {
 };
 
 exports.writeIntro = () => {
-  console.log(chalk.red('###############################################################'));
-  console.log(chalk.red('                                                               '));
-  console.log(chalk.red('    _ _ _ ___                                                  '));
-  console.log(chalk.red('    | | | |__|                                                 '));
-  console.log(chalk.red('    |_|_| |                                                    '));
-  console.log(chalk.red('    ___  ____ _ _    ____ ____ ___       ____ ___ ____     '));
-  console.log(chalk.red('    |__| |  | | |    |___ |__/ |__| |    |__|  |  |___     '));
-  console.log(chalk.red('    |__| |__| | |___ |___ |  \\ |    |___ |  |  |  |___     '));
-  console.log(chalk.red('                                                            '));
-  console.log(chalk.red('                                                            '));
-  console.log(chalk.dim('    Welcome to Boilerplate setup script!                     '));
-  console.log(chalk.red('                                                             '));
-  console.log(chalk.dim('    This script will uniquely set up your theme.            '));
-  console.log(chalk.red('                                                         '));
-  console.log(chalk.red('                                                         '));
+  console.log(chalk.red('---------------------------------------------------------------'));
+  console.log(chalk.red(''));
+  console.log(chalk.red('    _ _ _ ___ '));
+  console.log(chalk.red('    | | | |__| '));
+  console.log(chalk.red('    |_|_| |   '));
+  console.log(chalk.red('    ___  ____ _ _    ____ ____ ___       ____ ___ ____ '));
+  console.log(chalk.red('    |__| |  | | |    |___ |__/ |__| |    |__|  |  |___ '));
+  console.log(chalk.red('    |__| |__| | |___ |___ |  \\ |    |___ |  |  |  |___ '));
+  console.log(chalk.red(''));
+  console.log(chalk.red(''));
+  console.log(chalk.dim('    Welcome to Boilerplate setup script!'));
+  console.log(chalk.red(''));
+  console.log(chalk.dim('    This script will uniquely set up your theme.'));
+  console.log(chalk.red(''));
+  console.log(chalk.red(''));
 };
