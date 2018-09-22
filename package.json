@@ -13,7 +13,7 @@
     "rename": "node bin/rename.js",
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "NODE_ENV=production webpack --progress --mode production",
-    "setup": "npm install && npm run rename && npx composer install && wp core download --skip-content",
+    "setup": "npm install && npm run rename",
     "setup-wp": "node bin/setup-wp.js"
   },
   "devDependencies": {

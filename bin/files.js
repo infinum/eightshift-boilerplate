@@ -35,29 +35,73 @@ exports.readManifest = (key) => {
   return manifest[key];
 };
 
-exports.findReplace = (findString, replaceString) => {
+exports.findReplace = async(findString, replaceString) => {
   const regex = new RegExp(findString, 'g');
   const options = {
     files: `${exports.rootDir}/**/*`,
     from: regex,
     to: replaceString,
     ignore: [
-      `${exports.rootDir}/node_modules/**/*`,
-      `${exports.rootDir}/.git/**/*`,
-      `${exports.rootDir}/.github/**/*`,
-      `${exports.rootDir}/vendor/**/*`,
-      `${exports.rootDir}/_rename.sh`,
-      `${exports.rootDir}/bin/rename.js`,
-      `${exports.rootDir}/bin/setup-wp.js`,
-      `${exports.rootDir}/theme-manifest.js`,
+      path.join(`${exports.rootDir}/node_modules/**/*`),
+      path.join(`${exports.rootDir}/.git/**/*`),
+      path.join(`${exports.rootDir}/.github/**/*`),
+      path.join(`${exports.rootDir}/vendor/**/*`),
+      path.join(`${exports.rootDir}/wp-admin/**/*`),
+      path.join(`${exports.rootDir}/wp-includes/**/*`),
+      path.join(`${exports.rootDir}/_rename.sh`),
+      path.join(`${exports.rootDir}/bin/rename.js`),
+      path.join(`${exports.rootDir}/bin/setup-wp.js`),
+      path.join(`${exports.rootDir}/bin/output.js`),
+      path.join(`${exports.rootDir}/bin/files.js`),
+      path.join(`${exports.rootDir}/theme-manifest.js`),
     ],
   };
 
-  try {
-    const changes = replace.sync(options);
-    consoleOutput(fgGreen, `${findString}-> ${replaceString}. Modified files: ${changes.length}`);
-  } catch (error) {
-    console.error('Error occurred:', error);
-  }
+  return new Promise((resolve) => {
+    replace(options)
+      .then((changes) => {
+        resolve(true);
+      })
+      .catch((error) => {
+        output.error(error);
+        resolve(true);
+      });
+  });
+};
+
+exports.renameAllFiles = async(oldManifest, newManifest) => {
+  return new Promise((resolve) => {
+
+    // Do all search / replaces in paralel
+    Promise.all([
+      exports.findReplace(oldManifest.name, newManifest.themeName),
+      exports.findReplace(oldManifest.description, newManifest.themeDescription),
+      exports.findReplace(oldManifest.author, newManifest.themeAuthor),
+      exports.findReplace(oldManifest.package, newManifest.themePackageName),
+      exports.findReplace(oldManifest.namespace, newManifest.themeNamespace),
+      exports.findReplace(oldManifest.env, newManifest.themeEnvConst),
+      exports.findReplace(oldManifest.assetManifest, newManifest.themeAssetsManifestConst),
+      exports.findReplace(oldManifest.proxyUrl, newManifest.themeProxyUrl),
+    ]).then(() => {
+
+      // Rename theme folder
+      if (newManifest.themePackageName !== oldManifest.package) {
+        if (fs.existsSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`))) {
+          fs.renameSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`), path.join(`${exports.themeFolder}/${newManifest.themePackageName}/`), (err) => {
+            if (err) {
+              throw err;
+            }
+            fs.statSync(`${exports.wpContentFolder}/${newManifest.themePackageName}/`, (error) => {
+              if (error) {
+                throw error;
+              }
+            });
+          });
+        }
+      }
+
+      resolve(true);
+    });
+  });
 };
 
