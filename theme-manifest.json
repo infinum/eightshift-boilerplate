@@ -6,5 +6,6 @@
   "namespace": "Inf_Theme",
   "env": "INF_ENV",
   "assetManifest": "INF_ASSETS_MANIFEST",
-  "url": "dev.boilerplate.com"
+  "url": "dev.boilerplate.com",
+  "email": "wpboilerplate@eightshift.com"
 }
