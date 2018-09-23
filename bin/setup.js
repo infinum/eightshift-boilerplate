@@ -167,6 +167,7 @@ const run = async() => {
   //  Prompt for local dev env.
   // -----------------------------
 
+  console.log('');
   console.log(chalk.red('-----------------------------------------------------------------'));
   console.log('');
   console.log(chalk.dim('    Congratulations!'));

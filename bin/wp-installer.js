@@ -47,7 +47,7 @@ const outputWPLoginInfo = (url, user, pass) => {
 const promptDatabase = () => {
   let dbName;
   dbName = output.prompt({
-    label: 'Please enter database name:',
+    label: 'Please enter database name (make sure it exists and is empty):',
     prompt: `${emoji.get('school_satchel')} Database name: `,
     error: 'Database name cannot be empty',
     required: true,
@@ -70,8 +70,8 @@ exports.vvv = () => {
   console.log(`${chalk.bgGreen.black('Varying Vagrant Vagrants')}...`);
   console.log('');
   const vmdir = output.prompt({
-    label: '1. Please enter your project\'s \'vm_dir\' VVV path:',
-    prompt: `${emoji.get('trolleybus')} Path (by default it's /srv/PROJECTNAME/): `,
+    label: '1. Please enter your project\'s \'vm_dir\' VVV path (by default it\'s /srv/www/PROJECTNAME/):',
+    prompt: `${emoji.get('trolleybus')} Path: `,
     error: 'vm_dir cannot be empty.',
     required: true,
   }).trim();
@@ -83,7 +83,7 @@ exports.vvv = () => {
     siteUrl: files.readManifest('url'),
     siteName: 'WP_Boilerplate',
     user: 'Admin',
-    pass: 'abcegrtertetertert',
+    pass: Math.random().toString(36).slice(-14),
     email: files.readManifest('email'),
     themePackage: files.readManifest('package'),
   };
@@ -101,14 +101,18 @@ exports.vvv = () => {
     execSync(`
     vagrant ssh -- -t 'cd ${vmdir}/public_html;
       wp config create --dbname=${wpInfo.dbName} --dbuser=${wpInfo.dbUser} --dbpass=${wpInfo.dbPass};
-      wp core install --url=${wpInfo.siteUrl} --title=${wpInfo.siteName} --admin_user=${wpInfo.user} --admin_pass=${wpInfo.pass} --admin_email=${wpInfo.email};
+      wp core install --url=${wpInfo.siteUrl} --title=${wpInfo.siteName} --admin_user=${wpInfo.user} --admin_password=${wpInfo.pass} --admin_email=${wpInfo.email};
       wp theme activate ${wpInfo.themePackage};'
     `, (error, stdout, stderr) => {
       output.success('Done!');
     });
+    output.success('Done! ');
+    console.log(`${chalk.dim('Please run')} ${chalk.bgGreen.black('npm start')} ${chalk.dim('to initially build all assets.')}`);
+    console.log(chalk.dim('(Without this you will see all kinds of errors)'));
   } catch (err) {
     output.error(err);
   }
+
 
   outputWPLoginInfo(wpInfo.siteUrl, wpInfo.user, wpInfo.pass);
 };
