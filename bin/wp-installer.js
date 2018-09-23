@@ -7,14 +7,43 @@ const {exec} = require('promisify-child-process');
 const {execSync} = require('child_process');
 const files = require('./files');
 
+const createDatabase = async(options) => {
+  const create = `mysql -u ${options.dbRootUser} --password=${options.dbRootPass} -e "CREATE DATABASE IF NOT EXISTS ${options.dbName}"`;
+  const grant = `mysql -u ${options.dbRootUser} --password=${options.dbRootPass} -e "GRANT ALL PRIVILEGES ON ${options.dbName}.* TO ${options.dbUser}@localhost IDENTIFIED BY 'wp';"`;
+
+  return new Promise((resolve, reject) => {
+    exec(create).then(() => {
+      exec(grant).then(() => {
+        resolve(true);
+      }).catch((errGrant) => {
+        reject(errGrant);
+      });
+    }).catch((errCreate) => {
+      reject(errCreate);
+    });
+  });
+};
+
+/**
+ * Outputs WP login info.
+ *
+ * @param string url   Website's local URL.
+ * @param string user  WP user.
+ * @param string pass  WP user's pass.
+ */
 const outputWPLoginInfo = (url, user, pass) => {
   console.log('Your login info:');
   console.log('-------------------');
   console.log(`Login: ${chalk.green(url)}${chalk.green('/wp-admin')}`);
   console.log(`User: ${chalk.green(user)}`);
   console.log(`Pass: ${chalk.green(pass)}`);
-}
+};
 
+/**
+ * Prompts the user for database name and returns it
+ *
+ * @return string
+ */
 const promptDatabase = () => {
   let dbName;
   dbName = output.prompt({
@@ -24,7 +53,7 @@ const promptDatabase = () => {
     required: true,
   }).trim();
   return dbName;
-}
+};
 
 /**
  * Setup WP for users using Varying Vagrant Vagrants
