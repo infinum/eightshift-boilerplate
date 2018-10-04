@@ -106,7 +106,9 @@ exports.vvv = () => {
     `, (error, stdout, stderr) => {
       output.success('Done!');
     });
+    console.log('');
     output.success('Done! ');
+    console.log('');
     console.log(`${chalk.dim('Please run')} ${chalk.bgGreen.black('npm start')} ${chalk.dim('to initially build all assets.')}`);
     console.log(chalk.dim('(Without this you will see all kinds of errors)'));
   } catch (err) {

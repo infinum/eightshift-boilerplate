@@ -4,11 +4,6 @@ const replace = require('replace-in-file');
 const output = require('./output');
 
 // Helpers
-const fgRed = '\x1b[31m';
-const fgGreen = '\x1b[32m';
-const fgBlue = '\x1b[34m';
-const fgMagenta = '\x1b[35m';
-const fgCyan = '\x1b[36m';
 const has = Object.prototype.hasOwnProperty;
 
 // Functions
@@ -101,23 +96,23 @@ exports.renameAllFiles = async(oldManifest, newManifest) => {
     //   exports.findReplace(oldManifest.url, newManifest.url),
     // ]).then(() => {
 
-      // Rename theme folder
-      if (newManifest.package !== oldManifest.package) {
-        if (fs.existsSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`))) {
-          fs.renameSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`), path.join(`${exports.themeFolder}/${newManifest.package}/`), (err) => {
-            if (err) {
-              throw err;
+    // Rename theme folder.
+    if (newManifest.package !== oldManifest.package) {
+      if (fs.existsSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`))) {
+        fs.renameSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`), path.join(`${exports.themeFolder}/${newManifest.package}/`), (err) => {
+          if (err) {
+            throw err;
+          }
+          fs.statSync(`${exports.wpContentFolder}/${newManifest.package}/`, (error) => {
+            if (error) {
+              throw error;
             }
-            fs.statSync(`${exports.wpContentFolder}/${newManifest.package}/`, (error) => {
-              if (error) {
-                throw error;
-              }
-            });
           });
-        }
+        });
       }
+    }
 
-      resolve(true);
+    resolve(true);
     // });
   });
 };

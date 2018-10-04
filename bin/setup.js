@@ -11,19 +11,7 @@ const ora = require('ora');
 const chalk = require('chalk');
 const wpInstaller = require('./wp-installer');
 
-const rootDir = path.join(__dirname, '..');
 
-// Helpers
-const fgRed = '\x1b[31m';
-const fgGreen = '\x1b[32m';
-const fgBlue = '\x1b[34m';
-const fgMagenta = '\x1b[35m';
-const fgCyan = '\x1b[36m';
-
-// Functions
-const consoleOutput = (color, text) => {
-  console.log(color, text);
-};
 
 const capCase = (string) => string.replace(/\W+/g, '_').split('_').map((item) => item[0].toUpperCase() + item.slice(1)).join('_');
 
@@ -215,6 +203,5 @@ const run = async() => {
     }
   } while (!isValid);
 
-
-}
+};
 run();
