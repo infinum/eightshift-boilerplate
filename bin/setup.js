@@ -116,7 +116,7 @@ const run = async() => {
   //  Rename files
   // -----------------------------
 
-  const spinnerRename = ora('1. Replacing files (this might take some time)').start();
+  const spinnerRename = ora('1. Renaming files (this might take some time)').start();
   await files.renameAllFiles(oldManifest, newManifest).then(() => {
     spinnerRename.succeed();
   }).catch((error) => {
@@ -202,6 +202,5 @@ const run = async() => {
         output.error('Please input the number corresponding to your desired choice.');
     }
   } while (!isValid);
-
 };
 run();
