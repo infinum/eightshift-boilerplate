@@ -107,9 +107,8 @@ exports.vvv = async() => {
 
   console.log(chalk.red('---------------------------------------------------------------'));
   console.log('');
-  console.log('Let\'s setup your WordPress installation for');
-  console.log(`${chalk.bgGreen.black('Varying Vagrant Vagrants')}...`);
-  console.log('');
+  output.dim('    Let\'s setup your WordPress installation for');
+  console.log(`   ${chalk.bgGreen.black('Varying Vagrant Vagrants')}...`);
 
   const vmdir = promptVmDir();
   const wpInfo = {
@@ -130,9 +129,9 @@ exports.vvv = async() => {
   //
   // ==============================
 
-  console.log('');
-  console.log(' Great, let\'s get started...');
-  console.log('');
+  output.dim('');
+  output.dim('    Great, let\'s get started...');
+  output.dim('');
 
   // ------------------------------
   //  1. Verify vm_dir
