@@ -13,8 +13,7 @@
     "rename": "node bin/setup.js",
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "NODE_ENV=production webpack --progress --mode production",
-    "setup": "npm install && node bin/setup.js",
-    "setup-wp": "node bin/setup-wp.js"
+    "setup": "npm install && node bin/setup.js"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
