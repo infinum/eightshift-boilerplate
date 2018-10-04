@@ -8,13 +8,25 @@
 
 This repository contains all the tools you need to start building a modern WordPress theme, using all the latest front end development tools.
 
+Infinum WordPress Boilerplate is maintained and sponsored by
+[Infinum](https://infinum.co) and [Eightshift](https://eightshift.com).
+
+## What is WP Boilerplate?
+
+
+* Starter theme
+* Framework
+* Boilerplate
+* ...and much more
+
+It gives you all the tools to build a modern, fast and beautiful WordPress website. 
+
 ## Getting started
 
 First you need to install WordPress locally, using any of the local development environment you prefer. You can use XAMPP, MAMP, WAMP, VVV, Docker or Laravel Valet. You'll also need to have [Node.js](https://nodejs.org/en/), [Composer](https://getcomposer.org/) and [WP-CLI](https://wp-cli.org/) installed.
 
 **Note regarding `Windows` - If you're installing this on `Windows` and you're using `XAMPP`, use `XAMPP` shell (Control Panel -> Shell) rather than `cmd` **
 
-## Initial Setup
 1. To start, fork this repository to your own, and then clone it. If you are using VVV clone it in the `public_html` folder:
 
     ```bash
@@ -27,14 +39,15 @@ First you need to install WordPress locally, using any of the local development 
 
 4. Install latest version of [WP-CLI](https://wp-cli.org).
 
-5. Setup the project
-    ```
-    npm run setup
-    ```
+## Step #1 - Setup the project
 
-     This script will install `npm` and `composer` dependencies,install WordPress core files and rename all files via wizard. Renaming will make changes to theme name, description, author, text domain, package, namespace, and constants (this is important when specifying environment variable)
+```
+npm run setup
+```
 
-## Development Pre Start (Installing WordPress)
+This script will install `npm` and `composer` dependencies, install WordPress core files and rename all files via wizard. Renaming will make changes to theme name, description, author, text domain, package, namespace, and constants (this is important when specifying environment variable)
+
+## Step #2 - Install WordPress
 
 After running the theme setup scripts, you have a few options for setting up `wp-config.php` and connecting your installation to the database, depending on your local development setup.
 
@@ -66,7 +79,7 @@ After running the theme setup scripts, you have a few options for setting up `wp
 
 Once you're done with the above setup (no matter which method you used), run `npm start` in order to initially build assets.
 
-## Development Start
+## Step #3 - Start developing
 
 1. Builds assets in watch/development mode using Webpack (you need to do this after installing WordPress) :
 
@@ -170,13 +183,6 @@ If you need to expose certain functionality across the multisite we recommend th
 
 Plugins should be created using plugin boilerplate, with addition of namespaces and autoloader. We have that also prepared so please check our [Plugin Boilerplate](https://github.com/infinum/wp-boilerplate-plugin).
 
-## Credits
-
-Infinum WordPress Boilerplate is maintained and sponsored by
-[Infinum](https://infinum.co) and [Eightshift](https://eightshift.com).
-
-<img src="https://infinum.co/infinum.png" width="264">
-
 ## Who do I talk to?
 
 For questions talk to:
@@ -184,6 +190,8 @@ For questions talk to:
 * [ivan.ruzevic@infinum.hr](ivan.ruzevic@infinum.hr)
 * [denis.zoljom@infinum.hr](denis.zoljom@infinum.hr)
 * [team@eightshift.com](team@eightshift.com)
+
+<img src="https://infinum.co/infinum.png" width="264" height>
 
 ## License
 
