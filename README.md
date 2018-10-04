@@ -93,7 +93,7 @@ Once the theme is activated, make sure to run `npm start` in your `public_html` 
     ```php
     // Must be set.
     // Possible options are develop, staging and production.
-    define( 'SF_ENV', 'develop' );
+    define( 'INF_ENV', 'develop' );
 
     /* That's all, stop editing! Happy blogging. */
 
@@ -110,7 +110,7 @@ Once the theme is activated, make sure to run `npm start` in your `public_html` 
 
     * Remove `define( 'WP_DEBUG', false );`. This is defined in the `wp-config-project.php` file.
 
-    * Set `SF_ENV` variable to correspond with your environment. That will add global setup for logging errors, disabling auto-update, some optimizations and it will change the color of admin so it is easier for you to know on what environment you are editing.
+    * Set `INF_ENV` variable to correspond with your environment. That will add global setup for logging errors, disabling auto-update, some optimizations and it will change the color of admin so it is easier for you to know on what environment you are editing.
 
 
 3. You have BrowserSync to sync assets and enable easy cross-device testing. Once BrowserSync is active you will get url in the terminal. Usualy it is `localhost:3000`.
@@ -139,13 +139,13 @@ Once the theme is activated, make sure to run `npm start` in your `public_html` 
     Checking theme for possible violations:
 
     ```bash
-    wpcs wp-content/themes/f
+    wpcs wp-content/themes/inf_theme
     ```
 
     Autofix theme for minor violations:
 
     ```bash
-    wpcbf wp-content/themes/f
+    wpcbf wp-content/themes/inf_theme
     ```
 
 ---
