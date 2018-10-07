@@ -19,15 +19,16 @@ const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.
 const themeName = 'inf_theme';
 const themePath = `wp-content/themes/${themeName}/skin`;
 const themeFullPath = `${appPath}/${themePath}`;
-const themePublicPath = `/${themePath}/public/`;
+const themePublicPath = `${themePath}/public/`;
 const themeEntry = `${themeFullPath}/assets/application.js`;
 const themeAdminEntry = `${themeFullPath}/assets/application-admin.js`;
 const themeOutput = `${themeFullPath}/public`;
 
 // Outputs
-const outputJs = 'scripts/[name]-[hash].js';
-const outputCss = 'styles/[name]-[hash].css';
-const outputFile = '[name]-[hash].[ext]';
+const outputType = `${DEV ? '[name]' : '[name]-[hash]'}`;
+const outputJs = `scripts/${outputType}.js`;
+const outputCss = `styles/${outputType}.css`;
+const outputFile = `${outputType}.[ext]`;
 const outputImages = `images/${outputFile}`;
 const outputFonts = `fonts/${outputFile}`;
 
@@ -81,16 +82,26 @@ const allPlugins = [
   }),
 
   // Use BrowserSync.
-  new BrowserSyncPlugin({
-    host: 'localhost',
-    port: 3000,
-    proxy: proxyUrl,
-    files: [
-      {
-        match: ['wp-content/themes/**/*.php', 'wp-content/plugins/**/*.php'],
-      },
-    ],
-  }),
+  new BrowserSyncPlugin(
+    {
+      host: 'localhost',
+      port: 3000,
+      proxy: proxyUrl,
+      files: [
+        {
+          match: [
+            'wp-content/themes/**/*.php',
+            'wp-content/plugins/**/*.php',
+            `${themePublicPath}styles/*.css`,
+          ],
+        },
+      ],
+      notify: true,
+    },
+    {
+      reload: false,
+    },
+  ),
 
   // Copy from one target to new destination.
   new CopyWebpackPlugin([
