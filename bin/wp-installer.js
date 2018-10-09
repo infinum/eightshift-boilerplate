@@ -33,11 +33,11 @@ const createDatabase = async(options) => {
  * @param string pass  WP user's pass.
  */
 const outputWPLoginInfo = (url, user, pass) => {
-  console.log('Your login info:');
+  console.log(`${emoji.get('tada')} Your login info: ${emoji.get('tada')}`);
   console.log('-------------------');
-  console.log(`Login: ${chalk.green(url)}${chalk.green('/wp-admin')}`);
-  console.log(`User: ${chalk.green(user)}`);
-  console.log(`Pass: ${chalk.green(pass)}`);
+  console.log(`${emoji.get('earth_africa')} Login: ${chalk.green(url)}${chalk.green('/wp-admin')}`);
+  console.log(`${emoji.get('sunglasses')} User: ${chalk.green(user)}`);
+  console.log(`${emoji.get('lock')} Pass: ${chalk.green(pass)}`);
 };
 
 /**
@@ -84,15 +84,6 @@ exports.test = async() => {
     spinner.fail(`${spinner.text}\n${error}`);
     process.exit();
   });
-
-  
-  // try {
-  //   await exec(`vagrant ssh -- -t 'cd ${vmdir}/public_html/;'`, (error, stdout, stderr) => {
-  //   });
-  // } catch (err) {
-  //   console.log(`Caught error: ${err}`);
-  // }
-
 };
 
 
@@ -107,8 +98,9 @@ exports.vvv = async() => {
 
   console.log(chalk.red('---------------------------------------------------------------'));
   console.log('');
-  output.dim('    Let\'s setup your WordPress installation for');
+  output.dim('   Let\'s setup your WordPress installation for');
   console.log(`   ${chalk.bgGreen.black('Varying Vagrant Vagrants')}...`);
+  console.log('');
 
   const vmdir = promptVmDir();
   const wpInfo = {
@@ -129,7 +121,6 @@ exports.vvv = async() => {
   //
   // ==============================
 
-  output.dim('');
   output.dim('    Great, let\'s get started...');
   output.dim('');
 

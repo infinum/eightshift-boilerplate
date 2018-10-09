@@ -20,6 +20,7 @@ exports.prompt = (settings) => {
   let userInput;
   exports.label(settings.label);
   do {
+    
     userInput = prompt(settings.prompt);
   
     if (userInput.length <= 0) {
@@ -29,6 +30,7 @@ exports.prompt = (settings) => {
   while (userInput.length <= 0 && userInput !== 'exit');
   exports.label('');
   if (userInput === 'exit') {
+    exports.normal('Exiting script...');
     process.exit();
   }
 
