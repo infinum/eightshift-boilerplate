@@ -164,7 +164,7 @@ You can do it manualy using the command from package.json but we prefere using c
 Builds production ready assets
 
     ```bash
-    bash bin/build.sh
+    bash bin/deploy.sh
     ```
 
 3. For deployment, we are using [rsync](https://rsync.samba.org/) and [semaphoreci](https://semaphoreci.com/) in our continuous deployment setup. Whatever deployment system you are using you should never copy unnecessary data to the server. We added file `ci-exclude.txt` to exclude unnecessary folders and files on deployment.
