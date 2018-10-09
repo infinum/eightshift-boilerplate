@@ -52,22 +52,9 @@ exports.findReplace = async(findString, replaceString) => {
     ],
   };
 
-  return new Promise((resolve) => {
-
-    // No need to search if the values are the same.
-    if (findString === replaceString) {
-      resolve(true);
-    }
-
-    replace(options)
-      .then(() => {
-        resolve(true);
-      })
-      .catch((error) => {
-        output.error(error);
-        resolve(true);
-      });
-  });
+  if (findString !== replaceString) {
+    await replace(options);
+  }
 };
 
 exports.renameAllFiles = async(oldManifest, newManifest) => {
@@ -80,40 +67,20 @@ exports.renameAllFiles = async(oldManifest, newManifest) => {
   await exports.findReplace(oldManifest.assetManifest, newManifest.assetManifest);
   await exports.findReplace(oldManifest.url, newManifest.url);
 
-  return new Promise((resolve) => {
-
-    // Do all search / replaces in paralel
-
-
-    // Promise.all([
-    //   exports.findReplace(oldManifest.name, newManifest.name),
-    //   exports.findReplace(oldManifest.description, newManifest.description),
-    //   exports.findReplace(oldManifest.author, newManifest.author),
-    //   exports.findReplace(oldManifest.package, newManifest.package),
-    //   exports.findReplace(oldManifest.namespace, newManifest.namespace),
-    //   exports.findReplace(oldManifest.env, newManifest.env),
-    //   exports.findReplace(oldManifest.assetManifest, newManifest.assetManifest),
-    //   exports.findReplace(oldManifest.url, newManifest.url),
-    // ]).then(() => {
-
-    // Rename theme folder.
-    if (newManifest.package !== oldManifest.package) {
-      if (fs.existsSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`))) {
-        fs.renameSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`), path.join(`${exports.themeFolder}/${newManifest.package}/`), (err) => {
-          if (err) {
-            throw err;
+  // Rename theme folder.
+  if (newManifest.package !== oldManifest.package) {
+    if (fs.existsSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`))) {
+      fs.renameSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`), path.join(`${exports.themeFolder}/${newManifest.package}/`), (err) => {
+        if (err) {
+          throw err;
+        }
+        fs.statSync(`${exports.wpContentFolder}/${newManifest.package}/`, (error) => {
+          if (error) {
+            throw error;
           }
-          fs.statSync(`${exports.wpContentFolder}/${newManifest.package}/`, (error) => {
-            if (error) {
-              throw error;
-            }
-          });
         });
-      }
+      });
     }
-
-    resolve(true);
-    // });
-  });
+  }
 };
 
