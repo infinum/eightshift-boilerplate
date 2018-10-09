@@ -10,7 +10,7 @@
     "precommitCss": "npm run __stylelintTheme",
     "precommitJs": "npm run __eslintTheme",
     "precommit": "npm run precommitJs && npm run precommitCss && bash bin/precommit.sh",
-    "rename": "node bin/setup.js",
+    "rename": "node bin/rename-runnable.js",
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "NODE_ENV=production webpack --progress --mode production",
     "setup": "npm install && node bin/setup.js"
