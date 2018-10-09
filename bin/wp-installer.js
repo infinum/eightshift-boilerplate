@@ -58,11 +58,11 @@ const promptDatabase = () => output.prompt({
  * @return string
  */
 const promptVmDir = () => output.prompt({
-  label: '1. Please enter your project\'s \'vm_dir\' VVV path (by default it\'s /srv/www/PROJECTNAME/):',
+  label: '1. Please enter your project\'s \'vm_dir\' VVV path (by default it\'s /srv/www/PROJECTNAME):',
   prompt: `${emoji.get('trolleybus')} Path: `,
   error: 'vm_dir cannot be empty.',
   required: true,
-}).trim();
+}).trim().replace(/\/+$/, '');
 
 /**
  * DELETEME
