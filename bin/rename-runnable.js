@@ -10,7 +10,7 @@ const {exec} = require('promisify-child-process');
 const run = async() => {
   console.log(chalk.red('--------------------------------------------------'));
   output.dim('');
-  output.dim('    Starting the renaming script...');
+  output.dim('    Starting the rename script...');
   output.normal('    ');
   console.log(`${chalk.red('    !WARNING')}`);
   output.dim('    This script won\'t work if you\'ve renamed');
