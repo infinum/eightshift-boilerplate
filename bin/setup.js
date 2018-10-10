@@ -66,7 +66,7 @@ const run = async() => {
   //  Install WP Core
   // -----------------------------
 
-  const spinnerWpCore = ora('3. Installing WP Core').start();
+  const spinnerWpCore = ora('3. Installing WordPress Core').start();
   await exec('wp core download --skip-content').then(() => {
     spinnerWpCore.succeed();
   }).catch((error) => {
@@ -86,7 +86,7 @@ const run = async() => {
   console.log(chalk.dim('    Your project is setup and ALMOST ready to use,'));
   console.log(chalk.dim(`    all we need to do now is ${chalk.bgGreen.black('setup WordPress')}.`));
   console.log('');
-  console.log(chalk.dim('    You can set it up manually with the usual WP'));
+  console.log(chalk.dim('    You can set it up manually with the usual WordPress'));
   console.log(chalk.dim('    setup configuration wizard by going to your local'));
   console.log(`    ${chalk.dim('dev url:')} ${chalk.green(newManifest.url)}`);
   console.log('');
@@ -96,7 +96,7 @@ const run = async() => {
   console.log(chalk.cyan('    Options:'));
   console.log('    1) Varying Vagrant Vagrants');
   console.log('    2) Anything else');
-  console.log('    3) Thx but no thx, I\'ll setup WP manually');
+  console.log('    3) Thx but no thx, I\'ll setup WordPress manually');
   console.log('');
 
   // Verify option

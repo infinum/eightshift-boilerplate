@@ -26,11 +26,11 @@ const createDatabase = async(options) => {
 };
 
 /**
- * Outputs WP login info.
+ * Outputs WordPress login info.
  *
  * @param string url   Website's local URL.
- * @param string user  WP user.
- * @param string pass  WP user's pass.
+ * @param string user  WordPress user.
+ * @param string pass  WordPress user's pass.
  */
 const outputWPLoginInfo = (url, user, pass) => {
   console.log(`${emoji.get('tada')} Your login info: ${emoji.get('tada')}`);
@@ -88,7 +88,7 @@ exports.test = async() => {
 
 
 /**
- * Setup WP for users using Varying Vagrant Vagrants
+ * Setup WordPress for users using Varying Vagrant Vagrants
  */
 exports.vvv = async() => {
 
@@ -194,7 +194,7 @@ exports.vvv = async() => {
   //  5. Install WordPress
   // ------------------------------
 
-  const spinnerInstallWP = ora('5. Installing WP Core').start();
+  const spinnerInstallWP = ora('5. Installing WordPress Core').start();
   await exec(`vagrant ssh -- -t '
     cd ${vmdir}/public_html/;
     wp core install --url=${wpInfo.siteUrl} --title=${wpInfo.siteName} --admin_user=${wpInfo.user} --admin_password=${wpInfo.pass} --admin_email=${wpInfo.email};
@@ -249,7 +249,7 @@ exports.else = () => {
 };
 
 /**
- * Message for users wanting to setup WP manually.
+ * Message for users wanting to setup WordPress manually.
  */
 exports.manual = () => {
   console.log('    In order to finish the installation manually,');
