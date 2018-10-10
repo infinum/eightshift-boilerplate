@@ -48,20 +48,20 @@ exports.intro = (devUrl) => {
   console.log('');
   console.log(chalk.red('-----------------------------------------------------------------'));
   console.log('');
-  console.log(chalk.dim('    Congratulations!'));
+  console.log(('    Congratulations!');
   console.log('');
-  console.log(chalk.dim('    Your project is setup and ALMOST ready to use,'));
-  console.log(chalk.dim(`    all we need to do now is ${chalk.bgGreen.black('setup WordPress')}.`));
+  console.log('    Your project is setup and ALMOST ready to use,');
+  console.log(`    all we need to do now is ${chalk.bgGreen.black('setup WordPress')}.`);
   console.log('');
-  console.log(chalk.dim('    You can set it up manually with the usual WordPress'));
-  console.log(chalk.dim('    setup configuration wizard by going to your local'));
-  console.log(`    ${chalk.dim('dev url:')} ${chalk.green(devUrl)}`);
+  console.log('    You can set it up manually with the usual WordPress');
+  console.log('    setup configuration wizard by going to your local');
+  console.log(`    'dev url: ${chalk.green(devUrl)}`);
   console.log('');
-  console.log(chalk.dim('    However, we might be able to do it for you'));
-  console.log(chalk.dim('    depending on your local dev environment...'));
+  console.log('    However, we might be able to do it for you');
+  console.log('    depending on your local dev environment...');
   console.log('');
   console.log(chalk.cyan('    Options:'));
-  console.log('    1) Varying Vagrant Vagrants');
+  console.log('    1) Vagrant (VVV, Scotch box, etc)');
   console.log('    2) Custom local development server');
   console.log('    3) Thx but no thx, I\'ll setup WordPress manually');
   console.log('');
@@ -163,11 +163,11 @@ const promptDatabasePrefix = () => output.prompt({
  * @return string
  */
 const promptVmDir = () => output.prompt({
-  label: '1. Please enter your project\'s \'vm_dir\' VVV path (by default it\'s /srv/www/PROJECTNAME):',
+  label: '1. Please enter your project\'s \'vm_dir\' Vagrant path (by default in VVV it\'s /srv/www/PROJECTNAME/public_html):',
   prompt: `${emoji.get('trolleybus')} Path: `,
   error: 'vm_dir cannot be empty.',
   required: true,
-}).trim().replace(/\/+$/, '');
+}).trim().replace(/\/+$/, '/');
 
 /**
  * Creates a fairly secure WordPress default password
@@ -226,14 +226,14 @@ exports.vvv = async() => {
   // ------------------------------
 
   const spinnerTestFolder = ora('1. Verifying vm_dir path').start();
-  await exec(`vagrant ssh -- -t 'cd ${vmdir}/public_html/;'`).then(() => {
+  await exec(`vagrant ssh -- -t 'cd ${vmdir};'`).then(() => {
   }).catch((error) => {
     spinnerTestFolder.fail(`${spinnerTestFolder.text} - Unable to find vm_dir ${vmdir}\n\n${error}`);
     process.exit();
   });
 
   await exec(`vagrant ssh -- -t '
-    cd ${vmdir}/public_html/;
+    cd ${vmdir};
     tail theme-manifest.json
   '`).then(() => {
     spinnerTestFolder.succeed();
@@ -248,7 +248,7 @@ exports.vvv = async() => {
 
   const spinnerWPCLI = ora('2. Checking if wp-cli works').start();
   await exec(`vagrant ssh -- -t '
-      cd ${vmdir}/public_html/;
+      cd ${vmdir};
       wp --info
     '`).then(() => {
     spinnerWPCLI.succeed();
@@ -263,7 +263,7 @@ exports.vvv = async() => {
 
   const spinnerWpConfig = ora('3. Creating wp-config.php').start();
   await exec(`vagrant ssh -- -t '
-      cd ${vmdir}/public_html/;
+      cd ${vmdir};
       wp config create --dbname=${wpInfo.dbName} --dbuser=${wpInfo.dbUser} --dbpass=${wpInfo.dbPass};
     '`).then(() => {
     spinnerWpConfig.succeed();
@@ -278,7 +278,7 @@ exports.vvv = async() => {
 
   const spinnerTestWPB = ora('4. Check MySQL database connection').start();
   await exec(`vagrant ssh -- -t '
-    cd ${vmdir}/public_html/;
+    cd ${vmdir};
     wp db create;
     '`).then(() => {
     spinnerTestWPB.succeed();
@@ -293,7 +293,7 @@ exports.vvv = async() => {
 
   const spinnerInstallWP = ora('5. Installing WordPress Core').start();
   await exec(`vagrant ssh -- -t '
-    cd ${vmdir}/public_html/;
+    cd ${vmdir};
     wp core install --url=${wpInfo.siteUrl} --title=${wpInfo.siteName} --admin_user=${wpInfo.user} --admin_password=${wpInfo.pass} --admin_email=${wpInfo.email};
     '`).then(() => {
     spinnerInstallWP.succeed();
@@ -320,7 +320,7 @@ exports.vvv = async() => {
 
   const spinnerActivateTheme = ora('7. Activating theme').start();
   await exec(`vagrant ssh -- -t '
-    cd ${vmdir}/public_html/;
+    cd ${vmdir};
     wp theme activate ${wpInfo.themePackage};
     '`).then(() => {
     spinnerActivateTheme.succeed();
