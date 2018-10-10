@@ -48,7 +48,7 @@ exports.intro = (devUrl) => {
   console.log('');
   console.log(chalk.red('-----------------------------------------------------------------'));
   console.log('');
-  console.log(('    Congratulations!');
+  console.log('    Congratulations!');
   console.log('');
   console.log('    Your project is setup and ALMOST ready to use,');
   console.log(`    all we need to do now is ${chalk.bgGreen.black('setup WordPress')}.`);
