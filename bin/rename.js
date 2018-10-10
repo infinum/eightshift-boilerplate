@@ -1,6 +1,8 @@
 const output = require('./output');
 const emoji = require('node-emoji');
 const ora = require('ora');
+const inquirer = require('inquirer');
+const chalk = require('chalk');
 
 const capCase = (string) => string.replace(/\W+/g, '_').split('_').map((item) => item[0].toUpperCase() + item.slice(1)).join('_');
 
@@ -81,4 +83,78 @@ exports.promptThemeData = () => {
   } while (confirmed !== 'y');
 
   return newManifest;
+  
+ /*
+  do {
+    const questions = [
+      {
+        type: 'input',
+        name: 'name',
+        message: '1. Please enter your theme name (shown in WordPress admin)*:\nTheme name:',
+        filter: (val) => val.trim(),
+        transformer: (value) => chalk.green(value),
+        suffix: '\n',
+      },
+      {
+        type: 'input',
+        name: 'package',
+        message: '2. Please enter your package name (used in translations - ' +
+        'lowercase, no special characters, \'_\' or \'-\' allowed for spaces)*:\nPackage name:',
+        filter: (val) => val.replace(/\W+/g, '-').toLowerCase().trim(),
+        transformer: (value) => chalk.green(value),
+        suffix: '\n',
+      },
+      {
+        type: 'input',
+        name: 'prefix',
+        message: '3. Please enter a theme prefix (used when defining constants - ' +
+        'uppercase, no spaces, no special characters)*:\nTheme prefix:',
+        filter: (val) => val.toUpperCase().trim(),
+        transformer: (value) => chalk.green(value),
+        suffix: '\n',
+      },
+      {
+        type: 'input',
+        name: 'url',
+        message: '4. Please enter a theme development url (for local development with browsersync -  ' +
+        'no protocol)*:\nTheme dev url:',
+        filter: (val) => val.trim(),
+        transformer: (value) => chalk.green(value),
+        suffix: '\n',
+      },
+      {
+        type: 'input',
+        name: 'description',
+        message: '5. Please enter your theme description:\nTheme description:',
+        filter: (val) => val.trim(),
+        transformer: (value) => chalk.green(value),
+      },
+      {
+        type: 'input',
+        name: 'author',
+        message: '6. Please enter author name:\nAuthor name:',
+        filter: (val) => val.trim(),
+        transformer: (value) => chalk.green(value),
+      },
+      {
+        type: 'input',
+        name: 'email',
+        message: '7. Please enter author email:\nAuthor email:',
+        filter: (val) => val.trim(),
+        transformer: (value) => chalk.green(value),
+      },
+    ];
+
+    await inquirer.prompt(questions).then((answers) => {
+      newManifest = answers;
+      newManifest.env = `${answers.prefix}_ENV`;
+      newManifest.assetManifest = `${answers.prefix}_ASSETS_MANIFEST`;
+      console.log('\nOrder receipt:');
+      console.log(JSON.stringify(answers, null, '  '));
+    });
+
+  } while (confirmed !== 'y');
+
+  return newManifest;
+  */
 };
