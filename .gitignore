@@ -1,5 +1,5 @@
 # Project Specific
-wp-content/themes/inf_theme/skin/public
+wp-content/themes/*/skin/public
 
 # Wordpress files
 wp-admin
