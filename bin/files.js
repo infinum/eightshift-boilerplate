@@ -16,6 +16,20 @@ exports.manifest = path.join(`${exports.rootDir}/theme-manifest.json`);
 exports.wpContentFolder = path.join(`${exports.rootDir}/wp-content`);
 exports.themeFolder = path.join(`${exports.wpContentFolder}/themes`);
 
+/**
+ * Reads and returns the contents of theme-manifest.json
+ */
+exports.readManifestFull = () => {
+  let oldManifest = '';
+  if (fs.existsSync(exports.manifest)) {
+    oldManifest = JSON.parse(fs.readFileSync(exports.manifest, 'utf8'));
+  }
+  return oldManifest;
+};
+
+/**
+ * Reads and returns a specific key from theme-manifest.json
+ */
 exports.readManifest = (key) => {
   if (!fs.existsSync(exports.manifest)) {
     throw new Error('Unable to find the manifest file!');

@@ -6,19 +6,18 @@ const ora = require('ora');
 const rename = require('./rename');
 const {exec} = require('promisify-child-process');
 
-
 const run = async() => {
   console.log(chalk.red('--------------------------------------------------'));
-  output.dim('');
-  output.dim('    Starting the rename script...');
+  output.normal('');
+  output.normal('    Starting the rename script...');
   output.normal('    ');
   console.log(`${chalk.red('    !WARNING')}`);
-  output.dim('    This script won\'t work if you\'ve renamed');
-  output.dim('    or edited your theme info manually.');
-  output.dim('');
+  output.normal('    This script won\'t work if you\'ve renamed');
+  output.normal('    or edited your theme info manually.');
+  output.normal('');
   console.log(`    ${chalk.dim('Please review')} ${chalk.green('theme-manifest.json')} ${chalk.dim(' which contains the')} `);
-  output.dim('     old info (needles in haystack) and update if needed.');
-  output.dim('');
+  output.normal('     old info (needles in haystack) and update if needed.');
+  output.normal('');
 
   const newManifest = rename.promptThemeData();
 
@@ -28,13 +27,13 @@ const run = async() => {
     oldManifest = JSON.parse(fs.readFileSync(files.manifest, 'utf8'));
   }
   
-  output.dim('--------------------------------------------------');
-  output.dim('');
-  output.dim('    Great! We have everything we need for now,    ');
-  output.dim('    we\'ll start setting up your project...       ');
-  output.dim('');
-  output.dim('--------------------------------------------------');
-  output.dim('');
+  output.normal('--------------------------------------------------');
+  output.normal('');
+  output.normal('    Great! We have everything we need for now,    ');
+  output.normal('    we\'ll start setting up your project...       ');
+  output.normal('');
+  output.normal('--------------------------------------------------');
+  output.normal('');
   
   // -----------------------------
   //  Rename files
@@ -75,11 +74,11 @@ const run = async() => {
     process.exit();
   });
 
-  output.dim('');
+  output.normal('');
   output.success('    We have successfully renamed your files!    ');
-  output.dim('');
-  output.dim('--------------------------------------------------');
-  output.dim('');
+  output.normal('');
+  output.normal('--------------------------------------------------');
+  output.normal('');
 
 };
 run();

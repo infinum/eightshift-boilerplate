@@ -20,9 +20,8 @@ exports.prompt = (settings) => {
   let userInput;
   exports.label(settings.label);
   do {
-    
     userInput = prompt(settings.prompt);
-  
+
     if (userInput.length <= 0) {
       exports.error(settings.error);
     }
@@ -92,9 +91,9 @@ exports.writeIntro = () => {
   console.log(chalk.red('    |__| |__| | |___ |___ |  \\ |    |___ |  |  |  |___ '));
   console.log(chalk.red(''));
   console.log(chalk.red(''));
-  console.log(chalk.dim('    Welcome to Boilerplate setup script!'));
+  console.log('    Welcome to Boilerplate setup script!');
   console.log(chalk.red(''));
-  console.log(chalk.dim('    This script will uniquely set up your theme.'));
+  console.log('    This script will uniquely set up your theme.');
   console.log(chalk.red(''));
   console.log(chalk.red(''));
 };

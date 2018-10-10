@@ -7,6 +7,7 @@ const {exec} = require('promisify-child-process');
 const {execSync} = require('child_process');
 const files = require('./files');
 const ora = require('ora');
+const prompt = require('prompt-sync')();
 
 const createDatabase = async(options) => {
   const create = `mysql -u ${options.dbRootUser} --password=${options.dbRootPass} -e "CREATE DATABASE IF NOT EXISTS ${options.dbName}"`;
@@ -41,6 +42,62 @@ const outputWPLoginInfo = (url, user, pass) => {
 };
 
 /**
+ * Outputs intro for setting up WordPress
+ */
+exports.intro = (devUrl) => {
+  console.log('');
+  console.log(chalk.red('-----------------------------------------------------------------'));
+  console.log('');
+  console.log(chalk.dim('    Congratulations!'));
+  console.log('');
+  console.log(chalk.dim('    Your project is setup and ALMOST ready to use,'));
+  console.log(chalk.dim(`    all we need to do now is ${chalk.bgGreen.black('setup WordPress')}.`));
+  console.log('');
+  console.log(chalk.dim('    You can set it up manually with the usual WordPress'));
+  console.log(chalk.dim('    setup configuration wizard by going to your local'));
+  console.log(`    ${chalk.dim('dev url:')} ${chalk.green(devUrl)}`);
+  console.log('');
+  console.log(chalk.dim('    However, we might be able to do it for you'));
+  console.log(chalk.dim('    depending on your local dev environment...'));
+  console.log('');
+  console.log(chalk.cyan('    Options:'));
+  console.log('    1) Varying Vagrant Vagrants');
+  console.log('    2) Custom local development server');
+  console.log('    3) Thx but no thx, I\'ll setup WordPress manually');
+  console.log('');
+};
+
+exports.selectEnv = () => {
+
+  // Verify option
+  let isValid = true;
+  do {
+    const selectedDevEnv = prompt('    Select option: ');
+    console.log('');
+    switch (selectedDevEnv) {
+      case '1':
+        isValid = true;
+        exports.vvv();
+        break;
+      case '2':
+        isValid = true;
+        exports.custom();
+        break;
+      case '3':
+        isValid = true;
+        exports.manual();
+        break;
+      case 'exit':
+        process.exit();
+        break;
+      default:
+        isValid = false;
+        output.error('Please input the number corresponding to your desired choice.');
+    }
+  } while (!isValid);
+};
+
+/**
  * Prompts the user for database name and returns it
  *
  * @return string
@@ -51,6 +108,54 @@ const promptDatabase = () => output.prompt({
   error: 'Database name cannot be empty',
   required: true,
 }).trim();
+
+/**
+ * Prompts the user for database user and returns it
+ *
+ * @return string
+ */
+const promptDatabaseUser = () => output.prompt({
+  label: 'Please enter database user:',
+  prompt: 'Database user: ',
+  error: 'Database user cannot be empty',
+  required: true,
+}).trim();
+
+/**
+ * Prompts the user for database pass and returns it
+ *
+ * @return string
+ */
+const promptDatabasePass = () => output.prompt({
+  label: 'Please enter database user:',
+  prompt: 'Database user: ',
+  error: 'Database user cannot be empty',
+  required: true,
+});
+
+/**
+ * Prompts the user for database host and returns it
+ *
+ * @return string
+ */
+const promptDatabaseHost = () => output.prompt({
+  label: 'Please enter database host (usually "localhost"):',
+  prompt: 'Database host: ',
+  error: 'Database host cannot be empty',
+  required: true,
+});
+
+/**
+ * Prompts the user for database host and returns it
+ *
+ * @return string
+ */
+const promptDatabasePrefix = () => output.prompt({
+  label: 'Please enter database prefix (usually "wp"):',
+  prompt: 'Database prefix: ',
+  error: 'Database prefix cannot be empty',
+  required: true,
+});
 
 /**
  * Prompts the user for database name and returns it
@@ -65,42 +170,34 @@ const promptVmDir = () => output.prompt({
 }).trim().replace(/\/+$/, '');
 
 /**
- * DELETEME
+ * Creates a fairly secure WordPress default password
  */
-exports.test = async() => {
-  console.log(chalk.red('---------------------------------------------------------------'));
-  console.log('');
-  console.log('Testing:');
-
-  // ------------------------------
-  //  Verify vm_dir
-  // ------------------------------
-
-  const vmdir = promptVmDir();
-  const spinner = ora('1. Testing if folder exists').start();
-  await exec(`vagrant ssh -- -t 'cd ${vmdir}/public_html/;'`).then(() => {
-    spinner.succeed();
-  }).catch((error) => {
-    spinner.fail(`${spinner.text}\n${error}`);
-    process.exit();
-  });
+const randomWpPass = () => {
+  const randomPass = Math.random().toString(36).slice(-14);
+  return randomPass;
 };
 
+/**
+ * Outputs intro for specific development setups
+ */
+const specificSetupInfo = (name) => {
+  console.log(chalk.red('---------------------------------------------------------------'));
+  console.log('');
+  output.dim('   Let\'s setup your WordPress installation for');
+  console.log(`   ${chalk.bgGreen.black(name)}...`);
+  console.log('');
+};
 
 /**
  * Setup WordPress for users using Varying Vagrant Vagrants
  */
 exports.vvv = async() => {
 
+  specificSetupInfo('Varying Vagrant Vagrants');
+
   // ------------------------------
   // Prompting
   // ------------------------------
-
-  console.log(chalk.red('---------------------------------------------------------------'));
-  console.log('');
-  output.dim('   Let\'s setup your WordPress installation for');
-  console.log(`   ${chalk.bgGreen.black('Varying Vagrant Vagrants')}...`);
-  console.log('');
 
   const vmdir = promptVmDir();
   const wpInfo = {
@@ -110,7 +207,7 @@ exports.vvv = async() => {
     siteUrl: files.readManifest('url'),
     siteName: 'WP_Boilerplate',
     user: 'Admin',
-    pass: Math.random().toString(36).slice(-14),
+    pass: randomWpPass(),
     email: files.readManifest('email'),
     themePackage: files.readManifest('package'),
   };
@@ -205,8 +302,6 @@ exports.vvv = async() => {
     process.exit();
   });
 
-  //
-
   // ------------------------------
   //  6. Building Assets
   // ------------------------------
@@ -228,6 +323,84 @@ exports.vvv = async() => {
     cd ${vmdir}/public_html/;
     wp theme activate ${wpInfo.themePackage};
     '`).then(() => {
+    spinnerActivateTheme.succeed();
+    console.log('');
+    output.success('Done! ');
+    console.log('');
+    outputWPLoginInfo(wpInfo.siteUrl, wpInfo.user, wpInfo.pass);
+  }).catch((error) => {
+    spinnerActivateTheme.fail(`${spinnerActivateTheme.text}\n\n${error}`);
+    outputWPLoginInfo(wpInfo.siteUrl, wpInfo.user, wpInfo.pass);
+    process.exit();
+  });
+};
+
+/**
+ * Setup WordPress for users using custom development setup (manually installed php / mysql)
+ */
+exports.custom = async() => {
+  specificSetupInfo('Custom Local Development Server');
+
+  // ------------------------------
+  // Prompting
+  // ------------------------------
+
+  const wpInfo = {
+    dbName: promptDatabase(),
+    dbUser: promptDatabaseUser(),
+    dbPass: promptDatabasePass(),
+    dbHost: promptDatabaseHost(),
+    dbPrefix: promptDatabasePrefix(),
+    siteUrl: files.readManifest('url'),
+    siteName: 'WP_Boilerplate',
+    user: 'Admin',
+    pass: randomWpPass(),
+    email: files.readManifest('email'),
+    themePackage: files.readManifest('package'),
+  };
+
+  // ------------------------------
+  //  1. Try creating wp-config
+  // ------------------------------
+
+  const spinnerWpConfig = ora('1. Creating wp-config').start();
+  await exec(`wp config create --dbname=${wpInfo.dbName} --dbuser=${wpInfo.dbUser} --dbpass=${wpInfo.dbPass} --dbhost=${wpInfo.dbHost} --dbprefix=${wpInfo.dbPrefix}`).then(() => {
+    spinnerWpConfig.succeed();
+  }).catch((error) => {
+    spinnerWpConfig.fail(`${spinnerWpConfig.text}\n\n${error}`);
+    process.exit();
+  });
+
+  // ------------------------------
+  //  2. Try installing WordPress core
+  // ------------------------------
+
+  const spinnerWpCoreInstall = ora('2. Installing WordPress core').start();
+  await exec(`wp core install --url=${wpInfo.siteUrl} --title=${wpInfo.siteName} --admin_user=${wpInfo.user} --admin_password=${wpInfo.pass} --admin_email=${wpInfo.email}`).then(() => {
+    spinnerWpCoreInstall.succeed();
+  }).catch((error) => {
+    spinnerWpCoreInstall.fail(`${spinnerWpCoreInstall.text}\n\n${error}`);
+    process.exit();
+  });
+
+  // ------------------------------
+  //  3. Building Assets
+  // ------------------------------
+
+  const spinnerBuildAssets = ora('3. Building assets').start();
+  await exec('npm run build').then(() => {
+    spinnerBuildAssets.succeed();
+  }).catch((error) => {
+    spinnerBuildAssets.fail(`${spinnerBuildAssets.text}\n\n${error}`);
+    process.exit();
+  });
+
+  // ------------------------------
+  //  4. Activate Theme
+  // ------------------------------
+
+  const spinnerActivateTheme = ora('4. Activating theme').start();
+  await exec(`wp theme activate ${wpInfo.themePackage}`).then(() => {
     spinnerActivateTheme.succeed();
     console.log('');
     output.success('Done! ');
