@@ -342,7 +342,7 @@ exports.custom = async() => {
   specificSetupInfo('Custom Local Development Server');
 
   // ------------------------------
-  // Prompting
+  //  Prompting
   // ------------------------------
 
   const wpInfo = {

@@ -97,5 +97,9 @@ exports.renameAllFiles = async(oldManifest, newManifest) => {
       });
     }
   }
+
+  // Rename sinces
+  await exports.findReplace('@since.*\n', '@since 1.0.0\n');
+  await exports.findReplace('@since 1.0.0\n.*@since 1.0.0\n', '@since 1.0.0\n');
 };
 
