@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since 1.0.0
  * @package Inf_Theme
  */
-require WP_CONTENT_DIR . '/../vendor/autoload.php';
+require get_template_directory() . '/vendor/autoload.php';
 
 /**
  * Begins execution of the theme.

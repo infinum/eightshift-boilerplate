@@ -1,0 +1,22 @@
+{
+  "require-dev": {
+    "infinum/coding-standards-wp": "*"
+  },
+  "autoload": {
+    "classmap": [
+      "admin",
+      "helpers",
+      "includes",
+      "languages",
+      "page-templates",
+      "template-parts",
+      "theme"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  }
+}

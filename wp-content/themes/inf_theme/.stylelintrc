@@ -1,0 +1,4 @@
+{
+  "extends": "@infinumjs/stylelint-config",
+  "ignoreFiles": "public/**/*.css"
+}

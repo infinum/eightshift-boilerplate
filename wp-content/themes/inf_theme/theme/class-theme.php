@@ -42,16 +42,14 @@ class Theme extends Config {
     // jQuery.
     wp_deregister_script( 'jquery-migrate' );
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', get_template_directory_uri() . '/skin/public/scripts/vendors/jquery.min.js', array(), '3.3.1' );
+    wp_register_script( 'jquery', General_Helper::get_manifest_assets_data( 'jquery.min.js' ), array(), '3.3.1' );
     wp_enqueue_script( 'jquery' );
 
     // JS.
-    $main_script_vandors = General_Helper::get_manifest_assets_data( 'vendors.js' );
-    wp_register_script( static::THEME_NAME . '-scripts-vendors', $main_script_vandors, array(), static::THEME_VERSION, true );
+    wp_register_script( static::THEME_NAME . '-scripts-vendors', General_Helper::get_manifest_assets_data( 'vendors.js' ), array(), static::THEME_VERSION, true );
     wp_enqueue_script( static::THEME_NAME . '-scripts-vendors' );
 
-    $main_script = General_Helper::get_manifest_assets_data( 'application.js' );
-    wp_register_script( static::THEME_NAME . '-scripts', $main_script, array( static::THEME_NAME . '-scripts-vendors' ), static::THEME_VERSION, true );
+    wp_register_script( static::THEME_NAME . '-scripts', General_Helper::get_manifest_assets_data( 'application.js' ), array( static::THEME_NAME . '-scripts-vendors' ), static::THEME_VERSION, true );
     wp_enqueue_script( static::THEME_NAME . '-scripts' );
 
     // Glbal variables for ajax and translations.

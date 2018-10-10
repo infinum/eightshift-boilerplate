@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ruleset name="Infinum">
+  <description>Loader for the Infinum coding standards for WordPress.</description>
+
+  <config name="installed_paths" value="vendor/wp-coding-standards/wpcs" />
+  <rule ref="vendor/infinum/coding-standards-wp/Infinum/ruleset.xml" />
+
+  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.Found">
+    <severity>0</severity>
+  </rule>
+
+  <rule ref="WordPress.WP.EnqueuedResourceParameters.NotInFooter">
+    <severity>0</severity>
+  </rule>
+</ruleset>
