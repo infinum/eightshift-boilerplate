@@ -273,18 +273,17 @@ exports.vvv = async() => {
   });
 
   // ------------------------------
-  //  4. Verify MySQL connection
+  //  4. Create database if it doesn't exist
   // ------------------------------
 
-  const spinnerTestWPB = ora('4. Check MySQL database connection').start();
+  const spinnerCreateDB = ora('4. Creating database if it doesn\'t exist').start();
   await exec(`vagrant ssh -- -t '
     cd ${vmdir};
     wp db create;
     '`).then(() => {
-    spinnerTestWPB.succeed();
+    spinnerCreateDB.succeed();
   }).catch((error) => {
-    spinnerTestWPB.fail(`${spinnerTestWPB.text}\n\n${error}`);
-    process.exit();
+    spinnerCreateDB.succeed();
   });
 
   // ------------------------------
