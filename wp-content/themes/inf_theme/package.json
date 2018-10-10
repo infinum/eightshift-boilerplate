@@ -7,9 +7,9 @@
   "scripts": {
     "__eslintTheme": "eslint skin/assets/**/*.js",
     "__stylelintTheme": "stylelint skin/assets/**/*.scss",
-    "precommitCss": "npm run __stylelintTheme",
-    "precommitJs": "npm run __eslintTheme",
-    "precommit": "npm run precommitJs && npm run precommitCss && bash bin/precommit.sh",
+    "lintStyle": "npm run __stylelintTheme",
+    "lintJs": "npm run __eslintTheme",
+    "lint": "npm run lintJs && npm run lintStyle && bash bin/lintPhp.sh",
     "rename": "node bin/rename-runnable.js",
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "NODE_ENV=production webpack --progress --mode production",
