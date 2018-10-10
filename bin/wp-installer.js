@@ -183,7 +183,7 @@ const randomWpPass = () => {
 const specificSetupInfo = (name) => {
   console.log(chalk.red('---------------------------------------------------------------'));
   console.log('');
-  output.dim('   Let\'s setup your WordPress installation for');
+  output.normal('   Let\'s setup your WordPress installation for');
   console.log(`   ${chalk.bgGreen.black(name)}...`);
   console.log('');
 };
@@ -218,8 +218,8 @@ exports.vvv = async() => {
   //
   // ==============================
 
-  output.dim('    Great, let\'s get started...');
-  output.dim('');
+  output.normal('    Great, let\'s get started...');
+  output.normal('');
 
   // ------------------------------
   //  1. Verify vm_dir

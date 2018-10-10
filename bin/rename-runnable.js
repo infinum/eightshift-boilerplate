@@ -15,7 +15,7 @@ const run = async() => {
   output.normal('    This script won\'t work if you\'ve renamed');
   output.normal('    or edited your theme info manually.');
   output.normal('');
-  console.log(`    ${chalk.dim('Please review')} ${chalk.green('theme-manifest.json')} ${chalk.dim(' which contains the')} `);
+  console.log(`    Please review ${chalk.green('theme-manifest.json')} which contains the`);
   output.normal('     old info (needles in haystack) and update if needed.');
   output.normal('');
 
