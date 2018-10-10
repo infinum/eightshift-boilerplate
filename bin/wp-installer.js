@@ -103,8 +103,8 @@ exports.selectEnv = () => {
  * @return string
  */
 const promptDatabase = () => output.prompt({
-  label: 'Please enter database name (make sure it exists and is empty):',
-  prompt: `${emoji.get('school_satchel')} Database name: `,
+  label: `${emoji.get('school_satchel')} Please enter database name (make sure it exists and is empty):`,
+  prompt: 'Database name: ',
   error: 'Database name cannot be empty',
   required: true,
 }).trim();
@@ -163,8 +163,8 @@ const promptDatabasePrefix = () => output.prompt({
  * @return string
  */
 const promptVmDir = () => output.prompt({
-  label: '1. Please enter your project\'s \'vm_dir\' Vagrant path (by default in VVV it\'s /srv/www/PROJECTNAME/public_html):',
-  prompt: `${emoji.get('trolleybus')} Path: `,
+  label: `${emoji.get('trolleybus')} Please enter your project's 'vm_dir' Vagrant path (by default in VVV it's /srv/www/PROJECTNAME/public_html):`,
+  prompt: 'Path: ',
   error: 'vm_dir cannot be empty.',
   required: true,
 }).trim().replace(/\/+$/, '/');
