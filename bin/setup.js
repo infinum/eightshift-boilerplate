@@ -58,12 +58,35 @@ const run = async() => {
     process.exit();
   });
   
+  // ----------------------------------------------------
+  //  Check if wp-cli works
+  //
+  //  If not, download wp-cli phar and make all following 
+  //  wp commands use 'php wp-cli.phar ...'
+  //  instead of 'wp ...' 
+  // -------------------------------------------------
+  
+  const spinnerWpCli = ora('3. Checking if wp-cli works').start();
+  let wpCli = 'wp';
+  await exec('wp --info').then(() => {
+    spinnerWpCli.succeed();
+  }).catch( async() => {
+    spinnerWpCli.text = '3. Installing wp-cli';
+    await exec('curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && php wp-cli.phar --info').then(() => {
+      spinnerWpCli.succeed();
+      wpCli = 'php wp-cli.phar';
+    }).catch((error) => {
+      spinnerWpCli.fail(`${spinnerWpCli.text}\n${error}`);
+      process.exit();
+    });
+  });
+  
   // -----------------------------
   //  Install WP Core
   // -----------------------------
 
-  const spinnerWpCore = ora('3. Installing WordPress Core').start();
-  await exec('wp core download --skip-content').then(() => {
+  const spinnerWpCore = ora('4. Installing WordPress Core').start();
+  await exec(`${wpCli} core download --skip-content`).then(() => {
     spinnerWpCore.succeed();
   }).catch((error) => {
     spinnerWpCore.fail(`${spinnerWpCore.text}\n${error}`);
