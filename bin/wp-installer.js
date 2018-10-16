@@ -242,19 +242,34 @@ exports.vvv = async() => {
     process.exit();
   });
 
-  // -----------------
-  //  2. Verify wp-cli
-  // -----------------
+  // ----------------------------------------------------
+  //  2. Check if wp-cli works
+  //
+  //  If not, download wp-cli phar and make all following 
+  //  wp commands use 'php wp-cli.phar ...'
+  //  instead of 'wp ...' 
+  // -------------------------------------------------
 
   const spinnerWPCLI = ora('2. Checking if wp-cli works').start();
+  let wpCli = 'wp';
   await exec(`vagrant ssh -- -t '
       cd ${vmdir};
       wp --info
     '`).then(() => {
     spinnerWPCLI.succeed();
-  }).catch((error) => {
-    spinnerWPCLI.fail(`${spinnerWPCLI.text}\n\n${error}`);
-    process.exit();
+  }).catch(async(error) => {
+    spinnerWPCLI.text = '2. Installing wp-cli';
+    await exec(`vagrant ssh -- -t '
+      cd ${vmdir};
+      curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;
+      php wp-cli.phar --info
+    '`).then(() => {
+      spinnerWPCLI.succeed();
+      wpCli = 'php wp-cli.phar';
+    }).catch((error) => {
+      spinnerWPCLI.fail(`${spinnerWPCLI.text}\n${error}`);
+      process.exit();
+    });
   });
 
   // -----------------
@@ -264,7 +279,7 @@ exports.vvv = async() => {
   const spinnerWpConfig = ora('3. Creating wp-config.php').start();
   await exec(`vagrant ssh -- -t '
       cd ${vmdir};
-      wp config create --dbname=${wpInfo.dbName} --dbuser=${wpInfo.dbUser} --dbpass=${wpInfo.dbPass};
+      ${wpCli} config create --dbname=${wpInfo.dbName} --dbuser=${wpInfo.dbUser} --dbpass=${wpInfo.dbPass};
     '`).then(() => {
     spinnerWpConfig.succeed();
   }).catch((error) => {
@@ -279,7 +294,7 @@ exports.vvv = async() => {
   const spinnerCreateDB = ora('4. Creating database if it doesn\'t exist').start();
   await exec(`vagrant ssh -- -t '
     cd ${vmdir};
-    wp db create;
+    ${wpCli} db create;
     '`).then(() => {
     spinnerCreateDB.succeed();
   }).catch((error) => {
@@ -293,7 +308,7 @@ exports.vvv = async() => {
   const spinnerInstallWP = ora('5. Installing WordPress Core').start();
   await exec(`vagrant ssh -- -t '
     cd ${vmdir};
-    wp core install --url=${wpInfo.siteUrl} --title=${wpInfo.siteName} --admin_user=${wpInfo.user} --admin_password=${wpInfo.pass} --admin_email=${wpInfo.email};
+    ${wpCli} core install --url=${wpInfo.siteUrl} --title=${wpInfo.siteName} --admin_user=${wpInfo.user} --admin_password=${wpInfo.pass} --admin_email=${wpInfo.email};
     '`).then(() => {
     spinnerInstallWP.succeed();
   }).catch((error) => {
@@ -320,7 +335,7 @@ exports.vvv = async() => {
   const spinnerActivateTheme = ora('7. Activating theme').start();
   await exec(`vagrant ssh -- -t '
     cd ${vmdir};
-    wp theme activate ${wpInfo.themePackage};
+    ${wpCli} theme activate ${wpInfo.themePackage};
     '`).then(() => {
     spinnerActivateTheme.succeed();
     console.log('');
