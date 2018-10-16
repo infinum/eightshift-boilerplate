@@ -62,8 +62,9 @@ exports.intro = (devUrl) => {
   console.log('');
   console.log(chalk.cyan('    Options:'));
   console.log('    1) Vagrant (VVV, Scotch box, etc)');
-  console.log('    2) Custom local development server');
-  console.log('    3) Thx but no thx, I\'ll setup WordPress manually');
+  console.log('    2) MAMP');
+  console.log('    3) Custom local development server');
+  console.log('    4) Thx but no thx, I\'ll setup WordPress manually');
   console.log('');
 };
 
@@ -81,9 +82,13 @@ exports.selectEnv = () => {
         break;
       case '2':
         isValid = true;
-        exports.custom();
+        exports.mamp();
         break;
       case '3':
+        isValid = true;
+        exports.custom();
+        break;
+      case '4':
         isValid = true;
         exports.manual();
         break;
@@ -183,8 +188,8 @@ const randomWpPass = () => {
 const specificSetupInfo = (name) => {
   console.log(chalk.red('---------------------------------------------------------------'));
   console.log('');
-  output.normal('   Let\'s setup your WordPress installation for');
-  console.log(`   ${chalk.bgGreen.black(name)}...`);
+  output.normal('    Let\'s setup your WordPress installation for');
+  console.log(`    ${chalk.bgGreen.black(name)}...`);
   console.log('');
 };
 
@@ -375,6 +380,123 @@ exports.custom = async() => {
 
   // ----------------------------------------------------
   //  Check if wp-cli works
+  //
+  //  If not, download wp-cli phar and make all following 
+  //  wp commands use 'php wp-cli.phar ...'
+  //  instead of 'wp ...' 
+  // -------------------------------------------------
+  
+  const spinnerWpCli = ora('1. Checking if wp-cli works').start();
+  let wpCli = 'wp';
+  await exec('wp --info').then(() => {
+    spinnerWpCli.succeed();
+  }).catch(async() => {
+    spinnerWpCli.text = '1. Installing wp-cli';
+    await exec('curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && php wp-cli.phar --info').then(() => {
+      spinnerWpCli.succeed();
+      wpCli = 'php wp-cli.phar';
+    }).catch((error) => {
+      spinnerWpCli.fail(`${spinnerWpCli.text}\n${error}`);
+      process.exit();
+    });
+  });
+
+  // ------------------------------
+  //  2. Try creating wp-config
+  // ------------------------------
+
+  const spinnerWpConfig = ora('2. Creating wp-config').start();
+  await exec(`${wpCli} config create --dbname=${wpInfo.dbName} --dbuser=${wpInfo.dbUser} --dbpass=${wpInfo.dbPass} --dbhost=${wpInfo.dbHost} --dbprefix=${wpInfo.dbPrefix}`).then(() => {
+    spinnerWpConfig.succeed();
+  }).catch((error) => {
+    spinnerWpConfig.fail(`${spinnerWpConfig.text}\n\n${error}`);
+    process.exit();
+  });
+
+  // ------------------------------
+  //  3. Create DB if it doesn't exist
+  // ------------------------------
+
+  const spinnerWpDbCreate = ora('3. Create database (if it doesn\'t exist').start();
+  await exec(`${wpCli} db create`);
+  spinnerWpDbCreate.succeed();
+
+  // ------------------------------
+  //  4. Try installing WordPress core
+  // ------------------------------
+
+  const spinnerWpCoreInstall = ora('4. Installing WordPress core').start();
+  await exec(`${wpCli} core install --url=${wpInfo.siteUrl} --title=${wpInfo.siteName} --admin_user=${wpInfo.user} --admin_password=${wpInfo.pass} --admin_email=${wpInfo.email}`).then(() => {
+    spinnerWpCoreInstall.succeed();
+  }).catch((error) => {
+    spinnerWpCoreInstall.fail(`${spinnerWpCoreInstall.text}\n\n${error}`);
+    process.exit();
+  });
+
+  // ------------------------------
+  //  5. Building Assets
+  // ------------------------------
+
+  const spinnerBuildAssets = ora('5. Building assets').start();
+  await exec('npm run build').then(() => {
+    spinnerBuildAssets.succeed();
+  }).catch((error) => {
+    spinnerBuildAssets.fail(`${spinnerBuildAssets.text}\n\n${error}`);
+    process.exit();
+  });
+
+  // ------------------------------
+  //  6. Activate Theme
+  // ------------------------------
+
+  const spinnerActivateTheme = ora('6. Activating theme').start();
+  await exec(`${wpCli} theme activate ${wpInfo.themePackage}`).then(() => {
+    spinnerActivateTheme.succeed();
+    console.log('');
+    output.success('Done! ');
+    console.log('');
+    outputWPLoginInfo(wpInfo.siteUrl, wpInfo.user, wpInfo.pass);
+  }).catch((error) => {
+    spinnerActivateTheme.fail(`${spinnerActivateTheme.text}\n\n${error}`);
+    outputWPLoginInfo(wpInfo.siteUrl, wpInfo.user, wpInfo.pass);
+    process.exit();
+  });
+};
+
+/**
+ * Setup WordPress for users using MAMP
+ */
+exports.mamp = async() => {
+  specificSetupInfo('MAMP');
+
+  // ------------------------------
+  //  Warning
+  // ------------------------------
+
+  console.log(`    ${chalk.red('!!! WARNING')} - This will only work if your MAMP installation`);
+  console.log(`    folder path is ${chalk.bgGreen.black('/Applications/MAMP')}`);
+  console.log('');
+
+  // ------------------------------
+  //  Prompting
+  // ------------------------------
+
+  const wpInfo = {
+    dbName: promptDatabase(),
+    dbUser: 'root',
+    dbPass: 'root',
+    dbHost: 'localhost:/Applications/MAMP/tmp/mysql/mysql.sock',
+    dbPrefix: 'wp',
+    siteUrl: files.readManifest('url'),
+    siteName: 'WP_Boilerplate',
+    user: 'Admin',
+    pass: randomWpPass(),
+    email: files.readManifest('email'),
+    themePackage: files.readManifest('package'),
+  };
+
+  // ----------------------------------------------------
+  //  1. Check if wp-cli works
   //
   //  If not, download wp-cli phar and make all following 
   //  wp commands use 'php wp-cli.phar ...'
