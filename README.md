@@ -161,7 +161,7 @@ When you add new class in your theme, be sure to run
 composer -o dump-autoload
 ```
 
-to rebuild the composer's autoload class map. The reason why this isn't automatic is that we are folowing modified WordPress coding standards, and not PSR standards, so this has to be done manually.
+to rebuild the composer's autoload class map. The reason why this isn't automatic is that we are following modified WordPress coding standards, and not PSR standards, so this has to be done manually.
 
 ## Recommended plugins
 
