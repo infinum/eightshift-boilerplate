@@ -358,12 +358,35 @@ exports.custom = async() => {
     themePackage: files.readManifest('package'),
   };
 
+  // ----------------------------------------------------
+  //  Check if wp-cli works
+  //
+  //  If not, download wp-cli phar and make all following 
+  //  wp commands use 'php wp-cli.phar ...'
+  //  instead of 'wp ...' 
+  // -------------------------------------------------
+  
+  const spinnerWpCli = ora('1. Checking if wp-cli works').start();
+  let wpCli = 'wp';
+  await exec('wp --info').then(() => {
+    spinnerWpCli.succeed();
+  }).catch(async() => {
+    spinnerWpCli.text = '1. Installing wp-cli';
+    await exec('curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && php wp-cli.phar --info').then(() => {
+      spinnerWpCli.succeed();
+      wpCli = 'php wp-cli.phar';
+    }).catch((error) => {
+      spinnerWpCli.fail(`${spinnerWpCli.text}\n${error}`);
+      process.exit();
+    });
+  });
+
   // ------------------------------
-  //  1. Try creating wp-config
+  //  2. Try creating wp-config
   // ------------------------------
 
-  const spinnerWpConfig = ora('1. Creating wp-config').start();
-  await exec(`wp config create --dbname=${wpInfo.dbName} --dbuser=${wpInfo.dbUser} --dbpass=${wpInfo.dbPass} --dbhost=${wpInfo.dbHost} --dbprefix=${wpInfo.dbPrefix}`).then(() => {
+  const spinnerWpConfig = ora('2. Creating wp-config').start();
+  await exec(`${wpCli} config create --dbname=${wpInfo.dbName} --dbuser=${wpInfo.dbUser} --dbpass=${wpInfo.dbPass} --dbhost=${wpInfo.dbHost} --dbprefix=${wpInfo.dbPrefix}`).then(() => {
     spinnerWpConfig.succeed();
   }).catch((error) => {
     spinnerWpConfig.fail(`${spinnerWpConfig.text}\n\n${error}`);
@@ -371,11 +394,19 @@ exports.custom = async() => {
   });
 
   // ------------------------------
-  //  2. Try installing WordPress core
+  //  3. Create DB if it doesn't exist
   // ------------------------------
 
-  const spinnerWpCoreInstall = ora('2. Installing WordPress core').start();
-  await exec(`wp core install --url=${wpInfo.siteUrl} --title=${wpInfo.siteName} --admin_user=${wpInfo.user} --admin_password=${wpInfo.pass} --admin_email=${wpInfo.email}`).then(() => {
+  const spinnerWpDbCreate = ora('3. Create database (if it doesn\'t exist').start();
+  await exec(`${wpCli} db create`);
+  spinnerWpDbCreate.succeed();
+
+  // ------------------------------
+  //  4. Try installing WordPress core
+  // ------------------------------
+
+  const spinnerWpCoreInstall = ora('4. Installing WordPress core').start();
+  await exec(`${wpCli} core install --url=${wpInfo.siteUrl} --title=${wpInfo.siteName} --admin_user=${wpInfo.user} --admin_password=${wpInfo.pass} --admin_email=${wpInfo.email}`).then(() => {
     spinnerWpCoreInstall.succeed();
   }).catch((error) => {
     spinnerWpCoreInstall.fail(`${spinnerWpCoreInstall.text}\n\n${error}`);
@@ -383,10 +414,10 @@ exports.custom = async() => {
   });
 
   // ------------------------------
-  //  3. Building Assets
+  //  5. Building Assets
   // ------------------------------
 
-  const spinnerBuildAssets = ora('3. Building assets').start();
+  const spinnerBuildAssets = ora('5. Building assets').start();
   await exec('npm run build').then(() => {
     spinnerBuildAssets.succeed();
   }).catch((error) => {
@@ -395,11 +426,11 @@ exports.custom = async() => {
   });
 
   // ------------------------------
-  //  4. Activate Theme
+  //  6. Activate Theme
   // ------------------------------
 
-  const spinnerActivateTheme = ora('4. Activating theme').start();
-  await exec(`wp theme activate ${wpInfo.themePackage}`).then(() => {
+  const spinnerActivateTheme = ora('6. Activating theme').start();
+  await exec(`${wpCli} theme activate ${wpInfo.themePackage}`).then(() => {
     spinnerActivateTheme.succeed();
     console.log('');
     output.success('Done! ');
