@@ -16,12 +16,31 @@ const capCase = (string) => string.replace(/\W+/g, '_').split('_').map((item) =>
 
 const run = async() => {
 
+  // Read arguments & flags
+  let flagNoRename = false;
+  for (let j = 0; j < process.argv.length; j++) {  
+    if (process.argv[j] === 'no-rename') {
+      flagNoRename = true;
+    }
+  }
+
   // Main script
   output.writeIntro();
 
+  if (flagNoRename) {
+    const oldManifest = files.readManifestFull();
+    const newManifest = oldManifest;
+  }
+
   // Get manifest data. Prompt for new data and read old data from theme-manifest.json
-  const newManifest = rename.promptThemeData();
   const oldManifest = files.readManifestFull();
+  let newManifest = oldManifest;
+
+  if (flagNoRename) {
+    newManifest.url = rename.promptDevURL();
+  } else {
+    newManifest = rename.promptThemeData();
+  }
 
   output.normal('--------------------------------------------------');
   output.normal('');
@@ -35,7 +54,12 @@ const run = async() => {
   //  Rename files
   // -----------------------------
 
-  const spinnerRename = ora('1. Renaming files (this might take some time)').start();
+  let spinnerRenameText = '1. Renaming files (this might take some time)';
+  if (flagNoRename) {
+    spinnerRenameText = '1. Renaming dev url';
+  }
+
+  const spinnerRename = ora(spinnerRenameText).start();
   await files.renameAllFiles(oldManifest, newManifest).then(() => {
     spinnerRename.succeed();
   }).catch((error) => {

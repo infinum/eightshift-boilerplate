@@ -82,3 +82,12 @@ exports.promptThemeData = () => {
 
   return newManifest;
 };
+
+exports.promptDevURL = () => {
+  return output.prompt({
+    label: `${emoji.get('earth_africa')} Please enter a theme development url (for local development with browsersync - no protocol):`,
+    prompt: 'Dev url (e.g. dev.wordpress.com): ',
+    error: 'Dev url is required and cannot be empty.',
+    required: true,
+  }).trim();
+};
