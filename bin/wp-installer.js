@@ -8,6 +8,7 @@ const {execSync} = require('child_process');
 const files = require('./files');
 const ora = require('ora');
 const prompt = require('prompt-sync')();
+const generator = require('generate-password');
 
 const createDatabase = async(options) => {
   const create = `mysql -u ${options.dbRootUser} --password=${options.dbRootPass} -e "CREATE DATABASE IF NOT EXISTS ${options.dbName}"`;
@@ -178,7 +179,10 @@ const promptVmDir = () => output.prompt({
  * Creates a fairly secure WordPress default password
  */
 const randomWpPass = () => {
-  const randomPass = Math.random().toString(36).slice(-14);
+  const randomPass = generator.generate({
+      length: 24,
+      numbers: true
+  });
   return randomPass;
 };
 
