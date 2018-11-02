@@ -17,20 +17,14 @@ const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.
 
 // Theme
 const themeName = 'inf_theme';
-const themePath = `wp-content/themes/${themeName}/skin`;
-const themeFullPath = `${appPath}/${themePath}`;
-const themePublicPath = `${themePath}/public/`;
-const themeEntry = `${themeFullPath}/assets/application.js`;
-const themeAdminEntry = `${themeFullPath}/assets/application-admin.js`;
-const themeOutput = `${themeFullPath}/public`;
+const themePublicPath = 'skin/public/';
+const themeEntry = `${appPath}/skin/assets/application.js`;
+const themeAdminEntry = `${appPath}/skin/assets/application-admin.js`;
+const themeOutput = `${appPath}/skin/public`;
 
 // Outputs
-const outputType = `${DEV ? '[name]' : '[name]-[hash]'}`;
-const outputJs = `scripts/${outputType}.js`;
-const outputCss = `styles/${outputType}.css`;
-const outputFile = `${outputType}.[ext]`;
-const outputImages = `images/${outputFile}`;
-const outputFonts = `fonts/${outputFile}`;
+const outputHash = `${DEV ? '[name]' : '[name]-[hash]'}`;
+const outputStatic = '[name].[ext]';
 
 
 // All loaders to use on assets.
@@ -38,23 +32,23 @@ const allModules = {
   rules: [
     {
       test: /\.(js|jsx)$/,
-      use: 'babel-loader',
       exclude: /node_modules/,
+      use: 'babel-loader',
     },
     {
       test: /\.json$/,
       exclude: /node_modules/,
-      use: 'file-loader',
+      use: `file-loader?name=${outputStatic}`,
     },
     {
       test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
       exclude: [/fonts/, /node_modules/],
-      use: `file-loader?name=${outputImages}`,
+      use: `file-loader?name=${outputStatic}`,
     },
     {
       test: /\.(eot|otf|ttf|woff|woff2|svg)$/,
       exclude: [/images/, /node_modules/],
-      use: `file-loader?name=${outputFonts}`,
+      use: `file-loader?name=${outputStatic}`,
     },
     {
       test: /\.scss$/,
@@ -72,7 +66,7 @@ const allPlugins = [
 
   // Convert JS to CSS.
   new MiniCssExtractPlugin({
-    filename: outputCss,
+    filename: `${outputHash}.css`,
   }),
 
   // Gives you jQuery with in the webpack so no need for impoting it.
@@ -90,9 +84,8 @@ const allPlugins = [
       files: [
         {
           match: [
-            'wp-content/themes/**/*.php',
-            'wp-content/plugins/**/*.php',
-            `${themePublicPath}styles/*.css`,
+            '**/*.php',
+            `${themePublicPath}*.css`,
           ],
         },
       ],
@@ -109,18 +102,14 @@ const allPlugins = [
     // Find jQuery in node_modules and copy it to public folder
     {
       from: `${appPath}/node_modules/jquery/dist/jquery.min.js`,
-      to: `${themeOutput}/scripts/vendors`,
-    },
-
-    // If using images in css to reference directly put them in this folder. That will override the cache-busting.
-    {
-      from: `${themePath}/assets/static`,
-      to: `${themeOutput}/static`,
+      to: themeOutput,
     },
   ]),
 
   // Create manifest.json file.
-  new ManifestPlugin(),
+  new ManifestPlugin({
+    publicPath: `/wp-content/themes/${themeName}/skin/public/`,
+  }),
 ];
 
 // General optimisations.
@@ -174,7 +163,7 @@ module.exports = [
     output: {
       path: themeOutput,
       publicPath: themePublicPath,
-      filename: outputJs,
+      filename: `${outputHash}.js`,
     },
 
     // Don't bundle jQuery but expect it from a different source.

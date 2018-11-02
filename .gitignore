@@ -40,8 +40,8 @@ wp-content/plugins/akismet/
 wp-content/themes/twenty*/
 
 # Project dev files
-/vendor
-/node_modules/
+wp-content/themes/*/vendor/
+wp-content/themes/*/node_modules/
 
 # Mac OS custom attribute store and thumbnails
 *.DS_Store

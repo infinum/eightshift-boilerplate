@@ -2,8 +2,6 @@
   "extends": "@infinumjs",
 
   "env": {
-
-    # You can change environment depending on the project you are working on
     "browser": true,
     "node": true,
     "commonjs": true,

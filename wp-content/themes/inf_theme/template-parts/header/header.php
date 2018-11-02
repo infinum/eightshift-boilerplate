@@ -12,7 +12,7 @@ $menu             = new Menu();
 $blog_name        = get_bloginfo( 'name' );
 $blog_description = get_bloginfo( 'description' );
 $header_logo_info = $blog_name . ' - ' . $blog_description;
-$logo_img         = General_Helper::get_manifest_assets_data( 'images/logo.svg' );
+$logo_img         = General_Helper::get_manifest_assets_data( 'logo.svg' );
 
 ?>
 <div class="header">

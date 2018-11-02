@@ -4,7 +4,13 @@
   },
   "autoload": {
     "classmap": [
-      "wp-content/themes/inf_theme/"
+      "admin",
+      "helpers",
+      "includes",
+      "languages",
+      "page-templates",
+      "template-parts",
+      "theme"
     ]
   },
   "minimum-stability": "dev",

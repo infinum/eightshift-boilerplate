@@ -122,7 +122,7 @@ Once the theme is activated, make sure to run `npm start` in your `public_html` 
 1. **Linting assets** - JS and SASS using Webpack:
 
     ```bash
-    npm run precommit
+    npm run lint
     ```
 
 2. **Linting PHP** - We are using [Infinum coding standards for WordPress](https://github.com/infinum/coding-standards-wp) to check php files. To install it, you need to install [Composer](https://getcomposer.org/) from initial setup step. 
