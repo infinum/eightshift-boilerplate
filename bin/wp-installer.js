@@ -9,6 +9,7 @@ const files = require('./files');
 const ora = require('ora');
 const prompt = require('prompt-sync')();
 const generator = require('generate-password');
+const path = require('path');
 
 const createDatabase = async(options) => {
   const create = `mysql -u ${options.dbRootUser} --password=${options.dbRootPass} -e "CREATE DATABASE IF NOT EXISTS ${options.dbName}"`;
@@ -209,6 +210,7 @@ exports.vvv = async() => {
   // ------------------------------
 
   const vmdir = promptVmDir();
+  const package = files.readManifest('package');
   const wpInfo = {
     dbName: promptDatabase(),
     dbUser: 'wp',
@@ -218,7 +220,8 @@ exports.vvv = async() => {
     user: 'Admin',
     pass: randomWpPass(),
     email: files.readManifest('email'),
-    themePackage: files.readManifest('package'),
+    themePackage: package,
+    themePath: path.join(`wp-content/themes/${package}`),
   };
 
   // ==============================
@@ -330,7 +333,7 @@ exports.vvv = async() => {
   // ------------------------------
 
   const spinnerBuildAssets = ora('6. Building assets').start();
-  await exec('npm run build').then(() => {
+  await exec(`cd ${wpInfo.themePath} && npm run build`).then(() => {
     spinnerBuildAssets.succeed();
   }).catch((error) => {
     spinnerBuildAssets.fail(`${spinnerBuildAssets.text}\n\n${error}`);

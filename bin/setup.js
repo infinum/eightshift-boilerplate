@@ -75,10 +75,22 @@ const run = async() => {
   // -----------------------------
 
   const spinnerComposer = ora('2. Updating composer').start();
-  await exec('npx composer update').then(() => {
+  await exec(`cd wp-content/themes/${newManifest.package} && composer update`).then(() => {
     spinnerComposer.succeed();
   }).catch((error) => {
     spinnerComposer.fail(`${spinnerComposer.text}\n${error}`);
+    process.exit();
+  });
+
+  // -----------------------------
+  //  Update Composer dependencies
+  // -----------------------------
+
+  const spinnerThemeDep = ora('3. Installing theme dependencies').start();
+  await exec(`cd wp-content/themes/${newManifest.package} && npm install`).then(() => {
+    spinnerThemeDep.succeed();
+  }).catch((error) => {
+    spinnerThemeDep.fail(`${spinnerThemeDep.text}\n${error}`);
     process.exit();
   });
   
@@ -90,12 +102,12 @@ const run = async() => {
   //  instead of 'wp ...' 
   // -------------------------------------------------
   
-  const spinnerWpCli = ora('3. Checking if wp-cli works').start();
+  const spinnerWpCli = ora('4. Checking if wp-cli works').start();
   let wpCli = 'wp';
   await exec('wp --info').then(() => {
     spinnerWpCli.succeed();
   }).catch( async() => {
-    spinnerWpCli.text = '3. Installing wp-cli';
+    spinnerWpCli.text = '4. Installing wp-cli';
     await exec('curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && php wp-cli.phar --info').then(() => {
       spinnerWpCli.succeed();
       wpCli = 'php wp-cli.phar';
@@ -109,7 +121,7 @@ const run = async() => {
   //  Install WP Core
   // -----------------------------
 
-  const spinnerWpCore = ora('4. Installing WordPress Core').start();
+  const spinnerWpCore = ora('5. Installing WordPress Core').start();
   await exec(`${wpCli} core download --skip-content`).then(() => {
     spinnerWpCore.succeed();
   }).catch((error) => {
