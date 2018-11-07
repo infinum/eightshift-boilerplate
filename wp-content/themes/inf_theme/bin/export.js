@@ -16,8 +16,7 @@ const folders = [
 ];
  
 // create a file to stream archive data to.
-console.log('Path: ', __dirname + '/example.zip');
-const archivePath = path.join(__dirname + '/example.zip');
+const archivePath = path.join(__dirname + '/theme.zip');
 
 var output = fs.createWriteStream(archivePath);
 var archive = archiver('zip', {
