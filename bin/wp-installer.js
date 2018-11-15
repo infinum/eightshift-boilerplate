@@ -371,6 +371,7 @@ exports.custom = async() => {
   //  Prompting
   // ------------------------------
 
+  const package = files.readManifest('package');
   const wpInfo = {
     dbName: promptDatabase(),
     dbUser: promptDatabaseUser(),
@@ -382,7 +383,9 @@ exports.custom = async() => {
     user: 'Admin',
     pass: randomWpPass(),
     email: files.readManifest('email'),
-    themePackage: files.readManifest('package'),
+    themePackage: package,
+    themePath: path.join(`wp-content/themes/${package}`),
+
   };
 
   // ----------------------------------------------------
@@ -445,7 +448,7 @@ exports.custom = async() => {
   // ------------------------------
 
   const spinnerBuildAssets = ora('5. Building assets').start();
-  await exec('npm run build').then(() => {
+  await exec(`cd ${wpInfo.themePath} && npm run build`).then(() => {
     spinnerBuildAssets.succeed();
   }).catch((error) => {
     spinnerBuildAssets.fail(`${spinnerBuildAssets.text}\n\n${error}`);
@@ -488,6 +491,7 @@ exports.mamp = async() => {
   //  Prompting
   // ------------------------------
 
+  const package = files.readManifest('package');
   const wpInfo = {
     dbName: promptDatabase(),
     dbUser: 'root',
@@ -499,7 +503,8 @@ exports.mamp = async() => {
     user: 'Admin',
     pass: randomWpPass(),
     email: files.readManifest('email'),
-    themePackage: files.readManifest('package'),
+    themePackage: package,
+    themePath: path.join(`wp-content/themes/${package}`),
   };
 
   // ----------------------------------------------------
@@ -562,7 +567,7 @@ exports.mamp = async() => {
   // ------------------------------
 
   const spinnerBuildAssets = ora('5. Building assets').start();
-  await exec('npm run build').then(() => {
+  await exec(`cd ${wpInfo.themePath} && npm run build`).then(() => {
     spinnerBuildAssets.succeed();
   }).catch((error) => {
     spinnerBuildAssets.fail(`${spinnerBuildAssets.text}\n\n${error}`);
