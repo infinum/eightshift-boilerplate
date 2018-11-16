@@ -13,7 +13,8 @@
     "precommit": "npm run lint",
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "NODE_ENV=production webpack --progress --mode production",
-    "export": "node bin/export.js"
+    "export": "node bin/export.js",
+    "theme-setup": "npm install && node bin/theme-setup.js"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -42,7 +43,14 @@
     "uglifyjs-webpack-plugin": "^1.3.0",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
-    "webpack-manifest-plugin": "^2.0.3"
+    "webpack-manifest-plugin": "^2.0.3",
+    "chalk": "^2.4.1",
+    "generate-password": "^1.4.1",
+    "node-emoji": "^1.8.1",
+    "ora": "^3.0.0",
+    "promisify-child-process": "^2.1.2",
+    "prompt-sync": "^4.1.6",
+    "replace-in-file": "^3.4.2"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",

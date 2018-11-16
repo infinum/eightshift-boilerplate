@@ -60,7 +60,7 @@ const run = async() => {
   }
 
   const spinnerRename = ora(spinnerRenameText).start();
-  await files.renameAllFiles(oldManifest, newManifest).then(() => {
+  await files.renameAllFiles(oldManifest, newManifest, flagNoRename).then(() => {
     spinnerRename.succeed();
   }).catch((error) => {
     spinnerRename.fail(`${spinnerRename.text}\n${error}`);

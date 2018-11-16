@@ -72,7 +72,7 @@ exports.findReplace = async(findString, replaceString) => {
   }
 };
 
-exports.renameAllFiles = async(oldManifest, newManifest) => {
+exports.renameAllFiles = async(oldManifest, newManifest, skipSinces) => {
   await exports.findReplace(oldManifest.name, newManifest.name);
   await exports.findReplace(oldManifest.description, newManifest.description);
   await exports.findReplace(oldManifest.author, newManifest.author);
@@ -99,7 +99,9 @@ exports.renameAllFiles = async(oldManifest, newManifest) => {
   }
 
   // Rename sinces
-  await exports.findReplace('@since.*\n', '@since 1.0.0\n');
-  await exports.findReplace('@since 1.0.0\n.*@since 1.0.0\n', '@since 1.0.0\n');
+  if (!skipSinces) {
+    await exports.findReplace('@since.*\n', '@since 1.0.0\n');
+    await exports.findReplace('@since 1.0.0\n.*@since 1.0.0\n', '@since 1.0.0\n');
+  }
 };
 
