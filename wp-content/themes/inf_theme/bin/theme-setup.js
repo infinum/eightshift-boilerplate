@@ -4,66 +4,109 @@ const replace = require('replace-in-file');
 const emoji = require('node-emoji');
 const ora = require('ora');
 const chalk = require('chalk');
+const prompt = require('prompt-sync')();
+const {exec} = require('promisify-child-process');
 
 const rootDir = path.join(__dirname, '..');
-const manifest = path.join(`${rootDir}/theme-manifest.json`);
 
+// Define the theme.
+const label = (msg) => console.log(chalk.cyan(msg));
+const error = (msg) => console.log(`${chalk.bgRed('Error')}${chalk.red(' - ')}${chalk.red(msg)}`);
+const log = (msg) => console.log(msg);
+const logWithPadding = (msg) => console.log(`    ${msg}`);
 
-const readManifestFull = () => {
-  let oldManifest = '';
-  if (fs.existsSync(manifest)) {
-    oldManifest = JSON.parse(fs.readFileSync(manifest, 'utf8'));
-  }
-  return oldManifest;
-}
-
-const findReplace = async(findString, replaceString) => {
-  const regex = new RegExp(findString, 'g');
+/**
+ * Replaces the Browser Sync dev url variable value.
+ * 
+ * @param {string} newDevUrl 
+ */
+const findReplace = async(newDevUrl) => {
   const options = {
-    files: `${rootDir}/**/*`,
-    from: regex,
-    to: replaceString,
-    ignore: [
-      path.join(`${rootDir}/node_modules/**/*`),
-      path.join(`${rootDir}/.git/**/*`),
-      path.join(`${rootDir}/.github/**/*`),
-      path.join(`${rootDir}/vendor/**/*`),
-      path.join(`${rootDir}/wp-admin/**/*`),
-      path.join(`${rootDir}/wp-includes/**/*`),
-      path.join(`${rootDir}/bin/rename.js`),
-      path.join(`${rootDir}/bin/rename-runnable.js`),
-      path.join(`${rootDir}/bin/setup.js`),
-      path.join(`${rootDir}/bin/setup-wp.js`),
-      path.join(`${rootDir}/bin/output.js`),
-      path.join(`${rootDir}/bin/files.js`),
-      path.join(`${rootDir}/theme-manifest.js`),
-    ],
+    files: 'webpack.config.js',
+    from: /^const proxyUrl = .*$/m,
+    to: `const proxyUrl = '${newDevUrl}';`,
   };
 
-  if (findString !== replaceString) {
-    await replace(options);
-  }
+  await replace(options);
 };
+
+/**
+ * Prompts a user for something. 
+ *
+ * @param {object} settings 
+ */
+const promptFor = (settings) => {
+  let userInput;
+  label(settings.label);
+  do {
+    userInput = prompt(settings.prompt);
+
+    if (userInput.length <= 0) {
+      error(settings.error);
+    }
+  }
+  while (userInput.length <= 0 && userInput !== 'exit');
+  label('');
+  if (userInput === 'exit') {
+    log('Exiting script...');
+    process.exit();
+  }
+
+  return userInput;
+};
+
+/**
+ * Writes the intro for the script.
+ */
+const writeIntro = () => {
+
+    // Clear console
+    process.stdout.write('\033c');
+
+    console.log(chalk.red('---------------------------------------------------------------'));
+    console.log(chalk.red(''));
+    console.log(chalk.red('    _ _ _ ___ '));
+    console.log(chalk.red('    | | | |__| '));
+    console.log(chalk.red('    |_|_| |   '));
+    console.log(chalk.red('    ___  ____ _ _    ____ ____ ___       ____ ___ ____ '));
+    console.log(chalk.red('    |__| |  | | |    |___ |__/ |__| |    |__|  |  |___ '));
+    console.log(chalk.red('    |__| |__| | |___ |___ |  \\ |    |___ |  |  |  |___ '));
+    console.log(chalk.red(''));
+    console.log(chalk.red(''));
+    console.log('    Welcome to Boilerplate setup script for your theme!');
+    console.log(chalk.red(''));
+    console.log('    This script will uniquely set up your theme.');
+    console.log(chalk.red(''));
+    console.log(chalk.red(''));
+}
 
 const run = async() => {
 
-  const oldManifest = readManifestFull();
-  const newManifest = oldManifest;
-  
+  writeIntro();
+
+  // Dev url
+  const devUrl = promptFor({
+    label: `${emoji.get('earth_africa')} Please enter your development url, without protocol (for local development with browsersync):`,
+    prompt: 'Dev url (e.g. dev.wordpress.com): ',
+    error: 'Dev url is required and cannot be empty.',
+    required: true,
+  }).trim();
+
+  console.log('');
+  logWithPadding('Let\'s get started...');
+  console.log('');
+
   // -----------------------------
   //  1. Rename dev url
   // ----------------------------- 
 
   const spinnerRename = ora('1. Renaming dev url').start();
-  await findReplace(oldManifest.url, 'one.wordpress.test').then(() => {
+  await findReplace('one.wordpress.test').then(() => {
     spinnerRename.succeed();
   }).catch((error) => {
     spinnerRename.fail(`${spinnerRename.text}\n${error}`);
     process.exit();
   });
-
-  // Write the new manifest only after we've replaced everything.
-  fs.writeFile(manifest, JSON.stringify(newManifest, null, 2), 'utf8', () => {});
 
   // -----------------------------
   //  2. Update Composer dependencies
