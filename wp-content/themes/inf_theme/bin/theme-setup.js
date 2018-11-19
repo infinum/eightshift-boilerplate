@@ -55,36 +55,30 @@ const promptFor = (settings) => {
   return userInput;
 };
 
-/**
- * Writes the intro for the script.
- */
-const writeIntro = () => {
-
-    // Clear console
-    process.stdout.write('\033c');
-
-    console.log(chalk.red('---------------------------------------------------------------'));
-    console.log(chalk.red(''));
-    console.log(chalk.red('    _ _ _ ___ '));
-    console.log(chalk.red('    | | | |__| '));
-    console.log(chalk.red('    |_|_| |   '));
-    console.log(chalk.red('    ___  ____ _ _    ____ ____ ___       ____ ___ ____ '));
-    console.log(chalk.red('    |__| |  | | |    |___ |__/ |__| |    |__|  |  |___ '));
-    console.log(chalk.red('    |__| |__| | |___ |___ |  \\ |    |___ |  |  |  |___ '));
-    console.log(chalk.red(''));
-    console.log(chalk.red(''));
-    console.log('    Welcome to Boilerplate setup script for your theme!');
-    console.log(chalk.red(''));
-    console.log('    This script will uniquely set up your theme.');
-    console.log(chalk.red(''));
-    console.log(chalk.red(''));
-}
-
 const run = async() => {
+  
+  // Clear console
+  process.stdout.write('\033c');
 
+  // Write intro
+  console.log(chalk.red('---------------------------------------------------------------'));
+  console.log(chalk.red(''));
+  console.log(chalk.red('    _ _ _ ___ '));
+  console.log(chalk.red('    | | | |__| '));
+  console.log(chalk.red('    |_|_| |   '));
+  console.log(chalk.red('    ___  ____ _ _    ____ ____ ___       ____ ___ ____ '));
+  console.log(chalk.red('    |__| |  | | |    |___ |__/ |__| |    |__|  |  |___ '));
+  console.log(chalk.red('    |__| |__| | |___ |___ |  \\ |    |___ |  |  |  |___ '));
+  console.log(chalk.red(''));
+  console.log(chalk.red(''));
+  console.log('    Welcome to Boilerplate setup script for your theme!');
+  console.log(chalk.red(''));
+  console.log('    This script will uniquely set up your theme.');
+  console.log(chalk.red(''));
+  console.log(chalk.red(''));
   writeIntro();
 
-  // Dev url
+  // Prompt user for dev url (used for browsersync).
   const devUrl = promptFor({
     label: `${emoji.get('earth_africa')} Please enter your development url, without protocol (for local development with browsersync):`,
     prompt: 'Dev url (e.g. dev.wordpress.com): ',
@@ -92,8 +86,7 @@ const run = async() => {
     required: true,
   }).trim();
 
-  console.log('');
-  logWithPadding('Let\'s get started...');
+  console.log('Let\'s get started...');
   console.log('');
 
   // -----------------------------
@@ -131,6 +124,17 @@ const run = async() => {
     spinnerBuilt.fail(`${spinnerBuilt.text}\n${error}`);
     process.exit();
   });
+
+  // -----------------------------
+  //  4. Success
+  // -----------------------------
+
+  console.log('');
+  console.log(`${emoji.get('tada')}${emoji.get('tada')}${emoji.get('tada')} Your theme is now ready! ${emoji.get('tada')}${emoji.get('tada')}${emoji.get('tada')}`);
+  console.log('');
+  console.log(`Please run ${chalk.green('npm start')} in current folder to start developing.`);
+  console.log('');
+  console.log(chalk.red('---------------------------------------------------------------'));
 
 }
 run();

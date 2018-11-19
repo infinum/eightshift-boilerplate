@@ -24,6 +24,9 @@ const run = async() => {
     }
   }
 
+  // Clear console
+  process.stdout.write('\033c');
+
   // Main script
   output.writeIntro();
 

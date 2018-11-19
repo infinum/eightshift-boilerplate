@@ -14,7 +14,8 @@
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "NODE_ENV=production webpack --progress --mode production",
     "export": "node bin/export.js",
-    "theme-setup": "npm install && node bin/theme-setup.js"
+    "theme-setup": "npm install && node bin/theme-setup.js",
+    "test": "node bin/test.js"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

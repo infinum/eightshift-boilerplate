@@ -14,9 +14,12 @@ const folders = [
   'template-parts',
   'theme',
 ];
+
+// Get theme folder name
+const themeName = path.basename(path.join(__dirname, '..'));
  
-// create a file to stream archive data to.
-const archivePath = path.join(__dirname + '/theme.zip');
+// Create a file to stream archive data to.
+const archivePath = path.join(__dirname, '..', `${themeName}.zip`);
 
 var output = fs.createWriteStream(archivePath);
 var archive = archiver('zip', {
