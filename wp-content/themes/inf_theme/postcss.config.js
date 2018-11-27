@@ -3,8 +3,7 @@ const DEV = process.env.NODE_ENV !== 'production';
 
 const path = require('path');
 
-const themeName = 'inf_theme';
-const fontsPath = path.join(__dirname, `wp-content/themes/${themeName}/skin/assets/fonts`);
+const fontsPath = path.join(__dirname, `skin/assets/fonts`);
 
 const autoPrefixer = require('autoprefixer');
 const cssMqpacker = require('css-mqpacker');

@@ -108,7 +108,7 @@ const allPlugins = [
 
   // Create manifest.json file.
   new ManifestPlugin({
-    publicPath: `/wp-content/themes/${themeName}/skin/public/`,
+    publicPath: `/skin/public/`,
   }),
 ];
 

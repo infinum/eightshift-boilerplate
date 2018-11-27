@@ -70,9 +70,6 @@ const run = async() => {
     process.exit();
   });
 
-  // Write the new manifest only after we've replaced everything.
-  fs.writeFile(files.manifest, JSON.stringify(newManifest, null, 2), 'utf8', () => {});
-
   // -----------------------------
   //  Update Composer dependencies
   // -----------------------------
