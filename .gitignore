@@ -1,47 +1,13 @@
 # Project Specific
-wp-content/themes/*/skin/public
+/skin/public
 
 # Wordpress files
-wp-admin
-wp-includes
 /license.txt
 /readme.html
-/wp-activate.php
-/index.php
-/wp-blog-header.php
-/wp-comments-post.php
-/wp-config-sample.php
-/wp-config.php
-/wp-cron.php
-/wp-links-opml.php
-/wp-load.php
-/wp-login.php
-/wp-mail.php
-/wp-settings.php
-/wp-signup.php
-/wp-trackback.php
-/xmlrpc.php
-/.htaccess
-/robots.txt
-
-# Theme
-wp-content/*
-!wp-content/mu-plugins/
-!wp-content/plugins/
-!wp-content/themes/
-/wp-content/themes/index.php
-
-# Ignore these plugins from the core
-wp-content/plugins/hello.php
-wp-content/plugins/akismet/
-/wp-content/plugins/index.php
-
-# Ignore specific themes
-wp-content/themes/twenty*/
 
 # Project dev files
-wp-content/themes/*/vendor/
-wp-content/themes/*/node_modules/
+/vendor/*
+/node_modules/*
 
 # Mac OS custom attribute store and thumbnails
 *.DS_Store
@@ -51,12 +17,3 @@ wp-content/themes/*/node_modules/
 Thumbs.db
 ehthumbs.db
 ehthumbs_vista.db
-
-# Error logs
-error_log.txt
-debug.log
-wordfence-waf.php
-
-# Databases and exports
-latest_dump.tar.gz
-latest_dump
