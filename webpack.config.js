@@ -10,6 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
+// We need the website's root folder.
 const appPath = `${path.resolve(__dirname, '..', '..', '..')}`;
 
 // Dev Server

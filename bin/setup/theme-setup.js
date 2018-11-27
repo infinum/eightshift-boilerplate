@@ -7,7 +7,7 @@ const chalk = require('chalk');
 const prompt = require('prompt-sync')();
 const {exec} = require('promisify-child-process');
 
-const output = require('./setup/output');
+const output = require('./output');
 
 const rootDir = path.join(__dirname, '..');
 const capCase = (string) => string.replace(/\W+/g, '_').split('_').map((item) => item[0].toUpperCase() + item.slice(1)).join('_');
