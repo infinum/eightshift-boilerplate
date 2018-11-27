@@ -212,12 +212,12 @@ const replaceThemeData = async (themeData) => {
     await findReplace('INF_ASSETS_MANIFEST', themeData.manifest);
   }
 
-  // devUrl
-  if (themeData.devUrl) {
+  // BrowserSync proxy url.
+  if (themeData.url) {
     await replace({
       files: 'webpack.config.js',
       from: /^const proxyUrl = .*$/m,
-      to: `const proxyUrl = '${themeData.devUrl}';`,  
+      to: `const proxyUrl = '${themeData.url}';`,  
     });
   }
 }

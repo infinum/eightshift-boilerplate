@@ -10,18 +10,20 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
-const appPath = `${path.resolve(__dirname)}`;
+const appPath = `${path.resolve(__dirname, '..', '..', '..')}`;
 
 // Dev Server
 const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.com
 
 // Theme
-const themeName = 'inf_theme';
+const themeName = path.basename(__dirname);
 const themePath = `/wp-content/themes/${themeName}/skin`;
-const themePublicPath = `${themePath}/public/`;
-const themeEntry = `${appPath}/skin/assets/application.js`;
-const themeAdminEntry = `${appPath}/skin/assets/application-admin.js`;
-const themeOutput = `${appPath}/skin/public`;
+const themeNodePath = `${appPath}/wp-content/themes/${themeName}/node_modules`;
+const themeFullPath = `${appPath}${themePath}`;
+const themePublicPath = `/${themePath}/public/`;
+const themeEntry = `${themeFullPath}/assets/application.js`;
+const themeAdminEntry = `${themeFullPath}/assets/application-admin.js`;
+const themeOutput = `${themeFullPath}/public`;
 
 // Outputs
 const outputHash = `${DEV ? '[name]' : '[name]-[hash]'}`;
@@ -102,15 +104,13 @@ const allPlugins = [
 
     // Find jQuery in node_modules and copy it to public folder
     {
-      from: `${appPath}/node_modules/jquery/dist/jquery.min.js`,
+      from: `${themeNodePath}/jquery/dist/jquery.min.js`,
       to: themeOutput,
     },
   ]),
 
   // Create manifest.json file.
-  new ManifestPlugin({
-    publicPath: `/skin/public/`,
-  }),
+  new ManifestPlugin(),
 ];
 
 // General optimisations.
