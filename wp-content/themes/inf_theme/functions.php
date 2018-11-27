@@ -1,8 +1,8 @@
 <?php
 /**
- * Theme Name: init_theme_real_name
- * Description: init_description
- * Author: init_author_name
+ * Theme Name: Infinum WP Boilerplate
+ * Description: This is WP Boilerplate, a modern boilerplate / starter theme.
+ * Author: Team Eightshift
  * Author URI:
  * Version: 1.0
  * Text Domain: inf_theme
