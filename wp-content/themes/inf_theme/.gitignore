@@ -1,0 +1,19 @@
+# Project Specific
+/skin/public
+
+# Wordpress files
+/license.txt
+/readme.html
+
+# Project dev files
+/vendor/*
+/node_modules/*
+
+# Mac OS custom attribute store and thumbnails
+*.DS_Store
+._*
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db

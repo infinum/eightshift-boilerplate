@@ -10,12 +10,19 @@ const {exec} = require('promisify-child-process');
 const output = require('./setup/output');
 
 const rootDir = path.join(__dirname, '..');
+const capCase = (string) => string.replace(/\W+/g, '_').split('_').map((item) => item[0].toUpperCase() + item.slice(1)).join('_');
 
 const label = (msg) => console.log(chalk.cyan(msg));
 const error = (msg) => console.log(`${chalk.bgRed('Error')}${chalk.red(' - ')}${chalk.red(msg)}`);
 const log = (msg) => console.log(msg);
 const logWithPadding = (msg) => console.log(`    ${msg}`);
 
+/**
+ * Performs a wide search & replace. 
+ *
+ * @param {string} findString 
+ * @param {string} replaceString 
+ */
 const findReplace = async(findString, replaceString) => {
   const regex = new RegExp(findString, 'g');
   const options = {
@@ -75,7 +82,6 @@ const promptThemeData = () => {
   // -----------------------------
 
   do {
-    /*
     newManifest.name = promptFor({
       label: `${emoji.get('green_book')} Please enter your theme name (shown in WordPress admin):`,
       prompt: 'Theme name: ',
@@ -125,16 +131,15 @@ const promptThemeData = () => {
       prompt: 'Author name: ',
       required: false,
     }).trim();
-    */
 
     confirmed = output.summary([
-      // {label: `${emoji.get('green_book')} Theme name`, variable: newManifest.name},
-      // {label: `${emoji.get('spiral_note_pad')}  Theme description`, variable: newManifest.description},
-      // {label: `${emoji.get('crab')} Author`, variable: `${newManifest.author}`},
-      // {label: `${emoji.get('package')} Package`, variable: newManifest.package},
-      // {label: `${emoji.get('sun_behind_cloud')}  Namespace`, variable: newManifest.namespace},
-      // {label: `${emoji.get('bullettrain_front')} Theme prefix`, variable: newManifest.prefix},
-      // {label: `${emoji.get('earth_africa')} Dev url`, variable: newManifest.url},
+      {label: `${emoji.get('green_book')} Theme name`, variable: newManifest.name},
+      {label: `${emoji.get('spiral_note_pad')}  Theme description`, variable: newManifest.description},
+      {label: `${emoji.get('crab')} Author`, variable: `${newManifest.author}`},
+      {label: `${emoji.get('package')} Package`, variable: newManifest.package},
+      {label: `${emoji.get('sun_behind_cloud')}  Namespace`, variable: newManifest.namespace},
+      {label: `${emoji.get('bullettrain_front')} Theme prefix`, variable: newManifest.prefix},
+      {label: `${emoji.get('earth_africa')} Dev url`, variable: newManifest.url},
     ]);
   } while (confirmed !== 'y');
 
@@ -187,17 +192,17 @@ const replaceThemeData = async (themeData) => {
 
   // Package
   if (themeData.package) {
-    await findReplace('inf_theme', themeData.package);
+    await findReplace('ime-teme', themeData.package);
   }
 
   // Namespace
   if (themeData.namespace) {
-    await findReplace('Inf_Theme', themeData.namespace);
+    await findReplace('Ime_Teme', themeData.namespace);
   }
 
   // env
   if (themeData.env) {
-    await findReplace('INF_ENV', themeData.env);
+    await findReplace('IT_ENV', themeData.env);
   }
 
   // assetManifest
