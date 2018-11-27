@@ -82,22 +82,6 @@ exports.renameAllFiles = async(oldManifest, newManifest, skipSinces) => {
   await exports.findReplace(oldManifest.assetManifest, newManifest.assetManifest);
   await exports.findReplace(oldManifest.url, newManifest.url);
 
-  // Rename theme folder.
-  if (newManifest.package !== oldManifest.package) {
-    if (fs.existsSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`))) {
-      fs.renameSync(path.join(`${exports.themeFolder}/${oldManifest.package}/`), path.join(`${exports.themeFolder}/${newManifest.package}/`), (err) => {
-        if (err) {
-          throw err;
-        }
-        fs.statSync(`${exports.wpContentFolder}/${newManifest.package}/`, (error) => {
-          if (error) {
-            throw error;
-          }
-        });
-      });
-    }
-  }
-
   // Rename sinces
   if (!skipSinces) {
     await exports.findReplace('@since.*\n', '@since 1.0.0\n');

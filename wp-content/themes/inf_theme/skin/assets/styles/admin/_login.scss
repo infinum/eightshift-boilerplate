@@ -1,7 +1,7 @@
 /* Full path due to wp-login.php is not in the theme folder */
 
 .login h1 a { /* stylelint-disable-line selector-no-type */
-  background-image: url('/wp-content/themes/inf_theme/skin/public/images/logo.svg');
+  background-image: url('/skin/public/images/logo.svg');
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 80%;
