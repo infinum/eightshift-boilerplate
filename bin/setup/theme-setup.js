@@ -56,16 +56,17 @@ const findReplace = async(findString, replaceString) => {
  * @param {object} settings 
  */
 const promptFor = (settings) => {
+  settings.minLength = settings.minLength || 0;
   let userInput;
   label(settings.label);
   do {
     userInput = prompt(settings.prompt);
 
-    if (userInput.length <= 0) {
+    if (userInput.length <= settings.minLength) {
       error(settings.error);
     }
   }
-  while (userInput.length <= 0 && userInput !== 'exit');
+  while (userInput.length <= settings.minLength && userInput !== 'exit');
   label('');
   if (userInput === 'exit') {
     log('Exiting script...');
@@ -75,6 +76,9 @@ const promptFor = (settings) => {
   return userInput;
 };
 
+/**
+ * Prompts the user for all theme data (doesn't assume almost anything)
+ */
 const promptThemeData = () => {
   let confirmed = 'n';
   let themeData = {};
@@ -88,21 +92,18 @@ const promptThemeData = () => {
       label: `${emoji.get('green_book')} Please enter your theme name (shown in WordPress admin):`,
       prompt: 'Theme name: ',
       error: 'Theme name field is required and cannot be empty.',
-      required: true,
     }).trim();
 
     themeData.package = promptFor({
       label: `${emoji.get('package')} Please enter your package name (used in translations - lowercase, no special characters, '_' or '-' allowed for spaces):`,
       prompt: 'Package name: ',
       error: 'Package name field is required and cannot be empty.',
-      required: true,
     }).replace(/\W+/g, '-').toLowerCase().trim();
 
     themeData.prefix = promptFor({
       label: `${emoji.get('bullettrain_front')} Please enter a theme prefix (used when defining constants - uppercase, no spaces, no special characters):`,
       prompt: 'Prefix (e.g. INF, ABRR): ',
       error: 'Prefix is required and cannot be empty.',
-      required: true,
     }).toUpperCase().trim();
 
     themeData.env = `${themeData.prefix}_ENV`;
@@ -116,7 +117,6 @@ const promptThemeData = () => {
       label: `${emoji.get('earth_africa')} Please enter a theme development url (for local development with browsersync - no protocol):`,
       prompt: 'Dev url (e.g. dev.wordpress.com): ',
       error: 'Dev url is required and cannot be empty.',
-      required: true,
     }).trim();
 
     
@@ -131,7 +131,6 @@ const promptThemeData = () => {
     themeData.author = promptFor({
       label: `${emoji.get('crab')} Please enter author name:`,
       prompt: 'Author name: ',
-      required: false,
     }).trim();
 
     confirmed = output.summary([
@@ -145,6 +144,74 @@ const promptThemeData = () => {
     ]);
   } while (confirmed !== 'y');
 
+  return themeData;
+};
+
+/**
+ * Prompts the user only for theme name, Author name and dev URL, assume or ommit the rest
+ */
+const promptThemeDataShort = () => {
+  let confirmed = 'n';
+  let themeData = {};
+  
+  // -----------------------------
+  //  Prompt for project info
+  // -----------------------------
+
+  do {
+    themeData.name = promptFor({
+      label: `${emoji.get('green_book')} Please enter your theme name (shown in WordPress admin):`,
+      prompt: 'Theme name: ',
+      error: 'Theme name field is required and cannot be empty.',
+      minLength: 2,
+    }).trim();
+
+    // Build package name from theme name
+    themeData.package = themeData.name.toLowerCase().split(' ').join('_');
+
+    // Build prefix from theme name using one of 2 methods.
+    // 1. If theme name has 2 or mor more words, use first letters of each word
+    themeData.prefix = '';
+    console.log('Theme name before: ', themeData.name);
+    console.log('Theme name before: ', themeData.name.length);
+    themeNameWords = themeData.name.split(' ');
+    if (themeNameWords && themeNameWords.length >= 2) {
+      for (let word of themeNameWords) {
+        themeData.prefix += word.charAt(0).toUpperCase();
+      }
+    }
+
+    console.log('Prefix length: ', themeData.prefix.length);
+    console.log('Theme name after: ', themeData.name.length);
+
+    // 2. If theme has only 1 word, use the first 3 letters of theme name
+    if (themeData.prefix.length < 2 && themeData.name.length > 2) {
+      themeData.prefix = (`${themeData.name.charAt(0)}${themeData.name.charAt(1)}${themeData.name.charAt(2)}`).toUpperCase();
+    }
+
+    themeData.env = `${themeData.prefix}_ENV`;
+    themeData.assetManifest = `${themeData.prefix}_ASSETS_MANIFEST`;
+
+    // Namespace
+    themeData.namespace = capCase(themeData.package);
+  
+    // Dev url
+    themeData.url = promptFor({
+      label: `${emoji.get('earth_africa')} Please enter a theme development url (for local development with browsersync - no protocol):`,
+      prompt: 'Dev url (e.g. dev.wordpress.com): ',
+      error: 'Dev url is required and cannot be empty.',
+    }).trim();
+
+    confirmed = output.summary([
+      {label: `${emoji.get('green_book')} Theme name`, variable: themeData.name},
+      {label: `${emoji.get('package')} Package`, variable: themeData.package},
+      {label: `${emoji.get('sun_behind_cloud')}  Namespace`, variable: themeData.namespace},
+      {label: `${emoji.get('bullettrain_front')} Theme prefix`, variable: themeData.prefix},
+      {label: `${emoji.get('earth_africa')} Dev url`, variable: themeData.url},
+    ]);
+  } while (confirmed !== 'y');
+
+  exit();
   return themeData;
 };
 
@@ -225,7 +292,7 @@ const replaceThemeData = async (themeData) => {
 run = async() => {
   
   // Clear console
-  process.stdout.write('\033c');
+  process.stdout.write("\033c");
 
   // Write intro
   console.log(chalk.red('---------------------------------------------------------------'));
@@ -245,7 +312,7 @@ run = async() => {
   console.log(chalk.red(''));
 
   // Prompt user for all user data.
-  newThemeData = promptThemeData();
+  newThemeData = promptThemeDataShort();
 
   console.log('Let\'s get started...');
   console.log('');
