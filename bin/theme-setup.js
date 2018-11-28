@@ -15,6 +15,7 @@ const log = (msg) => console.log(msg);
 const variable = (msg) => chalk.green(msg);
 const label = (msg) => log(chalk.cyan(msg));
 const error = (msg) => log(`${chalk.bgRed('Error')}${chalk.red(' - ')}${msg}`);
+const success = (msg) => log(`${chalk.bgGreen(chalk.black(msg))}`);
 
 let themeName = '';
 let fullThemePath = '';
@@ -59,12 +60,12 @@ const findReplace = async(findString, replaceString) => {
  * @param array lines
  */
 const summary = (lines) => {
-  exports.success('');
-  exports.success('Your details will be:');
-  lines.forEach((line) => console.log(`${chalk(line.label)}: ${chalk.green(line.variable)}`));
-  exports.success('');
+  success('');
+  success('Your details will be:');
+  lines.forEach((line) => log(`${chalk(line.label)}: ${chalk.green(line.variable)}`));
+  success('');
   const confirm = prompt('Confirm (y/n)? ');
-  exports.success('');
+  success('');
 
   if (confirm === 'exit') {
     process.exit();
@@ -190,8 +191,8 @@ const run = async() => {
   const newThemeData = promptThemeDataShort();
 
   // Globally save the package (because it's also our folder name)
-  fullThemePath = path.join(process.cwd(), newThemeData.package);
-  themeName = newThemeData.package;
+  fullThemePath = path.join(process.cwd());
+  themeName = path.basename(fullThemePath);
 
   log('Let\'s get started...');
   log('');
