@@ -1,0 +1,30 @@
+{
+  "name": "create-wp-boilerplate-theme",
+  "version": "0.1.44",
+  "author": "Team Eightshift",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infinum/wp-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/infinum/wp-boilerplate/issues"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production webpack --progress --mode production"
+  },
+  "bin": {
+    "create-wp-boilerplate-theme": "./theme-setup.js"
+  },
+  "dependencies": {
+    "replace-in-file": "^3.4.2",
+    "file-loader": "^2.0.0",
+    "chalk": "^2.4.1",
+    "generate-password": "^1.4.1",
+    "node-emoji": "^1.8.1",
+    "ora": "^3.0.0",
+    "promisify-child-process": "^2.1.2",
+    "prompt-sync": "^4.1.6",
+    "fs-extra": "^7.0.1"
+  }
+}

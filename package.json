@@ -2,7 +2,6 @@
   "name": "inf_theme",
   "version": "1.0.0",
   "author": "Team Eightshift",
-  "private": true,
   "main": "",
   "scripts": {
     "__eslintTheme": "eslint skin/assets/**/*.js",
@@ -14,7 +13,7 @@
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "NODE_ENV=production webpack --progress --mode production",
     "export": "node bin/export.js",
-    "setup": "npm install && node bin/setup/theme-setup.js"
+    "setup": "npm install && node bin/theme-setup.js"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -49,8 +48,7 @@
     "node-emoji": "^1.8.1",
     "ora": "^3.0.0",
     "promisify-child-process": "^2.1.2",
-    "prompt-sync": "^4.1.6",
-    "replace-in-file": "^3.4.2"
+    "prompt-sync": "^4.1.6"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
@@ -64,7 +62,8 @@
     "normalize-scss": "^7.0.1",
     "postcss-font-magician": "^2.2.1",
     "webfontloader": "^1.6.28",
-    "whatwg-fetch": "^2.0.4"
+    "whatwg-fetch": "^2.0.4",
+    "replace-in-file": "^3.4.2"
   },
   "browserslist": [
     "android >= 4.2",

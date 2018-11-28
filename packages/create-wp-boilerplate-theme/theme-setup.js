@@ -1,4 +1,9 @@
-const fs = require('fs');
+#!/usr/bin/env node
+/**
+ * Run the entire program.
+ */
+
+const fs = require('fs-extra');
 const path = require('path');
 const replace = require('replace-in-file');
 const emoji = require('node-emoji');
@@ -7,41 +12,42 @@ const chalk = require('chalk');
 const prompt = require('prompt-sync')();
 const {exec} = require('promisify-child-process');
 
-const output = require('./output');
-
-const rootDir = path.join(__dirname, '..');
 const capCase = (string) => string.replace(/\W+/g, '_').split('_').map((item) => item[0].toUpperCase() + item.slice(1)).join('_');
 
-const label = (msg) => console.log(chalk.cyan(msg));
-const error = (msg) => console.log(`${chalk.bgRed('Error')}${chalk.red(' - ')}${chalk.red(msg)}`);
 const log = (msg) => console.log(msg);
-const logWithPadding = (msg) => console.log(`    ${msg}`);
+const variable = (msg) => chalk.green(msg);
+const label = (msg) => log(chalk.cyan(msg));
+const error = (msg) => log(`${chalk.bgRed('Error')}${chalk.red(' - ')}${msg}`);
+const success = (msg) => log(`${chalk.bgGreen(chalk.black(msg))}`);
+
+let fullThemePath = '';
 
 /**
- * Performs a wide search & replace. 
+ * Performs a wide search & replace.
  *
- * @param {string} findString 
- * @param {string} replaceString 
+ * @param {string} findString
+ * @param {string} replaceString
  */
 const findReplace = async(findString, replaceString) => {
   const regex = new RegExp(findString, 'g');
   const options = {
-    files: `${rootDir}/**/*`,
+    files: `${fullThemePath}/**/*`,
     from: regex,
     to: replaceString,
     ignore: [
-      path.join(`${rootDir}/node_modules/**/*`),
-      path.join(`${rootDir}/.git/**/*`),
-      path.join(`${rootDir}/.github/**/*`),
-      path.join(`${rootDir}/vendor/**/*`),
-      path.join(`${rootDir}/bin/rename.js`),
-      path.join(`${rootDir}/bin/rename-runnable.js`),
-      path.join(`${rootDir}/bin/setup.js`),
-      path.join(`${rootDir}/bin/setup-wp.js`),
-      path.join(`${rootDir}/bin/output.js`),
-      path.join(`${rootDir}/bin/files.js`),
-      path.join(`${rootDir}/bin/theme-setup.js`),
-      path.join(`${rootDir}/bin/test.js`),
+      path.join(`${fullThemePath}/node_modules/**/*`),
+      path.join(`${fullThemePath}/.git/**/*`),
+      path.join(`${fullThemePath}/.github/**/*`),
+      path.join(`${fullThemePath}/vendor/**/*`),
+      path.join(`${fullThemePath}/packages/**/*`),
+      path.join(`${fullThemePath}/bin/rename.js`),
+      path.join(`${fullThemePath}/bin/rename-runnable.js`),
+      path.join(`${fullThemePath}/bin/setup.js`),
+      path.join(`${fullThemePath}/bin/setup-wp.js`),
+      path.join(`${fullThemePath}/bin/output.js`),
+      path.join(`${fullThemePath}/bin/files.js`),
+      path.join(`${fullThemePath}/bin/theme-setup.js`),
+      path.join(`${fullThemePath}/bin/test.js`),
     ],
   };
 
@@ -51,9 +57,29 @@ const findReplace = async(findString, replaceString) => {
 };
 
 /**
- * Prompts a user for something. 
+ * Writes a summary of selected values and asks for user confirmation that info is ok
  *
- * @param {object} settings 
+ * @param array lines
+ */
+const summary = (lines) => {
+  success('');
+  success('Your details will be:');
+  lines.forEach((line) => log(`${chalk(line.label)}: ${chalk.green(line.variable)}`));
+  success('');
+  const confirm = prompt('Confirm (y/n)? ');
+  success('');
+
+  if (confirm === 'exit') {
+    process.exit();
+  }
+
+  return confirm;
+};
+
+/**
+ * Prompts a user for something
+ *
+ * @param {object} settings
  */
 const promptFor = (settings) => {
   settings.minLength = settings.minLength || 0;
@@ -81,7 +107,7 @@ const promptFor = (settings) => {
  */
 const promptThemeData = () => {
   let confirmed = 'n';
-  let themeData = {};
+  const themeData = {};
   
   // -----------------------------
   //  Prompt for project info
@@ -133,7 +159,7 @@ const promptThemeData = () => {
       prompt: 'Author name: ',
     }).trim();
 
-    confirmed = output.summary([
+    confirmed = summary([
       {label: `${emoji.get('green_book')} Theme name`, variable: themeData.name},
       {label: `${emoji.get('spiral_note_pad')}  Theme description`, variable: themeData.description},
       {label: `${emoji.get('crab')} Author`, variable: `${themeData.author}`},
@@ -152,7 +178,7 @@ const promptThemeData = () => {
  */
 const promptThemeDataShort = () => {
   let confirmed = 'n';
-  let themeData = {};
+  const themeData = {};
   
   // -----------------------------
   //  Prompt for project info
@@ -172,17 +198,12 @@ const promptThemeDataShort = () => {
     // Build prefix from theme name using one of 2 methods.
     // 1. If theme name has 2 or mor more words, use first letters of each word
     themeData.prefix = '';
-    console.log('Theme name before: ', themeData.name);
-    console.log('Theme name before: ', themeData.name.length);
-    themeNameWords = themeData.name.split(' ');
+    const themeNameWords = themeData.name.split(' ');
     if (themeNameWords && themeNameWords.length >= 2) {
-      for (let word of themeNameWords) {
+      for (const word of themeNameWords) {
         themeData.prefix += word.charAt(0).toUpperCase();
       }
     }
-
-    console.log('Prefix length: ', themeData.prefix.length);
-    console.log('Theme name after: ', themeData.name.length);
 
     // 2. If theme has only 1 word, use the first 3 letters of theme name
     if (themeData.prefix.length < 2 && themeData.name.length > 2) {
@@ -202,7 +223,7 @@ const promptThemeDataShort = () => {
       error: 'Dev url is required and cannot be empty.',
     }).trim();
 
-    confirmed = output.summary([
+    confirmed = summary([
       {label: `${emoji.get('green_book')} Theme name`, variable: themeData.name},
       {label: `${emoji.get('package')} Package`, variable: themeData.package},
       {label: `${emoji.get('sun_behind_cloud')}  Namespace`, variable: themeData.namespace},
@@ -211,21 +232,20 @@ const promptThemeDataShort = () => {
     ]);
   } while (confirmed !== 'y');
 
-  exit();
   return themeData;
 };
 
-const replaceThemeData = async (themeData) => {
+const replaceThemeData = async(themeData) => {
   
   // Name
   if (themeData.name) {
     await replace({
-      files: 'functions.php',
+      files: path.join(fullThemePath, 'functions.php'),
       from: /^ \* Theme Name:.*$/m,
       to: ` * Theme Name: ${themeData.name}`,
     });
     await replace({
-      files: 'style.css',
+      files: path.join(fullThemePath, 'style.css'),
       from: /^Theme Name: .*$/m,
       to: `Theme Name: ${themeData.name}`,
     });
@@ -234,12 +254,12 @@ const replaceThemeData = async (themeData) => {
   // Description
   if (themeData.description) {
     await replace({
-      files: 'functions.php',
+      files: path.join(fullThemePath, 'functions.php'),
       from: /^ \* Description:.*$/m,
       to: ` * Description: ${themeData.description}`,
     });
     await replace({
-      files: 'style.css',
+      files: path.join(fullThemePath, 'style.css'),
       from: /^Description: .*$/m,
       to: `Description: ${themeData.description}`,
     });
@@ -248,12 +268,12 @@ const replaceThemeData = async (themeData) => {
   // Author
   if (themeData.author) {
     await replace({
-      files: 'functions.php',
+      files: path.join(fullThemePath, 'functions.php'),
       from: /^ \* Author:.*$/m,
       to: ` * Author: ${themeData.author}`,
     });
     await replace({
-      files: 'style.css',
+      files: path.join(fullThemePath, 'style.css'),
       from: /^Author: .*$/m,
       to: `Author: ${themeData.author}`,
     });
@@ -282,86 +302,193 @@ const replaceThemeData = async (themeData) => {
   // BrowserSync proxy url.
   if (themeData.url) {
     await replace({
-      files: 'webpack.config.js',
+      files: path.join(fullThemePath, 'webpack.config.js'),
       from: /^const proxyUrl = .*$/m,
-      to: `const proxyUrl = '${themeData.url}';`,  
+      to: `const proxyUrl = '${themeData.url}';`,
     });
   }
-}
+};
 
-run = async() => {
+/**
+ * Runs before the setup for some sanity checks. (Are we in the right folder + is Composer
+ * installed and available as `composer` command)
+ */
+const preFlightChecklist = async() => {
+
+  // Make sure the user has called the script from wp-content/themes folder.
+  if (path.basename(process.cwd()) !== 'themes') {
+    throw new Error('Expected script to be called from WordPress\'s "themes" folder.');
+  }
+
+  // Make sure this is in fact a WordPress install
+  if (path.basename(path.join(process.cwd(), '..')) !== 'wp-content') {
+    throw new Error('This doesn\'t seem to be a WordPress install. Please call the script from "wp-content/themes" folder.');
+  }
+
+  // WARNING - Check if composer is installed.
+  await exec('composer --version').then(() => {
+
+    // all good.
+
+  }).catch(() => {
+    throw new Error('Unable to check Composer\'s version ("composer --version"), please make sure Composer is installed and globally available before running this script.');
+  });
+};
+
+/**
+ * Performns a cleanup after a successfull install.
+ */
+const cleanup = async() => {
+  const packagesPath = path.join(fullThemePath, 'packages');
+  await fs.remove(packagesPath);
+};
+
+const run = async() => {
   
   // Clear console
-  process.stdout.write("\033c");
+  process.stdout.write('\033c'); // eslint-disable-line
 
   // Write intro
-  console.log(chalk.red('---------------------------------------------------------------'));
-  console.log(chalk.red(''));
-  console.log(chalk.red('    _ _ _ ___ '));
-  console.log(chalk.red('    | | | |__| '));
-  console.log(chalk.red('    |_|_| |   '));
-  console.log(chalk.red('    ___  ____ _ _    ____ ____ ___       ____ ___ ____ '));
-  console.log(chalk.red('    |__| |  | | |    |___ |__/ |__| |    |__|  |  |___ '));
-  console.log(chalk.red('    |__| |__| | |___ |___ |  \\ |    |___ |  |  |  |___ '));
-  console.log(chalk.red(''));
-  console.log(chalk.red(''));
-  console.log('    Welcome to Boilerplate setup script for your theme!');
-  console.log(chalk.red(''));
-  console.log('    This script will uniquely set up your theme.');
-  console.log(chalk.red(''));
-  console.log(chalk.red(''));
+  log(chalk.red('---------------------------------------------------------------'));
+  log(chalk.red(''));
+  log(chalk.red('    _ _ _ ___ '));
+  log(chalk.red('    | | | |__| '));
+  log(chalk.red('    |_|_| |   '));
+  log(chalk.red('    ___  ____ _ _    ____ ____ ___       ____ ___ ____ '));
+  log(chalk.red('    |__| |  | | |    |___ |__/ |__| |    |__|  |  |___ '));
+  log(chalk.red('    |__| |__| | |___ |___ |  \\ |    |___ |  |  |  |___ '));
+  log(chalk.red(''));
+  log(chalk.red(''));
+  log('    Welcome to Boilerplate setup script for your theme!');
+  log(chalk.red(''));
+  log('    This script will uniquely set up your theme.');
+  log(chalk.red(''));
+  log(chalk.red(''));
 
   // Prompt user for all user data.
-  newThemeData = promptThemeDataShort();
+  const newThemeData = promptThemeDataShort();
 
-  console.log('Let\'s get started...');
-  console.log('');
+  // Globally save the package (because it's also our folder name)
+  fullThemePath = path.join(process.cwd(), newThemeData.package);
+
+  log('Let\'s get started...');
+  log('');
 
   // -----------------------------
-  //  1. Replace theme info
-  // ----------------------------- 
+  //  1. Preflight checklist
+  // -----------------------------
 
-  const spinnerReplace = ora('1. Replacing theme info').start();
+  const spinnerChecklist = ora('1. Pre-flight checklist').start();
+  await preFlightChecklist().then(() => {
+    spinnerChecklist.succeed();
+  }).catch((exception) => {
+    spinnerChecklist.fail();
+    error(exception);
+    process.exit();
+  });
+
+  // -----------------------------
+  //  2. Clone repo
+  // -----------------------------
+
+  const gitUrl = 'https://github.com/infinum/wp-boilerplate.git';
+  const gitClone = `git clone -b feature/zero-config-setup ${gitUrl} "${newThemeData.package}"`;
+  const spinnerClone = ora('2. Cloning theme repo').start();
+  await exec(`${gitClone} && cd "${fullThemePath}"`).then(() => {
+    spinnerClone.succeed();
+  }).catch((exception) => {
+    spinnerClone.fail();
+    error(exception);
+    process.exit();
+  });
+
+  // -----------------------------
+  //  3. Update node dependencies
+  // -----------------------------
+
+  const spinnerNode = ora('3. Installing Node dependencies').start();
+  await exec(`cd "${fullThemePath}" && npm install`).then(() => {
+    spinnerNode.succeed();
+  }).catch((exception) => {
+    spinnerNode.fail();
+    error(exception);
+    process.exit();
+  });
+
+  // -----------------------------
+  //  4. Update Composer dependencies
+  // -----------------------------
+
+  const spinnerComposer = ora('4. Installing Composer dependencies').start();
+  await exec(`cd "${fullThemePath}" && composer install`).then(() => {
+    spinnerComposer.succeed();
+  }).catch((exception) => {
+    spinnerComposer.fail();
+    error(exception);
+    process.exit();
+  });
+  
+  // -----------------------------
+  //  5. Replace theme info
+  // -----------------------------
+
+  const spinnerReplace = ora('5. Replacing theme info').start();
   await replaceThemeData(newThemeData).then(() => {
     spinnerReplace.succeed();
-  }).catch((error) => {
-    spinnerReplace.fail(`${spinnerReplace.text}\n${error}`);
+  }).catch((exception) => {
+    spinnerReplace.fail();
+    error(exception);
     process.exit();
   });
 
   // -----------------------------
-  //  2. Update Composer dependencies
+  //  6. Update autoloader
   // -----------------------------
 
-  const spinnerComposer = ora('2. Installing composer dependencies').start();
-  await exec('composer install').then(() => {
-    spinnerComposer.succeed();
-  }).catch((error) => {
-    spinnerComposer.fail(`${spinnerComposer.text}\n${error}`);
+  const spinnerAutoloader = ora('6. Updating composer autoloader').start();
+  await exec(`cd "${fullThemePath}" && composer -o dump-autoload`).then(() => {
+    spinnerAutoloader.succeed();
+  }).catch((exception) => {
+    spinnerAutoloader.fail();
+    error(exception);
     process.exit();
   });
 
   // -----------------------------
-  //  3. Build assets
+  //  7. Build assets
   // -----------------------------
 
-  const spinnerBuilt = ora('3. Building assets').start();
-  await exec('npm run build').then(() => {
+  const spinnerBuilt = ora('7. Building assets').start();
+  await exec(`cd "${fullThemePath}" && npm run build`).then(() => {
     spinnerBuilt.succeed();
-  }).catch((error) => {
-    spinnerBuilt.fail(`${spinnerBuilt.text}\n${error}`);
+  }).catch((exception) => {
+    spinnerBuilt.fail();
+    error(exception);
     process.exit();
   });
 
   // -----------------------------
-  //  4. Success
+  //  8. Cleanup
   // -----------------------------
 
-  console.log('');
-  console.log(`${emoji.get('tada')}${emoji.get('tada')}${emoji.get('tada')} Your theme is now ready! ${emoji.get('tada')}${emoji.get('tada')}${emoji.get('tada')}`);
-  console.log('');
-  console.log(`Please run ${chalk.green('npm start')} in current folder to start developing.`);
-  console.log('');
-  console.log(chalk.red('---------------------------------------------------------------'));
-}
+  const spinnerCleanup = ora('8. Cleaning up').start();
+  await cleanup().then(() => {
+    spinnerCleanup.succeed();
+  }).catch((exception) => {
+    spinnerCleanup.fail();
+    error(exception);
+    process.exit();
+  });
+
+  // -----------------------------
+  //  9. Success
+  // -----------------------------
+
+  log('');
+  log(`${emoji.get('tada')}${emoji.get('tada')}${emoji.get('tada')} Your theme is now ready! ${emoji.get('tada')}${emoji.get('tada')}${emoji.get('tada')}`);
+  log('');
+  log(`Please go to theme's folder (${variable(`cd ${newThemeData.package}`)}) and run ${variable('npm start')} to start developing.`);
+  log('');
+  log(chalk.red('---------------------------------------------------------------'));
+};
 run();
