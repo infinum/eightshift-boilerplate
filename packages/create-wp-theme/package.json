@@ -11,7 +11,7 @@
     "url": "https://github.com/infinum/wp-boilerplate/issues"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --progress --mode production",
+    "build": "cross-env NODE_ENV=production webpack --progress --mode production"
   },
   "bin": {
     "create-wp-theme": "./theme-setup.js"
