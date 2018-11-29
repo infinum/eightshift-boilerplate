@@ -5,115 +5,78 @@
 [![GitHub stars](https://img.shields.io/github/stars/infinum/wp-boilerplate.svg?style=for-the-badge&label=Stars)](https://github.com/infinum/wp-boilerplate/)
 [![license](https://img.shields.io/github/license/infinum/wp-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/wp-boilerplate)
 
-
 This repository contains all the tools you need to start building a modern WordPress theme, using all the latest front end development tools.
 
 Infinum WordPress Boilerplate is maintained and sponsored by
 [Infinum](https://infinum.co) and [Eightshift](https://eightshift.com).
 
+- [Requirements](#requirements)
+- [Quick start](#quick-start)
+- [How to develop using WP Boilerplate](#how-to-develop-using-wp-boilerplate)
+- [Liniting Files](#liniting-files)
+- [Goint to Production](#goint-to-production)
+- [Import & Export](#import--export)
+- [Plugin](#plugin)
+- [Who do I talk to?](#who-do-i-talk-to)
+- [License](#license)
+
 ---
-## What is WP Boilerplate?
 
+## Requirements
 
-* Starter theme
-* Framework
-* Boilerplate
-* ...and much more
-
-It gives you all the tools to build a modern, fast and beautiful WordPress website. 
+1. Node.js
+2. Composer
 
 ---
 
 ## Quick start
 
-Note regarding `Windows` - If you're installing this on `Windows` and you're using `XAMPP`, use `XAMPP` shell (Control Panel -> Shell) rather than `cmd`
+Let's create a new theme! 
 
-1. To start, fork this repository to your own, and then clone it. If you are using VVV clone it in the `public_html` folder:
+Navigate to your WordPress install's `wp-content/themes` folder and run the following command:
 
-    ```bash
-    git clone git@github.com:your-name/wp-boilerplate.git
-    ```
+```
+npx create-wp-theme
+```
 
-2. Install latest version of [Node.js](https://nodejs.org/en/)
+Script will prompt you for theme name and local development url (used for BrowserSync) and install a new theme.
 
-3. Install latest version of [Composer](https://getcomposer.org/)
+After the script is finished, you can activate the theme through WP Admin Dashboard. 
 
-4. Install latest version of [WP-CLI](https://wp-cli.org).
-
-5. Run setup script
-
-    ```
-    npm run setup
-    ```
-
-6. Once the project is setup and **WordPress is installed** (you might need to do this step manually depending on your dev environment), run this to initially build all assets and start developing:
-
-    ```
-    npm start
-    ```
-
-7. Enjoy WP Boilerplate!
+To start developing navigate to your theme's folder (`cd theme_name`) and run:
+```
+npm start
+```
 
 ---
 
-## Setup script details
+## How to develop using WP Boilerplate
 
-This script will install `npm` and `composer` dependencies, install WordPress core files and rename all files via wizard. Renaming will make changes to theme name, description, author, text domain, package, namespace, and constants (this is important when specifying environment variable)
+1. **Automatic building of assets**
 
-After this, the script will try to install WordPress automaticlly (setup `wp-config.php` and create all database tables).
-
-### Automatic WP Install
-
-Automatic installation is currently only supported for the following dev environments:
-
-* [Varying Vagrant Vagrants](https://varyingvagrantvagrants.org)
-
-If you're using something else (XAMPP, MAMP, Docker, etc), you need to install WordPress manually.
-
-### Manual WP Install
-
-Visit the url of your website and you should see the WordPress's 5-min installation wizard. Follow the steps and you will have a working default WP install.
-
-Once you're finished, log-in to WordPress Dashboard, go to `Themes` and activate your new theme.
-
-Once the theme is activated, make sure to run `npm start` in your `public_html` folder to initially build the assets. 
-
----
-
-## Start developing
-
-1. Builds assets in watch/development mode using Webpack (you need to do this after installing WordPress) :
+    This will build production ready assets (in watch/development mode using Webpack) after each modification to your files in `skin/assets` (compile `SCSS` to `CSS`, transpile `JS`, add hashes to files for cache busting purposes, etc):
+    
+    Generally speaking, you should have this script active all the time while you're developing. 
 
     ```bash
     npm start
     ```
 
-2. Update your `wp-config.php` file with project specific configuration that you can tailor according to your project needs. Compare your `wp-config.php` file with this example and update accordingly:
+    _You need to run this in your theme's folder._
 
-    ```php
-    // Must be set.
-    // Possible options are develop, staging and production.
-    define( 'INF_ENV', 'develop' );
+2. **BrowserSync**
 
-    /* That's all, stop editing! Happy blogging. */
+    You have BrowserSync to sync assets and enable easy cross-device testing. Once BrowserSync is active you will get url in the terminal. Usualy it is `localhost:3000`.
 
-    /** Absolute path to the WordPress directory. */
-    if ( !defined('ABSPATH') )
-      define('ABSPATH', dirname(__FILE__) . '/');
+3. **IMPORTANT - Adding new .php classes (or renaming exsiting ones)**
 
-    // Include wp config for your project.
-    require_once(ABSPATH . 'wp-config-project.php');
+    This theme uses OOP with namespaces and autoloader. When you add new class in your theme, be sure to run this command to rebuild the composer's autoload class map. The reason why this isn't automatic is that we are folowing modified WordPress coding standards, and not PSR standards, so this has to be done manually.
 
-    /** Sets up WordPress vars and included files. */
-    require_once(ABSPATH . 'wp-settings.php');
+    _In short, run this after adding a new class:_
+
+    ```bash
+    composer -o dump-autoload
     ```
-
-    * Remove `define( 'WP_DEBUG', false );`. This is defined in the `wp-config-project.php` file.
-
-    * Set `INF_ENV` variable to correspond with your environment. That will add global setup for logging errors, disabling auto-update, some optimizations and it will change the color of admin so it is easier for you to know on what environment you are editing.
-
-
-3. You have BrowserSync to sync assets and enable easy cross-device testing. Once BrowserSync is active you will get url in the terminal. Usualy it is `localhost:3000`.
 
 ---
 
@@ -139,13 +102,13 @@ Once the theme is activated, make sure to run `npm start` in your `public_html` 
     Checking theme for possible violations:
 
     ```bash
-    wpcs wp-content/themes/inf_theme
+    wpcs
     ```
 
     Autofix theme for minor violations:
 
     ```bash
-    wpcbf wp-content/themes/inf_theme
+    wpcbf
     ```
 
 ---
@@ -174,16 +137,6 @@ Builds production ready assets
 ## Import & Export
 
 Details are located in the `README-project.md` file. Be sure to change the URL according to your project.
-
----
-
-## Important Notes
-
-This theme uses OOP with namespaces and autoloader. When you add new class in your theme, be sure to run this command to rebuild the composer's autoload class map. The reason why this isn't automatic is that we are folowing modified WordPress coding standards, and not PSR standards, so this has to be done manually.
-
-```bash
-composer -o dump-autoload
-```
 
 ---
 
