@@ -1,8 +1,9 @@
 {
   "name": "create-wp-theme",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "Team Eightshift",
   "main": "",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/infinum/wp-boilerplate.git"
