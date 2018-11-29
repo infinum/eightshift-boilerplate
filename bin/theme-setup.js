@@ -194,7 +194,7 @@ const run = async() => {
   fullThemePath = path.join(process.cwd());
   themeName = path.basename(fullThemePath);
 
-  log('Let\'s get started...');
+  log('Let\'s get started, it might take a while...');
   log('');
 
   // -----------------------------

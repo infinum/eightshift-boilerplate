@@ -371,7 +371,7 @@ const run = async() => {
   // Globally save the package (because it's also our folder name)
   fullThemePath = path.join(process.cwd(), newThemeData.package);
 
-  log('Let\'s get started...');
+  log('Let\'s get started, it might take a while...');
   log('');
 
   // -----------------------------
