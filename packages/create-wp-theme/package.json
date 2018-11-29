@@ -11,7 +11,7 @@
     "url": "https://github.com/infinum/wp-boilerplate/issues"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack --progress --mode production"
+    "build": "cross-env NODE_ENV=production webpack --progress --mode production",
   },
   "bin": {
     "create-wp-theme": "./theme-setup.js"
@@ -20,6 +20,7 @@
     "replace-in-file": "^3.4.2",
     "file-loader": "^2.0.0",
     "chalk": "^2.4.1",
+    "cross-env": "^5.2.0",
     "generate-password": "^1.4.1",
     "node-emoji": "^1.8.1",
     "ora": "^3.0.0",
