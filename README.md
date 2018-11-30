@@ -82,6 +82,13 @@ npm start
 
 ## Liniting Files
 
+### Automatic
+
+You can have editors lint your files as you type, here's how to set it up:
+* [Visual Studio Code](https://github.com/infinum/wp-boilerplate/wiki/Visual-Studio-Code)
+
+### Manual
+
 1. **Linting assets** - JS and SASS using Webpack:
 
     ```bash
