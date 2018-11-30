@@ -144,7 +144,22 @@ Builds production ready assets
 
 ## Import & Export
 
-Details are located in the `README-project.md` file. Be sure to change the URL according to your project.
+1. Export
+
+    You can run this script from your theme folder which will give you a `.zip` you can import to any project. 
+
+    ```
+    npm run export
+    ```
+    However before activating you need to run the import script.
+
+    2. Import
+
+    After importing the theme to a different website (through WordPress admin dashboard), you need to run this script (from the theme's folder) before activating it.
+
+    ```
+    npm run theme-setup
+    ```
 
 ---
 
