@@ -1,8 +1,8 @@
 === Infinum WordPress Boilerplate ===
 Contributors: mustra, dingo_bastard, ivangrginov
-Tags: Starter Theme, Webpack, Node, NodeJS, npm, npx, Build Process, Autoprefixr, SCSS, SASS, LESS, Babel, Browsersync, Accessibility Ready, Custom Colors, Custom Header, Custom Logo, Custom Menu, Editor Style, Featured Images, Flexible Header, Footer Widgets, One Column, Theme Options, Translation Ready, Two Columns
+Tags: custom-menu, editor-style, featured-images, one-column, theme-options	, translation-ready
 Requires at least: 4.4
-Requires PHP: 7.1
+Requires PHP: 7
 Tested up to: 4.9.8
 Stable tag: 1.0.0
 License: MIT
@@ -80,7 +80,7 @@ After installing the theme (but before activating it), you need to navigate to t
 
 = Requirements =
 
-* PHP 7 or greater (recommended: PHP 7 or greater)
+* PHP 7 or greater (recommended: PHP 7.2 or greater)
 * WordPress 4.4 or above (because of the built in REST interface)
 * NodeJS
 * Composer
