@@ -1,4 +1,4 @@
-=== Infinum WordPress Boilerplate ===
+=== Eightshift WordPress Boilerplate ===
 Contributors: mustra, dingo_bastard, ivangrginov
 Tags: custom-menu, editor-style, featured-images, one-column, theme-options	, translation-ready
 Requires at least: 4.4
@@ -8,11 +8,11 @@ Stable tag: 1.0.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Infinum WordPress Boilerplate contains all the tools you need to start building a modern WordPress theme, using all the latest front end development tools.
+Eightshift WordPress Boilerplate contains all the tools you need to start building a modern WordPress theme, using all the latest front end development tools.
 
 == Description ==
 
-= What is Infinum WordPress Boilerplate? =
+= What is Eightshift WordPress Boilerplate? =
 
 This is an open-source modern boilerplate / starter theme with all the latest dev goodies such as webpack, scss, babel, browsersync, etc.
 
@@ -41,7 +41,7 @@ Media blender
 
 = More Info =
 
-For more information about the Infinum WordPress Boilerplate and the development process, please visit these links: 
+For more information about the Eightshift WordPress Boilerplate and the development process, please visit these links: 
 
 1. Github page - https://github.com/infinum/wp-boilerplate
 2. Wiki - https://github.com/infinum/wp-boilerplate/wiki
@@ -57,7 +57,7 @@ Installing the theme is easy. Just follow these steps:
 After installing the theme (but before activating it), you need to navigate to the theme folder in your terminal and run:
 
 1. From the dashboard of your site, navigate to Themes --> Add New.
-2. In the Search type Infinum WordPress Boilerplate
+2. In the Search type Eightshift WordPress Boilerplate
 3. Click Install Now
 4. BEFORE activating, you need to run a script that will setup everything. Navigate to the theme's folder using terminal and run 'npm run theme-setup'.
 5. After the setup script is finished, activate theme.

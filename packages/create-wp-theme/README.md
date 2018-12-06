@@ -21,11 +21,10 @@ For questions talk to:
 
 * [ivan.ruzevic@infinum.hr](ivan.ruzevic@infinum.hr)
 * [denis.zoljom@infinum.hr](denis.zoljom@infinum.hr)
+* [ivan.grginov@infinum.hr](ivan.grginov@infinum.hr)
 * [team@eightshift.com](team@eightshift.com)
 
-Infinum WordPress Boilerplate is maintained and sponsored by Infinum and Eightshift.
-
-<img src="https://infinum.co/infinum.png" width="264" height>
+Eightshift WordPress Boilerplate is maintained and sponsored by Eightshift and Infinum.
 
 ---
 

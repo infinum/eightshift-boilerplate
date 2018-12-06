@@ -8,8 +8,8 @@
 
 This repository contains all the tools you need to start building a modern WordPress theme, using all the latest front end development tools.
 
-Infinum WordPress Boilerplate is maintained and sponsored by
-[Infinum](https://infinum.co) and [Eightshift](https://eightshift.com).
+Eightshift WordPress Boilerplate is maintained and sponsored by
+[Eightshift](https://eightshift.com) and [Infinum](https://infinum.co).
 
 - [Requirements](#requirements)
 - [Quick start](#quick-start)
@@ -158,7 +158,7 @@ Builds production ready assets
     After importing the theme to a different website (through WordPress admin dashboard), you need to run this script (from the theme's folder) before activating it.
 
     ```
-    npm run theme-setup
+    npm run setup
     ```
 
 ---
@@ -178,11 +178,10 @@ For questions talk to:
 
 * [ivan.ruzevic@infinum.hr](ivan.ruzevic@infinum.hr)
 * [denis.zoljom@infinum.hr](denis.zoljom@infinum.hr)
+* [ivan.grginov@infinum.hr](ivan.grginov@infinum.hr)
 * [team@eightshift.com](team@eightshift.com)
 
-Infinum WordPress Boilerplate is maintained and sponsored by Infinum and Eightshift.
-
-<img src="https://infinum.co/infinum.png" width="264" height>
+Eightshift WordPress Boilerplate is maintained and sponsored by Eightshift and Infinum.
 
 ---
 
