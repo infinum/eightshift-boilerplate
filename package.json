@@ -68,8 +68,8 @@
   },
   "browserslist": [
     "android >= 4.2",
-    "not ie < 11",
     "last 2 versions",
-    "Safari >= 8"
+    "Safari >= 8",
+    "not ie < 11"
   ]
 }
