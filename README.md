@@ -11,6 +11,8 @@ This repository contains all the tools you need to start building a modern WordP
 Eightshift WordPress Boilerplate is maintained and sponsored by
 [Eightshift](https://eightshift.com) and [Infinum](https://infinum.co).
 
+
+## :books: Table of contents
 - [Requirements](#requirements)
 - [Quick start](#quick-start)
 - [How to develop using WP Boilerplate](#how-to-develop-using-wp-boilerplate)
@@ -23,16 +25,16 @@ Eightshift WordPress Boilerplate is maintained and sponsored by
 
 ---
 
-## Requirements
+## :school_satchel: Requirements
 
 1. Node.js
 2. Composer
 
 ---
 
-## Quick start
+## :rocket: Quick start
 
-Let's create a new theme! 
+Let's create a new theme!
 
 Navigate to your WordPress install's `wp-content/themes` folder and run the following command:
 
@@ -53,7 +55,7 @@ npm start
 
 ---
 
-## How to develop using WP Boilerplate
+## :mortar_board: How to develop using WP Boilerplate
 
 1. **Automatic building of assets**
 
@@ -83,7 +85,7 @@ npm start
 
 ---
 
-## Liniting Files
+## :rotating_light: Liniting Files
 
 ### Automatic
 
@@ -123,7 +125,7 @@ You can have editors lint your files as you type, here's how to set it up:
 
 ---
 
-## Goint to Production
+## :factory: Going to Production
 
 You can do it manualy using the command from package.json but we prefere using continious integration and we have 2 scripts to help you.
 
@@ -144,18 +146,17 @@ Builds production ready assets
 
 ---
 
-## Import & Export
+## :truck: Import & Export
 
 1. Export
 
-    You can run this script from your theme folder which will give you a `.zip` you can import to any project. 
+    You can run this script from your theme folder which will give you a `.zip` of your theme you can add to any project. 
 
     ```
     npm run export
     ```
-    However before activating you need to run the import script.
 
-    2. Import
+2. Import
 
     After importing the theme to a different website (through WordPress admin dashboard), you need to run this script (from the theme's folder) before activating it.
 
@@ -165,7 +166,7 @@ Builds production ready assets
 
 ---
 
-## Plugin
+## :interrobang: Plugin
 
 When working for a client it may be easier to add every additional functionality to the theme. Since you are using namespaces, this contains all the necessary logic in the theme. You can use plugins of course, but be careful how you are adding extra functionality, so that you don't run in the dependency hell.
 If you need to expose certain functionality across the multisite we recommend that you create a plugin.
@@ -174,7 +175,7 @@ Plugins should be created using plugin boilerplate, with addition of namespaces 
 
 ---
 
-## Who do I talk to?
+## :mailbox: Who do I talk to?
 
 For questions talk to:
 
