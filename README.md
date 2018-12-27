@@ -40,7 +40,9 @@ Navigate to your WordPress install's `wp-content/themes` folder and run the foll
 npx create-wp-theme
 ```
 
-Script will prompt you for theme name and local development url (used for BrowserSync) and install a new theme.
+Script will prompt you for theme name and local development url (used for BrowserSync) and install a new theme:
+
+![](packages/create-wp-theme/setup.gif)
 
 After the script is finished, you can activate the theme through WP Admin Dashboard. 
 
