@@ -11,7 +11,6 @@ This repository contains all the tools you need to start building a modern WordP
 Eightshift WordPress Boilerplate is maintained and sponsored by
 [Eightshift](https://eightshift.com) and [Infinum](https://infinum.co).
 
-
 ## :books: Table of contents
 - [Requirements](#requirements)
 - [Quick start](#quick-start)
@@ -27,8 +26,8 @@ Eightshift WordPress Boilerplate is maintained and sponsored by
 
 ## :school_satchel: Requirements
 
-1. Node.js
-2. Composer
+1. [Node.js](https://nodejs.org/en/)
+2. [Composer](https://getcomposer.org/)
 
 ---
 
@@ -72,6 +71,8 @@ npm start
 2. **BrowserSync**
 
     You have BrowserSync to sync assets and enable easy cross-device testing. Once BrowserSync is active you will get url in the terminal. Usualy it is `localhost:3000`.
+
+    [What is BrowserSync?](https://www.browsersync.io/)
 
 3. **IMPORTANT - Adding new .php classes (or renaming exsiting ones)**
 
