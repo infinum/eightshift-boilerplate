@@ -22,14 +22,10 @@ Eightshift WordPress Boilerplate is maintained and sponsored by
 - [Who do I talk to?](#who-do-i-talk-to)
 - [License](#license)
 
----
-
 ## :school_satchel: Requirements
 
 1. [Node.js](https://nodejs.org/en/)
 2. [Composer](https://getcomposer.org/)
-
----
 
 ## :rocket: Quick start
 
@@ -51,8 +47,6 @@ To start developing navigate to your theme's folder (`cd theme_name`) and run:
 ```
 npm start
 ```
-
----
 
 ## :mortar_board: How to develop using WP Boilerplate
 
@@ -83,8 +77,6 @@ npm start
     ```bash
     composer -o dump-autoload
     ```
-
----
 
 ## :rotating_light: Liniting Files
 
@@ -124,8 +116,6 @@ You can have editors lint your files as you type, here's how to set it up:
     wpcbf
     ```
 
----
-
 ## :factory: Going to Production
 
 You can do it manualy using the command from package.json but we prefere using continious integration and we have 2 scripts to help you.
@@ -145,8 +135,6 @@ Builds production ready assets
 
 3. For deployment, we are using [rsync](https://rsync.samba.org/) and [semaphoreci](https://semaphoreci.com/) in our continuous deployment setup. Whatever deployment system you are using you should never copy unnecessary data to the server. We added file `ci-exclude.txt` to exclude unnecessary folders and files on deployment.
 
----
-
 ## :truck: Import & Export
 
 1. Export
@@ -165,16 +153,12 @@ Builds production ready assets
     npm run setup
     ```
 
----
-
 ## :interrobang: Plugin
 
 When working for a client it may be easier to add every additional functionality to the theme. Since you are using namespaces, this contains all the necessary logic in the theme. You can use plugins of course, but be careful how you are adding extra functionality, so that you don't run in the dependency hell.
 If you need to expose certain functionality across the multisite we recommend that you create a plugin.
 
 Plugins should be created using plugin boilerplate, with addition of namespaces and autoloader. We have that also prepared so please check our [Plugin Boilerplate](https://github.com/infinum/wp-boilerplate-plugin).
-
----
 
 ## :mailbox: Who do I talk to?
 
@@ -186,8 +170,6 @@ For questions talk to:
 * [team@eightshift.com](team@eightshift.com)
 
 Eightshift WordPress Boilerplate is maintained and sponsored by Eightshift and Infinum.
-
----
 
 ## License
 
