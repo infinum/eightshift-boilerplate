@@ -95,25 +95,18 @@ You can have editors lint your files as you type, here's how to set it up:
 
 2. **Linting PHP** - We are using [Infinum coding standards for WordPress](https://github.com/infinum/coding-standards-wp) to check php files. To install it, you need to install [Composer](https://getcomposer.org/) from initial setup step. 
 
-3. **Linting PHP** - If you have composer installed you can add these aliases to your bash/zsh config for easier usage:
-
-    ```bash
-    alias phpcs='vendor/bin/phpcs';
-    alias phpcbf='vendor/bin/phpcbf';
-    ```
-
-4. **Linting PHP** - Here are available scripts to run in your terminal to lint your PHP files:
+    Here are available scripts to run in your terminal to lint your PHP files (you need to run them from inside the theme's folder):
     
     Checking theme for possible violations:
 
     ```bash
-    wpcs
+    composer check-cs .
     ```
 
     Autofix theme for minor violations:
 
     ```bash
-    wpcbf
+    composer fix-cs .
     ```
 
 ## :factory: Going to Production

@@ -18,5 +18,9 @@
   "config": {
     "sort-packages": true,
     "optimize-autoloader": true
+  },
+  "scripts": {
+    "check-cs": "@php ./vendor/bin/phpcs --extensions=php --ignore=/vendor/",
+    "fix-cs": "@php ./vendor/bin/phpcbf --extensions=php --ignore=/vendor/"
   }
 }
