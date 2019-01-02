@@ -27,7 +27,7 @@ Eightshift WordPress Boilerplate is maintained and sponsored by
 1. [Node.js](https://nodejs.org/en/)
 2. [Composer](https://getcomposer.org/)
 
-##  Quick start 
+## :rocket: Quick start 
 
 Let's create a new theme!
 
