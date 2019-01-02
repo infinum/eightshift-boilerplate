@@ -1,0 +1,152 @@
+//Some stuff here is out of BEM because it is used inside WP as helpers or modifiers
+// Text sizes are refines via mixins as utility helpers
+$content-style: (
+  'text-color': $base-dark-color,
+  'default-padding': 35px,
+  'table-bg-color': $base-white-color,
+  'table-border-color': $base-silver-color,
+);
+
+/* stylelint-disable selector-no-type */
+.content-style {
+  @include text-size(default);
+  line-height: 1.5;
+  color: map-get($content-style, 'text-color');
+
+  p,
+  ul,
+  ol {
+    @extend %paragraph-reset;
+    padding-bottom: map-get($content-style, 'default-padding');
+
+    &.clear-spacing,
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  .larger {
+    @include text-size(larger);
+  }
+
+  .large {
+    @include text-size(large);
+  }
+
+  .medium {
+    @include text-size(medium);
+  }
+
+  .small {
+    @include text-size(small);
+  }
+
+  &--larger {
+    @include text-size(larger);
+  }
+
+  &--large {
+    @include text-size(large);
+  }
+
+  &--medium {
+    @include text-size(medium);
+  }
+
+  &--small {
+    @include text-size(small);
+  }
+
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    @extend %heading-reset;
+    font-weight: bold;
+    line-height: 1.7;
+    text-transform: uppercase;
+    padding: 20px 0 25px;
+  }
+
+  > h1 {
+    @include text-size(biggest);
+  }
+
+  > h2 {
+    @include text-size(bigger);
+  }
+
+  > h3 {
+    @include text-size(big);
+  }
+
+  > h4 {
+    @include text-size(largest);
+  }
+
+  > h5 {
+    @include text-size(larger);
+  }
+
+  > h6 {
+    @include text-size(large);
+  }
+
+  ul,
+  ol {
+    margin-left: 22px;
+
+    li {
+      padding-bottom: 15px;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+
+      ul,
+      ol {
+        margin-left: 44px;
+      }
+    }
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  blockquote {
+    @extend %list-reset;
+    font-style: italic;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  table {
+    width: 100% !important; //stylelint-disable-line declaration-no-important
+    height: auto !important; //stylelint-disable-line declaration-no-important
+    border-top: 1px solid map-get($content-style, 'table-border-color');
+    border-left: 1px solid map-get($content-style, 'table-border-color');
+    margin-bottom: map-get($content-style, 'default-padding');
+    border-collapse: collapse;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    tr {
+      td,
+      th {
+        @include text-size(medium);
+        border: none;
+        border-right: 1px solid map-get($content-style, 'table-border-color');
+        border-bottom: 1px solid map-get($content-style, 'table-border-color');
+        height: auto !important; //stylelint-disable-line declaration-no-important
+        padding: 15px 10px;
+      }
+    }
+  }
+}

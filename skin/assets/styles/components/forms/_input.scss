@@ -1,0 +1,44 @@
+
+$input: (
+  'border-color': $base-silver-color,
+  'text-color': $base-dark-color,
+  'tap-highlight-color': rgba($base-black-color, 0),
+);
+
+.input,
+.select,
+.textarea {
+  @extend %input-reset;
+
+  @include text-size(biggest);
+  font-family: $base-font-family;
+  border: 1px solid map-get($input, 'border-color');
+  display: flex;
+  padding: 10px 20px;
+  width: 100%;
+  font-weight: 300;
+  color: map-get($input, 'text-color');
+  border-radius: 0;
+  -webkit-tap-highlight-color: map-get($input, 'tap-highlight-color');
+  line-height: normal;
+
+  @include input-sizes;
+
+  &:focus {
+    @extend %input-focus-shadow;
+    outline: none;
+  }
+
+  &--disable-user-select {
+    user-select: none;
+  }
+}
+
+
+.textarea {
+  min-height: 200px;
+}
+
+input::-ms-clear {
+  display: none;
+}

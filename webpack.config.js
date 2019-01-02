@@ -8,49 +8,51 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
-const appPath = `${path.resolve(__dirname)}`;
+// We need the website's root folder.
+const appPath = `${path.resolve(__dirname, '..', '..', '..')}`;
 
 // Dev Server
 const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.com
 
 // Theme
-const themeName = 'inf_theme';
+const themeName = path.basename(__dirname);
 const themePath = `/wp-content/themes/${themeName}/skin`;
+const themeNodePath = `${appPath}/wp-content/themes/${themeName}/node_modules`;
 const themeFullPath = `${appPath}${themePath}`;
-const themePublicPath = `${themePath}/public/`;
+const themePublicPath = `/${themePath}/public/`;
 const themeEntry = `${themeFullPath}/assets/application.js`;
 const themeAdminEntry = `${themeFullPath}/assets/application-admin.js`;
 const themeOutput = `${themeFullPath}/public`;
 
 // Outputs
-const outputJs = 'scripts/[name].js';
-const outputCss = 'styles/[name].css';
-const outputFile = '[name].[ext]';
-const outputImages = `images/${outputFile}`;
-const outputFonts = `fonts/${outputFile}`;
+const outputHash = `${DEV ? '[name]' : '[name]-[hash]'}`;
+const outputStatic = '[name].[ext]';
 
+
+// All loaders to use on assets.
 const allModules = {
   rules: [
     {
       test: /\.(js|jsx)$/,
-      use: 'babel-loader',
       exclude: /node_modules/,
+      use: 'babel-loader',
     },
     {
       test: /\.json$/,
       exclude: /node_modules/,
-      use: 'file-loader',
+      use: `file-loader?name=${outputStatic}`,
     },
     {
       test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
       exclude: [/fonts/, /node_modules/],
-      use: `file-loader?name=${outputImages}`,
+      use: `file-loader?name=${outputStatic}`,
     },
     {
       test: /\.(eot|otf|ttf|woff|woff2|svg)$/,
       exclude: [/images/, /node_modules/],
-      use: `file-loader?name=${outputFonts}`,
+      use: `file-loader?name=${outputStatic}`,
     },
     {
       test: /\.scss$/,
@@ -63,37 +65,56 @@ const allModules = {
   ],
 };
 
+// All plugins to use.
 const allPlugins = [
+
+  // Convert JS to CSS.
   new MiniCssExtractPlugin({
-    filename: outputCss,
+    filename: `${outputHash}.css`,
   }),
 
+  // Gives you jQuery with in the webpack so no need for impoting it.
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
   }),
 
-  // Use BrowserSync For assets
-  new BrowserSyncPlugin({
-    host: 'localhost',
-    port: 3000,
-    proxy: proxyUrl,
-    files: [
-      {
-        match: ['wp-content/themes/**/*.php', 'wp-content/plugins/**/*.php'],
-      },
-    ],
-  }),
+  // Use BrowserSync.
+  new BrowserSyncPlugin(
+    {
+      host: 'localhost',
+      port: 3000,
+      proxy: proxyUrl,
+      files: [
+        {
+          match: [
+            '**/*.php',
+            `${themePublicPath}*.css`,
+          ],
+        },
+      ],
+      notify: true,
+    },
+    {
+      reload: false,
+    },
+  ),
 
-  new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+  // Copy from one target to new destination.
+  new CopyWebpackPlugin([
 
-  // Is using vendor files, but prefered to use npm
-  new CopyWebpackPlugin([{
-    from: `${themeFullPath}/assets/scripts/vendors`,
-    to: `${themeOutput}/scripts/vendors`,
-  }]),
+    // Find jQuery in node_modules and copy it to public folder
+    {
+      from: `${themeNodePath}/jquery/dist/jquery.min.js`,
+      to: themeOutput,
+    },
+  ]),
+
+  // Create manifest.json file.
+  new ManifestPlugin(),
 ];
 
+// General optimisations.
 const allOptimizations = {
   runtimeChunk: false,
   splitChunks: {
@@ -110,6 +131,8 @@ const allOptimizations = {
 // Use only for production build
 if (!DEV) {
   allOptimizations.minimizer = [
+
+    // Optimise for production.
     new UglifyJsPlugin({
       cache: true,
       parallel: true,
@@ -125,6 +148,8 @@ if (!DEV) {
       },
     }),
   ];
+
+  // Delete public folder.
   allPlugins.push(new CleanWebpackPlugin([themeOutput]));
 }
 
@@ -140,17 +165,20 @@ module.exports = [
     output: {
       path: themeOutput,
       publicPath: themePublicPath,
-      filename: outputJs,
+      filename: `${outputHash}.js`,
+    },
+
+    // Don't bundle jQuery but expect it from a different source.
+    externals: {
+      jquery: 'jQuery',
     },
 
     optimization: allOptimizations,
-
-    mode: 'production',
 
     module: allModules,
 
     plugins: allPlugins,
 
-    devtool: DEV ? '#inline-source-map' : '',
+    devtool: DEV ? '' : 'source-map',
   },
 ];

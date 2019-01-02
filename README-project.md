@@ -1,4 +1,4 @@
-# Development and deployment
+# Project info
 
 ## Database
 Before you start developing ask a lead developer to export you the latest version of the database.
@@ -31,35 +31,19 @@ Before you start developing ask a lead developer to export you the latest versio
 For syncing the production server with staging and development you have 3 shell scripts.
 The use [`WP-CLI`](https://wp-cli.org/) so be sure that your server has this module installed.
 
-#### Export:
-Once you run this script it will export your database and uploads folder. Everything is compressed and exported in `latest_dump.tar.gz` file in the root of your project.
+1. **Export** - Once you run this script it will export your database and uploads folder. Everything is compressed and exported in `latest_dump.tar.gz` file in the root of your project.
 
-```bash
-bash bin/_db-export.sh
-```
+    ```bash
+    bash bin/db-export.sh
+    ```
+2. **Import** - Once you run this script it will  **delete the current database** and import the new one from `latest_dump.tar.gz` file that must be located in the root of the project. Uploads folder must be manually moved to the `wp-content` folder.
 
-#### Import
-Once you run this script it will  **delete the current database** and import the new one from `latest_dump.tar.gz` file that must be located in the root of the project.
+    Production > Dev env.
+    ```bash
+    bash bin/db-import-production-to-dev.sh
+    ```
 
-Uploads folder must be manually moved to the `wp-content` folder.
-
-```bash
-bash bin/_db-import-production-to-dev.sh
-bash bin/_db-import-production-to-staging.sh
-```
-
-## wp-config.php
-This is project specific configuration that you can tailor according to your project needs.
-At the bottom of the `wp-config.php` file before `require_once ABSPATH . 'wp-settings.php';` add this part:
-
-```php
-// Include wp config for your project.
-require_once( ABSPATH . 'wp-config-project.php' );
-```
-
-And this global variable somewhere before wp-settings and wp-config-project.php. Set what instance you are using.
-```php
-// Must be set.
-// Possible options are develop, staging and production.
-define( 'INF_ENV', 'develop' );
-```
+    Produtcion > Staging env.
+    ```bash
+    bash bin/db-import-production-to-staging.sh
+    ```

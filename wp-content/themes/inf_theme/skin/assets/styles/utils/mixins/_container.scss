@@ -1,9 +1,0 @@
-@mixin site-container($max-width: $base-content-width) {
-  @extend %site-padding;
-  max-width: $max-width;
-  margin: 0 auto;
-}
-@mixin container($max-width: $base-content-width) {
-  max-width: $max-width;
-  margin: 0 auto;
-}
