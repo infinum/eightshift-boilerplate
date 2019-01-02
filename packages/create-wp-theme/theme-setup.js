@@ -340,7 +340,11 @@ const preFlightChecklist = async() => {
  */
 const cleanup = async() => {
   const packagesPath = path.join(fullThemePath, 'packages');
+  const hiddenGitPath = path.join(fullThemePath, '.git');
+  const hiddenGithubPath = path.join(fullThemePath, '.github');
   await fs.remove(packagesPath);
+  await fs.remove(hiddenGitPath);
+  await fs.remove(hiddenGithubPath);
 };
 
 const run = async() => {
@@ -392,7 +396,7 @@ const run = async() => {
   // -----------------------------
 
   const gitUrl = 'https://github.com/infinum/wp-boilerplate.git';
-  const gitClone = `git clone -b feature/zero-config-setup ${gitUrl} "${newThemeData.package}"`;
+  const gitClone = `git clone -b development ${gitUrl} "${newThemeData.package}"`;
   const spinnerClone = ora('2. Cloning theme repo').start();
   await exec(`${gitClone} && cd "${fullThemePath}"`).then(() => {
     spinnerClone.succeed();
