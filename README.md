@@ -12,22 +12,22 @@ Eightshift WordPress Boilerplate is maintained and sponsored by
 [Eightshift](https://eightshift.com) and [Infinum](https://infinum.co).
 
 ## :books: Table of contents
-- [Requirements](#requirements)
-- [Quick start](#quick-start)
-- [How to develop using WP Boilerplate](#how-to-develop-using-wp-boilerplate)
-- [Liniting Files](#liniting-files)
-- [Goint to Production](#goint-to-production)
-- [Import & Export](#import--export)
-- [Plugin](#plugin)
-- [Who do I talk to?](#who-do-i-talk-to)
-- [License](#license)
+- [:school_satchel: Requirements](#school_satchel-requirements)
+- [:rocket: Quick start](#rocket-quick-start)
+- [:mortar_board: How to develop using WP Boilerplate](#mortar_board-how-to-develop-using-wp-boilerplate)
+- [:rotating_light: Liniting Files](#rotating_light-liniting-files)   
+- [:factory: Going to Production](#factory-going-to-production)
+- [:truck: Import & Export](#truck-import--export)
+- [:interrobang: Plugin](#interrobang-plugin)
+- [:mailbox: Who do I talk to?](#mailbox-who-do-i-talk-to)
+- [:scroll: License](#scroll-license)
 
 ## :school_satchel: Requirements
 
 1. [Node.js](https://nodejs.org/en/)
 2. [Composer](https://getcomposer.org/)
 
-## :rocket: Quick start
+##  Quick start 
 
 Let's create a new theme!
 
@@ -164,6 +164,6 @@ For questions talk to:
 
 Eightshift WordPress Boilerplate is maintained and sponsored by Eightshift and Infinum.
 
-## License
+## :scroll: License
 
 Infinum WordPress Boilerplate is Copyright ©2018 Infinum. It is free software, and may be redistributed under the terms specified in the LICENSE file.
