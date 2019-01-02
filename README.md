@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Eightshift WordPress Boilerplate" src="packages/create-wp-theme/logo.svg"/>
+  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/create-wp-theme/logo.svg"/>
 </p>
 
 [![Travis](https://img.shields.io/travis/infinum/wp-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/wp-boilerplate)
@@ -7,6 +7,8 @@
 [![GitHub tag](https://img.shields.io/github/tag/infinum/wp-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/wp-boilerplate)
 [![GitHub stars](https://img.shields.io/github/stars/infinum/wp-boilerplate.svg?style=for-the-badge&label=Stars)](https://github.com/infinum/wp-boilerplate/)
 [![license](https://img.shields.io/github/license/infinum/wp-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/wp-boilerplate)
+
+# Eightshift WordPress Boilerplate
 
 This repository contains all the tools you need to start building a modern WordPress theme, using all the latest front end development tools.
 
