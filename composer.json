@@ -1,6 +1,7 @@
 {
   "require-dev": {
-    "infinum/coding-standards-wp": "*"
+    "infinum/coding-standards-wp": "*",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
   },
   "autoload": {
     "classmap": [
