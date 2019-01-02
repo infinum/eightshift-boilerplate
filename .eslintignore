@@ -1,1 +1,1 @@
-wp-content/themes/inf_theme/skin/assets/scripts/vendors/*.js
+public/**/*.js

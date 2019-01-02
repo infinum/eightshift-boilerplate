@@ -10,26 +10,25 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
-const appPath = `${path.resolve(__dirname)}`;
+// We need the website's root folder.
+const appPath = `${path.resolve(__dirname, '..', '..', '..')}`;
 
 // Dev Server
 const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.com
 
 // Theme
-const themeName = 'inf_theme';
-const themePath = `wp-content/themes/${themeName}/skin`;
-const themeFullPath = `${appPath}/${themePath}`;
+const themeName = path.basename(__dirname);
+const themePath = `/wp-content/themes/${themeName}/skin`;
+const themeNodePath = `${appPath}/wp-content/themes/${themeName}/node_modules`;
+const themeFullPath = `${appPath}${themePath}`;
 const themePublicPath = `/${themePath}/public/`;
 const themeEntry = `${themeFullPath}/assets/application.js`;
 const themeAdminEntry = `${themeFullPath}/assets/application-admin.js`;
 const themeOutput = `${themeFullPath}/public`;
 
 // Outputs
-const outputJs = 'scripts/[name]-[hash].js';
-const outputCss = 'styles/[name]-[hash].css';
-const outputFile = '[name]-[hash].[ext]';
-const outputImages = `images/${outputFile}`;
-const outputFonts = `fonts/${outputFile}`;
+const outputHash = `${DEV ? '[name]' : '[name]-[hash]'}`;
+const outputStatic = '[name].[ext]';
 
 
 // All loaders to use on assets.
@@ -37,23 +36,23 @@ const allModules = {
   rules: [
     {
       test: /\.(js|jsx)$/,
-      use: 'babel-loader',
       exclude: /node_modules/,
+      use: 'babel-loader',
     },
     {
       test: /\.json$/,
       exclude: /node_modules/,
-      use: 'file-loader',
+      use: `file-loader?name=${outputStatic}`,
     },
     {
       test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
       exclude: [/fonts/, /node_modules/],
-      use: `file-loader?name=${outputImages}`,
+      use: `file-loader?name=${outputStatic}`,
     },
     {
       test: /\.(eot|otf|ttf|woff|woff2|svg)$/,
       exclude: [/images/, /node_modules/],
-      use: `file-loader?name=${outputFonts}`,
+      use: `file-loader?name=${outputStatic}`,
     },
     {
       test: /\.scss$/,
@@ -71,7 +70,7 @@ const allPlugins = [
 
   // Convert JS to CSS.
   new MiniCssExtractPlugin({
-    filename: outputCss,
+    filename: `${outputHash}.css`,
   }),
 
   // Gives you jQuery with in the webpack so no need for impoting it.
@@ -81,30 +80,33 @@ const allPlugins = [
   }),
 
   // Use BrowserSync.
-  new BrowserSyncPlugin({
-    host: 'localhost',
-    port: 3000,
-    proxy: proxyUrl,
-    files: [
-      {
-        match: ['wp-content/themes/**/*.php', 'wp-content/plugins/**/*.php'],
-      },
-    ],
-  }),
+  new BrowserSyncPlugin(
+    {
+      host: 'localhost',
+      port: 3000,
+      proxy: proxyUrl,
+      files: [
+        {
+          match: [
+            '**/*.php',
+            `${themePublicPath}*.css`,
+          ],
+        },
+      ],
+      notify: true,
+    },
+    {
+      reload: false,
+    },
+  ),
 
   // Copy from one target to new destination.
   new CopyWebpackPlugin([
 
     // Find jQuery in node_modules and copy it to public folder
     {
-      from: `${appPath}/node_modules/jquery/dist/jquery.min.js`,
-      to: `${themeOutput}/scripts/vendors`,
-    },
-
-    // If using images in css to reference directly put them in this folder. That will override the cache-busting.
-    {
-      from: `${themePath}/assets/static`,
-      to: `${themeOutput}/static`,
+      from: `${themeNodePath}/jquery/dist/jquery.min.js`,
+      to: themeOutput,
     },
   ]),
 
@@ -163,7 +165,7 @@ module.exports = [
     output: {
       path: themeOutput,
       publicPath: themePublicPath,
-      filename: outputJs,
+      filename: `${outputHash}.js`,
     },
 
     // Don't bundle jQuery but expect it from a different source.

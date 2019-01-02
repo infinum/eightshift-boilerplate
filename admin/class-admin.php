@@ -24,8 +24,7 @@ class Admin extends Config {
    */
   public function enqueue_styles() {
 
-    $main_style = General_Helper::get_manifest_assets_data( 'applicationAdmin.css' );
-    wp_register_style( static::THEME_NAME . '-style', $main_style, array(), static::THEME_VERSION );
+    wp_register_style( static::THEME_NAME . '-style', General_Helper::get_manifest_assets_data( 'applicationAdmin.css' ), array(), static::THEME_VERSION );
     wp_enqueue_style( static::THEME_NAME . '-style' );
 
   }
@@ -37,14 +36,13 @@ class Admin extends Config {
    */
   public function enqueue_scripts() {
 
-    $main_script = General_Helper::get_manifest_assets_data( 'applicationAdmin.js' );
-    wp_register_script( static::THEME_NAME . '-scripts', $main_script, array(), static::THEME_VERSION, true );
+    wp_register_script( static::THEME_NAME . '-scripts', General_Helper::get_manifest_assets_data( 'applicationAdmin.js' ), array(), static::THEME_VERSION, true );
     wp_enqueue_script( static::THEME_NAME . '-scripts' );
 
   }
 
   /**
-   * Method that changes admin colors based on environment variable
+   * Method that changes admin colors based on environment variable. Must have INF_ENV global variable set.
    *
    * @param string $color_scheme Color scheme string.
    * @return string              Modified color scheme.

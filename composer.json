@@ -1,10 +1,17 @@
 {
   "require-dev": {
-    "infinum/coding-standards-wp": "*"
+    "infinum/coding-standards-wp": "*",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
   },
   "autoload": {
     "classmap": [
-      "wp-content/themes/inf_theme/"
+      "admin",
+      "helpers",
+      "includes",
+      "languages",
+      "page-templates",
+      "template-parts",
+      "theme"
     ]
   },
   "minimum-stability": "dev",
@@ -12,5 +19,9 @@
   "config": {
     "sort-packages": true,
     "optimize-autoloader": true
+  },
+  "scripts": {
+    "check-cs": "@php ./vendor/bin/phpcs --extensions=php --ignore=/vendor/",
+    "fix-cs": "@php ./vendor/bin/phpcbf --extensions=php --ignore=/vendor/"
   }
 }

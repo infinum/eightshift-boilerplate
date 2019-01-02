@@ -2,8 +2,6 @@
   "extends": "@infinumjs",
 
   "env": {
-
-    # You can change environment depending on the project you are working on
     "browser": true,
     "node": true,
     "commonjs": true,
@@ -11,8 +9,13 @@
     "jquery": true
   },
 
-  "rules": {
-    "import/prefer-default-export": 0,
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
     "allowImportExportEverywhere": true
+  },
+
+  "rules": {
+    "import/prefer-default-export": 0
   }
 }

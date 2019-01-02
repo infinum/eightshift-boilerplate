@@ -1,8 +1,8 @@
 <?php
 /**
- * Theme Name: init_theme_real_name
- * Description: init_description
- * Author: init_author_name
+ * Theme Name: Infinum WP Boilerplate
+ * Description: This is WP Boilerplate, a modern boilerplate / starter theme.
+ * Author: Team Eightshift
  * Author URI:
  * Version: 1.0
  * Text Domain: inf_theme
@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
  * @since 1.0.0
  * @package Inf_Theme
  */
-require WP_CONTENT_DIR . '/../vendor/autoload.php';
+require get_template_directory() . '/vendor/autoload.php';
 
 /**
  * Begins execution of the theme.
