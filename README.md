@@ -19,7 +19,7 @@ Eightshift WordPress Boilerplate is maintained and sponsored by
 - [:school_satchel: Requirements](#school_satchel-requirements)
 - [:rocket: Quick start](#rocket-quick-start)
 - [:mortar_board: How to develop using WP Boilerplate](#mortar_board-how-to-develop-using-wp-boilerplate)
-- [:rotating_light: Liniting Files](#rotating_light-liniting-files)   
+- [:rotating_light: Liniting Files](#rotating_light-liniting-files)
 - [:factory: Going to Production](#factory-going-to-production)
 - [:truck: Import & Export](#truck-import--export)
 - [:interrobang: Plugin](#interrobang-plugin)
@@ -57,7 +57,7 @@ npm start
 1. **Automatic building of assets**
 
     This will build production ready assets (in watch/development mode using Webpack) after each modification to your files in `skin/assets` (compile `SCSS` to `CSS`, transpile `JS`, add hashes to files for cache busting purposes, etc):
-    
+
     Generally speaking, you should have this script active all the time while you're developing. 
 
     ```bash
@@ -97,10 +97,10 @@ You can have editors lint your files as you type, here's how to set it up:
     npm run lint
     ```
 
-2. **Linting PHP** - We are using [Infinum coding standards for WordPress](https://github.com/infinum/coding-standards-wp) to check php files. To install it, you need to install [Composer](https://getcomposer.org/) from initial setup step. 
+2. **Linting PHP** - We are using [Infinum coding standards for WordPress](https://github.com/infinum/coding-standards-wp) to check php files. To install it, you need to install [Composer](https://getcomposer.org/) from initial setup step.
 
     Here are available scripts to run in your terminal to lint your PHP files (you need to run them from inside the theme's folder):
-    
+
     Checking theme for possible violations:
 
     ```bash
@@ -136,7 +136,7 @@ Builds production ready assets
 
 1. Export
 
-    You can run this script from your theme folder which will give you a `.zip` of your theme you can add to any project. 
+    You can run this script from your theme folder which will give you a `.zip` of your theme you can add to any project.
 
     ```
     npm run export
