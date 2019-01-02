@@ -1,4 +1,6 @@
-# Eightshift WordPress Boilerplate
+<p align="center">
+  <img alt="Eightshift WordPress Boilerplate" src="packages/create-wp-theme/logo.svg"/>
+</p>
 
 [![Travis](https://img.shields.io/travis/infinum/wp-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/wp-boilerplate)
 [![npm version](https://img.shields.io/npm/v/create-wp-theme.svg?style=for-the-badge)](https://www.npmjs.com/package/create-wp-theme)
