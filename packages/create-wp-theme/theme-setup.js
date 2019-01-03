@@ -396,7 +396,7 @@ const run = async() => {
   // -----------------------------
 
   const gitUrl = 'https://github.com/infinum/wp-boilerplate.git';
-  const gitClone = `git clone -b development ${gitUrl} "${newThemeData.package}"`;
+  const gitClone = `git clone ${gitUrl} "${newThemeData.package}"`;
   const spinnerClone = ora('2. Cloning theme repo').start();
   await exec(`${gitClone} && cd "${fullThemePath}"`).then(() => {
     spinnerClone.succeed();
