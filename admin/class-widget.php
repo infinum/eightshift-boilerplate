@@ -1,7 +1,8 @@
 <?php
 /**
- * The Widgets specific functionality.
+ * The Widget specific functionality.
  *
+ * @since   3.0.1 Changed the name from Widgets to Widget.
  * @since   1.0.0
  * @package Inf_Theme\Admin
  */
@@ -9,9 +10,9 @@
 namespace Inf_Theme\Admin;
 
 /**
- * Class Widgets
+ * Class Widget
  */
-class Widgets {
+class Widget {
 
   /**
    * Set up widget areas
