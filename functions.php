@@ -35,4 +35,4 @@ require get_template_directory() . '/vendor/autoload.php';
  * @since 3.0.0 Shorten the theme initialization.
  * @since 2.0.0
  */
-( new Includes\Main() )->run();
+( new Includes\Main() )->register();
