@@ -11,11 +11,12 @@
 
 namespace Inf_Theme\Includes;
 
-use Inf_Theme\Admin as Admin;
-use Inf_Theme\Admin\Menu as Menu;
-use Inf_Theme\Plugins\Acf as Acf;
-use Inf_Theme\Theme as Theme;
-use Inf_Theme\Theme\Utils as Utils;
+use Inf_Theme\Admin;
+use Inf_Theme\Admin\Menu;
+use Inf_Theme\Theme;
+use Inf_Theme\Theme\Utils;
+
+use Inf_Theme\Exception;
 
 /**
  * The main start class.
@@ -26,161 +27,116 @@ use Inf_Theme\Theme\Utils as Utils;
  * Also maintains the unique identifier of this theme as well as the current
  * version of the theme.
  */
-class Main {
+class Main implements Registrable {
 
   /**
-   * Loader variable for hooks
+   * Array of instantiated services.
    *
-   * @var Loader    $loader    Maintains and registers all hooks for the plugin.
-   *
-   * @since 1.0.0
+   * @var Service[]
    */
-  protected $loader;
+  private $services = [];
 
   /**
-   * Initialize class
-   * Load hooks and define some global variables.
+   * Register the plugin with the WordPress system.
    *
-   * @since 1.0.0
+   * The register_service method will call the register() method in every service class,
+   * which holds the actions and filters - effectively replacing the need to manually add
+   * themn in one place.
+   *
+   * @throws Exception\Invalid_Service If a service is not valid.
    */
-  public function __construct() {
-    $this->load_dependencies();
-    $this->set_locale();
-    $this->set_assets_manifest_data();
-    $this->define_admin_hooks();
-    $this->define_theme_hooks();
+  public function register() : void {
+
+    add_action( 'init', [ $this, 'register_services' ] );
+
+    $this->register_assets_manifest_data();
   }
 
   /**
-   * Load the required dependencies.
+   * Register the individual services of this plugin.
    *
-   * Create an instance of the loader which will be used to register the hooks
-   * with WordPress.
-   *
-   * @since 1.0.0
+   * @throws Exception\Invalid_Service If a service is not valid.
    */
-  private function load_dependencies() {
-    $this->loader = new Loader();
-  }
-
-  /**
-   * Define the locale for this theme for internationalization.
-   *
-   * @since 1.0.0
-   */
-  private function set_locale() {
-    $plugin_i18n = new Internationalization();
-
-    $this->loader->add_action( 'after_setup_theme', $plugin_i18n, 'load_theme_textdomain' );
-  }
-
-  /**
-   * Register all of the hooks related to the admin area functionality.
-   *
-   * @since 1.0.0
-   */
-  private function define_admin_hooks() {
-    $admin   = new Admin\Admin();
-    $login   = new Admin\Login();
-    $editor  = new Admin\Editor();
-    $users   = new Admin\Users();
-    $widgets = new Admin\Widgets();
-    $media   = new Admin\Media();
-    $menu    = new Menu\Menu();
-
-    // Admin.
-    $this->loader->add_action( 'login_enqueue_scripts', $admin, 'enqueue_styles' );
-    $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_styles', 50 );
-    $this->loader->add_filter( 'get_user_option_admin_color', $admin, 'set_admin_color_based_on_env' );
-    $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_scripts' );
-
-    // Login page.
-    $this->loader->add_filter( 'login_headerurl', $login, 'custom_login_url' );
-
-    // Editor.
-    $this->loader->add_action( 'admin_init', $editor, 'add_editor_styles' );
-
-    // Users.
-    $this->loader->add_action( 'set_user_role', $users, 'send_main_when_user_role_changes', 10, 2 );
-
-    // Widgets.
-    $this->loader->add_action( 'widgets_init', $widgets, 'register_widget_position' );
-
-    // Menu.
-    $this->loader->add_action( 'after_setup_theme', $menu, 'register_menu_positions' );
-
-    // Media.
-    $this->loader->add_action( 'upload_mimes', $media, 'enable_mime_types' );
-    $this->loader->add_action( 'wp_prepare_attachment_for_js', $media, 'enable_svg_library_preview', 10, 3 );
-    $this->loader->add_action( 'after_setup_theme', $media, 'add_theme_support' );
-    $this->loader->add_action( 'after_setup_theme', $media, 'add_custom_image_sizes' );
-    $this->loader->add_filter( 'wp_handle_upload_prefilter', $media, 'check_svg_on_media_upload' );
-  }
-
-  /**
-   * Register all of the hooks related to the theme area functionality.
-   *
-   * @since 1.0.0
-   */
-  private function define_theme_hooks() {
-    $theme      = new Theme\Theme();
-    $general    = new Theme\General();
-    $pagination = new Theme\Pagination();
-
-    // Enque styles and scripts.
-    $this->loader->add_action( 'wp_enqueue_scripts', $theme, 'enqueue_styles' );
-    $this->loader->add_action( 'wp_enqueue_scripts', $theme, 'enqueue_scripts' );
-
-    // Remove inline gallery css.
-    $this->loader->add_filter( 'use_default_gallery_style', $theme, '__return_false' );
-
-    /**
-     * Optimizations
-     *
-     * This will remove some default functionality, but it mostly removes unnecessary
-     * meta tags from the head section.
-     */
-    $this->loader->remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-    $this->loader->remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-    $this->loader->remove_action( 'wp_print_styles', 'print_emoji_styles' );
-    $this->loader->remove_action( 'admin_print_styles', 'print_emoji_styles' );
-    $this->loader->remove_action( 'wp_head', 'wp_generator' );
-    $this->loader->remove_action( 'wp_head', 'wlwmanifest_link' );
-    $this->loader->remove_action( 'wp_head', 'wp_shortlink_wp_head' );
-    $this->loader->remove_action( 'wp_head', 'rsd_link' );
-    $this->loader->remove_action( 'wp_head', 'feed_links', 2 );
-    $this->loader->remove_action( 'wp_head', 'feed_links_extra', 3 );
-    $this->loader->remove_action( 'wp_head', 'rest_output_link_wp_head' );
-
-    // General.
-    $this->loader->add_action( 'after_setup_theme', $general, 'add_theme_support' );
-
-    // Pagination.
-    $this->loader->add_filter( 'next_posts_link_attributes', $pagination, 'pagination_link_next_class' );
-    $this->loader->add_filter( 'previous_posts_link_attributes', $pagination, 'pagination_link_prev_class' );
-  }
-
-  /**
-   * Run the loader to execute all of the hooks with WordPress.
-   *
-   * @since 1.0.0
-   */
-  public function run() {
-    $this->loader->run();
-  }
-
-  /**
-   * Define global variable to save memory when parsing manifest on every load.
-   *
-   * @since 1.0.0
-   */
-  public function set_assets_manifest_data() {
-    $response = file( get_template_directory() . '/skin/public/manifest.json' );
-
-    if ( ! $response ) {
+  public function register_services() {
+    // Bail early so we don't instantiate services twice.
+    if ( ! empty( $this->services ) ) {
       return;
     }
 
-    define( 'INF_ASSETS_MANIFEST', implode( ' ', $response ) );
+    $classes = $this->get_service_classes();
+
+    $this->services = array_map(
+      [ $this, 'instantiate_service' ],
+      $classes
+    );
+
+    array_walk(
+      $this->services,
+      function( Service $service ) {
+        $service->register();
+      }
+    );
+  }
+
+  /**
+   * Register bundled asset manifest
+   *
+   * @throws Exception\Missing_Manifest Throws error if manifest is missing.
+   * @return void
+   */
+  public function register_assets_manifest_data() {
+
+    // phpcs:disable
+    $response = wp_json_encode( file( get_template_directory() . '/skin/public/manifest.json' ) );
+    // phpcs:enable
+
+    if ( ! $response ) {
+      $error_message = esc_html__( 'manifest.json is missing. Bundle the theme before using it.', 'developer-portal' );
+      throw Exception\Missing_Manifest::message( $error_message );
+    }
+
+    define( 'INF_ASSETS_MANIFEST', (string) $response );
+  }
+
+  /**
+   * Instantiate a single service.
+   *
+   * @param string $class Service class to instantiate.
+   *
+   * @return Service
+   * @throws Exception\Invalid_Service If the service is not valid.
+   */
+  private function instantiate_service( $class ) {
+    if ( ! class_exists( $class ) ) {
+      throw Exception\Invalid_Service::from_service( $class );
+    }
+
+    $service = new $class();
+
+    if ( ! $service instanceof Service ) {
+      throw Exception\Invalid_Service::from_service( $service );
+    }
+
+    return $service;
+  }
+
+  /**
+   * Get the list of services to register.
+   *
+   * A list of classes which contain hooks.
+   *
+   * @return array<string> Array of fully qualified class names.
+   */
+  private function get_service_classes() : array {
+    return [
+      Admin\Admin::class,
+      Admin\Editor::class,
+      Admin\Login::class,
+      Admin\Media::class,
+      Admin\Widgets::class,
+      Menu\Menu::class,
+      Theme\Pagination::class,
+      Theme\Theme::class,
+    ];
   }
 }

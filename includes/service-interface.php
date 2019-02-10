@@ -1,6 +1,6 @@
 <?php
 /**
- * The abstract class that will be used to extend for all config files.
+ * Service interface file
  *
  * @since   1.0.0
  * @package Inf_Theme\Includes
@@ -8,13 +8,16 @@
 
 namespace Inf_Theme\Includes;
 
-/**
- * Abstract Class Config
- *
- * Abstract class that exposes constants that are used across multiple files.
- */
-abstract class Config {
+use Inf_Theme\Includes\Registrable;
 
+/**
+ * Interface Service.
+ *
+ * A generic service. Service is a self contained part of a theme functionality.
+ *
+ * @since 1.0.0
+ */
+interface Service extends Registrable {
   /**
    * Theme Name Constant
    *
