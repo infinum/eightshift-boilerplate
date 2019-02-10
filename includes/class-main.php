@@ -45,7 +45,7 @@ class Main implements Registrable {
    *
    * @throws Exception\Invalid_Service If a service is not valid.
    */
-  public function register() : void {
+  public function register() {
 
     add_action( 'init', [ $this, 'register_services' ] );
 
@@ -127,7 +127,7 @@ class Main implements Registrable {
    *
    * @return array<string> Array of fully qualified class names.
    */
-  private function get_service_classes() : array {
+  private function get_service_classes() {
     return [
       Admin\Admin::class,
       Admin\Editor::class,
