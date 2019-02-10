@@ -8,10 +8,21 @@
 
 namespace Inf_Theme\Admin;
 
+use Inf_Theme\Includes\Service;
+
 /**
  * Class Editor
  */
-class Editor {
+class Editor implements Service {
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() {
+    add_action( 'admin_init', [ $this, 'add_editor_styles' ] );
+  }
 
   /**
    * Add theme specific styles to editor

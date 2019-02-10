@@ -8,13 +8,42 @@
 
 namespace Inf_Theme\Theme;
 
+use Inf_Theme\Includes\Service;
 use Inf_Theme\Helpers\General_Helper;
-use Inf_Theme\Includes\Config;
 
 /**
  * Class Theme
  */
-class Theme extends Config {
+class Theme implements Service {
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() {
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+    add_filter( 'use_default_gallery_style', [ $this, '__return_false' ] );
+
+    /**
+     * Optimizations
+     *
+     * This will remove some default functionality, but it mostly removes unnecessary
+     * meta tags from the head section.
+     */
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    remove_action( 'admin_print_styles', 'print_emoji_styles' );
+    remove_action( 'wp_head', 'wp_generator' );
+    remove_action( 'wp_head', 'wlwmanifest_link' );
+    remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+    remove_action( 'wp_head', 'rsd_link' );
+    remove_action( 'wp_head', 'feed_links', 2 );
+    remove_action( 'wp_head', 'feed_links_extra', 3 );
+    remove_action( 'wp_head', 'rest_output_link_wp_head' );
+  }
 
   /**
    * Register the Stylesheets for the theme area.
@@ -57,7 +86,7 @@ class Theme extends Config {
       static::THEME_NAME . '-scripts',
       'themeLocalization',
       array(
-          'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        'ajaxurl' => admin_url( 'admin-ajax.php' ),
       )
     );
   }

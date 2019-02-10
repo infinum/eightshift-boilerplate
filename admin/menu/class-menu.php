@@ -8,23 +8,20 @@
 
 namespace Inf_Theme\Admin\Menu;
 
+use Inf_Theme\Includes\Service;
+
 /**
  * Class Menu
  */
-class Menu {
+class Menu implements Service {
 
   /**
-   * Return all menu poistions
-   *
-   * @return array Of menu positions with name and slug.
+   * Register all the hooks
    *
    * @since 1.0.0
    */
-  public function get_menu_positions() {
-    return array(
-        'header_main_nav' => esc_html__( 'Main Menu', 'inf_theme' ),
-        'footer_main_nav' => esc_html__( 'Footer Menu', 'inf_theme' ),
-    );
+  public function register() {
+    add_action( 'after_setup_theme', [ $this, 'register_menu_positions' ] );
   }
 
   /**
@@ -35,6 +32,20 @@ class Menu {
   public function register_menu_positions() {
     register_nav_menus(
       $this->get_menu_positions()
+    );
+  }
+
+  /**
+   * Return all menu poistions
+   *
+   * @return array Of menu positions with name and slug.
+   *
+   * @since 1.0.0
+   */
+  private function get_menu_positions() {
+    return array(
+      'header_main_nav' => esc_html__( 'Main Menu', 'inf_theme' ),
+      'footer_main_nav' => esc_html__( 'Footer Menu', 'inf_theme' ),
     );
   }
 
@@ -63,16 +74,18 @@ class Menu {
       $modifiers = '';
     }
 
-      $args = array(
-          'theme_location' => $location,
-          'container'      => false,
-          'items_wrap'     => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
-          'echo'           => $echo,
-          'walker'         => new Bem_Menu_Walker( $css_class_prefix ),
-      );
+    $args = array(
+      'theme_location' => $location,
+      'container'      => false,
+      'items_wrap'     => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
+      'echo'           => $echo,
+      'walker'         => new Bem_Menu_Walker( $css_class_prefix ),
+    );
 
-    if ( has_nav_menu( $location ) ) {
-      return wp_nav_menu( $args );
+    if ( ! has_nav_menu( $location ) ) {
+      return '';
     }
+
+    return wp_nav_menu( $args );
   }
 }

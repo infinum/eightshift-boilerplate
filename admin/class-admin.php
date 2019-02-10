@@ -1,7 +1,6 @@
 <?php
 /**
  * The Admin specific functionality.
- * General stuff that is not specific to any class.
  *
  * @since   1.0.0
  * @package Inf_Theme\Admin
@@ -9,13 +8,29 @@
 
 namespace Inf_Theme\Admin;
 
+use Inf_Theme\Includes\Service;
 use Inf_Theme\Helpers\General_Helper;
-use Inf_Theme\Includes\Config;
 
 /**
  * Class Admin
+ *
+ * This class handles enqueue scripts and styles and some
+ * admin facing functionality.
  */
-class Admin extends Config {
+class Admin implements Service {
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() {
+    add_action( 'login_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ], 50 );
+    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+    add_filter( 'get_user_option_admin_color', [ $this, 'set_admin_color_based_on_env' ] );
+    add_action( 'after_setup_theme', [ $this, 'load_theme_textdomain' ] );
+  }
 
   /**
    * Register the Stylesheets for the admin area.
@@ -23,10 +38,8 @@ class Admin extends Config {
    * @since 1.0.0
    */
   public function enqueue_styles() {
-
     wp_register_style( static::THEME_NAME . '-style', General_Helper::get_manifest_assets_data( 'applicationAdmin.css' ), array(), static::THEME_VERSION );
     wp_enqueue_style( static::THEME_NAME . '-style' );
-
   }
 
   /**
@@ -63,6 +76,15 @@ class Admin extends Config {
     }
 
     return $color_scheme;
+  }
+
+  /**
+   * Load the plugin text domain for translation.
+   *
+   * @since 1.0.0
+   */
+  public function load_theme_textdomain() {
+    load_theme_textdomain( static::THEME_NAME, get_template_directory() . '/languages' );
   }
 
 }

@@ -11,15 +11,30 @@ namespace Inf_Theme\Admin;
 use Inf_Theme\Helpers\General_Helper;
 use Inf_Theme\Helpers\Object_Helper;
 
+use Inf_Theme\Includes\Service;
+
 /**
  * Class Media
  */
-class Media {
+class Media implements Service {
 
   /**
    * Use trait inside class.
    */
   use Object_Helper;
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() {
+    add_action( 'after_setup_theme', [ $this, 'add_theme_support' ] );
+    add_action( 'after_setup_theme', [ $this, 'add_custom_image_sizes' ] );
+    add_action( 'upload_mimes', [ $this, 'enable_mime_types' ] );
+    add_action( 'wp_prepare_attachment_for_js', [ $this, 'enable_svg_library_preview' ], 10, 3 );
+    add_filter( 'wp_handle_upload_prefilter', [ $this, 'check_svg_on_media_upload' ] );
+  }
 
   /**
    * Enable theme support
@@ -28,7 +43,7 @@ class Media {
    * @since 1.0.0
    */
   public function add_theme_support() {
-    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'title-tag', 'html5', 'post-thumbnails' );
   }
 
   /**
@@ -51,6 +66,7 @@ class Media {
   public function enable_mime_types( $mimes ) {
     $mimes['svg'] = 'image/svg+xml';
     $mimes['zip'] = 'application/zip';
+
     return $mimes;
   }
 
@@ -89,10 +105,10 @@ class Media {
 
           // media single.
           $response['sizes']['full'] = array(
-              'height'      => $height,
-              'width'       => $width,
-              'url'         => $src,
-              'orientation' => $height > $width ? 'portrait' : 'landscape',
+            'height'      => $height,
+            'width'       => $width,
+            'url'         => $src,
+            'orientation' => $height > $width ? 'portrait' : 'landscape',
           );
         }
       } catch ( \Exception $e ) {
@@ -122,12 +138,13 @@ class Media {
       if ( file_exists( $path ) ) {
         if ( ! $this->is_valid_xml( $svg_content ) ) {
           return array(
-              'size' => $response,
-              'name' => $response['name'],
+            'size' => $response,
+            'name' => $response['name'],
           );
         }
       }
     }
+
     return $response;
   }
 }

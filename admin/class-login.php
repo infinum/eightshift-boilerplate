@@ -8,10 +8,21 @@
 
 namespace Inf_Theme\Admin;
 
+use Inf_Theme\Includes\Service;
+
 /**
  * Class Login
  */
-class Login {
+class Login implements Service {
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() {
+    add_filter( 'login_headerurl', [ $this, 'custom_login_url' ] );
+  }
 
   /**
    * Change default logo link with home url
@@ -21,5 +32,4 @@ class Login {
   public function custom_login_url() {
     return home_url( '/' );
   }
-
 }
