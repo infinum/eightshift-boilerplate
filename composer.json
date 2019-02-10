@@ -6,6 +6,7 @@
   "autoload": {
     "classmap": [
       "admin",
+      "exception",
       "helpers",
       "includes",
       "languages",
