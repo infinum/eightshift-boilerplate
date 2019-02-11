@@ -30,14 +30,14 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
 
     // Define menu item names appropriately.
     $this->item_css_class_suffixes = array(
-        'item'                    => '__item',
-        'parent_item'             => '__item--parent',
-        'active_item'             => '__item--active',
-        'parent_of_active_item'   => '__item--parent--active',
-        'ancestor_of_active_item' => '__item--ancestor--active',
-        'sub_menu'                => '__sub-menu',
-        'sub_menu_item'           => '__sub-menu__item',
-        'link'                    => '__link',
+      'item'                    => '__item',
+      'parent_item'             => '__item--parent',
+      'active_item'             => '__item--active',
+      'parent_of_active_item'   => '__item--parent--active',
+      'ancestor_of_active_item' => '__item--ancestor--active',
+      'sub_menu'                => '__sub-menu',
+      'sub_menu_item'           => '__sub-menu__item',
+      'link'                    => '__link',
     );
   }
 
@@ -86,8 +86,8 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
     $suffix = $this->item_css_class_suffixes;
 
     $classes = array(
-        $prefix . $suffix['sub_menu'],
-        $prefix . $suffix['sub_menu'] . '--' . $real_depth,
+      $prefix . $suffix['sub_menu'],
+      $prefix . $suffix['sub_menu'] . '--' . $real_depth,
     );
 
     $class_names = implode( ' ', $classes );
@@ -132,14 +132,14 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
 
     // Item classes.
     $item_classes = array(
-        'item_class'            => 0 === $depth ? $prefix . $suffix['item'] : '',
-        'parent_class'          => $args->has_children ? $parent_class : '',
-        'active_page_class'     => in_array( 'current-menu-item', $item->classes, true ) ? $prefix . $suffix['active_item'] : '',
-        'active_parent_class'   => in_array( 'current-menu-parent', $item->classes, true ) ? $prefix . $suffix['parent_of_active_item'] : '',
-        'active_ancestor_class' => in_array( 'current-page-ancestor', $item->classes, true ) ? $prefix . $suffix['ancestor_of_active_item'] : '',
-        'depth_class'           => $depth >= 1 ? $prefix . $suffix['sub_menu_item'] . ' ' . $prefix . $suffix['sub_menu'] . '--' . $depth . '__item' : '',
-        'item_id_class'         => $prefix . '__item--' . $item->object_id,
-        'user_class'            => ! empty( $user_classes ) ? implode( ' ', $user_classes ) : '',
+      'item_class'            => 0 === $depth ? $prefix . $suffix['item'] : '',
+      'parent_class'          => $args->has_children ? $parent_class : '',
+      'active_page_class'     => in_array( 'current-menu-item', $item->classes, true ) ? $prefix . $suffix['active_item'] : '',
+      'active_parent_class'   => in_array( 'current-menu-parent', $item->classes, true ) ? $prefix . $suffix['parent_of_active_item'] : '',
+      'active_ancestor_class' => in_array( 'current-page-ancestor', $item->classes, true ) ? $prefix . $suffix['ancestor_of_active_item'] : '',
+      'depth_class'           => $depth >= 1 ? $prefix . $suffix['sub_menu_item'] . ' ' . $prefix . $suffix['sub_menu'] . '--' . $depth . '__item' : '',
+      'item_id_class'         => $prefix . '__item--' . $item->object_id,
+      'user_class'            => ! empty( $user_classes ) ? implode( ' ', $user_classes ) : '',
     );
 
     // Convert array to string excluding any empty values.
@@ -150,8 +150,8 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
 
     // Link classes.
     $link_classes = array(
-        'item_link'   => 0 === $depth ? $prefix . $suffix['link'] : '',
-        'depth_class' => $depth >= 1 ? $prefix . $suffix['sub_menu'] . $suffix['link'] . '  ' . $prefix . $suffix['sub_menu'] . '--' . $depth . $suffix['link'] : '',
+      'item_link'   => 0 === $depth ? $prefix . $suffix['link'] : '',
+      'depth_class' => $depth >= 1 ? $prefix . $suffix['sub_menu'] . $suffix['link'] . '  ' . $prefix . $suffix['sub_menu'] . '--' . $depth . $suffix['link'] : '',
     );
 
     $link_class_string = implode( '  ', array_filter( $link_classes ) );
@@ -159,8 +159,8 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
     $link_class_output = 'class="' . $link_class_string . ' "';
 
     $link_text_classes = array(
-        'item_link'   => 0 === $depth ? $prefix . $suffix['link'] . '-text' : '',
-        'depth_class' => $depth >= 1 ? $prefix . $suffix['sub_menu'] . $suffix['link'] . '-text ' . $prefix . $suffix['sub_menu'] . '--' . $depth . $suffix['link'] . '-text' : '',
+      'item_link'   => 0 === $depth ? $prefix . $suffix['link'] . '-text' : '',
+      'depth_class' => $depth >= 1 ? $prefix . $suffix['sub_menu'] . $suffix['link'] . '-text ' . $prefix . $suffix['sub_menu'] . '--' . $depth . $suffix['link'] . '-text' : '',
     );
 
     $link_text_class_string = implode( '  ', array_filter( $link_text_classes ) );

@@ -39,16 +39,16 @@ class Images {
       $image         = wp_get_attachment_image_src( $attachemnt_id, $size );
 
       $image_array = [
-          'image'  => $image[0],
-          'width'  => $image[1],
-          'height' => $image[2],
+        'image'  => $image[0],
+        'width'  => $image[1],
+        'height' => $image[2],
       ];
     } else {
       $no_img      = General_Helper::get_manifest_assets_data( 'images/no-image-' . $size . '.jpg' );
       $image_array = [
-          'image'  => $no_img,
-          'width'  => '',
-          'height' => '',
+        'image'  => $no_img,
+        'width'  => '',
+        'height' => '',
       ];
 
       if ( ! empty( $no_image ) ) {
@@ -77,7 +77,7 @@ class Images {
     }
 
     return [
-        'image' => $src,
+      'image' => $src,
     ];
   }
 
