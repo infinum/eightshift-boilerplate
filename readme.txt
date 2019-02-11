@@ -1,9 +1,9 @@
 === Eightshift WordPress Boilerplate ===
-Contributors: mustra, dingo_bastard, ivangrginov
+Contributors: mustra, dingo_d, ivangrginov
 Tags: custom-menu, editor-style, featured-images, one-column, theme-options	, translation-ready
 Requires at least: 4.4
-Requires PHP: 7
-Tested up to: 4.9.8
+Requires PHP: 7.0
+Tested up to: 5.0.3
 Stable tag: 1.0.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -18,7 +18,7 @@ This is an open-source modern boilerplate / starter theme with all the latest de
 
 It is intended for users with at least some dev experience (php and js) and it's a great starting point if you want to build a theme for your own or client's project, to release a theme on WordPress.org or to sell it.
 
-It is NOT an out of the box solution and won't look pretty after your run it the first time. That's not the point. The point is to give you a clean slate to build your own modern theme with no bloat and no unnecessary features that you won't use and will end up slowing your site down. 
+It is NOT an out of the box solution and won't look pretty after your run it the first time. That's not the point. The point is to give you a clean slate to build your own modern theme with no bloat and no unnecessary features that you won't use and will end up slowing your site down.
 
 = What can you do with it? =
 
@@ -33,15 +33,15 @@ NOTE: This list may look intimidating if you're not familiar with these things b
 7. [Autoprefixing](https://github.com/postcss/autoprefixer) - No need to write CSS prefixes for old browsers in SASS, they will automatically be generated as part of the build process.
 8. [Browsersync](https://www.browsersync.io/) - Automatically refreshes your page on asset file changes on one or more browsers.
 9. [Babel JS transpiling](https://babeljs.io/) - No more googling "is X JS feature supported by Y browser". Write the latest code and Babel will automatically generate browser-compatible JS as part of the build process.
-10. Code linting - Easily check your PHP / JS / SCSS code for errors from your code editor. 
-11. Font magician / Web Font Loader - Easily load specific local / web fonts. 
+10. Code linting - Easily check your PHP / JS / SCSS code for errors from your code editor.
+11. Font magician / Web Font Loader - Easily load specific local / web fonts.
 Media blender
 12. CI build / deploy scripts - Wanna use CI (Continous Integration)? We got you covered.
 13. Import / Export scripts
 
 = More Info =
 
-For more information about the Eightshift WordPress Boilerplate and the development process, please visit these links: 
+For more information about the Eightshift WordPress Boilerplate and the development process, please visit these links:
 
 1. Github page - https://github.com/infinum/wp-boilerplate
 2. Wiki - https://github.com/infinum/wp-boilerplate/wiki
@@ -88,11 +88,11 @@ After installing the theme (but before activating it), you need to navigate to t
 == Frequently Asked Questions ==
 
 = I get an error after activating the theme! =
- 
+
 Please see the install instructions, you need to run a setup script 'npm run theme-setup' before activating the theme.
- 
+
 = How do I do X? =
- 
+
 Please check our [wiki on github](https://github.com/infinum/wp-boilerplate/wiki).
 
 == Screenshots ==
