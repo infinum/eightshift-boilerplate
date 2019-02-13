@@ -50,8 +50,6 @@ class Excerpt {
     // Reduce string to limit.
     $output = wp_trim_words( $output, $limit, '...' );
 
-    $output = '<p>' . $output . '</p>';
-
     return $output;
 
   }
