@@ -111,7 +111,7 @@ const allPlugins = [
   ]),
 
   // Create manifest.json file.
-  new ManifestPlugin(),
+  new ManifestPlugin({seed: {}}),
 ];
 
 // General optimisations.
