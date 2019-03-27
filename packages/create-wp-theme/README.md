@@ -1,3 +1,5 @@
+![Eightshift Logo](https://raw.githubusercontent.com/infinum/wp-boilerplate/master/packages/create-wp-theme/logo.svg?sanitize=true)
+
 # create-wp-theme (WP Boilerplate)
 
 [![Travis](https://img.shields.io/travis/infinum/wp-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/wp-boilerplate)

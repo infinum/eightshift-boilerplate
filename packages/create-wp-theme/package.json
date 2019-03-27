@@ -1,6 +1,6 @@
 {
   "name": "create-wp-theme",
-  "version": "0.2.5",
+  "version": "1.0.5",
   "author": "Team Eightshift",
   "main": "",
   "license": "MIT",
@@ -27,6 +27,7 @@
     "ora": "^3.0.0",
     "promisify-child-process": "^2.1.2",
     "prompt-sync": "^4.1.6",
-    "fs-extra": "^7.0.1"
+    "fs-extra": "^7.0.1",
+    "minimist": "^1.2.0"
   }
 }
