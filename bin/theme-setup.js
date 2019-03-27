@@ -20,6 +20,9 @@ const success = (msg) => log(`${chalk.bgGreen(chalk.black(msg))}`);
 let themeName = '';
 let fullThemePath = '';
 
+// Handle optional parameter args
+const scriptArgs = require('minimist')(process.argv.slice(2));
+
 /**
  * Performs a wide search & replace.
  *
@@ -59,12 +62,19 @@ const findReplace = async(findString, replaceString) => {
  *
  * @param array lines
  */
-const summary = (lines) => {
+const summary = (lines, noConfirm) => {
   success('');
   success('Your details will be:');
   lines.forEach((line) => log(`${chalk(line.label)}: ${chalk.green(line.variable)}`));
   success('');
-  const confirm = prompt('Confirm (y/n)? ');
+
+  let confirm;
+  if (noConfirm) {
+    confirm = 'y';
+  } else {
+    confirm = prompt('Confirm (y/n)? ');
+  }
+
   success('');
 
   if (confirm === 'exit') {
@@ -103,22 +113,26 @@ const promptFor = (settings) => {
 /**
  * Prompts the user only for theme name, Author name and dev URL, assume or ommit the rest
  */
-const promptThemeDataShort = () => {
+const promptThemeDataShort = ({devUrl, noConfirm}) => {
   let confirmed = 'n';
   const themeData = {};
   
   do {
 
     // Dev url
-    themeData.url = promptFor({
-      label: `${emoji.get('earth_africa')} Please enter a theme development url (for local development with browsersync - no protocol):`,
-      prompt: 'Dev url (e.g. dev.wordpress.com): ',
-      error: 'Dev url is required and cannot be empty.',
-    }).trim();
+    if (!devUrl) {
+      themeData.url = promptFor({
+        label: `${emoji.get('earth_africa')} Please enter a theme development url (for local development with browsersync - no protocol):`,
+        prompt: 'Dev url (e.g. dev.wordpress.com): ',
+        error: 'Dev url is required and cannot be empty.',
+      }).trim();
+    } else {
+      themeData.url = devUrl;
+    }
 
     confirmed = summary([
       {label: `${emoji.get('earth_africa')} Dev url`, variable: themeData.url},
-    ]);
+    ], noConfirm);
   } while (confirmed !== 'y');
 
   return themeData;
@@ -188,7 +202,7 @@ const run = async() => {
   log(chalk.red(''));
 
   // Prompt user for all user data.
-  const newThemeData = promptThemeDataShort();
+  const newThemeData = promptThemeDataShort(scriptArgs);
 
   // Globally save the package (because it's also our folder name)
   fullThemePath = path.join(process.cwd());
@@ -241,7 +255,7 @@ const run = async() => {
   // -----------------------------
 
   const spinnerAutoloader = ora('4. Updating composer autoloader').start();
-  await exec(`composer -o dump-autoload`).then(() => {
+  await exec('composer -o dump-autoload').then(() => {
     spinnerAutoloader.succeed();
   }).catch((exception) => {
     spinnerAutoloader.fail();
