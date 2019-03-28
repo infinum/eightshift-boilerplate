@@ -39,9 +39,6 @@ class Excerpt {
     // Remove html tags.
     $output = wp_strip_all_tags( $output );
 
-    // Reduce string to limit.
-    $output = substr( $output, 0, $limit );
-
     // Remove any whitespace character.
     $output = trim( preg_replace( '/\s+/', ' ', $output ) );
 
@@ -50,8 +47,11 @@ class Excerpt {
       $output = substr( $output, 0, strripos( $output, ' ' ) );
     }
 
-    $output = '<p>' . $output . '...</p>';
+    // Reduce string to limit.
+    $output = wp_trim_words( $output, $limit, '...' );
+
     return $output;
+
   }
 
 }
