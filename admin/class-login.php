@@ -8,7 +8,7 @@
 
 namespace Inf_Theme\Admin;
 
-use Inf_Theme\Includes\Service;
+use Eightshift_Libs\Core\Service;
 
 /**
  * Class Login
@@ -20,7 +20,7 @@ class Login implements Service {
    *
    * @since 1.0.0
    */
-  public function register() {
+  public function register() : void {
     add_filter( 'login_headerurl', [ $this, 'custom_login_url' ] );
   }
 

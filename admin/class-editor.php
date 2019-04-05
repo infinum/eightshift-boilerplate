@@ -8,7 +8,7 @@
 
 namespace Inf_Theme\Admin;
 
-use Inf_Theme\Includes\Service;
+use Eightshift_Libs\Core\Service;
 
 /**
  * Class Editor
@@ -20,7 +20,7 @@ class Editor implements Service {
    *
    * @since 1.0.0
    */
-  public function register() {
+  public function register() : void {
     add_action( 'admin_init', [ $this, 'add_editor_styles' ] );
   }
 

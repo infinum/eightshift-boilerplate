@@ -8,7 +8,7 @@
 
 namespace Inf_Theme\Theme;
 
-use Inf_Theme\Includes\Service;
+use Eightshift_Libs\Core\Service;
 
 /**
  * Class Pagination
@@ -20,7 +20,7 @@ class Pagination implements Service {
    *
    * @since 1.0.0
    */
-  public function register() {
+  public function register() : void {
     add_filter( 'next_posts_link_attributes', [ $this, 'pagination_link_next_class' ] );
     add_filter( 'previous_posts_link_attributes', [ $this, 'pagination_link_prev_class' ] );
   }

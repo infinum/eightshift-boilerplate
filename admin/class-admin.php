@@ -8,7 +8,8 @@
 
 namespace Inf_Theme\Admin;
 
-use Inf_Theme\Includes\Service;
+use Eightshift_Libs\Core\Service;
+
 use Inf_Theme\Helpers\General_Helper;
 
 /**
@@ -24,7 +25,7 @@ class Admin implements Service {
    *
    * @since 1.0.0
    */
-  public function register() {
+  public function register() : void {
     add_action( 'login_enqueue_scripts', [ $this, 'enqueue_styles' ] );
     add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ], 50 );
     add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );

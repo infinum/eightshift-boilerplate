@@ -8,7 +8,7 @@
 
 namespace Inf_Theme\Admin\Menu;
 
-use Inf_Theme\Includes\Service;
+use Eightshift_Libs\Core\Service;
 
 /**
  * Class Menu
@@ -20,7 +20,7 @@ class Menu implements Service {
    *
    * @since 1.0.0
    */
-  public function register() {
+  public function register() : void {
     add_action( 'after_setup_theme', [ $this, 'register_menu_positions' ] );
   }
 

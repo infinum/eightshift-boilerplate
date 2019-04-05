@@ -3,10 +3,18 @@
     "infinum/coding-standards-wp": "*",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
   },
+  "require": {
+    "infinum/eightshift-libs": "master"
+  },
+  "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@github.com:infinum/eightshift-libs.git"
+    }
+  ],
   "autoload": {
     "classmap": [
       "admin",
-      "exception",
       "helpers",
       "includes",
       "languages",

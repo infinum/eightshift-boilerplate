@@ -8,7 +8,7 @@
 
 namespace Inf_Theme\Theme;
 
-use Inf_Theme\Includes\Service;
+use Eightshift_Libs\Core\Service;
 use Inf_Theme\Helpers\General_Helper;
 
 /**
@@ -21,7 +21,7 @@ class Theme implements Service {
    *
    * @since 1.0.0
    */
-  public function register() {
+  public function register() : void {
     add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
     add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
     add_filter( 'use_default_gallery_style', [ $this, '__return_false' ] );

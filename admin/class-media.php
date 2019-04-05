@@ -8,10 +8,11 @@
 
 namespace Inf_Theme\Admin;
 
+use Eightshift_Libs\Core\Service;
+
 use Inf_Theme\Helpers\General_Helper;
 use Inf_Theme\Helpers\Object_Helper;
 
-use Inf_Theme\Includes\Service;
 
 /**
  * Class Media
@@ -28,7 +29,7 @@ class Media implements Service {
    *
    * @since 1.0.0
    */
-  public function register() {
+  public function register() : void {
     add_action( 'after_setup_theme', [ $this, 'add_theme_support' ] );
     add_action( 'after_setup_theme', [ $this, 'add_custom_image_sizes' ] );
     add_action( 'upload_mimes', [ $this, 'enable_mime_types' ] );

@@ -8,7 +8,7 @@
 
 namespace Inf_Theme\Admin;
 
-use Inf_Theme\Includes\Service;
+use Eightshift_Libs\Core\Service;
 
 /**
  * Class Widgets
@@ -20,7 +20,7 @@ class Widgets implements Service {
    *
    * @since 1.0.0
    */
-  public function register() {
+  public function register() : void {
     add_action( 'widgets_init', [ $this, 'register_widget_position' ] );
   }
 
