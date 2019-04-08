@@ -92,10 +92,10 @@ class Media {
 
           // media single.
           $response['sizes']['full'] = array(
-              'height'      => $height,
-              'width'       => $width,
-              'url'         => $src,
-              'orientation' => $height > $width ? 'portrait' : 'landscape',
+            'height'      => $height,
+            'width'       => $width,
+            'url'         => $src,
+            'orientation' => $height > $width ? 'portrait' : 'landscape',
           );
         }
       } catch ( \Exception $e ) {
@@ -127,8 +127,8 @@ class Media {
       if ( file_exists( $path ) ) {
         if ( ! $this->is_valid_xml( $svg_content ) ) {
           return array(
-              'size' => $response,
-              'name' => $response['name'],
+            'size' => $response,
+            'name' => $response['name'],
           );
         }
       }
