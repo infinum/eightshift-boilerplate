@@ -7,6 +7,10 @@ $base-content-padding: 15px;
 $base-content-full-width: 1200px;
 $base-content-width: $base-content-full-width + ($base-content-padding*2);
 
+// Grid
+$base-gutter-size: $base-content-padding;
+$base-col-number: 12;
+
 //Typography
 $typography-map: (
   mobile: (
