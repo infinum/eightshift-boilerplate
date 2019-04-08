@@ -22,13 +22,13 @@ class Widget {
   public function register_widget_position() {
     register_sidebar(
       array(
-          'name'          => esc_html__( 'Blog', 'inf_theme' ),
-          'id'            => 'blog',
-          'description'   => esc_html__( 'Description', 'inf_theme' ),
-          'before_widget' => '',
-          'after_widget'  => '',
-          'before_title'  => '',
-          'after_title'   => '',
+        'name'          => esc_html__( 'Blog', 'inf_theme' ),
+        'id'            => 'blog',
+        'description'   => esc_html__( 'Description', 'inf_theme' ),
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '',
+        'after_title'   => '',
       )
     );
   }
