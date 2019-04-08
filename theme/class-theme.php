@@ -42,7 +42,7 @@ class Theme extends Config {
   public function enqueue_scripts() {
 
     // JS.
-    wp_register_script( static::THEME_NAME . '-scripts-vendors', General_Helper::get_manifest_assets_data( 'vendors.js' ), array(), static::THEME_VERSION, true );
+    wp_register_script( static::THEME_NAME . '-scripts-vendors', General_Helper::get_manifest_assets_data( 'vendors.js' ), array( 'jquery' ), static::THEME_VERSION, true );
     wp_enqueue_script( static::THEME_NAME . '-scripts-vendors' );
 
     wp_register_script( static::THEME_NAME . '-scripts', General_Helper::get_manifest_assets_data( 'application.js' ), array( static::THEME_NAME . '-scripts-vendors' ), static::THEME_VERSION, true );
@@ -53,7 +53,7 @@ class Theme extends Config {
       static::THEME_NAME . '-scripts',
       'themeLocalization',
       array(
-          'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        'ajaxurl' => admin_url( 'admin-ajax.php' ),
       )
     );
   }
