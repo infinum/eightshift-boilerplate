@@ -89,7 +89,7 @@ const allPlugins = [
         {
           match: [
             '**/*.php',
-            `${themePublicPath}*.css`,
+            '**/*.css',
           ],
         },
       ],
