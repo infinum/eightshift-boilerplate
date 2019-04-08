@@ -71,11 +71,12 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    *
    * @param array   $output output.
    * @param integer $depth depth.
+   * @param array   $args args.
    * @return void
    *
    * @since 1.0.0
    */
-  public function start_lvl( &$output, $depth = 1 ) {
+  public function start_lvl( &$output, $depth = 1, $args = array() ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClassAfterLastUsed
 
     $real_depth = $depth + 1;
 
@@ -102,11 +103,12 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    * @param array   $item item.
    * @param integer $depth depth.
    * @param array   $args args.
+   * @param integer $id id.
    * @return void
    *
    * @since 1.0.0
    */
-  public function start_el( &$output, $item, $depth = 0, $args = array() ) {
+  public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {  // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClassAfterLastUsed
 
     global $wp_query;
 
