@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="InfinumBoilerplate">
+<ruleset name="WPBoilerplate">
   <description>Loader for the Infinum coding standards for WordPress.</description>
 
   <rule ref="Infinum" />
