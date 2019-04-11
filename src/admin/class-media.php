@@ -84,6 +84,7 @@ class Media implements Service {
    * @param array      $response   Array of prepared attachment data.
    * @param int|object $attachment Attachment ID or object.
    *
+   * @since 3.0.1 Adding theme review comments.
    * @since 3.0.0 Replacing file_get_content with file.
    * @since 2.0.2 Added checks if xml file is valid.
    * @since 1.0.0
@@ -98,6 +99,8 @@ class Media implements Service {
           $svg_content = implode( ' ', $svg_content );
 
           if ( ! $this->is_valid_xml( $svg_content ) ) {
+
+            /* translators: path to file. */
             new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'inf_theme' ), $path ) );
             return false;
           }
@@ -120,6 +123,8 @@ class Media implements Service {
           );
         }
       } catch ( \Exception $e ) {
+
+        /* translators: Exception error description. */
         new \WP_Error( sprintf( esc_html__( 'Error: %s', 'inf_theme' ), $e ) );
       }
     }

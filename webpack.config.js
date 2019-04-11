@@ -89,7 +89,7 @@ const allPlugins = [
         {
           match: [
             '**/*.php',
-            `${themePublicPath}*.css`,
+            '**/*.css',
           ],
         },
       ],
@@ -100,18 +100,8 @@ const allPlugins = [
     },
   ),
 
-  // Copy from one target to new destination.
-  new CopyWebpackPlugin([
-
-    // Find jQuery in node_modules and copy it to public folder
-    {
-      from: `${themeNodePath}/jquery/dist/jquery.min.js`,
-      to: themeOutput,
-    },
-  ]),
-
   // Create manifest.json file.
-  new ManifestPlugin(),
+  new ManifestPlugin({seed: {}}),
 ];
 
 // General optimisations.

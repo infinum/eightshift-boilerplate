@@ -1,6 +1,6 @@
 {
   "name": "inf_theme",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "author": "Team Eightshift",
   "main": "",
   "scripts": {
@@ -47,7 +47,8 @@
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
-    "webpack-manifest-plugin": "^2.0.4"
+    "webpack-manifest-plugin": "^2.0.4",
+    "minimist": "^1.2.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.3",

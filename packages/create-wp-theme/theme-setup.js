@@ -22,6 +22,9 @@ const success = (msg) => log(`${chalk.bgGreen(chalk.black(msg))}`);
 
 let fullThemePath = '';
 
+// Handle optional parameter args
+const scriptArgs = require('minimist')(process.argv.slice(2));
+
 /**
  * Performs a wide search & replace.
  *
@@ -61,12 +64,19 @@ const findReplace = async(findString, replaceString) => {
  *
  * @param array lines
  */
-const summary = (lines) => {
+const summary = (lines, noConfirm) => {
   success('');
   success('Your details will be:');
   lines.forEach((line) => log(`${chalk(line.label)}: ${chalk.green(line.variable)}`));
   success('');
-  const confirm = prompt('Confirm (y/n)? ');
+
+  let confirm;
+  if (noConfirm) {
+    confirm = 'y';
+  } else {
+    confirm = prompt('Confirm (y/n)? ');
+  }
+
   success('');
 
   if (confirm === 'exit') {
@@ -176,21 +186,25 @@ const promptThemeData = () => {
 /**
  * Prompts the user only for theme name, Author name and dev URL, assume or ommit the rest
  */
-const promptThemeDataShort = () => {
+const promptThemeDataShort = ( {themeName, devUrl, noConfirm} ) => {
   let confirmed = 'n';
   const themeData = {};
-  
+
   // -----------------------------
   //  Prompt for project info
   // -----------------------------
 
   do {
-    themeData.name = promptFor({
-      label: `${emoji.get('green_book')} Please enter your theme name (shown in WordPress admin):`,
-      prompt: 'Theme name: ',
-      error: 'Theme name field is required and cannot be empty.',
-      minLength: 2,
-    }).trim();
+    if (!themeName) {
+      themeData.name = promptFor({
+        label: `${emoji.get('green_book')} Please enter your theme name (shown in WordPress admin):`,
+        prompt: 'Theme name: ',
+        error: 'Theme name field is required and cannot be empty.',
+        minLength: 2,
+      }).trim();
+    } else {
+      themeData.name = themeName;
+    }
 
     // Build package name from theme name
     themeData.package = themeData.name.toLowerCase().split(' ').join('_');
@@ -217,11 +231,15 @@ const promptThemeDataShort = () => {
     themeData.namespace = capCase(themeData.package);
   
     // Dev url
-    themeData.url = promptFor({
-      label: `${emoji.get('earth_africa')} Please enter a theme development url (for local development with browsersync - no protocol):`,
-      prompt: 'Dev url (e.g. dev.wordpress.com): ',
-      error: 'Dev url is required and cannot be empty.',
-    }).trim();
+    if (!devUrl) {
+      themeData.url = promptFor({
+        label: `${emoji.get('earth_africa')} Please enter a theme development url (for local development with browsersync - no protocol):`,
+        prompt: 'Dev url (e.g. dev.wordpress.com): ',
+        error: 'Dev url is required and cannot be empty.',
+      }).trim();
+    } else {
+      themeData.url = devUrl;
+    }
 
     confirmed = summary([
       {label: `${emoji.get('green_book')} Theme name`, variable: themeData.name},
@@ -229,7 +247,7 @@ const promptThemeDataShort = () => {
       {label: `${emoji.get('sun_behind_cloud')}  Namespace`, variable: themeData.namespace},
       {label: `${emoji.get('bullettrain_front')} Theme prefix`, variable: themeData.prefix},
       {label: `${emoji.get('earth_africa')} Dev url`, variable: themeData.url},
-    ]);
+    ], noConfirm);
   } while (confirmed !== 'y');
 
   return themeData;
@@ -370,7 +388,7 @@ const run = async() => {
   log(chalk.red(''));
 
   // Prompt user for all user data.
-  const newThemeData = promptThemeDataShort();
+  const newThemeData = promptThemeDataShort(scriptArgs);
 
   // Globally save the package (because it's also our folder name)
   fullThemePath = path.join(process.cwd(), newThemeData.package);
@@ -396,7 +414,15 @@ const run = async() => {
   // -----------------------------
 
   const gitUrl = 'https://github.com/infinum/wp-boilerplate.git';
-  const gitClone = `git clone ${gitUrl} "${newThemeData.package}"`;
+  let base = 'git clone';
+
+  // Pull from a different branch if specified in parameters
+  if (scriptArgs.branch) {
+    base += ` -b ${scriptArgs.branch}`;
+  }
+
+  const gitClone = `${base} ${gitUrl} "${newThemeData.package}"`;
+
   const spinnerClone = ora('2. Cloning theme repo').start();
   await exec(`${gitClone} && cd "${fullThemePath}"`).then(() => {
     spinnerClone.succeed();
