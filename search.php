@@ -30,11 +30,7 @@ if ( have_posts() ) {
     get_template_part( 'views/listing/articles/grid' );
   };
 
-  the_posts_pagination(
-    array(
-      'screen_reader_text' => ' ',
-    )
-  );
+  the_posts_pagination();
 
 } else {
   get_template_part( 'views/listing/articles/empty' );

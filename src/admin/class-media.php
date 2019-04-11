@@ -33,11 +33,11 @@ class Media implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    add_action( 'after_setup_theme', [ $this, 'add_theme_support' ] );
-    add_action( 'after_setup_theme', [ $this, 'add_custom_image_sizes' ] );
-    add_action( 'upload_mimes', [ $this, 'enable_mime_types' ] );
-    add_action( 'wp_prepare_attachment_for_js', [ $this, 'enable_svg_library_preview' ], 10, 3 );
-    add_filter( 'wp_handle_upload_prefilter', [ $this, 'check_svg_on_media_upload' ] );
+    \add_action( 'after_setup_theme', [ $this, 'add_theme_support' ] );
+    \add_action( 'after_setup_theme', [ $this, 'add_custom_image_sizes' ] );
+    \add_action( 'upload_mimes', [ $this, 'enable_mime_types' ] );
+    \add_action( 'wp_prepare_attachment_for_js', [ $this, 'enable_svg_library_preview' ], 10, 3 );
+    \add_filter( 'wp_handle_upload_prefilter', [ $this, 'check_svg_on_media_upload' ] );
   }
 
   /**
@@ -49,7 +49,7 @@ class Media implements Service {
    * @since 1.0.0
    */
   public function add_theme_support() : void {
-    add_theme_support( 'title-tag', 'html5', 'post-thumbnails' );
+    \add_theme_support( 'title-tag', 'html5', 'post-thumbnails' );
   }
 
   /**
@@ -60,7 +60,7 @@ class Media implements Service {
    * @since 1.0.0
    */
   public function add_custom_image_sizes() : void {
-    add_image_size( 'listing', 570, 320, true );
+    \add_image_size( 'listing', 570, 320, true );
   }
 
   /**
@@ -115,12 +115,12 @@ class Media implements Service {
           $response['thumb'] = compact( 'src', 'width', 'height' );
 
           // media single.
-          $response['sizes']['full'] = array(
+          $response['sizes']['full'] = [
             'height'      => $height,
             'width'       => $width,
             'url'         => $src,
             'orientation' => $height > $width ? 'portrait' : 'landscape',
-          );
+          ];
         }
       } catch ( \Exception $e ) {
 
@@ -150,10 +150,10 @@ class Media implements Service {
 
       if ( file_exists( $path ) ) {
         if ( ! $this->is_valid_xml( $svg_content ) ) {
-          return array(
+          return [
             'size' => $response,
             'name' => $response['name'],
-          );
+          ];
         }
       }
     }

@@ -24,7 +24,7 @@ class Manifest extends LibManifest implements Service {
    * @since 4.0.0 Init.
    */
   public function register() : void {
-    add_action( 'init', [ $this, 'register_manifest' ] );
+    \add_action( 'init', [ $this, 'register_manifest' ] );
   }
 
   /**

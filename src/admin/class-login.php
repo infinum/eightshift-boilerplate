@@ -25,7 +25,7 @@ class Login implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    add_filter( 'login_headerurl', [ $this, 'custom_login_url' ] );
+    \add_filter( 'login_headerurl', [ $this, 'custom_login_url' ] );
   }
 
   /**
@@ -36,6 +36,6 @@ class Login implements Service {
    * @since 1.0.0
    */
   public function custom_login_url() : string {
-    return home_url( '/' );
+    return \home_url( '/' );
   }
 }

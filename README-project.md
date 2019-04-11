@@ -16,7 +16,7 @@ Before you start developing ask a lead developer to export you the latest versio
   * QA testing and client tests and approvals
   * Never merge `staging` to `master` branch.
   ```
-  https://staging.boilerplate.com
+  https://staging.boilerplate.com/
   ```
 
 ## Production server
@@ -24,7 +24,7 @@ Before you start developing ask a lead developer to export you the latest versio
   * Create pull request from `feature` branch to `master` when it is production ready
   * **NO OVERRIDING THE DATABASE**
   ```
-  https://boilerplate.com
+  https://boilerplate.com/
   ```
 
 ## Import & Export

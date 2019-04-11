@@ -23,6 +23,8 @@ class General_Helper {
    * @return string       Value of the key if it exists, empty string if not.
    *
    * @since 1.0.0
+   *
+   * // TODO: Refactor and remove.
    */
   public static function get_array_value( $key, $array ) {
     return ( gettype( $array ) === 'array' && array_key_exists( $key, $array ) ) ? $array[ $key ] : '';
@@ -42,7 +44,7 @@ class General_Helper {
       return;
     }
 
-    $data = json_decode( INF_ASSETS_MANIFEST );
+    $data = \json_decode( INF_ASSETS_MANIFEST );
 
     if ( ! $data ) {
       return;
@@ -51,7 +53,7 @@ class General_Helper {
     $asset = self::get_array_value( $key, (array) $data );
 
     if ( ! empty( $asset ) ) {
-      return home_url( $asset );
+      return \home_url( $asset );
     }
   }
 
@@ -69,7 +71,7 @@ class General_Helper {
    *
    * @since 1.0.0
    */
-  public static function inf_do_shortcode( $tag, array $atts = array(), $content = null ) {
+  public static function inf_do_shortcode( $tag, array $atts = [], $content = null ) {
 
     global $shortcode_tags;
 
@@ -77,6 +79,6 @@ class General_Helper {
       return false;
     }
 
-    return call_user_func( $shortcode_tags[ $tag ], $atts, $content, $tag );
+    return \call_user_func( $shortcode_tags[ $tag ], $atts, $content, $tag );
   }
 }

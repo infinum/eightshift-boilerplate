@@ -30,10 +30,10 @@ class Admin implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    add_action( 'login_enqueue_scripts', [ $this, 'enqueue_styles' ] );
-    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ], 50 );
-    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-    add_filter( 'get_user_option_admin_color', [ $this, 'set_admin_color_based_on_env' ] );
+    \add_action( 'login_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+    \add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ], 50 );
+    \add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+    \add_filter( 'get_user_option_admin_color', [ $this, 'set_admin_color_based_on_env' ] );
   }
 
   /**
@@ -45,8 +45,11 @@ class Admin implements Service {
    * @since 1.0.0
    */
   public function enqueue_styles() : void {
-    wp_register_style( THEME_NAME . '-style', General_Helper::get_manifest_assets_data( 'applicationAdmin.css' ), array(), THEME_VERSION );
-    wp_enqueue_style( THEME_NAME . '-style' );
+
+    // Main style file.
+    \wp_register_style( THEME_NAME . '-style', General_Helper::get_manifest_assets_data( 'applicationAdmin.css' ), [], THEME_VERSION );
+    \wp_enqueue_style( THEME_NAME . '-style' );
+
   }
 
   /**
@@ -59,8 +62,9 @@ class Admin implements Service {
    */
   public function enqueue_scripts() : void {
 
-    wp_register_script( THEME_NAME . '-scripts', General_Helper::get_manifest_assets_data( 'applicationAdmin.js' ), array(), THEME_VERSION, true );
-    wp_enqueue_script( THEME_NAME . '-scripts' );
+    // Main Java script file.
+    \wp_register_script( THEME_NAME . '-scripts', General_Helper::get_manifest_assets_data( 'applicationAdmin.js' ), [], THEME_VERSION, true );
+    \wp_enqueue_script( THEME_NAME . '-scripts' );
 
   }
 
@@ -75,7 +79,7 @@ class Admin implements Service {
    * // TODO: Handle better.
    */
   public function set_admin_color_based_on_env( $color_scheme ) {
-    if ( ! defined( 'INF_ENV' ) ) {
+    if ( ! \defined( 'INF_ENV' ) ) {
       return false;
     }
 

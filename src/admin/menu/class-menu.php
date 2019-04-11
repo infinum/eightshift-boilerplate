@@ -23,7 +23,7 @@ class Menu implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    add_action( 'after_setup_theme', [ $this, 'register_menu_positions' ] );
+    \add_action( 'after_setup_theme', [ $this, 'register_menu_positions' ] );
   }
 
   /**
@@ -34,7 +34,7 @@ class Menu implements Service {
    * @since 1.0.0
    */
   public function register_menu_positions() : void {
-    register_nav_menus(
+    \register_nav_menus(
       $this->get_menu_positions()
     );
   }
@@ -47,10 +47,10 @@ class Menu implements Service {
    * @since 1.0.0
    */
   private function get_menu_positions() : array {
-    return array(
+    return [
       'header_main_nav' => esc_html__( 'Main Menu', 'inf_theme' ),
       'footer_main_nav' => esc_html__( 'Footer Menu', 'inf_theme' ),
-    );
+    ];
   }
 
   /**
@@ -78,18 +78,18 @@ class Menu implements Service {
       $modifiers = '';
     }
 
-    $args = array(
+    $args = [
       'theme_location' => $location,
       'container'      => false,
       'items_wrap'     => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
       'echo'           => $echo,
       'walker'         => new Bem_Menu_Walker( $css_class_prefix ),
-    );
+    ];
 
-    if ( ! has_nav_menu( $location ) ) {
+    if ( ! \has_nav_menu( $location ) ) {
       return '';
     }
 
-    return wp_nav_menu( $args );
+    return \wp_nav_menu( $args );
   }
 }

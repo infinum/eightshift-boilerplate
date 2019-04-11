@@ -25,7 +25,7 @@ class Language implements Service {
    * @since 4.0.0 Init.
    */
   public function register() : void {
-    add_action( 'after_setup_theme', [ $this, 'load_theme_textdomain' ] );
+    \add_action( 'after_setup_theme', [ $this, 'load_theme_textdomain' ] );
   }
 
   /**
@@ -36,7 +36,7 @@ class Language implements Service {
    * @since 4.0.0 Init.
    */
   public function load_theme_textdomain() : void {
-    load_theme_textdomain( THEME_NAME, get_template_directory() . '/languages' );
+    \load_theme_textdomain( THEME_NAME, \get_template_directory() . '/languages' );
   }
 
 }

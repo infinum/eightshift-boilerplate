@@ -27,7 +27,7 @@ class Widgets implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    add_action( 'widgets_init', [ $this, 'register_widget_position' ] );
+    \add_action( 'widgets_init', [ $this, 'register_widget_position' ] );
   }
 
   /**
@@ -38,8 +38,8 @@ class Widgets implements Service {
    * @since 1.0.0
    */
   public function register_widget_position() : void {
-    register_sidebar(
-      array(
+    \register_sidebar(
+      [
         'name'          => esc_html__( 'Blog', 'inf_theme' ),
         'id'            => 'blog',
         'description'   => esc_html__( 'Description', 'inf_theme' ),
@@ -47,7 +47,7 @@ class Widgets implements Service {
         'after_widget'  => '',
         'before_title'  => '',
         'after_title'   => '',
-      )
+      ]
     );
   }
 

@@ -5,6 +5,7 @@
  * A class definition that includes attributes and functions used across both the
  * theme-facing side of the site and the admin area.
  *
+ * @since   4.0.0 Implementing Eightshift_Libs.
  * @since   1.0.0
  * @package Inf_Theme\Core
  */
