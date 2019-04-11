@@ -27,7 +27,7 @@ if ( have_posts() ) { ?>
 if ( have_posts() ) {
   while ( have_posts() ) {
     the_post();
-    get_template_part( 'template-parts/listing/articles/grid' );
+    get_template_part( 'views/listing/articles/grid' );
   };
 
   the_posts_pagination(
@@ -37,7 +37,7 @@ if ( have_posts() ) {
   );
 
 } else {
-  get_template_part( 'template-parts/listing/articles/empty' );
+  get_template_part( 'views/listing/articles/empty' );
 
 };
 

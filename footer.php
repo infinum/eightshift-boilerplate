@@ -11,5 +11,5 @@
 
 <?php
 
-get_template_part( 'template-parts/footer/content' );
-get_template_part( 'template-parts/footer/foot' );
+get_template_part( 'views/footer/content' );
+get_template_part( 'views/footer/foot' );

@@ -4,31 +4,36 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "652f48d0da4d61653efa94e1f7a97816",
+    "content-hash": "42d30bca70b7e0337ceefac8bbcdb644",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "dev-master",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "git@github.com:infinum/eightshift-libs.git",
-                "reference": "7649063116725ca38a647990f94775a1e04d56fa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/7649063116725ca38a647990f94775a1e04d56fa",
-                "reference": "7649063116725ca38a647990f94775a1e04d56fa",
-                "shasum": ""
+                "reference": "3e6b9c5e2a1e3df7121a8d8a0db23bd18585fa35"
             },
             "require": {
-                "composer-plugin-api": "^1.0",
-                "php": "^5.6|^7"
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5",
+                "infinum/coding-standards-wp": "^0.4.1"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Eightshift_Libs\\": "src/"
                 }
+            },
+            "scripts": {
+                "check-cs": [
+                    "@php ./vendor/bin/phpcs"
+                ],
+                "fix-cs": [
+                    "@php ./vendor/bin/phpcbf"
+                ]
             },
             "license": [
                 "MIT"
@@ -41,7 +46,7 @@
                     "role": "Developer / IT Manager"
                 }
             ],
-            "description": "WordPress libs developed by Eightshift theme to use in WordPress boilerplate.",
+            "description": "WordPress libs developed by Eightshift team to use in modern WordPress.",
             "homepage": "https://eightshift.com/",
             "keywords": [
                 "composer",
@@ -52,7 +57,7 @@
                 "issues": "https://github.com/infinum/eightshift-libs/issues",
                 "source": "https://github.com/infinum/eightshift-libs"
             },
-            "time": "2019-04-05T14:05:47+00:00"
+            "time": "2019-04-11T13:20:30+00:00"
         }
     ],
     "packages-dev": [
@@ -333,16 +338,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.4.1",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "5b4333b4010625d29580eb4a41f1e53251be6baa"
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5b4333b4010625d29580eb4a41f1e53251be6baa",
-                "reference": "5b4333b4010625d29580eb4a41f1e53251be6baa",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
                 "shasum": ""
             },
             "require": {
@@ -380,7 +385,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-03-19T03:22:27+00:00"
+            "time": "2019-04-10T23:49:02+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
@@ -428,7 +433,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "infinum/eightshift-libs": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],

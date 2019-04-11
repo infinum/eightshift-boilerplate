@@ -13,9 +13,23 @@
 namespace Inf_Theme;
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if ( ! \defined( 'WPINC' ) ) {
   die;
 }
+
+/**
+ * Global variable defining theme name generally used for naming assets handlers.
+ *
+ * @since 4.0.0
+ */
+\define( 'THEME_NAME', 'infinum' );
+
+/**
+ * Global variable defining theme version generally used for versioning assets handlers.
+ *
+ * @since 4.0.0
+ */
+\define( 'THEME_VERSION', '1.0.0' );
 
 /**
  * Include the autoloader so we can dynamically include the rest of the classes.
@@ -32,7 +46,8 @@ require get_template_directory() . '/vendor/autoload.php';
  * then kicking off the theme from this point in the file does
  * not affect the page life cycle.
  *
+ * @since 4.0.0 Changing namespace.
  * @since 3.0.0 Shorten the theme initialization.
  * @since 2.0.0
  */
-( new Includes\Main() )->register();
+( new Core\Main() )->register();

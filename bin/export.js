@@ -4,15 +4,9 @@ const path = require('path');
 var archiver = require('archiver');
 
 const folders = [
-  'admin',
-  'bin',
-  'helpers',
-  'includes',
-  'languages',
-  'page-templates',
+  'src',
+  'views',
   'skin',
-  'template-parts',
-  'theme',
 ];
 
 // Get theme folder name
