@@ -16,7 +16,7 @@
     <severity>0</severity>
   </rule>
 
-  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClassAfterLastUsed">
+  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter">
     <severity>0</severity>
   </rule>
 </ruleset>

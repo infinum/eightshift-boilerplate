@@ -11,7 +11,7 @@ namespace Inf_Theme\Admin;
 
 use Eightshift_Libs\Core\Service;
 
-use Inf_Theme\Helpers\General_Helper;
+use Inf_Theme\General\Manifest;
 
 /**
  * Class Admin
@@ -30,10 +30,10 @@ class Admin implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    \add_action( 'login_enqueue_scripts', [ $this, 'enqueue_styles' ] );
-    \add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ], 50 );
-    \add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-    \add_filter( 'get_user_option_admin_color', [ $this, 'set_admin_color_based_on_env' ] );
+    add_action( 'login_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ], 50 );
+    add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+    add_filter( 'get_user_option_admin_color', [ $this, 'set_admin_color_based_on_env' ] );
   }
 
   /**
@@ -47,7 +47,7 @@ class Admin implements Service {
   public function enqueue_styles() : void {
 
     // Main style file.
-    \wp_register_style( THEME_NAME . '-style', General_Helper::get_manifest_assets_data( 'applicationAdmin.css' ), [], THEME_VERSION );
+    \wp_register_style( THEME_NAME . '-style', Manifest::get_manifest_assets_data( 'applicationAdmin.css' ), [], THEME_VERSION );
     \wp_enqueue_style( THEME_NAME . '-style' );
 
   }
@@ -63,7 +63,7 @@ class Admin implements Service {
   public function enqueue_scripts() : void {
 
     // Main Java script file.
-    \wp_register_script( THEME_NAME . '-scripts', General_Helper::get_manifest_assets_data( 'applicationAdmin.js' ), [], THEME_VERSION, true );
+    \wp_register_script( THEME_NAME . '-scripts', Manifest::get_manifest_assets_data( 'applicationAdmin.js' ), [], THEME_VERSION, true );
     \wp_enqueue_script( THEME_NAME . '-scripts' );
 
   }

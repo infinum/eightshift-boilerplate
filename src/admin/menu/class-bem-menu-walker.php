@@ -78,7 +78,7 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    *
    * @since 1.0.0
    */
-  public function start_lvl( &$output, $depth = 1, $args = [] ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClassAfterLastUsed
+  public function start_lvl( &$output, $depth = 1, $args = [] ) {
 
     $real_depth = $depth + 1;
 
@@ -110,7 +110,7 @@ class Bem_Menu_Walker extends \Walker_Nav_Menu {
    *
    * @since 1.0.0
    */
-  public function start_el( &$output, $item, $depth = 0, $args = [], $id = 0 ) {  // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClassAfterLastUsed
+  public function start_el( &$output, $item, $depth = 0, $args = [], $id = 0 ) {
 
     global $wp_query;
 

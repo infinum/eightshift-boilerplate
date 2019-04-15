@@ -9,7 +9,7 @@
 namespace Inf_Theme\Theme;
 
 use Eightshift_Libs\Core\Service;
-use Inf_Theme\Helpers\General_Helper;
+use Inf_Theme\General\Manifest;
 
 /**
  * Class Theme
@@ -24,26 +24,8 @@ class Theme implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    \add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
-    \add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-
-    /**
-     * Optimizations
-     *
-     * This will remove some default functionality, but it mostly removes unnecessary
-     * meta tags from the head section.
-     */
-    \remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-    \remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-    \remove_action( 'wp_print_styles', 'print_emoji_styles' );
-    \remove_action( 'admin_print_styles', 'print_emoji_styles' );
-    \remove_action( 'wp_head', 'wp_generator' );
-    \remove_action( 'wp_head', 'wlwmanifest_link' );
-    \remove_action( 'wp_head', 'wp_shortlink_wp_head' );
-    \remove_action( 'wp_head', 'rsd_link' );
-    \remove_action( 'wp_head', 'feed_links', 2 );
-    \remove_action( 'wp_head', 'feed_links_extra', 3 );
-    \remove_action( 'wp_head', 'rest_output_link_wp_head' );
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
   }
 
   /**
@@ -56,7 +38,7 @@ class Theme implements Service {
   public function enqueue_styles() : void {
 
     // Main style file.
-    \wp_register_style( THEME_NAME . '-style', General_Helper::get_manifest_assets_data( 'application.css' ), [], THEME_VERSION );
+    \wp_register_style( THEME_NAME . '-style', Manifest::get_manifest_assets_data( 'application.css' ), [], THEME_VERSION );
     \wp_enqueue_style( THEME_NAME . '-style' );
 
   }
@@ -75,11 +57,11 @@ class Theme implements Service {
   public function enqueue_scripts() : void {
 
     // Vendor file.
-    \wp_register_script( THEME_NAME . '-scripts-vendors', General_Helper::get_manifest_assets_data( 'vendors.js' ), [], THEME_VERSION, true );
+    \wp_register_script( THEME_NAME . '-scripts-vendors', Manifest::get_manifest_assets_data( 'vendors.js' ), [], THEME_VERSION, true );
     \wp_enqueue_script( THEME_NAME . '-scripts-vendors' );
 
     // Main Javascript file.
-    \wp_register_script( THEME_NAME . '-scripts', General_Helper::get_manifest_assets_data( 'application.js' ), [ THEME_NAME . '-scripts-vendors' ], THEME_VERSION, true );
+    \wp_register_script( THEME_NAME . '-scripts', Manifest::get_manifest_assets_data( 'application.js' ), [ THEME_NAME . '-scripts-vendors' ], THEME_VERSION, true );
     \wp_enqueue_script( THEME_NAME . '-scripts' );
 
     // Global variables for ajax and translations.

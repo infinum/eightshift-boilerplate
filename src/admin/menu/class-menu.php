@@ -23,7 +23,7 @@ class Menu implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    \add_action( 'after_setup_theme', [ $this, 'register_menu_positions' ] );
+    add_action( 'after_setup_theme', [ $this, 'register_menu_positions' ] );
   }
 
   /**

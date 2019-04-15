@@ -7,9 +7,9 @@
  * TODO: Create this as a class with attributes.
  */
 
-use Inf_Theme\Helpers\General_Helper;
+use Inf_Theme\General\Manifest;
 
-$logo_img = General_Helper::get_manifest_assets_data( 'images/logo.svg' );
+$logo_img = Manifest::get_manifest_assets_data( 'images/logo.svg' );
 ?>
 
 <!-- Google Rich Snippets -->

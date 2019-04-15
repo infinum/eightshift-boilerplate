@@ -3,7 +3,7 @@ Contributors: mustra, dingo_d, ivangrginov
 Tags: custom-menu, editor-style, featured-images, one-column, theme-options	, translation-ready
 Requires at least: 4.4
 Requires PHP: 7.0
-Tested up to: 5.0.3
+Tested up to: 5.1.1
 Stable tag: 1.0.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
@@ -16,7 +16,7 @@ Eightshift WordPress Boilerplate contains all the tools you need to start buildi
 
 This is an open-source modern boilerplate / starter theme with all the latest dev goodies such as webpack, scss, babel, browsersync, etc.
 
-It is intended for users with at least some dev experience (php and js) and it's a great starting point if you want to build a theme for your own or client's project, to release a theme on WordPress.org or to sell it.
+Eightshift WordPress Boilerplate is intended for users with at least some dev experience (php and js) and it's a great starting point if you want to build a theme for your own or client's project, to release a theme on WordPress.org or to sell it.
 
 It is NOT an out of the box solution and won't look pretty after your run it the first time. That's not the point. The point is to give you a clean slate to build your own modern theme with no bloat and no unnecessary features that you won't use and will end up slowing your site down.
 

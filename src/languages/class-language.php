@@ -25,7 +25,7 @@ class Language implements Service {
    * @since 4.0.0 Init.
    */
   public function register() : void {
-    \add_action( 'after_setup_theme', [ $this, 'load_theme_textdomain' ] );
+    add_action( 'after_setup_theme', [ $this, 'load_theme_textdomain' ] );
   }
 
   /**

@@ -27,7 +27,7 @@ class Widgets implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    \add_action( 'widgets_init', [ $this, 'register_widget_position' ] );
+    add_action( 'widgets_init', [ $this, 'register_widget_position' ] );
   }
 
   /**

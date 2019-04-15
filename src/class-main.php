@@ -15,6 +15,7 @@ namespace Inf_Theme\Core;
 use Eightshift_Libs\Core\Main as LibMain;
 
 use Inf_Theme\Admin;
+use Inf_Theme\General;
 use Inf_Theme\Admin\Menu;
 use Inf_Theme\Theme;
 
@@ -38,7 +39,7 @@ class Main extends LibMain {
    */
   protected function get_service_classes() : array {
     return [
-      Manifest::class,
+      General\Manifest::class,
       Admin\Admin::class,
       Admin\Login::class,
       Admin\Media::class,
