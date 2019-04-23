@@ -77,16 +77,16 @@ class Main {
   /**
    * Register all of the hooks related to the admin area functionality.
    *
+   * @since 3.0.1 Removing Users class and renaming Widgets class.
    * @since 1.0.0
    */
   private function define_admin_hooks() {
-    $admin   = new Admin\Admin();
-    $login   = new Admin\Login();
-    $editor  = new Admin\Editor();
-    $users   = new Admin\Users();
-    $widgets = new Admin\Widgets();
-    $media   = new Admin\Media();
-    $menu    = new Menu\Menu();
+    $admin  = new Admin\Admin();
+    $login  = new Admin\Login();
+    $editor = new Admin\Editor();
+    $widget = new Admin\Widget();
+    $media  = new Admin\Media();
+    $menu   = new Menu\Menu();
 
     // Admin.
     $this->loader->add_action( 'login_enqueue_scripts', $admin, 'enqueue_styles' );
@@ -100,11 +100,8 @@ class Main {
     // Editor.
     $this->loader->add_action( 'admin_init', $editor, 'add_editor_styles' );
 
-    // Users.
-    $this->loader->add_action( 'set_user_role', $users, 'send_main_when_user_role_changes', 10, 2 );
-
     // Widgets.
-    $this->loader->add_action( 'widgets_init', $widgets, 'register_widget_position' );
+    $this->loader->add_action( 'widgets_init', $widget, 'register_widget_position' );
 
     // Menu.
     $this->loader->add_action( 'after_setup_theme', $menu, 'register_menu_positions' );

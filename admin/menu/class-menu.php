@@ -22,8 +22,8 @@ class Menu {
    */
   public function get_menu_positions() {
     return array(
-        'header_main_nav' => esc_html__( 'Main Menu', 'inf_theme' ),
-        'footer_main_nav' => esc_html__( 'Footer Menu', 'inf_theme' ),
+      'header_main_nav' => esc_html__( 'Main Menu', 'inf_theme' ),
+      'footer_main_nav' => esc_html__( 'Footer Menu', 'inf_theme' ),
     );
   }
 
@@ -64,15 +64,15 @@ class Menu {
     }
 
       $args = array(
-          'theme_location' => $location,
-          'container'      => false,
-          'items_wrap'     => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
-          'echo'           => $echo,
-          'walker'         => new Bem_Menu_Walker( $css_class_prefix ),
+        'theme_location' => $location,
+        'container'      => false,
+        'items_wrap'     => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
+        'echo'           => $echo,
+        'walker'         => new Bem_Menu_Walker( $css_class_prefix ),
       );
 
-    if ( has_nav_menu( $location ) ) {
-      return wp_nav_menu( $args );
-    }
+      if ( has_nav_menu( $location ) ) {
+        return wp_nav_menu( $args );
+      }
   }
 }

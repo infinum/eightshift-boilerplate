@@ -1,0 +1,82 @@
+/*
+ * Mixin that creates flex grid.
+ * It should be applied to the container element that will act as grid row.
+ * All of the child elements will act as grid columns.
+ * Parameters to configure:
+ *
+ * * $layout - column width relative to th number of columns. If defined as a number all colums will be same width,
+ * and if set as a list width is set sequentially for each item.
+ * * $gutter - spacing between each item.
+ * * $col-count - max number of columns.
+ * * $horizontal - horizontal alignment of the items. Uses values for justify-content property.
+ * * $vertical - vertical alignment of th items. Uses valuse for align-items property.
+ * * $order - a list of item order overrides.
+ */
+@mixin flex-container(
+  $layout: (),
+  $gutter: $base-gutter-size,
+  $col-count: $base-col-number,
+  $horizontal: flex-start,
+  $vertical: stretch,
+  $order: 0
+) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: $horizontal;
+  align-items: $vertical;
+  margin: 0 -#{$gutter};
+
+  & > * {
+    padding: 0 #{$gutter};
+  }
+
+  // Logic for defining layout of the columns.
+  @if length($layout) > 0 {
+    @if type-of($layout) == list {
+      // Looping over each item in $layout list and grabbing their index.
+      @for $index from 1 through length($layout) {
+        // Value of current item from the list.
+        $item: nth($layout, $index);
+
+        // Child element selector for current index.
+        & > :nth-child( #{$index} ) {
+          // Setting the width of the column as a relation between max column number and width of the column.
+          flex: 0 0 #{100% / ( $col-count / $item )};
+          max-width: #{100% /  ( $col-count / $item )};
+        }
+      }
+    }
+    // Setting the width of all columns as a relation between max column number and width of the columns.
+    @if type-of($layout) == number {
+      & > * {
+        flex: 0 0 #{100% / ( $col-count / $layout )};
+        max-width: #{100% /  ( $col-count / $layout )};
+      }
+    }
+  }
+  // Fallback for undefined layout
+  @else {
+    & > * {
+      flex: 1 0 0;
+      max-width: 100%;
+    }
+  }
+  // Logic for defining order of the columns.
+  @if length($order) > 0 {
+    @if type-of($order) == list {
+      @for $index from 1 through length($order) {
+        $item: nth($order, $index);
+
+        & > :nth-child( #{$index} ) {
+          order: $item;
+        }
+      }
+    }
+    @if type-of($order) == number {
+      & > * {
+        order: $order;
+      }
+    }
+  }
+
+}
