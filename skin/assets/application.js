@@ -1,11 +1,11 @@
 // Load Styles
 import './styles/application.scss';
 
-// Load Scripts
+// // Load Scripts
 import './scripts';
 
-// Load images
+// // Load images
 import './images';
 
-// Load fonts
+// // Load fonts
 import './fonts';
