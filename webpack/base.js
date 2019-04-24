@@ -21,24 +21,10 @@ const plugins = [
     jQuery: 'jquery',
   }),
 
-  // Copy files to new destination.
-  new CopyWebpackPlugin([
-
-    // Find jQuery in node_modules and copy it to public folder
-    {
-      from: `${config.theme.nodeModules}/jquery/dist/jquery.min.js`,
-      to: config.theme.output,
-    },
-  ]),
-
   // Create manifest.json file.
   new ManifestPlugin({
-    publicPath: config.theme.publicPath,
     seed: {},
   }),
-
-  // Clean public files before next build.
-  new CleanWebpackPlugin(),
 ];
 
 // All Optimizations used in production and development build.
@@ -95,16 +81,6 @@ const loaders = {
 
 // Main Webpack build setup.
 const base = {
-  context: config.theme.appPath,
-  entry: {
-    application: [config.theme.assetsEntry],
-    applicationAdmin: [config.theme.assetsAdminEntry],
-  },
-  output: {
-    path: config.theme.output,
-    publicPath: config.theme.publicPath,
-  },
-
   optimization,
   plugins,
   module: loaders,

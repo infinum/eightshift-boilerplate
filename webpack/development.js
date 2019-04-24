@@ -3,13 +3,12 @@ const merge = require('webpack-merge');
 
 // Other build files.
 const base = require('./base');
+const config = require('./config');
+const project = require('./project');
 
 // Plugins.
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-
-// Dev Server
-const proxyUrl = 'dev.infinum.co'; // local dev url example: dev.wordpress.com
 
 // All Plugins used in development build.
 const plugins = [
@@ -24,7 +23,7 @@ const plugins = [
     {
       host: 'localhost',
       port: 3000,
-      proxy: proxyUrl,
+      proxy: config.theme.proxyUrl,
       files: [
         {
           match: [
@@ -36,7 +35,7 @@ const plugins = [
       notify: true,
     },
     {
-      reload: false,
+      reload: true,
     },
   ),
 ];
@@ -49,4 +48,4 @@ const developmentConfig = {
 };
 
 // Combine base with developmentConfig specific config.
-module.exports = merge(base, developmentConfig);
+module.exports = merge(project, base, developmentConfig);

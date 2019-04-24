@@ -7,6 +7,7 @@ const configData = getConfig('wp-content/themes/wp-boilerplate'); // eslint-disa
 // Export config to use in other Webpack files.
 module.exports = {
   theme: {
+    proxyUrl: 'dev.boilerplate.com',
     publicPath: configData.publicPath,
     assetsPath: configData.assetsPath,
     assetsEntry: configData.assetsEntry,

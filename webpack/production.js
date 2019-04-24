@@ -3,16 +3,21 @@ const merge = require('webpack-merge');
 
 // Other build files.
 const base = require('./base');
+const project = require('./project');
 
 // Plugins.
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 // All Plugins used in production build.
 const plugins = [
   new MiniCssExtractPlugin({
     filename: '[name]-[hash].css',
   }),
+
+  // Clean public files before next build.
+  new CleanWebpackPlugin(),
 ];
 
 // All Optimizations used in production build.
@@ -44,4 +49,4 @@ const productionConfig = {
 };
 
 // Combine base with productionConfig specific config.
-module.exports = merge(base, productionConfig);
+module.exports = merge(project, base, productionConfig);
