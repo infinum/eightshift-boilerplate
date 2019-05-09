@@ -1,27 +1,32 @@
-/* global process __dirname */
-const DEV = process.env.NODE_ENV !== 'production';
+// Other build files.
+const config = require('./webpack/config');
 
-const path = require('path');
+// Set fonts path.
+const fontsPath = `${config.theme.assetsPath}fonts`;
 
-const fontsPath = path.join(__dirname, 'skin/assets/fonts');
-
+// Load plugins for postcss.
 const autoPrefixer = require('autoprefixer');
 const cssMqpacker = require('css-mqpacker');
 const postcssFontMagician = require('postcss-font-magician');
 const cssNano = require('cssnano');
 
+// All Plugins used in production and development build.
 const plugins = [
   autoPrefixer,
   postcssFontMagician({
+    display: 'swap',
     hosted: [fontsPath],
     foundries: ['hosted'],
   }),
   cssMqpacker,
 ];
 
-// Use only for production build
-if (!DEV) {
-  plugins.push(cssNano);
-}
+module.exports = () => {
 
-module.exports = {plugins};
+  // // Use only for production build
+  if (config.env === 'production') {
+    plugins.push(cssNano);
+  }
+
+  return { plugins };
+};

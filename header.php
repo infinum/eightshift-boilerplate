@@ -11,12 +11,12 @@
 <html <?php language_attributes(); ?>>
 <head>
   <?php
-    get_template_part( 'template-parts/header/head' );
+    get_template_part( 'views/header/head' );
     wp_head();
   ?>
 </head>
 <body <?php body_class(); ?>>
 
-<?php get_template_part( 'template-parts/header/header' ); ?>
+<?php get_template_part( 'views/header/header' ); ?>
 
 <main class="main-content">

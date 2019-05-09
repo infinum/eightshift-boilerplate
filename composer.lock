@@ -4,8 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ef6d71c3b61e718bfb9da1038acf9ee",
-    "packages": [],
+    "content-hash": "1a39122faea7b6ada4f4922d23e5e282",
+    "packages": [
+        {
+            "name": "infinum/eightshift-libs",
+            "version": "0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/infinum/eightshift-libs.git",
+                "reference": "a2157b137bef4326bfe271c9f700a66cd66ff778"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/a2157b137bef4326bfe271c9f700a66cd66ff778",
+                "reference": "a2157b137bef4326bfe271c9f700a66cd66ff778",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5",
+                "infinum/coding-standards-wp": "^0.4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eightshift_Libs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eightshift team",
+                    "email": "team@eightshift.com",
+                    "homepage": "https://eightshift.com/",
+                    "role": "Developer / IT Manager"
+                }
+            ],
+            "description": "WordPress libs developed by Eightshift team to use in modern WordPress.",
+            "homepage": "https://eightshift.com/",
+            "keywords": [
+                "composer",
+                "installer",
+                "plugin"
+            ],
+            "time": "2019-04-29T08:47:11+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -284,16 +333,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.4.1",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "5b4333b4010625d29580eb4a41f1e53251be6baa"
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5b4333b4010625d29580eb4a41f1e53251be6baa",
-                "reference": "5b4333b4010625d29580eb4a41f1e53251be6baa",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
                 "shasum": ""
             },
             "require": {
@@ -331,7 +380,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-03-19T03:22:27+00:00"
+            "time": "2019-04-10T23:49:02+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
