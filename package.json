@@ -11,7 +11,8 @@
     "lint": "npm run lintJs && npm run lintStyle && bash bin/lintPhp.sh",
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "webpack --progress --mode production",
-    "export": "node bin/export.js"
+    "export": "node bin/export.js",
+    "setup": "node bin/theme-setup.js"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
