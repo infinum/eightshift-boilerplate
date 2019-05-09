@@ -23,19 +23,10 @@ const plugins = [
 // All Optimizations used in production build.
 const optimization = {
   minimizer: [
-    new UglifyJsPlugin({
+    new TerserPlugin({
       cache: true,
       parallel: true,
       sourceMap: true,
-      uglifyOptions: {
-        output: {
-          comments: false,
-        },
-        compress: {
-          warnings: false,
-          drop_console: true, // eslint-disable-line camelcase
-        },
-      },
     }),
   ],
 };
