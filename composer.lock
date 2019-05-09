@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "42d30bca70b7e0337ceefac8bbcdb644",
+    "content-hash": "1a39122faea7b6ada4f4922d23e5e282",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "dev-develop",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
-                "url": "git@github.com:infinum/eightshift-libs.git",
-                "reference": "ace1f3c94459f855914a0c03aa5c634e38b6d40d"
+                "url": "https://github.com/infinum/eightshift-libs.git",
+                "reference": "a2157b137bef4326bfe271c9f700a66cd66ff778"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/a2157b137bef4326bfe271c9f700a66cd66ff778",
+                "reference": "a2157b137bef4326bfe271c9f700a66cd66ff778",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.0"
@@ -27,14 +33,7 @@
                     "Eightshift_Libs\\": "src/"
                 }
             },
-            "scripts": {
-                "check-cs": [
-                    "@php ./vendor/bin/phpcs"
-                ],
-                "fix-cs": [
-                    "@php ./vendor/bin/phpcbf"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -53,11 +52,7 @@
                 "installer",
                 "plugin"
             ],
-            "support": {
-                "issues": "https://github.com/infinum/eightshift-libs/issues",
-                "source": "https://github.com/infinum/eightshift-libs"
-            },
-            "time": "2019-04-15T07:23:11+00:00"
+            "time": "2019-04-29T08:47:11+00:00"
         }
     ],
     "packages-dev": [
@@ -433,9 +428,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "infinum/eightshift-libs": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],

@@ -4,14 +4,8 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
   },
   "require": {
-    "infinum/eightshift-libs": "dev-develop"
+    "infinum/eightshift-libs": "0.5.0"
   },
-  "repositories": [
-    {
-        "type": "git",
-        "url":  "git@github.com:infinum/eightshift-libs.git"
-    }
-  ],
   "autoload": {
     "classmap": [
       "src"

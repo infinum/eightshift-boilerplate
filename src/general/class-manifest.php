@@ -29,6 +29,18 @@ class Manifest extends LibManifest implements Service {
   }
 
   /**
+   * Provide manifest.json url location.
+   * You project must provide location for the manifest.json for this to work.
+   *
+   * @return string
+   *
+   * @since 1.0.0
+   */
+  protected function get_manifest_url() : string {
+    return get_template_directory() . '/skin/public/manifest.json';
+  }
+
+  /**
    * Define global variable for assets manifest.
    *
    * @return void
