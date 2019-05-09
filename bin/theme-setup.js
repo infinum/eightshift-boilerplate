@@ -143,9 +143,9 @@ const replaceThemeData = async(themeData) => {
   // BrowserSync proxy url.
   if (themeData.url) {
     await replace({
-      files: path.join(fullThemePath, 'webpack.config.js'),
-      from: /^const proxyUrl = .*$/m,
-      to: `const proxyUrl = '${themeData.url}';`,
+      files: path.join(fullThemePath, 'webpack', 'config.js'),
+      from: /proxyUrl: .*$/m,
+      to: `proxyUrl: '${themeData.url}',`,
     });
   }
 };
