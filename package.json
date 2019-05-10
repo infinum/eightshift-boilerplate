@@ -12,7 +12,8 @@
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "webpack --progress --mode production",
     "export": "node bin/export.js",
-    "setup": "node bin/theme-setup.js"
+    "setup": "npm install && node bin/theme-setup.js",
+    "setupAndReplace": "npm install && node bin/theme-setup.js --replaceThemeInfo"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
