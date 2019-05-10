@@ -152,6 +152,8 @@ const promptThemeData = ({ themeName, devUrl, noConfirm }) => {
   // -----------------------------
 
   do {
+    themeData.name = themeName;
+
     if (!themeName) {
       themeData.name = promptFor({
         label: `${emoji.get('green_book')} Please enter your theme name (shown in WordPress admin):`,
@@ -159,15 +161,13 @@ const promptThemeData = ({ themeName, devUrl, noConfirm }) => {
         error: 'Theme name field is required and cannot be empty.',
         minLength: 2,
       }).trim();
-    } else {
-      themeData.name = themeName;
     }
 
     // Build package name from theme name
     themeData.package = themeData.name.toLowerCase().split(' ').join('_');
 
-    // Build prefix from theme name using one of 2 methods.
-    // 1. If theme name has 2 or mor more words, use first letters of each word
+    // Build prefix from theme name using one of 2 methods...
+    // 1. If theme name has 2 or more words, use first letters of each word
     themeData.prefix = '';
     const themeNameWords = themeData.name.split(' ');
     if (themeNameWords && themeNameWords.length >= 2) {
@@ -188,14 +188,13 @@ const promptThemeData = ({ themeName, devUrl, noConfirm }) => {
     themeData.namespace = capCase(themeData.package);
   
     // Dev url
+    themeData.url = devUrl;
     if (!devUrl) {
       themeData.url = promptFor({
         label: `${emoji.get('earth_africa')} Please enter a theme development url (for local development with browsersync - no protocol):`,
         prompt: 'Dev url (e.g. dev.wordpress.com): ',
         error: 'Dev url is required and cannot be empty.',
       }).trim();
-    } else {
-      themeData.url = devUrl;
     }
 
     confirmed = summary([
@@ -225,34 +224,6 @@ const replaceThemeData = async (themeData, replaceAll = false) => {
         files: path.join(fullThemePath, 'style.css'),
         from: /^Theme Name: .*$/m,
         to: `Theme Name: ${themeData.name}`,
-      });
-    }
-  
-    // Description
-    if (themeData.description) {
-      await replace({
-        files: path.join(fullThemePath, 'functions.php'),
-        from: /^ \* Description:.*$/m,
-        to: ` * Description: ${themeData.description}`,
-      });
-      await replace({
-        files: path.join(fullThemePath, 'style.css'),
-        from: /^Description: .*$/m,
-        to: `Description: ${themeData.description}`,
-      });
-    }
-  
-    // Author
-    if (themeData.author) {
-      await replace({
-        files: path.join(fullThemePath, 'functions.php'),
-        from: /^ \* Author:.*$/m,
-        to: ` * Author: ${themeData.author}`,
-      });
-      await replace({
-        files: path.join(fullThemePath, 'style.css'),
-        from: /^Author: .*$/m,
-        to: `Author: ${themeData.author}`,
       });
     }
   
