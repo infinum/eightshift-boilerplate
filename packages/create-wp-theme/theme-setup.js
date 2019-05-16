@@ -423,6 +423,8 @@ const run = async() => {
   // Pull from a different branch if specified in parameters
   if (scriptArgs.branch) {
     base += ` -b ${scriptArgs.branch}`;
+  } else {
+    base += ' -b master';
   }
 
   const gitClone = `${base} ${gitUrl} "${newThemeData.package}"`;
