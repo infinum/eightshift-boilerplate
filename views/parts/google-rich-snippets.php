@@ -22,12 +22,14 @@ $logo_img = Manifest::get_manifest_assets_data( 'images/logo.svg' );
       "@id": "https://google.com/article"
     },
     "headline": "<?php the_title(); ?>",
+  <?php if ( ! empty( $image ) ) { ?>
   "image": {
     "@type": "ImageObject",
     "url": "<?php echo esc_html( $image['image'] ); ?>",
     "height": <?php echo esc_html( $image['height'] ); ?>,
     "width": <?php echo esc_html( $image['width'] ); ?>
   },
+  <?php } ?>
   "datePublished": "<?php echo esc_html( get_the_time( 'c' ) ); ?>",
   "dateModified": "<?php echo esc_html( date( 'c', strtotime( $post->post_modified ) ) ); ?>",
   "author": {

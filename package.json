@@ -11,7 +11,9 @@
     "lint": "npm run lintJs && npm run lintStyle && bash bin/lintPhp.sh",
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "webpack --progress --mode production",
-    "export": "node bin/export.js"
+    "export": "node bin/export.js",
+    "setup": "npm install && node bin/theme-setup.js",
+    "setupAndReplace": "npm install && node bin/theme-setup.js --replaceThemeInfo"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -58,7 +60,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "stylelint": "^10.0.1",
-    "uglifyjs-webpack-plugin": "^2.1.2",
+    "terser-webpack-plugin": "^1.2.3",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-manifest-plugin": "^2.0.4",

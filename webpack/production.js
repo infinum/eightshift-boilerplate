@@ -7,7 +7,7 @@ const project = require('./project');
 
 // Plugins.
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 // All Plugins used in production build.
@@ -23,19 +23,10 @@ const plugins = [
 // All Optimizations used in production build.
 const optimization = {
   minimizer: [
-    new UglifyJsPlugin({
+    new TerserPlugin({
       cache: true,
       parallel: true,
       sourceMap: true,
-      uglifyOptions: {
-        output: {
-          comments: false,
-        },
-        compress: {
-          warnings: false,
-          drop_console: true, // eslint-disable-line camelcase
-        },
-      },
     }),
   ],
 };

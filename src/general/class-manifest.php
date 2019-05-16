@@ -60,7 +60,7 @@ class Manifest extends LibManifest implements Service {
    *
    * @since 1.0.0
    */
-  public function get_manifest_assets_data( $key = null ) : string {
+  public static function get_manifest_assets_data( $key = null ) : string {
     if ( ! $key ) {
       return '';
     }

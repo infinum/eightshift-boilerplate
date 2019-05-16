@@ -320,9 +320,9 @@ const replaceThemeData = async(themeData) => {
   // BrowserSync proxy url.
   if (themeData.url) {
     await replace({
-      files: path.join(fullThemePath, 'webpack.config.js'),
-      from: /^const proxyUrl = .*$/m,
-      to: `const proxyUrl = '${themeData.url}';`,
+      files: path.join(fullThemePath, 'webpack', 'config.js'),
+      from: /proxyUrl: .*$/m,
+      to: `proxyUrl: '${themeData.url}',`,
     });
   }
 };
@@ -400,14 +400,18 @@ const run = async() => {
   //  1. Preflight checklist
   // -----------------------------
 
-  const spinnerChecklist = ora('1. Pre-flight checklist').start();
-  await preFlightChecklist().then(() => {
-    spinnerChecklist.succeed();
-  }).catch((exception) => {
-    spinnerChecklist.fail();
-    error(exception);
-    process.exit();
-  });
+  if (scriptArgs.skipChecklist) {
+    ora('1. Skipping Pre-flight checklist').start().succeed();
+  } else {
+    const spinnerChecklist = ora('1. Pre-flight checklist').start();
+    await preFlightChecklist().then(() => {
+      spinnerChecklist.succeed();
+    }).catch((exception) => {
+      spinnerChecklist.fail();
+      error(exception);
+      process.exit();
+    });
+  }
 
   // -----------------------------
   //  2. Clone repo
