@@ -320,9 +320,9 @@ const replaceThemeData = async(themeData) => {
   // BrowserSync proxy url.
   if (themeData.url) {
     await replace({
-      files: path.join(fullThemePath, 'webpack', 'config.js'),
-      from: /proxyUrl: .*$/m,
-      to: `proxyUrl: '${themeData.url}',`,
+      files: path.join(fullThemePath, 'webpack.config.js'),
+      from: /^const proxyUrl = .*$/m,
+      to: `const proxyUrl = '${themeData.url}';`,
     });
   }
 };
@@ -400,18 +400,14 @@ const run = async() => {
   //  1. Preflight checklist
   // -----------------------------
 
-  if (scriptArgs.skipChecklist) {
-    ora('1. Skipping Pre-flight checklist').start().succeed();
-  } else {
-    const spinnerChecklist = ora('1. Pre-flight checklist').start();
-    await preFlightChecklist().then(() => {
-      spinnerChecklist.succeed();
-    }).catch((exception) => {
-      spinnerChecklist.fail();
-      error(exception);
-      process.exit();
-    });
-  }
+  const spinnerChecklist = ora('1. Pre-flight checklist').start();
+  await preFlightChecklist().then(() => {
+    spinnerChecklist.succeed();
+  }).catch((exception) => {
+    spinnerChecklist.fail();
+    error(exception);
+    process.exit();
+  });
 
   // -----------------------------
   //  2. Clone repo
@@ -423,8 +419,6 @@ const run = async() => {
   // Pull from a different branch if specified in parameters
   if (scriptArgs.branch) {
     base += ` -b ${scriptArgs.branch}`;
-  } else {
-    base += ' -b master';
   }
 
   const gitClone = `${base} ${gitUrl} "${newThemeData.package}"`;
