@@ -400,14 +400,18 @@ const run = async() => {
   //  1. Preflight checklist
   // -----------------------------
 
-  const spinnerChecklist = ora('1. Pre-flight checklist').start();
-  await preFlightChecklist().then(() => {
-    spinnerChecklist.succeed();
-  }).catch((exception) => {
-    spinnerChecklist.fail();
-    error(exception);
-    process.exit();
-  });
+  if (scriptArgs.skipChecklist) {
+    ora('1. Skipping Pre-flight checklist').start().succeed();
+  } else {
+    const spinnerChecklist = ora('1. Pre-flight checklist').start();
+    await preFlightChecklist().then(() => {
+      spinnerChecklist.succeed();
+    }).catch((exception) => {
+      spinnerChecklist.fail();
+      error(exception);
+      process.exit();
+    });
+  }
 
   // -----------------------------
   //  2. Clone repo
@@ -419,6 +423,8 @@ const run = async() => {
   // Pull from a different branch if specified in parameters
   if (scriptArgs.branch) {
     base += ` -b ${scriptArgs.branch}`;
+  } else {
+    base += ' -b master';
   }
 
   const gitClone = `${base} ${gitUrl} "${newThemeData.package}"`;
