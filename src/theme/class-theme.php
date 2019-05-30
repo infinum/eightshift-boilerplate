@@ -2,6 +2,7 @@
 /**
  * The Theme specific functionality.
  *
+ * @since   4.0.0 Manifest as DI.
  * @since   1.0.0
  * @package Inf_Theme\Theme
  */
@@ -9,12 +10,32 @@
 namespace Inf_Theme\Theme;
 
 use Eightshift_Libs\Core\Service;
-use Inf_Theme\General\Manifest;
+use Eightshift_Libs\Assets\Manifest_Data;
 
 /**
  * Class Theme
  */
 class Theme implements Service {
+
+  /**
+   * Manifest Data Interface.
+   *
+   * @var Manifest_Data
+   *
+   * @since 4.0.0 Init.
+   */
+  protected $manifest;
+
+  /**
+   * Contruct method
+   *
+   * @param Manifest_Data $manifest Load Manifest data.
+   *
+   * @since 4.0.0 Init.
+   */
+  public function __construct( Manifest_Data $manifest ) {
+      $this->manifest = $manifest;
+  }
 
   /**
    * Register all the hooks
@@ -38,7 +59,7 @@ class Theme implements Service {
   public function enqueue_styles() : void {
 
     // Main style file.
-    \wp_register_style( THEME_NAME . '-style', Manifest::get_manifest_assets_data( 'application.css' ), [], THEME_VERSION );
+    \wp_register_style( THEME_NAME . '-style', $this->manifest->get_assets_manifest_item( 'application.css' ), [], THEME_VERSION );
     \wp_enqueue_style( THEME_NAME . '-style' );
 
   }
@@ -57,11 +78,11 @@ class Theme implements Service {
   public function enqueue_scripts() : void {
 
     // Vendor file.
-    \wp_register_script( THEME_NAME . '-scripts-vendors', Manifest::get_manifest_assets_data( 'vendors.js' ), [], THEME_VERSION, true );
+    \wp_register_script( THEME_NAME . '-scripts-vendors', $this->manifest->get_assets_manifest_item( 'vendors.js' ), [], THEME_VERSION, true );
     \wp_enqueue_script( THEME_NAME . '-scripts-vendors' );
 
     // Main Javascript file.
-    \wp_register_script( THEME_NAME . '-scripts', Manifest::get_manifest_assets_data( 'application.js' ), [ THEME_NAME . '-scripts-vendors' ], THEME_VERSION, true );
+    \wp_register_script( THEME_NAME . '-scripts', $this->manifest->get_assets_manifest_item( 'application.js' ), [ THEME_NAME . '-scripts-vendors' ], THEME_VERSION, true );
     \wp_enqueue_script( THEME_NAME . '-scripts' );
 
     // Global variables for ajax and translations.
