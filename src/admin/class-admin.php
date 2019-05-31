@@ -2,7 +2,7 @@
 /**
  * The Admin specific functionality.
  *
- * @since   4.0.0 Major refactor.
+ * @since   4.0.0 Major refactor, Manifest as DI.
  * @since   1.0.0
  * @package Inf_Theme\Admin
  */
@@ -10,8 +10,7 @@
 namespace Inf_Theme\Admin;
 
 use Eightshift_Libs\Core\Service;
-
-use Inf_Theme\General\Manifest;
+use Eightshift_Libs\Assets\Manifest_Data;
 
 /**
  * Class Admin
@@ -20,6 +19,26 @@ use Inf_Theme\General\Manifest;
  * admin facing functionality.
  */
 class Admin implements Service {
+
+  /**
+   * Instance variable of manifest data.
+   *
+   * @var object
+   *
+   * @since 4.0.0 Init.
+   */
+  protected $manifest;
+
+  /**
+   * Create a new admin instance that injects manifest data for use in assets registration.
+   *
+   * @param Manifest_Data $manifest Inject manifest which holds data about assets from manifest.json.
+   *
+   * @since 4.0.0 Init.
+   */
+  public function __construct( Manifest_Data $manifest ) {
+      $this->manifest = $manifest;
+  }
 
   /**
    * Register all the hooks
@@ -47,7 +66,7 @@ class Admin implements Service {
   public function enqueue_styles() : void {
 
     // Main style file.
-    \wp_register_style( THEME_NAME . '-style', Manifest::get_manifest_assets_data( 'applicationAdmin.css' ), [], THEME_VERSION );
+    \wp_register_style( THEME_NAME . '-style', $this->manifest->get_assets_manifest_item( 'applicationAdmin.css' ), [], THEME_VERSION );
     \wp_enqueue_style( THEME_NAME . '-style' );
 
   }
@@ -62,8 +81,8 @@ class Admin implements Service {
    */
   public function enqueue_scripts() : void {
 
-    // Main Java script file.
-    \wp_register_script( THEME_NAME . '-scripts', Manifest::get_manifest_assets_data( 'applicationAdmin.js' ), [], THEME_VERSION, true );
+    // Main JavaScript file.
+    \wp_register_script( THEME_NAME . '-scripts', $this->manifest->get_assets_manifest_item( 'applicationAdmin.js' ), [], THEME_VERSION, true );
     \wp_enqueue_script( THEME_NAME . '-scripts' );
 
   }

@@ -7,9 +7,9 @@
  * TODO: Add favicons.
  */
 
-use Inf_Theme\General\Manifest;
+use Inf_Theme\Assets\Manifest_Helper;
 
-$logo_img = Manifest::get_manifest_assets_data( 'images/logo.svg' );
+$logo_img = Manifest_Helper::get_assets_manifest_item( 'images/logo.svg' );
 ?>
 
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
