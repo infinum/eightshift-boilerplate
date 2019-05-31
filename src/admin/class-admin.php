@@ -21,7 +21,7 @@ use Eightshift_Libs\Assets\Manifest_Data;
 class Admin implements Service {
 
   /**
-   * Manifest Data Interface.
+   * Instance variable of manifest data.
    *
    * @var object
    *
