@@ -23,16 +23,16 @@ class Admin implements Service {
   /**
    * Manifest Data Interface.
    *
-   * @var Manifest_Data
+   * @var object
    *
    * @since 4.0.0 Init.
    */
   protected $manifest;
 
   /**
-   * Contruct method
+   * Create a new admin instance that injects manifest data for use in assets registration.
    *
-   * @param Manifest_Data $manifest Load Manifest data.
+   * @param Manifest_Data $manifest Inject manifest which holds data about assets from manifest.json.
    *
    * @since 4.0.0 Init.
    */
@@ -81,7 +81,7 @@ class Admin implements Service {
    */
   public function enqueue_scripts() : void {
 
-    // Main Java script file.
+    // Main JavaScript file.
     \wp_register_script( THEME_NAME . '-scripts', $this->manifest->get_assets_manifest_item( 'applicationAdmin.js' ), [], THEME_VERSION, true );
     \wp_enqueue_script( THEME_NAME . '-scripts' );
 

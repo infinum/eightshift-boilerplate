@@ -18,7 +18,7 @@ use Eightshift_Libs\Core\Service;
 class Manifest extends LibManifest {
 
   /**
-   * Set Assets Manifest global variable name.
+   * Get Assets Manifest global variable name.
    *
    * @return string
    *

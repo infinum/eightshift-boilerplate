@@ -1,7 +1,7 @@
 <?php
 /**
  * The Manifest Helper specific functionality.
- * USE ONLY IN VIEWS WHERE YOU CANT CONTROL RENDERING METHODS.
+ * Important note: Use only in views where you cant control rendering methods.
  *
  * @since   4.0.0 Init class.
  * @package Inf_Theme\Assets
@@ -17,7 +17,7 @@ use Inf_Theme\Assets\Manifest;
 class Manifest_Helper {
 
   /**
-   * Set Assets Manifest global variable name.
+   * Get assets manifest value by providing a object key.
    *
    * @param string $key File name key you want to get from manifest.
    *

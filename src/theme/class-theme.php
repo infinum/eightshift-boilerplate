@@ -18,18 +18,18 @@ use Eightshift_Libs\Assets\Manifest_Data;
 class Theme implements Service {
 
   /**
-   * Manifest Data Interface.
+   * Instance variable of manifest data.
    *
-   * @var Manifest_Data
+   * @var object
    *
    * @since 4.0.0 Init.
    */
   protected $manifest;
 
   /**
-   * Contruct method
+   * Create a new admin instance that injects manifest data for use in assets registration.
    *
-   * @param Manifest_Data $manifest Load Manifest data.
+   * @param Manifest_Data $manifest Inject manifest which holds data about assets from manifest.json.
    *
    * @since 4.0.0 Init.
    */
