@@ -7,7 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 // We need the website's root folder.
@@ -123,24 +123,15 @@ if (!DEV) {
   allOptimizations.minimizer = [
 
     // Optimise for production.
-    new UglifyJsPlugin({
+    new TerserPlugin({
       cache: true,
       parallel: true,
       sourceMap: true,
-      uglifyOptions: {
-        output: {
-          comments: false,
-        },
-        compress: {
-          warnings: false,
-          drop_console: true, // eslint-disable-line camelcase
-        },
-      },
     }),
   ];
 
   // Delete public folder.
-  allPlugins.push(new CleanWebpackPlugin([themeOutput]));
+  allPlugins.push(new CleanWebpackPlugin());
 }
 
 module.exports = [
