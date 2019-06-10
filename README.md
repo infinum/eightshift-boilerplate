@@ -57,9 +57,7 @@ npm start
 
 Here's why you should use Eightshift Boilerplate for your next theme.
 
-- **OOP**
-  - All code is written following the latest object-oriented programming paradigms
-  - Written using PSR-4, (denis?)
+- **OOP** - All code is written following the latest object-oriented programming paradigms
 - **[Webpack](https://webpack.js.org/)** - Modern bundling & build process
 - **[SASS (scss)](https://sass-lang.com/)** - Easy to learn CSS on steroids
 - **[Autoprefixing](https://autoprefixer.github.io/)** - Automatically adds vendors prefixes to your CSS
