@@ -74,7 +74,7 @@ npm start
 
 3. **IMPORTANT - Adding new .php classes (or renaming exsiting ones)**
 
-    This theme uses OOP with namespaces and autoloader. When you add new class in your theme, be sure to run this command to rebuild the composer's autoload class map. The reason why this isn't automatic is that we are folowing modified WordPress coding standards, and not PSR standards, so this has to be done manually.
+    This theme uses OOP with namespaces and autoloader. When you add new class in your theme, be sure to run this command to rebuild the composer's autoload class map. The reason why this isn't automatic is that we are following modified WordPress coding standards, and not PSR standards, so this has to be done manually.
 
     _In short, run this after adding a new class:_
 
