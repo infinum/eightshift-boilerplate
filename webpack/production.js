@@ -6,15 +6,11 @@ const base = require('./base');
 const project = require('./project');
 
 // Plugins.
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 // All Plugins used in production build.
 const plugins = [
-  new MiniCssExtractPlugin({
-    filename: '[name]-[hash].css',
-  }),
 
   // Clean public files before next build.
   new CleanWebpackPlugin(),

@@ -77,12 +77,8 @@ class Theme implements Service {
    */
   public function enqueue_scripts() : void {
 
-    // Vendor file.
-    \wp_register_script( THEME_NAME . '-scripts-vendors', $this->manifest->get_assets_manifest_item( 'vendors.js' ), [], THEME_VERSION, true );
-    \wp_enqueue_script( THEME_NAME . '-scripts-vendors' );
-
     // Main Javascript file.
-    \wp_register_script( THEME_NAME . '-scripts', $this->manifest->get_assets_manifest_item( 'application.js' ), [ THEME_NAME . '-scripts-vendors' ], THEME_VERSION, true );
+    \wp_register_script( THEME_NAME . '-scripts', $this->manifest->get_assets_manifest_item( 'application.js' ), [], THEME_VERSION, true );
     \wp_enqueue_script( THEME_NAME . '-scripts' );
 
     // Global variables for ajax and translations.

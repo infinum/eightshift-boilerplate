@@ -9,7 +9,7 @@
 
 use Inf_Theme\Assets\Manifest_Helper;
 
-$logo_img = Manifest_Helper::get_assets_manifest_item( 'images/logo.svg' );
+$logo_img = Manifest_Helper::get_assets_manifest_item( 'logo.svg' );
 ?>
 
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
