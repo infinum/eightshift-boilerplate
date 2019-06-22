@@ -3,12 +3,9 @@ const merge = require('webpack-merge');
 const webpack = require('webpack');
 
 // Other build files.
-const config = require('./config');
 const react = require('./react');
 
 // Plugins.
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
@@ -24,6 +21,10 @@ const plugins = [
   // Create manifest.json file.
   new ManifestPlugin({
     seed: {},
+  }),
+
+  new MiniCssExtractPlugin({
+    filename: '[name]-[hash].css',
   }),
 ];
 

@@ -7,16 +7,10 @@ const config = require('./config');
 const project = require('./project');
 
 // Plugins.
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 // All Plugins used in development build.
 const plugins = [
-
-  // Extracts scss files to css.
-  new MiniCssExtractPlugin({
-    filename: '[name].css',
-  }),
 
   // Use BrowserSync to se live preview of all changes.
   new BrowserSyncPlugin(
