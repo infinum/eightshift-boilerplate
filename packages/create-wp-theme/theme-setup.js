@@ -465,7 +465,7 @@ const run = async() => {
   // -----------------------------
 
   const spinnerComposer = ora('4. Installing Composer dependencies').start();
-  await exec(`cd "${fullThemePath}" && composer install`).then(() => {
+  await exec(`cd "${fullThemePath}" && composer install --ignore-platform-reqs`).then(() => {
     spinnerComposer.succeed();
   }).catch((exception) => {
     spinnerComposer.fail();
