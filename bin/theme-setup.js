@@ -186,7 +186,7 @@ const promptThemeData = ({ themeName, devUrl, noConfirm }) => {
 
     // Namespace
     themeData.namespace = capCase(themeData.package);
-  
+
     // Dev url
     themeData.url = devUrl;
     if (!devUrl) {
@@ -226,22 +226,22 @@ const replaceThemeData = async (themeData, replaceAll = false) => {
         to: `Theme Name: ${themeData.name}`,
       });
     }
-  
+
     // Package
     if (themeData.package) {
       await findReplace('inf_theme', themeData.package);
     }
-  
+
     // Namespace
     if (themeData.namespace) {
       await findReplace('Inf_Theme', themeData.namespace);
     }
-  
+
     // env
     if (themeData.env) {
       await findReplace('INF_ENV', themeData.env);
     }
-  
+
     // assetManifest
     if (themeData.manifest) {
       await findReplace('INF_ASSETS_MANIFEST', themeData.manifest);
@@ -372,7 +372,7 @@ const run = async () => {
   // -----------------------------
 
   const spinnerComposer = ora('3. Installing Composer dependencies').start();
-  await exec('composer install').then(() => {
+  await exec('composer install --ignore-platform-reqs').then(() => {
     spinnerComposer.succeed();
   }).catch((exception) => {
     spinnerComposer.fail();
