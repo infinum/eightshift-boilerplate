@@ -118,7 +118,7 @@ const promptFor = (settings) => {
 const promptThemeData = () => {
   let confirmed = 'n';
   const themeData = {};
-  
+
   // -----------------------------
   //  Prompt for project info
   // -----------------------------
@@ -147,7 +147,7 @@ const promptThemeData = () => {
 
     // Namespace
     themeData.namespace = capCase(themeData.package);
-  
+
     // Dev url
     themeData.url = promptFor({
       label: `${emoji.get('earth_africa')} Please enter a theme development url (for local development with browsersync - no protocol):`,
@@ -155,7 +155,7 @@ const promptThemeData = () => {
       error: 'Dev url is required and cannot be empty.',
     }).trim();
 
-    
+
     // Theme description
     themeData.description = promptFor({
       label: `${emoji.get('spiral_note_pad')}  Please enter your theme description:`,
@@ -229,7 +229,7 @@ const promptThemeDataShort = ( {themeName, devUrl, noConfirm} ) => {
 
     // Namespace
     themeData.namespace = capCase(themeData.package);
-  
+
     // Dev url
     if (!devUrl) {
       themeData.url = promptFor({
@@ -254,7 +254,7 @@ const promptThemeDataShort = ( {themeName, devUrl, noConfirm} ) => {
 };
 
 const replaceThemeData = async(themeData) => {
-  
+
   // Name
   if (themeData.name) {
     await replace({
@@ -366,7 +366,7 @@ const cleanup = async() => {
 };
 
 const run = async() => {
-  
+
   // Clear console
   process.stdout.write('\033c'); // eslint-disable-line
 
@@ -423,8 +423,6 @@ const run = async() => {
   // Pull from a different branch if specified in parameters
   if (scriptArgs.branch) {
     base += ` -b ${scriptArgs.branch}`;
-  } else {
-    base += ' -b master';
   }
 
   const gitClone = `${base} ${gitUrl} "${newThemeData.package}"`;
@@ -463,7 +461,7 @@ const run = async() => {
     error(exception);
     process.exit();
   });
-  
+
   // -----------------------------
   //  5. Replace theme info
   // -----------------------------
