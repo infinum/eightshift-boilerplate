@@ -165,6 +165,7 @@ const promptThemeData = ({ themeName, devUrl, noConfirm }) => {
 
     // Build package name from theme name
     themeData.package = themeData.name.toLowerCase().split(' ').join('_');
+    themeData.folderName = themeData.name.toLowerCase().split(' ').join('-');
 
     // Build prefix from theme name using one of 2 methods...
     // 1. If theme name has 2 or more words, use first letters of each word
@@ -255,6 +256,15 @@ const replaceThemeData = async (themeData, replaceAll = false) => {
       files: path.join(fullThemePath, 'webpack', 'config.js'),
       from: /proxyUrl: .*$/m,
       to: `proxyUrl: '${themeData.url}',`,
+    });
+  }
+
+  // Config data in webpack
+  if (themeData.folderName) {
+    await replace({
+      files: path.join(fullThemePath, 'webpack', 'config.js'),
+      from: 'wp-content/themes/wp-boilerplate',
+      to: `wp-content/themes/${themeData.folderName}`,
     });
   }
 };
