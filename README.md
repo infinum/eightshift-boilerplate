@@ -18,6 +18,7 @@ Eightshift WordPress Boilerplate is maintained and sponsored by
 ## :books: Table of contents
 - [:school_satchel: Requirements](#school_satchel-requirements)
 - [:rocket: Quick start](#rocket-quick-start)
+- [:tada: Awesome features](#tada-awesome-features)
 - [:mortar_board: How to develop using WP Boilerplate](#mortar_board-how-to-develop-using-wp-boilerplate)
 - [:rotating_light: Liniting Files](#rotating_light-liniting-files)
 - [:factory: Going to Production](#factory-going-to-production)
@@ -51,6 +52,26 @@ To start developing navigate to your theme's folder (`cd theme_name`) and run:
 ```
 npm start
 ```
+
+## :tada: Awesome features
+
+Here's why you should use Eightshift Boilerplate for your next theme.
+
+- **OOP** - All code is written following the latest object-oriented programming paradigms
+- **[Webpack](https://webpack.js.org/)** - Modern bundling & build process
+- **[SASS (scss)](https://sass-lang.com/)** - Easy to learn CSS on steroids
+- **[Autoprefixing](https://autoprefixer.github.io/)** - Automatically adds vendors prefixes to your CSS
+- **[JS Compiler (Babel)](https://babeljs.io/)** - Write JS using the latest features and let webpack worry about making it work accross all browsers
+- **Minifying** - Automatically minifies your production assets (JS / CSS) during build process
+- **Cache busting** - Each time you build assets, we generate a new URL for each asset file. This means you'll never see the old cached version while developing or after pushing your code to production.
+- **[Lazyloading](https://github.com/verlok/lazyload)** - Easily lazyload images / videos / iframes
+- **[Synchronised browser testing](https://www.browsersync.io/)**
+- **Helps you write better code (automatic code linting)**
+  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
+  - [eslint](https://eslint.org/)
+  - [stylelint](https://stylelint.io/)
+- **[Easy font management](https://github.com/jonathantneal/postcss-font-magician)**
+- **[Easy SASS media queries](https://github.com/infinum/media-blender)**
 
 ## :mortar_board: How to develop using WP Boilerplate
 
