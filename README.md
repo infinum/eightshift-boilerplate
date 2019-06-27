@@ -29,10 +29,10 @@ Eightshift WordPress Boilerplate is maintained and sponsored by
 
 ## :school_satchel: Requirements
 
-1. [Node.js](https://nodejs.org/en/)
+1. [Node.js](https://nodejs.org/en/) >= 8.16.0 (LTS Carbon)
 2. [Composer](https://getcomposer.org/)
 
-## :rocket: Quick start 
+## :rocket: Quick start
 
 Let's create a new theme!
 
@@ -46,7 +46,7 @@ Script will prompt you for theme name and local development url (used for Browse
 
 ![](packages/create-wp-theme/setup.gif)
 
-After the script is finished, you can activate the theme through WP Admin Dashboard. 
+After the script is finished, you can activate the theme through WP Admin Dashboard.
 
 To start developing navigate to your theme's folder (`cd theme_name`) and run:
 ```
@@ -79,7 +79,7 @@ Here's why you should use Eightshift Boilerplate for your next theme.
 
     This will build production ready assets (in watch/development mode using Webpack) after each modification to your files in `skin/assets` (compile `SCSS` to `CSS`, transpile `JS`, add hashes to files for cache busting purposes, etc):
 
-    Generally speaking, you should have this script active all the time while you're developing. 
+    Generally speaking, you should have this script active all the time while you're developing.
 
     ```bash
     npm start
