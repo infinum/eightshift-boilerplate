@@ -2,8 +2,10 @@
   "name": "infinum/wp-boilerplate",
   "description": "This repository contains all the tools you need to start building a modern WordPress theme, using all the latest front end development tools.",
   "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.5",
     "infinum/coding-standards-wp": "0.4.1",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
+    "phpstan/phpstan-shim": "^0.11.15",
+    "szepeviktor/phpstan-wordpress": "^0.2.0"
   },
   "require": {
     "php": ">=7.0",

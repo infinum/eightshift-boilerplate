@@ -4,7 +4,7 @@
  *
  * @package Inf_Theme\Template_Parts\Parts
  *
- * TODO: Create this as a class with attributes.
+ * TODO Create this as a class with attributes and json_encode.
  */
 
 use Inf_Theme\Assets\Manifest_Helper;
@@ -31,7 +31,7 @@ $logo_img = Manifest_Helper::get_assets_manifest_item( 'logo.svg' );
   },
   <?php } ?>
   "datePublished": "<?php echo esc_html( get_the_time( 'c' ) ); ?>",
-  "dateModified": "<?php echo esc_html( date( 'c', strtotime( $post->post_modified ) ) ); ?>",
+  "dateModified": "<?php echo esc_html( get_the_modified_time( 'c' ) ); ?>",
   "author": {
     "@type": "Person",
     "name": "<?php echo get_the_author(); ?>"

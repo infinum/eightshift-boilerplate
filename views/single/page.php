@@ -8,7 +8,7 @@
 ?>
 
 <!-- Single Content Section -->
-<section class="single" id="<?php echo esc_attr( $post->ID ); ?>">
+<section class="single" id="<?php echo esc_attr( get_the_ID() ); ?>">
   <header>
     <h1 class="single__title">
       <?php the_title(); ?>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7bc57042b2b58d2cb164ad5adceb592d",
+    "content-hash": "b155ec0989c292d71255996c392e03c9",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "78367a691bd8c31a13b573c5eb27e3403d7870aa"
+                "reference": "bb9f27b4f456268e94fbc67c7561431da633ce8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/78367a691bd8c31a13b573c5eb27e3403d7870aa",
-                "reference": "78367a691bd8c31a13b573c5eb27e3403d7870aa",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/bb9f27b4f456268e94fbc67c7561431da633ce8a",
+                "reference": "bb9f27b4f456268e94fbc67c7561431da633ce8a",
                 "shasum": ""
             },
             "require": {
@@ -30,9 +30,9 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Eightshift_Libs\\": "src/"
-                }
+                "classmap": [
+                    "src/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -41,9 +41,9 @@
             "authors": [
                 {
                     "name": "Eightshift team",
+                    "role": "Developer / IT Manager",
                     "email": "team@eightshift.com",
-                    "homepage": "https://eightshift.com/",
-                    "role": "Developer / IT Manager"
+                    "homepage": "https://eightshift.com/"
                 }
             ],
             "description": "WordPress libs developed by Eightshift team to use in modern WordPress.",
@@ -53,7 +53,7 @@
                 "installer",
                 "plugin"
             ],
-            "time": "2019-06-27T14:42:25+00:00"
+            "time": "2019-07-19T12:44:09+00:00"
         },
         {
             "name": "jeremeamia/superclosure",
@@ -95,9 +95,9 @@
             "authors": [
                 {
                     "name": "Jeremy Lindblom",
+                    "role": "Developer",
                     "email": "jeremeamia@gmail.com",
-                    "homepage": "https://github.com/jeremeamia",
-                    "role": "Developer"
+                    "homepage": "https://github.com/jeremeamia"
                 }
             ],
             "description": "Serialize Closure objects, including their context and binding",
@@ -112,57 +112,6 @@
                 "tokenizer"
             ],
             "time": "2018-03-21T22:21:57+00:00"
-        },
-        {
-            "name": "nikic/php-parser",
-            "version": "v4.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "1bd73cc04c3843ad8d6b0bfc0956026a151fc420"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1bd73cc04c3843ad8d6b0bfc0956026a151fc420",
-                "reference": "1bd73cc04c3843ad8d6b0bfc0956026a151fc420",
-                "shasum": ""
-            },
-            "require": {
-                "ext-tokenizer": "*",
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.5 || ^7.0"
-            },
-            "bin": [
-                "bin/php-parse"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpParser\\": "lib/PhpParser"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Nikita Popov"
-                }
-            ],
-            "description": "A PHP parser written in PHP",
-            "keywords": [
-                "parser",
-                "php"
-            ],
-            "time": "2019-05-25T20:07:01+00:00"
         },
         {
             "name": "php-di/invoker",
@@ -306,6 +255,50 @@
                 "reflection"
             ],
             "time": "2018-02-18T17:39:01+00:00"
+        },
+        {
+            "name": "phpstan/phpstan-shim",
+            "version": "0.11.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan-shim.git",
+                "reference": "7e0e5fe3a112ac2ed7557a9bb285b913bb65bb15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan-shim/zipball/7e0e5fe3a112ac2ed7557a9bb285b913bb65bb15",
+                "reference": "7e0e5fe3a112ac2ed7557a9bb285b913bb65bb15",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.1"
+            },
+            "replace": {
+                "nikic/php-parser": "^4.0.2",
+                "phpstan/phpdoc-parser": "^0.3.3",
+                "phpstan/phpstan": "self.version"
+            },
+            "bin": [
+                "phpstan",
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.11-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan Phar distribution",
+            "time": "2019-08-18T21:05:03+00:00"
         },
         {
             "name": "psr/container",
@@ -506,9 +499,9 @@
             "authors": [
                 {
                     "name": "Franck Nijhof",
+                    "role": "Developer / IT Manager",
                     "email": "franck.nijhof@dealerdirect.com",
-                    "homepage": "http://www.frenck.nl",
-                    "role": "Developer / IT Manager"
+                    "homepage": "http://www.frenck.nl"
                 }
             ],
             "description": "PHP_CodeSniffer Standards Composer Installer Plugin",
@@ -531,6 +524,45 @@
                 "tests"
             ],
             "time": "2018-10-26T13:21:45+00:00"
+        },
+        {
+            "name": "giacocorsiglia/wordpress-stubs",
+            "version": "v5.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GiacoCorsiglia/wordpress-stubs.git",
+                "reference": "1c6f011f5c241bab7293315d7fb7fca27fe79473"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GiacoCorsiglia/wordpress-stubs/zipball/1c6f011f5c241bab7293315d7fb7fca27fe79473",
+                "reference": "1c6f011f5c241bab7293315d7fb7fca27fe79473",
+                "shasum": ""
+            },
+            "require-dev": {
+                "ext-gettext": "*",
+                "giacocorsiglia/stubs-generator": "^0.5.0",
+                "johnpbloch/wordpress": "5.1.1",
+                "php": "^7.1"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Giaco Corsiglia",
+                    "email": "GiacoCorsiglia@gmail.com"
+                }
+            ],
+            "description": "WordPress function, class, and global variable declaration stubs for easier static analysis.",
+            "homepage": "https://github.com/GiacoCorsiglia/wordpress-stubs",
+            "keywords": [
+                "static analysis",
+                "wordpress"
+            ],
+            "time": "2019-03-13T21:16:05+00:00"
         },
         {
             "name": "infinum/coding-standards-wp",
@@ -623,13 +655,13 @@
                 },
                 {
                     "name": "Wim Godden",
-                    "homepage": "https://github.com/wimg",
-                    "role": "lead"
+                    "role": "lead",
+                    "homepage": "https://github.com/wimg"
                 },
                 {
                     "name": "Juliette Reinders Folmer",
-                    "homepage": "https://github.com/jrfnl",
-                    "role": "lead"
+                    "role": "lead",
+                    "homepage": "https://github.com/jrfnl"
                 }
             ],
             "description": "A set of sniffs for PHP_CodeSniffer that checks for PHP cross-version compatibility.",
@@ -793,6 +825,53 @@
             "time": "2019-04-10T23:49:02+00:00"
         },
         {
+            "name": "szepeviktor/phpstan-wordpress",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/szepeviktor/phpstan-wordpress.git",
+                "reference": "506fc9bed1642e84df2734dbf8a4741b196ad2fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/szepeviktor/phpstan-wordpress/zipball/506fc9bed1642e84df2734dbf8a4741b196ad2fe",
+                "reference": "506fc9bed1642e84df2734dbf8a4741b196ad2fe",
+                "shasum": ""
+            },
+            "require": {
+                "giacocorsiglia/wordpress-stubs": "^5.1",
+                "php": "~7.1",
+                "phpstan/phpstan": "^0.11.5"
+            },
+            "require-dev": {
+                "composer/composer": "^1.8.6",
+                "consistence/coding-standard": "^3.8",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
+                "jakub-onderka/php-parallel-lint": "^1.0",
+                "phpstan/phpstan-strict-rules": "^0.11",
+                "slevomat/coding-standard": "^5.0.4"
+            },
+            "type": "phpstan-extension",
+            "extra": {
+                "phpstan": {
+                    "includes": [
+                        "extension.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PHPStan\\WordPress\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "WordPress extensions for PHPStan",
+            "time": "2019-07-26T19:45:19+00:00"
+        },
+        {
             "name": "wp-coding-standards/wpcs",
             "version": "1.2.1",
             "source": {
@@ -843,6 +922,8 @@
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=7.0"
+    },
     "platform-dev": []
 }
