@@ -6,8 +6,8 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
   },
   "require": {
-    "php": ">=7.0",
-    "infinum/eightshift-libs": "dev-develop"
+    "infinum/eightshift-libs": "^0.8.0",
+    "php": ">=7.0"
   },
   "autoload": {
     "classmap": [

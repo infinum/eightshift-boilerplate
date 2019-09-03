@@ -118,7 +118,7 @@ const promptFor = (settings) => {
 const promptThemeData = () => {
   let confirmed = 'n';
   const themeData = {};
-  
+
   // -----------------------------
   //  Prompt for project info
   // -----------------------------
@@ -147,7 +147,7 @@ const promptThemeData = () => {
 
     // Namespace
     themeData.namespace = capCase(themeData.package);
-  
+
     // Dev url
     themeData.url = promptFor({
       label: `${emoji.get('earth_africa')} Please enter a theme development url (for local development with browsersync - no protocol):`,
@@ -155,7 +155,7 @@ const promptThemeData = () => {
       error: 'Dev url is required and cannot be empty.',
     }).trim();
 
-    
+
     // Theme description
     themeData.description = promptFor({
       label: `${emoji.get('spiral_note_pad')}  Please enter your theme description:`,
@@ -208,6 +208,7 @@ const promptThemeDataShort = ( {themeName, devUrl, noConfirm} ) => {
 
     // Build package name from theme name
     themeData.package = themeData.name.toLowerCase().split(' ').join('_');
+    themeData.folderName = themeData.name.toLowerCase().split(' ').join('-');
 
     // Build prefix from theme name using one of 2 methods.
     // 1. If theme name has 2 or mor more words, use first letters of each word
@@ -229,7 +230,7 @@ const promptThemeDataShort = ( {themeName, devUrl, noConfirm} ) => {
 
     // Namespace
     themeData.namespace = capCase(themeData.package);
-  
+
     // Dev url
     if (!devUrl) {
       themeData.url = promptFor({
@@ -254,7 +255,7 @@ const promptThemeDataShort = ( {themeName, devUrl, noConfirm} ) => {
 };
 
 const replaceThemeData = async(themeData) => {
-  
+
   // Name
   if (themeData.name) {
     await replace({
@@ -320,11 +321,21 @@ const replaceThemeData = async(themeData) => {
   // BrowserSync proxy url.
   if (themeData.url) {
     await replace({
-      files: path.join(fullThemePath, 'webpack.config.js'),
-      from: /^const proxyUrl = .*$/m,
-      to: `const proxyUrl = '${themeData.url}';`,
+      files: path.join(fullThemePath, 'webpack', 'config.js'),
+      from: /proxyUrl: .*$/m,
+      to: `proxyUrl: '${themeData.url}',`,
     });
   }
+
+  // Config data in webpack
+  if (themeData.folderName) {
+    await replace({
+      files: path.join(fullThemePath, 'webpack', 'config.js'),
+      from: 'wp-content/themes/wp-boilerplate',
+      to: `wp-content/themes/${themeData.folderName}`,
+    });
+  }
+
 };
 
 /**
@@ -366,7 +377,7 @@ const cleanup = async() => {
 };
 
 const run = async() => {
-  
+
   // Clear console
   process.stdout.write('\033c'); // eslint-disable-line
 
@@ -391,7 +402,7 @@ const run = async() => {
   const newThemeData = promptThemeDataShort(scriptArgs);
 
   // Globally save the package (because it's also our folder name)
-  fullThemePath = path.join(process.cwd(), newThemeData.package);
+  fullThemePath = path.join(process.cwd(), newThemeData.folderName);
 
   log('Let\'s get started, it might take a while...');
   log('');
@@ -423,11 +434,9 @@ const run = async() => {
   // Pull from a different branch if specified in parameters
   if (scriptArgs.branch) {
     base += ` -b ${scriptArgs.branch}`;
-  } else {
-    base += ' -b master';
   }
 
-  const gitClone = `${base} ${gitUrl} "${newThemeData.package}"`;
+  const gitClone = `${base} ${gitUrl} "${newThemeData.folderName}"`;
 
   const spinnerClone = ora('2. Cloning theme repo').start();
   await exec(`${gitClone} && cd "${fullThemePath}"`).then(() => {
@@ -456,14 +465,14 @@ const run = async() => {
   // -----------------------------
 
   const spinnerComposer = ora('4. Installing Composer dependencies').start();
-  await exec(`cd "${fullThemePath}" && composer install`).then(() => {
+  await exec(`cd "${fullThemePath}" && composer install --ignore-platform-reqs`).then(() => {
     spinnerComposer.succeed();
   }).catch((exception) => {
     spinnerComposer.fail();
     error(exception);
     process.exit();
   });
-  
+
   // -----------------------------
   //  5. Replace theme info
   // -----------------------------

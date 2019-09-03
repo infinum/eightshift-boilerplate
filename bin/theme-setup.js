@@ -165,6 +165,7 @@ const promptThemeData = ({ themeName, devUrl, noConfirm }) => {
 
     // Build package name from theme name
     themeData.package = themeData.name.toLowerCase().split(' ').join('_');
+    themeData.folderName = themeData.name.toLowerCase().split(' ').join('-');
 
     // Build prefix from theme name using one of 2 methods...
     // 1. If theme name has 2 or more words, use first letters of each word
@@ -186,7 +187,7 @@ const promptThemeData = ({ themeName, devUrl, noConfirm }) => {
 
     // Namespace
     themeData.namespace = capCase(themeData.package);
-  
+
     // Dev url
     themeData.url = devUrl;
     if (!devUrl) {
@@ -226,22 +227,22 @@ const replaceThemeData = async (themeData, replaceAll = false) => {
         to: `Theme Name: ${themeData.name}`,
       });
     }
-  
+
     // Package
     if (themeData.package) {
       await findReplace('inf_theme', themeData.package);
     }
-  
+
     // Namespace
     if (themeData.namespace) {
       await findReplace('Inf_Theme', themeData.namespace);
     }
-  
+
     // env
     if (themeData.env) {
       await findReplace('INF_ENV', themeData.env);
     }
-  
+
     // assetManifest
     if (themeData.manifest) {
       await findReplace('INF_ASSETS_MANIFEST', themeData.manifest);
@@ -255,6 +256,15 @@ const replaceThemeData = async (themeData, replaceAll = false) => {
       files: path.join(fullThemePath, 'webpack', 'config.js'),
       from: /proxyUrl: .*$/m,
       to: `proxyUrl: '${themeData.url}',`,
+    });
+  }
+
+  // Config data in webpack
+  if (themeData.folderName) {
+    await replace({
+      files: path.join(fullThemePath, 'webpack', 'config.js'),
+      from: 'wp-content/themes/wp-boilerplate',
+      to: `wp-content/themes/${themeData.folderName}`,
     });
   }
 };
@@ -372,7 +382,7 @@ const run = async () => {
   // -----------------------------
 
   const spinnerComposer = ora('3. Installing Composer dependencies').start();
-  await exec('composer install').then(() => {
+  await exec('composer install --ignore-platform-reqs').then(() => {
     spinnerComposer.succeed();
   }).catch((exception) => {
     spinnerComposer.fail();
