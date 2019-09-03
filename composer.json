@@ -1,4 +1,6 @@
 {
+  "name": "Eightshift boilerplate",
+  "description": "Eightshift / Infinum's boilerplate for a WordPress theme.",
   "require-dev": {
     "infinum/coding-standards-wp": "0.4.1",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
