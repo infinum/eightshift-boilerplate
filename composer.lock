@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7efe228f779a0d6dd7dd170e099bce4",
+    "content-hash": "7b0a8e134045515be12ea6b66caec86a",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "dev-master",
+            "version": "0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "9268dba606401f981a756bc0da0ec4945da01e50"
+                "reference": "bb9f27b4f456268e94fbc67c7561431da633ce8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/9268dba606401f981a756bc0da0ec4945da01e50",
-                "reference": "9268dba606401f981a756bc0da0ec4945da01e50",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/bb9f27b4f456268e94fbc67c7561431da633ce8a",
+                "reference": "bb9f27b4f456268e94fbc67c7561431da633ce8a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.0",
                 "php-di/php-di": "^6.0"
             },
             "require-dev": {
@@ -30,9 +30,9 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Eightshift_Libs\\": "src/"
-                }
+                "classmap": [
+                    "src/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -53,10 +53,10 @@
                 "installer",
                 "plugin"
             ],
-            "time": "2019-06-22T11:34:44+00:00"
+            "time": "2019-07-19T12:44:09+00:00"
         },
         {
-            "name": "jeremeamia/SuperClosure",
+            "name": "jeremeamia/superclosure",
             "version": "2.4.0",
             "source": {
                 "type": "git",
@@ -506,9 +506,9 @@
             "authors": [
                 {
                     "name": "Franck Nijhof",
+                    "role": "Developer / IT Manager",
                     "email": "franck.nijhof@dealerdirect.com",
-                    "homepage": "http://www.frenck.nl",
-                    "role": "Developer / IT Manager"
+                    "homepage": "http://www.frenck.nl"
                 }
             ],
             "description": "PHP_CodeSniffer Standards Composer Installer Plugin",
@@ -797,12 +797,12 @@
             "version": "1.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
+                "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
                 "reference": "f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
+                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
                 "reference": "f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
                 "shasum": ""
             },
@@ -838,9 +838,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "infinum/eightshift-libs": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
