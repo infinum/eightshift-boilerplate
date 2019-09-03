@@ -402,7 +402,7 @@ const run = async() => {
   const newThemeData = promptThemeDataShort(scriptArgs);
 
   // Globally save the package (because it's also our folder name)
-  fullThemePath = path.join(process.cwd(), newThemeData.package);
+  fullThemePath = path.join(process.cwd(), newThemeData.folderName);
 
   log('Let\'s get started, it might take a while...');
   log('');
@@ -436,7 +436,7 @@ const run = async() => {
     base += ` -b ${scriptArgs.branch}`;
   }
 
-  const gitClone = `${base} ${gitUrl} "${newThemeData.package}"`;
+  const gitClone = `${base} ${gitUrl} "${newThemeData.folderName}"`;
 
   const spinnerClone = ora('2. Cloning theme repo').start();
   await exec(`${gitClone} && cd "${fullThemePath}"`).then(() => {
