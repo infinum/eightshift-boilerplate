@@ -19,7 +19,7 @@ This repository contains all the tools you need to start building a modern WordP
 
 ## Who do I talk to?
 
-If you have any questions or problems, please [open an issue](https://github.com/infinum/wp-boilerplate/issues) directly on github and we will do our best to give you a timely answer.
+If you have any questions or problems, please [open an issue](https://github.com/infinum/wp-boilerplate/issues) on github and we will do our best to give you a timely answer.
 
 Eightshift WordPress Boilerplate is maintained and sponsored by Eightshift and Infinum.
 
