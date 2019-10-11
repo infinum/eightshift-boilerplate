@@ -180,9 +180,7 @@ Plugins should be created using plugin boilerplate, with addition of namespaces 
 
 ## :mailbox: Who do I talk to?
 
-If you have any questions or problems, please open an issue directly on github and we will do our best to give you a timely answer.
-
-https://github.com/infinum/wp-boilerplate/issues
+If you have any questions or problems, please [open an issue](https://github.com/infinum/wp-boilerplate/issues) directly on github and we will do our best to give you a timely answer.
 
 Eightshift WordPress Boilerplate is maintained and sponsored by Eightshift and Infinum.
 
