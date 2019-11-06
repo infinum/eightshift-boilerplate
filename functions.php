@@ -1,7 +1,7 @@
 <?php
 /**
  * Theme Name: Eightshift Boilerplate Title
- * Description: Eightshift Boilerplate Descriptio
+ * Description: Eightshift Boilerplate Description
  * Author: Team Eightshift
  * Author URI: https://eightshift.com/
  * Version: 4.0.0
