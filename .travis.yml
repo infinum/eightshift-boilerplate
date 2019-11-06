@@ -16,7 +16,7 @@ notifications:
 branches:
   only:
     - master
-    - development
+    - develop
 
 cache:
   apt: true
