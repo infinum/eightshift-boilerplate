@@ -21,6 +21,17 @@ use Eightshift_Libs\Core\Service;
 final class Modify_Admin_Appearance implements Service {
 
   /**
+   * List of admin color schemes.
+   *
+   * @var array
+   */
+  const COLOR_SCHEMES = [
+    'default'   => 'fresh',
+    'staging'   => 'blue',
+    'prodution' => 'sunrise',
+  ];
+
+  /**
    * Register all the hooks
    *
    * @return void
@@ -28,34 +39,21 @@ final class Modify_Admin_Appearance implements Service {
    * @since 4.0.0
    */
   public function register() : void {
-    add_filter( 'get_user_option_admin_color', [ $this, 'set_admin_color' ] );
+    \add_filter( 'get_user_option_admin_color', [ $this, 'set_admin_color' ], 10, 0 );
   }
 
   /**
    * Method that changes admin colors based on environment variable
    *
-   * @param string $color_scheme Color scheme string.
-   * @return string              Modified color scheme.
+   * @return string Modified color scheme.
    *
    * @since 4.0.0.
    */
-  public function set_admin_color( string $color_scheme ) : string {
-    if ( ! \defined( 'EB_ENV' ) ) {
-      return 'fresh';
+  public function set_admin_color() : string {
+    if ( ! \defined( 'EB_ENV' ) || ! isset( self::COLOR_SCHEMES[ EB_ENV ] ) ) {
+      return self::COLOR_SCHEMES['default'];
     }
 
-    switch ( EB_ENV ) {
-      case 'production':
-        $color_scheme = 'sunrise';
-            break;
-      case 'staging':
-        $color_scheme = 'blue';
-            break;
-      default:
-        $color_scheme = 'fresh';
-            break;
-    }
-
-    return $color_scheme;
+    return self::COLOR_SCHEMES[ EB_ENV ];
   }
 }
