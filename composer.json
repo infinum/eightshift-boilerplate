@@ -24,7 +24,7 @@
     "process-timeout": 2000
   },
   "scripts": {
-    "check-cs": "@php ./vendor/bin/phpcs",
-    "fix-cs": "@php ./vendor/bin/phpcbf"
+    "check-cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 7.0-",
+    "fix-cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 7.0-"
   }
 }
