@@ -168,7 +168,7 @@ This build is a breaking change in comparison to v1.0.0 (procedural -> OOP)
 Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
-[4.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/3.0.1...4.0.0
+[4.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/3.0.1...v4.0.0
 [3.0.1]: https://github.com/infinum/eightshift-boilerplate/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/2.1.1...3.0.0
 [2.1.1]: https://github.com/infinum/eightshift-boilerplate/compare/2.0.1...2.1.1
