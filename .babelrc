@@ -1,20 +1,3 @@
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "browsers": [
-            "last 2 versions",
-            "not ie < 11",
-            "android >= 4.2"
-          ],
-          "node": "current"
-        }
-      }
-    ]
-  ],
-  "plugins": [
-    "@babel/plugin-syntax-dynamic-import"
-  ]
+  "extends": "./node_modules/@eightshift/frontend-libs/babel/babel.config.js"
 }

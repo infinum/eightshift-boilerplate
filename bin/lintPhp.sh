@@ -38,7 +38,7 @@ then
   echo "--------------------"
   echo "Running Code Sniffer"
   echo "--------------------"
-  ./vendor/bin/phpcs --standard=Infinum --encoding=utf-8 -p --parallel=4 --colors $FILES
+  composer check-cs -- -p --parallel=4 --colors $FILES
   if [ $? != 0 ]
   then
     echo "Possible warnings and errors found."

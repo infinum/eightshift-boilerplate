@@ -1,5 +1,5 @@
-# Change Log for the Eightshift WordPress Boilerplate
 
+# Change Log for the Eightshift Boilerplate
 All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
@@ -7,6 +7,24 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 ## [Unreleased]
 
 _No documentation available about unreleased changes as of yet._
+
+## [4.0.0] - 2019-11-06
+### Added
+- Implementing Eightshift-libs
+- Implementing Eightshift-frontend-libs
+- Updating docs
+- Adding type hinting
+- Updating npm packages
+- Global folder structure refactor
+- New file for shortcodes
+- New file for manifest
+- Small changes on project name and description for easy project setup.
+- Readme file.
+- Versioning.
+- package.lock and composer.lock
+
+### Changed
+- Complete webpack config refactoring
 
 ## [3.0.1] - 2019-04-23
 
@@ -149,10 +167,11 @@ This build is a breaking change in comparison to v1.0.0 (procedural -> OOP)
 
 Initial tagged release.
 
-[Unreleased]: https://github.com/infinum/wp-boilerplate/compare/master...HEAD
-[3.0.1]: https://github.com/infinum/wp-boilerplate/compare/3.0.0...3.0.1
-[3.0.0]: https://github.com/infinum/wp-boilerplate/compare/2.1.1...3.0.0
-[2.1.1]: https://github.com/infinum/wp-boilerplate/compare/2.0.1...2.1.1
-[2.0.1]: https://github.com/infinum/wp-boilerplate/compare/2.0.0...2.0.1
-[2.0.0]: https://github.com/infinum/wp-boilerplate/compare/1.0.0...2.0.0
-[1.0.0]: https://github.com/infinum/wp-boilerplate/compare/26115acf804876208a03dc39298b70476dcc780f...1.0.0
+[Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
+[4.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/3.0.1...4.0.0
+[3.0.1]: https://github.com/infinum/eightshift-boilerplate/compare/3.0.0...3.0.1
+[3.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/2.1.1...3.0.0
+[2.1.1]: https://github.com/infinum/eightshift-boilerplate/compare/2.0.1...2.1.1
+[2.0.1]: https://github.com/infinum/eightshift-boilerplate/compare/2.0.0...2.0.1
+[2.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/1.0.0...2.0.0
+[1.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/26115acf804876208a03dc39298b70476dcc780f...1.0.0

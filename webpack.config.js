@@ -1,165 +1,25 @@
-/* global process __dirname */
-const DEV = process.env.NODE_ENV !== 'production';
+/* eslint-disable import/no-dynamic-require, global-require */
 
-const path = require('path');
-const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+/**
+ * This is a main entrypoint for Webpack config.
+ * All the settings are pulled from vendor/infinum/eigthshift-libs/webpack.
+ * We are loading mostly used configuration but you can always override or turn off the default setup and provide your own.
+ * Please refere to Eigthshift-libs wiki for details.
+ *
+ * @since 4.0.0 Moved to eightshift-libs.
+ * @since 1.0.0
+ */
+const merge = require('webpack-merge');
+const projectConfig = require('./webpack-project.config');
 
-// We need the website's root folder.
-const appPath = `${path.resolve(__dirname, '..', '..', '..')}`;
+module.exports = (env, argv) => {
 
-// Dev Server
-const proxyUrl = 'dev.boilerplate.com'; // local dev url example: dev.wordpress.com
+  // Generate webpack config for this project using options object.
+  const project = require('./node_modules/@eightshift/frontend-libs/webpack/index.js')(argv.mode, projectConfig);
 
-// Theme
-const themeName = path.basename(__dirname);
-const themePath = `/wp-content/themes/${themeName}/skin`;
-const themeNodePath = `${appPath}/wp-content/themes/${themeName}/node_modules`;
-const themeFullPath = `${appPath}${themePath}`;
-const themePublicPath = `/${themePath}/public/`;
-const themeEntry = `${themeFullPath}/assets/application.js`;
-const themeAdminEntry = `${themeFullPath}/assets/application-admin.js`;
-const themeOutput = `${themeFullPath}/public`;
+  // You can append project specific config using this object.
+  const projectSpecific = {};
 
-// Outputs
-const outputHash = `${DEV ? '[name]' : '[name]-[hash]'}`;
-const outputStatic = '[name].[ext]';
-
-
-// All loaders to use on assets.
-const allModules = {
-  rules: [
-    {
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      use: 'babel-loader',
-    },
-    {
-      test: /\.json$/,
-      exclude: /node_modules/,
-      use: `file-loader?name=${outputStatic}`,
-    },
-    {
-      test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-      exclude: [/fonts/, /node_modules/],
-      use: `file-loader?name=${outputStatic}`,
-    },
-    {
-      test: /\.(eot|otf|ttf|woff|woff2|svg)$/,
-      exclude: [/images/, /node_modules/],
-      use: `file-loader?name=${outputStatic}`,
-    },
-    {
-      test: /\.scss$/,
-      exclude: /node_modules/,
-      use: [
-        MiniCssExtractPlugin.loader,
-        'css-loader', 'postcss-loader', 'sass-loader',
-      ],
-    },
-  ],
+  // Output webpack.
+  return merge(project, projectSpecific);
 };
-
-// All plugins to use.
-const allPlugins = [
-
-  // Convert JS to CSS.
-  new MiniCssExtractPlugin({
-    filename: `${outputHash}.css`,
-  }),
-
-  // Gives you jQuery with in the webpack so no need for impoting it.
-  new webpack.ProvidePlugin({
-    $: 'jquery',
-    jQuery: 'jquery',
-  }),
-
-  // Use BrowserSync.
-  new BrowserSyncPlugin(
-    {
-      host: 'localhost',
-      port: 3000,
-      proxy: proxyUrl,
-      files: [
-        {
-          match: [
-            '**/*.php',
-            '**/*.css',
-          ],
-        },
-      ],
-      notify: true,
-    },
-    {
-      reload: false,
-    },
-  ),
-
-  // Create manifest.json file.
-  new ManifestPlugin({seed: {}}),
-];
-
-// General optimisations.
-const allOptimizations = {
-  runtimeChunk: false,
-  splitChunks: {
-    cacheGroups: {
-      commons: {
-        test: /[\\/]node_modules[\\/]/,
-        name: 'vendors',
-        chunks: 'all',
-      },
-    },
-  },
-};
-
-// Use only for production build
-if (!DEV) {
-  allOptimizations.minimizer = [
-
-    // Optimise for production.
-    new TerserPlugin({
-      cache: true,
-      parallel: true,
-      sourceMap: true,
-    }),
-  ];
-
-  // Delete public folder.
-  allPlugins.push(new CleanWebpackPlugin());
-}
-
-module.exports = [
-
-  // Theme Skin
-  {
-    context: path.join(__dirname),
-    entry: {
-      application: [themeEntry],
-      applicationAdmin: [themeAdminEntry],
-    },
-    output: {
-      path: themeOutput,
-      publicPath: themePublicPath,
-      filename: `${outputHash}.js`,
-    },
-
-    // Don't bundle jQuery but expect it from a different source.
-    externals: {
-      jquery: 'jQuery',
-    },
-
-    optimization: allOptimizations,
-
-    module: allModules,
-
-    plugins: allPlugins,
-
-    devtool: DEV ? '' : 'source-map',
-  },
-];

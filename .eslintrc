@@ -1,21 +1,3 @@
 {
-  "extends": "@infinumjs",
-
-  "env": {
-    "browser": true,
-    "node": true,
-    "commonjs": true,
-    "es6": true,
-    "jquery": true
-  },
-
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": true
-  },
-
-  "rules": {
-    "import/prefer-default-export": 0
-  }
+  "extends": "./node_modules/@eightshift/frontend-libs/linters/eslint.config.js"
 }

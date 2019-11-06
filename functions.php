@@ -1,19 +1,27 @@
 <?php
 /**
- * Theme Name: Infinum WP Boilerplate
- * Description: This is WP Boilerplate, a modern boilerplate / starter theme.
+ * Theme Name: Eightshift Boilerplate Title
+ * Description: Eightshift Boilerplate Descriptio
  * Author: Team Eightshift
- * Author URI:
- * Version: 1.0
- * Text Domain: inf_theme
+ * Author URI: https://eightshift.com/
+ * Version: 4.0.0
+ * Text Domain: eightshift-boilerplate
  *
- * @package Inf_Theme
+ * @package Eightshift_Boilerplate
+ *
+ * @since 1.0.0
  */
 
-namespace Inf_Theme;
+declare( strict_types=1 );
 
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+namespace Eightshift_Boilerplate;
+
+/**
+ * If this file is called directly, abort.
+ *
+ * @since 1.0.0
+ */
+if ( ! \defined( 'WPINC' ) ) {
   die;
 }
 
@@ -21,9 +29,8 @@ if ( ! defined( 'WPINC' ) ) {
  * Include the autoloader so we can dynamically include the rest of the classes.
  *
  * @since 1.0.0
- * @package Inf_Theme
  */
-require get_template_directory() . '/vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 /**
  * Begins execution of the theme.
@@ -32,7 +39,6 @@ require get_template_directory() . '/vendor/autoload.php';
  * then kicking off the theme from this point in the file does
  * not affect the page life cycle.
  *
- * @since 3.0.0 Shorten the theme initialization.
- * @since 2.0.0
+ * @since 1.0.0
  */
-( new Includes\Main() )->run();
+( new Core\Main() )->register();
