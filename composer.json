@@ -4,8 +4,10 @@
   "description": "This repository contains all the tools you need to start building a modern WordPress project, using all the latest front end development tools.",
   "license": "MIT",
   "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.5",
     "infinum/coding-standards-wp": "0.4.1",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
+    "phpstan/phpstan": "^0.11.19",
+    "szepeviktor/phpstan-wordpress": "^0.3.0"
   },
   "require": {
     "php": ">=7.0",
@@ -25,6 +27,7 @@
   },
   "scripts": {
     "check-cs": "@php ./vendor/bin/phpcs",
-    "fix-cs": "@php ./vendor/bin/phpcbf"
+    "fix-cs": "@php ./vendor/bin/phpcbf",
+    "analyze": "@php ./vendor/bin/phpstan analyze"
   }
 }
