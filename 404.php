@@ -2,11 +2,13 @@
 /**
  * 404 error page
  *
- * @package Inf_Theme
+ * @package Eightshift_Boilerplate
+ *
+ * @since 1.0.0
  */
 
 get_header();
 
-esc_html_e( 'ERROR 404', 'inf_theme' );
+esc_html_e( 'ERROR 404', 'eightshift-boilerplate' );
 
 get_footer();

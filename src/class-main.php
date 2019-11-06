@@ -5,20 +5,24 @@
  * A class definition that includes attributes and functions used across both the
  * theme-facing side of the site and the admin area.
  *
- * @since   4.0.0 Implementing Eightshift_Libs.
  * @since   1.0.0
- * @package Inf_Theme\Core
+ * @package Eightshift_Boilerplate\Core
  */
 
-namespace Inf_Theme\Core;
+declare( strict_types=1 );
 
-use Eightshift_Libs\Core\Main as LibMain;
+namespace Eightshift_Boilerplate\Core;
 
-use Inf_Theme\Admin;
-use Inf_Theme\Assets;
-use Inf_Theme\General;
-use Inf_Theme\Admin\Menu;
-use Inf_Theme\Theme;
+use Eightshift_Libs\Core\Main as Lib_Core;
+use Eightshift_Libs\Manifest as Lib_Manifest;
+use Eightshift_Libs\Enqueue as Lib_Enqueue;
+use Eightshift_Libs\I18n as Lib_I18n;
+use Eightshift_Libs\Login as Lib_Login;
+use Eightshift_Libs\Blocks as Lib_Blocks;
+
+use Eightshift_Boilerplate\Admin;
+use Eightshift_Boilerplate\Menu;
+use Eightshift_Boilerplate\Media;
 
 /**
  * The main start class.
@@ -29,10 +33,9 @@ use Inf_Theme\Theme;
  * Also maintains the unique identifier of this theme as well as the current
  * version of the theme.
  *
- * @since 4.0.0 Added abstract method LibMain.
  * @since 1.0.0
  */
-class Main extends LibMain {
+class Main extends Lib_Core {
 
   /**
    * Get the list of services to register.
@@ -41,18 +44,39 @@ class Main extends LibMain {
    *
    * @return array<string> Array of fully qualified class names.
    *
-   * @since 4.0.0 Updated method to support DI.
    * @since 1.0.0
    */
   protected function get_service_classes() : array {
     return [
-      Assets\Manifest::class,
-      Admin\Admin::class => [ Assets\Manifest::class ],
-      Admin\Login::class,
-      Admin\Media::class,
-      Admin\Widgets::class,
+
+      // Config.
+      Config::class,
+
+      // Manifest.
+      Lib_Manifest\Manifest::class => [ Config::class ],
+
+      // I18n.
+      Lib_I18n\I18n::class => [ Config::class ],
+
+      // Enqueue.
+      Lib_Enqueue\Enqueue_Admin::class => [ Config::class, Lib_Manifest\Manifest::class ],
+      Lib_Enqueue\Enqueue_Theme::class => [ Config::class, Lib_Manifest\Manifest::class ],
+      Lib_Enqueue\Enqueue_Blocks::class => [ Config::class, Lib_Manifest\Manifest::class ],
+
+      // Login.
+      Lib_Login\Login::class,
+
+      // Media.
+      Media\Media::class,
+
+      // Admin.
+      Admin\Modify_Admin_Appearance::class,
+
+      // Menu.
       Menu\Menu::class,
-      Theme\Theme::class => [ Assets\Manifest::class ],
+
+      // Blocks.
+      Lib_Blocks\Blocks::class => [ Config::class ],
     ];
   }
 }

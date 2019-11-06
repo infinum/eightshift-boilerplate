@@ -1,24 +1,27 @@
 {
-  "name": "infinum/wp-boilerplate",
-  "description": "This repository contains all the tools you need to start building a modern WordPress theme, using all the latest front end development tools.",
+  "name": "infinum/eightshift-boilerplate",
+  "version": "4.0.0",
+  "description": "This repository contains all the tools you need to start building a modern WordPress project, using all the latest front end development tools.",
+  "license": "MIT",
   "require-dev": {
     "infinum/coding-standards-wp": "0.4.1",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
   },
   "require": {
-    "infinum/eightshift-libs": "^0.8.0",
-    "php": ">=7.0"
+    "php": ">=7.0",
+    "infinum/eightshift-libs": "^2.0.1"
   },
   "autoload": {
     "classmap": [
-      "src"
+      "src/"
     ]
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "config": {
     "sort-packages": true,
-    "optimize-autoloader": true
+    "optimize-autoloader": true,
+    "process-timeout": 2000
   },
   "scripts": {
     "check-cs": "@php ./vendor/bin/phpcs",

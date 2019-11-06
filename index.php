@@ -2,7 +2,9 @@
 /**
  * Display regular index/home page
  *
- * @package Inf_Theme
+ * @package Eightshift_Boilerplate
+ *
+ * @since 1.0.0
  */
 
 get_header();
@@ -10,15 +12,11 @@ get_header();
 if ( have_posts() ) {
   while ( have_posts() ) {
     the_post();
-    get_template_part( 'views/listing/articles/grid' );
+    the_title();
+    the_content();
   }
 
-  the_posts_pagination();
-
-} else {
-
-  get_template_part( 'views/listing/articles/empty' );
-
-};
+  require locate_template( 'src/blocks/components/google-rich-snippets/google-rich-snippets.php' );
+}
 
 get_footer();

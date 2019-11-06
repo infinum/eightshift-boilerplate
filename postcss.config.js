@@ -1,32 +1,23 @@
-// Other build files.
-const config = require('./webpack/config');
+/* eslint-disable import/no-extraneous-dependencies, global-require */
 
-// Set fonts path.
-const fontsPath = `${config.theme.assetsPath}fonts`;
+const path = require('path');
 
-// Load plugins for postcss.
-const autoPrefixer = require('autoprefixer');
-const cssMqpacker = require('css-mqpacker');
-const postcssFontMagician = require('postcss-font-magician');
-const cssNano = require('cssnano');
+// // Other build files.
+const merge = require('webpack-merge');
+const projectConfig = require('./webpack-project.config');
 
-// All Plugins used in production and development build.
-const plugins = [
-  autoPrefixer,
-  postcssFontMagician({
-    display: 'swap',
-    hosted: [fontsPath],
-    foundries: ['hosted'],
-  }),
-  cssMqpacker,
-];
+// Generate webpack config for this project using options object.
+const project = require('@eightshift/frontend-libs/webpack/postcss');
 
-module.exports = () => {
-
-  // // Use only for production build
-  if (config.env === 'production') {
-    plugins.push(cssNano);
-  }
-
-  return { plugins };
+// You can append project specific config using this object.
+const projectSpecific = {
+  plugins: {
+    'postcss-font-magician': {
+      display: 'swap',
+      hosted: path.join('/', projectConfig.config.projectPath, projectConfig.config.outputPath),
+      foundries: ['hosted'],
+    },
+  },
 };
+
+module.exports = merge(project, projectSpecific);

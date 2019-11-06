@@ -2,14 +2,17 @@
 /**
  * Display footer
  *
- * @package Inf_Theme
+ * @package Eightshift_Boilerplate\Layout\Footer
+ *
+ * @since 1.0.0
  */
 
 ?>
 
 </main>
 
-<?php
+<?php get_template_part( 'src/blocks/layout/footer/footer' ); ?>
 
-get_template_part( 'views/footer/content' );
-get_template_part( 'views/footer/foot' );
+<?php wp_footer(); ?>
+</body>
+</html>
