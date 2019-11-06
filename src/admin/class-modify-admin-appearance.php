@@ -38,7 +38,7 @@ final class Modify_Admin_Appearance implements Service {
    *
    * @since 4.0.0
    */
-  public function register() : void {
+  public function register() {
     \add_filter( 'get_user_option_admin_color', [ $this, 'set_admin_color' ], 10, 0 );
   }
 
