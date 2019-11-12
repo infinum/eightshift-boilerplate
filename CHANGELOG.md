@@ -8,6 +8,17 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 _No documentation available about unreleased changes as of yet._
 
+## [4.0.1] - 2019-11-12
+### Removed
+- postcss-font-magician from package.json
+
+### Changed
+- Postcss config from object to array
+
+### Updated
+- package.json - @eightshift/frontend-libs to 2.0.4
+- composer.json - infinum/eightshift-libs to 2.0.2
+
 ## [4.0.0] - 2019-11-06
 ### Added
 - Implementing Eightshift-libs
@@ -168,6 +179,9 @@ This build is a breaking change in comparison to v1.0.0 (procedural -> OOP)
 Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
+
+[4.0.1]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.0...v4.0.1
+[4.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/3.0.1...v4.0.0
 [4.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/3.0.1...v4.0.0
 [3.0.1]: https://github.com/infinum/eightshift-boilerplate/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/2.1.1...3.0.0

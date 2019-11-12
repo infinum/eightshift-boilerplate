@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fa8ec363e9127f53b31e34e44039427",
+    "content-hash": "980e5ed05ecb2ac2c40250bb397260a1",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "b91d7cd773ac3e0c18748a43ca545b33deb56659"
+                "reference": "aaf6d3e1aee0c6bdf8fb8a08fae75fab329e45d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/b91d7cd773ac3e0c18748a43ca545b33deb56659",
-                "reference": "b91d7cd773ac3e0c18748a43ca545b33deb56659",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/aaf6d3e1aee0c6bdf8fb8a08fae75fab329e45d5",
+                "reference": "aaf6d3e1aee0c6bdf8fb8a08fae75fab329e45d5",
                 "shasum": ""
             },
             "require": {
@@ -56,7 +56,7 @@
                 "plugin",
                 "wordpress"
             ],
-            "time": "2019-11-06T00:35:14+00:00"
+            "time": "2019-11-06T12:26:57+00:00"
         },
         {
             "name": "jeremeamia/superclosure",
@@ -118,16 +118,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.5",
+            "version": "v4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2"
+                "reference": "9a9981c347c5c49d6dfe5cf826bb882b824080dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
-                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/9a9981c347c5c49d6dfe5cf826bb882b824080dc",
+                "reference": "9a9981c347c5c49d6dfe5cf826bb882b824080dc",
                 "shasum": ""
             },
             "require": {
@@ -135,7 +135,7 @@
                 "php": ">=7.0"
             },
             "require-dev": {
-                "ircmaxell/php-yacc": "0.0.4",
+                "ircmaxell/php-yacc": "0.0.5",
                 "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
             },
             "bin": [
@@ -144,7 +144,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -166,7 +166,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-10-25T18:33:07+00:00"
+            "time": "2019-11-08T13:50:10+00:00"
         },
         {
             "name": "php-di/invoker",
@@ -589,16 +589,16 @@
         },
         {
             "name": "phpcompatibility/php-compatibility",
-            "version": "9.3.2",
+            "version": "9.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
-                "reference": "bfca2be3992f40e92206e5a7ebe5eaee37280b58"
+                "reference": "1af08ca3861048a8bfb39d0405d0ac3e50ba2696"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/bfca2be3992f40e92206e5a7ebe5eaee37280b58",
-                "reference": "bfca2be3992f40e92206e5a7ebe5eaee37280b58",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/1af08ca3861048a8bfb39d0405d0ac3e50ba2696",
+                "reference": "1af08ca3861048a8bfb39d0405d0ac3e50ba2696",
                 "shasum": ""
             },
             "require": {
@@ -643,7 +643,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-10-16T21:24:24+00:00"
+            "time": "2019-11-11T03:25:23+00:00"
         },
         {
             "name": "phpcompatibility/phpcompatibility-paragonie",
