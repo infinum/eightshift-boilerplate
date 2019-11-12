@@ -8,6 +8,17 @@
   <exclude-pattern>*/vendor/*</exclude-pattern>
   <exclude-pattern>*/node_modules/*</exclude-pattern>
 
+  <!-- Additional arguments. -->
+  <arg value="sp"/>
+  <arg name="basepath" value="."/>
+  <arg name="parallel" value="8"/>
+  <arg name="cache"/>
+  <arg name="extensions" value="php"/>
+
+  <file>.</file>
+
+  <exclude-pattern>/src/CompiledContainer\.php</exclude-pattern>
+
   <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.Found">
     <severity>0</severity>
   </rule>

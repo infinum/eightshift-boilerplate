@@ -2,7 +2,7 @@
 
 /**
  * This is a main entrypoint for Webpack config.
- * All the settings are pulled from vendor/infinum/eigthshift-libs/webpack.
+ * All the settings are pulled from node_modules/@eightshift/frontend-libs/webpack.
  * We are loading mostly used configuration but you can always override or turn off the default setup and provide your own.
  * Please refere to Eigthshift-libs wiki for details.
  *

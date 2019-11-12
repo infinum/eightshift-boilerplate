@@ -1,7 +1,5 @@
 sudo: false
 
-dist: trusty
-
 language: php
 
 php:
@@ -18,14 +16,12 @@ notifications:
 branches:
   only:
     - master
-    - development
+    - develop
 
 cache:
   apt: true
   directories:
-    - vendor
     - node_modules
-    - composer
     - $HOME/.composer/cache
 
 matrix:
@@ -42,23 +38,17 @@ matrix:
     - php: 7.0
       env: WP_VERSION=latest WP_MULTISITE=1
 
-  allow_failures:
-    # Allow failures for unstable builds.
-    - php: nightly
-
-before_install:
+install:
   # Speed up build time by disabling Xdebug.
   # https://johnblackbourn.com/reducing-travis-ci-build-times-for-wordpress-projects/
   # https://twitter.com/kelunik/status/954242454676475904
   - phpenv config-rm xdebug.ini || echo 'No xdebug config.'
   # Install PHP CodeSniffer.
-  - composer self-update
-  - composer clearcache
-  - composer install
+  - composer install --no-interaction --no-suggest
   - phpenv rehash
 
 script:
   # Search for PHP syntax errors.
   - find -L . -path ./vendor -prune -o -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
   # Run PHPCS.
-  - composer check-cs . -- --runtime-set ignore_warnings_on_exit 1
+  - composer check-cs -- --runtime-set ignore_warnings_on_exit 1

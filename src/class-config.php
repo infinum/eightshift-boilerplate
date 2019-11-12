@@ -61,7 +61,7 @@ class Config extends Lib_Config {
    *
    * Used for defining global settings depending on the environment of the project.
    * Can be one of, but not limited to, develop, staging, production.
-   * 
+   *
    * Defaults to 'develop' (as to not cache manifest in transient) if not otherwise
    * defined in wp-config.php
    *
