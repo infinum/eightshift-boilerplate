@@ -8,6 +8,13 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 _No documentation available about unreleased changes as of yet._
 
+## [4.0.2] - 2019-11-14
+### Changed
+- Wrong global env name for get_project_env() method.
+
+### Added
+- New method in class-main.php to provide env type to DI Container used in Eightshift-libs
+
 ## [4.0.1] - 2019-11-12
 ### Removed
 - postcss-font-magician from package.json
@@ -180,6 +187,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[4.0.2]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.1...v4.0.2
 [4.0.1]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.0...v4.0.1
 [4.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/3.0.1...v4.0.0
 [4.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/3.0.1...v4.0.0

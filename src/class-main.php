@@ -38,6 +38,20 @@ use Eightshift_Boilerplate\Media;
 class Main extends Lib_Core {
 
   /**
+   * Returns the project environment variable descriptor.
+   *
+   * Used to cache DI container depending on the environment of the project.
+   * DI container is cached if "production" string is passed.
+   *
+   * @return string Current project environment string.
+   *
+   * @since 2.0.3 Added in the project
+   */
+  protected function get_env() : string {
+    return Config::get_project_env();
+  }
+
+  /**
    * Get the list of services to register.
    *
    * A list of classes which contain hooks.

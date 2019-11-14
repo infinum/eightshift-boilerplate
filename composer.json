@@ -1,6 +1,6 @@
 {
   "name": "infinum/eightshift-boilerplate",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "This repository contains all the tools you need to start building a modern WordPress project, using all the latest front end development tools.",
   "license": "MIT",
   "require-dev": {
@@ -9,7 +9,7 @@
   },
   "require": {
     "php": ">=7.0",
-    "infinum/eightshift-libs": "^2.0.2"
+    "infinum/eightshift-libs": "^2.0.3"
   },
   "autoload": {
     "classmap": [

@@ -70,8 +70,8 @@ class Config extends Lib_Config {
    * @since 4.0.0 Added in the project
    */
   public static function get_project_env() : string {
-    if ( defined( 'EB_ENV' ) ) {
-      return EB_ENV;
+    if ( defined( 'ES_ENV' ) ) {
+      return ES_ENV;
     }
 
     return 'develop';
