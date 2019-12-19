@@ -9,17 +9,22 @@
  * @since 4.0.0 Moved to eightshift-libs.
  * @since 1.0.0
  */
-const merge = require('webpack-merge');
-const projectConfig = require('./webpack-project.config');
-
 module.exports = (env, argv) => {
 
+  const projectConfig = {
+    config: {
+      projectDir: __dirname, // Current project directory absolute path.
+      projectUrl: 'dev.boilerplate.com', // Used for providing browsersync functionality.
+      projectPath: 'wp-content/themes/eightshift-boilerplate', // Project path relative to project root.
+      assetsPath: 'src/blocks/assets', // Assets path after projectPath location.
+      outputPath: 'public', // Public output path after projectPath location.
+    },
+  };
+
   // Generate webpack config for this project using options object.
-  const project = require('./node_modules/@eightshift/frontend-libs/webpack/index.js')(argv.mode, projectConfig);
+  const project = require('./node_modules/@eightshift/frontend-libs/webpack')(argv.mode, projectConfig);
 
-  // You can append project specific config using this object.
-  const projectSpecific = {};
-
-  // Output webpack.
-  return merge(project, projectSpecific);
+  return {
+    ...project,
+  };
 };
