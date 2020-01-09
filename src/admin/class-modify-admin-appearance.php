@@ -28,7 +28,7 @@ final class Modify_Admin_Appearance implements Service {
   const COLOR_SCHEMES = [
     'default'   => 'fresh',
     'staging'   => 'blue',
-    'prodution' => 'sunrise',
+    'production' => 'sunrise',
   ];
 
   /**
