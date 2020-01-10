@@ -11,7 +11,7 @@
 
 </main>
 
-<?php get_template_part( 'src/blocks/layout/footer/footer' ); ?>
+<?php get_template_part( 'src/blocks/components/footer/footer' ); ?>
 
 <?php wp_footer(); ?>
 </body>

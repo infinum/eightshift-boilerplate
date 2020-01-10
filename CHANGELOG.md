@@ -6,7 +6,9 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ## [Unreleased]
 
-_No documentation available about unreleased changes as of yet._
+- Corrections due to movement all src/blocks/layout/... to src/blocks/components in eightshift-frontend-libs
+- Updating composer to latest version of eightshift-libs
+- class-modify-admin-appearance.php fixed a typo
 
 ## [4.0.2] - 2019-12-19
 ### Changed
