@@ -10,7 +10,11 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 - Updating composer to latest version of eightshift-libs
 - class-modify-admin-appearance.php fixed a typo
 
-## [4.0.2] - 2019-12-19
+## [4.0.3] - 2020-01-16
+### Changed
+- Updated eightshift-libs to version 2.0.4
+- Updated eightshift-frontend-libs to version 3.0.3
+
 ### Changed
 - Updated Webpack
 - Updated PostCss
@@ -188,6 +192,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[4.0.3]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.2...v4.0.3
 [4.0.2]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.1...v4.0.2
 [4.0.1]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.0...v4.0.1
 [4.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/3.0.1...v4.0.0

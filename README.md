@@ -20,8 +20,11 @@ This repository contains all the tools you need to start building a modern WordP
 - [:mailbox: Who do I talk to?](#mailbox-who-do-i-talk-to)
 - [:scroll: License](#scroll-license)
 
-## :mortar_board: Documentation
-For all documentation details please refere to [Wiki](https://github.com/infinum/eightshift-boilerplate/wiki)
+==============================================================================
+## :mortar_board: Documentaiton
+### For the full documentation please check this [link](https://infinum.github.io/eightshift-frontend-libs).
+
+==============================================================================
 
 ## :tada: Awesome features
 
