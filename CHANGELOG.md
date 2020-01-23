@@ -6,6 +6,10 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ## [Unreleased]
 
+*No documentation available about unreleased changes as of yet.*
+
+## [4.0.4] - 2020-01-23
+# Changed
 - Corrections due to movement all src/blocks/layout/... to src/blocks/components in eightshift-frontend-libs
 - Updating composer to latest version of eightshift-libs
 - class-modify-admin-appearance.php fixed a typo
@@ -192,6 +196,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[4.0.4]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.3...v4.0.4
 [4.0.3]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.2...v4.0.3
 [4.0.2]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.1...v4.0.2
 [4.0.1]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.0...v4.0.1
