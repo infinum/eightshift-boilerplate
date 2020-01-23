@@ -46,11 +46,6 @@ Here's why you should use Eightshift Boilerplate for your next project.
 - **[Eightshift Libs](https://github.com/infinum/eightshift-libs)** - Library aimed at bringing the modern development tools to your project.
 - **[Eightshift Frontend Libs](https://github.com/infinum/eightshift-frontend-libs)** - A collection of useful frontend utility modules and all the tools you need to start building a modern Gutenberg dynamic blocks.
 
-## :school_satchel: Requirements
-
-1. [Node.js](https://nodejs.org/en/)
-2. [Composer](https://getcomposer.org/)
-
 ## :rocket: Quick start 
 
 Let's create a new project! Follow [this link](https://github.com/infinum/eightshift-boilerplate/wiki) to see how it is done.

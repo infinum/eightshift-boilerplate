@@ -1,6 +1,6 @@
 {
   "name": "eightshift/eightshift-boilerplate",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "This repository contains all the tools you need to start building a modern WordPress project.",
   "keywords": [
     "composer",
