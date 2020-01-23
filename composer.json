@@ -1,15 +1,36 @@
 {
-  "name": "infinum/eightshift-boilerplate",
-  "version": "4.0.3",
-  "description": "This repository contains all the tools you need to start building a modern WordPress project, using all the latest front end development tools.",
+  "name": "eightshift/eightshift-boilerplate",
+  "version": "4.0.4",
+  "description": "This repository contains all the tools you need to start building a modern WordPress project.",
+  "keywords": [
+    "composer",
+    "installer",
+    "plugin",
+    "blocks",
+    "Gutenberg",
+    "WordPress"
+  ],
+  "homepage": "https://eightshift.com/",
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Eightshift team",
+      "email": "team@eightshift.com",
+      "homepage": "https://eightshift.com/",
+      "role": "Developer / IT Manager"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/infinum/eightshift-boilerplate/issues",
+    "source": "https://github.com/infinum/eightshift-boilerplate"
+  },
   "require-dev": {
     "infinum/coding-standards-wp": "0.4.1",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
   },
   "require": {
-    "php": ">=7.0",
-    "infinum/eightshift-libs": "^2.0.4"
+    "php": ">=7.1",
+    "infinum/eightshift-libs": "^2.0.5"
   },
   "autoload": {
     "classmap": [
@@ -24,7 +45,7 @@
     "process-timeout": 2000
   },
   "scripts": {
-    "check-cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 7.0-",
-    "fix-cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 7.0-"
+    "check-cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 7.1-",
+    "fix-cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 7.1-"
   }
 }

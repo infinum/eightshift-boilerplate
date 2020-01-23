@@ -1,13 +1,24 @@
 {
-  "name": "eightshift-boilerplate",
-  "version": "4.0.3",
-  "description": "This repository contains all the tools you need to start building a modern WordPress project, using all the latest front end development tools.",
-  "author": "Team Eightshift",
+  "name": "@eightshift/eightshift-boilerplate",
+  "version": "4.0.4",
+  "description": "This repository contains all the tools you need to start building a modern WordPress project.",
+  "authors": [
+    {
+      "name": "Eightshift team",
+      "email": "team@eightshift.com",
+      "homepage": "https://eightshift.com/",
+      "role": "Developer / IT Manager"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/infinum/eightshift-boilerplate.git"
   },
+  "bugs": {
+    "url": "https://github.com/infinum/eightshift-boilerplate/issues"
+  },
+  "homepage": "https://github.com/infinum/eightshift-boilerplate#readme",
   "scripts": {
     "__eslintTheme": "eslint src/**/*.js",
     "__stylelintTheme": "stylelint src/**/*.scss",
@@ -17,15 +28,15 @@
     "precommit": "npm run lint",
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "webpack --progress --mode production",
-    "blocksExample": "cp -R ./node_modules/@eightshift/frontend-libs/blocks/init/custom/example ./src/blocks/custom/ && composer dump-autoload"
+    "blocksExample": "cp -R ./node_modules/@eightshift/frontend-libs/blocks/init/src/blocks/custom/example ./src/blocks/custom/ && composer dump-autoload"
   },
   "devDependencies": {
     "husky": "^3.0.9",
-    "webpack": "^4.41.4",
+    "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "@eightshift/frontend-libs": "^3.0.3"
+    "@eightshift/frontend-libs": "^3.0.4"
   },
   "husky": {
     "hooks": {

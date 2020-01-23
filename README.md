@@ -14,17 +14,17 @@ This repository contains all the tools you need to start building a modern WordP
 ## :books: Table of contents
 - [:mortar_board: Documentation](#mortar_board-documentation)
 - [:tada: Awesome features](#tada-awesome-features)
-- [:school_satchel: Requirements](#school_satchel-requirements)
 - [:rocket: Quick start](#rocket-quick-start)
 - [:interrobang: Plugin](#interrobang-plugin)
 - [:mailbox: Who do I talk to?](#mailbox-who-do-i-talk-to)
 - [:scroll: License](#scroll-license)
 
-==============================================================================
 ## :mortar_board: Documentaiton
-### For the full documentation please check this [link](https://infinum.github.io/eightshift-frontend-libs).
+Eightshift Boilerplate uses 2 libraries depending on the technology. We have specific documentation for each library.
 
-==============================================================================
+[Eightshift Frontend Lib](https://github.com/infinum/eightshift-frontend-libs) is used for all frontend related parts like JavaScript, Scss, Webpack, Babel, Storybook, linting, etc. You can find the **[documentation here](https://infinum.github.io/eightshift-frontend-libs/)**.
+
+[Eightshift Lib](https://github.com/infinum/eightshift-libs) is used for all backend related parts for WordPress using Php technology. You can find the **[documentation here](https://infinum.github.io/eightshift-libs/)**.
 
 ## :tada: Awesome features
 
@@ -37,17 +37,14 @@ Here's why you should use Eightshift Boilerplate for your next project.
 - **[JS Compiler (Babel)](https://babeljs.io/)** - Write JS using the latest features and let webpack worry about making it work accross all browsers
 - **Minifying** - Automatically minifies your production assets (JS / CSS) during build process
 - **Cache busting** - Each time you build assets, we generate a new URL for each asset file. This means you'll never see the old cached version while developing or after pushing your code to production.
-- **[Lazyloading](https://github.com/verlok/lazyload)** - Easily lazyload images / videos / iframes
 - **[Synchronised browser testing](https://www.browsersync.io/)**
 - **Helps you write better code (automatic code linting)**
   - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
   - [eslint](https://eslint.org/)
   - [stylelint](https://stylelint.io/)
-- **[Easy font management](https://github.com/jonathantneal/postcss-font-magician)**
 - **[Easy SASS media queries](https://github.com/infinum/media-blender)**
-2. **[Eightshift Libs](https://github.com/infinum/eightshift-libs)** - Library aimed at bringing the modern development tools to your project.
-3. **[Eightshift Blocks](https://github.com/infinum/eightshift-blocks)** - This repository contains all the tools you need to start building a modern Gutenberg dynamic blocks.
-4. **[Eightshift Frontend Libs](https://github.com/infinum/eightshift-frontend-libs)** - A collection of useful frontend utility modules.
+- **[Eightshift Libs](https://github.com/infinum/eightshift-libs)** - Library aimed at bringing the modern development tools to your project.
+- **[Eightshift Frontend Libs](https://github.com/infinum/eightshift-frontend-libs)** - A collection of useful frontend utility modules and all the tools you need to start building a modern Gutenberg dynamic blocks.
 
 ## :school_satchel: Requirements
 
@@ -56,24 +53,7 @@ Here's why you should use Eightshift Boilerplate for your next project.
 
 ## :rocket: Quick start 
 
-Let's create a new project!
-
-Navigate to your WordPress theme/plugin folder and run the following command:
-
-```
-npx create-wp-project
-```
-
-Script will prompt you for theme name and local development url (used for BrowserSync) and install a new theme:
-
-![](https://raw.githubusercontent.com/infinum/eightshift-frontend-libs/develop/package/setup.gif)
-
-After the script is finished, you can activate the theme through WP Admin Dashboard. 
-
-To start developing run this command from projects root folder:
-```
-npm start
-```
+Let's create a new project! Follow [this link](https://github.com/infinum/eightshift-boilerplate/wiki) to see how it is done.
 
 ## :mailbox: Who do I talk to?
 
@@ -84,4 +64,4 @@ Eightshift WordPress Boilerplate is maintained and sponsored by
 
 ## :scroll: License
 
-Infinum WordPress Boilerplate is Copyright ©2019 Infinum. It is free software, and may be redistributed under the terms specified in the LICENSE file.
+WordPress Boilerplate is Copyright ©2020 Infinum. It is free software, and may be redistributed under the terms specified in the LICENSE file.
