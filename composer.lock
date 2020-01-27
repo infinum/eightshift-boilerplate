@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f84f94e4cd3615e6e52affec3d6f13a",
+    "content-hash": "44f1b7bf582ed574d48f9755a8d57382",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "40d258b3235ee849227d80e91a715241ec49244a"
+                "reference": "db2be52f9066d7a29caf6591e21a54805d47d831"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/40d258b3235ee849227d80e91a715241ec49244a",
-                "reference": "40d258b3235ee849227d80e91a715241ec49244a",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/db2be52f9066d7a29caf6591e21a54805d47d831",
+                "reference": "db2be52f9066d7a29caf6591e21a54805d47d831",
                 "shasum": ""
             },
             "require": {
@@ -56,7 +56,7 @@
                 "plugin",
                 "wordpress"
             ],
-            "time": "2020-01-23T13:47:55+00:00"
+            "time": "2020-01-27T09:03:42+00:00"
         },
         {
             "name": "jeremeamia/superclosure",

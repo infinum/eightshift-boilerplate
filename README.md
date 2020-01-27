@@ -14,17 +14,13 @@ This repository contains all the tools you need to start building a modern WordP
 ## :books: Table of contents
 - [:mortar_board: Documentation](#mortar_board-documentation)
 - [:tada: Awesome features](#tada-awesome-features)
+- [:school_satchel: Requirements](#school_satchel-requirements)
 - [:rocket: Quick start](#rocket-quick-start)
-- [:interrobang: Plugin](#interrobang-plugin)
 - [:mailbox: Who do I talk to?](#mailbox-who-do-i-talk-to)
 - [:scroll: License](#scroll-license)
 
 ## :mortar_board: Documentaiton
-Eightshift Boilerplate uses 2 libraries depending on the technology. We have specific documentation for each library.
-
-[Eightshift Frontend Lib](https://github.com/infinum/eightshift-frontend-libs) is used for all frontend related parts like JavaScript, Scss, Webpack, Babel, Storybook, linting, etc. You can find the **[documentation here](https://infinum.github.io/eightshift-frontend-libs/)**.
-
-[Eightshift Lib](https://github.com/infinum/eightshift-libs) is used for all backend related parts for WordPress using Php technology. You can find the **[documentation here](https://infinum.github.io/eightshift-libs/)**.
+**For more documentation details follow [this link](https://infinum.github.io/eightshift-docs).**
 
 ## :tada: Awesome features
 
@@ -46,9 +42,32 @@ Here's why you should use Eightshift Boilerplate for your next project.
 - **[Eightshift Libs](https://github.com/infinum/eightshift-libs)** - Library aimed at bringing the modern development tools to your project.
 - **[Eightshift Frontend Libs](https://github.com/infinum/eightshift-frontend-libs)** - A collection of useful frontend utility modules and all the tools you need to start building a modern Gutenberg dynamic blocks.
 
-## :rocket: Quick start 
+## :school_satchel: Requirements
 
-Let's create a new project! Follow [this link](https://github.com/infinum/eightshift-boilerplate/wiki) to see how it is done.
+1. [Node.js](https://nodejs.org/en/)
+2. [Composer](https://getcomposer.org/)
+
+## :rocket: Quick start 
+Let's create a new project!
+
+Navigate to your WordPress theme folder and run the following command:
+
+```
+npx create-wp-project
+```
+
+Script will prompt you for theme name and local development url (used for BrowserSync) and install a new theme:
+
+![](https://raw.githubusercontent.com/infinum/eightshift-frontend-libs/develop/package/setup.gif)
+
+After the script is finished, you can activate the theme through WP Admin Dashboard. 
+
+To start developing run this command from projects root folder:
+```
+npm start
+```
+
+**For more instalation details follow [this link](https://infinum.github.io/eightshift-docs).**
 
 ## :mailbox: Who do I talk to?
 
