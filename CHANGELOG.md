@@ -8,6 +8,12 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 *No documentation available about unreleased changes as of yet.*
 
+## [4.0.7] - 2020-01-29
+
+### Changed
+- Eightshift-frontend-libs update
+- Eightshift-libs update
+
 ## [4.0.6] - 2020-01-27
 
 ### Changed
@@ -16,16 +22,19 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 - Fixing readme.
 
 ## [4.0.5] - 2020-01-23
+
 ### Changed
 - Readme Fix
 
 ## [4.0.4] - 2020-01-23
+
 ### Changed
 - Corrections due to movement all src/blocks/layout/... to src/blocks/components in eightshift-frontend-libs
 - Updating composer to latest version of eightshift-libs
 - class-modify-admin-appearance.php fixed a typo
 
 ## [4.0.3] - 2020-01-16
+
 ### Changed
 - Updated eightshift-libs to version 2.0.4
 - Updated eightshift-frontend-libs to version 3.0.3
@@ -36,6 +45,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 - Updated @eightshift/frontend-libs
 
 ## [4.0.1] - 2019-11-12
+
 ### Removed
 - postcss-font-magician from package.json
 
@@ -47,6 +57,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 - composer.json - infinum/eightshift-libs to 2.0.2
 
 ## [4.0.0] - 2019-11-06
+
 ### Added
 - Implementing Eightshift-libs
 - Implementing Eightshift-frontend-libs
@@ -207,6 +218,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[4.0.7]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.6...v4.0.7
 [4.0.6]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.5...v4.0.6
 [4.0.5]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.4...v4.0.5
 [4.0.4]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.3...v4.0.4
