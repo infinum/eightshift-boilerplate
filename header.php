@@ -7,6 +7,7 @@
  * @since 1.0.0
  */
 
+use Eightshift_Libs\Blocks\Helpers\Components;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -18,6 +19,27 @@
 </head>
 <body <?php body_class(); ?>>
 
-<?php get_template_part( 'src/blocks/components/header/header' ); ?>
+<?php
+echo wp_kses_post( Components::render( 'header', [
+  'leftComponent' => [
+    Components::render( 'hamburger' ),
+    Components::render( 'drawer', [
+      'trigger' => 'js-hamburger',
+      'overlay' => 'js-page-overlay',
+      'drawerPosition' => 'left',
+      'menu' => [ 'variation' => 'vertical' ],
+      'parentClass' => 'header',
+    ] ),
+  ],
+  'centerComponent' => Components::render( 'logo' ),
+  'rightComponent' => Components::render( 'menu', [
+    'variation' => 'horizontal',
+    'parentClass' => 'header',
+  ] ),
+] ) );
+?>
+
+<?php echo wp_kses_post( Components::render( 'page-overlay' ) ); ?>
 
 <main class="main-content">
+
