@@ -8,6 +8,14 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 *No documentation available about unreleased changes as of yet.*
 
+## [4.1.0] - 2020-03-04
+
+### Changed
+- Eightshift-frontend-libs update.
+- Eightshift-libs update.
+- Changing header.php for now libs layout.
+- Changing footer.php for now libs layout.
+
 ## [4.0.7] - 2020-01-29
 
 ### Changed
@@ -218,6 +226,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[4.1.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.7...v4.1.0
 [4.0.7]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.6...v4.0.7
 [4.0.6]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.5...v4.0.6
 [4.0.5]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.4...v4.0.5

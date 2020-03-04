@@ -7,7 +7,7 @@
  * @since 1.0.0
  */
 
-use Eightshift_Libs\Blocks\Helpers\Components;
+use Eightshift_Libs\Helpers\Components;
 ?>
 
 </main>
