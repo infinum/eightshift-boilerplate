@@ -8,7 +8,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 *No documentation available about unreleased changes as of yet.*
 
-## [4.1.0] - 2020-03-04
+## [4.1.0] - 2020-03-05
 
 ### Changed
 - Eightshift-frontend-libs update.
