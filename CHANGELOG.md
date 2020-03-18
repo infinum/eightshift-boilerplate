@@ -8,6 +8,12 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 *No documentation available about unreleased changes as of yet.*
 
+### Removed
+- Removed `Config` dependency from enqueue classes
+
+### Changed
+- Updated `eightshift-libs` to 2.2.0
+
 ## [4.1.0] - 2020-03-05
 
 ### Changed
