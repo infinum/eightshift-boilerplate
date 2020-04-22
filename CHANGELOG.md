@@ -6,10 +6,15 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ## [Unreleased]
 
-*No documentation available about unreleased changes as of yet.*
-
 ### Removed
 - Removed `Config` dependency from enqueue classes
+- Removed .babelrc file.
+
+### Added
+- Added babel.config.js
+
+**BRAKING CHANGES:**
+- Please replace you old .babelrc file with the new one babel.config.js and convert it from .json to .js format.
 
 ## [4.1.0] - 2020-03-05
 
