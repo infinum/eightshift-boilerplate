@@ -29,8 +29,8 @@
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "webpack --progress --mode production",
     "blocksExample": "cp -R ./node_modules/@eightshift/frontend-libs/blocks/init/src/blocks/custom/example ./src/blocks/custom/ && composer dump-autoload",
-    "storybookBuild": "build-storybook -c .storybook -o storybook",
-    "storybook": "start-storybook -s .storybook"
+    "storybookBuild": "build-storybook -s public -o storybook",
+    "storybook": "start-storybook -s public"
   },
   "devDependencies": {
     "husky": "^3.0.9",
