@@ -6,6 +6,8 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ## [Unreleased]
 
+## [4.2.0] - 2020-05-06
+
 ### Removed
 - Removed `Config` dependency from enqueue classes
 - Removed .babelrc file.
@@ -234,6 +236,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[4.2.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.1.0...v4.2.0
 [4.1.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.7...v4.1.0
 [4.0.7]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.6...v4.0.7
 [4.0.6]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.5...v4.0.6
