@@ -30,7 +30,7 @@
   },
   "require": {
     "php": ">=7.1",
-    "infinum/eightshift-libs": "^2.1.1"
+    "infinum/eightshift-libs": "^2.2.0"
   },
   "autoload": {
     "classmap": [
