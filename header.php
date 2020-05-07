@@ -47,7 +47,5 @@ echo wp_kses_post( Components::render( 'drawer', [
 echo wp_kses_post( Components::render( 'page-overlay' ) );
 ?>
 
-<?php  ?>
-
 <main class="main-content">
 
