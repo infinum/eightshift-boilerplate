@@ -1,6 +1,6 @@
 {
   "name": "eightshift/eightshift-boilerplate",
-  "version": "4.0.7",
+  "version": "4.2.0",
   "description": "This repository contains all the tools you need to start building a modern WordPress project.",
   "keywords": [
     "composer",
@@ -30,7 +30,7 @@
   },
   "require": {
     "php": ">=7.1",
-    "infinum/eightshift-libs": "^2.0.7"
+    "infinum/eightshift-libs": "^2.2.0"
   },
   "autoload": {
     "classmap": [

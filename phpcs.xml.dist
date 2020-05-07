@@ -34,4 +34,20 @@
   <rule ref="WordPress.WP.GlobalVariablesOverride.OverrideProhibited">
     <severity>0</severity>
   </rule>
+
+  <rule ref="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket">
+    <severity>0</severity>
+  </rule>
+
+  <rule ref="Generic.Arrays.DisallowShortArraySyntax.Found">
+    <severity>0</severity>
+  </rule>
+
+  <rule ref="PEAR.Functions.FunctionCallSignature.MultipleArguments">
+    <severity>0</severity>
+  </rule>
+
+  <rule ref="PEAR.Functions.FunctionCallSignature.CloseBracketLine">
+    <severity>0</severity>
+  </rule>
 </ruleset>
