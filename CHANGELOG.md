@@ -6,7 +6,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ## [Unreleased]
 
-*No documentation available about unreleased changes as of yet.*
+* Modified const name in wp-config-project.php from ES_ENV to EB_ENV to be consistent with the rest of the project.
 
 ## [4.0.7] - 2020-01-29
 

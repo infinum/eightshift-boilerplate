@@ -10,7 +10,7 @@
  * @since 1.0.0
  */
 
-if ( ! defined( 'ES_ENV' ) ) {
+if ( ! defined( 'EB_ENV' ) ) {
   return false;
 }
 
@@ -42,7 +42,7 @@ if ( ! defined( 'WP_CLI' ) ) {
 }
 
 // Environment based setup.
-if ( ES_ENV === 'develop' ) {
+if ( EB_ENV === 'develop' ) {
   // Enable direct upload from admin.
   define( 'FS_METHOD', 'direct' );
 
