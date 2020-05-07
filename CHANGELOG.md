@@ -6,7 +6,26 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ## [Unreleased]
 
+## [4.2.0] - 2020-05-06
 * Modified const name in wp-config-project.php from ES_ENV to EB_ENV to be consistent with the rest of the project.
+
+### Removed
+- Removed `Config` dependency from enqueue classes
+- Removed .babelrc file.
+
+### Added
+- Added babel.config.js
+
+**BRAKING CHANGES:**
+- Please replace you old .babelrc file with the new one babel.config.js and convert it from .json to .js format.
+
+## [4.1.0] - 2020-03-05
+
+### Changed
+- Eightshift-frontend-libs update.
+- Eightshift-libs update.
+- Changing header.php for now libs layout.
+- Changing footer.php for now libs layout.
 
 ## [4.0.7] - 2020-01-29
 
@@ -218,6 +237,8 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[4.2.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.1.0...v4.2.0
+[4.1.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.7...v4.1.0
 [4.0.7]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.6...v4.0.7
 [4.0.6]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.5...v4.0.6
 [4.0.5]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.4...v4.0.5
