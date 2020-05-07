@@ -5,9 +5,9 @@ All notable changes to this project will be documented in this file.
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
 ## [Unreleased]
+* Modified const name in wp-config-project.php from ES_ENV to EB_ENV to be consistent with the rest of the project.
 
 ## [4.2.0] - 2020-05-06
-* Modified const name in wp-config-project.php from ES_ENV to EB_ENV to be consistent with the rest of the project.
 
 ### Removed
 - Removed `Config` dependency from enqueue classes
