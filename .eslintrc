@@ -1,3 +1,6 @@
 {
-  "extends": "./node_modules/@eightshift/frontend-libs/linters/eslint.config.js"
+  "extends": "./node_modules/@eightshift/frontend-libs/linters/eslint.config.js",
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", {"packageDir": ["./node_modules/@eightshift/frontend-libs", "./"]}]
+  }
 }
