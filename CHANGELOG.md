@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
 ## [Unreleased]
+
+## [4.2.1] - 2020-05-13
+
+### Changed
+- Eightshift-frontend-libs update
+- Eightshift-libs update
 * Modified const name in wp-config-project.php from ES_ENV to EB_ENV to be consistent with the rest of the project.
+* Adde eslint rule to ignore external dependencies from @eightshift/frontend-libs.
 
 ## [4.2.0] - 2020-05-06
 
@@ -57,8 +64,6 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 ### Changed
 - Updated eightshift-libs to version 2.0.4
 - Updated eightshift-frontend-libs to version 3.0.3
-
-### Changed
 - Updated Webpack
 - Updated PostCss
 - Updated @eightshift/frontend-libs
@@ -107,7 +112,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ### Changed
 
-- phpcs.xml.dist ruleset name change
+- phpcs.xml.dist rules name change
 - Refactored scss assets
 - Minor refactor in excerpt class
 
@@ -143,8 +148,6 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 ### Removed
 
 - Replaced `file_get_contents` with `file` (for support)
-
-### Fixed
 
 ## [2.1.1] - 2018-05-03
 
@@ -188,7 +191,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 - Updated readme
 - Updated eslintrc
-- Updated stylelintrc
+- Updated stylelint
 - Updated .gitignore
 - Updated coding standards, added composer scripts
 
@@ -237,6 +240,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[4.2.1]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.0...v4.2.1
 [4.2.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.1.0...v4.2.0
 [4.1.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.7...v4.1.0
 [4.0.7]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.6...v4.0.7
