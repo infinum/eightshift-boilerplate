@@ -246,6 +246,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[4.2.2]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.1...v4.2.2
 [4.2.1]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.0...v4.2.1
 [4.2.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.1.0...v4.2.0
 [4.1.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.0.7...v4.1.0
