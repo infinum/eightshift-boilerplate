@@ -6,6 +6,12 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ## [Unreleased]
 
+## [4.2.2] - 2020-05-15
+
+### Changed
+- Eightshift-frontend-libs update
+- Eightshift-libs update
+
 ## [4.2.1] - 2020-05-13
 
 ### Changed

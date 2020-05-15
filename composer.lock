@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3600fa79d381f8afd56b625bbd2f6b9",
+    "content-hash": "9cba1727851fbb45ba918bf5ca17da51",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "fdf1953241f7162d5694a272560788e1e92da6c5"
+                "reference": "68a5016cd76b4677d3a374affff5cee802c17e30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/fdf1953241f7162d5694a272560788e1e92da6c5",
-                "reference": "fdf1953241f7162d5694a272560788e1e92da6c5",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/68a5016cd76b4677d3a374affff5cee802c17e30",
+                "reference": "68a5016cd76b4677d3a374affff5cee802c17e30",
                 "shasum": ""
             },
             "require": {
@@ -57,7 +57,7 @@
                 "plugin",
                 "wordpress"
             ],
-            "time": "2020-05-13T15:11:29+00:00"
+            "time": "2020-05-15T07:42:34+00:00"
         },
         {
             "name": "jeremeamia/superclosure",
@@ -809,16 +809,16 @@
         },
         {
             "name": "wp-coding-standards/wpcs",
-            "version": "2.2.1",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
-                "reference": "b5a453203114cc2284b1a614c4953456fbe4f546"
+                "reference": "7da1894633f168fe244afc6de00d141f27517b62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/b5a453203114cc2284b1a614c4953456fbe4f546",
-                "reference": "b5a453203114cc2284b1a614c4953456fbe4f546",
+                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/7da1894633f168fe244afc6de00d141f27517b62",
+                "reference": "7da1894633f168fe244afc6de00d141f27517b62",
                 "shasum": ""
             },
             "require": {
@@ -828,6 +828,7 @@
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.5 || ^0.6",
                 "phpcompatibility/php-compatibility": "^9.0",
+                "phpcsstandards/phpcsdevtools": "^1.0",
                 "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
             "suggest": {
@@ -850,7 +851,7 @@
                 "standards",
                 "wordpress"
             ],
-            "time": "2020-02-04T02:52:06+00:00"
+            "time": "2020-05-13T23:57:56+00:00"
         }
     ],
     "aliases": [],
