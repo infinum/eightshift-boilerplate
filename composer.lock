@@ -4,30 +4,32 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9cba1727851fbb45ba918bf5ca17da51",
+    "content-hash": "bc147ed4bd268678744779b64f48a497",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "2.2.2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "68a5016cd76b4677d3a374affff5cee802c17e30"
+                "reference": "305a9e094a3aab225768a6c04e3779497d16b188"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/68a5016cd76b4677d3a374affff5cee802c17e30",
-                "reference": "68a5016cd76b4677d3a374affff5cee802c17e30",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/305a9e094a3aab225768a6c04e3779497d16b188",
+                "reference": "305a9e094a3aab225768a6c04e3779497d16b188",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "php-di/php-di": "^6.0"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.5",
-                "infinum/coding-standards-wp": "^0.4.1"
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.6",
+                "infinum/coding-standards-wp": "^0.4.1",
+                "roave/security-advisories": "dev-master",
+                "szepeviktor/phpstan-wordpress": "^0.6"
             },
             "type": "library",
             "autoload": {
@@ -57,7 +59,7 @@
                 "plugin",
                 "wordpress"
             ],
-            "time": "2020-05-15T07:42:34+00:00"
+            "time": "2020-05-25T14:13:08+00:00"
         },
         {
             "name": "jeremeamia/superclosure",
@@ -474,16 +476,16 @@
     "packages-dev": [
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
-            "version": "v0.5.0",
+            "version": "v0.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Dealerdirect/phpcodesniffer-composer-installer.git",
-                "reference": "e749410375ff6fb7a040a68878c656c2e610b132"
+                "reference": "8001af8eb107fbfcedc31a8b51e20b07d85b457a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/e749410375ff6fb7a040a68878c656c2e610b132",
-                "reference": "e749410375ff6fb7a040a68878c656c2e610b132",
+                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/8001af8eb107fbfcedc31a8b51e20b07d85b457a",
+                "reference": "8001af8eb107fbfcedc31a8b51e20b07d85b457a",
                 "shasum": ""
             },
             "require": {
@@ -536,38 +538,36 @@
                 "stylecheck",
                 "tests"
             ],
-            "time": "2018-10-26T13:21:45+00:00"
+            "time": "2020-01-29T20:22:20+00:00"
         },
         {
             "name": "infinum/coding-standards-wp",
-            "version": "0.4.3",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/coding-standards-wp.git",
-                "reference": "80a148a17f16d28b9f5ba5bf3ae506b778898fbd"
+                "reference": "87aa3608eb064308291f8f7f3d3d30a8fd1ea296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/coding-standards-wp/zipball/80a148a17f16d28b9f5ba5bf3ae506b778898fbd",
-                "reference": "80a148a17f16d28b9f5ba5bf3ae506b778898fbd",
+                "url": "https://api.github.com/repos/infinum/coding-standards-wp/zipball/87aa3608eb064308291f8f7f3d3d30a8fd1ea296",
+                "reference": "87aa3608eb064308291f8f7f3d3d30a8fd1ea296",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=5.6",
                 "phpcompatibility/phpcompatibility-wp": "^2.0",
-                "squizlabs/php_codesniffer": "^3.5.0",
-                "wp-coding-standards/wpcs": "^2.2.0"
+                "squizlabs/php_codesniffer": "^3.3.0",
+                "wp-coding-standards/wpcs": "^1.0.0"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.6",
-                "jakub-onderka/php-console-highlighter": "^0.4",
-                "jakub-onderka/php-parallel-lint": "^1.0",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3",
                 "phpcompatibility/php-compatibility": "^9.0",
                 "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0",
                 "roave/security-advisories": "dev-master"
             },
             "suggest": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.6 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
             },
             "type": "phpcodesniffer-standard",
             "notification-url": "https://packagist.org/downloads/",
@@ -576,16 +576,11 @@
             ],
             "authors": [
                 {
-                    "name": "Denis Žoljom",
-                    "homepage": "https://github.com/dingo-d",
-                    "role": "Lead developer"
-                },
-                {
                     "name": "Contributors",
                     "homepage": "https://github.com/infinum/coding-standards-wp/graphs/contributors"
                 }
             ],
-            "description": "Infinum Coding Standards for WordPress",
+            "description": "Infinum WordPress Coding Standards",
             "homepage": "https://github.com/infinum/coding-standards-wp",
             "keywords": [
                 "Eightshift",
@@ -594,7 +589,7 @@
                 "standards",
                 "wordpress"
             ],
-            "time": "2020-01-29T07:04:18+00:00"
+            "time": "2018-11-15T12:49:58+00:00"
         },
         {
             "name": "phpcompatibility/php-compatibility",
@@ -809,30 +804,27 @@
         },
         {
             "name": "wp-coding-standards/wpcs",
-            "version": "2.3.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
-                "reference": "7da1894633f168fe244afc6de00d141f27517b62"
+                "reference": "f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/7da1894633f168fe244afc6de00d141f27517b62",
-                "reference": "7da1894633f168fe244afc6de00d141f27517b62",
+                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
+                "reference": "f328bcafd97377e8e5e5d7b244d5ddbf301a3a5c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4",
-                "squizlabs/php_codesniffer": "^3.3.1"
+                "php": ">=5.3",
+                "squizlabs/php_codesniffer": "^2.9.0 || ^3.0.2"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.5 || ^0.6",
-                "phpcompatibility/php-compatibility": "^9.0",
-                "phpcsstandards/phpcsdevtools": "^1.0",
-                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+                "phpcompatibility/php-compatibility": "^9.0"
             },
             "suggest": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.6 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3 || This Composer plugin will sort out the PHPCS 'installed_paths' automatically."
             },
             "type": "phpcodesniffer-standard",
             "notification-url": "https://packagist.org/downloads/",
@@ -842,7 +834,7 @@
             "authors": [
                 {
                     "name": "Contributors",
-                    "homepage": "https://github.com/WordPress/WordPress-Coding-Standards/graphs/contributors"
+                    "homepage": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/graphs/contributors"
                 }
             ],
             "description": "PHP_CodeSniffer rules (sniffs) to enforce WordPress coding conventions",
@@ -851,7 +843,7 @@
                 "standards",
                 "wordpress"
             ],
-            "time": "2020-05-13T23:57:56+00:00"
+            "time": "2018-12-18T09:43:51+00:00"
         }
     ],
     "aliases": [],
@@ -860,7 +852,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1"
+        "php": ">=7.2"
     },
     "platform-dev": []
 }
