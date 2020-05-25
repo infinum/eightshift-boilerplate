@@ -1,6 +1,6 @@
 {
   "name": "eightshift/eightshift-boilerplate",
-  "version": "4.2.2",
+  "version": "4.3.0",
   "description": "This repository contains all the tools you need to start building a modern WordPress project.",
   "keywords": [
     "composer",
@@ -25,12 +25,12 @@
     "source": "https://github.com/infinum/eightshift-boilerplate"
   },
   "require-dev": {
-    "infinum/coding-standards-wp": "0.4.3",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
+    "infinum/coding-standards-wp": "0.4.1",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.6"
   },
   "require": {
-    "php": ">=7.1",
-    "infinum/eightshift-libs": "^2.2.2"
+    "php": ">=7.2",
+    "infinum/eightshift-libs": ">=2.3.x"
   },
   "autoload": {
     "classmap": [
@@ -45,7 +45,7 @@
     "process-timeout": 2000
   },
   "scripts": {
-    "check-cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 7.1-",
-    "fix-cs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 7.1-"
+    "standards:check": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
+    "standards:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
   }
 }

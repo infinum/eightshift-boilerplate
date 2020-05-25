@@ -1,6 +1,6 @@
 {
   "name": "@eightshift/eightshift-boilerplate",
-  "version": "4.2.2",
+  "version": "4.3.0",
   "description": "This repository contains all the tools you need to start building a modern WordPress project.",
   "authors": [
     {
@@ -38,7 +38,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "@eightshift/frontend-libs": "^3.2.2"
+    "@eightshift/frontend-libs": ">=3.3.x"
   },
   "husky": {
     "hooks": {

@@ -6,24 +6,31 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ## [Unreleased]
 
+## [4.3.0] - 2020-05-25
+
+### Changed
+- `Eightshift-frontend-libs` update.
+- `Eightshift-libs` update.
+- `composer.json` updated packages, fixing scripts names.
+
 ## [4.2.2] - 2020-05-15
 
 ### Changed
-- Eightshift-frontend-libs update
-- Eightshift-libs update
+- `Eightshift-frontend-libs` update.
+- `Eightshift-libs` update.
 
 ## [4.2.1] - 2020-05-13
 
 ### Changed
-- Eightshift-frontend-libs update
-- Eightshift-libs update
+- `Eightshift-frontend-libs` update.
+- `Eightshift-libs` update.
 * Modified const name in wp-config-project.php from ES_ENV to EB_ENV to be consistent with the rest of the project.
 * Adde eslint rule to ignore external dependencies from @eightshift/frontend-libs.
 
 ## [4.2.0] - 2020-05-06
 
 ### Removed
-- Removed `Config` dependency from enqueue classes
+- Removed `Config` dependency from enqueue classes.
 - Removed .babelrc file.
 
 ### Added
@@ -246,6 +253,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[4.3.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.2...v4.3.0
 [4.2.2]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.1...v4.2.2
 [4.2.1]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.0...v4.2.1
 [4.2.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.1.0...v4.2.0
