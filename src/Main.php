@@ -71,7 +71,7 @@ class Main extends AbstractMain {
       Menu\Menu::class,
 
       // Blocks.
-      // LibBlocks\Blocks::class => [ Config::class ],
+      LibBlocks\Blocks::class => [ Config::class ],
     ];
   }
 }
