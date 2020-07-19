@@ -2,9 +2,7 @@
 /**
  * Single page for Posts
  *
- * @package Eightshift_Boilerplate
- *
- * @since 1.0.0
+ * @package EightshiftBoilerplate
  */
 
 get_header();

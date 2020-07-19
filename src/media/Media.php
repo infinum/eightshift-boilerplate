@@ -2,31 +2,26 @@
 /**
  * The Media specific functionality.
  *
- * @since   1.0.0
- * @package Eightshift_Boilerplate\Media
+ * @package EightshiftBoilerplate\Media
  */
 
 declare( strict_types=1 );
 
-namespace Eightshift_Boilerplate\Media;
+namespace EightshiftBoilerplate\Media;
 
-use Eightshift_Libs\Media\Media as Libs_Media;
+use EightshiftBoilerplateVendor\EightshiftLibs\Media\Media as MediaMedia;
 
 /**
  * Class Media
  *
  * This class handles all media options. Sizes, Types, Features, etc.
- *
- * @since 1.0.0
  */
-class Media extends Libs_Media {
+class Media extends MediaMedia {
 
   /**
    * Register all the hooks
    *
    * @return void
-   *
-   * @since 1.0.0
    */
   public function register() {
     parent::register();
@@ -38,8 +33,6 @@ class Media extends Libs_Media {
    * Create new image sizes
    *
    * @return void
-   *
-   * @since 1.0.0
    */
   public function add_custom_image_sizes() {
     \add_image_size( 'listing', 570, 320, true );

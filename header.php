@@ -2,12 +2,10 @@
 /**
  * Main header file
  *
- * @package Eightshift_Boilerplate\Layout\Header
- *
- * @since 1.0.0
+ * @package EightshiftBoilerplate\Layout\Header
  */
 
-use Eightshift_Libs\Helpers\Components;
+use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>

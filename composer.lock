@@ -4,26 +4,26 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc147ed4bd268678744779b64f48a497",
+    "content-hash": "ebb32e8c6fd26ead1536a9795a5eda3d",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "2.3.0",
+            "version": "dev-feature/di-container",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "305a9e094a3aab225768a6c04e3779497d16b188"
+                "reference": "534da6c5790e6568d58a7509d03949e9b77015c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/305a9e094a3aab225768a6c04e3779497d16b188",
-                "reference": "305a9e094a3aab225768a6c04e3779497d16b188",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/534da6c5790e6568d58a7509d03949e9b77015c3",
+                "reference": "534da6c5790e6568d58a7509d03949e9b77015c3",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": ">=7.2",
-                "php-di/php-di": "^6.0"
+                "php-di/php-di": "dev-master"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.6",
@@ -33,11 +33,21 @@
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "src/"
+                "psr-4": {
+                    "EightshiftLibs\\": "src/"
+                }
+            },
+            "scripts": {
+                "analyze": [
+                    "@php ./vendor/bin/phpstan analyze"
+                ],
+                "standards:check": [
+                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
+                ],
+                "standards:fix": [
+                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -52,47 +62,53 @@
             "description": "WordPress libs developed by Eightshift team to use in modern WordPress.",
             "homepage": "https://eightshift.com/",
             "keywords": [
+                "Gutenberg",
+                "WordPress",
                 "blocks",
                 "composer",
-                "gutenberg",
                 "installer",
-                "plugin",
-                "wordpress"
+                "plugin"
             ],
-            "time": "2020-05-25T14:13:08+00:00"
+            "support": {
+                "issues": "https://github.com/infinum/eightshift-libs/issues",
+                "source": "https://github.com/infinum/eightshift-libs"
+            },
+            "time": "2020-07-19T20:35:21+00:00"
         },
         {
-            "name": "jeremeamia/superclosure",
-            "version": "2.4.0",
+            "name": "opis/closure",
+            "version": "3.5.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jeremeamia/super_closure.git",
-                "reference": "5707d5821b30b9a07acfb4d76949784aaa0e9ce9"
+                "url": "https://github.com/opis/closure.git",
+                "reference": "dec9fc5ecfca93f45cd6121f8e6f14457dff372c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/5707d5821b30b9a07acfb4d76949784aaa0e9ce9",
-                "reference": "5707d5821b30b9a07acfb4d76949784aaa0e9ce9",
+                "url": "https://api.github.com/repos/opis/closure/zipball/dec9fc5ecfca93f45cd6121f8e6f14457dff372c",
+                "reference": "dec9fc5ecfca93f45cd6121f8e6f14457dff372c",
                 "shasum": ""
             },
             "require": {
-                "nikic/php-parser": "^1.2|^2.0|^3.0|^4.0",
-                "php": ">=5.4",
-                "symfony/polyfill-php56": "^1.0"
+                "php": "^5.4 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.0|^5.0"
+                "jeremeamia/superclosure": "^2.0",
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "3.5.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "SuperClosure\\": "src/"
-                }
+                    "Opis\\Closure\\": "src/"
+                },
+                "files": [
+                    "functions.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -100,77 +116,25 @@
             ],
             "authors": [
                 {
-                    "name": "Jeremy Lindblom",
-                    "email": "jeremeamia@gmail.com",
-                    "homepage": "https://github.com/jeremeamia",
-                    "role": "Developer"
+                    "name": "Marius Sarca",
+                    "email": "marius.sarca@gmail.com"
+                },
+                {
+                    "name": "Sorin Sarca",
+                    "email": "sarca_sorin@hotmail.com"
                 }
             ],
-            "description": "Serialize Closure objects, including their context and binding",
-            "homepage": "https://github.com/jeremeamia/super_closure",
+            "description": "A library that can be used to serialize closures (anonymous functions) and arbitrary objects.",
+            "homepage": "https://opis.io/closure",
             "keywords": [
+                "anonymous functions",
                 "closure",
                 "function",
-                "lambda",
-                "parser",
                 "serializable",
-                "serialize",
-                "tokenizer"
+                "serialization",
+                "serialize"
             ],
-            "abandoned": "opis/closure",
-            "time": "2018-03-21T22:21:57+00:00"
-        },
-        {
-            "name": "nikic/php-parser",
-            "version": "v4.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120",
-                "reference": "bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120",
-                "shasum": ""
-            },
-            "require": {
-                "ext-tokenizer": "*",
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "ircmaxell/php-yacc": "0.0.5",
-                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
-            },
-            "bin": [
-                "bin/php-parse"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpParser\\": "lib/PhpParser"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Nikita Popov"
-                }
-            ],
-            "description": "A PHP parser written in PHP",
-            "keywords": [
-                "parser",
-                "php"
-            ],
-            "time": "2020-04-10T16:34:50+00:00"
+            "time": "2020-06-17T14:59:55+00:00"
         },
         {
             "name": "php-di/invoker",
@@ -217,21 +181,20 @@
         },
         {
             "name": "php-di/php-di",
-            "version": "6.1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-DI/PHP-DI.git",
-                "reference": "69238bd49acc0eb6a967029311eeadc3f7c5d538"
+                "reference": "e1d8bb190d2e283d8efa7ecacada53eec64dc209"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/69238bd49acc0eb6a967029311eeadc3f7c5d538",
-                "reference": "69238bd49acc0eb6a967029311eeadc3f7c5d538",
+                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/e1d8bb190d2e283d8efa7ecacada53eec64dc209",
+                "reference": "e1d8bb190d2e283d8efa7ecacada53eec64dc209",
                 "shasum": ""
             },
             "require": {
-                "jeremeamia/superclosure": "^2.0",
-                "nikic/php-parser": "^2.0|^3.0|^4.0",
+                "opis/closure": "^3.5.5",
                 "php": ">=7.2.0",
                 "php-di/invoker": "^2.0",
                 "php-di/phpdoc-reader": "^2.0.1",
@@ -266,7 +229,7 @@
                 "MIT"
             ],
             "description": "The dependency injection container for humans",
-            "homepage": "http://php-di.org/",
+            "homepage": "https://php-di.org/",
             "keywords": [
                 "PSR-11",
                 "container",
@@ -276,7 +239,7 @@
                 "ioc",
                 "psr11"
             ],
-            "time": "2020-04-06T09:54:49+00:00"
+            "time": "2020-07-18T09:47:24+00:00"
         },
         {
             "name": "php-di/phpdoc-reader",
@@ -365,36 +328,43 @@
             "time": "2017-02-14T16:28:37+00:00"
         },
         {
-            "name": "symfony/polyfill-php56",
-            "version": "v1.17.0",
+            "name": "typisttech/imposter",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/polyfill-php56.git",
-                "reference": "e3c8c138280cdfe4b81488441555583aa1984e23"
+                "url": "https://github.com/TypistTech/imposter.git",
+                "reference": "d124d428c967551be815fb4602c73025da2b2893"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/e3c8c138280cdfe4b81488441555583aa1984e23",
-                "reference": "e3c8c138280cdfe4b81488441555583aa1984e23",
+                "url": "https://api.github.com/repos/TypistTech/imposter/zipball/d124d428c967551be815fb4602c73025da2b2893",
+                "reference": "d124d428c967551be815fb4602c73025da2b2893",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
-                "symfony/polyfill-util": "~1.0"
+                "ext-json": "*",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "codeception/codeception": "^4.1",
+                "codeception/mockery-module": "^0.4.0",
+                "codeception/module-asserts": "^1.1",
+                "codeception/module-filesystem": "^1.0",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "suggest": {
+                "typisttech/imposter-plugin": "Composer plugin to integrate composer and imposter"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "0.4.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Symfony\\Polyfill\\Php56\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
+                    "TypistTech\\Imposter\\": "src"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -402,50 +372,66 @@
             ],
             "authors": [
                 {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
+                    "name": "Typist Tech",
+                    "email": "imposter@typist.tech",
+                    "homepage": "https://typist.tech"
                 },
                 {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
+                    "name": "Tang Rufus",
+                    "email": "tangrufus@gmail.com",
+                    "homepage": "https://typist.tech",
+                    "role": "Developer"
                 }
             ],
-            "description": "Symfony polyfill backporting some PHP 5.6+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
+            "description": "Wrapping all composer vendor packages inside your own namespace. Intended for WordPress plugins",
+            "homepage": "https://typist.tech/projects/imposter",
             "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
+                "composer",
+                "dependency",
+                "monkey-patching",
+                "namespace",
+                "wordpress"
             ],
-            "time": "2020-05-12T16:47:27+00:00"
+            "time": "2020-04-15T19:55:54+00:00"
         },
         {
-            "name": "symfony/polyfill-util",
-            "version": "v1.17.0",
+            "name": "typisttech/imposter-plugin",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/polyfill-util.git",
-                "reference": "4afb4110fc037752cf0ce9869f9ab8162c4e20d7"
+                "url": "https://github.com/TypistTech/imposter-plugin.git",
+                "reference": "8dc39d4d22f0a8a09ecc4d198402f07591d57ae3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/4afb4110fc037752cf0ce9869f9ab8162c4e20d7",
-                "reference": "4afb4110fc037752cf0ce9869f9ab8162c4e20d7",
+                "url": "https://api.github.com/repos/TypistTech/imposter-plugin/zipball/8dc39d4d22f0a8a09ecc4d198402f07591d57ae3",
+                "reference": "8dc39d4d22f0a8a09ecc4d198402f07591d57ae3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "composer-plugin-api": "^1.1",
+                "php": "^7.2",
+                "typisttech/imposter": "^0.5.0"
             },
-            "type": "library",
+            "require-dev": {
+                "codeception/codeception": "^4.1",
+                "codeception/module-asserts": "^1.1",
+                "codeception/module-cli": "^1.0",
+                "codeception/module-filesystem": "^1.0",
+                "composer/composer": "^1.9",
+                "squizlabs/php_codesniffer": "^3.5",
+                "typisttech/codeception-composer-project-module": "^0.1.1"
+            },
+            "type": "composer-plugin",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
-                }
+                    "dev-master": "0.5.x-dev"
+                },
+                "class": "TypistTech\\Imposter\\Plugin\\ImposterPlugin"
             },
             "autoload": {
                 "psr-4": {
-                    "Symfony\\Polyfill\\Util\\": ""
+                    "TypistTech\\Imposter\\Plugin\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -454,23 +440,28 @@
             ],
             "authors": [
                 {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
+                    "name": "Typist Tech",
+                    "email": "imposter-plugin@typist.tech",
+                    "homepage": "https://www.typist.tech"
                 },
                 {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
+                    "name": "Tang Rufus",
+                    "email": "tangrufus@gmail.com",
+                    "homepage": "https://www.typist.tech",
+                    "role": "Developer"
                 }
             ],
-            "description": "Symfony utilities for portability of PHP codes",
-            "homepage": "https://symfony.com",
+            "description": "Composer plugin that wraps all composer vendor packages inside your own namespace. Intended for WordPress plugins",
+            "homepage": "https://www.typist.tech/projects/imposter-plugin",
             "keywords": [
-                "compat",
-                "compatibility",
-                "polyfill",
-                "shim"
+                "composer",
+                "composer-plugin",
+                "dependency",
+                "monkey-patching",
+                "namespace",
+                "wordpress"
             ],
-            "time": "2020-05-12T16:14:59+00:00"
+            "time": "2020-04-15T20:23:11+00:00"
         }
     ],
     "packages-dev": [
@@ -848,7 +839,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "infinum/eightshift-libs": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

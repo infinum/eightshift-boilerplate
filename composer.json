@@ -28,14 +28,21 @@
     "infinum/coding-standards-wp": "0.4.1",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.6"
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/infinum/eightshift-libs.git"
+    }
+  ],
   "require": {
     "php": ">=7.2",
-    "infinum/eightshift-libs": ">=2.3"
+    "infinum/eightshift-libs": "dev-feature/di-container",
+    "typisttech/imposter-plugin": "^0.6.0"
   },
   "autoload": {
-    "classmap": [
-      "src/"
-    ]
+    "psr-4": {
+      "EightshiftBoilerplate\\": "src/"
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -47,5 +54,10 @@
   "scripts": {
     "standards:check": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
     "standards:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+  },
+  "extra": {
+    "imposter": {
+      "namespace": "EightshiftBoilerplateVendor"
+    }
   }
 }

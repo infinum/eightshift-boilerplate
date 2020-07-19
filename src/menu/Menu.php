@@ -2,30 +2,24 @@
 /**
  * The Menu specific functionality.
  *
- * @since   1.0.0
- * @package Eightshift_Boilerplate\Menu
+ * @package EightshiftBoilerplate\Menu
  */
 
 declare( strict_types=1 );
 
-namespace Eightshift_Boilerplate\Menu;
+namespace EightshiftBoilerplate\Menu;
 
-use Eightshift_Libs\Core\Service;
-use Eightshift_Libs\Menu\Menu as Libs_Menu;
+use EightshiftBoilerplateVendor\EightshiftLibs\Menu\AbstractMenu;
 
 /**
  * Class Menu
- *
- * @since 1.0.0
  */
-class Menu extends Libs_Menu {
+class Menu extends AbstractMenu {
 
   /**
    * Return all menu poistions
    *
    * @return array Menu positions with slug => name structure.
-   *
-   * @since 1.0.0
    */
   public function get_menu_positions() : array {
     return [
