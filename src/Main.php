@@ -35,6 +35,20 @@ use EightshiftBoilerplate\Media;
 class Main extends AbstractMain {
 
   /**
+   * Register the project with the WordPress system.
+   *
+   * The register_service method will call the register() method in every service class,
+   * which holds the actions and filters - effectively replacing the need to manually add
+   * them in one place.
+   *
+   * @return void
+   *
+   */
+  public function register() {
+    \add_action( 'after_setup_theme', [ $this, 'register_services' ] );
+  }
+
+  /**
    * Get the list of services to register.
    *
    * A list of classes which contain hooks.
@@ -43,9 +57,6 @@ class Main extends AbstractMain {
    */
   protected function get_service_classes() : array {
     return [
-
-      // Config.
-      Config::class,
 
       // Manifest.
       LibManifest\Manifest::class => [ Config::class ],
@@ -60,15 +71,6 @@ class Main extends AbstractMain {
 
       // Login.
       LibLogin\Login::class,
-
-      // Media.
-      Media\Media::class,
-
-      // Admin.
-      Admin\FinalModifyAdminAppearance::class,
-
-      // Menu.
-      Menu\Menu::class,
 
       // Blocks.
       LibBlocks\Blocks::class => [ Config::class ],
