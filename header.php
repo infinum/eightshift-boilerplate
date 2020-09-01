@@ -2,10 +2,11 @@
 /**
  * Main header file
  *
- * @package EightshiftBoilerplate\Layout\Header
+ * @package EightshiftBoilerplate
  */
 
 use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;
+
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -18,6 +19,7 @@ use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;
 <body <?php body_class(); ?>>
 
 <?php
+
 // Header Component.
 echo wp_kses_post( Components::render( 'header', [
   'leftComponent' => Components::render( 'hamburger' ),

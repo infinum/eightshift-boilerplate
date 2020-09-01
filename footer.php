@@ -2,7 +2,7 @@
 /**
  * Display footer
  *
- * @package EightshiftBoilerplate\Layout\Footer
+ * @package EightshiftBoilerplate
  */
 
 use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;

@@ -14,7 +14,8 @@ declare( strict_types=1 );
 
 namespace EightshiftBoilerplate;
 
-use EightshiftBoilerplate\Core\Main;
+use EightshiftBoilerplate\Main\Main;
+use EightshiftBoilerplateVendor\EightshiftLibs\Cli\Cli;
 
 /**
  * If this file is called directly, abort.
@@ -35,4 +36,13 @@ require __DIR__ . '/vendor/autoload.php';
  * then kicking off the theme from this point in the file does
  * not affect the page life cycle.
  */
-( new Main() )->register();
+if ( class_exists( Main::class ) ) {
+  ( new Main() )->register();
+}
+
+/**
+ * Run all WPCLI commands.
+ */
+if ( class_exists( Cli::class ) ) {
+  ( new Cli() )->load( 'boilerplate' );
+}
