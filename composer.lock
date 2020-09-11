@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ebb32e8c6fd26ead1536a9795a5eda3d",
+    "content-hash": "90c1ead9e748c07fceba84bef9da8f8f",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "dev-feature/di-container",
+            "version": "dev-release/3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "5efc441e9e819007dacbaf7d381616cc99d9d0f3"
+                "reference": "534ef4c5fd55114a331a5b2c0ab84e5c6dd7cda4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/5efc441e9e819007dacbaf7d381616cc99d9d0f3",
-                "reference": "5efc441e9e819007dacbaf7d381616cc99d9d0f3",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/534ef4c5fd55114a331a5b2c0ab84e5c6dd7cda4",
+                "reference": "534ef4c5fd55114a331a5b2c0ab84e5c6dd7cda4",
                 "shasum": ""
             },
             "require": {
@@ -73,20 +73,20 @@
                 "issues": "https://github.com/infinum/eightshift-libs/issues",
                 "source": "https://github.com/infinum/eightshift-libs"
             },
-            "time": "2020-09-01T16:33:12+00:00"
+            "time": "2020-09-11T10:46:26+00:00"
         },
         {
             "name": "opis/closure",
-            "version": "3.5.6",
+            "version": "3.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "e8d34df855b0a0549a300cb8cb4db472556e8aa9"
+                "reference": "4531e53afe2fc660403e76fb7644e95998bff7bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/e8d34df855b0a0549a300cb8cb4db472556e8aa9",
-                "reference": "e8d34df855b0a0549a300cb8cb4db472556e8aa9",
+                "url": "https://api.github.com/repos/opis/closure/zipball/4531e53afe2fc660403e76fb7644e95998bff7bf",
+                "reference": "4531e53afe2fc660403e76fb7644e95998bff7bf",
                 "shasum": ""
             },
             "require": {
@@ -134,7 +134,7 @@
                 "serialization",
                 "serialize"
             ],
-            "time": "2020-08-11T08:46:50+00:00"
+            "time": "2020-09-06T17:02:15+00:00"
         },
         {
             "name": "php-di/invoker",

@@ -1,6 +1,6 @@
 {
   "name": "eightshift/eightshift-boilerplate",
-  "version": "4.3.0",
+  "version": "5.0.0",
   "description": "This repository contains all the tools you need to start building a modern WordPress project.",
   "keywords": [
     "composer",
@@ -36,7 +36,7 @@
   ],
   "require": {
     "php": ">=7.2",
-    "infinum/eightshift-libs": "dev-feature/di-container",
+    "infinum/eightshift-libs": "dev-release/3.0.0",
     "typisttech/imposter-plugin": "^0.6.0"
   },
   "autoload": {
