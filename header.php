@@ -12,7 +12,7 @@ use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;
 <html <?php language_attributes(); ?>>
 <head>
   <?php
-    get_template_part( 'src/blocks/components/header/components/head/head' );
+    get_template_part( 'src/Blocks/Components/header/components/head/head' );
     wp_head();
   ?>
 </head>

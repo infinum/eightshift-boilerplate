@@ -5,6 +5,8 @@
  * @package EightshiftBoilerplate
  */
 
+use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;
+
 get_header();
 
 if ( have_posts() ) {
@@ -14,7 +16,7 @@ if ( have_posts() ) {
     the_content();
   }
 
-  require locate_template( 'src/blocks/components/google-rich-snippets/google-rich-snippets.php' );
+  echo wp_kses_post( Components::render( 'google-rich-snippets' ) );
 }
 
 get_footer();
