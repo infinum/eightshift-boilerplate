@@ -2,12 +2,10 @@
 /**
  * Display footer
  *
- * @package Eightshift_Boilerplate\Layout\Footer
- *
- * @since 1.0.0
+ * @package EightshiftBoilerplate
  */
 
-use Eightshift_Libs\Helpers\Components;
+use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;
 ?>
 
 </main>

@@ -1,6 +1,6 @@
 {
   "name": "@eightshift/eightshift-boilerplate",
-  "version": "4.3.0",
+  "version": "5.0.0",
   "description": "This repository contains all the tools you need to start building a modern WordPress project.",
   "authors": [
     {
@@ -24,21 +24,20 @@
     "__stylelintTheme": "stylelint src/**/*.scss",
     "lintStyle": "npm run __stylelintTheme",
     "lintJs": "npm run __eslintTheme",
-    "lint": "npm run lintJs && npm run lintStyle && bash ./bin/lintPhp.sh",
+    "lint": "npm run lintJs && npm run lintStyle && php ./bin/LintPhp.php",
     "precommit": "npm run lint",
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "webpack --progress --mode production",
-    "blocksExample": "cp -R ./node_modules/@eightshift/frontend-libs/blocks/init/src/blocks/custom/example ./src/blocks/custom/ && composer dump-autoload",
     "storybookBuild": "build-storybook -s public -o storybook",
     "storybook": "start-storybook -s public"
   },
   "devDependencies": {
     "husky": "^4.2.5",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "@eightshift/frontend-libs": ">=3.3.x"
+    "@eightshift/frontend-libs": "git+https://github.com/infinum/eightshift-frontend-libs.git#release/4.0.0"
   },
   "husky": {
     "hooks": {

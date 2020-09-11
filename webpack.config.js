@@ -5,9 +5,6 @@
  * All the settings are pulled from node_modules/@eightshift/frontend-libs/webpack.
  * We are loading mostly used configuration but you can always override or turn off the default setup and provide your own.
  * Please referer to Eightshift-libs wiki for details.
- *
- * @since 4.0.0 Moved to eightshift-libs.
- * @since 1.0.0
  */
 module.exports = (env, argv) => {
 

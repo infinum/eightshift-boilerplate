@@ -6,6 +6,14 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ## [Unreleased]
 
+### Added
+- Added vendor scoping plugin to composer build `typisttech/imposter-plugin`.
+
+### Changed
+- Switching from Classmap to PSR-4 naming.
+- example: `class-media.php` is now `Media.php`.
+- changed namespace `Eightshift_Libs` to `EightshiftBoilerplateVendor\EightshiftLibs`.
+
 ## [4.3.0] - 2020-05-25
 
 ### Changed

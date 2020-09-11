@@ -5,9 +5,7 @@
  * Define global environment variable, and define certain
  * settings based on it.
  *
- * @package Eightshift_Boilerplate
- *
- * @since 1.0.0
+ * @package EightshiftBoilerplate
  */
 
 if ( ! defined( 'EB_ENV' ) ) {
