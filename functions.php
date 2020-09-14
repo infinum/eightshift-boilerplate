@@ -16,6 +16,7 @@ namespace EightshiftBoilerplate;
 
 use EightshiftBoilerplate\Main\Main;
 use EightshiftBoilerplateVendor\EightshiftLibs\Cli\Cli;
+use EightshiftBoilerplateVendor\EightshiftLibs\Main\Autowiring;
 
 /**
  * If this file is called directly, abort.
@@ -27,7 +28,7 @@ if ( ! \defined( 'WPINC' ) ) {
 /**
  * Include the autoloader so we can dynamically include the rest of the classes.
  */
-require __DIR__ . '/vendor/autoload.php';
+$loader = require __DIR__ . '/vendor/autoload.php';
 
 /**
  * Begins execution of the theme.
@@ -37,7 +38,7 @@ require __DIR__ . '/vendor/autoload.php';
  * not affect the page life cycle.
  */
 if ( class_exists( Main::class ) ) {
-  ( new Main() )->register();
+  ( new Main( new Autowiring( $loader->getPrefixesPsr4(), __NAMESPACE__ ) ) )->register();
 }
 
 /**
