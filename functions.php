@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Theme Name: Eightshift Boilerplate Title
  * Description: Eightshift Boilerplate Description
@@ -10,7 +11,7 @@
  * @package EightshiftBoilerplate
  */
 
-declare( strict_types=1 );
+declare(strict_types=1);
 
 namespace EightshiftBoilerplate;
 
@@ -21,8 +22,8 @@ use EightshiftBoilerplateVendor\EightshiftLibs\Main\Autowiring;
 /**
  * If this file is called directly, abort.
  */
-if ( ! \defined( 'WPINC' ) ) {
-  die;
+if ( ! \defined('WPINC')) {
+	die;
 }
 
 /**
@@ -37,13 +38,13 @@ $loader = require __DIR__ . '/vendor/autoload.php';
  * then kicking off the theme from this point in the file does
  * not affect the page life cycle.
  */
-if ( class_exists( Main::class ) ) {
-  ( new Main( new Autowiring( $loader->getPrefixesPsr4(), __NAMESPACE__ ) ) )->register();
+if (class_exists(Main::class)) {
+	( new Main(new Autowiring($loader->getPrefixesPsr4(), __NAMESPACE__)) )->register();
 }
 
 /**
  * Run all WPCLI commands.
  */
-if ( class_exists( Cli::class ) ) {
-  ( new Cli() )->load( 'boilerplate' );
+if (class_exists(Cli::class)) {
+	( new Cli() )->load('boilerplate');
 }

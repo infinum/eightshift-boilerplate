@@ -25,8 +25,8 @@
     "source": "https://github.com/infinum/eightshift-boilerplate"
   },
   "require-dev": {
-    "infinum/coding-standards-wp": "0.4.1",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.6"
+    "infinum/coding-standards-wp": "dev-feature/wpcs-update-bc",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7"
   },
   "repositories": [
     {

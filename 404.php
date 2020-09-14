@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 404 error page
  *
@@ -7,6 +8,6 @@
 
 get_header();
 
-esc_html_e( 'ERROR 404', 'eightshift-boilerplate' );
+esc_html_e('ERROR 404', 'eightshift-boilerplate');
 
 get_footer();
