@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c26419bb94ac4953935e600dbba01b07",
+    "content-hash": "3efb33d54bd37aa5978eb35cf21820d9",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
@@ -12,25 +12,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "fecd4fa12936b59ef0023f67ad8b59889cb4525f"
+                "reference": "e7e6a1210ce645c1c090e5ab0bae326861993984"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/fecd4fa12936b59ef0023f67ad8b59889cb4525f",
-                "reference": "fecd4fa12936b59ef0023f67ad8b59889cb4525f",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/e7e6a1210ce645c1c090e5ab0bae326861993984",
+                "reference": "e7e6a1210ce645c1c090e5ab0bae326861993984",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
+                "ext-libxml": "*",
                 "php": ">=7.2",
                 "php-di/php-di": "^6.2.2"
             },
             "require-dev": {
                 "codeception/codeception": "^4.1",
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-                "infinum/coding-standards-wp": "dev-feature/wpcs-update-bc",
+                "infinum/coding-standards-wp": "^1.0.1",
                 "roave/security-advisories": "dev-master",
-                "szepeviktor/phpstan-wordpress": "^0.6"
+                "szepeviktor/phpstan-wordpress": "^0.6",
+                "wp-cli/wp-cli": "^2.4"
             },
             "type": "library",
             "autoload": {
@@ -74,7 +76,7 @@
                 "issues": "https://github.com/infinum/eightshift-libs/issues",
                 "source": "https://github.com/infinum/eightshift-libs"
             },
-            "time": "2020-09-14T22:09:53+00:00"
+            "time": "2020-09-27T03:45:25+00:00"
         },
         {
             "name": "opis/closure",
@@ -183,16 +185,16 @@
         },
         {
             "name": "php-di/php-di",
-            "version": "6.2.2",
+            "version": "6.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-DI/PHP-DI.git",
-                "reference": "40140b5bca07c5fed6919a0f1029ff67617faccd"
+                "reference": "63c444646f5f41d84818af1c780abed8ebcc082c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/40140b5bca07c5fed6919a0f1029ff67617faccd",
-                "reference": "40140b5bca07c5fed6919a0f1029ff67617faccd",
+                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/63c444646f5f41d84818af1c780abed8ebcc082c",
+                "reference": "63c444646f5f41d84818af1c780abed8ebcc082c",
                 "shasum": ""
             },
             "require": {
@@ -241,7 +243,7 @@
                 "ioc",
                 "psr11"
             ],
-            "time": "2020-08-23T16:23:17+00:00"
+            "time": "2020-09-24T12:21:43+00:00"
         },
         {
             "name": "php-di/phpdoc-reader",
@@ -535,16 +537,16 @@
         },
         {
             "name": "infinum/coding-standards-wp",
-            "version": "dev-feature/wpcs-update-bc",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/coding-standards-wp.git",
-                "reference": "3a7dc088fc0d7cec1a98e0edf40f18a4f71c4d9b"
+                "reference": "d28c17561b2956ac65169dd452d84ede30ea1b3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/coding-standards-wp/zipball/3a7dc088fc0d7cec1a98e0edf40f18a4f71c4d9b",
-                "reference": "3a7dc088fc0d7cec1a98e0edf40f18a4f71c4d9b",
+                "url": "https://api.github.com/repos/infinum/coding-standards-wp/zipball/d28c17561b2956ac65169dd452d84ede30ea1b3c",
+                "reference": "d28c17561b2956ac65169dd452d84ede30ea1b3c",
                 "shasum": ""
             },
             "require": {
@@ -584,7 +586,47 @@
                 "standards",
                 "wordpress"
             ],
-            "time": "2020-09-11T11:40:38+00:00"
+            "time": "2020-09-24T17:00:37+00:00"
+        },
+        {
+            "name": "php-stubs/wordpress-stubs",
+            "version": "v5.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-stubs/wordpress-stubs.git",
+                "reference": "5b62027b3f3b9de4994da627898599460f054584"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-stubs/wordpress-stubs/zipball/5b62027b3f3b9de4994da627898599460f054584",
+                "reference": "5b62027b3f3b9de4994da627898599460f054584",
+                "shasum": ""
+            },
+            "replace": {
+                "giacocorsiglia/wordpress-stubs": "*"
+            },
+            "require-dev": {
+                "giacocorsiglia/stubs-generator": "^0.5.0",
+                "php": "~7.1"
+            },
+            "suggest": {
+                "paragonie/sodium_compat": "Pure PHP implementation of libsodium",
+                "symfony/polyfill-php73": "Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions",
+                "szepeviktor/phpstan-wordpress": "WordPress extensions for PHPStan"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "WordPress function and class declaration stubs for static analysis.",
+            "homepage": "https://github.com/php-stubs/wordpress-stubs",
+            "keywords": [
+                "PHPStan",
+                "static analysis",
+                "wordpress"
+            ],
+            "time": "2020-09-02T05:31:36+00:00"
         },
         {
             "name": "phpcompatibility/php-compatibility",
@@ -747,6 +789,48 @@
             "time": "2019-08-28T14:22:28+00:00"
         },
         {
+            "name": "phpstan/phpstan",
+            "version": "0.12.45",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "90c67259212ed891ee86604a9368ef7d7bead3a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/90c67259212ed891ee86604a9368ef7d7bead3a4",
+                "reference": "90c67259212ed891ee86604a9368ef7d7bead3a4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^8.0"
+            },
+            "conflict": {
+                "phpstan/phpstan-shim": "*"
+            },
+            "bin": [
+                "phpstan",
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.12-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan - PHP Static Analysis Tool",
+            "time": "2020-09-26T19:19:00+00:00"
+        },
+        {
             "name": "squizlabs/php_codesniffer",
             "version": "3.5.6",
             "source": {
@@ -798,6 +882,122 @@
             "time": "2020-08-10T04:50:15+00:00"
         },
         {
+            "name": "symfony/polyfill-php73",
+            "version": "v1.18.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php73.git",
+                "reference": "fffa1a52a023e782cdcc221d781fe1ec8f87fcca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php73/zipball/fffa1a52a023e782cdcc221d781fe1ec8f87fcca",
+                "reference": "fffa1a52a023e782cdcc221d781fe1ec8f87fcca",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.18-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php73\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2020-07-14T12:35:20+00:00"
+        },
+        {
+            "name": "szepeviktor/phpstan-wordpress",
+            "version": "v0.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/szepeviktor/phpstan-wordpress.git",
+                "reference": "b931433daa21e7e757d93906283337c1be174f21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/szepeviktor/phpstan-wordpress/zipball/b931433daa21e7e757d93906283337c1be174f21",
+                "reference": "b931433daa21e7e757d93906283337c1be174f21",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.1",
+                "php-stubs/wordpress-stubs": "^4.7 || ^5.0",
+                "phpstan/phpstan": "^0.12.26",
+                "symfony/polyfill-php73": "^1.12.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.8.6",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "php-parallel-lint/php-parallel-lint": "^1.1",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "szepeviktor/phpcs-psr-12-neutron-hybrid-ruleset": "^0.4.3"
+            },
+            "type": "phpstan-extension",
+            "extra": {
+                "phpstan": {
+                    "includes": [
+                        "extension.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PHPStan\\WordPress\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "WordPress extensions for PHPStan",
+            "keywords": [
+                "PHPStan",
+                "code analyse",
+                "code analysis",
+                "static analysis",
+                "wordpress"
+            ],
+            "time": "2020-09-25T16:39:39+00:00"
+        },
+        {
             "name": "wp-coding-standards/wpcs",
             "version": "2.3.0",
             "source": {
@@ -847,8 +1047,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "infinum/eightshift-libs": 20,
-        "infinum/coding-standards-wp": 20
+        "infinum/eightshift-libs": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

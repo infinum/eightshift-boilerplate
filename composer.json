@@ -25,8 +25,9 @@
     "source": "https://github.com/infinum/eightshift-boilerplate"
   },
   "require-dev": {
-    "infinum/coding-standards-wp": "dev-feature/wpcs-update-bc",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.7"
+    "infinum/coding-standards-wp": "^1.0.1",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+    "szepeviktor/phpstan-wordpress": "^0.6"
   },
   "repositories": [
     {
@@ -52,6 +53,7 @@
     "process-timeout": 2000
   },
   "scripts": {
+    "analyze": "@php ./vendor/bin/phpstan analyze",
     "standards:check": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
     "standards:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
   },
