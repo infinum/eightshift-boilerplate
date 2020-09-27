@@ -1,4 +1,4 @@
 {
-  "extends": "./node_modules/@eightshift/frontend-libs/linters/stylelint.config.js",
-  "ignoreFiles": "public/**/*.css"
+	"extends": "./node_modules/@eightshift/frontend-libs/linters/stylelint.config.js",
+	"ignoreFiles": "public/**/*.css"
 }

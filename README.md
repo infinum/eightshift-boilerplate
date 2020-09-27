@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Eightshift Boilerplate" src="https://raw.githubusercontent.com/infinum/eightshift-frontend-libs/develop/package/logo.svg?raw=true&sanitize=true" />
+	<img alt="Eightshift Boilerplate" src="https://raw.githubusercontent.com/infinum/eightshift-frontend-libs/develop/package/logo.svg?raw=true&sanitize=true" />
 </p>
 
 [![Travis](https://img.shields.io/travis/infinum/eightshift-boilerplate.svg?style=for-the-badge)](https://travis-ci.org/infinum/eightshift-boilerplate)
@@ -35,9 +35,9 @@ Here's why you should use Eightshift Boilerplate for your next project.
 - **Cache busting** - Each time you build assets, we generate a new URL for each asset file. This means you'll never see the old cached version while developing or after pushing your code to production.
 - **[Synchronised browser testing](https://www.browsersync.io/)**
 - **Helps you write better code (automatic code linting)**
-  - [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
-  - [eslint](https://eslint.org/)
-  - [stylelint](https://stylelint.io/)
+	- [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
+	- [eslint](https://eslint.org/)
+	- [stylelint](https://stylelint.io/)
 - **[Easy SASS media queries](https://github.com/infinum/media-blender)**
 - **[Eightshift Libs](https://github.com/infinum/eightshift-libs)** - Library aimed at bringing the modern development tools to your project.
 - **[Eightshift Frontend Libs](https://github.com/infinum/eightshift-frontend-libs)** - A collection of useful frontend utility modules and all the tools you need to start building a modern Gutenberg dynamic blocks.

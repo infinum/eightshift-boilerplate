@@ -8,14 +8,14 @@
  */
 module.exports = (env, argv) => {
 
-  const projectConfig = {
-    config: {
-      projectDir: __dirname, // Current project directory absolute path.
-      projectUrl: 'dev.eightshift-internal.com', // Used for providing browsersync functionality.
-      projectPath: 'wp-content/themes/eightshift-boilerplate', // Project path relative to project root.
-    },
-  };
+	const projectConfig = {
+		config: {
+			projectDir: __dirname, // Current project directory absolute path.
+			projectUrl: 'dev.eightshift-internal.com', // Used for providing browsersync functionality.
+			projectPath: 'wp-content/themes/eightshift-boilerplate', // Project path relative to project root.
+		},
+	};
 
-  // Generate webpack config for this project using options object.
-  return require('./node_modules/@eightshift/frontend-libs/webpack')(argv.mode, projectConfig);
+	// Generate webpack config for this project using options object.
+	return require('./node_modules/@eightshift/frontend-libs/webpack')(argv.mode, projectConfig);
 };
