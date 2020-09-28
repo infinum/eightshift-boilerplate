@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "5fda8df243cb5f500b1740118242294a5950c796"
+                "reference": "3cac0bb28839d678dc48fbf9db9fc6b3fb3c5dd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/5fda8df243cb5f500b1740118242294a5950c796",
-                "reference": "5fda8df243cb5f500b1740118242294a5950c796",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/3cac0bb28839d678dc48fbf9db9fc6b3fb3c5dd5",
+                "reference": "3cac0bb28839d678dc48fbf9db9fc6b3fb3c5dd5",
                 "shasum": ""
             },
             "require": {
@@ -76,7 +76,7 @@
                 "issues": "https://github.com/infinum/eightshift-libs/issues",
                 "source": "https://github.com/infinum/eightshift-libs"
             },
-            "time": "2020-09-27T05:32:55+00:00"
+            "time": "2020-09-28T21:20:47+00:00"
         },
         {
             "name": "opis/closure",
@@ -790,16 +790,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.45",
+            "version": "0.12.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "90c67259212ed891ee86604a9368ef7d7bead3a4"
+                "reference": "9419738e20f0c49757be05d22969c1c44c1dff3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/90c67259212ed891ee86604a9368ef7d7bead3a4",
-                "reference": "90c67259212ed891ee86604a9368ef7d7bead3a4",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9419738e20f0c49757be05d22969c1c44c1dff3b",
+                "reference": "9419738e20f0c49757be05d22969c1c44c1dff3b",
                 "shasum": ""
             },
             "require": {
@@ -828,7 +828,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2020-09-26T19:19:00+00:00"
+            "time": "2020-09-28T09:48:55+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
