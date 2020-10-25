@@ -16,6 +16,8 @@ declare( strict_types=1 );
 
 namespace Eightshift_Boilerplate;
 
+use Eightshift_Boilerplate\Core\Theme;
+
 /**
  * If this file is called directly, abort.
  *
@@ -30,7 +32,7 @@ if ( ! \defined( 'WPINC' ) ) {
  *
  * @since 1.0.0
  */
-require __DIR__ . '/vendor/autoload.php';
+require dirname( __DIR__ ) . '/vendor/autoload.php';
 
 /**
  * Begins execution of the theme.
@@ -41,4 +43,4 @@ require __DIR__ . '/vendor/autoload.php';
  *
  * @since 1.0.0
  */
-( new Core\Main() )->register();
+( new Theme() )->register();

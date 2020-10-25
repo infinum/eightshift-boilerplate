@@ -35,7 +35,7 @@ use Eightshift_Boilerplate\Media;
  *
  * @since 1.0.0
  */
-class Main extends Lib_Core {
+class Theme extends Lib_Core {
 
   /**
    * Get the list of services to register.
