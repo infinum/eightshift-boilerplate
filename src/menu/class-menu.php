@@ -23,7 +23,7 @@ class Menu extends Libs_Menu {
   /**
    * Return all menu poistions
    *
-   * @return array Menu positions with slug => name structure.
+   * @return array<string, string> Menu positions with slug => name structure.
    *
    * @since 1.0.0
    */

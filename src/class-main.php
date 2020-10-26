@@ -42,7 +42,7 @@ class Main extends Lib_Core {
    *
    * A list of classes which contain hooks.
    *
-   * @return array<string> Array of fully qualified class names.
+   * @return array<int, class-string>|array<class-string, array<int, class-string>> Array of fully qualified class names.
    *
    * @since 1.0.0
    */
