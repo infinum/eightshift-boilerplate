@@ -15,11 +15,17 @@ use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;
 <?php
 echo wp_kses_post(
 	Components::render(
-		'footer',
+		'layout-three-columns',
 		[
-			'leftComponent' => Components::render('copyright'),
-			'centerComponent' => '',
-			'rightComponent' => Components::render(
+			'layoutLeft' => Components::render(
+				'copyright',
+				[
+					'copyrightBy' => esc_html__('Eightshift', 'EightshiftBoilerplate'),
+					'copyrightYear' => gmdate('Y'),
+					'copyrightContent' => esc_html__('Made with 🧡  by Eightshift team', 'EightshiftBoilerplate'),
+				]
+			),
+			'layoutRight' => Components::render(
 				'menu',
 				[
 					'variation' => 'horizontal'
@@ -29,11 +35,7 @@ echo wp_kses_post(
 	)
 );
 
-echo \wp_kses_post(
-	Components::render('tracking-before-body-end')
-);
+wp_footer();
 ?>
-
-<?php wp_footer(); ?>
 </body>
 </html>

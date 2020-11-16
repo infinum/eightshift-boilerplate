@@ -15,16 +15,13 @@ use EightshiftBoilerplate\Manifest\Manifest;
 <head>
 	<?php
 	// Header Component.
-	echo \wp_kses_post(
+	\wp_kses_post(
 		Components::render(
 			'head',
 			[
-				'icon' => \apply_filters(Manifest::MANIFEST_ITEM, 'favicon.png'),
+				'icon' => \apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
 			]
 		)
-	);
-	echo \wp_kses_post(
-		Components::render('tracking-head')
 	);
 
 	\wp_head();
@@ -33,26 +30,30 @@ use EightshiftBoilerplate\Manifest\Manifest;
 <body <?php \body_class(); ?>>
 
 <?php
-
 // Header Component.
 echo \wp_kses_post(
 	Components::render(
-		'header',
+		'layout-three-columns',
 		[
-			'leftComponent' => Components::render('hamburger'),
-			'centerComponent' => Components::render(
+			'selectorClass' => 'header',
+			'layoutLeft' => Components::render(
 				'logo',
 				[
 					'parentClass' => 'header',
+					'logoSrc' => \apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
+					'logoAlt' => \get_bloginfo('name'),
+					'logoTitle' => \get_bloginfo('name'),
+					'logoHref' => \get_bloginfo('url'),
 				]
 			),
-			'rightComponent' => Components::render(
+			'layoutCenter' => Components::render(
 				'menu',
 				[
 					'variation' => 'horizontal',
 					'parentClass' => 'header',
 				]
 			),
+			'layoutRight' => Components::render('hamburger'),
 		]
 	)
 );
@@ -62,10 +63,10 @@ echo \wp_kses_post(
 	Components::render(
 		'drawer',
 		[
-			'trigger' => 'js-hamburger',
-			'overlay' => 'js-page-overlay',
+			'drawerTrigger' => 'js-hamburger',
+			'drawerOverlay' => 'js-page-overlay',
 			'drawerPosition' => 'left',
-			'menu' => Components::render(
+			'drawerMenu' => Components::render(
 				'menu',
 				[
 					'variation' => 'vertical',
@@ -77,10 +78,7 @@ echo \wp_kses_post(
 );
 
 // Page Overlay Component.
-echo \wp_kses_post(
-	Components::render('page-overlay')
-);
+echo \wp_kses_post(Components::render('page-overlay'));
 ?>
 
 <main class="main-content">
-
