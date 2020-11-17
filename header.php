@@ -6,7 +6,7 @@
  * @package EightshiftBoilerplate
  */
 
-use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;
+use TestVendor\EightshiftLibs\Helpers\Components;
 use EightshiftBoilerplate\Manifest\Manifest;
 
 ?>

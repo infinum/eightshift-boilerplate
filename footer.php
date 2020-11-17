@@ -6,7 +6,7 @@
  * @package EightshiftBoilerplate
  */
 
-use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;
+use TestVendor\EightshiftLibs\Helpers\Components;
 
 ?>
 
@@ -20,9 +20,9 @@ echo wp_kses_post(
 			'layoutLeft' => Components::render(
 				'copyright',
 				[
-					'copyrightBy' => esc_html__('Eightshift', 'EightshiftBoilerplate'),
+					'copyrightBy' => esc_html__('Eightshift', 'eightshift-boilerplate'),
 					'copyrightYear' => gmdate('Y'),
-					'copyrightContent' => esc_html__('Made with 🧡  by Eightshift team', 'EightshiftBoilerplate'),
+					'copyrightContent' => esc_html__('Made with 🧡  by Eightshift team', 'eightshift-boilerplate'),
 				]
 			),
 			'layoutRight' => Components::render(

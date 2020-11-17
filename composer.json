@@ -59,7 +59,7 @@
 	},
 	"extra": {
 		"imposter": {
-			"namespace": "EightshiftBoilerplateVendor"
+			"namespace": "TestVendor"
 		}
 	}
 }

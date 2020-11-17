@@ -12,7 +12,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 ### Changed
 - Switching from Classmap to PSR-4 naming.
 - example: `class-media.php` is now `Media.php`.
-- changed namespace `Eightshift_Libs` to `EightshiftBoilerplateVendor\EightshiftLibs`.
+- changed namespace `Eightshift_Libs` to `TestVendor\EightshiftLibs`.
 
 ## [4.3.0] - 2020-05-25
 
