@@ -11,7 +11,7 @@ module.exports = (env, argv) => {
 	const projectConfig = {
 		config: {
 			projectDir: __dirname, // Current project directory absolute path.
-			projectUrl: 'dev.eightshift-internal.com', // Used for providing browsersync functionality.
+			projectUrl: 'dev.boilerplate.com', // Used for providing browsersync functionality.
 			projectPath: 'wp-content/themes/eightshift-boilerplate', // Project path relative to project root.
 		},
 	};
