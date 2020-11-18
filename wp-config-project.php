@@ -9,7 +9,7 @@
  * @package EightshiftBoilerplate
  */
 
-if ( ! defined('EB_ENV')) {
+if (! defined('EB_ENV')) {
 	return false;
 }
 
@@ -36,7 +36,7 @@ define('WP_DEBUG', true);
 define('WP_DEBUG_LOG', true);
 
 // Helps preventing login fails.
-if ( ! defined('WP_CLI')) {
+if (! defined('WP_CLI')) {
 	define('COOKIE_DOMAIN', $_SERVER['HTTP_HOST']);
 }
 
