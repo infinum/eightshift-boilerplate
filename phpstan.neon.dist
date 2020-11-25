@@ -1,0 +1,13 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+    level: max
+    inferPrivatePropertyTypeFromConstructor: true
+    paths:
+        - src/
+    ignoreErrors:
+        # Block templates
+        - '#^Variable \$attributes might not be defined\.#'
+        - '#^Variable \$innerBlockContent might not be defined\.#'
+        - '#^Variable \$this might not be defined\.#'
+        - '#^Variable \$templatePath might not be defined\.#'
