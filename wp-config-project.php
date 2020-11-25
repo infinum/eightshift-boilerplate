@@ -35,11 +35,6 @@ define('AUTOMATIC_UPDATER_DISABLED', true);
 define('WP_DEBUG', true);
 define('WP_DEBUG_LOG', true);
 
-// Helps preventing login fails.
-if (! defined('WP_CLI')) {
-	define('COOKIE_DOMAIN', $_SERVER['HTTP_HOST']);
-}
-
 // Environment based setup.
 if (EB_ENV === 'develop') {
 	// Enable direct upload from admin.
