@@ -27,7 +27,7 @@
 	"require-dev": {
 		"infinum/coding-standards-wp": "^1.0.1",
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-		"szepeviktor/phpstan-wordpress": "^0.6"
+		"szepeviktor/phpstan-wordpress": "^0.7"
 	},
 	"repositories": [
 		{
@@ -36,7 +36,7 @@
 		}
 	],
 	"require": {
-		"php": ">=7.2",
+		"php": "^7.2",
 		"infinum/eightshift-libs": "dev-release/3.0.0",
 		"typisttech/imposter-plugin": "^0.6.0"
 	},
