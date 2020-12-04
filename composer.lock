@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4f1cd47f686012b7833781b425e15ac",
+    "content-hash": "3efb33d54bd37aa5978eb35cf21820d9",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "dev-release/5.0.0",
+            "version": "dev-release/3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "57498081cb1fa8c3021d2aa943ac51d2b6801ade"
+                "reference": "e56d7dcf2dcd77c74d24b3c739ba98f2701b23c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/57498081cb1fa8c3021d2aa943ac51d2b6801ade",
-                "reference": "57498081cb1fa8c3021d2aa943ac51d2b6801ade",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/e56d7dcf2dcd77c74d24b3c739ba98f2701b23c5",
+                "reference": "e56d7dcf2dcd77c74d24b3c739ba98f2701b23c5",
                 "shasum": ""
             },
             "require": {
@@ -29,7 +29,15 @@
                 "php-di/php-di": "^6.3.0"
             },
             "require-dev": {
+                "brain/monkey": "^2.5",
                 "codeception/codeception": "^4.1",
+                "codeception/module-asserts": "^1.0",
+                "codeception/module-cli": "^1.0",
+                "codeception/module-db": "^1.0",
+                "codeception/module-filesystem": "^1.0",
+                "codeception/module-phpbrowser": "^1.0",
+                "codeception/module-webdriver": "^1.0",
+                "codeception/util-universalframework": "^1.0",
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
                 "infinum/coding-standards-wp": "^1.0.1",
                 "roave/security-advisories": "dev-master",
@@ -43,6 +51,11 @@
                     "EightshiftBoilerplate\\": "src/"
                 }
             },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
+                }
+            },
             "scripts": {
                 "analyze": [
                     "@php ./vendor/bin/phpstan analyze"
@@ -52,6 +65,12 @@
                 ],
                 "standards:fix": [
                     "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+                ],
+                "tests:unit": [
+                    "@php ./vendor/bin/codecept run unit"
+                ],
+                "tests:integration": [
+                    "@php ./vendor/bin/codecept run integration"
                 ]
             },
             "license": [
@@ -79,7 +98,7 @@
                 "issues": "https://github.com/infinum/eightshift-libs/issues",
                 "source": "https://github.com/infinum/eightshift-libs"
             },
-            "time": "2020-11-21T17:56:42+00:00"
+            "time": "2020-12-04T07:08:54+00:00"
         },
         {
             "name": "opis/closure",
@@ -411,36 +430,36 @@
         },
         {
             "name": "typisttech/imposter-plugin",
-            "version": "0.6.0",
+            "version": "0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TypistTech/imposter-plugin.git",
-                "reference": "8dc39d4d22f0a8a09ecc4d198402f07591d57ae3"
+                "reference": "34c3ea9fe74919abdfb77456cec0feba79b6b1fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TypistTech/imposter-plugin/zipball/8dc39d4d22f0a8a09ecc4d198402f07591d57ae3",
-                "reference": "8dc39d4d22f0a8a09ecc4d198402f07591d57ae3",
+                "url": "https://api.github.com/repos/TypistTech/imposter-plugin/zipball/34c3ea9fe74919abdfb77456cec0feba79b6b1fd",
+                "reference": "34c3ea9fe74919abdfb77456cec0feba79b6b1fd",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.1",
-                "php": "^7.2",
+                "composer-plugin-api": "^1.1 || ^2.0",
+                "php": "^7.3",
                 "typisttech/imposter": "^0.5.0"
             },
             "require-dev": {
                 "codeception/codeception": "^4.1",
-                "codeception/module-asserts": "^1.1",
-                "codeception/module-cli": "^1.0",
+                "codeception/module-asserts": "^1.3",
+                "codeception/module-cli": "^1.1",
                 "codeception/module-filesystem": "^1.0",
-                "composer/composer": "^1.9",
+                "composer/composer": "^1.10.16 || ^2.0",
                 "squizlabs/php_codesniffer": "^3.5",
                 "typisttech/codeception-composer-project-module": "^0.1.1"
             },
             "type": "composer-plugin",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.5.x-dev"
+                    "dev-master": "0.6.x-dev"
                 },
                 "class": "TypistTech\\Imposter\\Plugin\\ImposterPlugin"
             },
@@ -466,7 +485,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Composer plugin that wraps all composer vendor packages inside your own namespace. Intended for WordPress plugins",
+            "description": "Composer plugin that wraps all composer vendor packages inside your own namespace. Intended for WordPress plugins.",
             "homepage": "https://www.typist.tech/projects/imposter-plugin",
             "keywords": [
                 "composer",
@@ -476,7 +495,21 @@
                 "namespace",
                 "wordpress"
             ],
-            "time": "2020-04-15T20:23:11+00:00"
+            "funding": [
+                {
+                    "url": "https://typist.tech/donation/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.paypal.me/iAmTangRufus/30usd",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tangrufus",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-26T22:05:01+00:00"
         }
     ],
     "packages-dev": [
@@ -548,21 +581,21 @@
         },
         {
             "name": "infinum/coding-standards-wp",
-            "version": "1.0.1",
+            "version": "1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/infinum/coding-standards-wp.git",
-                "reference": "d28c17561b2956ac65169dd452d84ede30ea1b3c"
+                "url": "https://github.com/infinum/eightshift-coding-standards.git",
+                "reference": "e28ea7d4f4493c5a775cf4f4413e469626544e11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/coding-standards-wp/zipball/d28c17561b2956ac65169dd452d84ede30ea1b3c",
-                "reference": "d28c17561b2956ac65169dd452d84ede30ea1b3c",
+                "url": "https://api.github.com/repos/infinum/eightshift-coding-standards/zipball/e28ea7d4f4493c5a775cf4f4413e469626544e11",
+                "reference": "e28ea7d4f4493c5a775cf4f4413e469626544e11",
                 "shasum": ""
             },
             "require": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-                "php": ">=7.2",
+                "php": "^7.2",
                 "phpcompatibility/phpcompatibility-wp": "^2.1",
                 "wp-coding-standards/wpcs": "^2.3.0"
             },
@@ -585,19 +618,19 @@
                 },
                 {
                     "name": "Contributors",
-                    "homepage": "https://github.com/infinum/coding-standards-wp/graphs/contributors"
+                    "homepage": "https://github.com/infinum/eightshift-coding-standards/graphs/contributors"
                 }
             ],
-            "description": "Infinum WordPress Coding Standards",
-            "homepage": "https://github.com/infinum/coding-standards-wp",
+            "description": "Eightshift WordPress Coding Standards",
+            "homepage": "https://github.com/infinum/eightshift-coding-standards",
             "keywords": [
                 "Eightshift",
-                "Infinum",
                 "phpcs",
                 "standards",
                 "wordpress"
             ],
-            "time": "2020-09-24T17:00:37+00:00"
+            "abandoned": "infinum/eightshift-coding-standards",
+            "time": "2020-11-30T09:24:02+00:00"
         },
         {
             "name": "php-stubs/wordpress-stubs",
@@ -801,16 +834,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.57",
+            "version": "0.12.58",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "f9909d1d0c44b4cbaf72babcf80e8f14d6fdd55b"
+                "reference": "2a4847df6047b30af28854ed9dc95304cdb56ae5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f9909d1d0c44b4cbaf72babcf80e8f14d6fdd55b",
-                "reference": "f9909d1d0c44b4cbaf72babcf80e8f14d6fdd55b",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/2a4847df6047b30af28854ed9dc95304cdb56ae5",
+                "reference": "2a4847df6047b30af28854ed9dc95304cdb56ae5",
                 "shasum": ""
             },
             "require": {
@@ -853,7 +886,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-21T12:53:28+00:00"
+            "time": "2020-11-29T13:32:03+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",

@@ -37,7 +37,7 @@
 	],
 	"require": {
 		"php": ">=7.2",
-		"infinum/eightshift-libs": "dev-release/5.0.0",
+		"infinum/eightshift-libs": "dev-release/3.0.0",
 		"typisttech/imposter-plugin": "^0.6.0"
 	},
 	"autoload": {
