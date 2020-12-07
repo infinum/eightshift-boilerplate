@@ -24,7 +24,7 @@
 		"__stylelintTheme": "stylelint src/**/*.scss",
 		"lintStyle": "npm run __stylelintTheme",
 		"lintJs": "npm run __eslintTheme",
-		"lint": "npm run lintJs && npm run lintStyle && wp boilerplate run_lint_php",
+		"lint": "npm run lintJs && npm run lintStyle && bash ./vendor/infinum/eightshift-libs/src/LintPhp/lintPhp.sh",
 		"start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
 		"build": "webpack --progress --mode production",
 		"storybookBuild": "build-storybook -s public -o storybook",
