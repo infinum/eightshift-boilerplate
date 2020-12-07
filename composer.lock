@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3efb33d54bd37aa5978eb35cf21820d9",
+    "content-hash": "bbef99c3dbaa5c4962be4fac0384f73f",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "e56d7dcf2dcd77c74d24b3c739ba98f2701b23c5"
+                "reference": "89e32a0b229112f767cab5c4a55e84f29f746d31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/e56d7dcf2dcd77c74d24b3c739ba98f2701b23c5",
-                "reference": "e56d7dcf2dcd77c74d24b3c739ba98f2701b23c5",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/89e32a0b229112f767cab5c4a55e84f29f746d31",
+                "reference": "89e32a0b229112f767cab5c4a55e84f29f746d31",
                 "shasum": ""
             },
             "require": {
@@ -98,7 +98,7 @@
                 "issues": "https://github.com/infinum/eightshift-libs/issues",
                 "source": "https://github.com/infinum/eightshift-libs"
             },
-            "time": "2020-12-04T07:08:54+00:00"
+            "time": "2020-12-05T09:48:32+00:00"
         },
         {
             "name": "opis/closure",
@@ -272,6 +272,16 @@
                 "ioc",
                 "psr11"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/mnapoli",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/php-di/php-di",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-10-12T14:39:15+00:00"
         },
         {
@@ -363,26 +373,26 @@
         },
         {
             "name": "typisttech/imposter",
-            "version": "0.5.0",
+            "version": "0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TypistTech/imposter.git",
-                "reference": "d124d428c967551be815fb4602c73025da2b2893"
+                "reference": "f52b1a2289d2ea9c660cf9595085d0b11469af83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TypistTech/imposter/zipball/d124d428c967551be815fb4602c73025da2b2893",
-                "reference": "d124d428c967551be815fb4602c73025da2b2893",
+                "url": "https://api.github.com/repos/TypistTech/imposter/zipball/f52b1a2289d2ea9c660cf9595085d0b11469af83",
+                "reference": "f52b1a2289d2ea9c660cf9595085d0b11469af83",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": "^7.2"
+                "php": "^7.3 || ^8.0"
             },
             "require-dev": {
                 "codeception/codeception": "^4.1",
                 "codeception/mockery-module": "^0.4.0",
-                "codeception/module-asserts": "^1.1",
+                "codeception/module-asserts": "^1.3",
                 "codeception/module-filesystem": "^1.0",
                 "squizlabs/php_codesniffer": "^3.5"
             },
@@ -392,7 +402,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.4.x-dev"
+                    "dev-master": "0.6.x-dev"
                 }
             },
             "autoload": {
@@ -417,8 +427,8 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Wrapping all composer vendor packages inside your own namespace. Intended for WordPress plugins",
-            "homepage": "https://typist.tech/projects/imposter",
+            "description": "Wrapping all composer vendor packages inside your own namespace. Intended for WordPress plugins.",
+            "homepage": "https://github.com/TypistTech/imposter",
             "keywords": [
                 "composer",
                 "dependency",
@@ -426,33 +436,47 @@
                 "namespace",
                 "wordpress"
             ],
-            "time": "2020-04-15T19:55:54+00:00"
+            "funding": [
+                {
+                    "url": "https://typist.tech/donation/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.paypal.me/iAmTangRufus/30usd",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tangrufus",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-12-06T22:57:09+00:00"
         },
         {
             "name": "typisttech/imposter-plugin",
-            "version": "0.6.1",
+            "version": "0.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TypistTech/imposter-plugin.git",
-                "reference": "34c3ea9fe74919abdfb77456cec0feba79b6b1fd"
+                "reference": "15fa3c90aca3b79497f438b9e02a6176498de53c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TypistTech/imposter-plugin/zipball/34c3ea9fe74919abdfb77456cec0feba79b6b1fd",
-                "reference": "34c3ea9fe74919abdfb77456cec0feba79b6b1fd",
+                "url": "https://api.github.com/repos/TypistTech/imposter-plugin/zipball/15fa3c90aca3b79497f438b9e02a6176498de53c",
+                "reference": "15fa3c90aca3b79497f438b9e02a6176498de53c",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0",
-                "php": "^7.3",
-                "typisttech/imposter": "^0.5.0"
+                "php": "^7.3 || ^8.0",
+                "typisttech/imposter": "^0.6.1"
             },
             "require-dev": {
                 "codeception/codeception": "^4.1",
                 "codeception/module-asserts": "^1.3",
                 "codeception/module-cli": "^1.1",
                 "codeception/module-filesystem": "^1.0",
-                "composer/composer": "^1.10.16 || ^2.0",
+                "composer/composer": "^1.10.19 || ^2.0",
                 "squizlabs/php_codesniffer": "^3.5",
                 "typisttech/codeception-composer-project-module": "^0.1.1"
             },
@@ -486,7 +510,7 @@
                 }
             ],
             "description": "Composer plugin that wraps all composer vendor packages inside your own namespace. Intended for WordPress plugins.",
-            "homepage": "https://www.typist.tech/projects/imposter-plugin",
+            "homepage": "https://github.com/TypistTech/imposter-plugin",
             "keywords": [
                 "composer",
                 "composer-plugin",
@@ -509,7 +533,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-26T22:05:01+00:00"
+            "time": "2020-12-06T23:41:30+00:00"
         }
     ],
     "packages-dev": [
@@ -999,24 +1023,38 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-10-23T14:02:19+00:00"
         },
         {
             "name": "szepeviktor/phpstan-wordpress",
-            "version": "v0.6.6",
+            "version": "v0.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/szepeviktor/phpstan-wordpress.git",
-                "reference": "f5040549dc5f46d81ea2432de726c2a0a4ad1141"
+                "reference": "6195a6a19830d5ad187df0a3fb350e77cd571a5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/szepeviktor/phpstan-wordpress/zipball/f5040549dc5f46d81ea2432de726c2a0a4ad1141",
-                "reference": "f5040549dc5f46d81ea2432de726c2a0a4ad1141",
+                "url": "https://api.github.com/repos/szepeviktor/phpstan-wordpress/zipball/6195a6a19830d5ad187df0a3fb350e77cd571a5f",
+                "reference": "6195a6a19830d5ad187df0a3fb350e77cd571a5f",
                 "shasum": ""
             },
             "require": {
-                "php": "~7.1",
+                "php": "^7.1 || ^8.0",
                 "php-stubs/wordpress-stubs": "^4.7 || ^5.0",
                 "phpstan/phpstan": "^0.12.26",
                 "symfony/polyfill-php73": "^1.12.0"
@@ -1053,7 +1091,13 @@
                 "static analysis",
                 "wordpress"
             ],
-            "time": "2020-10-18T12:11:45+00:00"
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/szepeviktor",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-11-05T00:12:19+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
@@ -1110,7 +1154,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2"
+        "php": "^7.2"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
