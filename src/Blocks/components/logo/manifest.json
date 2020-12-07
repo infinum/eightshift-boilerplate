@@ -1,0 +1,32 @@
+{
+	"componentName": "logo",
+	"title": "Logo",
+	"componentClass": "logo",
+	"example": {
+		"attributes": {
+			"logoSrc": "https://infinum.github.io/eightshift-docs/img/eightshift-dev-kit-logo.svg",
+			"logoAlt": "Eightshift Development Kit",
+			"logoTitle": "Eightshift Development Kit",
+			"logoHref": "https://infinum.github.io/eightshift-docs/",
+			"logoUse": true
+		}
+	},
+	"attributes": {
+		"logoSrc": {
+			"type": "string"
+		},
+		"logoAlt": {
+			"type": "string"
+		},
+		"logoTitle": {
+			"type": "string"
+		},
+		"logoHref": {
+			"type": "string"
+		},
+		"logoUse": {
+			"type": "boolean",
+			"default": true
+		}
+	}
+}

@@ -1,0 +1,111 @@
+$wrapper: (
+	background-colors: global-settings(colors),
+	spacing: global-settings(sectionSpacing),
+	spacing-in: global-settings(sectionInSpacing),
+	containers: global-settings(containers),
+	gutter: global-settings(gutters),
+	divider-color: global-settings(colors, black),
+	anchor-position: 0,
+);
+
+.wrapper {
+	$this: &;
+
+	&__anchor {
+		margin-top: -(map-get($wrapper, anchor-position));
+		height: 1px;
+		opacity: 0;
+		position: absolute;
+		z-index: -1;
+	}
+
+	&__bg-color {
+		@include modifiers-deep($wrapper, background-colors, background-color);
+	}
+
+	&__spacing-top {
+		@include responsive-selectors {
+			@include modifiers-range($wrapper, spacing, margin-top);
+		}
+	}
+
+	&__spacing-bottom {
+		@include responsive-selectors {
+			@include modifiers-range($wrapper, spacing, margin-bottom);
+		}
+	}
+
+	&__spacing-top-in {
+		@include responsive-selectors {
+			@include modifiers-range($wrapper, spacing-in, padding-top);
+		}
+	}
+
+	&__spacing-bottom-in {
+		@include responsive-selectors {
+			@include modifiers-range($wrapper, spacing-in, padding-bottom);
+		}
+	}
+
+	&__hide {
+		@include responsive-visibility-selectors {
+			display: none;
+		}
+	}
+
+	&__hide-editor {
+		@include responsive-visibility-selectors {
+			opacity: 0.5;
+		}
+	}
+
+	&__divider-top {
+		@include responsive-selectors {
+			border-top: 1px solid map-get-strict($wrapper, divider-color);
+		}
+	}
+
+	&__divider-bottom {
+		@include responsive-selectors {
+			border-bottom: 1px solid map-get-strict($wrapper, divider-color);
+		}
+	}
+
+	// Container Div.
+	&__container {
+		margin: 0 auto;
+		width: 100%;
+		display: flex;
+	}
+
+	&__container-width {
+		@include responsive-selectors {
+			@include modifiers-deep($wrapper, containers, max-width);
+		}
+	}
+
+	&__gutter {
+		@include responsive-selectors {
+			@include modifiers-deep($wrapper, gutter, padding-left);
+			@include modifiers-deep($wrapper, gutter, padding-right);
+		}
+	}
+
+	// Inner Container Div.
+	&__inner {
+		@include flex-grid-width;
+	}
+
+	&__width {
+		@include responsive-selectors {
+			@include flex-grid-width-modifiers;
+		}
+	}
+
+	// Content Offset.
+	&__offset {
+		@include responsive-selectors {
+			@include grid-offset-modifiers;
+		}
+	}
+}

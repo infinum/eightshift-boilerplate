@@ -1,0 +1,17 @@
+{
+	"blockName": "card",
+	"title": "Card",
+	"description" : "Card with custom settings.",
+	"category": "eightshift",
+	"icon": {
+		"src": "buddicons-buddypress-logo"
+	},
+	"keywords": [
+		"Service",
+		"Box",
+		"Card"
+	],
+	"components": {
+		"card": "card"
+	}
+}

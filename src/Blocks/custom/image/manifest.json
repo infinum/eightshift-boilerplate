@@ -1,0 +1,17 @@
+{
+	"blockName": "image",
+	"title": "Image",
+	"description" : "Image block with custom settings.",
+	"category": "eightshift",
+	"icon": {
+		"src": "format-image"
+	},
+	"keywords": [
+		"image",
+		"picture",
+		"img"
+	],
+	"components": {
+		"image": "image"
+	}
+}

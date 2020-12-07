@@ -1,0 +1,94 @@
+{
+	"componentName": "button",
+	"title": "Button",
+	"componentClass": "btn",
+	"example": {
+		"attributes": {
+			"buttonContent": "This is button",
+			"buttonUrl": "https://infinum.github.io/eightshift-docs/",
+			"buttonId": "custom ID",
+			"buttonSize": "default",
+			"buttonColor": "primary",
+			"buttonWidth": "default",
+			"buttonAlign": "left",
+			"buttonIsAnchor": false,
+			"buttonUse": true
+		}
+	},
+	"attributes": {
+		"buttonContent": {
+			"type": "string"
+		},
+		"buttonUrl": {
+			"type": "string"
+		},
+		"buttonId": {
+			"type": "string"
+		},
+		"buttonSize": {
+			"type": "string",
+			"default": "default"
+		},
+		"buttonColor": {
+			"type": "string",
+			"default": "primary"
+		},
+		"buttonWidth": {
+			"type": "string",
+			"default": "default"
+		},
+		"buttonAlign": {
+			"type": "string",
+			"default": "left"
+		},
+		"buttonIsAnchor": {
+			"type": "boolean",
+			"default": false
+		},
+		"buttonIsNewTab": {
+			"type": "boolean",
+			"default": false
+		},
+		"buttonAttrs": {
+			"type": "array"
+		},
+		"buttonAriaLabel": {
+			"type": "string"
+		},
+		"buttonUse": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"options": {
+		"sizes": [
+			{
+				"label": "Default",
+				"value": "default"
+			},
+			{
+				"label": "Big",
+				"value": "big"
+			}
+		],
+		"widths": [
+			{
+				"label": "Default",
+				"value": "default"
+			},
+			{
+				"label": "Block",
+				"value": "block"
+			}
+		],
+		"aligns": [
+			"left",
+			"center",
+			"right"
+		],
+		"colors": [
+			"primary",
+			"black"
+		]
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"blockName": "paragraph",
+	"title": "Paragraph",
+	"description" : "Paragraph block with custom settings.",
+	"category": "eightshift",
+	"icon": {
+		"src": "editor-rtl"
+	},
+	"keywords": [
+		"paragraph",
+		"text",
+		"content"
+	],
+	"components": {
+		"paragraph": "paragraph"
+	}
+}

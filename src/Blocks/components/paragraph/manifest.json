@@ -1,0 +1,56 @@
+{
+	"componentName": "paragraph",
+	"title": "Paragraph",
+	"componentClass": "paragraph",
+	"example": {
+		"attributes": {
+			"paragraphContent": "This is paragraph",
+			"paragraphSize": "default",
+			"paragraphColor": "black",
+			"paragraphAlign": "left",
+			"paragraphUse": true
+		}
+	},
+	"attributes": {
+		"paragraphContent": {
+			"type": "string"
+		},
+		"paragraphSize": {
+			"type": "string",
+			"default": "default"
+		},
+		"paragraphColor": {
+			"type": "string",
+			"default": "black"
+		},
+		"paragraphAlign": {
+			"type": "string",
+			"default": "left"
+		},
+		"paragraphUse": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"options": {
+		"sizes": [
+			{
+				"label": "Default (22px)",
+				"value": "default"
+			},
+			{
+				"label": "Small (18px)",
+				"value": "small"
+			}
+		],
+		"aligns": [
+			"left",
+			"center",
+			"right"
+		],
+		"colors": [
+			"primary",
+			"black"
+		]
+	}
+}

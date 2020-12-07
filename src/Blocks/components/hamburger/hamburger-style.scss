@@ -1,0 +1,76 @@
+/* stylelint-disable max-nesting-depth */
+
+$hamburger: (
+	colors: (
+		line: $base-text-color,
+	),
+	width: 24px,          // Width of lines / hamburger
+	line-height: 2px,     // Height of each line
+	padding: 8px,         // Padding around hamburger (more padding = easier to click)
+	line-spacing: 8px,    // Space between hamburger lines
+	wrapper-height: 16px, // Height the entire wrapper
+);
+
+.hamburger {
+	@extend %button-reset;
+	$this: &;
+	background: transparent;
+	height: 100%;
+	padding: map-get-strict($hamburger, padding);
+	margin: 0 -#{map-get-strict($hamburger, padding)};
+	cursor: pointer;
+
+	@include media(desktop up) {
+		display: none;
+	}
+
+	&__wrap {
+		position: relative;
+		display: block;
+		width: map-get-strict($hamburger, width);
+		height: map-get-strict($hamburger, wrapper-height);
+	}
+
+	&__line {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: map-get-strict($hamburger, line-height);
+		background: map-get-deep($hamburger, colors, line);
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		transition: 0.3s transform ease-out;
+
+		&--1 {
+			transform: translateY(-#{map-get-strict($hamburger, line-spacing)});
+		}
+
+		&--2 {
+			transition: 0.3s opacity ease-out;
+			opacity: 1;
+		}
+
+		&--3 {
+			transform: translateY(map-get-strict($hamburger, line-spacing));
+		}
+	}
+}
+
+body.menu-is-open {
+	.hamburger {
+		&__line {
+			&--1 {
+				transform: rotate(-45deg) translateY(0);
+			}
+
+			&--2 {
+				opacity: 0;
+			}
+
+			&--3 {
+				transform: rotate(45deg) translateY(0);
+			}
+		}
+	}
+}

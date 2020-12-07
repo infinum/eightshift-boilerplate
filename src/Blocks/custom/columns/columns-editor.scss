@@ -1,0 +1,13 @@
+// stylelint-disable declaration-no-important, selector-max-specificity
+
+@import './styles/shared';
+
+body .#{global-settings(customBlocksName)}.block-columns {
+	display: block;
+
+	> .block-editor-inner-blocks > .block-editor-block-list__layout {
+		@include columns-parent;
+	}
+
+	@include columns;
+}

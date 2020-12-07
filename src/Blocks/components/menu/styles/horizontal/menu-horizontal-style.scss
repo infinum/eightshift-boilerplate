@@ -1,0 +1,31 @@
+$menu-horizontal: (
+	link-padding: 0 15px,
+	link-modifiers: (
+		normal: (
+			color: global-settings(colors, black),
+		),
+		hover: (
+			color: global-settings(colors, primary),
+		)
+	),
+);
+
+.menu-horizontal {
+	@extend %list-reset;
+	$this: &;
+	height: 100%;
+	display: flex;
+	align-items: center;
+
+	&__link {
+		text-decoration: none;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: map-get-strict($menu-horizontal, link-padding);
+		transition: 0.3s color ease-in-out;
+
+		@include link($menu-horizontal, link-modifiers);
+	}
+}

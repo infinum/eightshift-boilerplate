@@ -1,0 +1,17 @@
+{
+	"blockName": "heading",
+	"title": "Heading",
+	"description" : "Heading block with custom settings.",
+	"category": "eightshift",
+	"icon": {
+		"src": "editor-textcolor"
+	},
+	"keywords": [
+		"heading",
+		"title",
+		"label"
+	],
+	"components": {
+		"heading": "heading"
+	}
+}

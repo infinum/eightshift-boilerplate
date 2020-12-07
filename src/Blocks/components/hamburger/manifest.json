@@ -1,0 +1,16 @@
+{
+	"componentName": "hamburger",
+	"title": "Hamburger",
+	"componentClass": "hamburger",
+	"example": {
+		"attributes": {
+			"hamburgerUse": true
+		}
+	},
+	"attributes": {
+		"hamburgerUse": {
+			"type": "boolean",
+			"default": true
+		}
+	}
+}

@@ -1,0 +1,75 @@
+$header: (
+	height: $base-header-height,
+	site-padding: global-settings(gutters, default),
+	site-container: global-settings(containers, default),
+	colors: (
+		background: global-settings(colors, white),
+	),
+	z-index: map-get-strict($zindex, header),
+);
+
+.header {
+	$this: &;
+	padding: 0 map-get-strict($header, site-padding);
+	top: 0;
+	background: map-get-deep($header, colors, background);
+	height: map-get-strict($header, height);
+	width: 100%;
+	position: relative;
+	z-index: map-get-strict($header, z-index);
+
+	&--fixed {
+		position: fixed;
+	}
+
+	&__wrap {
+		max-width: map-get-strict($header, site-container);
+		margin: 0 auto;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__column {
+		display: flex;
+		flex: 1 0 1px;
+		position: relative;
+
+		&--left {
+			justify-content: left;
+		}
+
+		&--center {
+			text-align: center;
+			justify-content: center;
+		}
+
+		&--right {
+			text-align: right;
+			justify-content: flex-end;
+		}
+	}
+
+	&__logo {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		@include media(desktop up) {
+			justify-content: flex-start;
+		}
+	}
+
+	&__menu {
+		height: 100%;
+		display: none;
+
+		@include media(desktop up) {
+			display: flex;
+			justify-content: flex-end;
+		}
+	}
+}

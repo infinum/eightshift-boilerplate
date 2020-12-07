@@ -1,0 +1,28 @@
+{
+	"componentName": "copyright",
+	"title": "Copyright",
+	"componentClass": "copyright",
+	"example": {
+		"attributes": {
+			"copyrightBy": "Eightshift",
+			"copyrightYear": "2020",
+			"copyrightContent": "Made with 🧡  by Eightshift team",
+			"copyrightUse": true
+		}
+	},
+	"attributes": {
+		"copyrightBy": {
+			"type": "string"
+		},
+		"copyrightYear": {
+			"type": "string"
+		},
+		"copyrightContent": {
+			"type": "string"
+		},
+		"copyrightUse": {
+			"type": "boolean",
+			"default": true
+		}
+	}
+}

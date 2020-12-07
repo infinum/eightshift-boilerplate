@@ -1,0 +1,17 @@
+{
+	"blockName": "link",
+	"title": "Link",
+	"description" : "Link block with custom settings.",
+	"category": "eightshift",
+	"icon": {
+		"src": "editor-removeformatting"
+	},
+	"keywords": [
+		"link",
+		"btn",
+		"link"
+	],
+	"components": {
+		"link": "link"
+	}
+}

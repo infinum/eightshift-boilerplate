@@ -1,0 +1,108 @@
+{
+	"blockName": "column",
+	"title": "Column",
+	"description" : "Column block with custom settings.",
+	"category": "eightshift",
+	"icon": {
+		"src": "<svg width=\"24\" height=\"24\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"><path d=\"M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16zm0-11.47L17.74 9 12 13.47 6.26 9 12 4.53z\"/></svg>"
+	},
+	"keywords": [
+		"column"
+	],
+	"parent": [
+		"eightshift-boilerplate/columns"
+	],
+	"example": {
+		"attributes": {
+			"wrapperDisable": true,
+			"widthLarge": 4
+		},
+		"innerBlocks": [
+			{
+				"name": "eightshift-boilerplate/card",
+				"attributes": {
+					"imageUrl": "https://picsum.photos/400/400",
+					"headingContent": "Lorem ipsum dolor sit amet",
+					"paragraphContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam aliquam est id semper aliquet. Aenean accumsan lacus justo, a lacinia turpis semper condimentum."
+				}
+			}
+		]
+	},
+	"hasInnerBlocks": true,
+	"attributes": {
+		"wrapperDisable": {
+			"type": "boolean",
+			"default": true
+		},
+		"widthLarge": {
+			"type": "int",
+			"default": 4
+		},
+		"widthDesktop": {
+			"type": "int"
+		},
+		"widthTablet": {
+			"type": "int"
+		},
+		"widthMobile": {
+			"type": "int"
+		},
+
+		"offsetLarge": {
+			"type": "int"
+		},
+		"offsetDesktop": {
+			"type": "int"
+		},
+		"offsetTablet": {
+			"type": "int"
+		},
+		"offsetMobile": {
+			"type": "int"
+		},
+
+		"hideLarge": {
+			"type": "boolean"
+		},
+		"hideDesktop": {
+			"type": "boolean"
+		},
+		"hideTablet": {
+			"type": "boolean"
+		},
+		"hideMobile": {
+			"type": "boolean"
+		},
+
+		"orderLarge": {
+			"type": "int"
+		},
+		"orderDesktop": {
+			"type": "int"
+		},
+		"orderTablet": {
+			"type": "int"
+		},
+		"orderMobile": {
+			"type": "int"
+		}
+	},
+	"options": {
+		"breakpoints": [
+			"large",
+			"desktop",
+			"tablet",
+			"mobile"
+		],
+		"widths": {
+			"min":  1,
+			"max":  12,
+			"step": 1
+		},
+		"orders": {
+			"min":  1,
+			"max":  20,
+			"step": 1
+		}
+	}
+}

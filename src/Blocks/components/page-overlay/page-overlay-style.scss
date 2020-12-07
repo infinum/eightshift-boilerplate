@@ -1,0 +1,26 @@
+$page-overlay: (
+	colors: (
+		background: global-settings(colors, black),
+	),
+	z-index: map-get-strict($zindex, overlay),
+);
+
+.page-overlay {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: map-get-deep($page-overlay, colors, background);
+	z-index: map-get-strict($page-overlay, z-index);
+	opacity: 0;
+	pointer-events: none;
+
+	transition: 0.3s opacity ease-out;
+}
+
+body.page-overlay-shown {
+	.page-overlay {
+		opacity: 0.5;
+		pointer-events: auto;
+	}
+}

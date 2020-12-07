@@ -1,0 +1,16 @@
+{
+	"componentName": "page-overlay",
+	"title": "Page Overlay",
+	"componentClass": "page-overlay",
+	"example": {
+		"attributes": {
+			"pageOverlayUse": true
+		}
+	},
+	"attributes": {
+		"pageOverlayUse": {
+			"type": "boolean",
+			"default": true
+		}
+	}
+}

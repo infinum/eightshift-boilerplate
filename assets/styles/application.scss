@@ -1,0 +1,16 @@
+/**
+ * This is the main entry point for project style used for the `WordPress frontend screen`.
+ *
+ * Usage: `WordPress frontend screen`.
+ *
+ */
+
+// Vendors - node modules
+@import 'normalize-scss';
+@include normalize(); // stylelint-disable-line at-rule-empty-line-before
+
+// Globals.
+@import './parts/shared';
+
+// Config.
+@import './parts/core';

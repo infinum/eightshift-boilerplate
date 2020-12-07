@@ -1,0 +1,33 @@
+{
+	"componentName": "drawer",
+	"title": "Drawer",
+	"componentClass": "drawer",
+	"example": {
+		"attributes": {
+			"drawerPosition": "left",
+			"drawerMenu": "Menu component",
+			"drawerTrigger": "",
+			"drawerOverlay": "",
+			"drawerUse": true
+		}
+	},
+	"attributes": {
+		"drawerPosition": {
+			"type": "string",
+			"default": "left"
+		},
+		"drawerMenu": {
+			"type": "string"
+		},
+		"drawerTrigger": {
+			"type": "string"
+		},
+		"drawerOverlay": {
+			"type": "string"
+		},
+		"drawerUse": {
+			"type": "boolean",
+			"default": true
+		}
+	}
+}

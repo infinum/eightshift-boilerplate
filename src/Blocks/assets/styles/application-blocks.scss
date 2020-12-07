@@ -1,0 +1,21 @@
+/**
+ * This is the main entry point for Block Editor blocks styles used for the `WordPress frontend screen` and `WordPress admin editor`.
+ * File names must follow naming convention to be able to run dynamically.
+ *
+ * `src/blocks/custom/block_name/block_name-style.scss`.
+ *
+ * Usage: `WordPress frontend screen` and `WordPress admin editor`.
+ *
+ */
+
+// Globals.
+@import './../../../../assets/styles/parts/shared';
+
+// Register Wrapper block styles.
+@import './../../wrapper/wrapper-style.scss';
+
+// Find all components and require component_name-style.scss inside it.
+@import './../../components/*/*-style.scss';
+
+// Find all blocks and require block_name-style.scss inside it.
+@import './../../custom/*/*-style.scss';

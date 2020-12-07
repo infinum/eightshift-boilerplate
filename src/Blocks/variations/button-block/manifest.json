@@ -1,0 +1,21 @@
+{
+	"parentName": "button",
+	"name": "button-full-width",
+	"title": "Button Full Width",
+	"description" : "Button Block Variation for full width style.",
+	"icon": {
+		"src": "editor-removeformatting"
+	},
+	"example": {
+		"attributes": {
+			"buttonWidth": "block",
+			"buttonContent": "Button variation"
+		}
+	},
+	"attributes": {
+		"buttonWidth": "block"
+	},
+	"scope": [
+		"inserter"
+	]
+}

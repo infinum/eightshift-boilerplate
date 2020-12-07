@@ -1,0 +1,6 @@
+@import './styles/shared';
+
+.block-columns {
+	@include columns-parent;
+	@include columns;
+}

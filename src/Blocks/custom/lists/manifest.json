@@ -1,0 +1,17 @@
+{
+	"blockName": "lists",
+	"title": "Lists",
+	"description" : "lists block with custom settings.",
+	"category": "eightshift",
+	"icon": {
+		"src": "editor-removeformatting"
+	},
+	"keywords": [
+		"lists",
+		"btn",
+		"lists"
+	],
+	"components": {
+		"lists": "lists"
+	}
+}

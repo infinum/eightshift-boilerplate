@@ -1,0 +1,61 @@
+{
+	"componentName": "lists",
+	"title": "Lists",
+	"componentClass": "lists",
+	"example": {
+		"attributes": {
+			"listsContent": "<li>List Item 1</li><li>List Item 2</li><li>List Item 3</li>",
+			"listsOrdered": "ul",
+			"listsSize": "default",
+			"listsColor": "primary",
+			"listsAlign": "left",
+			"listsUse": true
+		}
+	},
+	"attributes": {
+		"listsContent": {
+			"type": "string"
+		},
+		"listsOrdered": {
+			"type": "string",
+			"default": "ul"
+		},
+		"listsSize": {
+			"type": "string",
+			"default": "default"
+		},
+		"listsColor": {
+			"type": "string",
+			"default": "primary"
+		},
+		"listsAlign": {
+			"type": "string",
+			"default": "left"
+		},
+		"listsUse": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"options": {
+		"sizes": [
+			{
+				"label": "Default (22px)",
+				"value": "default"
+			},
+			{
+				"label": "Small (18px)",
+				"value": "small"
+			}
+		],
+		"aligns": [
+			"left",
+			"center",
+			"right"
+		],
+		"colors": [
+			"primary",
+			"black"
+		]
+	}
+}

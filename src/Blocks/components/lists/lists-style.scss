@@ -1,0 +1,49 @@
+$lists: (
+	colors: (
+		primary: global-settings(colors, primary),
+		black: global-settings(colors, black),
+	),
+	link-color: map-get-strict($link, colors),
+	sizes: (
+		mobile: (
+			default: (
+				font-size: 18px,
+				line-height: 1.56,
+			),
+			small: (
+				font-size: 14px,
+				line-height: 1,
+			),
+		),
+		large: (
+			default: (
+				font-size: 22px,
+			),
+			small: (
+				font-size: 18px,
+			),
+		),
+	),
+);
+
+.lists {
+	margin: 0;
+	padding: 0;
+	color: map-get-deep($lists, colors, primary);
+
+	li {
+		margin-left: 22px;
+	}
+
+	&__color {
+		@include modifiers-deep($lists, colors, color);
+	}
+
+	&__size {
+		@include responsive-modifiers($lists, sizes);
+	}
+
+	&__align {
+		@include text-align-modifiers;
+	}
+}

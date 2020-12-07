@@ -1,0 +1,17 @@
+{
+	"blockName": "button",
+	"title": "Button",
+	"description" : "Button block with custom settings.",
+	"category": "eightshift",
+	"icon": {
+		"src": "editor-removeformatting"
+	},
+	"keywords": [
+		"button",
+		"btn",
+		"link"
+	],
+	"components": {
+		"button": "button"
+	}
+}

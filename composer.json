@@ -25,9 +25,10 @@
 		"source": "https://github.com/infinum/eightshift-boilerplate"
 	},
 	"require-dev": {
-		"infinum/coding-standards-wp": "^1.0.1",
+		"infinum/coding-standards-wp": "^1.1",
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-		"szepeviktor/phpstan-wordpress": "^0.7"
+		"szepeviktor/phpstan-wordpress": "^0.7",
+		"php-stubs/wordpress-stubs": "^5.5"
 	},
 	"repositories": [
 		{

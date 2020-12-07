@@ -1,0 +1,84 @@
+{
+	"componentName": "link",
+	"title": "Link",
+	"componentClass": "link",
+	"example": {
+		"attributes": {
+			"linkContent": "This is Link",
+			"linkUrl": "https://infinum.github.io/eightshift-docs/",
+			"linkId": "custom ID",
+			"linkSize": "default",
+			"linkColor": "primary",
+			"linkWidth": "default",
+			"linkAlign": "left",
+			"linkIsAnchor": false,
+			"linkUse": true
+		}
+	},
+	"attributes": {
+		"linkContent": {
+			"type": "string"
+		},
+		"linkUrl": {
+			"type": "string"
+		},
+		"linkId": {
+			"type": "string"
+		},
+		"linkSize": {
+			"type": "string",
+			"default": "default"
+		},
+		"linkColor": {
+			"type": "string",
+			"default": "primary"
+		},
+		"linkWidth": {
+			"type": "string",
+			"default": "default"
+		},
+		"linkAlign": {
+			"type": "string",
+			"default": "left"
+		},
+		"linkIsAnchor": {
+			"type": "boolean",
+			"default": false
+		},
+		"linkIsNewTab": {
+			"type": "boolean",
+			"default": false
+		},
+		"linkAttrs": {
+			"type": "array"
+		},
+		"linkAriaLabel": {
+			"type": "string"
+		},
+		"linkUse": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"options": {
+		"sizes": [
+			{
+				"label": "Default (22px)",
+				"value": "default"
+			},
+			{
+				"label": "Small (18px)",
+				"value": "small"
+			}
+		],
+		"aligns": [
+			"left",
+			"center",
+			"right"
+		],
+		"colors": [
+			"primary",
+			"black"
+		]
+	}
+}

@@ -1,0 +1,17 @@
+// Override default editor styles.
+@import '@eightshift/frontend-libs/styles/override-editor.scss';
+
+$override-map: (
+	font-family: $base-font-family,
+	font-size: $base-font-size,
+	color: $base-text-color,
+	background-color: $base-background-color,
+);
+
+body .editor-styles-wrapper {
+	@include font-smoothing;
+	font-family: map-get-strict($override-map, font-family);
+	font-size: map-get-strict($override-map, font-size);
+	color: map-get-strict($override-map, color);
+	background-color: map-get-strict($override-map, background-color);
+}

@@ -1,0 +1,27 @@
+/* stylelint-disable-line selector-no-type */
+
+$core-map: (
+	font-family: $base-font-family,
+	color: $base-text-color,
+	background-color: $base-background-color,
+	font-size: $base-font-size,
+);
+
+*,
+*::after,
+*::before {
+	@include box-sizing;
+}
+
+html {
+	font-size: map-get-strict($core-map, font-size);
+}
+
+body {
+	@include font-smoothing;
+	font-family: map-get-strict($core-map, font-family);
+	color: map-get-strict($core-map, color);
+	background-color: map-get-strict($core-map, background-color);
+	position: relative;
+	overflow-x: hidden;
+}

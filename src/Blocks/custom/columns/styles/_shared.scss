@@ -1,0 +1,47 @@
+$block-columns: (
+	gutters: (
+		min: 0,
+		max: 100,
+		step: 10,
+	),
+);
+
+@mixin columns-parent {
+	display: flex;
+	flex-wrap: wrap;
+}
+@mixin columns {
+	&__gutter {
+		@include responsive-selectors {
+			$i: map-get-deep($block-columns, gutters, min);
+			@while $i <= map-get-deep($block-columns, gutters, max) {
+				&--#{$i} {
+					margin-left: -#{$i}px;
+					margin-right: -#{$i}px;
+
+					.block-column {
+						padding-left: #{$i}px;
+						padding-right: #{$i}px;
+					}
+				}
+
+				$i: $i + map-get-deep($block-columns, gutters, step);
+			}
+		}
+	}
+
+	&__vertical-spacing {
+		@include responsive-selectors {
+			$i: map-get-deep($block-columns, gutters, min);
+			@while $i <= map-get-deep($block-columns, gutters, max) {
+				&--#{$i} {
+					.block-column {
+						margin-bottom: #{$i}px;
+					}
+				}
+
+				$i: $i + map-get-deep($block-columns, gutters, step);
+			}
+		}
+	}
+}

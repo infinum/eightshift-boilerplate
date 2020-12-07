@@ -1,0 +1,31 @@
+{
+	"blockName": "group",
+	"title": "Group",
+	"description" : "Group block used to grouping multiple blocks.",
+	"category": "eightshift",
+	"icon": {
+		"src": "screenoptions"
+	},
+	"keywords": [
+		"container",
+		"section",
+		"group"
+	],
+	"example": {
+		"innerBlocks": [
+			{
+				"name": "eightshift-boilerplate/heading",
+				"attributes": {
+					"headingContent": "Lorem ipsum dolor sit amet"
+				}
+			},
+			{
+				"name": "eightshift-boilerplate/paragraph",
+				"attributes": {
+					"paragraphContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam aliquam est id semper aliquet. Aenean accumsan lacus justo, a lacinia turpis semper condimentum. "
+				}
+			}
+		]
+	},
+	"hasInnerBlocks": true
+}

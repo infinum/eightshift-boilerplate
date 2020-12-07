@@ -1,0 +1,24 @@
+/**
+ * This is the main entry point for Block Editor blocks styles used for the `WordPress admin editor`.
+ * File names must follow naming convention to be able to run dynamically.
+ *
+ * `src/blocks/custom/block_name/block_name-editor.scss`.
+ *
+ * Usage: `WordPress admin editor`.
+ *
+ */
+
+// Globals.
+@import './../../../../assets/styles/parts/shared';
+
+// Editor styles overrides.
+@import './editor/editor';
+
+// Register Wrapper block styles.
+@import './../../wrapper/wrapper-editor.scss';
+
+// Find all components and require component_name-style.scss inside it.
+@import './../../components/*/*-editor.scss';
+
+// Find all blocks and require block_name-editor.scss inside it.
+@import './../../custom/*/*-editor.scss';

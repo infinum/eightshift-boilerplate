@@ -1,0 +1,10 @@
+/*
+$zindex map should be used to define all project indexes.
+It gives you an overview of all indexes and helps you when debug z-index issues.
+*/
+
+$zindex: (
+	header: 100,
+	drawer: 99,
+	overlay: 98,
+);

@@ -1,0 +1,35 @@
+@mixin column {
+	&__width {
+		@include responsive-selectors {
+			@include flex-grid-width-modifiers;
+		}
+	}
+
+	&__hide {
+		@include responsive-visibility-selectors {
+			display: none;
+		}
+	}
+
+	&__hide-editor {
+		@include responsive-visibility-selectors {
+			opacity: 0.5;
+		}
+	}
+
+	&__offset {
+		@include responsive-selectors {
+			@include grid-offset-modifiers;
+		}
+	}
+
+	&__order {
+		@include responsive-selectors {
+			@for $i from 1 through 20 {
+				&--#{$i} {
+					order: #{$i};
+				}
+			}
+		}
+	}
+}

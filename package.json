@@ -25,7 +25,6 @@
 		"lintStyle": "npm run __stylelintTheme",
 		"lintJs": "npm run __eslintTheme",
 		"lint": "npm run lintJs && npm run lintStyle && wp boilerplate run_lint_php",
-		"precommit": "npm run lint",
 		"start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
 		"build": "webpack --progress --mode production",
 		"storybookBuild": "build-storybook -s public -o storybook",

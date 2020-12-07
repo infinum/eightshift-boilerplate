@@ -1,0 +1,24 @@
+$menu-vertical: (
+	link-padding: 10px 0,
+	link-modifiers: (
+		normal: (
+			color: global-settings(colors, black),
+		),
+		hover: (
+			color: global-settings(colors, primary),
+		),
+	),
+);
+
+.menu-vertical {
+	@extend %list-reset;
+
+	&__link {
+		display: block;
+		text-decoration: none;
+		transition: 0.3s color ease-in-out;
+		padding: map-get-strict($menu-vertical, link-padding);
+
+		@include link($menu-vertical, link-modifiers);
+	}
+}

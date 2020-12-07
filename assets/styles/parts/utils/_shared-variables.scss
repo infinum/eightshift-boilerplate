@@ -1,0 +1,9 @@
+/*
+Some default variables are defined in eightshift-frontend-libs as defaults.
+If you want to override it just define it with new value here.
+
+All variables are available here:
+https://github.com/infinum/eightshift-frontend-libs/blob/develop/styles/scss/_core.scss
+*/
+
+$base-col-number: global-settings(maxCols);

@@ -2,7 +2,7 @@
 <ruleset name="Eightshift Boilerplate ruleset">
 	<description>Ruleset for the Eightshift Boilerplate.</description>
 
-	<rule ref="Infinum" />
+	<rule ref="Eightshift" />
 
 	<exclude-pattern>*/tests/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
@@ -17,37 +17,12 @@
 
 	<file>.</file>
 
+	<!-- Check for PHP cross-version compatibility. -->
+	<config name="testVersion" value="7.4-"/>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<config name="minimum_supported_wp_version" value="5.2"/>
+
 	<exclude-pattern>/src/CompiledContainer\.php</exclude-pattern>
 
-	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter.Found">
-		<severity>0</severity>
-	</rule>
-
-	<rule ref="WordPress.WP.EnqueuedResourceParameters.NotInFooter">
-		<severity>0</severity>
-	</rule>
-
-	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter">
-		<severity>0</severity>
-	</rule>
-
-	<rule ref="WordPress.WP.GlobalVariablesOverride.OverrideProhibited">
-		<severity>0</severity>
-	</rule>
-
-	<rule ref="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket">
-		<severity>0</severity>
-	</rule>
-
-	<rule ref="Generic.Arrays.DisallowShortArraySyntax.Found">
-		<severity>0</severity>
-	</rule>
-
-	<rule ref="PEAR.Functions.FunctionCallSignature.MultipleArguments">
-		<severity>0</severity>
-	</rule>
-
-	<rule ref="PEAR.Functions.FunctionCallSignature.CloseBracketLine">
-		<severity>0</severity>
-	</rule>
 </ruleset>

@@ -1,0 +1,48 @@
+$footer: (
+	height: 50px,
+	site-padding: global-settings(gutters, default),
+	site-container: global-settings(containers, default),
+	colors: (
+		background: global-settings(colors, white),
+	),
+);
+
+.footer {
+	$this: &;
+	padding: 0 map-get-strict($footer, site-padding);
+	top: 0;
+	background: map-get-deep($footer, colors, background);
+	height: map-get-strict($footer, height);
+	width: 100%;
+	position: relative;
+
+	&__wrap {
+		max-width: map-get-strict($footer, site-container);
+		margin: 0 auto;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__column {
+		flex: 1 0 auto;
+		align-items: center;
+		display: flex;
+
+		&--left {
+			justify-content: flex-start;
+		}
+
+		&--center {
+			text-align: center;
+			justify-content: center;
+		}
+
+		&--right {
+			text-align: right;
+			justify-content: flex-end;
+		}
+	}
+}
