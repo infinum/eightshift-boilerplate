@@ -1,8 +1,0 @@
-@import './styles/shared';
-
-.block-column.wp-block.block-editor-block-list__block.block-column {
-	margin-left: 0;
-	margin-right: 0;
-
-	@include column;
-}
