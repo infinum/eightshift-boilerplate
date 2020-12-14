@@ -52,7 +52,7 @@ Let's create a new project!
 Navigate to your WordPress theme folder and run the following command:
 
 ```
-npx create-wp-project
+npx create-wp-project --eightshiftBoilerplateBranch="release/5.0.0"
 ```
 
 Script will prompt you for theme name and local development url (used for BrowserSync) and install a new theme:
