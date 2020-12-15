@@ -14,8 +14,8 @@ use EightshiftBoilerplate\Manifest\Manifest;
 <html <?php \language_attributes(); ?>>
 <head>
 	<?php
-	// Header Component.
-	\wp_kses_post(
+	// Head Component.
+	echo \wp_kses_post(
 		Components::render(
 			'head',
 			[
