@@ -15,13 +15,11 @@ use EightshiftBoilerplate\Manifest\Manifest;
 <head>
 	<?php
 	// Head Component.
-	echo \wp_kses_post(
-		Components::render(
-			'head',
-			[
-				'icon' => \apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
-			]
-		)
+	echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		'head',
+		[
+			'icon' => \apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
+		]
 	);
 
 	\wp_head();
