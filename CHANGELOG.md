@@ -4,15 +4,10 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
-## [Unreleased]
+## [5.0.0] - 2021-01-05
+MAYOR BREAKING CHANGES
 
-### Added
-- Added vendor scoping plugin to composer build `typisttech/imposter-plugin`.
-
-### Changed
-- Switching from Classmap to PSR-4 naming.
-- example: `class-media.php` is now `Media.php`.
-- changed namespace `Eightshift_Libs` to `TestVendor\EightshiftLibs`.
+- You should not try to update from version 4 to 5 because they are not compatible.
 
 ## [4.3.0] - 2020-05-25
 
@@ -261,6 +256,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[5.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.3.0...v5.0.0
 [4.3.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.2...v4.3.0
 [4.2.2]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.1...v4.2.2
 [4.2.1]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.0...v4.2.1

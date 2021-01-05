@@ -1,5 +1,3 @@
-/* eslint-disable import/no-dynamic-require, global-require */
-
 /**
  * This is a main entrypoint for Webpack config.
  * All the settings are pulled from node_modules/@eightshift/frontend-libs/webpack.
