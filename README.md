@@ -46,7 +46,7 @@ You can find all requirements on [this link](https://infinum.github.io/eightshif
 
 ## Quick start
 
-You can find all steps necessary to start you project on [this link](https://infinum.github.io/eightshift-docs/docs/themehttps://infinum.github.io/eightshift-docs/docs/theme).
+You can find all steps necessary to start you project on [this link](https://infinum.github.io/eightshift-docs/docs/theme).
 
 ## Documentation
 **For the full documentation please check this [link](https://infinum.github.io/eightshift-docs).**
