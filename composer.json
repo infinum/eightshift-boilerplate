@@ -30,15 +30,9 @@
 		"szepeviktor/phpstan-wordpress": "^0.7",
 		"php-stubs/wordpress-stubs": "^5.5"
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/infinum/eightshift-libs.git"
-		}
-	],
 	"require": {
 		"php": "^7.2",
-		"infinum/eightshift-libs": "dev-release/3.0.0",
+		"infinum/eightshift-libs": "^3.0.0",
 		"typisttech/imposter-plugin": "^0.6.2"
 	},
 	"autoload": {

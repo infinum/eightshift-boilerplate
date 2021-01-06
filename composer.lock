@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "20175f03801e9ce9e9b39019c50e4bf7",
+    "content-hash": "43928904d1630b310322fb379da2b88d",
     "packages": [
         {
             "name": "infinum/eightshift-libs",
-            "version": "dev-release/3.0.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infinum/eightshift-libs.git",
-                "reference": "2aee21bbc74278a8f79e772ae70c7de2338f6cf5"
+                "reference": "f6d1c69730241bda0608ae75c8777d0d71b88b60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/2aee21bbc74278a8f79e772ae70c7de2338f6cf5",
-                "reference": "2aee21bbc74278a8f79e772ae70c7de2338f6cf5",
+                "url": "https://api.github.com/repos/infinum/eightshift-libs/zipball/f6d1c69730241bda0608ae75c8777d0d71b88b60",
+                "reference": "f6d1c69730241bda0608ae75c8777d0d71b88b60",
                 "shasum": ""
             },
             "require": {
@@ -44,7 +44,6 @@
                 "szepeviktor/phpstan-wordpress": "^0.7",
                 "wp-cli/wp-cli": "^2.4"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -52,28 +51,7 @@
                     "EightshiftBoilerplate\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "analyze": [
-                    "@php ./vendor/bin/phpstan analyze"
-                ],
-                "standards:check": [
-                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
-                ],
-                "standards:fix": [
-                    "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
-                ],
-                "tests:unit": [
-                    "@php ./vendor/bin/codecept run unit"
-                ],
-                "tests:integration": [
-                    "@php ./vendor/bin/codecept run integration"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -88,18 +66,18 @@
             "description": "WordPress libs developed by Eightshift team to use in modern WordPress.",
             "homepage": "https://eightshift.com/",
             "keywords": [
-                "Gutenberg",
-                "WordPress",
                 "blocks",
                 "composer",
+                "gutenberg",
                 "installer",
-                "plugin"
+                "plugin",
+                "wordpress"
             ],
             "support": {
                 "issues": "https://github.com/infinum/eightshift-libs/issues",
                 "source": "https://github.com/infinum/eightshift-libs"
             },
-            "time": "2021-01-05T23:47:02+00:00"
+            "time": "2021-01-06T00:55:03+00:00"
         },
         {
             "name": "opis/closure",
@@ -1224,9 +1202,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "infinum/eightshift-libs": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
