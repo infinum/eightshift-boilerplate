@@ -17,6 +17,7 @@ echo wp_kses_post(
 	Components::render(
 		'layout-three-columns',
 		[
+			'selectorClass' => 'footer',
 			'layoutLeft' => Components::render(
 				'copyright',
 				[
