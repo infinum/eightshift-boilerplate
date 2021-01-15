@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [5.0.1] - 2021-01-15
+
+### Removed
+- Removed package-lock.json
+- Removed composer.lock
+- Removed version number from composer.json
+
 ## [5.0.0] - 2021-01-05
 MAYOR BREAKING CHANGES
 
@@ -256,6 +263,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[5.0.1]: https://github.com/infinum/eightshift-boilerplate/compare/5.0.0...v5.0.1
 [5.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.3.0...v5.0.0
 [4.3.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.2...v4.3.0
 [4.2.2]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.1...v4.2.2
