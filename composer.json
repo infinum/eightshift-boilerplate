@@ -30,7 +30,7 @@
 		"php-stubs/wordpress-stubs": "^5.5"
 	},
 	"require": {
-		"php": "^7.2",
+		"php": "^7.2 || <8.0",
 		"infinum/eightshift-libs": "^3.0.0",
 		"typisttech/imposter-plugin": "^0.6.2"
 	},
