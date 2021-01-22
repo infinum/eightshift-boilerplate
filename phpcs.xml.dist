@@ -6,22 +6,23 @@
 
 	<exclude-pattern>*/tests/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/public/*</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/storybook/*</exclude-pattern>
 
 	<!-- Additional arguments. -->
 	<arg value="sp"/>
 	<arg name="basepath" value="."/>
 	<arg name="parallel" value="8"/>
-	<arg name="cache"/>
 	<arg name="extensions" value="php"/>
 
 	<file>.</file>
 
 	<!-- Check for PHP cross-version compatibility. -->
-	<config name="testVersion" value="7.4-"/>
+	<config name="testVersion" value="7.2-"/>
 	<rule ref="PHPCompatibilityWP"/>
 
-	<config name="minimum_supported_wp_version" value="5.2"/>
+	<config name="minimum_supported_wp_version" value="5.3"/>
 
 	<exclude-pattern>/src/CompiledContainer\.php</exclude-pattern>
 
