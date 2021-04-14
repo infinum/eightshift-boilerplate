@@ -29,54 +29,50 @@ use EightshiftBoilerplate\Manifest\Manifest;
 
 <?php
 // Header Component.
-echo \wp_kses_post(
-	Components::render(
-		'layout-three-columns',
-		[
-			'selectorClass' => 'header',
-			'layoutLeft' => Components::render(
-				'logo',
-				[
-					'parentClass' => 'header',
-					'logoSrc' => \apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
-					'logoAlt' => \get_bloginfo('name'),
-					'logoTitle' => \get_bloginfo('name'),
-					'logoHref' => \get_bloginfo('url'),
-				]
-			),
-			'layoutCenter' => Components::render(
-				'menu',
-				[
-					'variation' => 'horizontal',
-					'parentClass' => 'header',
-				]
-			),
-			'layoutRight' => Components::render('hamburger'),
-		]
-	)
+echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	'layout-three-columns',
+	[
+		'selectorClass' => 'header',
+		'layoutLeft' => Components::render(
+			'logo',
+			[
+				'parentClass' => 'header',
+				'logoSrc' => \apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
+				'logoAlt' => \get_bloginfo('name'),
+				'logoTitle' => \get_bloginfo('name'),
+				'logoHref' => \get_bloginfo('url'),
+			]
+		),
+		'layoutCenter' => Components::render(
+			'menu',
+			[
+				'variation' => 'horizontal',
+				'parentClass' => 'header',
+			]
+		),
+		'layoutRight' => Components::render('hamburger'),
+	]
 );
 
 // Menu Drawer Style Component.
-echo \wp_kses_post(
-	Components::render(
-		'drawer',
-		[
-			'drawerTrigger' => 'js-hamburger',
-			'drawerOverlay' => 'js-page-overlay',
-			'drawerPosition' => 'left',
-			'drawerMenu' => Components::render(
-				'menu',
-				[
-					'variation' => 'vertical',
-					'parentClass' => 'drawer',
-				]
-			),
-		]
-	)
+echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	'drawer',
+	[
+		'drawerTrigger' => 'js-hamburger',
+		'drawerOverlay' => 'js-page-overlay',
+		'drawerPosition' => 'left',
+		'drawerMenu' => Components::render(
+			'menu',
+			[
+				'variation' => 'vertical',
+				'parentClass' => 'drawer',
+			]
+		),
+	]
 );
 
 // Page Overlay Component.
-echo \wp_kses_post(Components::render('page-overlay'));
+echo Components::render('page-overlay'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 ?>
 
 <main class="main-content">
