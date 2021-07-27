@@ -3,3 +3,4 @@
 /vendor
 /node_modules
 /storybook
+.DS_Store
