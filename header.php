@@ -52,8 +52,8 @@ echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 				]
 			),
 			Components::render('hamburger'),
-		],
-	],
+		]
+	]
 );
 
 // Menu Drawer Style Component.
