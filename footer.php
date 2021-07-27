@@ -22,7 +22,7 @@ echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 			[
 				'copyrightBy' => esc_html__('Eightshift', 'eightshift-boilerplate'),
 				'copyrightYear' => gmdate('Y'),
-				'copyrightContent' => esc_html__('Made with 🧡  by Eightshift team', 'eightshift-boilerplate'),
+				'copyrightContent' => esc_html__('Made with 🧡  by Team Eightshift', 'eightshift-boilerplate'),
 			]
 		),
 		'layoutThreeColumnsRight' => Components::render(
