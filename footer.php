@@ -16,8 +16,8 @@ use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;
 echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	'layout-three-columns',
 	[
-		'selectorClass' => 'footer',
-		'layoutLeft' => Components::render(
+		'additionalClass' => 'footer',
+		'layoutThreeColumnsLeft' => Components::render(
 			'copyright',
 			[
 				'copyrightBy' => esc_html__('Eightshift', 'eightshift-boilerplate'),
@@ -25,7 +25,7 @@ echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 				'copyrightContent' => esc_html__('Made with 🧡  by Eightshift team', 'eightshift-boilerplate'),
 			]
 		),
-		'layoutRight' => Components::render(
+		'layoutThreeColumnsRight' => Components::render(
 			'menu',
 			[
 				'variation' => 'horizontal'
