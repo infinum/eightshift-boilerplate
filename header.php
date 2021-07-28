@@ -32,8 +32,8 @@ use EightshiftBoilerplate\Manifest\Manifest;
 echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	'layout-three-columns',
 	[
-		'selectorClass' => 'header',
-		'layoutLeft' => Components::render(
+		'additionalClass' => 'header',
+		'layoutThreeColumnsLeft' => Components::render(
 			'logo',
 			[
 				'parentClass' => 'header',
@@ -43,14 +43,16 @@ echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 				'logoHref' => \get_bloginfo('url'),
 			]
 		),
-		'layoutCenter' => Components::render(
-			'menu',
-			[
-				'variation' => 'horizontal',
-				'parentClass' => 'header',
-			]
-		),
-		'layoutRight' => Components::render('hamburger'),
+		'layoutThreeColumnsRight' => [
+			Components::render(
+				'menu',
+				[
+					'variation' => 'horizontal',
+					'parentClass' => 'header',
+				]
+			),
+			Components::render('hamburger'),
+		]
 	]
 );
 
@@ -60,7 +62,7 @@ echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 	[
 		'drawerTrigger' => 'js-hamburger',
 		'drawerOverlay' => 'js-page-overlay',
-		'drawerPosition' => 'left',
+		'drawerPosition' => 'right',
 		'drawerMenu' => Components::render(
 			'menu',
 			[
