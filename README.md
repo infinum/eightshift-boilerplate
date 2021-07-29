@@ -1,5 +1,5 @@
 <p align="center">
-	<img alt="Eightshift Boilerplate" src="https://raw.githubusercontent.com/infinum/eightshift-boilerplate/develop/package/intro.png" />
+	<img alt="Eightshift Boilerplate" src="https://repository-images.githubusercontent.com/89463753/cf887842-ffa6-4a32-af34-51be3caffee7" />
 </p>
 
 [![GitHub tag](https://img.shields.io/github/tag/infinum/eightshift-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/eightshift-boilerplate)
