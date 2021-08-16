@@ -31,7 +31,7 @@
 	},
 	"require": {
 		"php": "^7.2 || <8.0",
-		"infinum/eightshift-libs": "^3.0.0",
+		"infinum/eightshift-libs": "^4.0.0",
 		"typisttech/imposter-plugin": "^0.6.2"
 	},
 	"autoload": {
