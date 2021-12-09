@@ -1,0 +1,64 @@
+name: Question
+description: Ask us a question
+labels: question
+assignees: iruzevic
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Hi there! We see that you like our project and you have some questions. Feel free to ask us anything.
+    - type: textarea
+      attributes:
+          label: Describe the question we can answer
+          description: Please write a clear and concise question.
+          placeholder: |
+              Example. I'm trying to make this, how do I do it?
+              Example. I have tried to do this, and it is not working, what am I doing wrong?
+      validations:
+          required: true
+
+    - type: textarea
+      attributes:
+          label: Screenshots, screen recording, code snippet
+          description: |
+              If possible, please upload a screenshot or screen recording which demonstrates your question.
+      validations:
+          required: false
+
+    - type: textarea
+      attributes:
+          label: Environment info
+          description: |
+               Please include as many relevant details about the environment you are working on.
+          placeholder: |
+            - PHP version
+            - Development environment (MAMP, XAMPP, VVV, Docker, Laravel Valet, none if on live server)
+            - Server type (Apache, Nginx, IIS)
+            - Operating System and version
+            - Libs version
+      validations:
+          required: false
+
+    - type: dropdown
+      id: existing
+      attributes:
+          label: Please confirm that you have searched existing issues in this repo.
+          description: You can do this by searching https://github.com/infinum/eightshift-boilerplate/issues.
+          multiple: false
+          options:
+             - 'Yes'
+             - 'No'
+      validations:
+          required: true
+
+    - type: dropdown
+      id: docs
+      attributes:
+          label: Please confirm that you have searched in our documentation and couldn't find the answer.
+          description: You can do this by searching https://infinum.github.io/eightshift-docs/.
+          multiple: false
+          options:
+             - 'Yes'
+             - 'No'
+      validations:
+          required: true
