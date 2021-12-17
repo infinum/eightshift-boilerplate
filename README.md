@@ -1,6 +1,5 @@
-<p align="center">
-	<img alt="Eightshift Boilerplate" src="https://repository-images.githubusercontent.com/89463753/cf887842-ffa6-4a32-af34-51be3caffee7" />
-</p>
+![image](https://user-images.githubusercontent.com/77000136/146528030-85b58bfe-6760-4f69-b6cd-66d97d85ae3b.png#gh-light-mode-only)
+![image](https://user-images.githubusercontent.com/77000136/146528107-accb79b8-ba72-4a71-bf77-e58bfb842576.png#gh-dark-mode-only)
 
 [![GitHub tag](https://img.shields.io/github/tag/infinum/eightshift-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/eightshift-boilerplate)
 [![GitHub stars](https://img.shields.io/github/stars/infinum/eightshift-boilerplate.svg?style=for-the-badge&label=Stars)](https://github.com/infinum/eightshift-boilerplate/)
