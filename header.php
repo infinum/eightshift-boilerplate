@@ -32,6 +32,8 @@ use EightshiftBoilerplate\Manifest\Manifest;
 echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	'layout-three-columns',
 	[
+		'layoutThreeColumnsAriaRole' => 'navigation',
+		'layoutThreeColumnsHtmlTag' => 'nav',
 		'additionalClass' => 'header',
 		'layoutThreeColumnsLeft' => Components::render(
 			'logo',
