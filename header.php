@@ -61,8 +61,6 @@ echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 	'drawer',
 	[
 		'drawerTrigger' => 'js-hamburger',
-		'drawerOverlay' => 'js-page-overlay',
-		'drawerPosition' => 'right',
 		'drawerMenu' => Components::render(
 			'menu',
 			[
