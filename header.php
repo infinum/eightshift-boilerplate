@@ -77,4 +77,4 @@ echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 echo Components::render('page-overlay'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 ?>
 
-<main class="main-content">
+<main class="main-content" id="main-content">
