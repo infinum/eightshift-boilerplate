@@ -32,6 +32,8 @@ use EightshiftBoilerplate\Manifest\Manifest;
 echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	'layout-three-columns',
 	[
+		'layoutThreeColumnsAriaRole' => 'navigation',
+		'layoutThreeColumnsHtmlTag' => 'nav',
 		'additionalClass' => 'header',
 		'layoutThreeColumnsLeft' => Components::render(
 			'logo',
@@ -61,8 +63,6 @@ echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 	'drawer',
 	[
 		'drawerTrigger' => 'js-hamburger',
-		'drawerOverlay' => 'js-page-overlay',
-		'drawerPosition' => 'right',
 		'drawerMenu' => Components::render(
 			'menu',
 			[
@@ -72,9 +72,6 @@ echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 		),
 	]
 );
-
-// Page Overlay Component.
-echo Components::render('page-overlay'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 ?>
 
 <main class="main-content" id="main-content">

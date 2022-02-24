@@ -16,6 +16,7 @@ use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;
 echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	'layout-three-columns',
 	[
+		'layoutThreeColumnsAriaRole' => 'contentinfo',
 		'additionalClass' => 'footer',
 		'layoutThreeColumnsLeft' => Components::render(
 			'copyright',
