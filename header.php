@@ -11,21 +11,21 @@ use EightshiftBoilerplate\Manifest\Manifest;
 
 ?>
 <!DOCTYPE html>
-<html <?php \language_attributes(); ?>>
+<html <?php language_attributes(); ?>>
 <head>
 	<?php
 	// Head Component.
 	echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		'head',
 		[
-			'icon' => \apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
+			'icon' => apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
 		]
 	);
 
-	\wp_head();
+	wp_head();
 	?>
 </head>
-<body <?php \body_class(); ?>>
+<body <?php body_class(); ?>>
 
 <?php
 // Header Component.
@@ -38,10 +38,10 @@ echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 			'logo',
 			[
 				'parentClass' => 'header',
-				'logoSrc' => \apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
-				'logoAlt' => \get_bloginfo('name'),
-				'logoTitle' => \get_bloginfo('name'),
-				'logoHref' => \get_bloginfo('url'),
+				'logoSrc' => apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
+				'logoAlt' => get_bloginfo('name'),
+				'logoTitle' => get_bloginfo('name'),
+				'logoHref' => get_bloginfo('url'),
 			]
 		),
 		'layoutThreeColumnsRight' => [

@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [7.0.0] - 2022-04-19
+- Major braking changes do to updates on css variables, and helpers and updating min PHP version to 7.4.
+
 ## [6.0.0] - 2021-08-16
 - Major braking changes do to updates on css variables, and helpers.
 
@@ -266,6 +269,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[7.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/6.0.0...v7.0.0
 [6.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/5.0.1...v6.0.0
 [5.0.1]: https://github.com/infinum/eightshift-boilerplate/compare/5.0.0...v5.0.1
 [5.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.3.0...v5.0.0
