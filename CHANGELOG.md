@@ -6,6 +6,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ## [7.0.0] - 2022-04-19
 - Major braking changes do to updates on css variables, and helpers and updating min PHP version to 7.4.
+- Full change log can be checked on Github [releases](https://github.com/infinum/eightshift-boilerplate/releases/tag/7.0.0).
 
 ## [6.0.0] - 2021-08-16
 - Major braking changes do to updates on css variables, and helpers.
