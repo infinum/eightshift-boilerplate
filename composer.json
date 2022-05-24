@@ -34,12 +34,6 @@
 		"infinum/eightshift-libs": "^5.0.0",
 		"typisttech/imposter-plugin": "^0.6.2"
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/infinum/eightshift-libs.git"
-		}
-	],
 	"autoload": {
 		"psr-4": {
 			"EightshiftBoilerplate\\": "src/"
