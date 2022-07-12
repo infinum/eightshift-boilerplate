@@ -24,22 +24,16 @@
 		"source": "https://github.com/infinum/eightshift-boilerplate"
 	},
 	"require-dev": {
-		"infinum/eightshift-coding-standards": "^1.5",
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-		"szepeviktor/phpstan-wordpress": "^1.0.3",
-		"php-stubs/wordpress-stubs": "^5.9"
+		"infinum/eightshift-coding-standards": "^1.6",
+		"php-stubs/wordpress-stubs": "^5.9",
+		"szepeviktor/phpstan-wordpress": "^1.0.3"
 	},
 	"require": {
 		"php": "^7.4 || <8.0",
-		"infinum/eightshift-libs": "^5.0.0",
+		"infinum/eightshift-libs": "^6.0.0",
 		"typisttech/imposter-plugin": "^0.6.2"
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/infinum/eightshift-libs.git"
-		}
-	],
 	"autoload": {
 		"psr-4": {
 			"EightshiftBoilerplate\\": "src/"
