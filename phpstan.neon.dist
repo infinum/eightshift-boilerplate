@@ -2,8 +2,8 @@ includes:
     - vendor/szepeviktor/phpstan-wordpress/extension.neon
 parameters:
     level: 6
-	inferPrivatePropertyTypeFromConstructor: true
-	treatPhpDocTypesAsCertain: false
+    inferPrivatePropertyTypeFromConstructor: true
+    treatPhpDocTypesAsCertain: false
     paths:
         - src/
     ignoreErrors:
