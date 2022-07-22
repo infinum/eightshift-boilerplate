@@ -7,7 +7,7 @@
 
 ## About Eightshift Boilerplate
 
-Eightshift Boilerplate is a modern WordPress theme boilerplate. It includes everything you need to start building a modern WordPress project, using state-of-the-art frontend development tools, and it's at the core of the Eightshift Development Kit. [Find out more in Eightshift Docs &rarr;](https://infinum.github.io/eightshift-docs/)
+Eightshift Boilerplate is a modern, Gutenberg-oriented, WordPress theme boilerplate. It includes everything you need to start building a modern WordPress project, using state-of-the-art frontend development tools, and it's at the core of the Eightshift Development Kit. [Find out more in Eightshift Docs &rarr;](https://infinum.github.io/eightshift-docs/)
 
 ## ⚠️ Requirements
 To get started, you'll need:
@@ -42,7 +42,7 @@ Eightshift Development Kit comes with [comprehensive documentation](https://infi
 
 If you have any questions or problems, please [open an issue](https://github.com/infinum/eightshift-boilerplate/issues) on GitHub. 
 
-Please follow our [code of conduct](https://github.com/infinum/eightshift-boilerplate/blob/develop/CODE_OF_CONDUCT.md), and fill out the issue template properly. We'll do our best to answer your issues as quickly as humanly possible: following these steps helps us out a lot in doing that.
+When submitting issues or otherwise participating in development, please follow our [code of conduct](https://github.com/infinum/eightshift-boilerplate/blob/develop/CODE_OF_CONDUCT.md), and fill out the issue template properly. We'll do our best to answer your issues as quickly as humanly possible: following these steps helps us out a lot in doing that.
 
 ## 👩‍💻 Maintainers 🧑‍💻 
 Eightshift Boilerplate is maintained and sponsored by [Infinum](https://infinum.com).
