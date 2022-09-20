@@ -5,58 +5,47 @@
 [![GitHub stars](https://img.shields.io/github/stars/infinum/eightshift-boilerplate.svg?style=for-the-badge&label=Stars)](https://github.com/infinum/eightshift-boilerplate/)
 [![license](https://img.shields.io/github/license/infinum/eightshift-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/eightshift-boilerplate)
 
-# Eightshift WordPress Boilerplate
+## About Eightshift Boilerplate
 
-This repository contains all the tools you need to start building a modern WordPress project, using all the latest front end development tools.
+Eightshift Boilerplate is a modern, Gutenberg-oriented, WordPress theme boilerplate. It includes everything you need to start building a modern WordPress project, using state-of-the-art frontend development tools, and it's at the core of the Eightshift Development Kit. [Find out more in Eightshift Docs &rarr;](https://infinum.github.io/eightshift-docs/)
 
-## :books: Table of contents
-- [:mortar_board: Documentation](#documentation)
-- [:tada: Awesome features](#awesome-features)
-- [:school_satchel: Requirements](#requirements)
-- [:rocket: Quick start](#quick-start)
-- [:mailbox: Who do I talk to?](#who-do-i-talk-to)
-- [:scroll: License](#license)
+## ⚠️ Requirements
+To get started, you'll need:
 
-## Documentation
-**For more documentation details follow [this link](https://infinum.github.io/eightshift-docs).**
+* [Node LTS](https://nodejs.org/)
+* [Composer](https://getcomposer.org/)
+* [git](https://git-scm.com/)
+* [WP-CLI](https://wp-cli.org/)
 
-## Awesome features
+## 🏁 Quick start
 
-Here are some buzzwords why you should use Eightshift Boilerplate for your next project. For more documentation details follow [this link](https://infinum.github.io/eightshift-docs).
+If you'd like to get started ASAP, run `npx create-wp-project` inside of `wp-content/themes` to bootstrap your Eightshift Development Kit project.
 
-- Custom Block Editor blocks
-- OOP
-- WP-CLI
-- Webpack
-- SASS
-- Autoprefixer
-- JS Compiler (Babel)
-- Synchronised browser testing
-- Minifying
-- PHPCS
-- Easy SASS media queries
-- Cache busting
-- Eightshift libs
-- Eightshift Frontend Libs
+[Documentation on getting started with Eightshift Boilerplate is available in Eightshift Docs &rarr;](https://infinum.github.io/eightshift-docs/docs/theme/)
 
-## Requirements
+## 📚 Documentation
 
-You can find all requirements on [this link](https://infinum.github.io/eightshift-docs/docs/requirements).
+Eightshift Development Kit comes with [comprehensive documentation](https://infinum.github.io/eightshift-docs).
 
-## Quick start
+## 💻 Other resources
 
-You can find all steps necessary to start you project on [this link](https://infinum.github.io/eightshift-docs/docs/theme).
+* [Documentation](https://infinum.github.io/eightshift-docs/)
+* [Tutorials and more on the blog](https://infinum.github.io/eightshift-docs/blog)
+* [Storybook](https://infinum.github.io/eightshift-docs/storybook/)
+* [SassDoc](https://infinum.github.io/eightshift-docs/sass)
+* Other parts of the Development kit:
+* * [Eightshift Boilerplate for Plugins](https://github.com/infinum/eightshift-boilerplate-plugin)
+* * [Eightshift Frontend Libs](https://github.com/infinum/eightshift-frontend-libs)
+* * [Eightshift Libs](https://github.com/infinum/eightshift-libs)
 
-## Documentation
-**For the full documentation please check this [link](https://infinum.github.io/eightshift-docs).**
+## 🛟 Getting help
 
-## Who do I talk to?
+If you have any questions or problems, please [open an issue](https://github.com/infinum/eightshift-boilerplate/issues) on GitHub. 
 
-If you have any questions or problems, please [open an issue](https://github.com/infinum/eightshift-boilerplate/issues) on github and we will do our best to give you a timely answer.
+When submitting issues or otherwise participating in development, please follow our [code of conduct](https://github.com/infinum/eightshift-boilerplate/blob/develop/CODE_OF_CONDUCT.md), and fill out the issue template properly. We'll do our best to answer your issues as quickly as humanly possible: following these steps helps us out a lot in doing that.
 
-## Maintainers
-Eightshift Boilerplate is maintained and sponsored by
-[Eightshift](https://eightshift.com) and [Infinum](https://infinum.com).
+## 👩‍💻 Maintainers 🧑‍💻 
+Eightshift Boilerplate is maintained and sponsored by [Infinum](https://infinum.com).
 
-## License
-Eightshift Boilerplate &copy;2022 [Eightshift](https://eightshift.com) and [Infinum](https://infinum.com). It is free software, and may be redistributed under the terms specified in the LICENSE file.
+## ⚖️ License
+Eightshift Boilerplate &copy;2022 [Infinum](https://infinum.com). It is free software, and may be redistributed under the terms specified in the LICENSE file.
