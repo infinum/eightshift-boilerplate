@@ -15,7 +15,7 @@ use EightshiftBoilerplate\Manifest\Manifest;
 <head>
 	<?php
 	// Head Component.
-	echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo Components::render(
 		'head',
 		[
 			'icon' => apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
@@ -29,7 +29,7 @@ use EightshiftBoilerplate\Manifest\Manifest;
 
 <?php
 // Header Component.
-echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+echo Components::render(
 	'layout-three-columns',
 	[
 		'layoutThreeColumnsHtmlTag' => 'nav',
@@ -58,7 +58,7 @@ echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputN
 );
 
 // Menu Drawer Style Component.
-echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+echo Components::render(
 	'drawer',
 	[
 		'drawerTrigger' => 'js-hamburger',
