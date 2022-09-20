@@ -13,7 +13,7 @@ use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Components;
 </main>
 
 <?php
-echo Components::render( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+echo Components::render(
 	'layout-three-columns',
 	[
 		'layoutThreeColumnsAriaRole' => 'contentinfo',
