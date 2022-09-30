@@ -1,5 +1,4 @@
-![image](https://user-images.githubusercontent.com/77000136/146528030-85b58bfe-6760-4f69-b6cd-66d97d85ae3b.png#gh-light-mode-only)
-![image](https://user-images.githubusercontent.com/77000136/146528107-accb79b8-ba72-4a71-bf77-e58bfb842576.png#gh-dark-mode-only)
+![image](https://repository-images.githubusercontent.com/89463753/d30452dc-d3da-4c51-8592-221bbc03e7a6)
 
 [![GitHub tag](https://img.shields.io/github/tag/infinum/eightshift-boilerplate.svg?style=for-the-badge)](https://github.com/infinum/eightshift-boilerplate)
 [![GitHub stars](https://img.shields.io/github/stars/infinum/eightshift-boilerplate.svg?style=for-the-badge&label=Stars)](https://github.com/infinum/eightshift-boilerplate/)
@@ -7,7 +6,7 @@
 
 ## About Eightshift Boilerplate
 
-Eightshift Boilerplate is a modern, Gutenberg-oriented, WordPress theme boilerplate. It includes everything you need to start building a modern WordPress project, using state-of-the-art frontend development tools, and it's at the core of the Eightshift Development Kit. [Find out more in Eightshift Docs &rarr;](https://infinum.github.io/eightshift-docs/)
+Eightshift Boilerplate is a modern, Gutenberg-oriented, WordPress theme boilerplate. It includes everything you need to start building a modern WordPress project, using state-of-the-art frontend development tools, and it's at the core of the Eightshift Development Kit. [Find out more in Eightshift Docs &rarr;](https://eightshift.com)
 
 ## ⚠️ Requirements
 To get started, you'll need:
@@ -21,18 +20,18 @@ To get started, you'll need:
 
 If you'd like to get started ASAP, run `npx create-wp-project` inside of `wp-content/themes` to bootstrap your Eightshift Development Kit project.
 
-[Documentation on getting started with Eightshift Boilerplate is available in Eightshift Docs &rarr;](https://infinum.github.io/eightshift-docs/docs/theme/)
+[Documentation on getting started with Eightshift Boilerplate is available in Eightshift Docs &rarr;](https://eightshift.com/docs/theme/)
 
 ## 📚 Documentation
 
-Eightshift Development Kit comes with [comprehensive documentation](https://infinum.github.io/eightshift-docs).
+Eightshift Development Kit comes with [comprehensive documentation](https://eightshift.com).
 
 ## 💻 Other resources
 
-* [Documentation](https://infinum.github.io/eightshift-docs/)
-* [Tutorials and more on the blog](https://infinum.github.io/eightshift-docs/blog)
-* [Storybook](https://infinum.github.io/eightshift-docs/storybook/)
-* [SassDoc](https://infinum.github.io/eightshift-docs/sass)
+* [Documentation](https://eightshift.com/)
+* [Tutorials and more on the blog](https://eightshift.com/blog)
+* [Storybook](https://eightshift.com/storybook/)
+* [SassDoc](https://eightshift.com/sass)
 * Other parts of the Development kit:
 * * [Eightshift Boilerplate for Plugins](https://github.com/infinum/eightshift-boilerplate-plugin)
 * * [Eightshift Frontend Libs](https://github.com/infinum/eightshift-frontend-libs)

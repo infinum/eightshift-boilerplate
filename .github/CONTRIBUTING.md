@@ -2,7 +2,7 @@ Hi there! Thanks for helping out in improving our Eightshift Boilerplate.
 
 ## Reporting an issue
 
-If you are not sure how something works be sure to read our [documentation](https://infinum.github.io/eightshift-docs/). If you found a bug in the code, please [open an issue](https://github.com/infinum/eightshift-boilerplate/issues) and follow the instructions in the issue template.
+If you are not sure how something works be sure to read our [documentation](https://eightshift.com/). If you found a bug in the code, please [open an issue](https://github.com/infinum/eightshift-boilerplate/issues) and follow the instructions in the issue template.
 
 ## Contributing patches and new features
 

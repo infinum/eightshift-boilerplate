@@ -55,7 +55,7 @@ body:
       id: docs
       attributes:
           label: Please confirm that you have searched in our documentation and couldn't find the answer.
-          description: You can do this by searching https://infinum.github.io/eightshift-docs/.
+          description: You can do this by searching https://eightshift.com/.
           multiple: false
           options:
              - 'Yes'
