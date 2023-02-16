@@ -30,12 +30,12 @@
 		"storybook": "start-storybook -s public"
 	},
 	"devDependencies": {
-		"husky": "^8.0.1",
-		"webpack": "^5.73.0",
-		"webpack-cli": "^4.10.0"
+		"husky": "^8.0.3",
+		"webpack": "^5.75.0",
+		"webpack-cli": "^5.0.1"
 	},
 	"dependencies": {
-		"@eightshift/frontend-libs": "^7.0.0"
+		"@eightshift/frontend-libs": "^8.0.0"
 	},
 	"husky": {
 		"hooks": {
