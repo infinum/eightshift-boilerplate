@@ -4,15 +4,26 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [9.0.0] - 2023-02-21
+
+- Full change log can be checked on Github [frontend-libs release](https://github.com/infinum/eightshift-frontend-libs/releases/tag/8.0.0) and [libs release](https://github.com/infinum/eightshift-libs/releases/tag/6.4.0).
+
+### Fixed
+- Fixes the BrowserslistError thrown on the npm start command.
+
+
 ## [8.0.0] - 2022-07-11
+
 - Updating packages
 - Full change log can be checked on Github [frontend-libs release](https://github.com/infinum/eightshift-frontend-libs/releases/tag/7.0.0) and [libs release](https://github.com/infinum/eightshift-libs/releases/tag/6.0.0).
 
 ## [7.0.0] - 2022-04-19
+
 - Major braking changes do to updates on css variables, and helpers and updating min PHP version to 7.4.
 - Full change log can be checked on Github [releases](https://github.com/infinum/eightshift-frontend-libs/releases/tag/6.0.0).
 
 ## [6.0.0] - 2021-08-16
+
 - Major braking changes do to updates on css variables, and helpers.
 
 ## [5.0.1] - 2021-01-15
@@ -274,11 +285,12 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
-[8.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/7.0.0...v8.0.0
-[7.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/6.0.0...v7.0.0
-[6.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/5.0.1...v6.0.0
-[5.0.1]: https://github.com/infinum/eightshift-boilerplate/compare/5.0.0...v5.0.1
-[5.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.3.0...v5.0.0
+[9.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/8.0.0...9.0.0
+[8.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/7.0.0...8.0.0
+[7.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/6.0.0...7.0.0
+[6.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/5.0.1...6.0.0
+[5.0.1]: https://github.com/infinum/eightshift-boilerplate/compare/5.0.0...5.0.1
+[5.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.3.0...5.0.0
 [4.3.0]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.2...v4.3.0
 [4.2.2]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.1...v4.2.2
 [4.2.1]: https://github.com/infinum/eightshift-boilerplate/compare/4.2.0...v4.2.1
