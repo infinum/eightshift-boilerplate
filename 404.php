@@ -8,6 +8,6 @@
 
 get_header();
 
-esc_html_e('ERROR 404', 'eightshift-boilerplate');
+esc_html_e('404 - not found', 'eightshift-boilerplate');
 
 get_footer();
