@@ -15,13 +15,10 @@ use EightshiftBoilerplate\AdminMenus\ReusableBlocksHeaderFooter;
 <html <?php language_attributes(); ?>>
 <head>
 	<?php
-	// Head Component.
-	echo Components::render(
-		'head',
-		[
-			'icon' => apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
-		]
-	);
+	// Head component.
+	echo Components::render('head', [
+		'icon' => apply_filters(Manifest::MANIFEST_ITEM, 'logo.svg'),
+	]);
 
 	wp_head();
 	?>
