@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [10.0.0] - 2023-06-13
+
+### Changed
+- updated default 404 a bit (might make a component for it, though).
+- cleaned up header and footer, replaced with new reusable components.
+
 ## [9.0.0] - 2023-02-21
 
 - Full change log can be checked on Github [frontend-libs release](https://github.com/infinum/eightshift-frontend-libs/releases/tag/8.0.0) and [libs release](https://github.com/infinum/eightshift-libs/releases/tag/6.4.0).
@@ -11,10 +17,9 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 ### Fixed
 - Fixes the BrowserslistError thrown on the npm start command.
 
-
 ## [8.0.0] - 2022-07-11
 
-- Updating packages
+- Updating packages.
 - Full change log can be checked on Github [frontend-libs release](https://github.com/infinum/eightshift-frontend-libs/releases/tag/7.0.0) and [libs release](https://github.com/infinum/eightshift-libs/releases/tag/6.0.0).
 
 ## [7.0.0] - 2022-04-19
@@ -285,6 +290,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[10.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/9.0.0...10.0.0
 [9.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/8.0.0...9.0.0
 [8.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/7.0.0...8.0.0
 [7.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/6.0.0...7.0.0
