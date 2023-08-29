@@ -5,7 +5,7 @@
  * Description: Eightshift Boilerplate Description
  * Author: Team Eightshift
  * Author URI: https://eightshift.com/
- * Version: 8.0.0
+ * Version: 10.0.0
  * Text Domain: eightshift-boilerplate
  *
  * @package EightshiftBoilerplate
