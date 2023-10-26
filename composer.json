@@ -27,7 +27,8 @@
 		"dealerdirect/phpcodesniffer-composer-installer": "^v1.0.0",
 		"infinum/eightshift-coding-standards": "2.0.0-beta",
 		"php-stubs/wordpress-stubs": "^6.3",
-		"szepeviktor/phpstan-wordpress": "^1.1.7"
+		"szepeviktor/phpstan-wordpress": "^1.1.7",
+		"wp-cli/wp-cli": "^2.9"
 	},
 	"require": {
 		"php": "^7.4 || >=8.0",

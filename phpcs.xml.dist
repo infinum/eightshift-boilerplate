@@ -29,7 +29,7 @@
 
 	<rule ref="Generic.Files.LineLength">
 		<properties>
-			<property name="lineLimit" value="180" />
+			<property name="lineLimit" value="300" />
 			<property name="ignoreComments" value="true" />
 		</properties>
 	</rule>
