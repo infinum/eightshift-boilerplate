@@ -25,9 +25,7 @@
 		"lint": "npm run lintJs && npm run lintStyle && composer standards:check -- --filter=gitstaged",
 		"start": "webpack --progress --watch --mode development",
 		"build": "webpack --progress --mode production",
-		"test": "wp boilerplate",
-		"storybookBuild": "build-storybook -s public -o storybook",
-		"storybook": "start-storybook -s public"
+		"test": "wp boilerplate"
 	},
 	"devDependencies": {
 		"husky": "^8.0.3",
