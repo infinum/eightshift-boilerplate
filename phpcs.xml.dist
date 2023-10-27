@@ -8,7 +8,6 @@
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<exclude-pattern>*/public/*</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
-	<exclude-pattern>*/storybook/*</exclude-pattern>
 
 	<!-- Additional arguments. -->
 	<arg value="sp"/>
