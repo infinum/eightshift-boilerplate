@@ -31,7 +31,7 @@
 		"wp-cli/wp-cli": "^2.9"
 	},
 	"require": {
-		"php": "^7.4 || >=8.0",
+		"php": ">=7.4",
 		"infinum/eightshift-libs": "dev-develop-php8",
 		"typisttech/imposter-plugin": "^0.6.2"
 	},
