@@ -25,9 +25,7 @@
 		"lint": "npm run lintJs && npm run lintStyle && composer standards:check -- --filter=gitstaged",
 		"start": "webpack --progress --watch --mode development",
 		"build": "webpack --progress --mode production",
-		"test": "wp boilerplate",
-		"storybookBuild": "build-storybook -s public -o storybook",
-		"storybook": "start-storybook -s public"
+		"test": "wp boilerplate"
 	},
 	"devDependencies": {
 		"husky": "^8.0.3",
@@ -35,7 +33,7 @@
 		"webpack-cli": "^5.0.1"
 	},
 	"dependencies": {
-		"@eightshift/frontend-libs": "^8.0.0"
+		"@eightshift/frontend-libs": "https://github.com/infinum/eightshift-frontend-libs.git#develop-php8"
 	},
 	"husky": {
 		"hooks": {

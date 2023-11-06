@@ -24,14 +24,15 @@
 		"source": "https://github.com/infinum/eightshift-boilerplate"
 	},
 	"require-dev": {
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-		"infinum/eightshift-coding-standards": "^1.6",
-		"php-stubs/wordpress-stubs": "^6.1.1",
-		"szepeviktor/phpstan-wordpress": "^1.1.7"
+		"dealerdirect/phpcodesniffer-composer-installer": "^v1.0.0",
+		"infinum/eightshift-coding-standards": "2.0.0-beta",
+		"php-stubs/wordpress-stubs": "^6.3",
+		"szepeviktor/phpstan-wordpress": "^1.1.7",
+		"wp-cli/wp-cli": "^2.9"
 	},
 	"require": {
-		"php": "^7.4 || <8.0",
-		"infinum/eightshift-libs": "^6.0.0",
+		"php": ">=7.4",
+		"infinum/eightshift-libs": "dev-develop-php8",
 		"typisttech/imposter-plugin": "^0.6.2"
 	},
 	"autoload": {
@@ -50,10 +51,19 @@
 			"typisttech/imposter-plugin": true
 		}
 	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/infinum/eightshift-libs.git"
+		}
+	],
 	"scripts": {
-		"analyze": "@php ./vendor/bin/phpstan analyze",
-		"standards:check": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
-		"standards:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+		"test:types": "@php ./vendor/bin/phpstan analyze",
+		"test:standards": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 7.4-",
+		"test": [
+			"@test:standards",
+			"@test:types"
+		]
 	},
 	"extra": {
 		"imposter": {

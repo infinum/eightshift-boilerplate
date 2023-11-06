@@ -8,7 +8,6 @@
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<exclude-pattern>*/public/*</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
-	<exclude-pattern>*/storybook/*</exclude-pattern>
 
 	<!-- Additional arguments. -->
 	<arg value="sp"/>
@@ -19,11 +18,19 @@
 	<file>.</file>
 
 	<!-- Check for PHP cross-version compatibility. -->
-	<config name="testVersion" value="7.2-"/>
+	<config name="testVersion" value="7.4-"/>
 	<rule ref="PHPCompatibilityWP"/>
 
-	<config name="minimum_supported_wp_version" value="5.3"/>
+	<!-- Support only latest 3 WP versions. -->
+	<config name="minimum_supported_wp_version" value="6.0"/>
 
 	<exclude-pattern>/src/CompiledContainer\.php</exclude-pattern>
+
+	<rule ref="Generic.Files.LineLength">
+		<properties>
+			<property name="lineLimit" value="300" />
+			<property name="ignoreComments" value="true" />
+		</properties>
+	</rule>
 
 </ruleset>
