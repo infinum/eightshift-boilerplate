@@ -51,12 +51,6 @@
 			"typisttech/imposter-plugin": true
 		}
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/infinum/eightshift-libs.git"
-		}
-	],
 	"scripts": {
 		"test:types": "@php ./vendor/bin/phpstan analyze",
 		"test:standards": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 7.4-",
