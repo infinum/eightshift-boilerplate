@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Theme Name: Eightshift Boilerplate Title
- * Description: Eightshift Boilerplate Description
+ * Theme Name: %themeName%
+ * Description: %description%
  * Author: Team Eightshift
  * Author URI: https://eightshift.com/
- * Version: 10.0.0
- * Text Domain: eightshift-boilerplate
+ * Version: 12.0.0
+ * Text Domain: %textdomain%
  *
  * @package EightshiftBoilerplate
  */
@@ -15,6 +15,7 @@ declare(strict_types=1);
 
 namespace EightshiftBoilerplate;
 
+use EightshiftBoilerplate\Cache\ManifestCache;
 use EightshiftBoilerplate\Main\Main;
 use EightshiftBoilerplateVendor\EightshiftLibs\Cli\Cli;
 
@@ -29,6 +30,14 @@ if (! \defined('WPINC')) {
  * Include the autoloader so we can dynamically include the rest of the classes.
  */
 $loader = require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/vendor-prefixed/autoload.php';
+
+/**
+ * Set all the cache for the theme.
+ */
+if (\class_exists(ManifestCache::class)) {
+	(new ManifestCache())->setAllCache();
+}
 
 /**
  * Begins execution of the theme.

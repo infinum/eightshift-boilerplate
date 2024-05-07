@@ -1,5 +1,6 @@
 # Project Specific
 /public
 /vendor
+/vendor-prefixed
 /node_modules
 .DS_Store
