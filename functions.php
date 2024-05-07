@@ -1,11 +1,13 @@
 <?php
 
 /**
- * Theme Name: Eightshift Boilerplate Title
- * Description: Eightshift Boilerplate Description
- * Author: Team Eightshift
+ * Theme Name: Eightshift Boilerplate Setup Theme
+ * Description: This is a initial setup for the Eightshift WordPress Boilerplate Theme.
+ * Author: Eightshift team
  * Author URI: https://eightshift.com/
- * Version: 10.0.0
+ * Version: 12.0.0
+ * License: MIT
+ * License URI: http://www.gnu.org/licenses/gpl.html
  * Text Domain: eightshift-boilerplate
  *
  * @package EightshiftBoilerplate
@@ -15,8 +17,7 @@ declare(strict_types=1);
 
 namespace EightshiftBoilerplate;
 
-use EightshiftBoilerplate\Main\Main;
-use EightshiftBoilerplateVendor\EightshiftLibs\Cli\Cli;
+use EightshiftLibs\Cli\Cli;
 
 /**
  * If this file is called directly, abort.
@@ -28,18 +29,11 @@ if (! \defined('WPINC')) {
 /**
  * Include the autoloader so we can dynamically include the rest of the classes.
  */
-$loader = require __DIR__ . '/vendor/autoload.php';
-
-/**
- * Begins execution of the theme.
- *
- * Since everything within the theme is registered via hooks,
- * then kicking off the theme from this point in the file does
- * not affect the page life cycle.
- */
-if (\class_exists(Main::class)) {
-	(new Main($loader->getPrefixesPsr4(), __NAMESPACE__))->register();
+if (!\file_exists(__DIR__ . '/vendor/autoload.php')) {
+	return;
 }
+
+require __DIR__ . '/vendor/autoload.php';
 
 /**
  * Run all WPCLI commands.

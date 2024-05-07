@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [12.0.0]
+
+### Update
+
+- Boilerplate is clean and is using only temporary files used for the initial setup. After running the setup, the temporary files are removed and replaced with the actual files.
+
 ## [11.0.0] - 2023-11-06
 
 This is a major release that includes PHP8+ support. We tested it on the PHP 8.2.12 version.
@@ -302,6 +308,7 @@ Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[12.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/11.0.0...12.0.0
 [11.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/10.0.0...11.0.0
 [10.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/9.0.0...10.0.0
 [9.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/8.0.0...9.0.0
