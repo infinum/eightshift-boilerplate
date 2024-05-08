@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Theme Name: %themeName%
- * Description: %description%
- * Author: %author%
- * Author URI: %authorUrl%
- * Version: %version%
+ * Theme Name: Eightshift Boilerplate Theme
+ * Description: This is a initial setup for the Eightshift WordPress Boilerplate Theme.
+ * Author: Eightshift team
+ * Author URI: https://eightshift.com/
+ * Version: 12.0.0
  * License: MIT
  * License URI: http://www.gnu.org/licenses/gpl.html
- * Text Domain: %textdomain%
+ * Text Domain: eightshift-boilerplate
  *
  * @package EightshiftBoilerplate
  */
