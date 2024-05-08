@@ -1,11 +1,9 @@
 {
 	"name": "eightshift/eightshift-boilerplate",
 	"description": "This repository contains all the tools you need to start building a modern WordPress project.",
+	"private": true,
 	"keywords": [
-		"composer",
-		"installer",
-		"plugin",
-		"blocks",
+		"eightshift",
 		"Gutenberg",
 		"WordPress"
 	],
@@ -24,10 +22,6 @@
 		"source": "https://github.com/infinum/eightshift-boilerplate"
 	},
 	"require-dev": {
-		"dealerdirect/phpcodesniffer-composer-installer": "^v1.0.0",
-		"infinum/eightshift-coding-standards": "2.0.0-beta",
-		"php-stubs/wordpress-stubs": "^6.3",
-		"szepeviktor/phpstan-wordpress": "^1.3",
 		"wp-cli/wp-cli": "^2.9"
 	},
 	"repositories": [
@@ -50,37 +44,6 @@
 	"config": {
 		"sort-packages": true,
 		"optimize-autoloader": true,
-		"process-timeout": 2000,
-		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
-		}
-	},
-	"scripts": {
-		"test:types": "@php ./vendor/bin/phpstan analyze",
-		"test:standards": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 7.4-",
-		"test": [
-			"@test:standards",
-			"@test:types"
-		],
-		"prefix-namespaces": [
-			"@php strauss.phar",
-			"composer dump-autoload"
-		],
-		"post-install-cmd": [
-			"@php strauss.phar",
-			"composer dump-autoload"
-		],
-		"post-update-cmd": [
-			"@php strauss.phar",
-			"composer dump-autoload"
-		]
-	},
-	"extra": {
-		"strauss": {
-			"namespace_prefix": "EightshiftBoilerplateVendor",
-			"exclude_from_prefix": {
-				"file_patterns": ["/Example.php$/"]
-			}
-		}
+		"process-timeout": 2000
 	}
 }
