@@ -1,0 +1,17 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+    level: 6
+    inferPrivatePropertyTypeFromConstructor: true
+    treatPhpDocTypesAsCertain: false
+    bootstrapFiles:
+        - vendor-prefixed/autoload.php
+    paths:
+        - src/
+    ignoreErrors:
+        # Block templates
+        - '#^Variable \$attributes might not be defined\.#'
+        - '#^Variable \$innerBlockContent might not be defined\.#'
+        - '#^Variable \$this might not be defined\.#'
+        - '#^Variable \$templatePath might not be defined\.#'
+    checkGenericClassInNonGenericObjectType: false

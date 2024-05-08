@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<ruleset name="Eightshift Boilerplate ruleset">
+	<description>Ruleset for the Eightshift Boilerplate.</description>
+
+	<rule ref="Eightshift" />
+
+	<exclude-pattern>*/tests/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/vendor-prefixed/*</exclude-pattern>
+	<exclude-pattern>*/public/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+
+	<!-- Additional arguments. -->
+	<arg value="sp"/>
+	<arg name="basepath" value="."/>
+	<arg name="parallel" value="8"/>
+	<arg name="extensions" value="php"/>
+
+	<file>.</file>
+
+	<!-- Check for PHP cross-version compatibility. -->
+	<config name="testVersion" value="7.4-"/>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- Support only latest 3 WP versions. -->
+	<config name="minimum_supported_wp_version" value="6.0"/>
+
+	<exclude-pattern>/src/CompiledContainer\.php</exclude-pattern>
+
+	<rule ref="Generic.Files.LineLength">
+		<properties>
+			<property name="lineLimit" value="300" />
+			<property name="ignoreComments" value="true" />
+		</properties>
+	</rule>
+
+</ruleset>
