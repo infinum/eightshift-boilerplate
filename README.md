@@ -11,6 +11,7 @@ Eightshift Boilerplate is a modern, Gutenberg-oriented, WordPress theme boilerpl
 ## ⚠️ Requirements
 To get started, you'll need:
 
+* [PHP 8.2+](https://www.php.net/)
 * [Node LTS](https://nodejs.org/)
 * [Composer](https://getcomposer.org/)
 * [git](https://git-scm.com/)
@@ -18,24 +19,13 @@ To get started, you'll need:
 
 ## 🏁 Quick start
 
-If you'd like to get started ASAP, run `npx create-wp-project` inside of `wp-content/themes` to bootstrap your Eightshift Development Kit project.
+If you'd like to get started ASAP, run `npx eightshift-create theme` inside of `wp-content/themes` to bootstrap your Eightshift Development Kit project.
 
 [Documentation on getting started with Eightshift Boilerplate is available in Eightshift Docs &rarr;](https://eightshift.com/docs/theme/)
 
 ## 📚 Documentation
 
 Eightshift Development Kit comes with [comprehensive documentation](https://eightshift.com).
-
-## 💻 Other resources
-
-* [Documentation](https://eightshift.com/)
-* [Tutorials and more on the blog](https://eightshift.com/blog)
-* [Storybook](https://eightshift.com/storybook/)
-* [SassDoc](https://eightshift.com/sass)
-* Other parts of the Development kit:
-* * [Eightshift Boilerplate for Plugins](https://github.com/infinum/eightshift-boilerplate-plugin)
-* * [Eightshift Frontend Libs](https://github.com/infinum/eightshift-frontend-libs)
-* * [Eightshift Libs](https://github.com/infinum/eightshift-libs)
 
 ## 🛟 Getting help
 
@@ -47,4 +37,4 @@ When submitting issues or otherwise participating in development, please follow 
 Eightshift Boilerplate is maintained and sponsored by [Infinum](https://infinum.com).
 
 ## ⚖️ License
-Eightshift Boilerplate &copy;2022 [Infinum](https://infinum.com). It is free software, and may be redistributed under the terms specified in the LICENSE file.
+Eightshift Boilerplate [Infinum](https://infinum.com). It is free software, and may be redistributed under the terms specified in the LICENSE file.

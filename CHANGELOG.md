@@ -4,7 +4,13 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
-## [11.0.0] - 2023-11-06
+## [12.0.0]
+
+### Update
+- Boilerplate is clean and is using only temporary files used for the initial setup. After running the setup, the temporary files are removed and replaced with the actual files.
+- Minimum PHP version is now 8.2+.
+
+## [11.0.0]
 
 This is a major release that includes PHP8+ support. We tested it on the PHP 8.2.12 version.
 
@@ -16,67 +22,68 @@ This is a major release that includes PHP8+ support. We tested it on the PHP 8.2
 ### Changed
 - PHP version requirement.
 
-## [10.0.0] - 2023-06-13
+## [10.0.0]
 
 ### Changed
 - updated default 404 a bit (might make a component for it, though).
 - cleaned up header and footer, replaced with new reusable components.
 
-## [9.0.0] - 2023-02-21
+## [9.0.0]
 
 - Full change log can be checked on Github [frontend-libs release](https://github.com/infinum/eightshift-frontend-libs/releases/tag/8.0.0) and [libs release](https://github.com/infinum/eightshift-libs/releases/tag/6.4.0).
 
 ### Fixed
 - Fixes the BrowserslistError thrown on the npm start command.
 
-## [8.0.0] - 2022-07-11
+## [8.0.0]
 
 - Updating packages.
 - Full change log can be checked on Github [frontend-libs release](https://github.com/infinum/eightshift-frontend-libs/releases/tag/7.0.0) and [libs release](https://github.com/infinum/eightshift-libs/releases/tag/6.0.0).
 
-## [7.0.0] - 2022-04-19
+## [7.0.0]
 
 - Major braking changes do to updates on css variables, and helpers and updating min PHP version to 7.4.
 - Full change log can be checked on Github [releases](https://github.com/infinum/eightshift-frontend-libs/releases/tag/6.0.0).
 
-## [6.0.0] - 2021-08-16
+## [6.0.0]
 
 - Major braking changes do to updates on css variables, and helpers.
 
-## [5.0.1] - 2021-01-15
+## [5.0.1]
 
 ### Removed
 - Removed package-lock.json
 - Removed composer.lock
 - Removed version number from composer.json
 
-## [5.0.0] - 2021-01-05
+## [5.0.0]
+
 MAYOR BREAKING CHANGES
 
 - You should not try to update from version 4 to 5 because they are not compatible.
 
-## [4.3.0] - 2020-05-25
+## [4.3.0]
 
 ### Changed
 - `Eightshift-frontend-libs` update.
 - `Eightshift-libs` update.
 - `composer.json` updated packages, fixing scripts names.
 
-## [4.2.2] - 2020-05-15
+## [4.2.2]
 
 ### Changed
 - `Eightshift-frontend-libs` update.
 - `Eightshift-libs` update.
 
-## [4.2.1] - 2020-05-13
+## [4.2.1]
 
 ### Changed
 - `Eightshift-frontend-libs` update.
 - `Eightshift-libs` update.
 * Modified const name in wp-config-project.php from ES_ENV to EB_ENV to be consistent with the rest of the project.
-* Adde eslint rule to ignore external dependencies from @eightshift/frontend-libs.
+* Added eslint rule to ignore external dependencies from @eightshift/frontend-libs.
 
-## [4.2.0] - 2020-05-06
+## [4.2.0]
 
 ### Removed
 - Removed `Config` dependency from enqueue classes.
@@ -88,7 +95,7 @@ MAYOR BREAKING CHANGES
 **BRAKING CHANGES:**
 - Please replace you old .babelrc file with the new one babel.config.js and convert it from .json to .js format.
 
-## [4.1.0] - 2020-03-05
+## [4.1.0]
 
 ### Changed
 - Eightshift-frontend-libs update.
@@ -96,32 +103,32 @@ MAYOR BREAKING CHANGES
 - Changing header.php for now libs layout.
 - Changing footer.php for now libs layout.
 
-## [4.0.7] - 2020-01-29
+## [4.0.7]
 
 ### Changed
 - Eightshift-frontend-libs update
 - Eightshift-libs update
 
-## [4.0.6] - 2020-01-27
+## [4.0.6]
 
 ### Changed
 - Eightshift-frontend-libs update
 - Eightshift-libs update
 - Fixing readme.
 
-## [4.0.5] - 2020-01-23
+## [4.0.5]
 
 ### Changed
 - Readme Fix
 
-## [4.0.4] - 2020-01-23
+## [4.0.4]
 
 ### Changed
 - Corrections due to movement all src/blocks/layout/... to src/blocks/components in eightshift-frontend-libs
 - Updating composer to latest version of eightshift-libs
 - class-modify-admin-appearance.php fixed a typo
 
-## [4.0.3] - 2020-01-16
+## [4.0.3]
 
 ### Changed
 - Updated eightshift-libs to version 2.0.4
@@ -130,7 +137,7 @@ MAYOR BREAKING CHANGES
 - Updated PostCss
 - Updated @eightshift/frontend-libs
 
-## [4.0.1] - 2019-11-12
+## [4.0.1]
 
 ### Removed
 - postcss-font-magician from package.json
@@ -142,7 +149,7 @@ MAYOR BREAKING CHANGES
 - package.json - @eightshift/frontend-libs to 2.0.4
 - composer.json - infinum/eightshift-libs to 2.0.2
 
-## [4.0.0] - 2019-11-06
+## [4.0.0]
 
 ### Added
 - Implementing Eightshift-libs
@@ -161,7 +168,7 @@ MAYOR BREAKING CHANGES
 ### Changed
 - Complete webpack config refactoring
 
-## [3.0.1] - 2019-04-23
+## [3.0.1]
 
 ### Added
 
@@ -186,7 +193,7 @@ MAYOR BREAKING CHANGES
 
 - Minor webpack config fix
 
-## [3.0.0] - 2019-01-03
+## [3.0.0]
 
 ### Added
 
@@ -211,7 +218,7 @@ MAYOR BREAKING CHANGES
 
 - Replaced `file_get_contents` with `file` (for support)
 
-## [2.1.1] - 2018-05-03
+## [2.1.1]
 
 ### Added
 
@@ -242,7 +249,7 @@ MAYOR BREAKING CHANGES
 
 ### Security
 
-## [2.0.1] - 2018-02-07
+## [2.0.1]
 
 ### Added
 
@@ -262,7 +269,7 @@ MAYOR BREAKING CHANGES
 - Removed ACF class from the boilerplate
 - Removed unnecessary register_global_theme_options_variable method that set global variable
 
-## [2.0.0] - 2018-01-19
+## [2.0.0]
 
 This build is a breaking change in comparison to v1.0.0 (procedural -> OOP)
 
@@ -296,12 +303,13 @@ This build is a breaking change in comparison to v1.0.0 (procedural -> OOP)
 - Rename scripts minor fix with theme package name (shell script)
 - Indentation fix
 
-## [1.0.0] - 2018-01-03
+## [1.0.0]
 
 Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
 
+[12.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/11.0.0...12.0.0
 [11.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/10.0.0...11.0.0
 [10.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/9.0.0...10.0.0
 [9.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/8.0.0...9.0.0
