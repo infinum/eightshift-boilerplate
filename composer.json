@@ -24,15 +24,8 @@
 	"require-dev": {
 		"wp-cli/wp-cli": "^2.9"
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/infinum/eightshift-libs.git"
-		}
-	],
 	"require": {
-		"php": "^7.4 || >=8.0",
-		"infinum/eightshift-libs": "dev-feature/cli"
+		"php": "^7.4 || >=8.0"
 	},
 	"autoload": {
 		"psr-4": {
