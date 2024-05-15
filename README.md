@@ -26,17 +26,6 @@ If you'd like to get started ASAP, run `npx create-wp-project` inside of `wp-con
 
 Eightshift Development Kit comes with [comprehensive documentation](https://eightshift.com).
 
-## 💻 Other resources
-
-* [Documentation](https://eightshift.com/)
-* [Tutorials and more on the blog](https://eightshift.com/blog)
-* [Storybook](https://eightshift.com/storybook/)
-* [SassDoc](https://eightshift.com/sass)
-* Other parts of the Development kit:
-* * [Eightshift Boilerplate for Plugins](https://github.com/infinum/eightshift-boilerplate-plugin)
-* * [Eightshift Frontend Libs](https://github.com/infinum/eightshift-frontend-libs)
-* * [Eightshift Libs](https://github.com/infinum/eightshift-libs)
-
 ## 🛟 Getting help
 
 If you have any questions or problems, please [open an issue](https://github.com/infinum/eightshift-boilerplate/issues) on GitHub. 
@@ -47,4 +36,4 @@ When submitting issues or otherwise participating in development, please follow 
 Eightshift Boilerplate is maintained and sponsored by [Infinum](https://infinum.com).
 
 ## ⚖️ License
-Eightshift Boilerplate &copy;2022 [Infinum](https://infinum.com). It is free software, and may be redistributed under the terms specified in the LICENSE file.
+Eightshift Boilerplate [Infinum](https://infinum.com). It is free software, and may be redistributed under the terms specified in the LICENSE file.
