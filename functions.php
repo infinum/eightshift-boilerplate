@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Theme Name: Eightshift Boilerplate Theme
+ * Theme Name: Eightshift Boilerplate Setup Theme
  * Description: This is a initial setup for the Eightshift WordPress Boilerplate Theme.
  * Author: Eightshift team
  * Author URI: https://eightshift.com/
