@@ -11,6 +11,7 @@ Eightshift Boilerplate is a modern, Gutenberg-oriented, WordPress theme boilerpl
 ## ⚠️ Requirements
 To get started, you'll need:
 
+* [PHP 8.2+](https://www.php.net/)
 * [Node LTS](https://nodejs.org/)
 * [Composer](https://getcomposer.org/)
 * [git](https://git-scm.com/)
