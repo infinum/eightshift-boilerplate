@@ -18,7 +18,7 @@ To get started, you'll need:
 
 ## 🏁 Quick start
 
-If you'd like to get started ASAP, run `npx create-wp-project` inside of `wp-content/themes` to bootstrap your Eightshift Development Kit project.
+If you'd like to get started ASAP, run `npx eightshift-create theme` inside of `wp-content/themes` to bootstrap your Eightshift Development Kit project.
 
 [Documentation on getting started with Eightshift Boilerplate is available in Eightshift Docs &rarr;](https://eightshift.com/docs/theme/)
 
