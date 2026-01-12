@@ -13,4 +13,3 @@ parameters:
         - '#^Variable \$attributes might not be defined\.#'
         - '#^Variable \$renderContent might not be defined\.#'
         - '#^Variable \$manifest might not be defined\.#'
-        - identifier: missingType.generics

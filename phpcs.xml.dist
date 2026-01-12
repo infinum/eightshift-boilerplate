@@ -9,6 +9,7 @@
 	<exclude-pattern>*/vendor-prefixed/*</exclude-pattern>
 	<exclude-pattern>*/public/*</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/eightshift/*</exclude-pattern>
 
 	<!-- Additional arguments. -->
 	<arg value="sp"/>

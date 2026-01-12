@@ -6,8 +6,6 @@
  * @package EightshiftBoilerplate
  */
 
-use EightshiftBoilerplateVendor\EightshiftLibs\Helpers\Helpers;
-
 ?>
 
 </main>
