@@ -1,0 +1,39 @@
+{
+	"name": "eightshift-boilerplate",
+	"description": "Eightshift Boilerplate is a WordPress starter theme that helps you build better and faster using the modern development tools.",
+	"private": true,
+	"license": "MIT",
+	"scripts": {
+		"lintStyle": "stylelint **/*.css",
+		"lintJs": "eslint src/",
+		"lint": "bunx lint-staged",
+		"start": "webpack --watch --mode development",
+		"build": "webpack --mode production",
+		"prepare": "cd ../../.. && husky"
+	},
+	"devDependencies": {
+		"husky": "^9.1.7",
+		"lint-staged": "^16.2.7",
+		"webpack": "^5.103.0",
+		"webpack-cli": "^6.0.1"
+	},
+	"dependencies": {
+		"@eightshift/frontend-libs-tailwind": "^2.2.0",
+		"@eightshift/ui-components": "^6.0.4",
+		"@tailwindcss/postcss": "^4.1.17",
+		"colorjs.io": "^0.5.2",
+		"glob": "^13.0.0",
+		"tailwindcss": "^4.1.17"
+	},
+	"lint-staged": {
+		"*.css": [
+			"bun lintStyle"
+		],
+		"*.js": [
+			"bun lintJs"
+		],
+		"*.php": [
+			"composer test"
+		]
+	}
+}

@@ -1,12 +1,19 @@
-
 # Change Log for the Eightshift Boilerplate
+
 All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [13.0.0]
+
+### Updated
+
+- Boilerplate is now using the latest Eightshift Frontend Tailwind package with minimal paragraph component.
+
 ## [12.0.0]
 
 ### Update
+
 - Boilerplate is clean and is using only temporary files used for the initial setup. After running the setup, the temporary files are removed and replaced with the actual files.
 - Minimum PHP version is now 8.2+.
 
@@ -15,16 +22,19 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 This is a major release that includes PHP8+ support. We tested it on the PHP 8.2.12 version.
 
 ### Updated
+
 - Composer packages.
 - Npm packages.
 - Composer command names.
 
 ### Changed
+
 - PHP version requirement.
 
 ## [10.0.0]
 
 ### Changed
+
 - updated default 404 a bit (might make a component for it, though).
 - cleaned up header and footer, replaced with new reusable components.
 
@@ -33,6 +43,7 @@ This is a major release that includes PHP8+ support. We tested it on the PHP 8.2
 - Full change log can be checked on Github [frontend-libs release](https://github.com/infinum/eightshift-frontend-libs/releases/tag/8.0.0) and [libs release](https://github.com/infinum/eightshift-libs/releases/tag/6.4.0).
 
 ### Fixed
+
 - Fixes the BrowserslistError thrown on the npm start command.
 
 ## [8.0.0]
@@ -52,6 +63,7 @@ This is a major release that includes PHP8+ support. We tested it on the PHP 8.2
 ## [5.0.1]
 
 ### Removed
+
 - Removed package-lock.json
 - Removed composer.lock
 - Removed version number from composer.json
@@ -65,6 +77,7 @@ MAYOR BREAKING CHANGES
 ## [4.3.0]
 
 ### Changed
+
 - `Eightshift-frontend-libs` update.
 - `Eightshift-libs` update.
 - `composer.json` updated packages, fixing scripts names.
@@ -72,32 +85,39 @@ MAYOR BREAKING CHANGES
 ## [4.2.2]
 
 ### Changed
+
 - `Eightshift-frontend-libs` update.
 - `Eightshift-libs` update.
 
 ## [4.2.1]
 
 ### Changed
+
 - `Eightshift-frontend-libs` update.
 - `Eightshift-libs` update.
+
 * Modified const name in wp-config-project.php from ES_ENV to EB_ENV to be consistent with the rest of the project.
 * Added eslint rule to ignore external dependencies from @eightshift/frontend-libs.
 
 ## [4.2.0]
 
 ### Removed
+
 - Removed `Config` dependency from enqueue classes.
 - Removed .babelrc file.
 
 ### Added
+
 - Added babel.config.js
 
 **BRAKING CHANGES:**
+
 - Please replace you old .babelrc file with the new one babel.config.js and convert it from .json to .js format.
 
 ## [4.1.0]
 
 ### Changed
+
 - Eightshift-frontend-libs update.
 - Eightshift-libs update.
 - Changing header.php for now libs layout.
@@ -106,12 +126,14 @@ MAYOR BREAKING CHANGES
 ## [4.0.7]
 
 ### Changed
+
 - Eightshift-frontend-libs update
 - Eightshift-libs update
 
 ## [4.0.6]
 
 ### Changed
+
 - Eightshift-frontend-libs update
 - Eightshift-libs update
 - Fixing readme.
@@ -119,11 +141,13 @@ MAYOR BREAKING CHANGES
 ## [4.0.5]
 
 ### Changed
+
 - Readme Fix
 
 ## [4.0.4]
 
 ### Changed
+
 - Corrections due to movement all src/blocks/layout/... to src/blocks/components in eightshift-frontend-libs
 - Updating composer to latest version of eightshift-libs
 - class-modify-admin-appearance.php fixed a typo
@@ -131,6 +155,7 @@ MAYOR BREAKING CHANGES
 ## [4.0.3]
 
 ### Changed
+
 - Updated eightshift-libs to version 2.0.4
 - Updated eightshift-frontend-libs to version 3.0.3
 - Updated Webpack
@@ -140,18 +165,22 @@ MAYOR BREAKING CHANGES
 ## [4.0.1]
 
 ### Removed
+
 - postcss-font-magician from package.json
 
 ### Changed
+
 - Postcss config from object to array
 
 ### Updated
+
 - package.json - @eightshift/frontend-libs to 2.0.4
 - composer.json - infinum/eightshift-libs to 2.0.2
 
 ## [4.0.0]
 
 ### Added
+
 - Implementing Eightshift-libs
 - Implementing Eightshift-frontend-libs
 - Updating docs
@@ -166,6 +195,7 @@ MAYOR BREAKING CHANGES
 - package.lock and composer.lock
 
 ### Changed
+
 - Complete webpack config refactoring
 
 ## [3.0.1]
@@ -308,7 +338,7 @@ This build is a breaking change in comparison to v1.0.0 (procedural -> OOP)
 Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
-
+[13.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/12.0.0...13.0.0
 [12.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/11.0.0...12.0.0
 [11.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/10.0.0...11.0.0
 [10.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/9.0.0...10.0.0

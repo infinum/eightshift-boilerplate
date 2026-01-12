@@ -1,0 +1,19 @@
+{
+	"$schema": "https://raw.githubusercontent.com/infinum/eightshift-frontend-libs-tailwind/main/schemas/block.json",
+	"blockName": "paragraph",
+	"title": "Paragraph",
+	"description": "The block that starts it all.",
+	"category": "eightshift",
+	"icon": {
+		"src": "es-paragraph"
+	},
+	"keywords": ["paragraph", "text", "content"],
+	"components": {
+		"paragraph": "paragraph"
+	},
+	"example": {},
+	"attributes": {},
+	"supports": {
+		"splitting": true
+	}
+}

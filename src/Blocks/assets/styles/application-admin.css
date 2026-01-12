@@ -1,0 +1,11 @@
+/**
+ * This is the main entry point for Block Editor blocks styles used for the `WordPress frontend screen`.
+ * File names must follow naming convention to be able to run dynamically.
+ *
+ * `src/blocks/custom/block_name/block_name-admin.css`.
+ *
+ * Usage: `WordPress admin`.
+ *
+ */
+
+@import '@eightshift/ui-components/dist/assets/style-admin.css';

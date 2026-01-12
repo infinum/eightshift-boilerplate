@@ -22,10 +22,15 @@
 		"source": "https://github.com/infinum/eightshift-boilerplate"
 	},
 	"require-dev": {
-		"wp-cli/wp-cli": "^2.9"
+		"dealerdirect/phpcodesniffer-composer-installer": "^v1.1.1",
+		"infinum/eightshift-coding-standards": "^3.0.0",
+		"php-stubs/wordpress-stubs": "v6.8.3",
+		"szepeviktor/phpstan-wordpress": "2.0.3",
+		"wp-cli/wp-cli": "v2.12.0"
 	},
 	"require": {
-		"php": ">=8.2"
+		"php": ">=8.3",
+		"infinum/eightshift-libs": "^11.0.3"
 	},
 	"autoload": {
 		"psr-4": {
@@ -37,6 +42,39 @@
 	"config": {
 		"sort-packages": true,
 		"optimize-autoloader": true,
-		"process-timeout": 2000
+		"process-timeout": 2000,
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"test:types": "@php ./vendor/bin/phpstan analyze",
+		"test:standards": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 8.3-",
+		"test": [
+			"@test:standards",
+			"@test:types"
+		],
+		"prefix-namespaces": [
+			"@php strauss.phar",
+			"composer dump-autoload"
+		],
+		"post-install-cmd": [
+			"@php strauss.phar",
+			"composer dump-autoload"
+		],
+		"post-update-cmd": [
+			"@php strauss.phar",
+			"composer dump-autoload"
+		]
+	},
+	"extra": {
+		"strauss": {
+			"namespace_prefix": "EightshiftBoilerplateVendor",
+			"exclude_from_prefix": {
+				"file_patterns": [
+					"/Example.php$/"
+				]
+			}
+		}
 	}
 }

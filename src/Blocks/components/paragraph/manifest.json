@@ -1,0 +1,65 @@
+{
+	"$schema": "https://raw.githubusercontent.com/infinum/eightshift-frontend-libs-tailwind/main/schemas/component.json",
+	"componentName": "paragraph",
+	"title": "Paragraph",
+	"componentClass": "paragraph",
+	"example": {
+		"attributes": {
+			"paragraphContent": "This is paragraph",
+			"paragraphSize": "base",
+			"paragraphFontWeight": "400",
+			"paragraphUse": true
+		}
+	},
+	"attributes": {
+		"paragraphContent": {
+			"type": "string"
+		},
+		"paragraphSize": {
+			"type": "string",
+			"default": "md"
+		},
+		"paragraphUse": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"options": {
+		"paragraphSize": [
+			{
+				"label": "12",
+				"value": "xs"
+			},
+			{
+				"label": "14",
+				"value": "sm"
+			},
+			{
+				"label": "16",
+				"value": "md"
+			},
+
+			{
+				"label": "18",
+				"value": "lg"
+			}
+		]
+	},
+	"tailwind": {
+		"parts": {
+			"base": {
+				"twClasses": "*:link:underline"
+			}
+		},
+		"options": {
+			"paragraphSize": {
+				"twClasses": {
+					"lg": "text-body-lg",
+					"md": "text-body-md",
+					"sm": "text-body-sm",
+					"xs": "text-body-xs"
+				}
+			}
+		}
+	}
+}
