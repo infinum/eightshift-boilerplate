@@ -1,0 +1,30 @@
+{
+	"$schema": "https://raw.githubusercontent.com/infinum/eightshift-frontend-libs-tailwind/main/schemas/globalManifest.json",
+	"namespace": "eightshift-boilerplate",
+	"background": "#FFFFFF",
+	"foreground": "#002255",
+	"config": {
+		"useLegacyComponents": true
+	},
+	"globalVariables": {
+		"breakpoints": {
+			"xs": 30,
+			"sm": 80,
+			"md": 90
+		},
+		"breakpointData": {
+			"xs": {
+				"icon": "screenMobile",
+				"label": "Mobile"
+			},
+			"sm": {
+				"icon": "screenTablet",
+				"label": "Tablet"
+			},
+			"md": {
+				"icon": "screenLarge",
+				"label": "Desktop"
+			}
+		}
+	}
+}

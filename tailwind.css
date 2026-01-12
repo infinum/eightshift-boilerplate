@@ -1,0 +1,70 @@
+/* stylelint-disable-next-line @stylistic/max-line-length */
+/* stylelint-disable declaration-block-no-duplicate-properties, no-unknown-animations, at-rule-no-unknown, lightness-notation, hue-degree-notation, custom-property-empty-line-before, custom-property-pattern, at-rule-no-deprecated, block-no-redundant-nested-style-rules, nesting-selector-no-missing-scoping-root */
+
+/* Tailwind config */
+@import 'tailwindcss';
+
+@source './src/**/manifest.json';
+@source './src/**/*.{html,js,php,css}';
+@source './*.php';
+@source './es-tw-responsive-classes.txt';
+
+@theme {
+	--breakpoint-*: initial;
+
+	--breakpoint-sm: 36rem; /* 576px, 23.4375rem/375px in the design */
+	--breakpoint-md: 80rem; /* 1280px, 64rem/1024px in the design */
+	--breakpoint-lg: 100rem; /* 1600px */
+
+	--spacing: 0.0625rem; /* 1px */
+
+	--default-font-family: 'Arial', system-ui, sans-serif;
+	--font-display: 'Arial', system-ui, sans-serif;
+
+	--color-*: initial;
+
+	--color-black: oklch(0% 0 0);
+	--color-white: oklch(100% 0 0);
+	/* Text */
+
+	--text-*: initial;
+	/* 
+	--text-h1: 3.25rem; /* 52px */
+	--text-h1--line-height: 1.12;
+	--text-h1--font-weight: 500;
+
+	--text-h2: 2.25rem; /* 36px */
+	--text-h2--line-height: 1.18;
+	--text-h2--font-weight: 500;
+
+	--text-h3: 2rem; /* 32px */
+	--text-h3--line-height: 1.2;
+	--text-h3--font-weight: 500;
+
+	--text-h4: 1.5rem; /* 24px */
+	--text-h4--line-height: 1.48;
+	--text-h4--font-weight: 500;
+
+	--text-h5: 1.125rem; /* 18px */
+	--text-h5--line-height: 1.45;
+	--text-h5--font-weight: 500;
+
+	--text-h6: 1rem; /* 16px */
+	--text-h6--line-height: 1.6;
+	--text-h6--font-weight: 500;
+
+	--text-base: 1.125rem; /* 18px */
+	--text-base--line-height: 1.78;
+
+	--text-body-lg: 1.125rem; /* 18px */
+	--text-body-lg--line-height: 1.78;
+
+	--text-body-md: 1rem; /* 16px */
+	--text-body-md--line-height: 1.5;
+
+	--text-body-sm: 0.875rem; /* 14px */
+	--text-body-sm--line-height: 1.5;
+
+	--text-body-xs: 0.75rem; /* 12px */
+	--text-body-xs--line-height: 1.5;
+}

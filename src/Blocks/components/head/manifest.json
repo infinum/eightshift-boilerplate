@@ -1,0 +1,17 @@
+{
+	"$schema": "https://raw.githubusercontent.com/infinum/eightshift-frontend-libs-tailwind/main/schemas/component.json",
+	"componentName": "head",
+	"title": "Head",
+	"attributes": {
+		"headFavicon": {
+			"type": "string"
+		},
+		"headCharset": {
+			"type": "string",
+			"default": "utf-8"
+		},
+		"headName": {
+			"type": "string"
+		}
+	}
+}

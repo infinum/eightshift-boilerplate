@@ -1,0 +1,17 @@
+{
+	"$schema": "https://swc.rs/schema.json",
+	"jsc": {
+		"parser": {
+			"syntax": "ecmascript",
+			"jsx": true,
+			"decorators": false,
+			"dynamicImport": true
+		},
+		"transform": {
+			"react": {
+				"runtime": "automatic"
+			}
+		},
+		"target": "es2022"
+	}
+}

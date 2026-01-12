@@ -1,0 +1,16 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+    level: 6
+    inferPrivatePropertyTypeFromConstructor: true
+    treatPhpDocTypesAsCertain: false
+    bootstrapFiles:
+        - vendor-prefixed/autoload.php
+    paths:
+        - src/
+    ignoreErrors:
+        # Block templates
+        - '#^Variable \$attributes might not be defined\.#'
+        - '#^Variable \$renderContent might not be defined\.#'
+        - '#^Variable \$manifest might not be defined\.#'
+        - identifier: missingType.generics

@@ -1,0 +1,12 @@
+{
+	"$schema": "https://raw.githubusercontent.com/infinum/eightshift-frontend-libs-tailwind/main/schemas/component.json",
+	"componentName": "wrapper",
+	"title": "Wrapper",
+	"componentClass": "wrapper",
+	"attributes": {
+		"wrapperUse": {
+			"type": "boolean",
+			"default": true
+		}
+	}
+}
