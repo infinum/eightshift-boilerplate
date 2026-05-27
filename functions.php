@@ -55,13 +55,13 @@ if (\file_exists(__DIR__ . '/vendor-prefixed/autoload.php')) {
  * not affect the page life cycle.
  */
 if (\class_exists(Main::class) && \class_exists(ManifestCache::class)) {
-	(new ManifestCache())->setAllCache();
-	(new Main($loader->getPrefixesPsr4(), __NAMESPACE__))->register();
+	new ManifestCache()->setAllCache();
+	new Main($loader->getPrefixesPsr4(), __NAMESPACE__)->register();
 }
 
 /**
  * Run all WP-CLI commands.
  */
 if (\class_exists(Cli::class)) {
-	(new Cli())->load('boilerplate');
+	new Cli()->load('boilerplate');
 }

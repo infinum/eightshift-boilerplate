@@ -6,34 +6,29 @@
 	"scripts": {
 		"lintStyle": "stylelint **/*.css",
 		"lintJs": "eslint src/",
-		"lint": "bunx lint-staged",
+		"lint": "bun run lintStyle && bun run lintJs",
 		"start": "webpack --watch --mode development",
 		"build": "webpack --mode production",
 		"prepare": "cd ../../.. && husky"
 	},
 	"devDependencies": {
 		"husky": "^9.1.7",
-		"lint-staged": "^16.2.7",
-		"webpack": "^5.103.0",
+		"lint-staged": "^16.4.0",
+		"webpack": "^5.106.2",
 		"webpack-cli": "^6.0.1"
 	},
 	"dependencies": {
-		"@eightshift/frontend-libs-tailwind": "^2.2.0",
-		"@eightshift/ui-components": "^6.0.4",
-		"@tailwindcss/postcss": "^4.1.17",
+		"@eightshift/frontend-libs-tailwind": "^3.2.0",
+		"@eightshift/ui-components": "^7.3.0",
+		"@tailwindcss/postcss": "^4.3.0",
 		"colorjs.io": "^0.5.2",
-		"glob": "^13.0.0",
-		"tailwindcss": "^4.1.17"
+		"glob": "^13.0.6",
+		"tailwindcss": "^4.3.0",
+		"use-sync-external-store": "^1.6.0"
 	},
 	"lint-staged": {
-		"*.css": [
-			"bun lintStyle"
-		],
-		"*.js": [
-			"bun lintJs"
-		],
-		"*.php": [
-			"composer test"
-		]
+		"*.js": "bun lintJs",
+		"*.css": "bun lintStyle",
+		"*.php": "composer test"
 	}
 }

@@ -6,6 +6,8 @@
  * @package EightshiftBoilerplate
  */
 
+declare(strict_types=1);
+
 get_header();
 
 if (have_posts()) {

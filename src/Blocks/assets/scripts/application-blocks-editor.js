@@ -12,7 +12,7 @@
 import domReady from '@wordpress/dom-ready';
 import { setDefaultBlockName } from '@wordpress/blocks';
 import { select } from '@wordpress/data';
-import { registerBlocks, registerVariations, STORE_NAME } from '@eightshift/frontend-libs-tailwind/scripts/editor';
+import { registerBlocks, STORE_NAME } from '@eightshift/frontend-libs-tailwind/scripts/editor';
 import { Wrapper } from '../../wrapper/wrapper';
 import WrapperManifest from '../../wrapper/manifest.json';
 import globalSettingsRaw from '../../manifest.json';
@@ -56,13 +56,6 @@ registerBlocks(
 	require.context('./../../custom', true, /-deprecations.js$/),
 	require.context('./../../custom', true, /-overrides.js$/),
 );
-
-// registerVariations(
-// 	globalSettings,
-// 	require.context('./../../variations', true, /manifest.json$/),
-// 	require.context('./../../custom', true, /manifest.json$/),
-// 	require.context('./../../variations', true, /overrides.json$/),
-// );
 
 // Import styles.
 dynamicImport(require.context('./../../components', true, /styles-editor.css$/));

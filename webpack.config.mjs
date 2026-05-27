@@ -1,45 +1,9 @@
 import { eightshiftConfig } from '@eightshift/frontend-libs-tailwind/webpack/index.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-const esTwResponsiveCompiler = () => ({
-	apply: (compiler) => {
-		// Initial run.
-		compiler.hooks.initialize.tap('PreprocessTailwindPlugin', () => {
-			console.log('🔄 Generating responsive Tailwind class combinations');
-
-			try {
-				execSync('node preprocess-tailwind.js', { stdio: 'inherit' });
-				console.log('✅ Done!');
-			} catch (error) {
-				console.error('❌ Failed. ', error);
-			}
-		});
-
-		// Re-run on manifest edit.
-		compiler.hooks.watchRun.tapAsync('PreprocessTailwindPlugin', ({ modifiedFiles }, callback) => {
-			if (modifiedFiles) {
-				const manifestChanged = [...modifiedFiles].some((file) => file.includes('manifest.json')) ?? false;
-
-				if (manifestChanged) {
-					console.log('🔄 A manifest was modified, re-running responsive Tailwind class combination generation');
-					try {
-						execSync('node preprocess-tailwind.js', { stdio: 'inherit' });
-						console.log('✅ Done!');
-					} catch (error) {
-						console.error('❌ Failed. ', error);
-					}
-				}
-			}
-
-			callback();
-		});
-	},
-});
 
 /**
  * This is a main entrypoint for Webpack config.
@@ -60,6 +24,5 @@ export default (_, argv) => {
 
 	return {
 		...config,
-		plugins: [esTwResponsiveCompiler, ...config.plugins],
 	};
 };
