@@ -30,8 +30,6 @@ class ManifestCache extends AbstractManifestCache
 
 	/**
 	 * Get cache version.
-	 *
-	 * @return string
 	 */
 	public function getVersion(): string
 	{

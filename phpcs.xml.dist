@@ -20,19 +20,11 @@
 	<file>.</file>
 
 	<!-- Check for PHP cross-version compatibility. -->
-	<config name="testVersion" value="8.3-"/>
+	<config name="testVersion" value="8.4-"/>
 	<rule ref="PHPCompatibilityWP"/>
 
-	<!-- Support only latest 3 WP versions. -->
-	<config name="minimum_supported_wp_version" value="8.2"/>
+	<config name="minimum_supported_wp_version" value="6.9"/>
 
 	<exclude-pattern>/src/CompiledContainer\.php</exclude-pattern>
-
-	<rule ref="Generic.Files.LineLength">
-		<properties>
-			<property name="lineLimit" value="300" />
-			<property name="ignoreComments" value="true" />
-		</properties>
-	</rule>
-
 </ruleset>
+

@@ -4,6 +4,87 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [14.0.0]
+
+### Added
+
+- Added Rector (`rector/rector` ^2.4.5) with `rector.php` config targeting PHP 8.4, Code Quality, Dead Code, Type Declaration, and Early Return rule sets.
+- Added PHPStan deprecation rules (`phpstan/phpstan-deprecation-rules` ^2.0.4) to the PHPStan config.
+- Added `roave/security-advisories` to block installing dependencies with known vulnerabilities.
+- Added new composer scripts: `test:rector`, `fix:standards` (PHPCBF), and `fix:rector`. `composer test` now also runs Rector in dry-run mode.
+- Added `Override` attribute on overridden methods in `EnqueueAdmin` and `EnqueueBlocks`.
+- Added `declare(strict_types=1);` to `index.php`.
+- Added `use-sync-external-store` dependency.
+
+### Changed
+
+- Updated minimum PHP requirement from 8.3 to **8.4**. `phpcs.xml.dist` and composer `test:standards` are now pinned to `8.4-`.
+- Updated `infinum/eightshift-libs` from ^11.0.3 to **^12.3.4**.
+- Updated `@eightshift/frontend-libs-tailwind` from ^2.2.0 to **^3.2.0**.
+- Updated `@eightshift/ui-components` from ^6.0.4 to **^7.3.0**.
+- Updated `infinum/eightshift-coding-standards` from ^3.0.0 to **^4.0.2**.
+- Updated `php-stubs/wordpress-stubs` from 6.8.3 to **6.9.4**.
+- Updated `tailwindcss` and `@tailwindcss/postcss` to **^4.3.0**.
+- Updated `dealerdirect/phpcodesniffer-composer-installer` pinned to **1.2.1**.
+- Updated hook registration syntax from array callables (`[$this, 'method']`) to first-class callable syntax (`$this->method(...)`) in `Blocks`, `EnqueueAdmin`, `EnqueueBlocks`, and `Main`.
+- Updated object instantiation in `functions.php` to use the PHP 8.4 syntax without parentheses: `new Main()->register()` instead of `(new Main())->register()`.
+- Updated `lint` npm script to run `lintStyle && lintJs` directly. `lint-staged` now runs only on the pre-commit hook.
+- Updated PHPStan config: indentation switched to tabs, paths now scan from project root with `excludePaths`, and added WordPress stubs bootstrap.
+- Updated `.prettierrc` `printWidth` from 120 to 300.
+- Updated `phpcs.xml.dist` minimum supported WordPress version to 8.4.
+
+### Removed
+
+- Removed `preprocess-tailwind.js` and the custom `esTwResponsiveCompiler` webpack plugin. Responsive Tailwind class generation is now handled internally by `@eightshift/frontend-libs-tailwind`.
+- Removed `registerVariations` import and the commented-out variations registration from `application-blocks-editor.js`.
+- Removed `Generic.Files.LineLength` rule override from `phpcs.xml.dist`.
+
+### Migration guide
+
+Upgrading from 13.x to 14.0.0 is a major release with breaking changes. Follow these steps:
+
+**1. Update PHP to 8.4+**
+
+This release requires PHP 8.4. Confirm your server, local environment, and CI runners are on 8.4 before upgrading.
+
+**2. Update dependencies**
+
+```bash
+composer update
+bun install
+```
+
+This pulls in `infinum/eightshift-libs` ^12.3.4, `@eightshift/frontend-libs-tailwind` ^3.2.0, `@eightshift/ui-components` ^7.3.0, and the new dev tooling (Rector, PHPStan deprecation rules, security advisories).
+
+**3. Remove the Tailwind preprocess script**
+
+If your project has a custom `preprocess-tailwind.js` and the `esTwResponsiveCompiler` plugin wired into `webpack.config.mjs`, remove them. Responsive class generation is now built into `@eightshift/frontend-libs-tailwind`. Reference the new `webpack.config.mjs` in this repo for the minimal config.
+
+**4. Rebuild assets**
+
+```bash
+bun run build
+```
+
+The new Tailwind pipeline regenerates responsive classes during the standard build — no extra step required.
+
+**5. Run Rector on your code (optional but recommended)**
+
+`composer fix:rector` will automatically migrate your codebase to PHP 8.4 idioms: first-class callable syntax for hooks, removal of redundant docblocks where types are explicit, and other dead-code/type-declaration improvements. Always review the diff before committing.
+
+**6. Re-run linters**
+
+```bash
+composer test
+bun run lint
+```
+
+`composer test` now runs Rector (dry-run), PHPCS, and PHPStan. Fix any reported issues before deploying.
+
+**7. Watch for deprecations**
+
+PHPStan now reports deprecated WordPress APIs via `phpstan-deprecation-rules`. Resolve any deprecation warnings before merging.
+
 ## [13.0.0]
 
 ### Updated
@@ -338,6 +419,7 @@ This build is a breaking change in comparison to v1.0.0 (procedural -> OOP)
 Initial tagged release.
 
 [Unreleased]: https://github.com/infinum/eightshift-boilerplate/compare/master...HEAD
+[14.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/13.0.0...14.0.0
 [13.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/12.0.0...13.0.0
 [12.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/11.0.0...12.0.0
 [11.0.0]: https://github.com/infinum/eightshift-boilerplate/compare/10.0.0...11.0.0

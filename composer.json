@@ -22,15 +22,18 @@
 		"source": "https://github.com/infinum/eightshift-boilerplate"
 	},
 	"require-dev": {
-		"dealerdirect/phpcodesniffer-composer-installer": "^v1.1.1",
-		"infinum/eightshift-coding-standards": "^3.0.0",
-		"php-stubs/wordpress-stubs": "v6.8.3",
+		"dealerdirect/phpcodesniffer-composer-installer": "1.2.1",
+		"infinum/eightshift-coding-standards": "^4.0.2",
+		"phpstan/phpstan-deprecation-rules": "^2.0.4",
+		"php-stubs/wordpress-stubs": "6.9.4",
 		"szepeviktor/phpstan-wordpress": "2.0.3",
+		"rector/rector": "^2.4.5",
+		"roave/security-advisories": "dev-latest",
 		"wp-cli/wp-cli": "v2.12.0"
 	},
 	"require": {
-		"php": ">=8.3",
-		"infinum/eightshift-libs": "^11.0.3"
+		"php": ">=8.4",
+		"infinum/eightshift-libs": "^12.3.4"
 	},
 	"autoload": {
 		"psr-4": {
@@ -49,8 +52,12 @@
 	},
 	"scripts": {
 		"test:types": "@php ./vendor/bin/phpstan analyze",
-		"test:standards": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 8.3-",
+		"test:standards": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --runtime-set testVersion 8.4-",
+		"test:rector": "@php ./vendor/bin/rector process --dry-run",
+		"fix:standards": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --runtime-set testVersion 8.4-",
+		"fix:rector": "@php ./vendor/bin/rector process",
 		"test": [
+			"@test:rector",
 			"@test:standards",
 			"@test:types"
 		],

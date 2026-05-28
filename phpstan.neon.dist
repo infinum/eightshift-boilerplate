@@ -1,15 +1,23 @@
 includes:
-    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+	- vendor/szepeviktor/phpstan-wordpress/extension.neon
+	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
 parameters:
-    level: 6
-    inferPrivatePropertyTypeFromConstructor: true
-    treatPhpDocTypesAsCertain: false
-    bootstrapFiles:
-        - vendor-prefixed/autoload.php
-    paths:
-        - src/
-    ignoreErrors:
-        # Block templates
-        - '#^Variable \$attributes might not be defined\.#'
-        - '#^Variable \$renderContent might not be defined\.#'
-        - '#^Variable \$manifest might not be defined\.#'
+	level: 6
+	inferPrivatePropertyTypeFromConstructor: true
+	treatPhpDocTypesAsCertain: false
+	bootstrapFiles:
+		- %rootDir%/../../php-stubs/wordpress-stubs/wordpress-stubs.php
+		- vendor-prefixed/autoload.php
+	excludePaths:
+		- */vendor/*
+		- */vendor-prefixed/*
+		- */node_modules/*
+		- */eightshift/*
+		- */public/*
+		- */tests/*
+		- */docs/*
+	paths:
+		- .
+	ignoreErrors:
+		# Block templates
+		- '/^Variable (\$attributes|\$renderContent|\$manifest|\$globalManifest) might not be defined\.$/'

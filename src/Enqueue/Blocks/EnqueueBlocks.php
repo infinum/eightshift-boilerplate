@@ -12,6 +12,7 @@ namespace EightshiftBoilerplate\Enqueue\Blocks;
 
 use EightshiftBoilerplate\Config\Config;
 use EightshiftBoilerplateVendor\EightshiftLibs\Enqueue\Blocks\AbstractEnqueueBlocks;
+use Override;
 
 /**
  * Enqueue_Blocks class.
@@ -24,25 +25,23 @@ class EnqueueBlocks extends AbstractEnqueueBlocks
 	public function register(): void
 	{
 		// Editor only script.
-		\add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockEditorScript']);
+		\add_action('enqueue_block_editor_assets', $this->enqueueBlockEditorScript(...));
 
 		// Editor only style.
-		\add_action('enqueue_block_editor_assets', [$this, 'enqueueBlockEditorStyle'], 50);
+		\add_action('enqueue_block_editor_assets', $this->enqueueBlockEditorStyle(...), 50);
 
 		// Frontend only script.
-		\add_action('wp_enqueue_scripts', [$this, 'enqueueBlockFrontendScript']);
+		\add_action('wp_enqueue_scripts', $this->enqueueBlockFrontendScript(...));
 
 		// Frontend only style.
-		\add_action('wp_enqueue_scripts', [$this, 'enqueueBlockFrontendStyle'], 50);
+		\add_action('wp_enqueue_scripts', $this->enqueueBlockFrontendStyle(...), 50);
 
 		// Unregister default style overrides.
-		\add_action('enqueue_block_editor_assets', [$this, 'unregisterDefaultStyleOverrides'], 102);
+		\add_action('enqueue_block_editor_assets', $this->unregisterDefaultStyleOverrides(...), 102);
 	}
 
 	/**
 	 * Method that returns assets name used to prefix asset handlers.
-	 *
-	 * @return string
 	 */
 	public function getAssetsPrefix(): string
 	{
@@ -51,8 +50,6 @@ class EnqueueBlocks extends AbstractEnqueueBlocks
 
 	/**
 	 * Method that returns assets version for versioning asset handlers.
-	 *
-	 * @return string
 	 */
 	public function getAssetsVersion(): string
 	{
@@ -66,6 +63,7 @@ class EnqueueBlocks extends AbstractEnqueueBlocks
 	 *
 	 * @return array<int, string> List of all the style dependencies.
 	 */
+	#[Override]
 	protected function getBlockFrontendStyleDependencies(): array
 	{
 		return [];
@@ -78,6 +76,7 @@ class EnqueueBlocks extends AbstractEnqueueBlocks
 	 *
 	 * @return string[] List of all the style dependencies.
 	 */
+	#[Override]
 	protected function getBlockEditorStyleDependencies(): array
 	{
 		return [];
