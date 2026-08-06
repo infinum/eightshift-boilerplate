@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
+## [14.0.1]
+
+### Security
+
+- Updated `infinum/eightshift-coding-standards` to `4.0.3`, which pins `wp-coding-standards/wpcs` to `3.4.1`, fixing [CVE-2026-45293](https://github.com/advisories/GHSA-3pwp-g2mj-5p3v) (arbitrary code execution, CVSS 8.6).
+
 ## [14.0.0]
 
 ### Added
