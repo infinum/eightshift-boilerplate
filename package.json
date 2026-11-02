@@ -13,18 +13,18 @@
 	},
 	"devDependencies": {
 		"husky": "^9.1.7",
-		"lint-staged": "^16.4.0",
-		"webpack": "^5.106.2",
-		"webpack-cli": "^6.0.1"
+		"lint-staged": "^17.6.0",
+		"webpack": "^5.112.0",
+		"webpack-cli": "^7.2.3"
 	},
 	"dependencies": {
-		"@eightshift/frontend-libs-tailwind": "^3.2.0",
-		"@eightshift/ui-components": "^7.3.0",
-		"@tailwindcss/postcss": "^4.3.0",
-		"colorjs.io": "^0.5.2",
+		"@eightshift/frontend-libs-tailwind": "^3.5.0",
+		"@eightshift/ui-components": "^8.4.0",
+		"@tailwindcss/postcss": "^4.3.3",
+		"colorjs.io": "^0.7.1",
 		"glob": "^13.0.6",
-		"tailwindcss": "^4.3.0",
-		"use-sync-external-store": "^1.6.0"
+		"tailwindcss": "^4.3.3",
+		"use-sync-external-store": "^1.7.0"
 	},
 	"lint-staged": {
 		"*.js": "bun lintJs",
