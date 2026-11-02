@@ -25,10 +25,11 @@
 
 	--color-black: oklch(0% 0 0);
 	--color-white: oklch(100% 0 0);
+
 	/* Text */
 
 	--text-*: initial;
-	/* 
+
 	--text-h1: 3.25rem; /* 52px */
 	--text-h1--line-height: 1.12;
 	--text-h1--font-weight: 500;

@@ -19,7 +19,7 @@ return RectorConfig::configure()
 	])
 	->withBootstrapFiles([__DIR__ . '/vendor-prefixed/autoload.php'])
 	->withPhpSets(php84: true)
-	->withSets([LevelSetList::UP_TO_PHP_84, SetList::CODE_QUALITY, SetList::DEAD_CODE, SetList::TYPE_DECLARATION, SetList::EARLY_RETURN])
+	->withSets([LevelSetList::UP_TO_PHP_84, SetList::CODE_QUALITY, SetList::DEAD_CODE, SetList::TYPE_DECLARATION])
 	->withSkip([
 		RemoveUselessVarTagRector::class,
 		__DIR__ . '/vendor-prefixed/*',

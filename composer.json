@@ -24,16 +24,16 @@
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "1.2.1",
 		"infinum/eightshift-coding-standards": "^4.0.2",
-		"phpstan/phpstan-deprecation-rules": "^2.0.4",
-		"php-stubs/wordpress-stubs": "6.9.4",
-		"szepeviktor/phpstan-wordpress": "2.0.3",
-		"rector/rector": "^2.4.5",
+		"phpstan/phpstan-deprecation-rules": "^2.0.5",
+		"php-stubs/wordpress-stubs": "7.1.2",
+		"szepeviktor/phpstan-wordpress": "2.0.4",
+		"rector/rector": "^2.8.3",
 		"roave/security-advisories": "dev-latest",
 		"wp-cli/wp-cli": "v2.12.0"
 	},
 	"require": {
 		"php": ">=8.4",
-		"infinum/eightshift-libs": "^12.3.4"
+		"infinum/eightshift-libs": "^13.6.0"
 	},
 	"autoload": {
 		"psr-4": {
